@@ -18,25 +18,39 @@ const programCategories = [
   { name: 'Finance', icon: <FaMoneyBillWave /> },
 ]
 
-const programs = [
-  { title: 'HR Leadership Program', duration: '6 months', mode: 'Online' },
-  {
-    title: 'Marketing Strategy Course',
-    duration: '5 months',
-    mode: 'Classroom',
-  },
-  {
-    title: 'Sales Mastery Certification',
-    duration: '8 months',
-    mode: 'Online',
-  },
-  {
-    title: 'Business Analytics Program',
-    duration: '12 months',
-    mode: 'Online',
-  },
-  { title: 'Finance Management Course', duration: '10 months', mode: 'Hybrid' },
-]
+const programs = {
+  HR: [
+    { title: 'HR Leadership Program', duration: '6 months', mode: 'Online' },
+  ],
+  Marketing: [
+    {
+      title: 'Marketing Strategy Course',
+      duration: '5 months',
+      mode: 'Classroom',
+    },
+  ],
+  Sales: [
+    {
+      title: 'Sales Mastery Certification',
+      duration: '8 months',
+      mode: 'Online',
+    },
+  ],
+  'Business Analyst': [
+    {
+      title: 'Business Analytics Program',
+      duration: '12 months',
+      mode: 'Online',
+    },
+  ],
+  Finance: [
+    {
+      title: 'Finance Management Course',
+      duration: '10 months',
+      mode: 'Hybrid',
+    },
+  ],
+}
 
 const quickLinks = [
   { title: 'Salary Builder', desc: 'Compare your salary v/s peers' },
@@ -46,6 +60,7 @@ const quickLinks = [
 
 const NavBar = () => {
   const [showDropdown, setShowDropdown] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState('Popular')
 
   return (
     <>
@@ -104,8 +119,18 @@ const NavBar = () => {
             {/* Sidebar */}
             <div className="sidebar">
               <h5 className="sidebar-title">Programs</h5>
+              <div
+                className="sidebar-item"
+                onClick={() => setSelectedCategory('Popular')}
+              >
+                ⭐ Popular
+              </div>
               {programCategories.map((category, index) => (
-                <div key={index} className="sidebar-item">
+                <div
+                  key={index}
+                  className="sidebar-item"
+                  onClick={() => setSelectedCategory(category.name)}
+                >
                   {category.icon} <span>{category.name}</span>
                 </div>
               ))}
@@ -113,9 +138,12 @@ const NavBar = () => {
 
             {/* Programs */}
             <div className="programs">
-              <h5>Popular Programs</h5>
+              <h5>{selectedCategory} Programs</h5>
               <div className="program-grid">
-                {programs.map((program, index) => (
+                {(selectedCategory === 'Popular'
+                  ? Object.values(programs).flat()
+                  : programs[selectedCategory] || []
+                ).map((program, index) => (
                   <div key={index} className="program-card">
                     <h6>{program.title}</h6>
                     <p>
