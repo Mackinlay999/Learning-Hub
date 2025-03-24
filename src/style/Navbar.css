@@ -1,0 +1,117 @@
+/* Navbar Container */
+.custom-navbar {
+  background-color: white;
+  padding: 10px 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Logo Styling */
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
+}
+
+/* Navbar Links */
+.nav-links .nav-link {
+  color: black !important;
+  font-weight: 500;
+  margin-right: 20px;
+}
+
+.nav-links .nav-link:hover {
+  color: #dc3545 !important;
+}
+
+/* Login Button */
+.login-btn {
+  border-color: #dc3545 !important;
+  color: #dc3545 !important;
+  font-weight: 500;
+  padding: 6px 20px;
+}
+
+.login-btn:hover {
+  background-color: #dc3545 !important;
+  color: white !important;
+}
+
+/* Dropdown Container */
+.dropdown-menu-container {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background: white;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 20%;
+  border-right: 1px solid #ddd;
+  padding: 10px;
+}
+
+.sidebar-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #dc3545;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.sidebar-item svg {
+  margin-right: 10px;
+  color: #dc3545;
+}
+
+/* Programs */
+.programs {
+  width: 50%;
+  padding: 10px;
+}
+
+.program-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.program-card {
+  background: #f8d7da;
+  padding: 10px;
+  border-radius: 5px;
+  color: #721c24;
+}
+
+/* Quick Links */
+.quick-links {
+  width: 25%;
+  padding: 10px;
+}
+
+.quick-link-item {
+  margin-bottom: 10px;
+}
+
+.quick-links h5 {
+  color: #dc3545;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
