@@ -1,0 +1,70 @@
+.career-prep-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    background: #fff;
+  }
+  
+  .career-text {
+    max-width: 500px;
+  }
+  
+  h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .counseling-button {
+    background-color: #1763f6;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .counseling-button:hover {
+    background-color: #0048c4;
+  }
+  
+  .career-cards {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .card {
+    padding: 20px;
+    width: 150px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .yellow-card {
+    background: #fadc7c;
+  }
+  
+  .pink-card {
+    background: #f8b8b8;
+  }
+  
+  .card h3 {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .card p {
+    font-size: 14px;
+    color: #555;
+  }
+  
