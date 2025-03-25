@@ -5,3 +5,10 @@
     font-family: 'poppins',sans-serif;
     scroll-behavior: smooth;
 }
+:root {
+    --primary-red: #D32F2F;
+    --dark-gray: #333333;
+    --white: #FFFFFF;
+    --gold-accent: #FFC107;
+  }
+  

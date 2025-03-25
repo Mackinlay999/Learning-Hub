@@ -24,6 +24,9 @@ const NavBar = () => {
               <Nav.Link onClick={() => setShowDropdown(!showDropdown)}>
                 <Button variant="danger">Explore Programs ⌄</Button>
               </Nav.Link>
+              <Nav.Link as={Link} to="/">
+                Home
+              </Nav.Link>
               <Nav.Link as={Link} to="/career-support">
                 Career Support
               </Nav.Link>
