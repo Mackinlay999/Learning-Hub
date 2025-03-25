@@ -8,6 +8,7 @@ import {
   FaBusinessTime,
   FaMoneyBillWave,
 } from 'react-icons/fa'
+import { Link } from 'react-router-dom' // ✅ Use Link for routing
 import '../style/NavBar.css' // Import custom styles
 
 const programCategories = [
@@ -67,9 +68,9 @@ const NavBar = () => {
       <Navbar expand="lg" className="custom-navbar">
         <Container>
           {/* Logo */}
-          <Navbar.Brand href="#" className="fw-bold logo">
+          <Navbar.Brand as={Link} to="/" className="fw-bold logo">
             <motion.span whileHover={{ scale: 1.1 }}>
-              <span className="text-danger">G</span>reat Learning
+              <span className="text-danger">L</span>earning Hub
             </motion.span>
           </Navbar.Brand>
 
@@ -82,10 +83,18 @@ const NavBar = () => {
               <Nav.Link onClick={() => setShowDropdown(!showDropdown)}>
                 <Button variant="danger">Explore Programs ⌄</Button>
               </Nav.Link>
-              <Nav.Link href="#">Career Support</Nav.Link>
-              <Nav.Link href="#">Success Stories</Nav.Link>
-              <Nav.Link href="#">Enterprise</Nav.Link>
-              <Nav.Link href="#">For Recruiters</Nav.Link>
+              <Nav.Link as={Link} to="/career-support">
+                Career Support
+              </Nav.Link>
+              <Nav.Link as={Link} to="/success-story">
+                Success Stories
+              </Nav.Link>
+              <Nav.Link as={Link} to="/enterprise">
+                Enterprise
+              </Nav.Link>
+              <Nav.Link as={Link} to="/for-recruiters">
+                For Recruiters
+              </Nav.Link>
 
               <NavDropdown title="More" id="more-dropdown">
                 <motion.div
@@ -93,8 +102,12 @@ const NavBar = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <NavDropdown.Item href="#">About Us</NavDropdown.Item>
-                  <NavDropdown.Item href="#">Contact</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/about">
+                    About Us
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/contact">
+                    Contact
+                  </NavDropdown.Item>
                 </motion.div>
               </NavDropdown>
             </Nav>
