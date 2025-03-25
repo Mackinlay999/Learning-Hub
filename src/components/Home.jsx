@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { motion } from 'framer-motion'
 import { FaCheckCircle } from 'react-icons/fa'
-import ProgramCard from './ProgramCard'
+import Program from './Program'
 import SuccessStory from './SuccessStory'
 import Blog from './Blog'
 import Footer from './Footer'
@@ -79,21 +79,7 @@ const Home = () => {
       <Container className="mt-5">
         <h2 className="section-title">Featured Programs</h2>
         <Row>
-          <ProgramCard
-            title="HR Leadership"
-            duration="6 months"
-            mode="Online"
-          />
-          <ProgramCard
-            title="Marketing Strategy"
-            duration="5 months"
-            mode="Classroom"
-          />
-          <ProgramCard
-            title="Business Analytics"
-            duration="12 months"
-            mode="Online"
-          />
+          <Program />
         </Row>
       </Container>
 
