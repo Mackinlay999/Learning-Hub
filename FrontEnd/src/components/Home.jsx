@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import React,{useState} from 'react';
+import { Container, Row, Col,  Card, Button } from 'react-bootstrap';
 import { motion } from 'framer-motion';
 import { FaCheckCircle } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,11 +14,11 @@ import '../style/Home.css';
 
 const Home = () => {
   const programs = [
-    { name: "HR", icon: "👥" },
-    { name: "Marketing", icon: "📢" },
-    { name: "Sales", icon: "💰" },
-    { name: "Business Analyst", icon: "📊" },
-    { name: "Finance", icon: "💵" },
+    { id: 1, name: "HR", icon: "👥" },
+    {  id: 2,name: "Marketing", icon: "📢" },
+    {  id: 3,name: "Sales", icon: "💰" },
+    {  id: 4,name: "Business Analyst", icon: "📊" },
+    {  id: 5,name: "Finance", icon: "💵" },
   ];
   const features = [
     {
@@ -70,6 +70,7 @@ const Home = () => {
       image: "/images/testimonial2.jpg",
     },
   ];
+  const [selectedProgram, setSelectedProgram] = useState("Popular Courses");
   return (
     <>
       {/* Carousel Section - Moved to Top */}
@@ -107,6 +108,53 @@ const Home = () => {
           </SwiperSlide>
         </Swiper>
       </Container>
+      {/* Programs section */}
+      <Container className="home-container">
+      <Row>
+        {/* Sidebar Section */}
+        <Col md={3} className="sidebar">
+          <h6 className="sidebar-heading">FIND YOUR IDEAL</h6>
+          <h2 className="sidebar-title">Programs from world’s best universities</h2>
+          <motion.div
+            className="sidebar-menu"
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Button className="sidebar-button">Popular Courses</Button>
+            <ul className="menu-list">
+              {programs.map((program) => (
+                <li key={program.id} onClick={() => setSelectedProgram(program.name)}>
+                  {program.name}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </Col>
+
+        {/* Popular Courses Section */}
+        <Col md={9}>
+          <h3 className="popular-title">{selectedProgram}</h3>
+          <hr />
+          <Row>
+            {programs.map((program) => (
+              <Col md={4} key={program.id}>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="course-card">
+                  <Card className="course-card-body">
+                    <Card.Img variant="top" src="https://via.placeholder.com/350" className="course-img" />
+                    <Card.Body>
+                      <Card.Title className="course-title">{program.name} Program</Card.Title>
+                      <Card.Text className="course-duration">6 Months · Online</Card.Text>
+                      <Button variant="link" className="view-program">View Program</Button>
+                    </Card.Body>
+                  </Card>
+                </motion.div>
+              </Col>
+            ))}
+          </Row>
+        </Col>
+      </Row>
+    </Container>
       {/* Testimonial Section */}
       <Container className="testimonial-container">
       <Swiper
