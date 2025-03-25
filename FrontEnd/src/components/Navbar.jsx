@@ -14,7 +14,7 @@ const NavBar = () => {
         <Container>
           <Navbar.Brand as={Link} to="/" className="fw-bold logo">
             <motion.span whileHover={{ scale: 1.1 }}>
-              <span className="text-danger">L</span>earning Hub
+              <span className="text-danger">M</span>ackinlay Learning Hub
             </motion.span>
           </Navbar.Brand>
 
