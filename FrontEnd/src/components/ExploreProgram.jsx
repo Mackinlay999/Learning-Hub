@@ -57,7 +57,7 @@ const quickLinks = [
   { title: 'On-Demand Webinars', desc: 'Watch recorded webinars' },
 ]
 
-const Program = ({ showDropdown, setShowDropdown }) => {
+const ExploreProgram = ({ showDropdown, setShowDropdown }) => {
   const [selectedCategory, setSelectedCategory] = useState('Popular')
 
   return (
@@ -129,4 +129,4 @@ const Program = ({ showDropdown, setShowDropdown }) => {
   )
 }
 
-export default Program
+export default ExploreProgram
