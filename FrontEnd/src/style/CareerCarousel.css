@@ -28,9 +28,11 @@
   .profile-img {
     width: 60px;
     height: 60px;
+  
+    
     border-radius: 50%;
     object-fit: cover;
-    margin-left: 60px;
+    margin-left: 20px;
   }
   
   .company-logo {
