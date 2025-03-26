@@ -10,8 +10,6 @@ import Contact from './components/Contact'
 import NotFound from './components/NotFound' // For handling 404 pages
 import './style/App.css' // Import custom styles
 import 'bootstrap/dist/css/bootstrap.min.css' // Bootstrap styles
-import CareerReportForm from "./components/CareerReportForm"
-import JobBoards from './components/JobBoread'
 
 function App() {
   return (
@@ -25,8 +23,6 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />{' '}
-          <Route path="/" element={<JobBoards />} />
-        <Route path="/CareerReportForm" element={< CareerReportForm/>} />
           {/* Catch-all route for 404 pages */}
         </Routes>
         <Footer />

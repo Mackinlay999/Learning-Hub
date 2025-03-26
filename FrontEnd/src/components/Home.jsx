@@ -7,7 +7,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import ExploreProgram from './ExploreProgram';
+import Program from './Program';
 import Footer from './Footer';
 import ChatBot from './ChatBot';
 import '../style/Home.css';
@@ -436,7 +436,7 @@ const Home = () => {
       <Container className="mt-5">
         <h2 className="section-title">Featured Programs</h2>
         <Row>
-          <ExploreProgram />
+          <Program />
         </Row>
       </Container>
 

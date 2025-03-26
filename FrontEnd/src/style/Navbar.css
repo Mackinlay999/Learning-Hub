@@ -1,12 +1,15 @@
-/* Apply global styless */
 .custom-navbar {
-  background-color: #ffffff; /* White background */
+  background-color: #333333;
+  color: white !important;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 10px 20px;
+  padding: 1px 20px; /* Reduced padding to decrease height */
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
+  height: 150px; /* Set a specific height if needed */
+  display: flex;
+  align-items: center; /* Ensures content stays centered vertically */
 }
 
 .logo {
@@ -22,7 +25,7 @@
 
 /* Navbar Links */
 .nav-links .nav-link {
-  color: #333333; /* Dark gray */
+  color: white; /* Dark gray */
   font-weight: 500;
   transition: color 0.3s ease-in-out;
 }
@@ -60,7 +63,7 @@
 /* Dropdown Menu */
 .dropdown-menu-container {
   position: absolute;
-  top: 180px;
+  top: 60px;
   left: 0;
   width: 100%;
   background: #ffffff;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style/CareerCarousel.css";
-
+// career transitions data
 const careerTransitions = [
   {
     name: "Sai Ramya",

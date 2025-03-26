@@ -1,4 +1,5 @@
 import React from 'react'
+<<<<<<< HEAD
 import JobBoards from './JobBoread'
 import CareerReportForm from "./CareerReportForm"
 import CareerCarousel from "./CareerCarosel"
@@ -21,6 +22,12 @@ function CareerSupport() {
     </div>
   
    
+=======
+
+function CareerSupport() {
+  return (
+    <div>CareerSupport</div>
+>>>>>>> 3d46bed9c853e62dc492bf2dfb9bfb1cb70db05a
   )
 }
 
