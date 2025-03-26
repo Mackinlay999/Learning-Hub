@@ -374,7 +374,7 @@ const Home = () => {
     </Container>
 
       {/* Hero Section */}
-      <div className="hero-section">
+      {/* <div className="hero-section">
         <div className="hero-overlay">
           <motion.h1
             initial={{ opacity: 0, y: -50 }}
@@ -401,7 +401,7 @@ const Home = () => {
             </motion.button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* What Sets Us Apart */}
       <Container className="mt-5">
@@ -433,12 +433,12 @@ const Home = () => {
       </Container>
 
       {/* Featured Programs */}
-      <Container className="mt-5">
+      {/* <Container className="mt-5">
         <h2 className="section-title">Featured Programs</h2>
         <Row>
           <Program />
         </Row>
-      </Container>
+      </Container> */}
 
       {/* Learning Experience */}
       <Container className="mt-5 learning-experience">
