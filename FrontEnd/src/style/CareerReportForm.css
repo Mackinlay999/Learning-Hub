@@ -1,12 +1,12 @@
 /* Modal Background */
 .modal-overlay {
-    position: fixed;
+    position:absolute;
     top: 160px;
     z-index: +1;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    /* background: rgba(0, 0, 0, 0.5); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,7 +82,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top:2px;
   }
   
   .download-btn:hover {

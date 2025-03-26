@@ -1,4 +1,7 @@
-.career-prep-container {
+
+
+
+   .career-prep-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -6,6 +9,7 @@
     background: #fff;
   }
   
+  /* Text Section */
   .career-text {
     max-width: 500px;
   }
@@ -22,6 +26,7 @@
     margin-bottom: 20px;
   }
   
+  /* Button */
   .counseling-button {
     background-color: #1763f6;
     color: white;
@@ -37,14 +42,16 @@
     background-color: #0048c4;
   }
   
+  /* Career Cards */
   .career-cards {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;  /* Ensures wrapping for smaller screens */
   }
   
   .card {
     padding: 20px;
-    width: 150px;
+    width: 200px; /* Adjusted for better fit */
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -52,10 +59,12 @@
   
   .yellow-card {
     background: #fadc7c;
+    height: 135px;
   }
   
   .pink-card {
     background: #f8b8b8;
+    height: 135px;
   }
   
   .card h3 {
@@ -66,5 +75,112 @@
   .card p {
     font-size: 14px;
     color: #555;
+  }
+  
+  /* Career Transition Section */
+  .career-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+  }
+  
+  /* Career Service Section */
+  .service {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .service-img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .service-content {
+    flex: 1;
+  }
+  
+  .service-content h2 {
+    color: #2d2d2d;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .service-content ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .service-content ul li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 1024px) {
+    .career-prep-container {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+  
+    .career-cards {
+      justify-content: center;
+    }
+  
+    .service {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .service-img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+    }
+  }
+  
+  @media (max-width: 764px) {
+    .career-prep-container {
+      padding: 20px;
+    }
+  
+    .career-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .card {
+      width: 90%;
+    }
+  
+    .yellow-card,
+    .pink-card {
+      width: 100%;
+      height: auto;
+      padding: 15px;
+      margin-top: 20px;
+    }
+  
+    .service {
+      flex-direction: column;
+      padding: 15px;
+    }
+  
+    .service-content h2 {
+      font-size: 18px;
+    }
+  
+    .service-content ul li {
+      font-size: 14px;
+    }
   }
   

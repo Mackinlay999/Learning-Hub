@@ -1,24 +1,33 @@
 .carousel-container {
     text-align: center;
     padding: 20px;
+  
     background: #eae6f8;
   }
   
   h2 {
     font-size: 24px;
     margin-bottom: 20px;
+  
+  }
+  h3{
+    margin-top: 20px;
   }
   
   .card-container {
     display: flex;
     gap: 20px;
+   
     justify-content: center;
     flex-wrap: wrap;
+   
   }
   
   .card {
     background: white;
     padding: 20px;
+     width: 300px !important;
+     height: 400px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 220px;
@@ -28,16 +37,17 @@
   .profile-img {
     width: 60px;
     height: 60px;
+    
   
     
     border-radius: 50%;
     object-fit: cover;
-    margin-left: 20px;
+    margin-left: 95px;
   }
   
   .company-logo {
     width: 100px;
-    margin: 10px 0;
+   margin-left: 100px;
   }
   
   .transition-arrow {
@@ -64,4 +74,18 @@
     background-color: #ccc;
     cursor: not-allowed;
   }
+  @media (max-width: 768px) {
+  card {
+    background: white;
+    padding: 20px;
+    background-color: red;
+     width: 200px !important;
+     height: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    text-align: center;
+  }
+  
+ } 
   
