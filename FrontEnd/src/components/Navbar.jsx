@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Navbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import ExploreProgram from './ExploreProgram' // ✅ Import the new Program component
+import Program from './Program' // ✅ Import the new Program component
 import '../style/NavBar.css'
 
 const NavBar = () => {
@@ -64,7 +64,7 @@ const NavBar = () => {
       </Navbar>
 
       {/* Explore Programs Dropdown */}
-      <ExploreProgram showDropdown={showDropdown} setShowDropdown={setShowDropdown} />
+      <Program showDropdown={showDropdown} setShowDropdown={setShowDropdown} />
     </>
   )
 }
