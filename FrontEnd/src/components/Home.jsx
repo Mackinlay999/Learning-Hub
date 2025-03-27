@@ -489,7 +489,7 @@ const Home = () => {
         </p>
       </Container> */}
       {/* Call to Action */}
-      <Container className="mt-5 text-center">
+      <Container className="mt-5 text-center ">
         <h2 className="section-title">
           Join Our Exclusive Community of Future Leaders
         </h2>

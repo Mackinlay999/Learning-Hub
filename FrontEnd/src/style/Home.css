@@ -859,6 +859,7 @@
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+/* Hover Effect */
 .course-card:hover {
   transform: translateY(-5px);
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
@@ -871,7 +872,12 @@
   border-radius: 10px;
   overflow: hidden;
   background-color: #ffffff; /* White Background */
+  width: 300px;   /* Fixed width */
+  height: 400px;  /* Fixed height */
+  padding: 20px;  /* Padding around content */
+  box-sizing: border-box; /* Include padding in width/height */
 }
+
 
 /* Course Image */
 .course-img {

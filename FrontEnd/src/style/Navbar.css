@@ -1,20 +1,22 @@
+/* Navbar Styling */
 .custom-navbar {
-  background-color: #333333; /* Dark Gray for Professional Look */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff; /* White Background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 10px 20px;
   position: fixed;
   width: 100%;
-  height: 100px;
   top: 0;
   z-index: 1000;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
+/* Logo Styling */
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #d32f2f;
+  color: #D32F2F; /* Primary Red */
   transition: transform 0.3s ease-in-out;
 }
 
@@ -22,9 +24,14 @@
   transform: scale(1.1);
 }
 
-/* Navbar Links */
+/* Nav Links Styling */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
 .nav-links .nav-link {
-  color: #ffffff; /* White text */
+  color: #333333; /* Dark Gray Text */
   font-weight: 500;
   transition: color 0.3s ease-in-out;
   padding: 10px 15px;
@@ -32,10 +39,12 @@
 }
 
 .nav-links .nav-link:hover {
-  color: #ffc107; /* Gold Accent on Hover */
+  color: #D32F2F; /* Red Hover Effect */
 }
+
+/* Explore Button */
 .btn-explore {
-  background-color: #d32f2f;
+  background-color: #D32F2F;
   border: none;
   color: #ffffff;
   padding: 8px 16px;
@@ -46,28 +55,15 @@
 }
 
 .btn-explore:hover {
-  background-color: #b71c1c;
-  transform: scale(1.05);
-}
-
-/* Explore Programs Button */
-.nav-links .btn-danger {
-  background-color: #d32f2f;
-  border: none;
-  padding: 8px 16px;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.nav-links .btn-danger:hover {
-  background-color: #b71c1c; /* Darker red */
+  background-color: #B71C1C; /* Darker Red */
   transform: scale(1.05);
 }
 
 /* Login Button */
 .login-btn {
-  border: 2px solid #ffc107;
+  border: 2px solid #FFC107; /* Gold Accent */
   background: none;
-  color: #ffc107;
+  color: #D32F2F;
   padding: 8px 16px;
   font-size: 1rem;
   font-weight: bold;
@@ -76,19 +72,29 @@
 }
 
 .login-btn:hover {
-  background-color: #d32f2f;
+  background-color: #D32F2F;
   color: #ffffff;
 }
-@media (max-width: 768px) {
+
+/* Responsive Navbar */
+@media (max-width: 992px) {
+  .custom-navbar {
+    flex-direction: row;
+  }
+
   .nav-links {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
-  
+
   .login-btn {
     width: 100%;
     margin-top: 10px;
   }
 }
+
+
 
 /* Dropdown Menu */
 .dropdown-menu-container {
