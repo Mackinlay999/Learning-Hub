@@ -1,3 +1,90 @@
+.heading-container {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #ffffff; /* White background */
+}
+
+.subheading {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #D32F2F; /* Purple shade */
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.main-heading {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #0b132b; /* Dark blue/black */
+  line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+  .main-heading {
+    font-size: 2rem;
+  }
+}
+
+.mac-home-section {
+  padding: 80px 50px;
+  background-color: #f8f9fa; /* Light background */
+}
+
+.mac-section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #003366;
+}
+
+.mac-section-description {
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+.mac-feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.mac-feature-list li {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.mac-explore-btn {
+  background-color: #0056b3;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.mac-explore-btn:hover {
+  background-color: #003366;
+  transform: scale(1.05);
+}
+
+.mac-additional-image {
+  max-width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .mac-additional-content-container {
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .mac-additional-image {
+    margin-top: 20px;
+  }
+}
 
 /* Hero Section */
 .hero-section {
@@ -36,8 +123,7 @@
 
 /* Buttons */
 .apply-btn,
-.explore-btn,
-.get-started-btn {
+.explore-btn{
   background-color: #D32F2F; /* Primary Red */
   color: white;
   border: none;
@@ -50,8 +136,7 @@
 }
 
 .apply-btn:hover,
-.explore-btn:hover,
-.get-started-btn:hover {
+.explore-btn:hover {
   background-color: #B71C1C; /* Darker Red */
   transform: scale(1.05);
 }
@@ -97,8 +182,7 @@
   }
 
   .apply-btn,
-  .explore-btn,
-  .get-started-btn {
+  .explore-btn {
     padding: 10px 18px;
     font-size: 0.9rem;
   }
@@ -109,7 +193,10 @@
 }
 
 /* Slider Container */
+/* Ensure full-width background */
 .carousel-container {
+  width: 100vw; /* Full viewport width */
+  background-color: #f5f7fa; /* Change this to any desired color */
   padding: 50px 0;
   text-align: center;
   position: relative;
@@ -134,7 +221,7 @@
 
 .carousel-content h3 {
   font-size: 24px;
-  color: #1d4ed8;
+  color: #d81d1d;
   margin-bottom: 10px;
 }
 
@@ -147,9 +234,8 @@
 .carousel-slide img {
   flex: 1;
   width: 50%;
-  max-height: 628px;
+  max-height: 500px;
   object-fit: cover;
-  /* border-radius: 10px; */
   transition: transform 0.3s ease-in-out;
 }
 
@@ -209,6 +295,7 @@
     font-size: 16px;
   }
 }
+
 
 
 /* Learning Experience Section */
@@ -284,24 +371,42 @@
 .testimonial-container {
   margin-top: 50px;
   padding: 40px 20px;
-  background-color: #FFFFFF; /* White Background for Clean Look */
+  background-color: #f5f7fa;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
+  display: flex;
+  justify-content: center;
 }
 
 /* Testimonial Slider */
 .testimonial-slider {
   position: relative;
   padding: 20px;
+  width: 80%; /* Ensures uniform width */
+  max-width: 900px;
 }
 
-/* Testimonial Card */
+/* Ensure All Slides Have Same Size */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100% !important; 
+  height: auto;
+  padding: 20px;
+}
+
+/* Testimonial Card (Horizontal Layout) */
 .testimonial-card {
-  background: #F7F7F7; /* Light Gray Background */
+  background: #F7F7F7;
   border-radius: 15px;
   padding: 30px;
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 250px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
@@ -312,6 +417,7 @@
 
 /* Testimonial Text */
 .testimonial-text {
+  flex: 1;
   padding: 20px;
 }
 
@@ -319,14 +425,14 @@
 .testimonial-quote {
   font-size: 24px;
   font-weight: bold;
-  color: #D32F2F; /* Primary Red */
+  color: #D32F2F;
   font-style: italic;
 }
 
 /* Testimonial Description */
 .testimonial-description {
   font-size: 16px;
-  color: #333333; /* Dark Gray */
+  color: #333333;
   margin-top: 10px;
 }
 
@@ -335,17 +441,18 @@
   font-weight: bold;
   font-size: 18px;
   margin-top: 10px;
-  color: #000000; /* Black for Strong Contrast */
+  color: #000000;
 }
 
 /* Testimonial Program */
 .testimonial-program {
   font-size: 14px;
-  color: #666666; /* Medium Gray */
+  color: #666666;
 }
 
 /* Testimonial Image */
 .testimonial-image {
+  flex: 0.4;
   text-align: center;
 }
 
@@ -360,8 +467,8 @@
 
 /* Testimonial Image */
 .testimonial-img-wrapper img {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -369,21 +476,48 @@
 /* Watch Story Button */
 .watch-story-btn {
   position: absolute;
-  bottom: 15px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  background: #D32F2F; /* Primary Red */
+  background: #D32F2F;
   color: white;
   font-size: 14px;
   border: none;
-  padding: 10px 15px;
+  padding: 8px 12px;
   border-radius: 20px;
   transition: background 0.3s ease-in-out;
 }
 
 .watch-story-btn:hover {
-  background: #FFC107; /* Gold Hover Effect */
+  background: #FFC107;
   color: #000;
+}
+
+/* Navigation Buttons */
+.swiper-button-prev,
+.swiper-button-next {
+  color: white;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Pagination Bullets */
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  background: #FFC107;
 }
 
 /* Responsive Design */
@@ -391,6 +525,7 @@
   .testimonial-card {
     flex-direction: column;
     text-align: center;
+    min-height: auto;
   }
 
   .testimonial-text {
@@ -408,64 +543,71 @@
   .testimonial-name {
     font-size: 16px;
   }
+
+  .testimonial-image {
+    margin-top: 15px;
+  }
+
+  .testimonial-img-wrapper img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .watch-story-btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
 }
 
 /* Features Section */
 .features-section {
   text-align: center;
   padding: 60px 20px;
-  background-color: #FFFFFF; /* White Background for Clarity */
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Section Heading */
-.section-heading h2 {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #333333; /* Dark Gray */
+/* Feature Row - Horizontal Layout */
+.feature-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
-.section-heading p {
-  font-size: 18px;
-  color: #666; /* Medium Gray for Subtitle */
-  margin-bottom: 40px;
-}
-
-/* Feature Card Layout */
+/* Feature Card - Consistent Size */
 .feature-card {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 30px;
+  max-width: 500px;
+  min-height: 400px; /* Ensuring All Cards are Same Height */
 }
 
-/* Feature Content Box */
+/* Feature Content - Consistent Sizing */
 .feature-content {
-  background: #FFFFFF;
-  /*WhiteBackground*/border-radius: 10px;
+  background: #ffffff;
+  border-radius: 10px;
   padding: 20px;
   text-align: left;
-  max-width: 500px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  border-left: 5px solid #FFC107;
-}
-
-.feature-content:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
-  -webkit-transform: translateY(-5px);
-  -moz-transform: translateY(-5px);
-  -ms-transform: translateY(-5px);
-  -o-transform: translateY(-5px);
+  border-left: 5px solid #ffc107;
+  width: 100%;
+  min-height: 100%; /* Ensuring Uniform Height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Feature Image */
 .feature-image {
   width: 100%;
-  height: auto;
+  height: 180px; /* Fixed Image Height */
+  object-fit: cover; /* Ensuring Images Fill the Space Properly */
   border-radius: 10px;
   margin-bottom: 15px;
 }
@@ -475,7 +617,7 @@
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
-  color: #D32F2F; /* Primary Red */
+  color: #d32f2f;
   margin-bottom: 5px;
 }
 
@@ -483,22 +625,23 @@
 .feature-title {
   font-size: 22px;
   font-weight: bold;
-  color: #000000; /* Black for Strong Readability */
+  color: #000000;
+  text-align: center;
 }
 
 /* Feature Description */
 .feature-description {
   font-size: 16px;
-  color: #333333; /* Dark Gray */
+  color: #333333;
   margin-top: 10px;
+  flex-grow: 1; /* Makes Sure the Text Expands to Fill the Card */
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .feature-card {
+  .feature-row {
     flex-direction: column;
     align-items: center;
-    gap: 10px;
   }
 
   .feature-content {
@@ -517,8 +660,34 @@
 /* Skill Section */
 .skills-section {
   padding: 60px 20px;
-  background: #FFFFFF; /* White Background for Clarity */
+  background: #f5f7fa; /* White Background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
+  width: 100%;
+}
+
+/* Centered Content */
+.skills-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* Left Section */
+.text-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 500px;
 }
 
 /* Section Subtitle */
@@ -541,8 +710,9 @@
 /* Section Description */
 .section-description {
   font-size: 16px;
-  color: #666; /* Slightly lighter Dark Gray for contrast */
+  color: #666; /* Slightly lighter Dark Gray */
   margin-bottom: 20px;
+  max-width: 500px;
 }
 
 /* Program List */
@@ -550,8 +720,9 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  max-width: 700px;
-  margin: auto;
+  max-width: 500px;
+  align-items: center;
+  width: 100%;
 }
 
 /* Program Card */
@@ -559,12 +730,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #F8F8F8;
-  /*LightGray*/padding: 15px 20px;
+  background: #F8F8F8; /* Light Gray */
+  padding: 15px 20px;
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
   border-left: 5px solid #FFC107;
+  width: 100%;
+  max-width: 400px;
 }
 
 .program-card:hover {
@@ -593,21 +766,24 @@
   color: #D32F2F; /* Primary Red */
 }
 
-/* General Container */
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 40px 20px;
-}
-
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
-  .skills-section {
-    padding: 40px 10px;
+  .skills-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .text-left {
+    text-align: center;
   }
 
   .section-title {
     font-size: 28px;
+  }
+
+  .section-description {
+    max-width: 90%;
   }
 
   .program-card {
@@ -625,13 +801,14 @@
 }
 
 
-/* Course Section */
+/* General Styles */
 .course-section {
-  background: #FFFFFF; /* White Background for Readability */
+  background: white; /* White background for readability */
   border-radius: 15px;
   padding: 40px;
   display: flex;
   align-items: center;
+  flex-direction: row; /* Horizontal Layout */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
 }
@@ -659,7 +836,7 @@
   font-size: 12px;
   font-weight: bold;
   letter-spacing: 1px;
-  color: #D32F2F; /* Primary Red */
+  color: #d32f2f; /* Primary Red */
   text-transform: uppercase;
 }
 
@@ -674,13 +851,13 @@
 /* Course Description */
 .course-description {
   font-size: 16px;
-  color: #666; /* Slightly lighter Dark Gray for contrast */
+  color: #666; /* Slightly lighter Dark Gray */
   margin-bottom: 15px;
 }
 
 /* Explore Button */
 .explore-btn {
-  background: #D32F2F; /* Primary Red */
+  background: #d32f2f; /* Primary Red */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -691,7 +868,7 @@
 }
 
 .explore-btn:hover {
-  background: #B71C1C; /* Darker Red */
+  background: #b71c1c; /* Darker Red */
   transform: scale(1.05);
 }
 
@@ -701,24 +878,41 @@
     flex-direction: column;
     text-align: center;
   }
-  
+
   .course-content {
     padding-left: 0;
     margin-top: 20px;
   }
 }
 
-
-/* Questions Section */
+/* Entire Section with White Background */
 .questions-section {
-  margin-top: 30px;
+  background-color: #f5f7fa;
+  border-radius: 10px;
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
+}
+
+/* Horizontal Layout for Larger Screens */
+.questions-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Image Styling */
+.questions-image {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Questions Box */
 .questions-box {
-  background: #FFC107; /* Gold Accent */
+  background: #ffc107; /* Gold Accent */
   padding: 20px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   text-align: center;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
@@ -732,7 +926,7 @@
 .questions-box h3 {
   font-size: 22px;
   font-weight: bold;
-  color: #D32F2F; /* Primary Red */
+  color: #d32f2f; /* Primary Red */
 }
 
 /* Questions Text */
@@ -743,7 +937,7 @@
 
 /* Contact Button */
 .contact-btn {
-  background: #D32F2F; /* Primary Red */
+  background: #d32f2f; /* Primary Red */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -755,7 +949,7 @@
 }
 
 .contact-btn:hover {
-  background: #B71C1C; /* Darker Red */
+  background: #b71c1c; /* Darker Red */
   transform: scale(1.05);
 }
 
@@ -767,11 +961,69 @@
   margin-top: 20px;
 }
 
+/* Get Started Section */
+.get-started-section {
+  /* margin-top: 40px; */
+  text-align: center;
+  background-color: #f5f7fa; /* White Background */
+  padding: 40px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Get Started Button */
+.get-started-btn {
+  background-color: #D32F2F; /* Primary Red */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+.get-started-btn:hover {
+  background-color: #B71C1C; /* Darker Red */
+  transform: scale(1.05);
+}
+
+/* Section Title */
+.section-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #333333; /* Dark Gray */
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .questions-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .questions-image {
+    max-width: 250px;
+  }
+
+  .questions-box {
+    margin-top: 20px;
+  }
+}
+
+
+
+/* program section */
 /* General Container */
 .home-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 40px 20px;
+  width: 100vw;
+  padding: 50px 20px;
+  background-color: #FFFFFF; /* Light Gray Background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -938,3 +1190,28 @@
   color: #B71C1C; /* Slightly darker red for hover */
 }
 
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .home-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .menu-list li {
+    justify-content: center;
+  }
+
+  .popular-title {
+    text-align: center;
+  }
+
+  .course-card {
+    width: 100%;
+  }
+}

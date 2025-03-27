@@ -19,7 +19,7 @@ import marketingImg from "../images/marketing.png";
 import SalesImg from "../images/sales.png";
 import BusinessImg from "../images/business.png";
 import financeImg from "../images/finance.png";
-import Explore from "../images/explore-banner.png"
+import Explore from "../images/explore-banner.png";
 import video from "../images/video.jpg";
 const Home = () => {
   const programs = [
@@ -27,7 +27,7 @@ const Home = () => {
     { id: 2, name: "Marketing", icon: "📢", image: marketingImg },
     { id: 3, name: "Sales", icon: "💰", image: SalesImg },
     { id: 4, name: "Business Analyst", icon: "📊", image: BusinessImg },
-    { id: 5, name: "Finance", icon: "💵", image: financeImg},
+    { id: 5, name: "Finance", icon: "💵", image: financeImg },
   ];
   const features = [
     {
@@ -35,28 +35,28 @@ const Home = () => {
       subtitle: "THE BEST-IN-CLASS INSTRUCTORS",
       description:
         "Interact with and learn from esteemed professors who’ve taught some of today’s greatest minds in the fields of technology, business, and beyond.",
-      image: "/images/professor.png",
+      image: video,
     },
     {
       title: "Industry experts who already work in your desired field",
       subtitle: "EXPERIENCED INDUSTRY MENTORS",
       description:
         "Great Learning programs go beyond theory. Our network of professional mentors guide and support you, helping you to land the job and achieve remarkable success.",
-      image: "/images/mentors.png",
+      image: video,
     },
     {
       title: "Hands-on projects to showcase your new knowledge",
       subtitle: "THE PROJECTS & TEAMWORK",
       description:
         "Unlike self-learn online programs, Great Learning provides you with opportunities to collaborate with your peers and industry experts on portfolio-building projects.",
-      image: "/images/projects.png",
+      image: video,
     },
     {
       title: "Resume Building & Interview Prep Sessions",
       subtitle: "DEDICATED CAREER SUPPORT",
       description:
         "Get access to job boards and experts who guide you with resumes, e-portfolios, LinkedIn reviews, and mock interviews.",
-      image: "/images/career.png",
+      image: video,
     },
   ];
   const testimonials = [
@@ -83,9 +83,100 @@ const Home = () => {
   const [selectedProgram, setSelectedProgram] = useState("Popular programs");
   return (
     <>
+      {/* Mackinlay */}
+      <motion.div fluid className="mac-home-section">
+      <Row className="align-items-center mac-additional-content-container">
+        {/* Left Content */}
+        <Col md={6} className="mac-text-content">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="mac-section-title"
+          >
+            Explore Our Programs
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            className="mac-section-description"
+          >
+            Unlock your potential with our world-class financial services. Our programs are designed to help you achieve your goals efficiently.
+          </motion.p>
+          <ul className="mac-feature-list">
+            <motion.li
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              ✔ Expert financial advice
+            </motion.li>
+            <motion.li
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              ✔ Tailored investment plans
+            </motion.li>
+            <motion.li
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              ✔ Secure and transparent services
+            </motion.li>
+          </ul>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 1 }}
+          >
+            <Button className="btn-primary mac-explore-btn">Discover More</Button>
+          </motion.div>
+        </Col>
+
+        {/* Right Image */}
+        <Col md={6} className="text-center">
+          <motion.img
+            src={Explore}
+            alt="Explore Programs"
+            className="mac-additional-image"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          />
+        </Col>
+      </Row>
+    </motion.div>
+    {/* Heading */}
+    <div className="heading-container">
+      <motion.p
+        className="subheading"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        YOUR GOALS ARE OUR GOALS
+      </motion.p>
+
+      <motion.h1
+        className="main-heading"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+      >
+        Invest in yourself today. Unlock <br />
+        success for a lifetime.
+      </motion.h1>
+    </div>
       {/* Carousel Section - Moved to Top */}
-      <Container className="carousel-container">
-        {/* <h2 className="section-title">Explore Our Programs</h2> */}
+      <motion.div
+        className="carousel-container"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={30}
@@ -98,8 +189,8 @@ const Home = () => {
           <SwiperSlide>
             <div className="carousel-slide">
               <div className="carousel-content">
-                <h3>Artificial Intelligence Masterclass</h3>
-                <p>Learn AI and machine learning from industry leaders.</p>
+                <h3>Finance</h3>
+                <p>Financial Analytics & Risk Management Techniques</p>
               </div>
               <img src={slider1} alt="Program 1" />
             </div>
@@ -107,8 +198,8 @@ const Home = () => {
           <SwiperSlide>
             <div className="carousel-slide">
               <div className="carousel-content">
-                <h3>Data Science Bootcamp</h3>
-                <p>Become a data scientist with hands-on projects.</p>
+                <h3>Business Analyst</h3>
+                <p>Become a Business Analyst with hands-on experience.</p>
               </div>
               <img src={slider2} alt="Program 2" />
             </div>
@@ -116,18 +207,23 @@ const Home = () => {
           <SwiperSlide>
             <div className="carousel-slide">
               <div className="carousel-content">
-                <h3>Cybersecurity Expert Program</h3>
-                <p>Master ethical hacking and cybersecurity techniques.</p>
+                <h3>Human Resources Expert Program</h3>
+                <p>Human Resources techniques.</p>
               </div>
               <img src={slider3} alt="Program 3" />
             </div>
           </SwiperSlide>
         </Swiper>
-      </Container>
+      </motion.div>
       {/* Program Section */}
-      <Container className="home-container">
+      {/* Program Section */}
+      <motion.div
+        className="home-container"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <Row>
-          
           <Col md={3} className="sidebar">
             <h6 className="sidebar-heading">FIND YOUR IDEAL</h6>
             <h2 className="sidebar-title">
@@ -147,7 +243,6 @@ const Home = () => {
                     onClick={() => setSelectedProgram(program.name)}
                     className="menu-item"
                   >
-                    {/* Add icon before the name */}
                     <span className="menu-icon">{program.icon}</span>
                     <span className="menu-name">{program.name}</span>
                   </li>
@@ -169,7 +264,6 @@ const Home = () => {
                     className="course-card"
                   >
                     <Card className="course-card-body">
-                      {/* Dynamically load program-specific images */}
                       <Card.Img
                         variant="top"
                         src={program.image}
@@ -194,12 +288,20 @@ const Home = () => {
             </Row>
           </Col>
         </Row>
-      </Container>
+      </motion.div>
       {/* Testimonial Section */}
-      <Container className="testimonial-container">
+      <motion.div
+        className="testimonial-container"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           navigation
+          spaceBetween={30} // Ensures spacing between slides
+          slidesPerView={1} // Only one slide at a time
+          centeredSlides={true} // Centers slides
           pagination={{ clickable: true }}
           autoplay={{ delay: 5000 }}
           loop
@@ -207,8 +309,19 @@ const Home = () => {
         >
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index}>
-              <Row className="testimonial-card">
-                <Col md={7} className="testimonial-text">
+              <motion.div
+                className="testimonial-card"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                {/* Testimonial Text Section */}
+                <motion.div
+                  className="testimonial-text"
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
                   <motion.h2
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -234,12 +347,19 @@ const Home = () => {
                     {testimonial.name}
                   </motion.h5>
                   <p className="testimonial-program">{testimonial.program}</p>
-                </Col>
-                <Col md={5} className="testimonial-image">
+                </motion.div>
+
+                {/* Testimonial Image Section */}
+                <motion.div
+                  className="testimonial-image"
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
                   <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
                     className="testimonial-img-wrapper"
                   >
                     <img src={testimonial.image} alt={testimonial.name} />
@@ -247,14 +367,19 @@ const Home = () => {
                       ▶ Watch Story
                     </Button>
                   </motion.div>
-                </Col>
-              </Row>
+                </motion.div>
+              </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
-      </Container>
+      </motion.div>
       {/* Feature Section */}
-      <Container className="features-section">
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        className="features-section"
+      >
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -267,12 +392,12 @@ const Home = () => {
         </motion.div>
 
         {/* Feature Cards */}
-        <Row className="justify-content-center">
+        <Row className="feature-row">
           {features.map((feature, index) => (
             <Col key={index} md={5} className="feature-card">
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="feature-content"
               >
@@ -288,68 +413,82 @@ const Home = () => {
             </Col>
           ))}
         </Row>
-      </Container>
+      </motion.div>
       {/* Skill Section */}
-      <Container className="skills-section">
-        <Row className="align-items-center">
-          {/* Left Section */}
-          <Col md={6} className="text-left">
-            <motion.h6
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="section-subtitle"
-            >
-              MASTER SKILLS. BUILD A CAREER.
-            </motion.h6>
-            <motion.h2
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="section-title"
-            >
-              Modern skills for modern careers
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="section-description"
-            >
-              Stay at the top of your game with skills from the hottest domains.
-              Explore topics that interest you most and see how the programs are
-              relevant to you.
-            </motion.p>
-          </Col>
+      <motion.div className="skills-section">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          className="skills-content"
+        >
+          <Row className="align-items-center">
+            {/* Left Section */}
+            <Col md={6} className="text-left">
+              <motion.h6
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="section-subtitle"
+              >
+                MASTER SKILLS. BUILD A CAREER.
+              </motion.h6>
+              <motion.h2
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="section-title"
+              >
+                Modern skills for modern careers
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.4 }}
+                className="section-description"
+              >
+                Stay at the top of your game with skills from the hottest
+                domains. Explore topics that interest you most and see how the
+                programs are relevant to you.
+              </motion.p>
+            </Col>
 
-          {/* Right Section - Program List */}
-          <Col md={6}>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7 }}
-              className="program-list"
-            >
-              {programs.map((program, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="program-card"
-                >
-                  <span className="program-icon">{program.icon}</span>
-                  <span className="program-name">{program.name}</span>
-                  <span className="program-arrow">→</span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </Col>
-        </Row>
-      </Container>
-      {/* Contact Section */}(
-      <Container>
-        {/* Section 1: Free programs */}
-        <Row className="course-section align-items-center">
+            {/* Right Section - Program List */}
+            <Col md={6}>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7 }}
+                className="program-list"
+              >
+                {programs.map((program, index) => (
+                  <motion.div
+                    key={index}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
+                    className="program-card"
+                  >
+                    <span className="program-icon">{program.icon}</span>
+                    <span className="program-name">{program.name}</span>
+                    <span className="program-arrow">→</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </Col>
+          </Row>
+        </motion.div>
+      </motion.div>
+      {/* Contact Section */}
+        <motion.div>
+      {/* Section 1: Free Programs */}
+      <motion.div
+        className="course-section align-items-center"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+      >
+        <Row className="align-items-center">
           <Col md={6}>
             <motion.img
               src={Explore}
@@ -386,37 +525,8 @@ const Home = () => {
             </motion.div>
           </Col>
         </Row>
-
-        {/* Section 2: Got More Questions? */}
-        <Row className="questions-section">
-          <Col md={12}>
-            <motion.div
-              className="questions-box"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-            >
-              <h3>Got more questions?</h3>
-              <p>
-                Talk to our team, our program advisor will reach out to you.
-              </p>
-              <motion.button
-                className="contact-btn"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Contact us 📞
-              </motion.button>
-            </motion.div>
-          </Col>
-        </Row>
-
-        {/* Disclaimer */}
-        <p className="disclaimer">
-          *Career outcomes are subject to market conditions and learner
-          performance
-        </p>
-      </Container>
+      </motion.div>
+    </motion.div>
       {/* Hero Section */}
       {/* <div className="hero-section">
         <div className="hero-overlay">
@@ -489,18 +599,76 @@ const Home = () => {
         </p>
       </Container> */}
       {/* Call to Action */}
-      <Container className="mt-5 text-center ">
-        <h2 className="section-title">
-          Join Our Exclusive Community of Future Leaders
-        </h2>
-        <motion.button
-          className="get-started-btn"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+      <motion.div className="text-center questions-section">
+  {/* Section: Got More Questions? */}
+  <motion.div
+    // className="questions-section"
+    initial={{ opacity: 0, x: -50 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.7 }}
+  >
+    <Row className="questions-container">
+      {/* <Col md={6}>
+        <motion.img
+          src={Explore} // Replace with relevant image
+          alt="Questions"
+          className="questions-image"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        />
+      </Col> */}
+      <Col md={12}>
+        <motion.div
+          className="questions-box"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
         >
-          Get Started
-        </motion.button>
-      </Container>
+          <h3>Got more questions?</h3>
+          <p>Talk to our team, our program advisor will reach out to you.</p>
+          <motion.button
+            className="contact-btn"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Contact us 📞
+          </motion.button>
+        </motion.div>
+      </Col>
+    </Row>
+  </motion.div>
+
+  {/* Disclaimer */}
+  <motion.p
+    className="disclaimer"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.8 }}
+  >
+    *Career outcomes are subject to market conditions and learner performance
+  </motion.p>
+
+  {/* Get Started Section */}
+  <motion.div
+    className="get-started-section"
+    initial={{ opacity: 0, x: 50 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.7 }}
+  >
+    <h2 className="section-title">
+      Join Our Exclusive Community of Future Leaders
+    </h2>
+    <motion.button
+      className="get-started-btn"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      Get Started
+    </motion.button>
+  </motion.div>
+</motion.div>
+
       {/* ChatBot Floating Button */}
       <ChatBot />
     </>
