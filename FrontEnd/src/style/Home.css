@@ -28,13 +28,13 @@
 
 .mac-home-section {
   padding: 80px 50px;
-  background-color: #f8f9fa; /* Light background */
+  background-color: #cfd1d4; /* Light background */
 }
 
 .mac-section-title {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #003366;
+  color: #660000;
 }
 
 .mac-section-description {
@@ -56,7 +56,7 @@
 }
 
 .mac-explore-btn {
-  background-color: #0056b3;
+  background-color: #b30000;
   border: none;
   padding: 10px 20px;
   font-size: 1.1rem;
