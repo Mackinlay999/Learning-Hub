@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #e8e8f9;
+    background-color: #cfd1d4;
     padding: 30px;
     border-radius: 10px;
   }
@@ -97,7 +97,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #e9e4ff;
+    background-color: #cfd1d4;
     padding: 30px;
     border-radius: 10px;
     gap: 20px;

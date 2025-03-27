@@ -1,20 +1,22 @@
+/* Navbar Styling */
 .custom-navbar {
-  background-color: #333333; /* Dark Gray for Professional Look */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff; /* White Background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 10px 20px;
   position: fixed;
   width: 100%;
-  height: 100px;
   top: 0;
   z-index: 1000;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
+/* Logo Styling */
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #d32f2f;
+  color: #D32F2F; /* Primary Red */
   transition: transform 0.3s ease-in-out;
 }
 
@@ -22,9 +24,14 @@
   transform: scale(1.1);
 }
 
-/* Navbar Links */
+/* Nav Links Styling */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
 .nav-links .nav-link {
-  color: #ffffff; /* White text */
+  color: black; /* Dark Gray Text */
   font-weight: 500;
   transition: color 0.3s ease-in-out;
   padding: 10px 15px;
@@ -32,10 +39,12 @@
 }
 
 .nav-links .nav-link:hover {
-  color: #ffc107; /* Gold Accent on Hover */
+  color: #D32F2F; /* Red Hover Effect */
 }
+
+/* Explore Button */
 .btn-explore {
-  background-color: #d32f2f;
+  background-color: #D32F2F;
   border: none;
   color: #ffffff;
   padding: 8px 16px;
@@ -46,28 +55,15 @@
 }
 
 .btn-explore:hover {
-  background-color: #b71c1c;
-  transform: scale(1.05);
-}
-
-/* Explore Programs Button */
-.nav-links .btn-danger {
-  background-color: #d32f2f;
-  border: none;
-  padding: 8px 16px;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.nav-links .btn-danger:hover {
-  background-color: #b71c1c; /* Darker red */
+  background-color: #B71C1C; /* Darker Red */
   transform: scale(1.05);
 }
 
 /* Login Button */
 .login-btn {
-  border: 2px solid #ffc107;
+  border: 2px solid #FFC107; /* Gold Accent */
   background: none;
-  color: #ffc107;
+  color: #D32F2F;
   padding: 8px 16px;
   font-size: 1rem;
   font-weight: bold;
@@ -76,148 +72,55 @@
 }
 
 .login-btn:hover {
-  background-color: #d32f2f;
+  background-color: #D32F2F;
   color: #ffffff;
 }
-@media (max-width: 768px) {
+
+/* Responsive Navbar */
+@media (max-width: 992px) {
+  .custom-navbar {
+    flex-direction: row;
+  }
+
   .nav-links {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
-  
+
   .login-btn {
     width: 100%;
     margin-top: 10px;
   }
 }
 
-/* Dropdown Menu */
-.dropdown-menu-container {
-  position: absolute;
-  top: 100px;
-  left: 0;
-  width: 100%;
-  background: #ffffff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  display: flex;
-  padding: 20px;
-  z-index: 1000;
+/* Navbar Logo */
+.navbar-logo {
+  width: 200px; /* Increase width */
+  height: 70px; /* Set a proportional height */
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
 }
 
-.dropdown-content {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+.navbar-logo:hover {
+  transform: scale(1.1);
 }
 
-/* Sidebar - Program Categories */
-.sidebar {
-  width: 20%;
-  border-right: 2px solid #eee;
-  padding-right: 20px;
+
+.navbar-logo:hover {
+  transform: scale(1.1);
 }
 
-.sidebar-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #d32f2f;
-  margin-bottom: 10px;
-}
-
-.sidebar-item {
+/* Align Logo & Brand Name */
+.logo {
   display: flex;
   align-items: center;
-  padding: 10px;
-  font-size: 1rem;
-  cursor: pointer;
-  color: #333333;
-  transition: background-color 0.3s ease;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #D32F2F; /* Primary Red */
+  transition: transform 0.3s ease-in-out;
 }
 
-.sidebar-item:hover {
-  background-color: #ffc107; /* Gold accent on hover */
-  color: #000;
-}
-
-/* Program Cards - Horizontal Layout */
-.programs {
-  width: 50%;
-  padding: 0 20px;
-}
-
-.program-grid {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.program-card {
-  background: #f8f8f8;
-  padding: 15px;
-  border-radius: 5px;
-  transition: transform 0.3s;
-  width: 48%;
-}
-
-.program-card:hover {
-  transform: translateY(-5px);
-  background-color: #ffc107;
-  color: #000;
-}
-
-/* Quick Links */
-.quick-links {
-  width: 30%;
-}
-
-.quick-links h5 {
-  color: #d32f2f;
-}
-
-.quick-link-item {
-  background: #f1f1f1;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  transition: background-color 0.3s ease;
-}
-
-.quick-link-item:hover {
-  background-color: #ffc107;
-  color: #000;
-}
-
-/* Close Button */
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: #d32f2f;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-.close-btn:hover {
-  color: #b71c1c;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .dropdown-content {
-    flex-direction: column;
-  }
-  .sidebar {
-    width: 100%;
-    border-right: none;
-  }
-  .programs, .quick-links {
-    width: 100%;
-  }
-  .program-grid {
-    flex-direction: column;
-  }
-  .program-card {
-    width: 100%;
-  }
+.logo:hover {
+  transform: scale(1.1);
 }

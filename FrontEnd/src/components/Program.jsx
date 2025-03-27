@@ -7,7 +7,7 @@ import {
   FaBusinessTime,
   FaMoneyBillWave,
 } from 'react-icons/fa'
-import '../style/NavBar.css'
+import '../style/Program.css'
 
 const programCategories = [
   { name: 'HR', icon: <FaUserTie /> },
