@@ -194,7 +194,7 @@
 
 /* Slider Container */
 /* Ensure full-width background */
-.carousel-container {
+.home-carousel-container {
   width: 100vw; /* Full viewport width */
   background-color: #cfd1d4; /* Change this to any desired color */
   padding: 50px 0;
@@ -368,7 +368,7 @@
 }
 
 /* Testimonial Container */
-.testimonial-container {
+.home-testimonial-container {
   margin-top: 50px;
   padding: 40px 20px;
   background-color: #cfd1d4;

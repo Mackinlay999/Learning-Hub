@@ -175,7 +175,7 @@ const Home = () => {
       </div>
       {/* Carousel Section - Moved to Top */}
       <motion.div
-        className="carousel-container"
+        className="home-carousel-container"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -294,7 +294,7 @@ const Home = () => {
       </motion.div>
       {/* Testimonial Section */}
       <motion.div
-        className="testimonial-container"
+        className="home-testimonial-container"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}

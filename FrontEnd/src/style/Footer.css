@@ -1,6 +1,6 @@
 /* Footer Container */
-.footer {
-  background: rgb(53, 53, 53);
+.footer-container1 {
+  background: rgb(68, 68, 68);
   color: white;
   padding: 40px 0;
   font-size: 1rem;
@@ -13,7 +13,7 @@
 }
 
 /* Footer Content Layout */
-.footer-content {
+.footer-content1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -22,7 +22,7 @@
 }
 
 /* Footer Logo */
-.footer-logo {
+.footer-logo1 {
   text-align: left;
 }
 
@@ -37,29 +37,29 @@
 }
 
 /* Quick Links */
-.footer-links h5 {
+.footer-links1 h5 {
   color: #FFC107;
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
 
-.footer-links ul {
+.footer-links1 ul {
   list-style: none;
   padding: 0;
   margin-top: 10px;
 }
 
-.footer-links ul li {
+.footer-links1 ul li {
   margin: 8px 0;
 }
 
-.footer-links ul li a {
+.footer-links1 ul li a {
   text-decoration: none;
   color: white;
   transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.footer-links ul li a:hover {
+.footer-links1 ul li a:hover {
   color: #D32F2F;
   transform: translateX(5px);
 }
@@ -101,10 +101,10 @@
 }
 
 /* Copyright Text */
-.copyright-text {
+.footer-copyright-text-1 {
   margin-top: 20px;
   font-size: 0.9rem;
-  color: #ccc;
+  color: white;
 }
 
 /* Scroll-to-Top Button */
@@ -135,7 +135,7 @@
     text-align: center;
   }
 
-  .footer-links,
+  .footer-links1,
   .footer-social {
     margin-top: 15px;
   }
@@ -146,7 +146,7 @@
     padding: 30px 10px;
   }
 
-  .footer-links h5,
+  .footer-links1 h5,
   .footer-social h5 {
     font-size: 1.1rem;
   }

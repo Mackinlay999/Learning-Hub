@@ -29,22 +29,22 @@ const Footer = () => {
   return (
     <>
       <motion.footer
-        className="footer"
+        className="footer-container1"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
         <Container>
-          <Row className="footer-content">
+          <Row className="footer-content1">
             {/* Footer Logo & Branding */}
-            <Col md={4} className="footer-logo">
+            <Col md={4} className="footer-logo1">
               <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
                 <Image src={Logo} alt="Company Logo" className="footer-logo-img" />
               </motion.div>
             </Col>
 
             {/* Quick Links Section */}
-            <Col md={4} className="footer-links">
+            <Col md={4} className="footer-links1">
               <h5>Quick Links</h5>
               <ul>
                 <motion.li whileHover={{ scale: 1.1 }}>
@@ -82,8 +82,8 @@ const Footer = () => {
 
           {/* Copyright Text - Centered */}
           <Row>
-            <Col className="text-center copyright-text">
-              <p>&copy; 2024 Mackinlay Learning Hub. All Rights Reserved.</p>
+            <Col className="text-center footer-copyright-text-1">
+              <p className="text-white">&copy; 2024 Mackinlay Learning Hub. All Rights Reserved.</p>
             </Col>
           </Row>
         </Container>
