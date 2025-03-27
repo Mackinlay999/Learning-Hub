@@ -1,6 +1,6 @@
 /* Footer Container */
 .footer {
-  background: #333333;
+  background: rgb(53, 53, 53);
   color: white;
   padding: 40px 0;
   font-size: 1rem;
@@ -22,16 +22,17 @@
 }
 
 /* Footer Logo */
-.footer-logo p {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #FFC107;
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+.footer-logo {
+  text-align: left;
 }
 
-.footer-logo p:hover {
-  color: #D32F2F;
+.footer-logo-img {
+  width: 200px;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.footer-logo-img:hover {
   transform: scale(1.1);
 }
 
@@ -99,6 +100,13 @@
   color: #e1306c;
 }
 
+/* Copyright Text */
+.copyright-text {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
 /* Scroll-to-Top Button */
 .scroll-to-top {
   position: fixed;
@@ -118,17 +126,6 @@
 .scroll-to-top:hover {
   background: #FFC107;
   transform: scale(1.1);
-}
-
-/* Sticky Footer on Short Pages */
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.footer {
-  margin-top: auto;
 }
 
 /* Responsive Footer */
@@ -154,11 +151,7 @@ body {
     font-size: 1.1rem;
   }
 
-  .footer-logo p {
-    font-size: 0.9rem;
-  }
-
-  .footer-social .social-icon {
-    font-size: 1.5rem;
+  .footer-logo-img {
+    width: 120px;
   }
 }
