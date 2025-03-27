@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f24f4f; /* Fallback color */
+    background-color: #cfd1d4; /* Fallback color */
     overflow: hidden;
   }
   
@@ -30,13 +30,13 @@
   .about-text {
     flex: 1;
     max-width: 500px;
-    color: white;
+    color: black;
   }
   
   .about-text h1 {
     font-size: 2.5rem;
     font-weight: bold;
-    color: white;
+    color: black;
     margin-bottom: 20px;
   }
   
@@ -65,7 +65,7 @@
   }
   
   .cta-button:hover {
-    background: white;
+    background: black;
     color: #D32F2F;
   }
   
@@ -90,7 +90,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
+    background: black;
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -120,7 +120,7 @@
   
   /* Mission Section */
 .mission-section {
-    background-color: #FFFFFF; /* White background */
+    background-color: #FFFFFF; /* black background */
     padding: 80px 5%;
     display: flex;
     justify-content: center;
@@ -210,7 +210,7 @@
 }
 /* Contact Section */
 .contact-section {
-    background-color: #f24f4f; /* Google Blue */
+    background-color: #cfd1d4; /* Google Blue */
     padding: 60px 5%;
     display: flex;
     justify-content: center;
@@ -230,7 +230,7 @@
 /* Left Side - Text */
 .contact-left {
     flex: 1;
-    color: white;
+    color: black;
 }
 
 .contact-left h3 {
@@ -252,8 +252,8 @@
 
 /* Button */
 .contact-button {
-    background-color: white;
-    color: #4285F4;
+    background-color: black;
+    color: #D32F2F;
     border: none;
     padding: 12px 20px;
     font-size: 1rem;
@@ -266,7 +266,7 @@
 
 .contact-button:hover {
     background-color: #357AE8;
-    color: white;
+    color: black;
 }
 
 /* Right Side - Image */
