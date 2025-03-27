@@ -1,15 +1,14 @@
 .custom-navbar {
-  background-color: #333333;
-  color: white !important;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1px 20px; /* Reduced padding to decrease height */
+  background-color: #333333; /* Dark Gray for Professional Look */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
   position: fixed;
   width: 100%;
+  height: 100px;
   top: 0;
   z-index: 1000;
-  height: 150px; /* Set a specific height if needed */
   display: flex;
-  align-items: center; /* Ensures content stays centered vertically */
+  align-items: center;
 }
 
 .logo {
@@ -25,13 +24,30 @@
 
 /* Navbar Links */
 .nav-links .nav-link {
-  color: white; /* Dark gray */
+  color: #ffffff; /* White text */
   font-weight: 500;
   transition: color 0.3s ease-in-out;
+  padding: 10px 15px;
+  border-radius: 5px;
 }
 
 .nav-links .nav-link:hover {
-  color: #d32f2f; /* Red on hover */
+  color: #ffc107; /* Gold Accent on Hover */
+}
+.btn-explore {
+  background-color: #d32f2f;
+  border: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-explore:hover {
+  background-color: #b71c1c;
+  transform: scale(1.05);
 }
 
 /* Explore Programs Button */
@@ -49,9 +65,13 @@
 
 /* Login Button */
 .login-btn {
-  border: 2px solid #d32f2f;
-  color: #d32f2f;
+  border: 2px solid #ffc107;
+  background: none;
+  color: #ffc107;
   padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -59,11 +79,21 @@
   background-color: #d32f2f;
   color: #ffffff;
 }
+@media (max-width: 768px) {
+  .nav-links {
+    text-align: center;
+  }
+  
+  .login-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
 
 /* Dropdown Menu */
 .dropdown-menu-container {
   position: absolute;
-  top: 60px;
+  top: 100px;
   left: 0;
   width: 100%;
   background: #ffffff;
