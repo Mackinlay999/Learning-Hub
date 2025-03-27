@@ -1,17 +1,24 @@
-/* Footer Styling */
+/* Footer Container */
 .footer {
   background: #333333;
   color: white;
-  padding: 30px 0;
+  padding: 40px 0;
   font-size: 1rem;
   border-top: 5px solid #D32F2F;
   text-align: center;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  transition: all 0.4s ease-in-out;
 }
 
+/* Footer Content Layout */
 .footer-content {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
 }
 
 /* Footer Logo */
@@ -20,17 +27,19 @@
   font-size: 1rem;
   font-weight: bold;
   color: #FFC107;
-  transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .footer-logo p:hover {
   color: #D32F2F;
+  transform: scale(1.1);
 }
 
 /* Quick Links */
 .footer-links h5 {
   color: #FFC107;
   font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
 .footer-links ul {
@@ -40,17 +49,18 @@
 }
 
 .footer-links ul li {
-  margin: 5px 0;
+  margin: 8px 0;
 }
 
 .footer-links ul li a {
   text-decoration: none;
   color: white;
-  transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .footer-links ul li a:hover {
   color: #D32F2F;
+  transform: translateX(5px);
 }
 
 /* Social Media Icons */
@@ -61,17 +71,18 @@
 .footer-social h5 {
   color: #FFC107;
   font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
 .footer-social .social-icon {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: white;
-  margin: 5px;
+  margin: 8px;
   transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .footer-social .social-icon:hover {
-  transform: scale(1.2);
+  transform: scale(1.3) rotate(10deg);
 }
 
 /* Social Media Colors */
@@ -98,18 +109,30 @@
   border: none;
   padding: 12px;
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  transition: background 0.3s ease-in-out;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .scroll-to-top:hover {
   background: #FFC107;
+  transform: scale(1.1);
+}
+
+/* Sticky Footer on Short Pages */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer {
+  margin-top: auto;
 }
 
 /* Responsive Footer */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .footer-content {
     flex-direction: column;
     text-align: center;
@@ -118,5 +141,24 @@
   .footer-links,
   .footer-social {
     margin-top: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer {
+    padding: 30px 10px;
+  }
+
+  .footer-links h5,
+  .footer-social h5 {
+    font-size: 1.1rem;
+  }
+
+  .footer-logo p {
+    font-size: 0.9rem;
+  }
+
+  .footer-social .social-icon {
+    font-size: 1.5rem;
   }
 }

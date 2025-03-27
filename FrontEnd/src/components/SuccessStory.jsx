@@ -3,69 +3,70 @@ import { Container, Row, Col, Button, Card  } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { FaRegShareSquare, FaArrowLeft, FaArrowRight } from "react-icons/fa";  // ✅ Import this
 import "../style/SuccessStory.css";
+import video from "../images/video.jpg";
 
 // Sample Data (Replace with API or Dynamic Data)
 const successStories = [
   {
     name: "Surajith Nath",
     title: "Post Graduate Program in Cloud Computing",
-    image: "/images/surajith.jpg",
+    image: video,
   },
   {
     name: "Swati Kumari",
     title: "Post Graduate Diploma in Management",
-    image: "/images/swati.jpg",
+    image: video,
   },
   {
     name: "Smitha Seethapathi",
     title: "Artificial Intelligence for Leaders",
-    image: "/images/smitha.jpg",
+    image: video,
   },
   {
     name: "Zulfiqaar Ahmed",
     title: "Post Graduate Program in Data Science",
-    image: "/images/zulfiqaar.jpg",
+    image: video,
   },
 ];
 const stories = [
   {
     name: "Ajay Kini",
-    image: "https://via.placeholder.com/80",
+    image: video,
     program: "Post Graduate Program in Artificial Intelligence & Machine Learning",
     feedback:
       "I was looking for a fully online program due to my full-time job. This was my first foray into such a program, and I was hesitant. I'm happy to report that I couldn't have made a better choice!",
   },
   {
     name: "Jeffrey Jones M",
-    image: "https://via.placeholder.com/80",
+    image: video,
     program: "Post Graduate Program in Artificial Intelligence & Machine Learning",
     feedback:
       "The Post Graduate Program in AI & ML has been a transformative experience. The curriculum is meticulously designed, blending theoretical foundations with real-world applications.",
   },
   {
     name: "Ravi Kumar Tangellapalli",
-    image: "https://via.placeholder.com/80",
+    image: video,
     program: "Post Graduate Program in Artificial Intelligence & Machine Learning",
     feedback:
       "I am delighted with the PG Program in AI & ML. The content is comprehensive and well-structured, covering foundational concepts and advanced topics.",
   },
   {
     name: "Sarah Lee",
-    image: "https://via.placeholder.com/80",
+    image: video,
     program: "Post Graduate Program in AI & ML",
     feedback:
       "This course provided me with the skills I needed to switch careers into data science. The instructors were knowledgeable, and the community was extremely supportive.",
   },
   {
     name: "Michael Brown",
-    image: "https://via.placeholder.com/80",
+    image: video,
     program: "Post Graduate Program in AI & ML",
     feedback:
       "I gained hands-on experience with real-world projects. The curriculum is practical and industry-oriented. Highly recommended for anyone looking to break into AI & ML.",
   },
   {
     name: "Emma Watson",
-    image: "https://via.placeholder.com/80",
+    image: video,
     program: "Post Graduate Program in AI & ML",
     feedback:
       "The mentorship and peer discussions helped me understand complex topics easily. I appreciate the structured approach and the quality of content provided.",
@@ -135,7 +136,7 @@ const SuccessStory = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
-                <img src={`/images/${img}`} alt="Success Story" />
+                <img src={video} alt="Success Story" />
               </motion.div>
             ))}
           </Col>
@@ -155,7 +156,7 @@ const SuccessStory = () => {
                   transition={{ duration: 1 }}
                 >
                   <img 
-                    src="/images/success-story.jpg" 
+                    src={video} 
                     alt="Success Story" 
                     className="profile-photo"
                   />
