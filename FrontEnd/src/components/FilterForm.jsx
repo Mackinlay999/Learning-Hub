@@ -26,14 +26,20 @@ const FilterForm = () => {
 
   return (
     <div className="c-container">
+      <div>
+      <h2 className="filter-h2">Career Portal</h2>
+      </div>
+     
       <form  className="c-form" onSubmit={handleSubmit}>
+      
         <label>Filter by</label>
         <select className="c-select" onChange={(e) => setLearningDomain(e.target.value)}>
           <option value="">Learning Domain</option>
-          <option value="IT">Mern Stack</option>
-          <option value="IT">Artificial Intelligence</option>
-          <option value="IT">Digital Marketing</option>
-          <option value="Finance">Cyber Security</option>
+          <option value="">HR</option>
+          <option value="IT">Marketing</option>
+          <option value="IT">Sales</option>
+          <option value="IT">Business Analyst</option>
+          <option value="Finance">Finance</option>
         </select>
 
         <select className="c-select"  onChange={(e) => setWorkExperience(e.target.value)}>

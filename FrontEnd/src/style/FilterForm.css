@@ -1,41 +1,4 @@
-/* .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  select, input, button {
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  button {
-    background-color: #4285f4;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #357ae8;
-  }
-  
-  @media (max-width: 600px) {
-    form {
-      flex-direction: column;
-    }
-  }
-   */
+
 
 
    /* Container Styling */
@@ -45,17 +8,21 @@
     padding: 20px;
    
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    
     width: 100%;
+  }
+  .filter-h2{
+    text-align: center;
   }
   
   /* Form Styling */
   .c-form {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    
+    justify-content: space-around !important;
+    flex-direction: row;
+      flex-wrap: wrap;
+  
     align-items: center;
     gap: 15px;
     width: 100%;
@@ -80,13 +47,15 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 14px;
-    width: 200px;
+    margin-top: 10px;
+    width: 330px;
+    
     cursor: pointer;
   }
   
   /* File Input */
   .c-input {
-    width: auto;
+    width: 330px;
   }
   
   /* Apply Button */

@@ -1,8 +1,14 @@
 import React from 'react'
+import GoogleMap from './GoogleMap'
 
 function Contact() {
   return (
-    <div>Contact</div>
+    <div>
+     
+
+      <GoogleMap />
+    </div>
+   
   )
 }
 
