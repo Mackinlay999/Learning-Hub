@@ -1,5 +1,22 @@
 import React, { useState } from "react";
 import "../style/CareerCarousel.css";
+import people1 from "../images/people1.png";
+import people2 from "../images/people2.png";
+import people3 from "../images/people3.png"
+import people4 from "../images/people4.png";
+import people5 from "../images/people5.png";
+import people6 from "../images/people6.png"
+import people7 from "../images/people7.png"
+import people10 from "../images/people10.png"
+
+
+
+
+
+
+
+
+
 // career transitions data
 const careerTransitions = [
   {
@@ -11,7 +28,7 @@ const careerTransitions = [
     toimage : "https://tse4.mm.bing.net/th?id=OIP.UME36I0QZot0JqzLQFYoTAHaEK&pid=Api&P=0&h=220",
     newRole: "Data Analyst",
     newCompany: "Mercedes-Benz",
-    image: "https://cdn.pixabay.com/photo/2022/06/05/07/04/person-7243410_1280.png", // Replace with actual image URL
+    image: people1 // Replace with actual image URL
   },
   {
     name: "Siddharth Garg",
@@ -21,7 +38,7 @@ const careerTransitions = [
     toimage:" https://tse2.mm.bing.net/th?id=OIP.OKJtZr05h1WNMqF2UTyRRgHaEK&pid=Api&P=0&h=220",
     newRole: "Analyst",
     newCompany: "American Express",
-    image: "https://cdn.pixabay.com/photo/2022/06/05/07/04/person-7243410_1280.png",
+    image: people2,
   },
   {
     name: "Sumant Nankar",
@@ -31,7 +48,7 @@ const careerTransitions = [
     toimage:" https://tse2.mm.bing.net/th?id=OIP.OIQZo2SQrDnXiDLeXmwPPwAAAA&pid=Api&P=0&h=220",
     newRole: "Consultant in Financial Risk Advisory",
     newCompany: "EY",
-    image: "https://cdn.pixabay.com/photo/2022/06/05/07/04/person-7243410_1280.png",
+    image:people3,
   },
   {
     name: "Jyant Mahara",
@@ -41,7 +58,7 @@ const careerTransitions = [
     toimage:" https://tse3.mm.bing.net/th?id=OIP.3WDKi4vgtlKWRfVukjKF0AHaD4&pid=Api&P=0&h=220",
     newRole: "Senior Data Scientist",
     newCompany: "Impact Analytics",
-    image: "https://cdn.pixabay.com/photo/2022/06/05/07/04/person-7243410_1280.png",
+    image:people4,
   },
   {
     name: "Neha Sharma",
@@ -51,7 +68,7 @@ const careerTransitions = [
     toimage:"https://tse3.mm.bing.net/th?id=OIP.SqEICC59PL1VrdefhGEqqgHaCg&pid=Api&P=0&h=220",
     newRole: "Data Scientist",
     newCompany: "Google",
-    image: "https://cdn.pixabay.com/photo/2022/06/05/07/04/person-7243410_1280.png",
+    image:people5,
   },
   {
     name: "Ravi Verma",
@@ -61,7 +78,7 @@ const careerTransitions = [
     toimage:"https://tse3.mm.bing.net/th?id=OIP.vL108Wlvzp_2mHXF-keXCQHaFj&pid=Api&P=0&h=220",
     newRole: "Product Manager",
     newCompany: "Amazon",
-    image: "https://cdn.pixabay.com/photo/2022/06/05/07/04/person-7243410_1280.png",
+    image:people6,
   },
   {
     name: "Ankit Patel",
@@ -71,7 +88,7 @@ const careerTransitions = [
     toimage:"https://tse2.mm.bing.net/th?id=OIP.0Eb1VUFSOSpcwYlahbfHLAHaHa&pid=Api&P=0&h=220",
     newRole: "Senior Software Engineer",
     newCompany: "Microsoft",
-    image: "https://cdn.pixabay.com/photo/2022/06/05/07/04/person-7243410_1280.png",
+    image:people7,
   },
   {
     name: "Priya Kapoor",
@@ -81,7 +98,7 @@ const careerTransitions = [
     toimage:"https://tse1.mm.bing.net/th?id=OIP.zf8g1tolI3HRPumaeETgcAHaEK&pid=Api&P=0&h=220",
     newRole: "AI Engineer",
     newCompany: "Tesla",
-    image: "https://cdn.pixabay.com/photo/2022/06/05/07/04/person-7243410_1280.png",
+    image:people10,
     
   },
 ];
