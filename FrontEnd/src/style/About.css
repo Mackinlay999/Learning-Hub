@@ -1,0 +1,309 @@
+.about-section {
+    position: relative;
+    padding: 80px 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f24f4f; /* Fallback color */
+    overflow: hidden;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+  }
+  
+  .about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .about-text {
+    flex: 1;
+    max-width: 500px;
+    color: white;
+  }
+  
+  .about-text h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .highlight {
+    background: #FFC107;
+    color: #333333;
+    padding: 5px 10px;
+    display: inline-block;
+  }
+  
+  .about-text p {
+    font-size: 1.1rem;
+    color: #FFFFFF;
+    line-height: 1.6;
+  }
+  
+  .cta-button {
+    background: #FFC107;
+    color: #333333;
+    padding: 12px 20px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+  }
+  
+  .cta-button:hover {
+    background: white;
+    color: #D32F2F;
+  }
+  
+  .about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .video-container {
+    position: relative;
+    max-width: 500px;
+  }
+  
+  .about-img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .play-icon {
+    font-size: 2rem;
+    color: #D32F2F;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  @media (max-width: 768px) {
+    .about-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .about-image {
+      margin-top: 20px;
+    }
+  }
+  
+  /* Mission Section */
+.mission-section {
+    background-color: #FFFFFF; /* White background */
+    padding: 80px 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Mission Container - Horizontal Layout */
+.mission-container {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    gap: 50px;
+}
+
+/* Left Side - Our Mission (Vertically Centered) */
+.mission-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.mission-left h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333333; /* Dark Gray */
+}
+
+/* Right Side - Mission Content */
+.mission-right {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+/* Heading Style */
+.mission-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #D32F2F; /* Primary Red */
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.mission-heading:hover {
+    color: #FFC107; /* Gold Accent */
+}
+
+/* Paragraph Text */
+.mission-text {
+    font-size: 1.1rem;
+    color: #333333;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mission-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .mission-left h2 {
+        text-align: center;
+    }
+    .mission-right {
+        text-align: center;
+    }
+}
+/* Contact Section */
+.contact-section {
+    background-color: #f24f4f; /* Google Blue */
+    padding: 60px 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container - Horizontal Layout */
+.contact-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    gap: 50px;
+}
+
+/* Left Side - Text */
+.contact-left {
+    flex: 1;
+    color: white;
+}
+
+.contact-left h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+.contact-left h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.8s ease-in-out forwards 0.2s;
+}
+
+/* Button */
+.contact-button {
+    background-color: white;
+    color: #4285F4;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+.contact-button:hover {
+    background-color: #357AE8;
+    color: white;
+}
+
+/* Right Side - Image */
+.contact-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-right img {
+    width: 100%;
+    max-width: 400px;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fadeInScale 0.8s ease-in-out forwards 0.4s;
+}
+
+/* Fade-in & Scale Animation */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .contact-left, .contact-right {
+        flex: unset;
+        width: 100%;
+    }
+}

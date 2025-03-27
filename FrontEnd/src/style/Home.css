@@ -70,7 +70,7 @@
 
 .mac-additional-image {
   max-width: 90%;
-  border-radius: 12px;
+  /* border-radius: 12px; */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
@@ -103,7 +103,7 @@
 .hero-overlay {
   background: rgba(0, 0, 0, 0.6); /* Dark overlay for contrast */
   padding: 50px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   display: inline-block;
   max-width: 80%;
 }
@@ -196,7 +196,7 @@
 /* Ensure full-width background */
 .carousel-container {
   width: 100vw; /* Full viewport width */
-  background-color: #f5f7fa; /* Change this to any desired color */
+  background-color: #cfd1d4; /* Change this to any desired color */
   padding: 50px 0;
   text-align: center;
   position: relative;
@@ -303,7 +303,7 @@
   background-color: #F8F9FA; /* Light Gray Background */
   padding: 60px 40px;
   text-align: center;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 /* Section Heading */
@@ -371,8 +371,8 @@
 .testimonial-container {
   margin-top: 50px;
   padding: 40px 20px;
-  background-color: #f5f7fa;
-  border-radius: 10px;
+  background-color: #cfd1d4;
+  /* border-radius: 10px; */
   /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
   display: flex;
   justify-content: center;
@@ -399,7 +399,7 @@
 /* Testimonial Card (Horizontal Layout) */
 .testimonial-card {
   background: #F7F7F7;
-  border-radius: 15px;
+  /* border-radius: 15px; */
   padding: 30px;
   display: flex;
   flex-direction: row;
@@ -590,7 +590,7 @@
 /* Feature Content - Consistent Sizing */
 .feature-content {
   background: #ffffff;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   padding: 20px;
   text-align: left;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -608,7 +608,7 @@
   width: 100%;
   height: 180px; /* Fixed Image Height */
   object-fit: cover; /* Ensuring Images Fill the Space Properly */
-  border-radius: 10px;
+  /* border-radius: 10px; */
   margin-bottom: 15px;
 }
 
@@ -660,7 +660,7 @@
 /* Skill Section */
 .skills-section {
   padding: 60px 20px;
-  background: #f5f7fa; /* White Background */
+  background: #cfd1d4; /* White Background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -732,7 +732,7 @@
   justify-content: space-between;
   background: #F8F8F8; /* Light Gray */
   padding: 15px 20px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   cursor: pointer;
   transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
   border-left: 5px solid #FFC107;
@@ -804,7 +804,7 @@
 /* General Styles */
 .course-section {
   background: white; /* White background for readability */
-  border-radius: 15px;
+  /* border-radius: 15px; */
   padding: 40px;
   display: flex;
   align-items: center;
@@ -821,7 +821,7 @@
 .course-image {
   width: 100%;
   max-width: 250px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -887,8 +887,8 @@
 
 /* Entire Section with White Background */
 .questions-section {
-  background-color: #f5f7fa;
-  border-radius: 10px;
+  background-color: #cfd1d4;
+  /* border-radius: 10px; */
   /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
@@ -904,17 +904,17 @@
 .questions-image {
   width: 100%;
   max-width: 300px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  /* border-radius: 10px; */
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 /* Questions Box */
 .questions-box {
-  background: #ffc107; /* Gold Accent */
+  background: #cfd1d4; /* Gold Accent */
   padding: 20px;
   /* border-radius: 10px; */
   text-align: center;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
   transition: transform 0.3s ease-in-out;
 }
 
@@ -965,10 +965,10 @@
 .get-started-section {
   /* margin-top: 40px; */
   text-align: center;
-  background-color: #f5f7fa; /* White Background */
+  background-color: #cfd1d4; /* White Background */
   padding: 40px 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  /* border-radius: 10px; */
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
 /* Get Started Button */
@@ -1118,7 +1118,7 @@
 }
 
 /* Card Body */
-.course-card-body {
+.course-card-body1 {
   border: none;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   border-radius: 10px;

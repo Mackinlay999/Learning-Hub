@@ -85,91 +85,94 @@ const Home = () => {
     <>
       {/* Mackinlay */}
       <motion.div fluid className="mac-home-section">
-      <Row className="align-items-center mac-additional-content-container">
-        {/* Left Content */}
-        <Col md={6} className="mac-text-content">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="mac-section-title"
-          >
-            Explore Our Programs
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-            className="mac-section-description"
-          >
-            Unlock your potential with our world-class financial services. Our programs are designed to help you achieve your goals efficiently.
-          </motion.p>
-          <ul className="mac-feature-list">
-            <motion.li
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+        <Row className="align-items-center mac-additional-content-container">
+          {/* Left Content */}
+          <Col md={6} className="mac-text-content">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="mac-section-title"
             >
-              ✔ Expert financial advice
-            </motion.li>
-            <motion.li
-              initial={{ opacity: 0, x: -30 }}
+              Explore Our Programs
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+              className="mac-section-description"
             >
-              ✔ Tailored investment plans
-            </motion.li>
-            <motion.li
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              Unlock your potential with our world-class financial services. Our
+              programs are designed to help you achieve your goals efficiently.
+            </motion.p>
+            <ul className="mac-feature-list">
+              <motion.li
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
+                ✔ Expert financial advice
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+              >
+                ✔ Tailored investment plans
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                ✔ Secure and transparent services
+              </motion.li>
+            </ul>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 1 }}
             >
-              ✔ Secure and transparent services
-            </motion.li>
-          </ul>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 1 }}
-          >
-            <Button className="btn-primary mac-explore-btn">Discover More</Button>
-          </motion.div>
-        </Col>
+              <Button className="btn-primary mac-explore-btn">
+                Discover More
+              </Button>
+            </motion.div>
+          </Col>
 
-        {/* Right Image */}
-        <Col md={6} className="text-center">
-          <motion.img
-            src={Explore}
-            alt="Explore Programs"
-            className="mac-additional-image"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          />
-        </Col>
-      </Row>
-    </motion.div>
-    {/* Heading */}
-    <div className="heading-container">
-      <motion.p
-        className="subheading"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        YOUR GOALS ARE OUR GOALS
-      </motion.p>
+          {/* Right Image */}
+          <Col md={6} className="text-center">
+            <motion.img
+              src={Explore}
+              alt="Explore Programs"
+              className="mac-additional-image"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            />
+          </Col>
+        </Row>
+      </motion.div>
+      {/* Heading */}
+      <div className="heading-container">
+        <motion.p
+          className="subheading"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          YOUR GOALS ARE OUR GOALS
+        </motion.p>
 
-      <motion.h1
-        className="main-heading"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-      >
-        Invest in yourself today. Unlock <br />
-        success for a lifetime.
-      </motion.h1>
-    </div>
+        <motion.h1
+          className="main-heading"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        >
+          Invest in yourself today. Unlock <br />
+          success for a lifetime.
+        </motion.h1>
+      </div>
       {/* Carousel Section - Moved to Top */}
       <motion.div
         className="carousel-container"
@@ -263,7 +266,7 @@ const Home = () => {
                     whileTap={{ scale: 0.95 }}
                     className="course-card"
                   >
-                    <Card className="course-card-body">
+                    <Card className="course-card-body1">
                       <Card.Img
                         variant="top"
                         src={program.image}
@@ -480,53 +483,53 @@ const Home = () => {
         </motion.div>
       </motion.div>
       {/* Contact Section */}
-        <motion.div>
-      {/* Section 1: Free Programs */}
-      <motion.div
-        className="course-section align-items-center"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-      >
-        <Row className="align-items-center">
-          <Col md={6}>
-            <motion.img
-              src={Explore}
-              alt="Course"
-              className="course-image"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            />
-          </Col>
-          <Col md={6}>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="course-content"
-            >
-              <h6 className="course-subtitle">MACKINLAY LEARNING HUB</h6>
-              <h2 className="course-title">
-                Free short programs to gain industry-relevant skills.
-              </h2>
-              <p className="course-description">
-                Start your online learning journey at Mackinlay Learning Hub for
-                free with our short-term basic programs across various in-demand
-                domains.
-              </p>
-              <motion.button
-                className="explore-btn"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+      <motion.div>
+        {/* Section 1: Free Programs */}
+        <motion.div
+          className="course-section align-items-center"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <Row className="align-items-center">
+            <Col md={6}>
+              <motion.img
+                src={Explore}
+                alt="Course"
+                className="course-image"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+              />
+            </Col>
+            <Col md={6}>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6 }}
+                className="course-content"
               >
-                Explore programs →
-              </motion.button>
-            </motion.div>
-          </Col>
-        </Row>
+                <h6 className="course-subtitle">MACKINLAY LEARNING HUB</h6>
+                <h2 className="course-title">
+                  Free short programs to gain industry-relevant skills.
+                </h2>
+                <p className="course-description">
+                  Start your online learning journey at Mackinlay Learning Hub
+                  for free with our short-term basic programs across various
+                  in-demand domains.
+                </p>
+                <motion.button
+                  className="explore-btn"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Explore programs →
+                </motion.button>
+              </motion.div>
+            </Col>
+          </Row>
+        </motion.div>
       </motion.div>
-    </motion.div>
       {/* Hero Section */}
       {/* <div className="hero-section">
         <div className="hero-overlay">
@@ -600,15 +603,15 @@ const Home = () => {
       </Container> */}
       {/* Call to Action */}
       <motion.div className="text-center questions-section">
-  {/* Section: Got More Questions? */}
-  <motion.div
-    // className="questions-section"
-    initial={{ opacity: 0, x: -50 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.7 }}
-  >
-    <Row className="questions-container">
-      {/* <Col md={6}>
+        {/* Section: Got More Questions? */}
+        <motion.div
+          // className="questions-section"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <Row className="questions-container">
+            {/* <Col md={6}>
         <motion.img
           src={Explore} // Replace with relevant image
           alt="Questions"
@@ -618,56 +621,59 @@ const Home = () => {
           transition={{ duration: 0.6 }}
         />
       </Col> */}
-      <Col md={12}>
+            <Col md={12}>
+              <motion.div
+                className="questions-box"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7 }}
+              >
+                <h3>Got more questions?</h3>
+                <p>
+                  Talk to our team, our program advisor will reach out to you.
+                </p>
+                <motion.button
+                  className="contact-btn"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Contact us 📞
+                </motion.button>
+              </motion.div>
+            </Col>
+          </Row>
+        </motion.div>
+
+        {/* Disclaimer */}
+        <motion.p
+          className="disclaimer"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          *Career outcomes are subject to market conditions and learner
+          performance
+        </motion.p>
+
+        {/* Get Started Section */}
         <motion.div
-          className="questions-box"
+          className="get-started-section"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h3>Got more questions?</h3>
-          <p>Talk to our team, our program advisor will reach out to you.</p>
+          <h2 className="section-title">
+            Join Our Exclusive Community of Future Leaders
+          </h2>
           <motion.button
-            className="contact-btn"
-            whileHover={{ scale: 1.05 }}
+            className="get-started-btn"
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            Contact us 📞
+            Get Started
           </motion.button>
         </motion.div>
-      </Col>
-    </Row>
-  </motion.div>
-
-  {/* Disclaimer */}
-  <motion.p
-    className="disclaimer"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.8 }}
-  >
-    *Career outcomes are subject to market conditions and learner performance
-  </motion.p>
-
-  {/* Get Started Section */}
-  <motion.div
-    className="get-started-section"
-    initial={{ opacity: 0, x: 50 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.7 }}
-  >
-    <h2 className="section-title">
-      Join Our Exclusive Community of Future Leaders
-    </h2>
-    <motion.button
-      className="get-started-btn"
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      Get Started
-    </motion.button>
-  </motion.div>
-</motion.div>
+      </motion.div>
 
       {/* ChatBot Floating Button */}
       <ChatBot />

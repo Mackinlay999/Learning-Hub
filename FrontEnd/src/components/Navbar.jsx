@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Program from "./Program";
 import "../style/NavBar.css";
+import logo from "../images/logo.png"; // Import your logo image
 
 const NavBar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -19,11 +20,14 @@ const NavBar = () => {
         <Navbar expand="lg" className="w-100">
           <Container fluid className="d-flex justify-content-between align-items-center">
             
-            {/* Brand Name on Left */}
-            <Navbar.Brand as={Link} to="/" className="fw-bold logo">
-              <motion.span whileHover={{ scale: 1.1 }}>
-                <span className="text-primary">M</span>ackinlay Learning Hub
-              </motion.span>
+            {/* Logo + Brand Name */}
+            <Navbar.Brand as={Link} to="/" className="fw-bold logo d-flex align-items-center">
+              <motion.img 
+                src={logo} 
+                alt="Logo" 
+                className="navbar-logo"
+                whileHover={{ scale: 1.1 }}
+              />
             </Navbar.Brand>
 
             {/* Nav Links at Center */}
