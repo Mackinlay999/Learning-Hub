@@ -45,3 +45,75 @@
     border-radius: 10px;
   }
   
+  .enterprise-container1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 80px;
+    background-color: #ffffff;
+  }
+  
+  .enterprise-content1 {
+    max-width: 50%;
+  }
+  
+  .enterprise-title1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 20px;
+  }
+  
+  .enterprise-title1 span {
+    color: #003366;
+  }
+  
+  .enterprise-description1 {
+    font-size: 1.3rem;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .enterprise-highlight1 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #0073e6;
+    margin-bottom: 20px;
+  }
+  
+  .enterprise-btn1 {
+    background-color: #0073e6;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+  
+  .enterprise-btn1:hover {
+    background-color: #0056b3;
+  }
+  
+  .enterprise-contact1 p {
+    font-size: 1rem;
+    color: #000;
+  }
+  
+  .enterprise-contact1 a {
+    text-decoration: none;
+    color: #003366;
+    font-weight: bold;
+  }
+  
+  .enterprise-contact1 a:hover {
+    color: #0073e6;
+  }
+  
+  .enterprise-image1 img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+  }
+  
