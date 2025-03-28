@@ -53,7 +53,7 @@ const NavBar = () => {
                     <NavDropdown.Item as={Link} to="/webinars">
                       Free Counselling Webinars
                     </NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/blog">
+                    <NavDropdown.Item as={Link} to="/blog-training">
                       Blog & Training Program
                     </NavDropdown.Item>
                   </motion.div>

@@ -1,0 +1,59 @@
+.blog-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 70px;
+  background-color: #cfd1d4;
+}
+.training-container{
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 70px;
+  background-color: #ffffff;
+}
+
+.blog-content,
+.training-content {
+  max-width: 50%;
+}
+
+.blog-title,
+.training-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #be2929;
+  margin-bottom: 20px;
+}
+
+.blog-description,
+.training-description {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.blog-btn,
+.training-btn {
+    background-color: #b30000;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.blog-btn:hover,
+.training-btn:hover {
+    background-color: #B71C1C;
+}
+
+.blog-image img,
+.training-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+}

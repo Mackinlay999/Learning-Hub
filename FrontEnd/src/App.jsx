@@ -11,6 +11,11 @@ import NotFound from './components/NotFound' // For handling 404 pages
 import './style/App.css' // Import custom styles
 import 'bootstrap/dist/css/bootstrap.min.css' // Bootstrap styles
 
+import BlogTraining from './components/BlogTraining'
+import Enterprise from './components/Enterprise'
+import Webinars from './components/Webinars'
+import Recruiters from './components/Recruiters'
+
 function App() {
   return (
     <Router>
@@ -22,6 +27,10 @@ function App() {
           <Route path="/success-story" element={<SuccessStory />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog-training" element={<BlogTraining />} />
+          <Route path="/enterprise" element={<Enterprise />} />
+          <Route path="/webinars" element={<Webinars />} />
+          <Route path="/for-recruiters" element={<Recruiters />} />
           <Route path="*" element={<NotFound />} />{' '}
           {/* Catch-all route for 404 pages */}
         </Routes>
