@@ -23,7 +23,7 @@ const programs = {
   ],
   Marketing: [
     {
-      title: 'Marketing Strategy Course',
+      title: 'Marketing Strategy Program',
       duration: '5 months',
       mode: 'Classroom',
     },
@@ -44,7 +44,7 @@ const programs = {
   ],
   Finance: [
     {
-      title: 'Finance Management Course',
+      title: 'Finance Management Program',
       duration: '10 months',
       mode: 'Hybrid',
     },

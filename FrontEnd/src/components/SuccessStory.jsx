@@ -55,7 +55,7 @@ const stories = [
     image: video,
     program: "Post Graduate Program in AI & ML",
     feedback:
-      "This course provided me with the skills I needed to switch careers into data science. The instructors were knowledgeable, and the community was extremely supportive.",
+      "This Program provided me with the skills I needed to switch careers into data science. The instructors were knowledgeable, and the community was extremely supportive.",
   },
   {
     name: "Michael Brown",

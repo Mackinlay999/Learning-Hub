@@ -44,8 +44,8 @@ const CareerFooter = () => {
         <div className="footer-column">
           <h3>Degrees</h3>
           <ul>
-            <li>MBA Courses</li>
-            <li>Masters Courses</li>
+            <li>MBA Program</li>
+            <li>Masters Program</li>
           </ul>
 
           <h3>Quick Links</h3>
