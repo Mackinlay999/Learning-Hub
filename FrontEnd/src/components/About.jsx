@@ -70,10 +70,10 @@ const About = () => {
           transition={{ duration: 0.8 }}
         >
           <h1>
-            <span className="highlight">Impactful Learning</span> <br />
+            <span className="highlight text-black">Impactful Learning</span> <br />
             for Everyone
           </h1>
-          <p>
+          <p className="text-black">
             With more than <strong>12.4 Million learners</strong> in 170+ countries,
             Great Learning is a leading global edtech company for professional and
             higher education, offering industry-relevant programs.

@@ -77,7 +77,7 @@
   .about-text {
     flex: 1;
     max-width: 500px;
-    color: black;
+    color: black !important;
   }
   
   .about-text h1 {
