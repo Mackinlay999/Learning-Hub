@@ -5,6 +5,56 @@
     --gold-accent: #FFC107;
     --black: #000000;
   }
+  
+  .success-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px;
+    background-color: #cfd1d4;
+  }
+  
+  .success-content1 {
+    max-width: 50%;
+  }
+  
+  .success-title1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #be2929;
+    margin-bottom: 20px;
+  }
+  
+  .success-description1 {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .success-btn {
+    background-color: #b30000;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .success-btn:hover {
+    background-color: #B71C1C
+  }
+  
+  .success-image1 img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+  }
+  
+
+  /* Main Section */
 .success-story {
     background: var(--primary-red);
     color: var(--white);

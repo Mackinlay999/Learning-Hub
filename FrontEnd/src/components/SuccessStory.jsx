@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { FaRegShareSquare, FaArrowLeft, FaArrowRight } from "react-icons/fa";  // ✅ Import this
 import "../style/SuccessStory.css";
 import video from "../images/video.jpg";
-
+import success from "../images/2.png"
 // Sample Data (Replace with API or Dynamic Data)
 const successStories = [
   {
@@ -95,8 +95,49 @@ const SuccessStory = () => {
   };
   return (
     <>
+    <motion.div className="success-container">
+      <motion.div
+        className="success-content1"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <h1 className="success-title1">
+          Transforming Lives,{" "}
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }}
+          >
+            Defining Futures
+          </motion.span>
+        </h1>
+        <p className="success-description1">
+          Hear from our alumni who have achieved exceptional career milestones 
+          through our programs. Their journeys of transformation stand as a 
+          testament to the unparalleled education and mentorship at Mackinlay 
+          Learning Hub.
+        </p>
+        <motion.button
+          className="success-btn"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          Real Stories. Real Success.
+        </motion.button>
+      </motion.div>
+
+      <motion.div
+        className="success-image1"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <img src={success} alt="Success Stories" />
+      </motion.div>
+    </motion.div>
       {/* First Section */}
-      <Container fluid className="success-story">
+      <motion.div fluid className="success-story">
         <Row className="align-items-center">
           {/* Left Content */}
           <Col lg={6} className="text-section">
@@ -141,10 +182,10 @@ const SuccessStory = () => {
             ))}
           </Col>
         </Row>
-      </Container>
+      </motion.div>
 
       {/* Second Section */}
-      <Container fluid className="success-story-1">
+      <motion.div fluid className="success-story-1">
         <Row className="justify-content-center">
           <Col lg={10} className="story-card">
             <Row className="align-items-center">
@@ -199,8 +240,8 @@ const SuccessStory = () => {
             </Row>
           </Col>
         </Row>
-      </Container>
-      <Container fluid className="success-story-2">
+      </motion.div>
+      <motion.div fluid className="success-story-2">
       <Row>
         <Col>
           <motion.h2
@@ -260,8 +301,8 @@ const SuccessStory = () => {
           </motion.div>
         </Col>
       </Row>
-    </Container>
-    <Container className="success-story-container">
+    </motion.div>
+    <motion.div className="success-story-container">
       <h2>Stories of learners like you</h2>
 
       <motion.div
@@ -303,7 +344,7 @@ const SuccessStory = () => {
           <Button variant="primary">View More</Button>
         </motion.div>
       </div>
-    </Container>
+    </motion.div>
     </>
   );
 };
