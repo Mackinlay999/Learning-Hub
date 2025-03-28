@@ -84,6 +84,54 @@ const Home = () => {
   return (
     <>
       {/* Mackinlay */}
+      <motion.div className="home-container1">
+      <motion.div
+        className="home-content"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <h1 className="home-title">
+          Mackinlay Learning Hub:{" "}
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }}
+          >
+            Transforming Ambition into Excellence
+          </motion.span>
+        </h1>
+        <p className="home-description">
+          At Mackinlay Learning Hub, we redefine the future of education by merging 
+          academic excellence with real-world expertise. Established in 2024, our 
+          institution is committed to shaping industry-ready professionals in HR, 
+          Sales, Marketing, Finance, and Business Analytics.
+        </p>
+        <p className="home-description">
+          We don’t just educate—we elevate. Our programs integrate cutting-edge 
+          methodologies, expert-led instruction, and hands-on learning experiences 
+          that bridge the gap between ambition and achievement. With strong 
+          industry partnerships and placement support, Mackinlay Learning Hub is 
+          your gateway to unparalleled career success.
+        </p>
+        <motion.button
+          className="learn-more-btn"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          Join Us. Lead the Future.
+        </motion.button>
+      </motion.div>
+
+      <motion.div
+        className="home-image"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <img src={slider1} alt="Learning Hub" />
+      </motion.div>
+    </motion.div>
       <motion.div fluid className="mac-home-section">
         <Row className="align-items-center mac-additional-content-container">
           {/* Left Content */}
@@ -174,7 +222,7 @@ const Home = () => {
         </motion.h1>
       </div>
       {/* Carousel Section - Moved to Top */}
-      <motion.div
+      {/* <motion.div
         className="carousel-container"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -217,8 +265,8 @@ const Home = () => {
             </div>
           </SwiperSlide>
         </Swiper>
-      </motion.div>
-      {/* Program Section */}
+      </motion.div> */}
+      
       {/* Program Section */}
       <motion.div
         className="home-container"

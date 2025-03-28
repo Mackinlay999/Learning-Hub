@@ -1,7 +1,54 @@
+.home-container1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 70px;
+  background-color:#cfd1d4;
+}
+
+.home-content {
+  max-width: 50%;
+}
+
+.home-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #be2929;
+  margin-bottom: 20px;
+}
+
+.home-description {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.learn-more-btn {
+  background-color: #b30000;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.learn-more-btn:hover {
+  background-color: #B71C1C;
+}
+
+.home-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
 .heading-container {
   text-align: center;
   padding: 50px 20px;
-  background-color: #ffffff; /* White background */
+  background-color: #cfd1d4; /* White background */
 }
 
 .subheading {
@@ -28,18 +75,18 @@
 
 .mac-home-section {
   padding: 80px 50px;
-  background-color: #cfd1d4; /* Light background */
+  background-color: white; /* Light background */
 }
 
 .mac-section-title {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #660000;
+  color: #be2929
 }
 
 .mac-section-description {
   font-size: 1.1rem;
-  color: #555;
+  color: black;
   margin-top: 10px;
 }
 
@@ -64,7 +111,7 @@
 }
 
 .mac-explore-btn:hover {
-  background-color: #003366;
+  background-color: #B71C1C;
   transform: scale(1.05);
 }
 
