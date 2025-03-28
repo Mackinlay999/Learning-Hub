@@ -44,10 +44,15 @@ const FilterForm = () => {
     <div className="c-container">
       <h2 className="filter-h2">Career Portal</h2>
       <form className="c-form" onSubmit={handleSubmit}>
-        <label>Filter by</label>
+        
 
         <select className="c-select" value={learningDomain} onChange={(e) => setLearningDomain(e.target.value)}>
-          <option value="">Select Learning Domain</option>
+          <option value="">Job Opening</option>
+          <option value="data-scientist">Data Scientist</option>
+  <option value="full-stack-developer">Full Stack Developer</option>
+  <option value="qa-testing">QA Testing</option>
+  <option value="graphic-designer">Graphic Designer</option>
+  <option value="ui-ux-designer">UI/UX Designer</option>
           <option value="HR">HR</option>
           <option value="Marketing">Marketing</option>
           <option value="Sales">Sales</option>

@@ -3,8 +3,8 @@
 
    /* Container Styling */
 .c-container {
-    margin-top: 46px;
-    background-color: #cfd1d4;
+    /* margin-top: 46px; */
+    /* background-color: #cfd1d4; */
     padding: 20px;
    
     display: flex;
@@ -65,6 +65,7 @@
     border: none;
     padding: 10px 20px;
     font-size: 14px;
+    width: 330px;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;

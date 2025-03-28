@@ -56,9 +56,14 @@ const CareerContact = () => {
             <label>Phone Number:</label>
             <input type="tel" name="phone" className="g-from" placeholder="Enter your number" onChange={handleChange} required />
 
-            <label>Filter by</label>
+            <label className="form-label">What Training Program Do You Need?</label>
             <select name="learningDomain" className="g-select" onChange={handleChange} required>
               <option value="">Select Learning Domain</option>
+              <option value="data-scientist">Data Scientist</option>
+  <option value="full-stack-developer">Full Stack Developer</option>
+  <option value="qa-testing">QA Testing</option>
+  <option value="graphic-designer">Graphic Designer</option>
+  <option value="ui-ux-designer">UI/UX Designer</option>
               <option value="HR">HR</option>
               <option value="Marketing">Marketing</option>
               <option value="Sales">Sales</option>
@@ -71,17 +76,7 @@ const CareerContact = () => {
         </div>
       </div>
 
-      <div className="content-container">
-        <div className="text-content">
-          <h2>Contact Us</h2>
-          <p>Let’s Connect,</p>
-          <p>Have any questions? Feel free to reach out!</p>
-          <p>📍 Headquarters: Bangalore, Karnataka</p>
-          <p>📞 Phone: 09363352660</p>
-          <p>📧 Email: harikrishg44@gmail.com</p>
-          <p>🌐 Mackinlay Learning Hub.Com</p>
-        </div>
-      </div>
+      
     </div>
   );
 };
