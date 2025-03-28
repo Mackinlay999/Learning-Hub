@@ -12,16 +12,16 @@
     border-radius: 15px;
   }
   
-  .text-section {
+  .success-text-section {
     padding: 40px;
   }
   
-  .stats {
+  .success-stats {
     display: flex;
     gap: 15px;
   }
   
-  .stats span {
+  .success-stats span {
     background: var(--dark-gray);
     color: var(--white);
     padding: 5px 15px;
@@ -35,52 +35,52 @@
     margin-top: 20px;
   }
   
-  .button-group {
+  .success-button-group {
     margin-top: 20px;
     display: flex;
     gap: 15px;
   }
   
-  .btn-primary-custom {
+  .success-btn-primary-custom {
     background: var(--gold-accent);
     color: var(--dark-gray);
     font-weight: bold;
     border: none;
   }
   
-  .btn-outline-custom {
+  .success-btn-outline-custom {
     border: 2px solid var(--white);
     color: var(--white);
     font-weight: bold;
   }
   
-  .trusted-text {
+  .success-trusted-text {
     margin-top: 15px;
     font-size: 14px;
     opacity: 0.8;
   }
   
-  .image-grid {
+  .success-image-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     padding: 40px;
   }
   
-  .image-card {
+  .success-image-card {
     background: var(--white);
     padding: 5px;
     border-radius: 10px;
     overflow: hidden;
   }
   
-  .image-card img {
+  .success-image-card img {
     width: 100%;
     border-radius: 10px;
     transition: transform 0.3s ease;
   }
   
-  .image-card:hover img {
+  .success-image-card:hover img {
     transform: scale(1.05);
   }
   
@@ -90,7 +90,7 @@
     background: var(--white);
   }
   
-  .story-card {
+  .success-story-card {
     background: var(--black);
     border-radius: 15px;
     padding: 30px;
@@ -102,41 +102,41 @@
   }
   
   /* Photo Section */
-  .photo-section {
+  .success-photo-section {
     text-align: center;
   }
   
-  .profile-photo {
+  .success-profile-photo {
     width: 100%;
     border-radius: 10px;
     transition: transform 0.3s ease;
   }
   
-  .photo-section:hover .profile-photo {
+  .success-photo-section:hover .success-profile-photo {
     transform: scale(1.05);
   }
   
-  .user-info {
+  .success-user-info {
     text-align: center;
     margin-top: 15px;
   }
   
-  .user-info h4 {
+  .success-user-info h4 {
     font-size: 18px;
     font-weight: bold;
   }
   
-  .user-info p {
+  .success-user-info p {
     font-size: 14px;
     color: var(--gold-accent);
   }
   
   /* Right Side - Story Content */
-  .story-content {
+  .success-story-content {
     padding: 20px;
   }
   
-  .badge {
+  .success-badge {
     background: var(--gold-accent);
     color: var(--dark-gray);
     font-weight: bold;
@@ -146,7 +146,7 @@
     border-radius: 4px;
   }
   
-  .category {
+  .success-category {
     font-size: 14px;
     color: var(--gold-accent);
     margin-top: 10px;
@@ -154,27 +154,27 @@
     text-transform: uppercase;
   }
   
-  .story-title {
+  .success-story-title {
     font-size: 28px;
     font-weight: bold;
     margin-top: 10px;
   }
   
   /* User & Share Section */
-  .testimonial-info {
+  .success-testimonial-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 15px;
   }
   
-  .testimonial-user {
+  .success-testimonial-user {
     display: flex;
     align-items: center;
     gap: 10px;
   }
   
-  .user-icon {
+  .success-user-icon {
     background: var(--gold-accent);
     color: var(--dark-gray);
     font-size: 20px;
@@ -186,19 +186,19 @@
     border-radius: 50%;
   }
   
-  .testimonial-user h5 {
+  .success-testimonial-user h5 {
     margin: 0;
     font-size: 16px;
     font-weight: bold;
   }
   
-  .testimonial-user p {
+  .success-testimonial-user p {
     margin: 0;
     font-size: 14px;
     color: var(--gold-accent);
   }
   
-  .share-icon {
+  .success-share-icon {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -208,7 +208,7 @@
     transition: transform 0.3s ease;
   }
   
-  .share-icon:hover {
+  .success-share-icon:hover {
     transform: scale(1.1);
   }
   .success-story-2 {
@@ -217,13 +217,13 @@
     text-align: center;
   }
   
-  .section-title-2 {
+  .success-section-title-2 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
   }
   
-  .slider-container-2 {
+  .success-slider-container-2 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -293,13 +293,13 @@
   /* SuccessStory.css */
 
 /* General Container Styling */
-.success-story-container {
+.success-story-container1 {
     padding: 50px 20px;
     background-color: #ffffff; /* White Background for Readability */
   }
   
   /* Section Title */
-  .success-story-container h2 {
+  .success-story-container1 h2 {
     font-size: 30px;
     font-weight: bold;
     text-align: center;
@@ -308,7 +308,7 @@
   }
   
   /* Card Styling */
-  .success-story-card {
+  .success-story-card1 {
     background: white;
     border-radius: 10px;
     padding: 20px;
@@ -316,13 +316,13 @@
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
   
-  .success-story-card:hover {
+  .success-story-card1:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
   }
   
   /* Profile Image */
-  .success-story-profile {
+  .success-story-profile1 {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -332,14 +332,14 @@
   }
   
   /* Card Header */
-  .success-story-header {
+  .success-story-header1 {
     display: flex;
     align-items: center;
     gap: 10px;
   }
   
   /* Name Styling */
-  .success-story-name {
+  .success-story-name1 {
     font-size: 18px;
     font-weight: bold;
     color: #333333; /* Dark Gray for Text */
@@ -347,7 +347,7 @@
   }
   
   /* Program Info */
-  .success-story-program {
+  .success-story-program1 {
     font-size: 14px;
     color: #666;
     margin: 0;

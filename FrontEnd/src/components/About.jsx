@@ -3,9 +3,62 @@ import { motion } from "framer-motion";
 import "../style/About.css";
 import learner from  "../images/learners.jpg";
 import contactImage from "../images/contactImage.png"
+import aboutImage from "../images/1.png"
 const About = () => {
   return (
     <>
+      <section className="about-container1">
+      <motion.div
+        className="about-content1"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <h1 className="about-title1">
+          Pioneering Excellence in{" "}
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }}
+          >
+            Global Education
+          </motion.span>
+        </h1>
+        <p className="about-description1">
+          Mackinlay Learning Hub is at the forefront of redefining professional 
+          education. Founded with a vision to cultivate intellectual brilliance and 
+          industry expertise, our institution stands as a beacon of academic 
+          excellence.
+        </p>
+        <p className="about-description1">
+          Our distinguished faculty comprises world-class educators, industry 
+          leaders, and thought pioneers who bring an unmatched depth of knowledge 
+          and mentorship to our learners.
+        </p>
+        <p className="about-description1">
+          Driven by innovation, we are committed to fostering a transformative 
+          learning experience that shapes the future of business and technology. 
+          Whether you are an aspiring leader or a seasoned professional, our 
+          programs are designed to accelerate your success.
+        </p>
+        <motion.button
+          className="about-btn1"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          Innovation. Excellence. Leadership.
+        </motion.button>
+      </motion.div>
+
+      <motion.div
+        className="about-image1"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <img src={aboutImage} alt="About Learning" />
+      </motion.div>
+    </section>
       <section className="about-section">
       <div className="overlay"></div> {/* Background overlay effect */}
       <div className="about-container">
