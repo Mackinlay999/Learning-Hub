@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
+// Blog
 function Blog() {
   return (
     <section className="blog-section">
