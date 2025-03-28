@@ -7,12 +7,14 @@ import NetworkingSession from './NetworkSession'
 import Testimonial from "./Testimonial"
 import CareerFooter from "./CareerFooter"
 import FilterForm from './FilterForm'
+import FacultyMentor from "./Faculty&Mentor"
 
 function CareerSupport() {
   return (
     <div>
     <FilterForm />
    <JobBoards />
+   <FacultyMentor />
     <CareerReportForm />
     <CareerCarousel />
     <CareerPrep />

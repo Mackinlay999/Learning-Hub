@@ -10,19 +10,23 @@ const CareerFooter = () => {
         <div className="footer-column">
           <h3>Trending Programs</h3>
           <ul>
-          <li>Data Science</li>
-            <li>Artificial Intelligence </li>
-            <li>Digital Marketing </li>
-            <li>Software Engineering </li>
-            <li>Cloud Computing </li>
-            <li>Design Development</li>
-            <li>Cyber Security</li>
-            <li>Management Skill</li>
+
+
+          
+
+
+
+          <li>HR Leadership & Talent Management</li>
+            <li>Strategic Sales & Marketing Excellence</li>
+            <li>Finance & Business Analytics Mastery </li>
+            <li>Corporate Leadership & Executive Education </li>
+            <li>AI-Driven HR & Workforce Transformation</li>
+            
           </ul>
         </div>
 
         {/* Column 2 - Browse Courses */}
-        <div className="footer-column">
+        {/* <div className="footer-column">
           <h3>Browse Progarms</h3>
           <ul>
             <li>HR Leadership & Talent Management</li>
@@ -34,7 +38,7 @@ const CareerFooter = () => {
             <li>Cyber Security Program</li>
             <li>Management Program</li>
           </ul>
-        </div>
+        </div> */}
 
         {/* Column 3 - Degrees & Quick Links */}
         <div className="footer-column">
@@ -47,7 +51,7 @@ const CareerFooter = () => {
           <h3>Quick Links</h3>
           <ul>
             <li>About Us</li>
-            <li>Careers at Great Learning</li>
+            <li>Careers at Mackinlay Learning Hub</li>
             <li>Grievance Redressal</li>
             <li>Contact Us</li>
           </ul>

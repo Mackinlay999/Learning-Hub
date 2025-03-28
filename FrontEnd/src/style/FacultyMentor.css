@@ -1,0 +1,60 @@
+/* FacultyMentors.css */
+.faculty-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .subtitle {
+    font-size: 1.5rem;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  .description {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 15px;
+    line-height: 1.6;
+  }
+  
+  .highlight {
+    font-size: 1.2rem;
+    font-weight: bold;
+  
+    background-color: #007bff !important;
+    color: #fff !important;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .title {
+      font-size: 1.75rem;
+    }
+  
+    .subtitle {
+      font-size: 1.25rem;
+    }
+  
+    .description {
+      font-size: 0.95rem;
+    }
+  
+    .highlight {
+      font-size: 1.1rem;
+    }
+  }
+  
