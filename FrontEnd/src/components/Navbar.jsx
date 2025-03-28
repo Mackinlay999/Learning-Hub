@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap"; // Added NavDropdown import
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Program from "./Program";
@@ -39,10 +39,25 @@ const NavBar = () => {
                     Explore Programs ⌄
                   </motion.button>
                 </Nav.Link>
-                <Nav.Link as={Link} to="/">Home</Nav.Link>
                 <Nav.Link as={Link} to="/career-support">Career Support</Nav.Link>
-                <Nav.Link as={Link} to="/about">About Us</Nav.Link>
-                <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+                <Nav.Link as={Link} to="/success-story">Success Stories</Nav.Link> {/* Fixed link */}
+                <Nav.Link as={Link} to="/enterprise">Enterprise</Nav.Link> {/* Fixed link */}
+                <Nav.Link as={Link} to="/for-recruiters">For Recruiters</Nav.Link> {/* Fixed link */}
+                
+                <NavDropdown title="More" id="more-dropdown">
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <NavDropdown.Item as={Link} to="/webinars">
+                      Free Counselling Webinars
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/blog">
+                      Blog & Training Program
+                    </NavDropdown.Item>
+                  </motion.div>
+                </NavDropdown>
               </Nav>
             </Navbar.Collapse>
 
