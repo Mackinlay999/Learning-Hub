@@ -44,4 +44,131 @@
     max-width: 500px;
     border-radius: 10px;
   }
+  .webinar-section2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 50px;
+    background-color: #0d47a1; /* Dark blue background */
+    color: white;
+  }
+  
+  /* Content Box */
+  .webinar-content2 {
+    max-width: 800px;
+  }
+  
+  .webinar-heading2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .webinar-text2 {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .webinar-heading2 {
+      font-size: 1.8rem;
+    }
+  
+    .webinar-text2 {
+      font-size: 1rem;
+    }
+  }
+  
+  .webinar-section333 {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: white;
+  }
+  
+  .webinar-heading333 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .webinar-container333 {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+  }
+  
+  .webinar-card333 {
+    background: white;
+    width: 320px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .webinar-image333 {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .webinar-info333 {
+    padding: 15px;
+  }
+  
+  .webinar-badge333 {
+    display: inline-block;
+    background: #00a651;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .webinar-title333 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .webinar-date333 {
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  
+  .webinar-speaker333 {
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+  
+  .webinar-role333 {
+    font-size: 0.85rem;
+    color: gray;
+  }
+  
+  .webinar-register333 {
+    display: block;
+    font-size: 1rem;
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  
+  .webinar-register333:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .webinar-container333 {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
   
