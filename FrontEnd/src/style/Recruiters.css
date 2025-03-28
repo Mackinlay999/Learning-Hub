@@ -1,0 +1,47 @@
+.recruiters-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    background-color: #f4f7fc;
+  }
+  
+  .recruiters-content {
+    max-width: 50%;
+  }
+  
+  .recruiters-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #003366;
+    margin-bottom: 20px;
+  }
+  
+  .recruiters-description {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .recruiters-btn {
+    background-color: #0073e6;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .recruiters-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .recruiters-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+  }
+  
