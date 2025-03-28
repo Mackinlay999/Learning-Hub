@@ -1,12 +1,12 @@
 import React from 'react'
-import GoogleMap from './GoogleMap'
+import CareerContact from "./CareerContact"
 
 function Contact() {
   return (
     <div>
      
 
-      <GoogleMap />
+      <CareerContact />
     </div>
    
   )
