@@ -58,8 +58,9 @@
   .networking-image img {
     /* width: 100%; */
     /* max-width: 400px; */
-    width:70%;
-    margin-left: 25px;
+    width: 500px;
+    height: 300px;
+    margin-right: 200px;
     border-radius: 10px;
   }
   
@@ -150,6 +151,14 @@
     .hackathon-content,
     .hackathon-image {
       width: 100%;
+    }
+    .networking-image img {
+      /* width: 100%; */
+      /* max-width: 400px; */
+      width: 300px;
+      height: 200px;
+     margin: 0 auto;
+      border-radius: 10px;
     }
   }
   

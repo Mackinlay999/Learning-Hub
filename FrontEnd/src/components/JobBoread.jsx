@@ -67,7 +67,7 @@ const JobBoards = () => {
 
         {/* Right Section - Image */}
         <div className="job-boards-image">
-          <img src="./img/Job-Board.png" alt="Job Boards Preview" />
+          <img src="https://i.pinimg.com/originals/07/33/ba/0733ba760b29378474dea0fdbcb97107.png" alt="Job Boards Preview" />
         </div>
       </div>
 

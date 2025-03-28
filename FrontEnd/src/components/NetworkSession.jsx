@@ -17,7 +17,7 @@ const NetworkingSession = () => {
         
       </div>
       <div className="networking-image">
-        <img src="./img/Team.png" alt="Networking Event" />
+        <img src="https://tse2.mm.bing.net/th?id=OIP.ra_a2rigyTHOYB1yL2y9uQHaEU&pid=Api&P=0&h=220" alt="Networking Event" />
       </div>
     </div>
 

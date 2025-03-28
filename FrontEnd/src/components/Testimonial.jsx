@@ -6,12 +6,15 @@ import "../style/Testimonial.css";
 const Testimonial = () => {
   return (
     <div className="testimonial-container">
+      {/* <div>
       <h2>Learner Testimonials</h2>
+      </div> */}
+      
 
       <div className="testimonial-card">
         {/* Left Section - Video Thumbnail */}
         <div className="testimonial-video">
-          <img src="./img/Learner Testimonials.png" alt="Testimonial Video" />
+          <img src="https://ds393qgzrxwzn.cloudfront.net/resize/c500x500/cat1/img/images/0/52ooj4559c.jpg" alt="Testimonial Video" />
           <div className="play-button">▶</div>
         </div>
 
