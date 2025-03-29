@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 70px;
-  background-color: #cfd1d4;
+  background-color: white;
 }
 
 .about-content1 {
@@ -51,7 +51,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ffffff; /* Fallback color */
+    background-color: white; /* Fallback color */
     overflow: hidden;
   }
   
@@ -96,7 +96,7 @@
   
   .about-text p {
     font-size: 1.1rem;
-    color: #FFFFFF;
+    color: white;
     line-height: 1.6;
   }
   
@@ -167,7 +167,7 @@
   
   /* Mission Section */
 .mission-section {
-    background-color: #cfd1d4; /* black background */
+    background-color: white; /* black background */
     padding: 80px 5%;
     display: flex;
     justify-content: center;
@@ -257,7 +257,7 @@
 }
 /* Contact Section */
 .contact-section {
-    background-color: #ffffff; /* Google Blue */
+    background-color: white; /* Google Blue */
     padding: 60px 5%;
     display: flex;
     justify-content: center;

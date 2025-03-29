@@ -4,6 +4,7 @@ import image3 from "../images/2.png";
 import "../style/Webinars.css";
 import video from "../images/video.jpg"
 const Webinars = () => {
+  
     const webinars = [
         {
           id: 1,

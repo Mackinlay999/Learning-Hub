@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 70px;
-  background-color:#cfd1d4;
+  background-color:white;
 }
 
 .home-content {
@@ -44,11 +44,12 @@
   max-width: 500px;
   border-radius: 10px;
 }
+/* Goal Section */
 
 .heading-container {
   text-align: center;
   padding: 50px 20px;
-  background-color: #cfd1d4; /* White background */
+  background-color: white; /* White background */
 }
 
 .subheading {
@@ -74,20 +75,37 @@
 }
 
 .mac-home-section {
-  padding: 80px 50px;
-  background-color: white; /* Light background */
+  display: flex;
+  justify-content: center;
+  padding: 70px;
+  background-color: white;
+}
+
+.mac-additional-content-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.mac-content {
+  flex: 1;
+  padding-right: 40px;
 }
 
 .mac-section-title {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: #be2929
+  color: #be2929;
+  margin-bottom: 20px;
 }
 
 .mac-section-description {
-  font-size: 1.1rem;
-  color: black;
-  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
 
 .mac-feature-list {
@@ -97,17 +115,20 @@
 }
 
 .mac-feature-list li {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #333;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .mac-explore-btn {
   background-color: #b30000;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
   border: none;
-  padding: 10px 20px;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
 }
 
 .mac-explore-btn:hover {
@@ -115,21 +136,74 @@
   transform: scale(1.05);
 }
 
+.mac-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
 .mac-additional-image {
-  max-width: 90%;
-  /* border-radius: 12px; */
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* Responsive Styles */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .mac-additional-content-container {
+    flex-direction: column;
     text-align: center;
-    padding: 30px 20px;
   }
 
-  .mac-additional-image {
-    margin-top: 20px;
+  .mac-content {
+    padding-right: 0;
+    margin-bottom: 30px;
+  }
+
+  .mac-image-container {
+    justify-content: center;
+  }
+}
+
+
+.statsContainer2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #fff;
+}
+
+.statBox2 {
+  flex: 1;
+  max-width: 250px;
+}
+
+.statNumber2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ff6200;
+  transition: transform 0.3s ease-in-out;
+}
+
+.statBox2:hover .statNumber2 {
+  transform: scale(1.1);
+}
+
+.statLabel2 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ff6200;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .statsContainer2 {
+    flex-direction: column;
+    gap: 20px;
   }
 }
 
@@ -243,7 +317,7 @@
 /* Ensure full-width background */
 .carousel-container {
   width: 100vw; /* Full viewport width */
-  background-color: #cfd1d4; /* Change this to any desired color */
+  background-color: white; /* Change this to any desired color */
   padding: 50px 0;
   text-align: center;
   position: relative;
@@ -414,203 +488,103 @@
   }
 }
 
-/* Testimonial Container */
-.testimonial-container {
-  margin-top: 50px;
+.testimonial-slider2 {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
   padding: 40px 20px;
-  background-color: #cfd1d4;
-  /* border-radius: 10px; */
-  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
-  display: flex;
-  justify-content: center;
 }
 
-/* Testimonial Slider */
-.testimonial-slider {
-  position: relative;
-  padding: 20px;
-  width: 80%; /* Ensures uniform width */
-  max-width: 900px;
+.swiper-container2 {
+  width: 100%;
 }
 
-/* Ensure All Slides Have Same Size */
-.swiper-slide {
+.testimonial-card2 {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100% !important; 
-  height: auto;
-  padding: 20px;
-}
-
-/* Testimonial Card (Horizontal Layout) */
-.testimonial-card {
-  background: #F7F7F7;
-  /* border-radius: 15px; */
-  padding: 30px;
-  display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  min-height: 250px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: 400px;
 }
 
-.testimonial-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* Testimonial Text */
-.testimonial-text {
+.testimonial-content2 {
   flex: 1;
-  padding: 20px;
+  padding-right: 40px;
 }
 
-/* Testimonial Quote */
-.testimonial-quote {
+.testimonial-heading2 {
   font-size: 24px;
   font-weight: bold;
-  color: #D32F2F;
-  font-style: italic;
+  color: #222;
+  margin-bottom: 16px;
 }
 
-/* Testimonial Description */
-.testimonial-description {
+.testimonial-desc2 {
   font-size: 16px;
-  color: #333333;
-  margin-top: 10px;
+  color: #666;
+  margin-bottom: 20px;
 }
 
-/* Testimonial Name */
-.testimonial-name {
+.testimonial-author2 {
   font-weight: bold;
-  font-size: 18px;
-  margin-top: 10px;
-  color: #000000;
-}
-
-/* Testimonial Program */
-.testimonial-program {
   font-size: 14px;
-  color: #666666;
+  color: #333;
 }
 
-/* Testimonial Image */
-.testimonial-image {
-  flex: 0.4;
+.testimonial-author2 span {
+  display: block;
+  font-size: 12px;
+  color: #777;
+}
+
+.testimonial-image2 {
+  flex: 1;
   text-align: center;
-}
-
-/* Image Wrapper */
-.testimonial-img-wrapper {
   position: relative;
-  display: inline-block;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Testimonial Image */
-.testimonial-img-wrapper img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
+.testimonial-image2 img {
+  width: 280px;
+  height: auto;
+  border-radius: 10px;
 }
 
-/* Watch Story Button */
-.watch-story-btn {
+.watch-story2 {
   position: absolute;
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
-  background: #D32F2F;
+  background: rgba(0, 0, 0, 0.7);
   color: white;
-  font-size: 14px;
+  padding: 8px 16px;
   border: none;
-  padding: 8px 12px;
   border-radius: 20px;
-  transition: background 0.3s ease-in-out;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-.watch-story-btn:hover {
-  background: #FFC107;
-  color: #000;
+.watch-story2:hover {
+  background: black;
 }
 
-/* Navigation Buttons */
 .swiper-button-prev,
 .swiper-button-next {
-  color: white;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 10px;
-  border-radius: 50%;
-  transition: background 0.3s;
-}
-
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-  background: rgba(0, 0, 0, 0.5);
-}
-
-/* Pagination Bullets */
-.swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background: #fff;
-  opacity: 0.7;
+  color: #333 !important;
 }
 
 .swiper-pagination-bullet-active {
-  background: #FFC107;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .testimonial-card {
-    flex-direction: column;
-    text-align: center;
-    min-height: auto;
-  }
-
-  .testimonial-text {
-    padding: 15px;
-  }
-
-  .testimonial-quote {
-    font-size: 20px;
-  }
-
-  .testimonial-description {
-    font-size: 14px;
-  }
-
-  .testimonial-name {
-    font-size: 16px;
-  }
-
-  .testimonial-image {
-    margin-top: 15px;
-  }
-
-  .testimonial-img-wrapper img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .watch-story-btn {
-    font-size: 12px;
-    padding: 6px 10px;
-  }
+  background: #007bff !important;
 }
 
 /* Features Section */
 .features-section {
   text-align: center;
   padding: 60px 20px;
-  background-color: #ffffff;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -636,7 +610,7 @@
 
 /* Feature Content - Consistent Sizing */
 .feature-content {
-  background: #ffffff;
+  background: white;
   /* border-radius: 10px; */
   padding: 20px;
   text-align: left;
@@ -707,7 +681,7 @@
 /* Skill Section */
 .skills-section {
   padding: 60px 20px;
-  background: #cfd1d4; /* White Background */
+  background: white; /* White Background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -934,7 +908,7 @@
 
 /* Entire Section with White Background */
 .questions-section {
-  background-color: #cfd1d4;
+  background-color: white;
   /* border-radius: 10px; */
   /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
 }
@@ -957,7 +931,7 @@
 
 /* Questions Box */
 .questions-box {
-  background: #cfd1d4; /* Gold Accent */
+  background: white; /* Gold Accent */
   padding: 20px;
   /* border-radius: 10px; */
   text-align: center;
@@ -1012,7 +986,7 @@
 .get-started-section {
   /* margin-top: 40px; */
   text-align: center;
-  background-color: #cfd1d4; /* White Background */
+  background-color: white; /* White Background */
   padding: 40px 20px;
   /* border-radius: 10px; */
   /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); */
@@ -1067,7 +1041,7 @@
 .home-container {
   width: 100vw;
   padding: 50px 20px;
-  background-color: #FFFFFF; /* Light Gray Background */
+  background-color: white; /* Light Gray Background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1076,7 +1050,7 @@
 
 /* Sidebar */
 .sidebar {
-  background: #FFFFFF; /* White Background */
+  background: white; /* White Background */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -1170,7 +1144,7 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   overflow: hidden;
-  background-color: #ffffff; /* White Background */
+  background-color: white; /* White Background */
   width: 300px;   /* Fixed width */
   height: 400px;  /* Fixed height */
   padding: 20px;  /* Padding around content */

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
@@ -81,61 +81,82 @@ const Home = () => {
     },
   ];
   const [selectedProgram, setSelectedProgram] = useState("Popular programs");
+  const [students, setStudents] = useState(1);
+
+  useEffect(() => {
+    let count = 1;
+    const interval = setInterval(() => {
+      if (count >= 100) {
+        clearInterval(interval);
+      } else {
+        count++;
+        setStudents(count);
+      }
+    }, 50);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <>
       {/* Mackinlay */}
       <motion.div className="home-container1">
-      <motion.div
-        className="home-content"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <h1 className="home-title">
-          Mackinlay Learning Hub:{" "}
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.5 }}
-          >
-            Transforming Ambition into Excellence
-          </motion.span>
-        </h1>
-        <p className="home-description">
-          At Mackinlay Learning Hub, we redefine the future of education by merging 
-          academic excellence with real-world expertise. Established in 2024, our 
-          institution is committed to shaping industry-ready professionals in HR, 
-          Sales, Marketing, Finance, and Business Analytics.
-        </p>
-        <p className="home-description">
-          We don’t just educate—we elevate. Our programs integrate cutting-edge 
-          methodologies, expert-led instruction, and hands-on learning experiences 
-          that bridge the gap between ambition and achievement. With strong 
-          industry partnerships and placement support, Mackinlay Learning Hub is 
-          your gateway to unparalleled career success.
-        </p>
-        <motion.button
-          className="learn-more-btn"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+        <motion.div
+          className="home-content"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
         >
-          Join Us. Lead the Future.
-        </motion.button>
-      </motion.div>
+          <h1 className="home-title">
+            Mackinlay Learning Hub:{" "}
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1.5 }}
+            >
+              Transforming Ambition into Excellence
+            </motion.span>
+          </h1>
+          <p className="home-description">
+            At Mackinlay Learning Hub, we redefine the future of education by
+            merging academic excellence with real-world expertise. Established
+            in 2024, our institution is committed to shaping industry-ready
+            professionals in HR, Sales, Marketing, Finance, and Business
+            Analytics.
+          </p>
+          <p className="home-description">
+            We don’t just educate—we elevate. Our programs integrate
+            cutting-edge methodologies, expert-led instruction, and hands-on
+            learning experiences that bridge the gap between ambition and
+            achievement. With strong industry partnerships and placement
+            support, Mackinlay Learning Hub is your gateway to unparalleled
+            career success.
+          </p>
+          <motion.button
+            className="learn-more-btn"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            Join Us. Lead the Future.
+          </motion.button>
+        </motion.div>
 
-      <motion.div
-        className="home-image"
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <img src={slider1} alt="Learning Hub" />
+        <motion.div
+          className="home-image"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <img src={slider1} alt="Learning Hub" />
+        </motion.div>
       </motion.div>
-    </motion.div>
-      <motion.div fluid className="mac-home-section">
-        <Row className="align-items-center mac-additional-content-container">
+      <motion.div className="mac-home-section">
+        <motion.div
+          className="mac-additional-content-container"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+        >
           {/* Left Content */}
-          <Col md={6} className="mac-text-content">
+          <div className="mac-content">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -185,10 +206,10 @@ const Home = () => {
                 Discover More
               </Button>
             </motion.div>
-          </Col>
+          </div>
 
           {/* Right Image */}
-          <Col md={6} className="text-center">
+          <div className="mac-image-container">
             <motion.img
               src={Explore}
               alt="Explore Programs"
@@ -197,30 +218,11 @@ const Home = () => {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             />
-          </Col>
-        </Row>
+          </div>
+        </motion.div>
       </motion.div>
-      {/* Heading */}
-      <div className="heading-container">
-        <motion.p
-          className="subheading"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          YOUR GOALS ARE OUR GOALS
-        </motion.p>
 
-        <motion.h1
-          className="main-heading"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        >
-          Invest in yourself today. Unlock <br />
-          success for a lifetime.
-        </motion.h1>
-      </div>
+      {/* Heading */}
       {/* Carousel Section - Moved to Top */}
       {/* <motion.div
         className="carousel-container"
@@ -266,7 +268,7 @@ const Home = () => {
           </SwiperSlide>
         </Swiper>
       </motion.div> */}
-      
+
       {/* Program Section */}
       <motion.div
         className="home-container"
@@ -340,90 +342,120 @@ const Home = () => {
           </Col>
         </Row>
       </motion.div>
-      {/* Testimonial Section */}
-      <motion.div
-        className="testimonial-container"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6 }}
+      {/* Goal Section */}
+      <div className="heading-container">
+        <motion.p
+          className="subheading"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          YOUR GOALS ARE OUR GOALS
+        </motion.p>
+
+        <motion.h1
+          className="main-heading"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        >
+          Invest in yourself today. Unlock <br />
+          success for a lifetime.
+        </motion.h1>
+      </div>
+      <div className="statsContainer2">
+        <motion.div
+          className="statBox2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <h2 className="statNumber2">{students}</h2>
+          <p className="statLabel2">STUDENTS AND ALUMNI</p>
+        </motion.div>
+
+        <motion.div
+          className="statBox2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
+          <h2 className="statNumber2">4.6/5</h2>
+          <p className="statLabel2">END PROGRAM RATING</p>
+        </motion.div>
+
+        {/* <motion.div
+        className="statBox2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.6 }}
       >
+        <h2 className="statNumber2">50%</h2>
+        <p className="statLabel2">AVG. HIKE POST PROGRAM*</p>
+      </motion.div> */}
+
+        <motion.div
+          className="statBox2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.9 }}
+        >
+          <h2 className="statNumber2">1000+</h2>
+          <p className="statLabel2">HIRING COMPANIES*</p>
+        </motion.div>
+      </div>
+      {/* Testimonial Section */}
+      <div className="testimonial-slider2">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           navigation
-          spaceBetween={30} // Ensures spacing between slides
-          slidesPerView={1} // Only one slide at a time
-          centeredSlides={true} // Centers slides
           pagination={{ clickable: true }}
-          autoplay={{ delay: 5000 }}
-          loop
-          className="testimonial-slider"
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          loop={true}
+          className="swiper-container2"
         >
-          {testimonials.map((testimonial, index) => (
+          {testimonials.map((item, index) => (
             <SwiperSlide key={index}>
               <motion.div
-                className="testimonial-card"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
+                className="testimonial-card2"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                {/* Testimonial Text Section */}
                 <motion.div
-                  className="testimonial-text"
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  className="testimonial-content2"
+                  initial={{ x: -50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  <motion.h2
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="testimonial-quote"
-                  >
-                    "{testimonial.quote}"
-                  </motion.h2>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="testimonial-description"
-                  >
-                    {testimonial.description}
-                  </motion.p>
-                  <motion.h5
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="testimonial-name"
-                  >
-                    {testimonial.name}
-                  </motion.h5>
-                  <p className="testimonial-program">{testimonial.program}</p>
+                  <h2 className="testimonial-heading2">{item.quote}</h2>
+                  <p className="testimonial-desc2">{item.description}</p>
+                  <div className="testimonial-author2">
+                    <strong>{item.name}</strong>
+                    <span>{item.title}</span>
+                  </div>
                 </motion.div>
 
-                {/* Testimonial Image Section */}
                 <motion.div
-                  className="testimonial-image"
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
+                  className="testimonial-image2"
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="testimonial-img-wrapper"
+                  <img src={item.image} alt={item.name} />
+                  <motion.button
+                    className="watch-story2"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <img src={testimonial.image} alt={testimonial.name} />
-                    <Button className="watch-story-btn" variant="light">
-                      ▶ Watch Story
-                    </Button>
-                  </motion.div>
+                    ▶ Watch Story
+                  </motion.button>
                 </motion.div>
               </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
-      </motion.div>
+      </div>
       {/* Feature Section */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
