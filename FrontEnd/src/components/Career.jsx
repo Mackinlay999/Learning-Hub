@@ -9,7 +9,9 @@ import CareerFooter from "./CareerFooter"
 import FilterForm from './FilterForm'
 import FacultyMentor from "./Faculty&Mentor"
 import CareerSupport from "./CareerSupport"
-
+import ProgramTraning from "./ProgramTraning"
+import AdmissionsEnrollment from "./AdmissionsEnrollment"
+import CorporateTraining from "./CorporateTraining"
 function Career() {
   return (
     <div>
@@ -20,6 +22,9 @@ function Career() {
    <FacultyMentor />
     <CareerReportForm />
     {/* <CareerCarousel /> */}
+    <ProgramTraning />
+    < AdmissionsEnrollment />
+    <CorporateTraining />
     <CareerPrep />
     <NetworkingSession />
     <Testimonial />

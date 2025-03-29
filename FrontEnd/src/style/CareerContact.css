@@ -11,6 +11,7 @@
     justify-content: center;
     margin-bottom: 20px;
   }
+  t
   
   .map-image {
     width: 80%;
@@ -70,7 +71,8 @@
   }
   
   .image-content {
-    max-width: 400px;
+    width: 900px;
+    /* max-width: 00px; */
   }
   
   .form-image {
@@ -143,7 +145,7 @@
   
   .map-image {
     width: 80%;
-    max-width: 600px;
+    max-width: 700px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
@@ -198,6 +200,7 @@
     border-radius: 5px;
   }
   
+  
   button {
     margin-top: 15px;
     padding: 10px;
@@ -234,5 +237,13 @@
     color: white;
     text-align: center;
   }
-  
+  .content-image{
+    width: 550px;
+  }
+
+  @media (max-width:764px){
+    .content-image{
+      width: 400px;
+    }
+  }
   

@@ -2,7 +2,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #cfd1d4;
+    /* background-color: #cfd1d4; */
+    
+    background-color: #fff;
     padding: 30px;
     border-radius: 10px;
   }
@@ -13,7 +15,8 @@
 
   }
   .network{
-    background-color: #e8e8f9;
+   
+    background-color: #fff;
   }
  
   
@@ -98,7 +101,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #cfd1d4;
+    background-color: #fff;
     padding: 30px;
     border-radius: 10px;
     gap: 20px;

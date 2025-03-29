@@ -1,6 +1,8 @@
 const express = require("express");
 const { uploadFile } = require("../Controller/FileUplode");
 const contactController = require("../Controller/Contact");
+const  login =require("../Controller/login");
+const  auth  = require("../Utils/Auth");
 
 
 const upload = require("../Utils/Multer");
@@ -14,5 +16,19 @@ router.post("/upload", upload.single("file"), uploadFile);
 
 
 router.post("/contact", contactController.submitContactForm);
+
+
+// Userr
+
+
+router.post("/register", login.register)
+router.get("/admin", login.admin)
+router.post("/login", login.login)
+router.post("/logout", login.logout)
+router.post("/forgetpassword", login.forgetpassword)
+router.post("/setNewPassword", login.setNewPassword)
+
+
+router.get("/me" ,  auth.authverify, login.me)
 
 module.exports = router;

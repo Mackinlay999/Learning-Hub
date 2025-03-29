@@ -1,0 +1,177 @@
+/* 
+.programs-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+  }
+  
+  .container {
+    width: 80%;
+  }
+  
+  .programs-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  
+
+  .programs-text {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .programs-image {
+    flex: 1;
+    display: flex;
+    justify-content: start;
+    margin-right: 20px;
+    width: 600px;
+    height: 300px;
+    
+  }
+  
+  .programs-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    
+    border-radius: 10px;
+   
+  }
+  
+
+  @media (max-width: 768px) {
+    .programs-content {
+      text-align: center; 
+    }
+  
+    .programs-image {
+      justify-content: center;
+    }
+  
+    .programs-text {
+      text-align: center;
+    }
+  
+    .programs-list {
+      text-align: left;
+      display: inline-block;
+    }
+  }
+  
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .subtitle {
+    font-size: 20px;
+    color: #666;
+  }
+  
+  .description {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .programs-list {
+    padding-left: 20px;
+  }
+  
+  .highlight {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0073e6;
+  }
+    */
+
+
+    .programs-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 0;
+      }
+      
+      .container {
+        width: 80%;
+      }
+      
+      /* Default: Image and Text Side by Side */
+      .programs-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+      }
+      
+      /* Text & Image Styling */
+      .programs-text {
+        flex: 1;
+        text-align: left;
+      }
+      
+      .programs-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+      }
+      
+      .programs-image img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border-radius: 10px;
+      }
+      
+      /* Mobile View: Image on Top, Text Below */
+      @media (max-width: 768px) {
+        .programs-content {
+          flex-direction: column; /* Stack Image and Text */
+          text-align: center;
+        }
+      
+        .programs-image {
+          order: -1; /* Move Image to the Top */
+          justify-content: center;
+        }
+      
+        .programs-text {
+          text-align: center;
+        }
+      
+        .programs-list {
+          text-align: left;
+          display: inline-block;
+        }
+      }
+      
+      /* Typography */
+      .title {
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .subtitle {
+        font-size: 20px;
+        color: #666;
+      }
+      
+      .description {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      
+      .programs-list {
+        padding-left: 20px;
+      }
+      
+      .highlight {
+        font-size: 18px;
+        font-weight: bold;
+        color: #0073e6;
+      }
+      

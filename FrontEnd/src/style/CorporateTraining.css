@@ -1,0 +1,137 @@
+/* .corporate-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+  }
+  
+  .container {
+    width: 80%;
+  }
+  
+  .corporate-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  
+  .corporate-text {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .corporate-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .corporate-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .subtitle {
+    font-size: 20px;
+    color: #666;
+  }
+  
+  .description {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .highlight {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0073e6;
+  }
+  
+
+
+    */
+
+    .corporate-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 0;
+      }
+      
+      .container {
+        width: 80%;
+      }
+      
+      .corporate-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+      }
+      
+      /* Default: Image on Left, Content on Right */
+      .corporate-image {
+        flex: 1;
+        display: flex;
+        justify-content: flex-start;
+        width: 600px;
+    height: 300px;
+      }
+      
+      .corporate-image img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border-radius: 10px;
+      }
+      
+      .corporate-text {
+        flex: 1;
+        text-align: left;
+      }
+      
+      /* Responsive: Stack Image on Top for Mobile */
+      @media (max-width: 768px) {
+        .corporate-content {
+          flex-direction: column; /* Stack elements */
+          text-align: center; /* Center text */
+        }
+      
+        .corporate-image {
+          justify-content: center;
+        }
+      
+        .corporate-text {
+          text-align: center;
+        }
+      }
+      
+      .title {
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .subtitle {
+        font-size: 20px;
+        color: #666;
+      }
+      
+      .description {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      
+      .highlight {
+        font-size: 18px;
+        font-weight: bold;
+        color: #0073e6;
+      }
+      
