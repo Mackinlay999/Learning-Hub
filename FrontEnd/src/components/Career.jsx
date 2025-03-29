@@ -12,10 +12,12 @@ import CareerSupport from "./CareerSupport"
 import ProgramTraning from "./ProgramTraning"
 import AdmissionsEnrollment from "./AdmissionsEnrollment"
 import CorporateTraining from "./CorporateTraining"
+
 function Career() {
   return (
     <div>
       <CareerSupport />
+    
         
     <FilterForm />
    <JobBoards />

@@ -34,7 +34,7 @@ const login = {
             
             
          } catch (err) {
-            res.status(400).json({message:err.meaasge})
+            res.status(400).json({message:err.message})
          }
     },
     admin : async(req,res)=>{
@@ -53,53 +53,7 @@ const login = {
         
     },
     
-    // login : async (req,res)=>{
-
-    //     try {
-    //         console.log("login");
-
-    //         const {email ,password} = req.body
-    
-    //     const verifyuser = await user.findOne({email:email})
-
-    //     if(!verifyuser){
-    //       return  res.status(400).json({ message:"This is a new user"})
-
-
-    //     }
-    //     if (!verifyUser.password) {
-    //       return res.status(500).json({ message: "User record is missing a password" });
-    //   }
-
-        
-
-    //     const uniquepassword = await bcrypt.compare(password, verifyuser.password)
-
-    //     if(!uniquepassword){
-    //       return   res.status(400).json({meaasge:"wrong password"})
-    //     }
-
-    //     const token =  jwt.sign({id : verifyuser._id } ,process.env.JWT_SECRET)
-
-      
-         
-
-    //     // res.cookie("token", token , {httpOnly :true})
-    //     res.cookie('token', token, {
-    //       httpOnly: true,
-    //       secure: true, // Ensure cookies are secure in production
-    //       sameSite: 'none', // Required for cross-origin requests
-    //     });
-
-
-        
-         
-    //      return res.status(200).json({message :" login successfull"})
-
-    //     } catch (err) {
-    //        res.status(400).json({message:err.message})
-    //     }
-    // },
+ 
 
     login : async (req, res) => {
       try {
@@ -192,6 +146,7 @@ const login = {
     
       const {email} =req.body
       const  checkemail = await user.findOne({email:email})
+      console.log("User found:", checkemail);
 
       if(!checkemail){
         return res.status(400).json({mesage:"user not found"})
@@ -213,14 +168,14 @@ const login = {
       const transpoter  =nodemailer.createTransport({
         service : "gmail",
         auth :{
-          user :process.env.gmail,
-          pass :process.env.password
+          user :process.env.EMAIL,
+          pass :process.env.EMAIL_PASSWORD
         }
 
       })
 
       const composeemail = {
-       from :process.env.gmail,
+       from :process.env.EMAIL,
        to : checkemail.email,
        subject :"password reset ",
        text :`${token}`,

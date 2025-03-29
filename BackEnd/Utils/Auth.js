@@ -13,7 +13,7 @@ const Auth = {
       return   res.status(400).json({message:"unauthorized"})
     }
 
-    const decode = jwt.verify(token ,process.env.jwt_secert)
+    const decode = jwt.verify(token ,process.env.JWT_SECRET )
 
     
     
