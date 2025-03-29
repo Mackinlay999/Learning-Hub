@@ -1,9 +1,7 @@
-<<<<<<< HEAD
 
-import React, { useState } from "react";
-=======
+
 import React, { useState, useEffect } from "react";
->>>>>>> marcus
+
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
