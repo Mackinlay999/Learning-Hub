@@ -548,7 +548,7 @@
 }
 
 .testimonial-image2 img {
-  width: 280px;
+  width: 100%;
   height: auto;
   border-radius: 10px;
 }
@@ -627,7 +627,7 @@
 /* Feature Image */
 .feature-image {
   width: 100%;
-  height: 180px; /* Fixed Image Height */
+  height: 290px; /* Fixed Image Height */
   object-fit: cover; /* Ensuring Images Fill the Space Properly */
   /* border-radius: 10px; */
   margin-bottom: 15px;
@@ -824,14 +824,15 @@
 
 /* General Styles */
 .course-section {
-  background: white; /* White background for readability */
-  /* border-radius: 15px; */
+  background: white;
+  border-radius: 15px;
   padding: 40px;
   display: flex;
   align-items: center;
-  flex-direction: row; /* Horizontal Layout */
+  flex-direction: row;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
+
 }
 
 .course-section:hover {
@@ -1126,29 +1127,37 @@
   color: #333333; /* Dark Gray */
 }
 
-/* Course Cards */
+/* Updated Course Card */
 .course-card {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensure content fills available space */
+  align-items: center;
+  text-align: center;
+  padding: 15px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
+
+/* Card Body Optimization */
+.course-card-body1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distributes space */
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  border: none;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+}
+
 
 /* Hover Effect */
 .course-card:hover {
   transform: translateY(-5px);
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Card Body */
-.course-card-body1 {
-  border: none;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: white; /* White Background */
-  width: 300px;   /* Fixed width */
-  height: 400px;  /* Fixed height */
-  padding: 20px;  /* Padding around content */
-  box-sizing: border-box; /* Include padding in width/height */
 }
 
 
@@ -1173,14 +1182,15 @@
 .course-title {
   font-size: 18px;
   font-weight: bold;
-  color: #D32F2F; /* Primary Red */
-  margin-top: 5px;
+  color: #D32F2F;
+  margin-top: 10px;
 }
 
 /* Course Duration */
 .course-duration {
   font-size: 14px;
-  color: #333333; /* Dark Gray */
+  color: #333333;
+  margin-bottom: 15px; /* Adjust spacing */
 }
 
 /* Badge */
@@ -1198,17 +1208,20 @@
 
 /* View Program Link */
 .view-program {
-  display: block;
-  color: #D32F2F; /* Primary Red */
+  width: 100%;
+  padding: 10px;
+  background: #D32F2F;
+  color: white;
   font-weight: bold;
-  text-decoration: none;
-  margin-top: 10px;
-  transition: color 0.3s ease-in-out;
+  text-align: center;
+  border-radius: 5px;
+  transition: background 0.3s;
 }
 
+
 .view-program:hover {
-  text-decoration: underline;
-  color: #B71C1C; /* Slightly darker red for hover */
+  background: #B71C1C;
+  text-decoration: none;
 }
 
 /* Responsive Layout */

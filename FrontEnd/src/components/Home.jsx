@@ -14,13 +14,17 @@ import "../style/Home.css";
 import slider1 from "../images/1.png";
 import slider2 from "../images/2.png";
 import slider3 from "../images/3.png";
-import hrImg from "../images/hr.png";
-import marketingImg from "../images/marketing.png";
-import SalesImg from "../images/sales.png";
-import BusinessImg from "../images/business.png";
-import financeImg from "../images/finance.png";
+import hrImg from "../images/p1.png";
+import marketingImg from "../images/p2.png";
+import SalesImg from "../images/p3.png";
+import BusinessImg from "../images/p4.png";
+import financeImg from "../images/p5.png";
 import Explore from "../images/explore-banner.png";
-import video from "../images/video.jpg";
+import video from "../images/s1.png";
+import feature1 from "../images/f1.png";
+import feature2 from "../images/f2.png";
+import feature3 from "../images/f3.png";
+import feature4 from "../images/f4.png";
 const Home = () => {
   const programs = [
     { id: 1, name: "HR", icon: "👥", image: hrImg },
@@ -35,28 +39,28 @@ const Home = () => {
       subtitle: "THE BEST-IN-CLASS INSTRUCTORS",
       description:
         "Interact with and learn from esteemed professors who’ve taught some of today’s greatest minds in the fields of technology, business, and beyond.",
-      image: video,
+      image: feature1,
     },
     {
       title: "Industry experts who already work in your desired field",
       subtitle: "EXPERIENCED INDUSTRY MENTORS",
       description:
         "Great Learning programs go beyond theory. Our network of professional mentors guide and support you, helping you to land the job and achieve remarkable success.",
-      image: video,
+      image: feature2,
     },
     {
       title: "Hands-on projects to showcase your new knowledge",
       subtitle: "THE PROJECTS & TEAMWORK",
       description:
         "Unlike self-learn online programs, Great Learning provides you with opportunities to collaborate with your peers and industry experts on portfolio-building projects.",
-      image: video,
+      image: feature3,
     },
     {
       title: "Resume Building & Interview Prep Sessions",
       subtitle: "DEDICATED CAREER SUPPORT",
       description:
         "Get access to job boards and experts who guide you with resumes, e-portfolios, LinkedIn reviews, and mock interviews.",
-      image: video,
+      image: feature4,
     },
   ];
   const testimonials = [
@@ -211,7 +215,7 @@ const Home = () => {
           {/* Right Image */}
           <div className="mac-image-container">
             <motion.img
-              src={Explore}
+              src={slider3}
               alt="Explore Programs"
               className="mac-additional-image"
               initial={{ scale: 0.9, opacity: 0 }}
@@ -565,11 +569,9 @@ const Home = () => {
       {/* Contact Section */}
       <motion.div>
         {/* Section 1: Free Programs */}
-        <motion.div
+        <Container
           className="course-section align-items-center"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          
         >
           <Row className="align-items-center">
             <Col md={6}>
@@ -608,7 +610,7 @@ const Home = () => {
               </motion.div>
             </Col>
           </Row>
-        </motion.div>
+        </Container>
       </motion.div>
       {/* Hero Section */}
       {/* <div className="hero-section">
