@@ -3,14 +3,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 70px;
-  background-color: #cfd1d4;
+  background-color: white;
 }
 .training-container{
     display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 70px;
-  background-color: #ffffff;
+  background-color: white;
 }
 
 .blog-content,
