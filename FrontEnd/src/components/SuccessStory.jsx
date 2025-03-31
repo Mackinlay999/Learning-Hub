@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { FaRegShareSquare, FaArrowLeft, FaArrowRight } from "react-icons/fa";  // ✅ Import this
 import "../style/SuccessStory.css";
 import video from "../images/s1.png";
-
+import video1 from "../images/s2.png";
 import success from "../images/2.png"
 // Sample Data (Replace with API or Dynamic Data)
 const successStories = [
@@ -16,7 +16,7 @@ const successStories = [
   {
     name: "Swati Kumari",
     title: "Post Graduate Diploma in Management",
-    image: video,
+    image: video1,
   },
   {
     name: "Smitha Seethapathi",
