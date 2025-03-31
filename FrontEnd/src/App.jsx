@@ -15,7 +15,7 @@ import BlogTraining from './components/BlogTraining'
 import Enterprise from './components/Enterprise'
 import Webinars from './components/Webinars'
 import Recruiters from './components/Recruiters'
-
+import Login from './components/Login'
 function App() {
   return (
     <Router>
@@ -32,6 +32,7 @@ function App() {
           <Route path="/webinars" element={<Webinars />} />
           <Route path="/L" element={<Webinars />} />
           <Route path="/for-recruiters" element={<Recruiters />} />
+          <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />{' '}
           {/* Catch-all route for 404 pages */}
         </Routes>
