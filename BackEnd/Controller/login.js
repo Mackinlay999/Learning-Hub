@@ -91,10 +91,15 @@ const login = {
           });
   
           // Set HTTP-only cookie
+          // res.cookie("token", token, {
+          //     httpOnly: true,
+          //     secure: process.env.NODE_ENV === "production",
+          //     sameSite: "none",
+          // });
           res.cookie("token", token, {
-              httpOnly: true,
-              secure: process.env.NODE_ENV === "production",
-              sameSite: "none",
+            httpOnly: true,
+            secure: false, // ✅ Set to false for local development
+            sameSite: "lax", // ✅ 'lax' is recommended for local development
           });
   
           return res.status(200).json({ message: "Login successful", token });

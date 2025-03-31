@@ -50,6 +50,36 @@ const LoginPortal = () => {
       }
     }
   };
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+    
+  //   if (!email) return alert("Please Enter a Valid Email");
+  //   if (!password) return alert("Please Enter Your Password");
+  
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:3000/api/login",
+  //       { email, password },
+  //       {
+  //         withCredentials: true, // ✅ Ensure credentials are included
+  //       }
+  //     );
+  
+  //     if (response.status === 200) {
+  //       alert("Login Successful");
+  //       navigate("/userdetails");
+  //     }
+  //   } catch (error) {
+  //     if (error.response) {
+  //       console.error("Login failed:", error.response.data);
+  //       alert(error.response.data.message || "Login failed. Please try again.");
+  //     } else {
+  //       console.error("Login error:", error);
+  //       alert("An error occurred. Please check your connection.");
+  //     }
+  //   }
+  // };
+  
 
   return (
     <div className="login-container">
