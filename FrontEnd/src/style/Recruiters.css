@@ -70,12 +70,16 @@
   .recruiters-description1 {
     font-size: 1.3rem;
     margin-bottom: 10px;
+    color: white;
+
   }
   
   .recruiters-highlight1 {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 20px;
+    color: white;
+
   }
   
   .recruiters-buttons1 {
@@ -130,6 +134,7 @@
   
   .recruiters-stats1 p {
     font-size: 1rem;
+    color: white;
   }
   
   .recruiters-image1 img {
