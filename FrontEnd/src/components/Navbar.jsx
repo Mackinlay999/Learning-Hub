@@ -48,30 +48,14 @@ const NavBar = () => {
                     Explore Programs ⌄
                   </motion.button>
                 </Nav.Link>
-<<<<<<< HEAD
+
                 <Nav.Link as={Link} to="/career-support">Career Support</Nav.Link>
                 <Nav.Link as={Link} to="/success-story">Success Stories</Nav.Link> {/* Fixed link */}
                 <Nav.Link as={Link} to="/enterprise">Enterprise</Nav.Link> {/* Fixed link */}
                 <Nav.Link as={Link} to="/for-recruiters">For Recruiters</Nav.Link> {/* Fixed link */}
                
-                
-=======
-                <Nav.Link as={Link} to="/career-support">
-                  Career Support
-                </Nav.Link>
-                <Nav.Link as={Link} to="/success-story">
-                  Success Stories
-                </Nav.Link>{" "}
-                {/* Fixed link */}
-                <Nav.Link as={Link} to="/enterprise">
-                  Enterprise
-                </Nav.Link>{" "}
-                {/* Fixed link */}
-                <Nav.Link as={Link} to="/for-recruiters">
-                  For Recruiters
-                </Nav.Link>{" "}
-                {/* Fixed link */}
->>>>>>> 590d421b3b6ce7f2fd9fe87daa7d36bcb4167022
+{/*                 */}
+
                 <NavDropdown title="More" id="more-dropdown">
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}

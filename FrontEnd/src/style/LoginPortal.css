@@ -1,79 +1,82 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  .wrapper {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  h2 {
-    margin-bottom: 20px;
-  }
-  
-  .l-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .l-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .l-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .l-options {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-  }
-  
-  .l-options a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .link {
-    color: #007bff;
-    cursor: pointer;
-  }
-  
-  .link:hover {
-    text-decoration: underline;
-  }
-  
-  .toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px 0;
-  }
-  
-  @media (max-width: 480px) {
-    .wrapper {
-      width: 90%;
-    }
-  }
-  
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.login-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.password-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.forgot-password {
+  background-color: #dc3545;
+  color: white;
+}
+
+.register-link {
+  margin-top: 10px;
+}
+
+.register-link span {
+  color: #007bff;
+  cursor: pointer;
+}

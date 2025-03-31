@@ -16,6 +16,8 @@ import Enterprise from './components/Enterprise'
 import Webinars from './components/Webinars'
 import Recruiters from './components/Recruiters'
 import Login from './components/Login'
+import Register from "./components/Register"
+import PasswordReset  from './components/PasswordReset'
 function App() {
   return (
     <Router>
@@ -33,6 +35,8 @@ function App() {
           <Route path="/L" element={<Webinars />} />
           <Route path="/for-recruiters" element={<Recruiters />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path='/PasswordReset' element={<PasswordReset />}> </Route>
           <Route path="*" element={<NotFound />} />{' '}
           {/* Catch-all route for 404 pages */}
         </Routes>
