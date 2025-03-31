@@ -3,7 +3,8 @@ import { Container, Row, Col, Button, Card  } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { FaRegShareSquare, FaArrowLeft, FaArrowRight } from "react-icons/fa";  // ✅ Import this
 import "../style/SuccessStory.css";
-import video from "../images/video.jpg";
+import video from "../images/s1.png";
+
 import success from "../images/2.png"
 // Sample Data (Replace with API or Dynamic Data)
 const successStories = [
