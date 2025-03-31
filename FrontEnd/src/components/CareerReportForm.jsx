@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import "../style/CareerReportForm.css";
 
@@ -9,7 +7,9 @@ const CareerReportForm = ({ isOpen, onClose }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-container">
-        <button className="close-btn" onClick={onClose}>×</button>
+        <button className="career-" onClick={onClose}>
+          ×
+        </button>
         <h2>Get a Copy of the Career Report</h2>
         <p>Fill in the below details to receive your copy</p>
 
@@ -43,10 +43,13 @@ const CareerReportForm = ({ isOpen, onClose }) => {
 
           <p className="consent-text">
             By submitting this form, you consent to our{" "}
-            <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a> and agree to be contacted via Email/Call/Whatsapp/SMS.
+            <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a> and
+            agree to be contacted via Email/Call/Whatsapp/SMS.
           </p>
 
-          <button type="submit" className="download-btn">Download Report</button>
+          <button type="submit" className="download-btn">
+            Download Report
+          </button>
         </form>
       </div>
     </div>
@@ -54,4 +57,3 @@ const CareerReportForm = ({ isOpen, onClose }) => {
 };
 
 export default CareerReportForm;
-

@@ -4,7 +4,7 @@ import LoginPortal from './LoginPortal'
 function Login() {
   return (
     <div>
-      <h1>login</h1>
+      {/* <h1>login</h1> */}
       <LoginPortal />
     </div>
   )

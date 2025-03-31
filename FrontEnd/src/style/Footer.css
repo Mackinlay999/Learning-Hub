@@ -126,21 +126,26 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
+  width: 50px; /* Ensure circular shape */
+  height: 50px;
   background: #D32F2F;
   color: white;
   border: none;
-  padding: 12px;
   border-radius: 50%;
   font-size: 22px;
   cursor: pointer;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
-  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .scroll-to-top:hover {
   background: #FFC107;
   transform: scale(1.1);
 }
+
 
 /* Responsive Footer */
 @media (max-width: 992px) {

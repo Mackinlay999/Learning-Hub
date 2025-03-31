@@ -71,7 +71,7 @@ const CareerContact = () => {
               <option value="Finance">Finance</option>
             </select>
 
-            <button type="submit">Submit</button>
+            <button className="career-button" type="submit">Submit</button>
           </form>
         </div>
       </div>

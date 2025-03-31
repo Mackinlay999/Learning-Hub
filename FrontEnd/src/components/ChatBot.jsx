@@ -55,7 +55,7 @@ const ChatBot = () => {
         >
           <div className="chatbot-header">
             <span>Chat Assistant</span>
-            <FaTimes className="close-btn" onClick={() => setIsOpen(false)} />
+            <FaTimes className="chat-close-btn" onClick={() => setIsOpen(false)} />
           </div>
 
           <div className="chatbot-messages">

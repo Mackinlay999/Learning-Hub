@@ -1,6 +1,6 @@
 
 /* Dropdown Menu */
-.dropdown-menu-container {
+.program-dropdown-menu-container {
     position: absolute;
     top: 100px;
     left: 0;
@@ -12,27 +12,27 @@
     z-index: 1000;
   }
   
-  .dropdown-content {
+  .program-dropdown-content {
     display: flex;
     justify-content: space-between;
     width: 100%;
   }
   
   /* Sidebar - Program Categories */
-  .sidebar {
+  .program-sidebar {
     width: 20%;
     border-right: 2px solid #eee;
     padding-right: 20px;
   }
   
-  .sidebar-title {
+  .program-sidebar-title {
     font-size: 1.2rem;
     font-weight: bold;
     color: #d32f2f;
     margin-bottom: 10px;
   }
   
-  .sidebar-item {
+  .program-sidebar-item {
     display: flex;
     align-items: center;
     padding: 10px;
@@ -42,7 +42,7 @@
     transition: background-color 0.3s ease;
   }
   
-  .sidebar-item:hover {
+  .program-sidebar-item:hover {
     background-color: #ffc107; /* Gold accent on hover */
     color: #000;
   }
@@ -74,15 +74,15 @@
   }
   
   /* Quick Links */
-  .quick-links {
+  .program-quick-links {
     width: 30%;
   }
   
-  .quick-links h5 {
+  .program-quick-links h5 {
     color: #d32f2f;
   }
   
-  .quick-link-item {
+  .program-quick-link-item {
     background: #f1f1f1;
     padding: 10px;
     border-radius: 5px;
@@ -90,13 +90,13 @@
     transition: background-color 0.3s ease;
   }
   
-  .quick-link-item:hover {
+  .program-quick-link-item:hover {
     background-color: #ffc107;
     color: #000;
   }
   
   /* Close Button */
-  .close-btn {
+  .program-close-btn1 {
     background: none;
     border: none;
     font-size: 1.2rem;
@@ -107,20 +107,20 @@
     right: 10px;
   }
   
-  .close-btn:hover {
+  .program-close-btn1:hover {
     color: #b71c1c;
   }
   
   /* Responsive Adjustments */
   @media (max-width: 768px) {
-    .dropdown-content {
+    .program-dropdown-content {
       flex-direction: column;
     }
-    .sidebar {
+    .program-sidebar {
       width: 100%;
       border-right: none;
     }
-    .programs, .quick-links {
+    .programs, .program-quick-links {
       width: 100%;
     }
     .program-grid {

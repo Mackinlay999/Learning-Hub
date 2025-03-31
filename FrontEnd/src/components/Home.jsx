@@ -1,7 +1,5 @@
-
-
 import React, { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
@@ -572,10 +570,7 @@ const Home = () => {
       {/* Contact Section */}
       <motion.div>
         {/* Section 1: Free Programs */}
-        <Container
-          className="course-section align-items-center"
-          
-        >
+        <Container className="course-section align-items-center">
           <Row className="align-items-center">
             <Col md={6}>
               <motion.img
@@ -717,13 +712,15 @@ const Home = () => {
                 <p>
                   Talk to our team, our program advisor will reach out to you.
                 </p>
-                <motion.button
-                  className="contact-btn"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Contact us 📞
-                </motion.button>
+                <Link to="/contact">
+                  <motion.button
+                    className="contact-btn2"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Contact us 📞
+                  </motion.button>
+                </Link>
               </motion.div>
             </Col>
           </Row>
@@ -751,7 +748,7 @@ const Home = () => {
             Join Our Exclusive Community of Future Leaders
           </h2>
           <motion.button
-            className="get-started-btn"
+            className="get-started-btn2"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >

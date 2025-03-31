@@ -1,6 +1,6 @@
 .contact-page {
-    font-family: Arial, sans-serif;
-    padding: 20px;
+    /* font-family: Arial, sans-serif; */
+    padding: 50px;
     text-align: center;
   
   }
@@ -11,7 +11,7 @@
     justify-content: center;
     margin-bottom: 20px;
   }
-  t
+
   
   .map-image {
     width: 80%;
@@ -102,7 +102,7 @@
     border-radius: 5px;
   }
   
-  button {
+  .career-button {
     margin-top: 15px;
     padding: 10px;
     background-color: #007bff;
@@ -112,7 +112,7 @@
     cursor: pointer;
   }
   
-  button:hover {
+  .career-button :hover {
     background-color: #0056b3;
   }
   
@@ -130,7 +130,7 @@
   /* GoogleMap.css */
 
 .contact-page {
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
     padding: 20px;
     text-align: center;
     background: #f4f4f4;
@@ -155,7 +155,7 @@
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 50px;
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -201,7 +201,7 @@
   }
   
   
-  button {
+  .career-button  {
     margin-top: 15px;
     padding: 10px;
     background-color: #007bff;
@@ -212,7 +212,7 @@
     transition: background 0.3s ease;
   }
   
-  button:hover {
+  .career-button :hover {
     background-color: #0056b3;
   }
   

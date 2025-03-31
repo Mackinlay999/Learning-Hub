@@ -63,17 +63,17 @@ const Program = ({ showDropdown, setShowDropdown }) => {
   return (
     showDropdown && (
       <motion.div
-        className="dropdown-menu-container"
+        className="program-dropdown-menu-container"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
       >
-        <div className="dropdown-content">
+        <div className="program-dropdown-content">
           {/* Sidebar */}
-          <div className="sidebar">
-            <h5 className="sidebar-title">Programs</h5>
+          <div className="program-sidebar">
+            <h5 className="program-sidebar-title">Programs</h5>
             <div
-              className="sidebar-item"
+              className="program-sidebar-item"
               onClick={() => setSelectedCategory('Popular')}
             >
               ⭐ Popular
@@ -81,7 +81,7 @@ const Program = ({ showDropdown, setShowDropdown }) => {
             {programCategories.map((category, index) => (
               <div
                 key={index}
-                className="sidebar-item"
+                className="program-sidebar-item"
                 onClick={() => setSelectedCategory(category.name)}
               >
                 {category.icon} <span>{category.name}</span>
@@ -108,16 +108,16 @@ const Program = ({ showDropdown, setShowDropdown }) => {
           </div>
 
           {/* Quick Links */}
-          <div className="quick-links">
+          <div className="program-quick-links">
             <h5>Quick Links</h5>
             {quickLinks.map((link, index) => (
-              <div key={index} className="quick-link-item">
+              <div key={index} className="program-quick-link-item">
                 <strong>{link.title}</strong>
                 <p>{link.desc}</p>
               </div>
             ))}
             <button
-              className="close-btn"
+              className="program-close-btn1"
               onClick={() => setShowDropdown(false)}
             >
               ✖

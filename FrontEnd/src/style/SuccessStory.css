@@ -56,14 +56,6 @@
   }
   
 
-.success-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 70px;
-  background-color: #cfd1d4;
-}
-
 .success-content1 {
   max-width: 50%;
 }

@@ -447,7 +447,7 @@
 }
 
 /* Call-to-Action Button */
-.get-started-btn {
+.get-started-btn2 {
   background-color: #D32F2F; /* Primary Red */
   color: white;
   font-size: 16px;
@@ -462,7 +462,7 @@
 }
 
 /* Hover Effect */
-.get-started-btn:hover {
+.get-started-btn2:hover {
   background-color: #FFC107; /* Gold Hover */
   color: #000;
   transform: scale(1.05);
@@ -482,7 +482,7 @@
     font-size: 14px;
   }
 
-  .get-started-btn {
+  .get-started-btn2 {
     font-size: 14px;
     padding: 10px 20px;
   }
@@ -958,7 +958,7 @@
 }
 
 /* Contact Button */
-.contact-btn {
+.contact-btn2 {
   background: #d32f2f; /* Primary Red */
   color: white;
   padding: 10px 20px;
@@ -970,7 +970,7 @@
   transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-.contact-btn:hover {
+.contact-btn2:hover {
   background: #b71c1c; /* Darker Red */
   transform: scale(1.05);
 }
@@ -994,9 +994,9 @@
 }
 
 /* Get Started Button */
-.get-started-btn {
-  background-color: #D32F2F; /* Primary Red */
-  color: white;
+.get-started-btn2 {
+  background-color: #D32F2F;
+  /*PrimaryRed*/color: white;
   border: none;
   padding: 12px 20px;
   font-size: 1rem;
@@ -1006,7 +1006,7 @@
   transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
-.get-started-btn:hover {
+.get-started-btn2:hover {
   background-color: #B71C1C; /* Darker Red */
   transform: scale(1.05);
 }
