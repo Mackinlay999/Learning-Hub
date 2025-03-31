@@ -2,7 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import image3 from "../images/2.png";
 import "../style/Webinars.css";
-import video from "../images/video.jpg"
+import video from "../images/s1.png";
+
 const Webinars = () => {
   
     const webinars = [
