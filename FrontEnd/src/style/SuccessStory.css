@@ -1,18 +1,12 @@
 :root {
-<<<<<<< HEAD
+
   --primary-red: #D32F2F;
   --dark-gray: #333333;
   --white: #FFFFFF;
   --gold-accent: #FFC107;
   --black: #000000;
 }
-=======
-    --primary-red: #D32F2F;
-    --dark-gray: #333333;
-    --white: #FFFFFF;
-    --gold-accent: #FFC107;
-    --black: #000000;
-  }
+
   
   .success-container {
     display: flex;
@@ -61,7 +55,6 @@
     border-radius: 10px;
   }
   
->>>>>>> marcus
 
 .success-container {
   display: flex;
