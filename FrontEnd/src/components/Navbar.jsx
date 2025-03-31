@@ -43,6 +43,7 @@ const NavBar = () => {
                 <Nav.Link as={Link} to="/success-story">Success Stories</Nav.Link> {/* Fixed link */}
                 <Nav.Link as={Link} to="/enterprise">Enterprise</Nav.Link> {/* Fixed link */}
                 <Nav.Link as={Link} to="/for-recruiters">For Recruiters</Nav.Link> {/* Fixed link */}
+               
                 
                 <NavDropdown title="More" id="more-dropdown">
                   <motion.div

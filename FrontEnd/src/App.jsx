@@ -30,6 +30,7 @@ function App() {
           <Route path="/blog-training" element={<BlogTraining />} />
           <Route path="/enterprise" element={<Enterprise />} />
           <Route path="/webinars" element={<Webinars />} />
+          <Route path="/L" element={<Webinars />} />
           <Route path="/for-recruiters" element={<Recruiters />} />
           <Route path="*" element={<NotFound />} />{' '}
           {/* Catch-all route for 404 pages */}
