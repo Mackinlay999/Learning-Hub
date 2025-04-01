@@ -86,7 +86,7 @@ const Home = () => {
     },
   ];
   
-  const [selectedProgram, setSelectedProgram] = useState("Popular programs");
+  const [selectedProgram, setSelectedProgram] = useState("Our training programs");
   const [students, setStudents] = useState(1);
 
   useEffect(() => {
@@ -294,7 +294,7 @@ const Home = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <Button className="sidebar-button">Popular programs</Button>
+              <Button className="sidebar-button">Our training programs</Button>
               <ul className="menu-list">
                 {programs.map((program) => (
                   <li
