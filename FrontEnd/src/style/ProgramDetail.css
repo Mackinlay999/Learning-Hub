@@ -1,0 +1,146 @@
+:root {
+    --primary-red: #D32F2F;
+    --dark-gray: #333333;
+    --white: #FFFFFF;
+    --gold-accent: #FFC107;
+}
+
+.program-detail-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+}
+
+/* Horizontal Layout */
+.program-content {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+/* Image Section */
+.program-banner img {
+    width: 350px;
+    border-radius: 10px;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+/* Details Section */
+.program-info {
+    flex: 1;
+}
+
+h2 {
+    color: var(--dark-gray);
+    margin-top: 10px;
+}
+
+.program-description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Features */
+.program-features div {
+    background: #f0f0f0;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+/* Application Deadline */
+.program-application-deadline {
+    background: var(--gold-accent);
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Buttons */
+.program-buttons {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.download-btn, .apply-btn {
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.download-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.apply-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.download-btn:hover {
+    background-color: #0056b3;
+}
+
+.apply-btn:hover {
+    background-color: #218838;
+}
+
+/* Contact Section */
+.program-contact {
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.program-contact a {
+    color: var(--dark-gray);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Back Button */
+.back-btn {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: var(--dark-gray);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: var(--primary-red);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .program-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .program-banner img {
+        width: 100%;
+        max-height: 200px;
+    }
+
+    .program-buttons {
+        flex-direction: column;
+    }
+}

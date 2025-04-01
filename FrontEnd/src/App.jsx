@@ -18,6 +18,8 @@ import Recruiters from './components/Recruiters'
 import Login from './components/Login'
 import Register from "./components/Register"
 import PasswordReset  from './components/PasswordReset'
+import ProgramDetail from './components/ProgramDetail'
+import Program from './components/Program' 
 function App() {
   return (
     <Router>
@@ -26,7 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/career-support" element={<Career />} />
-          {/* <Route path="/success-story" element={<SuccessStory />} /> */}
+          <Route path="/success-story" element={<SuccessStory />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog-training" element={<BlogTraining />} />
@@ -36,9 +38,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path='/PasswordReset' element={<PasswordReset />}> </Route>
-          <Route path='/Userdetails' element={<Userdetails />}> </Route>
-          
-
           <Route path="*" element={<NotFound />} />{' '}
           {/* Catch-all route for 404 pages */}
         </Routes>
