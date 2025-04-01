@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
@@ -29,11 +30,11 @@ import feature3 from "../images/f3.png";
 import feature4 from "../images/f4.png";
 const Home = () => {
   const programs = [
-    { id: 1, name: "HR", icon: "👥", image: hrImg },
-    { id: 2, name: "Marketing", icon: "📢", image: marketingImg },
-    { id: 3, name: "Sales", icon: "💰", image: SalesImg },
-    { id: 4, name: "Business Analyst", icon: "📊", image: BusinessImg },
-    { id: 5, name: "Finance", icon: "💵", image: financeImg },
+    { id: 1, title: "HR", icon: "👥", image: hrImg },
+    { id: 2, title: "Marketing", icon: "📢", image: marketingImg },
+    { id: 3, title: "Sales", icon: "💰", image: SalesImg },
+    { id: 4, title: "Business Analyst", icon: "📊", image: BusinessImg },
+    { id: 5, title: "Finance", icon: "💵", image: financeImg },
   ];
   const features = [
     {
@@ -88,6 +89,7 @@ const Home = () => {
   
   const [selectedProgram, setSelectedProgram] = useState("Our training programs");
   const [students, setStudents] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let count = 1;
@@ -299,11 +301,11 @@ const Home = () => {
                 {programs.map((program) => (
                   <li
                     key={program.id}
-                    onClick={() => setSelectedProgram(program.name)}
+                    onClick={() => setSelectedProgram(program.title)}
                     className="menu-item"
                   >
                     <span className="menu-icon">{program.icon}</span>
-                    <span className="menu-name">{program.name}</span>
+                    <span className="menu-name">{program.title}</span>
                   </li>
                 ))}
               </ul>
@@ -327,18 +329,24 @@ const Home = () => {
                         variant="top"
                         src={program.image}
                         className="course-img"
-                        alt={`${program.name} Program`}
+                        alt={`${program.title} Program`}
                       />
                       <Card.Body>
                         <Card.Title className="course-title">
-                          {program.name} Program
+                          {program.title} Program
                         </Card.Title>
                         <Card.Text className="course-duration">
                           3 Months · Online
                         </Card.Text>
-                        <Button variant="link" className="view-program">
-                          View Program
-                        </Button>
+                        <Button
+                        variant="link"
+                        className="view-program"
+                        onClick={() =>
+                          navigate(`/program/${program.title}`, { state: program }) // Navigate to ProgramDetail with program name
+                        }
+                      >
+                        View Program
+                      </Button>
                       </Card.Body>
                     </Card>
                   </motion.div>

@@ -32,7 +32,7 @@
 
 .nav-links .nav-link {
   color: black; /* Dark Gray Text */
-  font-weight: 500;
+  font-weight: 600;
   transition: color 0.3s ease-in-out;
   padding: 10px 15px;
   border-radius: 5px;

@@ -18,6 +18,8 @@ import Recruiters from './components/Recruiters'
 import Login from './components/Login'
 import Register from "./components/Register"
 import PasswordReset  from './components/PasswordReset'
+import ProgramDetail from './components/ProgramDetail'
+import Program from './components/Program' 
 function App() {
   return (
     <Router>
@@ -35,7 +37,9 @@ function App() {
           <Route path="/for-recruiters" element={<Recruiters />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path='/PasswordReset' element={<PasswordReset />}> </Route>
+          <Route path='/PasswordReset' element={<PasswordReset />} /> 
+          <Route path="/program" element={<Program />} />
+          <Route path="/program/:title" element={<ProgramDetail />} />
           <Route path="*" element={<NotFound />} />{' '}
           {/* Catch-all route for 404 pages */}
         </Routes>
