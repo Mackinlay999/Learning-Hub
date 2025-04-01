@@ -1,64 +1,64 @@
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import {
   FaUserTie,
   FaChartLine,
   FaShoppingCart,
   FaBusinessTime,
   FaMoneyBillWave,
-} from 'react-icons/fa'
-import '../style/Program.css'
+} from "react-icons/fa";
+import "../style/Program.css";
 
 const programCategories = [
-  { name: 'HR', icon: <FaUserTie /> },
-  { name: 'Marketing', icon: <FaChartLine /> },
-  { name: 'Sales', icon: <FaShoppingCart /> },
-  { name: 'Business Analyst', icon: <FaBusinessTime /> },
-  { name: 'Finance', icon: <FaMoneyBillWave /> },
-]
+  { name: "HR", icon: <FaUserTie /> },
+  { name: "Marketing", icon: <FaChartLine /> },
+  { name: "Sales", icon: <FaShoppingCart /> },
+  { name: "Business Analyst", icon: <FaBusinessTime /> },
+  { name: "Finance", icon: <FaMoneyBillWave /> },
+];
 
 const programs = {
   HR: [
-    { title: 'HR Leadership Program', duration: '6 months', mode: 'Online' },
+    { title: "HR Leadership Program", duration: "3 months", mode: "Online" },
   ],
   Marketing: [
     {
-      title: 'Marketing Strategy Program',
-      duration: '5 months',
-      mode: 'Classroom',
+      title: "Marketing Strategy Program",
+      duration: "3 months",
+      mode: "Online",
     },
   ],
   Sales: [
     {
-      title: 'Sales Mastery Certification',
-      duration: '8 months',
-      mode: 'Online',
+      title: "Sales Mastery Certification",
+      duration: "3 months",
+      mode: "Online",
     },
   ],
-  'Business Analyst': [
+  "Business Analyst": [
     {
-      title: 'Business Analytics Program',
-      duration: '12 months',
-      mode: 'Online',
+      title: "Business Analytics Program",
+      duration: "3 months",
+      mode: "Online",
     },
   ],
   Finance: [
     {
-      title: 'Finance Management Program',
-      duration: '10 months',
-      mode: 'Hybrid',
+      title: "Finance Management Program",
+      duration: "3 months",
+      mode: "Online",
     },
   ],
-}
+};
 
 const quickLinks = [
-  { title: 'Salary Builder', desc: 'Compare your salary v/s peers' },
-  { title: 'Career Growth', desc: 'Enhance your career path' },
-  { title: 'On-Demand Webinars', desc: 'Watch recorded webinars' },
-]
+  { title: "Salary Builder", desc: "Compare your salary v/s peers" },
+  { title: "Career Growth", desc: "Enhance your career path" },
+  { title: "On-Demand Webinars", desc: "Watch recorded webinars" },
+];
 
 const Program = ({ showDropdown, setShowDropdown }) => {
-  const [selectedCategory, setSelectedCategory] = useState('Popular')
+  const [selectedCategory, setSelectedCategory] = useState("Popular");
 
   return (
     showDropdown && (
@@ -74,7 +74,7 @@ const Program = ({ showDropdown, setShowDropdown }) => {
             <h5 className="program-sidebar-title">Programs</h5>
             <div
               className="program-sidebar-item"
-              onClick={() => setSelectedCategory('Popular')}
+              onClick={() => setSelectedCategory("Popular")}
             >
               ⭐ Popular
             </div>
@@ -93,7 +93,7 @@ const Program = ({ showDropdown, setShowDropdown }) => {
           <div className="programs">
             <h5>{selectedCategory} Programs</h5>
             <div className="program-grid">
-              {(selectedCategory === 'Popular'
+              {(selectedCategory === "Popular"
                 ? Object.values(programs).flat()
                 : programs[selectedCategory] || []
               ).map((program, index) => (
@@ -119,6 +119,7 @@ const Program = ({ showDropdown, setShowDropdown }) => {
             <button
               className="program-close-btn1"
               onClick={() => setShowDropdown(false)}
+              aria-label="Close dropdown"
             >
               ✖
             </button>
@@ -126,7 +127,7 @@ const Program = ({ showDropdown, setShowDropdown }) => {
         </div>
       </motion.div>
     )
-  )
-}
+  );
+};
 
-export default Program
+export default Program;

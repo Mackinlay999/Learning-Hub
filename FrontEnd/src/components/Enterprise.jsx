@@ -64,7 +64,7 @@ const Enterprise = () => {
       <p className="enterprise-description1">
         Programs in emerging data & tech for a future-ready workforce
       </p>
-      <p className="enterprise-highlight1">75000+ employees upskilled</p>
+      <p className="enterprise-highlight1">1000+ employees upskilled</p>
 
       <motion.button
         className="enterprise-btn1"
@@ -76,8 +76,8 @@ const Enterprise = () => {
 
       {/* Contact Info */}
       <div className="enterprise-contact1">
-        <p>📧 <a href="mailto:business@greatlearning.in">business@greatlearning.in</a></p>
-        <p>📞 <a href="tel:+918527030844">+91 85270 30844</a></p>
+        <p>📧 <a href="mailto:mackinlayofficial@gmail.com">mackinlayofficial@gmail.com</a></p>
+        <p>📞 <a href="tel:+91 9363352660">+91 9363352660</a></p>
       </div>
     </motion.div>
 

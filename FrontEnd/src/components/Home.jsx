@@ -22,6 +22,7 @@ import BusinessImg from "../images/p4.png";
 import financeImg from "../images/p5.png";
 import Explore from "../images/explore-banner.png";
 import video from "../images/s1.png";
+import video1 from "../images/s2.png";
 import feature1 from "../images/f1.png";
 import feature2 from "../images/f2.png";
 import feature3 from "../images/f3.png";
@@ -66,25 +67,25 @@ const Home = () => {
   ];
   const testimonials = [
     {
-      quote:
-        "I was able to restart my career with the Data Science and Engineering program",
+      quote: "This HR program helped me elevate my career in human resources!",
       description:
-        "Great Learning helped me put together an online portfolio of the projects I worked on. This came in handy during interviews. Within 1 month of completing the program, I cracked the role of ML Engineer at Aviso AI.",
-      name: "Alfred Elver",
-      position: "ML Engineer, Aviso AI",
-      program: "Post Graduate Program in Data Science and Engineering",
-      image: video,
+        "The HR Leadership Program gave me the skills and confidence to manage people better, which led to a promotion at my company. The hands-on experience was invaluable for my growth as an HR professional.",
+      name: "Samuel Richards",
+      position: "HR Manager, ABC Corp",
+      program: "HR Leadership Program",
+      image: video, // Replace with actual image or video source
     },
     {
-      quote: "This program transformed my career!",
+      quote: "The Marketing Strategy Program was a game-changer for me!",
       description:
-        "The structured curriculum and hands-on projects helped me land my dream job as a Software Engineer.",
-      name: "Jane Doe",
-      position: "Software Engineer, Google",
-      program: "Post Graduate Program in Software Engineering",
-      image: Explore,
+        "I learned how to create effective marketing strategies that directly impacted sales. This program gave me the tools I needed to lead my team and develop innovative campaigns.",
+      name: "Emily Taylor",
+      position: "Marketing Manager, XYZ Inc.",
+      program: "Marketing Strategy Program",
+      image: video1, // Replace with actual image or video source
     },
   ];
+  
   const [selectedProgram, setSelectedProgram] = useState("Popular programs");
   const [students, setStudents] = useState(1);
 
@@ -333,7 +334,7 @@ const Home = () => {
                           {program.name} Program
                         </Card.Title>
                         <Card.Text className="course-duration">
-                          6 Months · Online
+                          3 Months · Online
                         </Card.Text>
                         <Button variant="link" className="view-program">
                           View Program
@@ -555,7 +556,7 @@ const Home = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ duration: 0.3 }}
-                    className="program-card"
+                    className="program-card1"
                   >
                     <span className="program-icon">{program.icon}</span>
                     <span className="program-name">{program.name}</span>

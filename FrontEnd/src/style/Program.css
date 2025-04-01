@@ -54,9 +54,10 @@
   }
   
   .program-grid {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  gap: 15px;
+  flex-wrap: wrap;
   }
   
   .program-card {
@@ -64,8 +65,23 @@
     padding: 15px;
     border-radius: 5px;
     transition: transform 0.3s;
-    width: 48%;
+    width: 290px;  /* Fixed width */
+    height: 130px; /* Fixed height */
+    display: flex;
+    flex-direction: column;  /* Arrange items vertically inside the card */
+    justify-content: space-between; /* Space out title, duration, and mode */
   }
+  
+  .program-card h6 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .program-card p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
   
   .program-card:hover {
     transform: translateY(-5px);
@@ -124,7 +140,7 @@
       width: 100%;
     }
     .program-grid {
-      flex-direction: column;
+      grid-template-columns: 1fr; /* Stack cards in one column on smaller screens */
     }
     .program-card {
       width: 100%;
