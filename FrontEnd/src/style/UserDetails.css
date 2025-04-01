@@ -1,0 +1,130 @@
+/* General Container Styling */
+.user-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* User Card Styling */
+.user-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Heading Styling */
+.user-h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* User Info Section */
+.user-info {
+    font-size: 18px;
+    color: #444;
+    font-weight: 500;
+    margin-bottom: 25px;
+    
+}
+
+.user-info p {
+ 
+    margin: 10px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Email and Username Box Alignment */
+.user-info div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.user-info span {
+    color: #333;
+}
+
+/* Upload Section */
+.upload-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    border-top: 2px solid #eee;
+    padding-top: 15px;
+}
+
+/* File Input */
+input[type="file"] {
+    padding: 8px;
+    width: 100%;
+    max-width: 320px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.upload-btn, .signout-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.user-file{
+    min-width: 384px;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+   
+}
+
+.upload-btn {
+    background-color: #5cb85c;
+    color: white;
+}
+
+.upload-btn:hover {
+    background-color: #4cae4c;
+}
+
+.signout-btn {
+    background-color: #d9534f;
+    color: white;
+    margin-top: 15px;
+}
+
+.signout-btn:hover {
+    background-color: #c9302c;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .user-card {
+        max-width: 90%;
+        padding: 20px;
+    }
+}
+

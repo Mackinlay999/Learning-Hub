@@ -8,6 +8,7 @@ const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [number, setNumber] = useState('');
     const [reEnteredPassword, setReenterPassword] = useState('');
     const [validateEmail, setValidateEmail] = useState(false);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -19,7 +20,7 @@ const Register = () => {
         if (email === '' || !validateEmail) return alert("Please Enter Valid Email ID");
         if (password === '' || password !== reEnteredPassword) return alert("Please Enter the same password in both fields");
 
-        axios.post("http://localhost:3000/api/register", {username: name, email, password })
+        axios.post("http://localhost:3000/api/register", {username: name, email, password,  number })
             .then(() => {
                 alert("User Created Successfully. Now You can login with those credentials");
                 navigate('/Login');
@@ -49,6 +50,18 @@ const Register = () => {
                     <label>Email</label>
                     <input type="email" className="r-input" value={email} onChange={handleEmailChange} required />
                     {!validateEmail && email && <p className="r-error-text">*Enter a valid Email</p>}
+
+                    <label>Phone Number</label>
+                    <input 
+                        type="text" 
+                        className="r-input" 
+                        value={number} 
+                        onChange={(e) => setNumber(e.target.value)} 
+                        required 
+                        pattern="^\d{10}$" 
+                        maxLength="10"
+                    />
+                    <p className="r-error-text">{number && !/^\d{10}$/.test(number) && "*Enter a valid 10-digit phone number"}</p>
 
                     <label>Password</label>
                     <div className="r-password-container">

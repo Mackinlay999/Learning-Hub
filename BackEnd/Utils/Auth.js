@@ -6,7 +6,7 @@ const Auth = {
     try {
         const token =req.cookies.token
         
-        console.log(token);
+        console.log(token, "token");
     
 
     if(!token){

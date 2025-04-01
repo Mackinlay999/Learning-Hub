@@ -14,7 +14,7 @@ const login = {
             console.log("register login");
             console.log(req.body);
             
-           const { username , email,password} = req.body
+           const { username , email,password,number} = req.body
 
            const verifyemail = await user.findOne({email:email}) 
               console.log(verifyemail);
@@ -23,9 +23,14 @@ const login = {
             return res.status(400).json({message:"user already there"})
            }
 
+
+           if (!/^\d{10}$/.test(number)) {
+            return res.status(400).json({ message: "Invalid phone number" });
+          }
+
       const hashpassword = await  bcrypt.hash(password , 10)
            const newuser = new user ({
-            username ,  email,password : hashpassword
+            username ,  email, number , password : hashpassword 
            })
 
            await newuser.save()
@@ -86,7 +91,7 @@ const login = {
           }
   
           // Generate JWT token
-          const token = jwt.sign({ id: verifyUser._id }, process.env.JWT_SECRET, {
+          const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
               expiresIn: "1h",
           });
   
