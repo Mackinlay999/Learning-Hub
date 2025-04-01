@@ -129,22 +129,24 @@ const Program = ({ showDropdown, setShowDropdown }) => {
               <div className="program-grid2">
                 {programList.map((program, index) => (
                   <div
-                    key={index}
-                    className="program-card2"
-                    onClick={() =>
-                      navigate(`/program/${program.title.split(" ")[0]}`, {
-                        state: program,
-                      })
-                    }
-                    role="button"
-                    tabIndex="0"
-                    aria-label={`View details for ${program.title}`}
-                  >
-                    <strong>{program.title}</strong>
-                    <p>
-                      {program.duration} • {program.mode}
-                    </p>
-                  </div>
+                  key={index}
+                  className="program-card2"
+                  onClick={() => {
+                    closeDropdown(); // Close dropdown before navigating
+                    navigate(`/program/${program.title.split(" ")[0]}`, {
+                      state: program,
+                    });
+                  }}
+                  role="button"
+                  tabIndex="0"
+                  aria-label={`View details for ${program.title}`}
+                >
+                  <strong>{program.title}</strong>
+                  <p>
+                    {program.duration} • {program.mode}
+                  </p>
+                </div>
+                
                 ))}
               </div>
             </div>
