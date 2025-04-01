@@ -10,7 +10,7 @@ import Contact from './components/Contact'
 import NotFound from './components/NotFound' // For handling 404 pages
 import './style/App.css' // Import custom styles
 import 'bootstrap/dist/css/bootstrap.min.css' // Bootstrap styles
-import Userdetails from "./components/Userdetails"
+
 import BlogTraining from './components/BlogTraining'
 import Enterprise from './components/Enterprise'
 import Webinars from './components/Webinars'
@@ -28,7 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/career-support" element={<Career />} />
-          {/* <Route path="/success-story" element={<SuccessStory />} /> */}
+          <Route path="/success-story" element={<SuccessStory />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog-training" element={<BlogTraining />} />
@@ -37,7 +37,9 @@ function App() {
           <Route path="/for-recruiters" element={<Recruiters />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path='/PasswordReset' element={<PasswordReset />}> </Route>
+          <Route path='/PasswordReset' element={<PasswordReset />} /> 
+          <Route path="/program" element={<Program />} />
+          <Route path="/program/:title" element={<ProgramDetail />} />
           <Route path="*" element={<NotFound />} />{' '}
           {/* Catch-all route for 404 pages */}
         </Routes>
