@@ -65,7 +65,7 @@
     padding: 15px;
     border-radius: 5px;
     transition: transform 0.3s;
-    width: 290px;  /* Fixed width */
+    width: 280px;  /* Fixed width */
     height: 130px; /* Fixed height */
     display: flex;
     flex-direction: column;  /* Arrange items vertically inside the card */
