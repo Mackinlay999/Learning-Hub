@@ -4,7 +4,6 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(to right, #003366, #00509e);
   padding: 20px;
 }
 
@@ -14,7 +13,7 @@
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 400px;
+  max-width: 450px; /* Increased width for desktop */
   text-align: center;
   transition: transform 0.3s ease-in-out;
 }
@@ -56,13 +55,13 @@
 }
 
 .password-container input {
-  width: calc(100% - 30px);
+  width: calc(100% - 3px);
   padding-right: 30px;
 }
 
 .toggle-password {
   position: absolute;
-  /* right: 20px; */
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
@@ -72,14 +71,14 @@
 /* Buttons */
 .button-group {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Always row on all screen sizes */
   gap: 10px;
   margin-top: 10px;
 }
 
 .login-button,
 .forgot-password {
-  width: 100%;
+  width: 50%; /* Each button takes up half the space */
   padding: 10px;
   font-size: 16px;
   font-weight: bold;
@@ -140,7 +139,20 @@
   .login-box {
     padding: 15px;
   }
+
   .login-button {
+    font-size: 14px;
+  }
+
+  /* Ensure buttons stay in a row on small screens too */
+  .button-group {
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .login-button,
+  .forgot-password {
+    width: 50%;
     font-size: 14px;
   }
 }
