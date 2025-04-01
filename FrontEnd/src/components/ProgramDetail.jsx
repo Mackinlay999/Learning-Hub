@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { FaPhone, FaStar } from "react-icons/fa";
 import "../style/ProgramDetail.css";
 import hr from "../images/hr.png";
+
+// Program Details Page
 const ProgramDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -98,3 +100,4 @@ const ProgramDetail = () => {
 };
 
 export default ProgramDetail;
+
