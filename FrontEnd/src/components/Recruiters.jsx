@@ -91,7 +91,7 @@ const Recruiters = () => {
       {/* Stats */}
       <div className="recruiters-stats1">
         <div>
-          <h2>12.4 Million+</h2>
+          <h2>1000+</h2>
           <p>Learners</p>
         </div>
         <div>
@@ -99,7 +99,7 @@ const Recruiters = () => {
           <p>Hiring Cost</p>
         </div>
         <div>
-          <h2>4000+</h2>
+          <h2>1000+</h2>
           <p>Hiring Companies</p>
         </div>
       </div>
@@ -133,7 +133,7 @@ const Recruiters = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
       >
-        <h2 className="recruiters-heading2">Why hire from Great Learning</h2>
+        <h2 className="recruiters-heading2">Why hire from Mackinlay Learning Hub</h2>
         <h3 className="recruiters-subheading2">
           Immediately deployable candidates, <br /> all year round
         </h3>
