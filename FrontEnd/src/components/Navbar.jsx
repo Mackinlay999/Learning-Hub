@@ -50,7 +50,7 @@ const NavBar = () => {
                 </Nav.Link>
 
                 <Nav.Link as={Link} to="/career-support">Career Support</Nav.Link>
-                {/* <Nav.Link as={Link} to="/success-story">Success Stories</Nav.Link> */}
+                <Nav.Link as={Link} to="/success-story">Success Stories</Nav.Link>
                 <Nav.Link as={Link} to="/enterprise">Enterprise</Nav.Link>
                 <Nav.Link as={Link} to="/for-recruiters">For Recruiters</Nav.Link>
                
