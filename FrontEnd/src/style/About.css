@@ -242,7 +242,7 @@
     }
 }
 
-/* Responsive Design */
+/* Responsive Design
 @media (max-width: 768px) {
     .mission-container {
         flex-direction: column;
@@ -254,7 +254,7 @@
     .mission-right {
         text-align: center;
     }
-}
+} */
 /* Contact Section */
 .contact-section {
     background-color: white; /* Google Blue */
@@ -343,14 +343,86 @@
     100% { opacity: 1; transform: scale(1); }
 }
 
-/* Responsive */
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
-    .contact-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    .contact-left, .contact-right {
-        flex: unset;
-        width: 100%;
-    }
+  /* About Section */
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .about-content1 {
+    max-width: 100%;
+  }
+
+  .about-text {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .about-text h1 {
+    font-size: 2rem;
+  }
+
+  .about-description1 {
+    font-size: 1rem;
+  }
+
+  .about-btn1 {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .about-image {
+    order: -1;
+    margin-top: 20px;
+  }
+
+  .about-image img {
+    max-width: 100%;
+  }
+
+  /* Mission Section */
+  .mission-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .mission-left,
+  .mission-right {
+    text-align: center;
+    width: 100%;
+  }
+
+  .mission-heading {
+    font-size: 1.8rem;
+  }
+
+  .mission-text {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+
+  /* Contact Section */
+  .contact-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .contact-left h2 {
+    font-size: 1.8rem;
+  }
+
+  .contact-right img {
+    max-width: 100%;
+  }
+
+  .contact-button {
+    width: 100%;
+    padding: 10px;
+  }
 }
+

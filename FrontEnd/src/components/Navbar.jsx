@@ -56,7 +56,10 @@ const NavBar = () => {
                 <Nav.Link as={Link} to="/for-recruiters">For Recruiters</Nav.Link> 
                 <Nav.Link as={Link} to="/Dashboard">Dashboard</Nav.Link> 
               
+<<<<<<< HEAD
                 
+=======
+>>>>>>> 79e28e8677eb8b6ad88ab07a03f409d2969e6319
                 <NavDropdown title="More" id="more-dropdown">
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}

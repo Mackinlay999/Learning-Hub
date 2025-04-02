@@ -26,13 +26,15 @@
   text-align: center;
 }
 
-/* Footer Logo */
-.footer-logo {
+/* Footer Column Styling */
+.footer-column {
   flex: 1;
   min-width: 250px;
   text-align: center;
+  padding: 20px;
 }
 
+/* Footer Logo */
 .footer-logo-img {
   width: 180px;
   height: auto;
@@ -44,15 +46,13 @@
 }
 
 /* Quick Links */
-.footer-links {
-  flex: 1;
-  min-width: 250px;
-}
-
-.footer-links h5 {
+.footer-links h5,
+.footer-contact h5,
+.footer-social h5 {
   color: #FFC107;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .footer-links ul {
@@ -68,6 +68,7 @@
 .footer-links ul li a {
   text-decoration: none;
   color: white;
+  font-size: 1.1rem;
   transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
@@ -76,22 +77,17 @@
   transform: translateX(5px);
 }
 
+/* Contact Info */
+.footer-contact p {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
 /* Social Media Icons */
-.footer-social {
-  flex: 1;
-  min-width: 250px;
-}
-
-.footer-social h5 {
-  color: #FFC107;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-
 .footer-social .social-icon {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   color: white;
-  margin: 8px;
+  margin: 10px;
   transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
@@ -146,35 +142,57 @@
   transform: scale(1.1);
 }
 
-
-/* Responsive Footer */
-@media (max-width: 992px) {
-  .footer-content {
-    flex-direction: column;
+/* Mobile Responsive Footer */
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 15px;
     text-align: center;
   }
 
-  .footer-links,
-  .footer-social {
-    margin-top: 15px;
+  .footer-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-column {
+    width: 100%;
+    min-width: unset;
   }
 
   .footer-logo-img {
-    width: 150px;
-  }
-}
-
-@media (max-width: 576px) {
-  .footer {
-    padding: 30px 10px;
+    width: 130px;
   }
 
   .footer-links h5,
+  .footer-contact h5,
   .footer-social h5 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
   }
 
-  .footer-logo-img {
-    width: 120px;
+  .footer-links ul li {
+    margin: 6px 0;
+  }
+
+  .footer-links ul li a {
+    font-size: 1rem;
+  }
+
+  .footer-social .social-icon {
+    font-size: 1.5rem;
+    margin: 6px;
+  }
+
+  .copyright-text {
+    font-size: 0.85rem;
+    margin-top: 15px;
+  }
+
+  .scroll-to-top {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    bottom: 15px;
+    right: 15px;
   }
 }

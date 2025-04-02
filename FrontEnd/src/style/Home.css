@@ -203,12 +203,57 @@
   letter-spacing: 1px;
 }
 
+/* Mobile Screen Adjustments */
 @media (max-width: 768px) {
+  .home-container1 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .home-content {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .home-image img {
+    max-width: 80%;
+  }
+
+  .mac-home-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .mac-additional-content-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .mac-content {
+    max-width: 100%;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .mac-image-container {
+    justify-content: center;
+  }
+
+  .mac-additional-image {
+    max-width: 80%;
+  }
+
   .statsContainer2 {
     flex-direction: column;
     gap: 20px;
   }
 }
+
 
 /* Hero Section */
 .hero-section {
@@ -286,19 +331,22 @@
   font-size: 1.3rem;
 }
 
-/* Responsive Design */
+/* Mobile Screen Adjustments */
 @media (max-width: 768px) {
   .hero-section {
-    padding: 80px 15px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 60px 15px;
   }
 
   .hero-overlay {
-    padding: 30px;
-    max-width: 90%;
+    padding: 25px;
+    max-width: 95%;
   }
 
   .hero-overlay h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .hero-overlay p {
@@ -307,14 +355,28 @@
 
   .apply-btn,
   .explore-btn {
-    padding: 10px 18px;
-    font-size: 0.9rem;
+    width: 100%; /* Full width for better touch interaction */
+    padding: 12px;
+    font-size: 1rem;
+    margin-bottom: 10px; /* Space between buttons */
+  }
+
+  .features-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .features-list li {
     font-size: 1rem;
+    justify-content: flex-start;
+  }
+
+  .features-list .icon {
+    font-size: 1.2rem;
   }
 }
+
 
 /* Slider Container */
 /* Ensure full-width background */
@@ -471,25 +533,63 @@
   transform: scale(1.05);
 }
 
-/* Responsive Design */
+/* Mobile Screen Adjustments */
 @media (max-width: 768px) {
+  /* Slider Container */
+  .carousel-container {
+    padding: 30px 0;
+  }
+
+  /* Ensure vertical layout */
+  .carousel-slide {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+
+  /* Image Adjustments */
+  .carousel-slide img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+  }
+
+  /* Content Adjustments */
+  .carousel-content {
+    padding: 15px;
+  }
+
+  .carousel-content h3 {
+    font-size: 18px;
+  }
+
+  .carousel-content p {
+    font-size: 14px;
+  }
+
+  /* Learning Experience Section */
   .learning-experience {
-    padding: 40px 20px;
+    padding: 30px 15px;
   }
 
   .learning-experience h2 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .learning-experience p {
-    font-size: 14px;
+    font-size: 13px;
+    line-height: 1.5;
   }
 
   .get-started-btn2 {
+    width: 100%;
     font-size: 14px;
-    padding: 10px 20px;
+    padding: 12px;
+    text-align: center;
   }
 }
+
 
 .testimonial-slider2 {
   width: 100%;
@@ -661,25 +761,96 @@
   flex-grow: 1; /* Makes Sure the Text Expands to Fill the Card */
 }
 
-/* Responsive Design */
+/* Mobile Screen Adjustments */
 @media (max-width: 768px) {
+  /* Testimonial Slider Adjustments */
+  .testimonial-slider2 {
+    padding: 30px 15px;
+  }
+
+  /* Make Testimonials Vertical */
+  .testimonial-card2 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    padding: 25px;
+  }
+
+  /* Adjust Content for Better Readability */
+  .testimonial-content2 {
+    padding: 0;
+    text-align: center;
+  }
+
+  .testimonial-heading2 {
+    font-size: 20px;
+  }
+
+  .testimonial-desc2 {
+    font-size: 14px;
+  }
+
+  /* Adjust Author Styling */
+  .testimonial-author2 {
+    font-size: 13px;
+  }
+
+  /* Ensure Image Stacks Properly */
+  .testimonial-image2 {
+    width: 80%;
+    margin-top: 15px;
+  }
+
+  .testimonial-image2 img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Watch Story Button Centered */
+  .watch-story2 {
+    position: static;
+    margin-top: 10px;
+    transform: none;
+  }
+
+  /* Features Section Adjustments */
+  .features-section {
+    padding: 40px 15px;
+  }
+
+  /* Ensure Features Stack Vertically */
   .feature-row {
     flex-direction: column;
     align-items: center;
   }
 
-  .feature-content {
-    max-width: 90%;
+  .feature-card {
+    width: 90%;
+    min-height: auto;
   }
 
-  .section-heading h2 {
-    font-size: 28px;
+  .feature-content {
+    padding: 15px;
+    text-align: center;
   }
 
   .feature-title {
-    font-size: 20px;
+    font-size: 18px;
+  }
+
+  .feature-description {
+    font-size: 14px;
+  }
+
+  /* Image Adjustments */
+  .feature-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
   }
 }
+
 
 /* Skill Section */
 .skills-section {
@@ -790,39 +961,59 @@
   color: #D32F2F; /* Primary Red */
 }
 
-/* Responsive Design */
+/* Mobile Screen Adjustments */
 @media (max-width: 768px) {
+  /* Stack Content Vertically */
   .skills-content {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 30px;
   }
 
+  /* Adjust Text Alignment */
   .text-left {
     text-align: center;
-  }
-
-  .section-title {
-    font-size: 28px;
-  }
-
-  .section-description {
     max-width: 90%;
   }
 
-  .program-card {
-    flex-direction: row;
-    padding: 12px;
+  .section-title {
+    font-size: 26px;
+  }
+
+  .section-description {
+    font-size: 14px;
+    max-width: 85%;
+    margin-bottom: 15px;
+  }
+
+  /* Adjust Program Cards for Better Readability */
+  .program-list {
+    width: 100%;
+    align-items: center;
+  }
+
+  .program-card1 {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+    max-width: 90%;
   }
 
   .program-icon {
-    font-size: 18px;
+    font-size: 20px;
+    margin-bottom: 5px;
   }
 
   .program-name {
-    font-size: 14px;
+    font-size: 16px;
+  }
+
+  .program-arrow {
+    display: none; /* Hides Arrow to Keep Design Clean */
   }
 }
+
 
 
 /* General Styles */
@@ -1024,19 +1215,83 @@
   color: #333333; /* Dark Gray */
 }
 
-/* Responsive Layout */
+/* Mobile Screen Adjustments */
 @media (max-width: 768px) {
-  .questions-container {
+  /* Stack Course Section Vertically */
+  .course-section {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .course-image {
+    max-width: 280px;
+  }
+
+  .course-content {
+    padding-left: 0;
+    margin-top: 15px;
     text-align: center;
   }
 
+  .course-title {
+    font-size: 22px;
+  }
+
+  .course-description {
+    font-size: 14px;
+    max-width: 90%;
+    margin-bottom: 15px;
+  }
+
+  .explore-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+
+  /* Stack Questions Section Vertically */
+  .questions-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
   .questions-image {
-    max-width: 250px;
+    max-width: 220px;
   }
 
   .questions-box {
-    margin-top: 20px;
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  .questions-box h3 {
+    font-size: 20px;
+  }
+
+  .questions-box p {
+    font-size: 14px;
+  }
+
+  .contact-btn2 {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+
+  /* Stack Get Started Section */
+  .get-started-section {
+    padding: 30px 20px;
+  }
+
+  .get-started-btn2 {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+
+  /* Adjust Section Title */
+  .section-title {
+    font-size: 28px;
   }
 }
 
@@ -1229,28 +1484,59 @@
   text-decoration: none;
 }
 
-/* Responsive Layout */
+/* Responsive Layout for Mobile Screens */
 @media (max-width: 768px) {
   .home-container {
     flex-direction: column;
     text-align: center;
-    padding: 30px;
+    padding: 30px 20px;
   }
 
+  /* Sidebar */
   .sidebar {
     width: 100%;
     margin-bottom: 20px;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .sidebar-heading {
+    font-size: 14px;
+  }
+
+  .sidebar-title {
+    font-size: 22px;
   }
 
   .menu-list li {
     justify-content: center;
+    font-size: 14px;
   }
 
-  .popular-title {
-    text-align: center;
-  }
-
+  /* Course Cards */
   .course-card {
     width: 100%;
+    padding: 10px;
+  }
+
+  .course-card-body1 {
+    padding: 15px;
+  }
+
+  .course-img {
+    height: 160px;
+  }
+
+  .course-title {
+    font-size: 16px;
+  }
+
+  .course-duration {
+    font-size: 13px;
+  }
+
+  .view-program {
+    padding: 8px;
+    font-size: 14px;
   }
 }
