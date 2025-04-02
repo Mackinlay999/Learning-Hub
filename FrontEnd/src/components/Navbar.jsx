@@ -55,9 +55,6 @@ const NavBar = () => {
                 <Nav.Link as={Link} to="/enterprise">Enterprise</Nav.Link> 
                 <Nav.Link as={Link} to="/for-recruiters">For Recruiters</Nav.Link> 
               
-                <Nav.Link as={Link} to="/success-story">Success Stories</Nav.Link>
-                <Nav.Link as={Link} to="/enterprise">Enterprise</Nav.Link>
-                <Nav.Link as={Link} to="/for-recruiters">For Recruiters</Nav.Link>
                 <NavDropdown title="More" id="more-dropdown">
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
