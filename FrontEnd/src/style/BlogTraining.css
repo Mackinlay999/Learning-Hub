@@ -57,3 +57,40 @@
   max-width: 500px;
   border-radius: 10px;
 }
+
+@media (max-width: 768px) {
+  .blog-container,
+  .training-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .blog-content,
+  .training-content {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .blog-image img,
+  .training-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .blog-title,
+  .training-title {
+    font-size: 2rem;
+  }
+
+  .blog-description,
+  .training-description {
+    font-size: 1rem;
+  }
+
+  .blog-btn,
+  .training-btn {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}

@@ -116,4 +116,51 @@
     max-width: 500px;
     border-radius: 10px;
   }
+  @media (max-width: 768px) {
+    .enterprise-container,
+    .enterprise-container1 {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 30px 20px;
+    }
+  
+    .enterprise-content,
+    .enterprise-content1 {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .enterprise-title,
+    .enterprise-title1 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+  
+    .enterprise-description,
+    .enterprise-description1 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+  
+    .enterprise-highlight1 {
+      font-size: 1.2rem;
+    }
+  
+    .enterprise-btn,
+    .enterprise-btn1 {
+      font-size: 1rem;
+      padding: 10px 16px;
+    }
+  
+    .enterprise-image img,
+    .enterprise-image1 img {
+      max-width: 90%;
+      border-radius: 8px;
+    }
+  
+    .enterprise-contact1 p {
+      font-size: 0.9rem;
+    }
+  }
   
