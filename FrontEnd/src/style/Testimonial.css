@@ -87,16 +87,56 @@
   margin-top: 10px;
 }
 
-/* Responsive Design */
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
   .testimonial-card {
-    flex-direction: column;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .testimonial-video {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .testimonial-video img {
+    width: 90%; /* Adjust width for a better mobile fit */
+  }
+
+  .play-button {
+    font-size: 20px;
+    padding: 15px;
+  }
+
+  .testimonial-content {
+    width: 100%;
     text-align: center;
   }
 
-  .testimonial-video,
-  .testimonial-content {
-    width: 100%;
-   
+  .testimonial-content p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .quote-mark {
+    font-size: 20px;
+  }
+
+  .testimonial-content h3 {
+    font-size: 18px;
+    margin-top: 8px;
+  }
+
+  .job-title {
+    font-size: 13px;
+  }
+
+  .company-logo {
+    width: 40px;
+    margin-top: 8px;
   }
 }

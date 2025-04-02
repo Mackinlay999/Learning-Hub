@@ -109,3 +109,51 @@
   color: #FFC107;
   transform: scale(1.2);
 }
+@media (max-width: 768px) {
+  .chatbot-container {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .chatbot-box {
+    width: 90%;
+    bottom: 70px;
+    right: 5%;
+    border-radius: 8px;
+  }
+
+  .chatbot-header {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .chatbot-messages {
+    height: 250px;
+    padding: 8px;
+  }
+
+  .message {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    max-width: 85%;
+  }
+
+  .chatbot-input {
+    padding: 10px;
+  }
+
+  .chatbot-input input {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .send-btn {
+    font-size: 1.2rem;
+    margin-left: 8px;
+  }
+
+  .chatbot-icon {
+    padding: 12px;
+    font-size: 1.3rem;
+  }
+}
