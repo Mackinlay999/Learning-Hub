@@ -36,7 +36,7 @@ const Footer = () => {
     >
       <Container>
         {/* Responsive 4-Column Layout */}
-        <Row className="gy-4 align-items-center text-center text-md-start">
+        <Row className="gy-4 align-items-start  text-md-start justify-content-center">
           {/* Column 1: Logo */}
           <Col md={3} className="text-md-start">
             <motion.div
@@ -52,19 +52,20 @@ const Footer = () => {
           </Col>
 
           {/* Column 2: Contact Info */}
-          <Col md={3}  className="text-center">
-            <h5 className="text-white">Contact Us</h5>
-            <p className="text-white">📍 Bangalore, Karnataka</p>
-            <p className="text-white">📞 09363352660</p>
-            <p className="text-white">📧 harikrishg44@gmail.com</p>
-            <p className="text-white">🌐 Mackinlay Learning Hub</p>
+          {/* Column 2: Contact Info */}
+          <Col md={3} className="mx-auto text-center">
+            <h5 className="text-white text-start">Contact Us</h5>
+            <p className="text-white text-start">📍 Bangalore, Karnataka</p>
+            <p className="text-white text-start">📞 09363352660</p>
+            <p className="text-white text-start">📧 harikrishg44@gmail.com</p>
+            <p className="text-white text-start">🌐 Mackinlay Learning Hub</p>
           </Col>
 
           {/* Column 3: Quick Links */}
-          <Col md={3}className="text-center">
+          <Col md={3} className="text-center mx-auto">
             <h5>Quick Links</h5>
             <Nav className="flex-column">
-              <Nav.Link as={Link} to="/about" className="text-white">
+              <Nav.Link as={Link} to="/about" className="text-white ">
                 About Us
               </Nav.Link>
               <Nav.Link as={Link} to="/contact" className="text-white">
@@ -80,7 +81,10 @@ const Footer = () => {
           </Col>
 
           {/* Column 4: Social Media */}
-          <Col md={3} className="text-md-end">
+          <Col
+            md={3}
+            className=" align-items-end text-md-end justify-content-end"
+          >
             <h5>Follow Us</h5>
             <div className="d-flex justify-content-center justify-content-md-end gap-3">
               <motion.a
