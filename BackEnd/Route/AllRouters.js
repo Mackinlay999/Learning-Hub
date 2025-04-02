@@ -27,6 +27,8 @@ router.post("/login", login.login)
 router.post("/logout", login.logout)
 router.post("/forgetpassword", login.forgetpassword)
 router.post("/setNewPassword", login.setNewPassword)
+router.post("/profileResume", upload.single("resume"), login.profileResume)
+
 
 
 router.get("/me" ,  auth.authverify, login.me)

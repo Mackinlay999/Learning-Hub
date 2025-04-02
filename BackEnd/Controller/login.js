@@ -5,6 +5,9 @@ const jwt = require("jsonwebtoken");
 const app  = require("../app");
 require("dotenv").config();
 const nodemailer =require('nodemailer')
+const Resume = require("../Model/ProfileResumeScheme")
+
+const path = require("path");
 
 
 
@@ -91,7 +94,9 @@ const login = {
           }
   
           // Generate JWT token
-          const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+          // const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET,
+            const token = jwt.sign({ id: verifyUser._id }, process.env.JWT_SECRET, 
+              {
               expiresIn: "1h",
           });
   
@@ -137,7 +142,8 @@ const login = {
          console.log("me is login");
          const userid  =  req.userid;
 
-         const User = await user.findOne(userid)
+         const User = await user.findOne({ _id: userid });
+
          
         //  const user =await user.findbyID(userid).select("-password -__v -createdAT -updateAt -.id")
          console.log(  "user is " + User);
@@ -227,7 +233,68 @@ const login = {
       } catch (error) {
         res.status(500).json({ error: error.message });
       }
-    }
+    },
+    profileResume: async (req, res) => {
+        console.log("plese  fill the form");
+    
+        if (!req.file) {
+          return res.status(400).json({ message: "No file uploaded." });
+        }
+    
+        try {
+          // Save file details to MongoDB
+          const newResume = new Resume({
+            filename: req.file.filename,
+            path: req.file.path,
+            mimetype: req.file.mimetype,
+            size: req.file.size,
+          });
+    
+          await newResume.save();
+    
+          // Send Email with Attachment
+          const transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+              user: process.env.EMAIL,
+              pass: process.env.EMAIL_PASSWORD,
+            },
+          });
+    
+          const mailOptions = {
+            from: process.env.EMAIL,
+            to: "rjerald6803@gmail.com",
+            subject: "File Uploaded Successfully",
+            text: `A new file has been uploaded:\n\nProgram: Filename: ${req.file.filename}`,
+            attachments: [
+              {
+                filename: req.file.filename,
+                path: req.file.path,
+              },
+            ],
+          };
+    
+          transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+              console.error("Email error:", error);
+              return res
+                .status(500)
+                .json({ message: "File saved, but email failed" });
+            }
+            res
+              .status(201)
+              .json({
+                message: "File uploaded, saved, and emailed successfully!",
+                file: newResume,
+              });
+          });
+        }catch (error) {
+          console.error("Error saving file:", error);
+          res.status(500).json({ message: "Error saving file", error: error.message });
+        }
+      },
+  
+    
     
 }
 

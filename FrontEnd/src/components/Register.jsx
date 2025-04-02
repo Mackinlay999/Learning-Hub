@@ -51,7 +51,9 @@ const Register = () => {
                     <input type="email" className="r-input" value={email} onChange={handleEmailChange} required />
                     {!validateEmail && email && <p className="r-error-text">*Enter a valid Email</p>}
 
-                    <label>Phone Number</label>
+                  
+
+                    <label className='r-num'>Phone Number</label>
                     <input 
                         type="text" 
                         className="r-input" 
@@ -61,9 +63,9 @@ const Register = () => {
                         pattern="^\d{10}$" 
                         maxLength="10"
                     />
-                    <p className="r-error-text">{number && !/^\d{10}$/.test(number) && "*Enter a valid 10-digit phone number"}</p>
+                    
 
-                    <label>Password</label>
+                    <label >Password</label>
                     <div className="r-password-container">
                         <input 
                             type={isPasswordVisible ? "text" : "password"} 

@@ -20,6 +20,8 @@ import Register from "./components/Register"
 import PasswordReset  from './components/PasswordReset'
 import ProgramDetail from './components/ProgramDetail'
 import Program from './components/Program' 
+import Userdetails from "./components/Userdetails"
+import Dashboard from "./components/Dashboard"
 function App() {
   return (
     <Router>
@@ -40,6 +42,8 @@ function App() {
           <Route path='/PasswordReset' element={<PasswordReset />} /> 
           <Route path="/program" element={<Program />} />
           <Route path="/program/:title" element={<ProgramDetail />} />
+          <Route path="/Userdetails" element={<Userdetails />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFound />} />{' '}
           {/* Catch-all route for 404 pages */}
         </Routes>
