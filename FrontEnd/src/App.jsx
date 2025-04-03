@@ -10,7 +10,8 @@ import Contact from './components/Contact'
 import NotFound from './components/NotFound' // For handling 404 pages
 import './style/App.css' // Import custom styles
 import 'bootstrap/dist/css/bootstrap.min.css' // Bootstrap styles
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import BlogTraining from './components/BlogTraining'
 import Enterprise from './components/Enterprise'
 import Webinars from './components/Webinars'
@@ -20,11 +21,15 @@ import Register from "./components/Register"
 import PasswordReset  from './components/PasswordReset'
 import ProgramDetail from './components/ProgramDetail'
 import Program from './components/Program' 
+import PaymentSuccess from "./components/PaymentSuccess";
+import PaymentFailure from "./components/PaymentFailure";
+
 function App() {
   return (
     <Router>
       <div className="App">
         <Navbar />
+        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/career-support" element={<Career />} />
@@ -40,6 +45,8 @@ function App() {
           <Route path='/PasswordReset' element={<PasswordReset />} /> 
           <Route path="/program" element={<Program />} />
           <Route path="/program/:title" element={<ProgramDetail />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/payment-failure" element={<PaymentFailure />} />
           <Route path="*" element={<NotFound />} />{' '}
           {/* Catch-all route for 404 pages */}
         </Routes>

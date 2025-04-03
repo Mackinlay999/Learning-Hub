@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import "../style/PaymentButton.css"; // External CSS
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
+import "../style/PaymentButton.css"; 
 
-const PaymentButton = ({ amount }) => {
+const PaymentButton = ({ amount, user = {} }) => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handlePayment = async () => {
     setLoading(true);
+
     try {
-      const { data } = await axios.post("http://localhost:5000/api/create-order", { amount });
+      // Step 1: Create Order
+      const { data } = await axios.post("http://localhost:3000/api/create-order", { amount });
 
       const options = {
         key: "YOUR_RAZORPAY_KEY_ID",
@@ -19,44 +25,62 @@ const PaymentButton = ({ amount }) => {
         description: "Course Payment",
         order_id: data.id,
         handler: async function (response) {
-          await axios.post("http://localhost:5000/api/verify-payment", response);
-          alert("Payment successful!");
+          try {
+            // Step 2: Verify Payment
+            const verifyRes = await axios.post("http://localhost:3000/api/verify-payment", response);
+
+            if (verifyRes.data.success) {
+              toast.success("✅ Payment successful! Redirecting...", { autoClose: 2000 });
+              setTimeout(() => navigate("/payment-success"), 2500);
+            } else {
+              throw new Error("Payment verification failed.");
+            }
+          } catch (error) {
+            console.error("Payment verification failed:", error);
+            toast.error("❌ Payment verification failed. Please contact support.");
+            setTimeout(() => navigate("/payment-failure"), 2500);
+          }
         },
         prefill: {
-          name: "John Doe",
-          email: "john@example.com",
-          contact: "9999999999",
+          name: user.name || "John Doe",
+          email: user.email || "john@example.com",
+          contact: user.contact || "9999999999",
         },
-        theme: {
-          color: "#3399cc",
-        },
+        theme: { color: "#3399cc" },
       };
 
       const razor = new window.Razorpay(options);
       razor.open();
     } catch (error) {
-      console.error("Payment error:", error);
+      console.error("❌ Payment error:", error);
+      toast.error("❌ Payment failed. Please try again later.");
     }
+
     setLoading(false);
   };
 
   return (
-    <motion.button
-      className="payment-btn"
-      onClick={handlePayment}
-      disabled={loading}
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
-      {loading ? "Processing..." : "Pay Now"}
-    </motion.button>
+    <>
+      <motion.button
+        className="payment-btn"
+        onClick={handlePayment}
+        disabled={loading}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        {loading ? "Processing..." : "Pay Now"}
+      </motion.button>
+    </>
   );
 };
 
 export default PaymentButton;
+
+
+
 
 
 
