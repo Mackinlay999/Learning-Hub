@@ -1,0 +1,124 @@
+/* General styles */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Heading */
+h2 {
+  margin-bottom: 10px;
+}
+
+/* Dropdown */
+select {
+  padding: 8px;
+  margin-bottom: 15px;
+  width: 100%;
+  max-width: 200px;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+/* Table Scroll for Mobile */
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Ensure table cells wrap properly */
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  white-space: nowrap; /* Prevents breaking text */
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+/* Buttons */
+button {
+  padding: 8px 14px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Modal Styles */
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+}
+
+.modal {
+  text-align: left;
+}
+
+/* 📌 Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  select {
+    width: 100%;
+  }
+
+  /* Make the table scrollable */
+  .table-container {
+    overflow-x: auto;
+    display: block;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap; /* Prevents text wrapping */
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  button {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  th, td {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  button {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
