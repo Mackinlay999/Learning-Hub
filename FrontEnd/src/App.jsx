@@ -21,14 +21,14 @@ import Register from "./components/Register"
 import PasswordReset  from './components/PasswordReset'
 import ProgramDetail from './components/ProgramDetail'
 import Program from './components/Program' 
-<<<<<<< HEAD
+
 import Userdetails from "./components/Userdetails"
 import Dashboard from "./components/Dashboard"
-=======
+
 import PaymentSuccess from "./components/PaymentSuccess";
 import PaymentFailure from "./components/PaymentFailure";
 
->>>>>>> marcus
+
 function App() {
   return (
     <Router>
@@ -50,13 +50,11 @@ function App() {
           <Route path='/PasswordReset' element={<PasswordReset />} /> 
           <Route path="/program" element={<Program />} />
           <Route path="/program/:title" element={<ProgramDetail />} />
-<<<<<<< HEAD
           <Route path="/Userdetails" element={<Userdetails />} />
           <Route path="/Dashboard" element={<Dashboard />} />
-=======
           <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/payment-failure" element={<PaymentFailure />} />
->>>>>>> marcus
+
           <Route path="*" element={<NotFound />} />{' '}
           {/* Catch-all route for 404 pages */}
         </Routes>
