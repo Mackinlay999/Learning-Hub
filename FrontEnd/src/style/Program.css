@@ -65,13 +65,13 @@
     color: black;
     padding: 15px;
     border-radius: 5px;
-<<<<<<< HEAD
+
     transition: transform 0.3s;
     width: 280px;  /* Fixed width */
-=======
+
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     width: 290px;  /* Fixed width */
->>>>>>> marcus
+
     height: 130px; /* Fixed height */
     display: flex;
     flex-direction: column;  /* Arrange items vertically inside the card */
