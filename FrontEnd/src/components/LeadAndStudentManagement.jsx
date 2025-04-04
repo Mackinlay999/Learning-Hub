@@ -3,7 +3,7 @@ import LeadList from './LeadList'
 import LeadDetails from './LeadDetails'
 import LeadForm from './LeadForm'
 import StudentEnroll from "./StudentEnroll"
-import AttendanceTracking from './AttendenceTracking'
+import AttendanceTracking from '../components/AttendenceTracking'
 
 
 const LeadAndStudentManagement = () => {
