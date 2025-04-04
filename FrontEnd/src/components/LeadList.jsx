@@ -25,7 +25,7 @@ const LeadList = () => {
       <h2>Lead List</h2>
 
       {/* Add New Lead Form */}
-      {/* <LeadForm addLead={addLead} /> */}
+      <LeadForm addLead={addLead} />
       
       <select onChange={(e) => setFilter(e.target.value)}>
         <option value="All">All</option>

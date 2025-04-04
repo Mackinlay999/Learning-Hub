@@ -1,0 +1,73 @@
+/* StudentEnrollment.css */
+
+/* Container Styling */
+.se-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title Styling */
+  .se-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Table Wrapper */
+  .se-table-wrapper {
+    overflow-x: auto;
+  }
+  
+  /* Table Styling */
+  .se-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #f9f9f9;
+  }
+  
+  .se-table th, .se-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .se-table th {
+    background: #007bff;
+    color: white;
+  }
+  
+  .se-table tr:hover {
+    background: #f1f1f1;
+  }
+  
+  /* Payment Status Colors */
+  .se-status.paid {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .se-status.pending {
+    color: orange;
+    font-weight: bold;
+  }
+  
+  .se-status.overdue {
+    color: red;
+    font-weight: bold;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .se-table th, .se-table td {
+      padding: 8px;
+      font-size: 14px;
+    }
+  }
+  

@@ -1,0 +1,92 @@
+/* Query.css */
+
+.Q-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.Q-heading {
+  text-align: center;
+  color: #333;
+}
+
+.Q-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.Q-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.Q-button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.Q-button:hover {
+  background-color: #0056b3;
+}
+
+.Q-table-container {
+  overflow-x: auto;
+}
+
+.Q-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.Q-th, .Q-td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.Q-th {
+  background-color: #007bff;
+  color: white;
+}
+
+.Q-tr:hover {
+  background-color: #f1f1f1;
+}
+
+.Q-edit-input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.Q-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.Q-delete {
+  background-color: #dc3545;
+}
+
+.Q-delete:hover {
+  background-color: #c82333;
+}
+
+.Q-no-data {
+  text-align: center;
+  color: #666;
+}
