@@ -45,7 +45,7 @@ const NavBar = () => {
                     className="btn-explore"
                     whileHover={{ scale: 1.05 }}
                   >
-                    Explore Programs ⌄
+                    Explore Programs
                   </motion.button>
                 </Nav.Link>
 
