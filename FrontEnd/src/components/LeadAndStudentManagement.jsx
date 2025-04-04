@@ -3,7 +3,7 @@ import LeadList from './LeadList'
 import LeadDetails from './LeadDetails'
 import LeadForm from './LeadForm'
 import StudentEnroll from "./StudentEnroll"
-import AttendanceTracking from '../components/AttendenceTracking'
+// import AttendanceTracking from '../components/AttendenceTracking'
 
 
 const LeadAndStudentManagement = () => {
@@ -13,9 +13,8 @@ const LeadAndStudentManagement = () => {
       <LeadList />
       <LeadDetails />
       <StudentEnroll />
-      <AttendanceTracking />
+      {/* <AttendanceTracking /> */}
       {/* <AssignLead /> */}
-    
     </div>
   )
 }
