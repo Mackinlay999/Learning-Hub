@@ -9,21 +9,35 @@ import "../style/PaymentButton.css";
 const PaymentButton = ({ amount, user = {} }) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
 
   const handlePayment = async () => {
     setLoading(true);
-
+    const res = await loadRazorpayScript();
+    if (!res) {
+      toast.error("❌ Failed to load Razorpay SDK. Try again later.");
+      setLoading(false);
+      return;
+    }
     try {
       // Step 1: Create Order
-      const { data } = await axios.post("http://localhost:3000/api/create-order", { amount });
+      const { data: order  } = await axios.post("http://localhost:3000/api/create-order", { amount });
 
       const options = {
         key: "YOUR_RAZORPAY_KEY_ID",
-        amount: data.amount,
+        amount: order.amount,
         currency: "INR",
         name: "EduProject",
         description: "Course Payment",
-        order_id: data.id,
+        order_id: order.id,
         handler: async function (response) {
           try {
             // Step 2: Verify Payment
@@ -33,7 +47,8 @@ const PaymentButton = ({ amount, user = {} }) => {
               toast.success("✅ Payment successful! Redirecting...", { autoClose: 2000 });
               setTimeout(() => navigate("/payment-success"), 2500);
             } else {
-              throw new Error("Payment verification failed.");
+              toast.error("❌ Payment verification failed.");
+              setTimeout(() => navigate("/payment-failure"), 2500);
             }
           } catch (error) {
             console.error("Payment verification failed:", error);
@@ -78,146 +93,4 @@ const PaymentButton = ({ amount, user = {} }) => {
 };
 
 export default PaymentButton;
-
-
-
-
-
-
-// import React, { useState } from "react";
-// import axios from "axios";
-
-// const PaymentButton = ({ amount }) => {
-//   const [loading, setLoading] = useState(false);
-
-//   const handlePayment = async () => {
-//     setLoading(true);
-//     try {
-//       const { data } = await axios.post("http://localhost:5000/api/create-order", { amount });
-//       const options = {
-//         key: "YOUR_RAZORPAY_KEY_ID",
-//         amount: data.amount,
-//         currency: "INR",
-//         name: "EduProject",
-//         description: "Course Payment",
-//         order_id: data.id,
-//         handler: async function (response) {
-//           await axios.post("http://localhost:5000/api/verify-payment", response);
-//           alert("Payment successful!");
-//         },
-//         prefill: {
-//           name: "John Doe",
-//           email: "john@example.com",
-//           contact: "9999999999",
-//         },
-//         theme: {
-//           color: "#3399cc",
-//         },
-//       };
-
-//       const razor = new window.Razorpay(options);
-//       razor.open();
-//     } catch (error) {
-//       console.error("Payment error:", error);
-//     }
-//     setLoading(false);
-//   };
-
-//   return <button onClick={handlePayment} disabled={loading}>{loading ? "Processing..." : "Pay Now"}</button>;
-// };
-
-// export default PaymentButton;
-
-// const express = require("express");
-// const Razorpay = require("razorpay");
-// const crypto = require("crypto");
-// require("dotenv").config();
-
-// const router = express.Router();
-
-// const razorpay = new Razorpay({
-//   key_id: process.env.RAZORPAY_KEY_ID,
-//   key_secret: process.env.RAZORPAY_KEY_SECRET,
-// });
-
-// // Create Order
-// router.post("/create-order", async (req, res) => {
-//   try {
-//     const options = {
-//       amount: req.body.amount * 100, // Amount in paise
-//       currency: "INR",
-//       receipt: "order_rcptid_" + Date.now(),
-//     };
-
-//     const order = await razorpay.orders.create(options);
-//     res.json(order);
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// });
-
-// // Verify Payment
-// router.post("/verify-payment", (req, res) => {
-//   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
-
-//   const body = razorpay_order_id + "|" + razorpay_payment_id;
-//   const expectedSignature = crypto
-//     .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
-//     .update(body)
-//     .digest("hex");
-
-//   if (expectedSignature === razorpay_signature) {
-//     res.json({ success: true, message: "Payment verified successfully!" });
-//   } else {
-//     res.status(400).json({ success: false, message: "Payment verification failed!" });
-//   }
-// });
-
-// module.exports = router;
-// const express = require("express");
-// const Razorpay = require("razorpay");
-// const crypto = require("crypto");
-// require("dotenv").config();
-
-// const router = express.Router();
-
-// const razorpay = new Razorpay({
-//   key_id: process.env.RAZORPAY_KEY_ID,
-//   key_secret: process.env.RAZORPAY_KEY_SECRET,
-// });
-
-// // Create Order API
-// router.post("/api/create-order", async (req, res) => {
-//   try {
-//     const options = {
-//       amount: req.body.amount * 100, // Convert amount to paise
-//       currency: "INR",
-//       receipt: "order_rcptid_" + Date.now(),
-//     };
-
-//     const order = await razorpay.orders.create(options);
-//     res.json(order);
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// });
-
-// // Verify Payment API
-// router.post("/api/verify-payment", (req, res) => {
-//   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
-
-//   const body = razorpay_order_id + "|" + razorpay_payment_id;
-//   const expectedSignature = crypto
-//     .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET)
-//     .update(body)
-//     .digest("hex");
-
-//   if (expectedSignature === razorpay_signature) {
-//     res.json({ success: true, message: "Payment verified successfully!" });
-//   } else {
-//     res.status(400).json({ success: false, message: "Payment verification failed!" });
-//   }
-// });
-
-// module.exports = router;
 
