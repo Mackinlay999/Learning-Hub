@@ -3,7 +3,7 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Program from "./Program";
-import "../style/NavBar.css";
+import "../style/Navbar.css";
 import logo from "../images/logo.png";
 
 const NavBar = () => {

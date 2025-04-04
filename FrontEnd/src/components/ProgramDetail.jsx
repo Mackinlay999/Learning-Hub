@@ -7,7 +7,7 @@ import "../style/ProgramDetail.css";
 import hr from "../images/hr.png";
 
 // Program-specific detail components
-import HRProgram from "../components/HRProgram";
+import HRProgram from "../components/HrProgram";
 import FinanceProgram from "../components/FinanceProgram";
 import SalesProgram from "../components/SalesProgram";
 import MarketingProgram from "../components/MarketingProgram";
