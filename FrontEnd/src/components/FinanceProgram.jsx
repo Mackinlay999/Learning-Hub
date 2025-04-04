@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style/Finance.css"; // Create this stylesheet separately
-import brochure from "../assets/Finance Training Program.pdf";
+// import brochure from "../assets/Finance Training Program.pdf";
 import PaymentButton from "../components/PaymentButton"; // Adjust path if needed
 
 const FinanceProgram = () => {
@@ -32,9 +32,9 @@ const FinanceProgram = () => {
         <p><strong>Mode:</strong> Online</p>
         <p><strong>Certification:</strong> Certified Finance Professional</p>
         <div className="cta-buttons">
-          <a href={brochure} download className="btn btn-primary">
+          {/* <a href={brochure} download className="btn btn-primary">
             📄 Download Brochure
-          </a>
+          </a> */}
           <button onClick={() => setShowFormModal(true)} className="btn btn-success">
             📝 Enroll Now
           </button>

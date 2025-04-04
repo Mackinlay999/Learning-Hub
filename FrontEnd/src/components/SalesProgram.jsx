@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style/Sales.css"; // style separately
-import brochure from "../assets/Professional Sales Specialist Certification Program.pdf"; // replace with your actual file
+// import brochure from "../assets/Professional Sales Specialist Certification Program.pdf"; // replace with your actual file
 import PaymentButton from "../components/PaymentButton"; // adjust path if needed
 
 const SalesProgram = () => {
@@ -32,9 +32,9 @@ const SalesProgram = () => {
         <p><strong>Mode:</strong> Online</p>
         <p><strong>Certification:</strong> Certified Sales Strategist</p>
         <div className="cta-buttons">
-          <a href={brochure} download className="btn btn-primary">
+          {/* <a href={brochure} download className="btn btn-primary">
             📄 Download Brochure
-          </a>
+          </a> */}
           <button onClick={() => setShowFormModal(true)} className="btn btn-success">
             📝 Enroll Now
           </button>

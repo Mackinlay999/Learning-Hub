@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style/Marketing.css"; // create this CSS file separately
-import brochure from "../assets/Marketing Training Program.pdf"; // update path if needed
+// import brochure from "../assets/Marketing Training Program.pdf"; // update path if needed
 import PaymentButton from "../components/PaymentButton"; // adjust path if needed
 
 const MarketingProgram = () => {
@@ -32,7 +32,7 @@ const MarketingProgram = () => {
         <p><strong>Mode:</strong> Online</p>
         <p><strong>Certification:</strong> Certified Digital Marketing Professional</p>
         <div className="cta-buttons">
-          <a href={brochure} download className="btn btn-primary">📄 Download Brochure</a>
+          {/* <a href={brochure} download className="btn btn-primary">📄 Download Brochure</a> */}
           <button onClick={() => setShowFormModal(true)} className="btn btn-success">📝 Enroll Now</button>
         </div>
       </section>

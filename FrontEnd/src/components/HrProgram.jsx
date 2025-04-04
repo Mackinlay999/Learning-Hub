@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style/Hr.css"; // Create and style separately
-import brochure from "../assets/Human Resources (HR) Training Program.pdf";
+// import brochure from "../assets/Human Resources (HR) Training Program.pdf";
 import PaymentButton from "../components/PaymentButton"; // Adjust path if needed
 
 const HrProgram = () => {
@@ -32,7 +32,7 @@ const HrProgram = () => {
         <p><strong>Mode:</strong> Online</p>
         <p><strong>Certification:</strong> Certified HR Professional</p>
         <div className="cta-buttons">
-          <a href={brochure} download className="btn btn-primary">📄 Download Brochure</a>
+          {/* <a href={brochure} download className="btn btn-primary">📄 Download Brochure</a> */}
           <button onClick={() => setShowFormModal(true)} className="btn btn-success">📝 Enroll Now</button>
         </div>
       </section>

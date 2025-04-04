@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style/businessAnalytics.css"; // (create and style separately)
-import brochure from "../assets/Business Analytics Training Program.pdf";
+// import brochure from "../assets/Business Analytics Training Program.pdf";
 import PaymentButton from "../components/PaymentButton"; // adjust path if needed
 
 const BusinessAnalytics = () => {
@@ -42,9 +42,9 @@ const BusinessAnalytics = () => {
           Professional
         </p>
         <div className="cta-buttons">
-          <a href={brochure} download className="btn btn-primary">
+          {/* <a href={brochure} download className="btn btn-primary">
             📄 Download Brochure
-          </a>
+          </a> */}
           <button onClick={() => setShowFormModal(true)} className="btn btn-success">📝 Enroll Now</button>
           {/* {showModal && (
             <div className="payment-modal">
