@@ -11,7 +11,7 @@ const ProgramDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const program = location.state;
-
+  const storedUser = JSON.parse(localStorage.getItem("user")) || {};
   // Handle missing program data
   if (!program) {
     return (
@@ -97,7 +97,7 @@ const ProgramDetail = () => {
             <h3>💰 Program Fee: ₹{program.price || "TBA"}</h3>
             {program.price ? (
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <PaymentButton amount={program.price} />
+                <PaymentButton amount={program.price} user={storedUser} />
               </motion.div>
             ) : (
               <p>Contact us for pricing details.</p>
