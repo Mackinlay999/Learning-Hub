@@ -341,9 +341,23 @@ const Home = () => {
                         <Button
                         variant="link"
                         className="view-program"
-                        onClick={() =>
-                          navigate(`/program/${program.title}`, { state: program }) // Navigate to ProgramDetail with program name
-                        }
+                        onClick={() => {
+                          const lowerTitle = program.title.toLowerCase();
+                        
+                          if (lowerTitle.includes("business analytics")) {
+                            navigate("/program/business", { state: program });
+                          } else if (lowerTitle.includes("hr")) {
+                            navigate("/program/hr", { state: program });
+                          } else if (lowerTitle.includes("marketing")) {
+                            navigate("/program/marketing", { state: program });
+                          } else if (lowerTitle.includes("sales")) {
+                            navigate("/program/sales", { state: program });
+                          } else if (lowerTitle.includes("finance")) {
+                            navigate("/program/finance", { state: program });
+                          } else {
+                            navigate(`/program/${program.title.split(" ")[0]}`, { state: program });
+                          }
+                        }}
                       >
                         View Program
                       </Button>
