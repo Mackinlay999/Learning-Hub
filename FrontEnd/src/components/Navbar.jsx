@@ -89,11 +89,8 @@ const NavBar = () => {
                     className="login-btn"
                     whileHover={{ backgroundColor: "#D32F2F", color: "#ffffff" }}
                   >
-<<<<<<< HEAD
+
                     LOGIN
-=======
-                    Explore Programs
->>>>>>> marcus
                   </motion.button>
                 </Link>
                 </div>

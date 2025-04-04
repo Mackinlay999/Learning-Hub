@@ -12,7 +12,6 @@ import "./style/App.css"; // Import custom styles
 import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap styles
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-<<<<<<< HEAD
 import BlogTraining from './components/BlogTraining'
 import Enterprise from './components/Enterprise'
 import Webinars from './components/Webinars'
@@ -26,17 +25,7 @@ import Program from './components/Program'
 import Userdetails from "./components/Userdetails"
 import Dashboard from "./components/Dashboard"
 
-=======
-import BlogTraining from "./components/BlogTraining";
-import Enterprise from "./components/Enterprise";
-import Webinars from "./components/Webinars";
-import Recruiters from "./components/Recruiters";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import PasswordReset from "./components/PasswordReset";
-import ProgramDetail from "./components/ProgramDetail";
-import Program from "./components/Program";
->>>>>>> marcus
+
 import PaymentSuccess from "./components/PaymentSuccess";
 import PaymentFailure from "./components/PaymentFailure";
 import BusinessAnalytics from "./components/BussinessAnalytics";
@@ -70,7 +59,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/PasswordReset" element={<PasswordReset />} />
           <Route path="/program" element={<Program />} />
-<<<<<<< HEAD
+
           <Route path="/program/:title" element={<ProgramDetail />} />
           <Route path="/Userdetails" element={<Userdetails />} />
           <Route path="/Dashboard" element={<Dashboard />} />
@@ -78,7 +67,7 @@ function App() {
         <Route path="/payment-failure" element={<PaymentFailure />} />
 
           <Route path="*" element={<NotFound />} />{' '}
-=======
+
           <Route path="/program/:id" element={<ProgramDetail />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/payment-failure" element={<PaymentFailure />} />
@@ -90,7 +79,6 @@ function App() {
           <Route path="/program/sales" element={<SalesProgram />} />
           <Route path="/program/finance" element={<FinanceProgram />} />
           <Route path="*" element={<NotFound />} />{" "}
->>>>>>> marcus
           {/* Catch-all route for 404 pages */}
         </Routes>
         <Footer />
