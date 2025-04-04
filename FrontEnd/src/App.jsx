@@ -29,7 +29,7 @@ import Dashboard from "./components/Dashboard"
 import PaymentSuccess from "./components/PaymentSuccess";
 import PaymentFailure from "./components/PaymentFailure";
 import BusinessAnalytics from "./components/BussinessAnalytics";
-import HRProgram from "./components/HRProgram";
+import HrProgram from "./components/HrProgram";
 import MarketingProgram from "./components/MarketingProgram";
 import SalesProgram from "./components/SalesProgram";
 import FinanceProgram from "./components/FinanceProgram";
@@ -74,7 +74,7 @@ function App() {
           <Route path="/program" element={<Program />} />
           <Route path="/program/:id" element={<ProgramDetail />} />
           <Route path="/program/business" element={<BusinessAnalytics />} />
-          <Route path="/program/hr" element={<HRProgram />} />
+          <Route path="/program/hr" element={<HrProgram />} />
           <Route path="/program/marketing" element={<MarketingProgram />} />
           <Route path="/program/sales" element={<SalesProgram />} />
           <Route path="/program/finance" element={<FinanceProgram />} />
