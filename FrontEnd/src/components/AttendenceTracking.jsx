@@ -1,69 +1,138 @@
-import React from "react";
-import { useTable } from "react-table";
-import "react-circular-progressbar/dist/styles.css";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import "../style/AttendenceTracking.css"
+import React, { useState } from "react";
 
 
-const studentData = [
-  { id: 1, name: "John Doe", attendance: "Present", progress: 85 },
+const initialStudents = [
+  { id: 1, name: "John Doe", attendance: "Present", progress: 80 },
   { id: 2, name: "Jane Smith", attendance: "Absent", progress: 60 },
-  { id: 3, name: "Mark Wilson", attendance: "Late", progress: 40 },
+  { id: 3, name: "Mark Wilson", attendance: "Late", progress: 50 },
 ];
 
 const AttendanceTracking = () => {
-  const columns = React.useMemo(
-    () => [
-      { Header: "ID", accessor: "id" },
-      { Header: "Name", accessor: "name" },
-      { Header: "Attendance", accessor: "attendance" },
-      {
-        Header: "Progress",
-        accessor: "progress",
-        Cell: ({ value }) => (
-          <div className="progress-bar">
-            <CircularProgressbar
-              value={value}
-              text={`${value}%`}
-              styles={buildStyles({
-                textSize: "14px",
-                pathColor: value > 70 ? "green" : value > 40 ? "orange" : "red",
-              })}
-            />
-          </div>
-        ),
-      },
-    ],
-    []
-  );
+  const [students, setStudents] = useState(initialStudents);
+  const [newStudent, setNewStudent] = useState({ name: "", attendance: "Present", progress: 0 });
+  const [editStudent, setEditStudent] = useState(null);
 
-  const tableInstance = useTable({ columns, data: studentData });
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance;
+  // Handle input changes
+  const handleInputChange = (e) => {
+    setNewStudent({ ...newStudent, [e.target.name]: e.target.value });
+  };
+
+  // Add Student Attendance
+  const addStudent = () => {
+    if (!newStudent.name.trim()) return;
+    setStudents([...students, { id: students.length + 1, ...newStudent }]);
+    setNewStudent({ name: "", attendance: "Present", progress: 0 });
+  };
+
+  // Delete Attendance Record
+  const deleteStudent = (id) => {
+    setStudents(students.filter((student) => student.id !== id));
+  };
+
+  // Start Edit
+  const startEdit = (student) => {
+    setEditStudent(student);
+  };
+
+  // Save Edit
+  const saveEdit = () => {
+    setStudents(students.map((s) => (s.id === editStudent.id ? editStudent : s)));
+    setEditStudent(null);
+  };
 
   return (
-    <div className="at-container">
-      <h2 className="at-title">Attendance & Progress Tracking</h2>
-      <table {...getTableProps()} className="at-table">
+    <div className="att-container">
+      <h2 className="att-title">Attendance & Progress Tracking</h2>
+
+      {/* Add Attendance Form */}
+      <div className="att-form">
+        <input
+          type="text"
+          name="name"
+          value={newStudent.name}
+          onChange={handleInputChange}
+          placeholder="Enter student name"
+        />
+        <select name="attendance" value={newStudent.attendance} onChange={handleInputChange}>
+          <option value="Present">Present</option>
+          <option value="Absent">Absent</option>
+          <option value="Late">Late</option>
+        </select>
+        <input
+          type="number"
+          name="progress"
+          value={newStudent.progress}
+          onChange={handleInputChange}
+          placeholder="Progress %"
+        />
+        <button onClick={addStudent}>Add Attendance</button>
+      </div>
+
+      {/* Attendance Table */}
+      <table className="att-table">
         <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render("Header")}</th>
-              ))}
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Attendance</th>
+            <th>Progress (%)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map((student) => (
+            <tr key={student.id} className={`att-row ${student.attendance.toLowerCase()}`}>
+              <td>{student.id}</td>
+              <td>
+                {editStudent && editStudent.id === student.id ? (
+                  <input
+                    type="text"
+                    value={editStudent.name}
+                    onChange={(e) => setEditStudent({ ...editStudent, name: e.target.value })}
+                  />
+                ) : (
+                  student.name
+                )}
+              </td>
+              <td>
+                {editStudent && editStudent.id === student.id ? (
+                  <select
+                    value={editStudent.attendance}
+                    onChange={(e) => setEditStudent({ ...editStudent, attendance: e.target.value })}
+                  >
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                    <option value="Late">Late</option>
+                  </select>
+                ) : (
+                  student.attendance
+                )}
+              </td>
+              <td>
+                {editStudent && editStudent.id === student.id ? (
+                  <input
+                    type="number"
+                    value={editStudent.progress}
+                    onChange={(e) =>
+                      setEditStudent({ ...editStudent, progress: e.target.value })
+                    }
+                  />
+                ) : (
+                  student.progress
+                )}
+              </td>
+              <td>
+                {editStudent && editStudent.id === student.id ? (
+                  <button onClick={saveEdit}>Save</button>
+                ) : (
+                  <>
+                    <button onClick={() => startEdit(student)}>Edit</button>
+                    <button onClick={() => deleteStudent(student.id)}>Delete</button>
+                  </>
+                )}
+              </td>
             </tr>
           ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => (
-                  <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                ))}
-              </tr>
-            );
-          })}
         </tbody>
       </table>
     </div>
