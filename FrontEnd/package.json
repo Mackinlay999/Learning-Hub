@@ -22,7 +22,11 @@
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.4.0",
+<<<<<<< HEAD
     "react-table": "^7.8.0",
+=======
+    "react-toastify": "^11.0.5",
+>>>>>>> c2f252479e84eb5f6a6e8a6f755901562141c3c2
     "router": "^2.2.0",
     "swiper": "^11.2.6"
   },
