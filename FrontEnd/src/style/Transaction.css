@@ -1,0 +1,74 @@
+.transactions-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .revenue-summary {
+    background: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .transaction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .transaction-form input,
+  .transaction-form select,
+  .transaction-form button {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .transaction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .transaction-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f9f9f9;
+    text-align: left;
+  }
+  
+  .transaction-card p {
+    margin: 5px 0;
+  }
+  
+  .edit-btn {
+    background: orange;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .delete-btn {
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .transaction-form {
+      flex-direction: column;
+    }
+  
+    .transaction-card {
+      padding: 10px;
+    }
+  }
+  
