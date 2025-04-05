@@ -265,7 +265,7 @@ const BusinessAnalytics = () => {
         </div>
       </section>
 
-      <section className="program-benefits">
+      <section className="bussiness-program-benefits">
         <h2>Program Benefits</h2>
         <ul>
           <li>

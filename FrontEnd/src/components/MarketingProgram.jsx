@@ -124,7 +124,7 @@ const MarketingProgram = () => {
         </div>
       </section>
 
-      <section className="program-benefits">
+      <section className="market-program-benefits">
         <h2>Program Benefits</h2>
         <ul>
           <li>✅ Learn from industry experts</li>

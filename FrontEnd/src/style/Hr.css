@@ -1,6 +1,10 @@
-/* Hr.css */
+/* Global Settings */
+* {
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+  }
   
-  /* Container for all content */
+  /* Main Container */
   .hr-program-container {
     width: 100%;
     max-width: 1200px;
@@ -11,16 +15,16 @@
   /* Header Section */
   .header-section {
     background-color: #ffffff;
-    color: rgb(0, 0, 0);
+    color: #333333;
     padding: 40px;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
   }
   
   .header-section h1 {
     font-size: 2.5rem;
+    color: #D32F2F;
     margin-bottom: 15px;
   }
   
@@ -28,6 +32,7 @@
     font-size: 1.1rem;
   }
   
+  /* CTA Buttons */
   .cta-buttons {
     margin-top: 20px;
   }
@@ -35,42 +40,42 @@
   .cta-buttons .btn {
     padding: 12px 25px;
     font-size: 1.1rem;
-    border-radius: 5px;
+    border-radius: 50px;
+    background-color: #D32F2F;
+    color: #ffffff;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
   }
   
   .cta-buttons .btn:hover {
-    background-color: #27ae60;
+    background-color: #B71C1C;
   }
   
-  /* Program Overview Section */
+  /* Section Spacing */
   .program-overview,
   .curriculum,
-  .program-benefits,
+  .hr-program-benefits,
   .placement-assistance,
   .cta-section {
     margin: 40px 0;
   }
   
-  
-  /* Curriculum Modules */
+  /* HR Module Cards */
   .hr-module {
-    background-color: #fff;
+    background-color: #ffffff;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
   }
   
   .hr-module:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
   
   .hr-module h4 {
     font-size: 1.2rem;
-    color: #2c3e50;
+    color: #D32F2F;
   }
   
   .hr-module ul {
@@ -78,20 +83,21 @@
     margin-left: 20px;
   }
   
-  /* Program Benefits List */
-  .program-benefits ul {
-    list-style-type: none;
+  /* Program Benefits */
+  .hr-program-benefits ul {
+    list-style: none;
     padding: 0;
   }
   
-  .program-benefits li {
-    background: url('check-icon.png') no-repeat left center;
-    padding-left: 25px;
+  .hr-program-benefits li {
+    background:  no-repeat left center;
+    padding-left: 30px;
     font-size: 1.1rem;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    color: #333333;
   }
   
-  /* Enroll Now Section */
+  /* Call-to-Action Section */
   .cta-section {
     text-align: center;
   }
@@ -100,17 +106,17 @@
     padding: 15px 30px;
     font-size: 1.2rem;
     border-radius: 50px;
-    background-color: #3498db;
-    color: white;
+    background-color: #FFC107;
+    color: #333333;
+    border: none;
     cursor: pointer;
-    transition: background-color 0.3s ease;
   }
   
   .cta-section button:hover {
-    background-color: #2980b9;
+    background-color: #FFA000;
   }
   
-  /* Modal Styles */
+  /* Modal Overlay */
   .hr-modal-overlay {
     position: fixed;
     top: 0;
@@ -121,27 +127,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 999;
   }
   
+  /* Modals */
   .hr-enroll-modal,
   .hr-payment-modal {
-    background-color: white;
+    background-color: #ffffff;
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
     max-width: 500px;
     width: 100%;
-    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
   
   .hr-enroll-modal h2,
   .hr-payment-modal h3 {
     text-align: center;
+    color: #D32F2F;
   }
   
+  /* Modal Form Elements */
   .hr-enroll-modal form input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -151,33 +160,40 @@
   .hr-enroll-modal button {
     width: 100%;
     padding: 12px;
-    border-radius: 5px;
     margin-top: 10px;
+    border-radius: 5px;
+    border: none;
   }
   
+  /* Modal Buttons */
   .hr-enroll-modal .btn-secondary,
   .hr-payment-modal .btn-secondary {
-    background-color: #bdc3c7;
-    color: #2c3e50;
+    background-color: #E0E0E0;
+    color: #333333;
   }
   
   .hr-enroll-modal .btn-secondary:hover,
   .hr-payment-modal .btn-secondary:hover {
-    background-color: #95a5a6;
+    background-color: #BDBDBD;
   }
   
   .hr-payment-modal .btn-success {
-    background-color: #27ae60;
+    background-color: #D32F2F;
+    color: #ffffff;
   }
   
   .hr-payment-modal .btn-success:hover {
-    background-color: #2ecc71;
+    background-color: #B71C1C;
   }
   
-  /* Responsive Styles */
+  /* Responsive Design */
   @media (max-width: 768px) {
     .header-section {
-      padding: 30px;
+      padding: 30px 20px;
+    }
+  
+    .header-section h1 {
+      font-size: 2rem;
     }
   
     .cta-buttons .btn {
@@ -185,7 +201,7 @@
       padding: 10px 20px;
     }
   
-    .module {
+    .hr-module {
       padding: 15px;
     }
   
@@ -199,11 +215,4 @@
       padding: 20px;
     }
   }
-  
-  /* Smooth Transitions */
-  * {
-    box-sizing: border-box;
-    transition: all 0.3s ease-in-out;
-  }
-  
   

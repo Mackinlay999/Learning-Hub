@@ -152,7 +152,7 @@ const FinanceProgram = () => {
         </div>
       </section>
 
-      <section className="program-benefits">
+      <section className="finance-program-benefits">
         <h2>Program Benefits</h2>
         <ul>
           <li>✅ Real-world finance case studies and simulations</li>

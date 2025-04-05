@@ -146,7 +146,7 @@ const HrProgram = () => {
         </div>
       </section>
 
-      <section className="program-benefits">
+      <section className="hr-program-benefits">
         <h2>Program Benefits</h2>
         <ul>
           <li>✅ Real-world HR tools training (Zoho People, Excel, etc.)</li>
