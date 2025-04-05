@@ -1,0 +1,103 @@
+.job-dashboard {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .job-dashboard h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .job-dashboard p {
+    text-align: center;
+    color: gray;
+  }
+  
+  .job-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+  }
+  
+  .job-form input,
+  .job-form button {
+    flex: 1 1 45%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .job-form button {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .job-form button:hover {
+    background-color: #388e3c;
+  }
+  
+  .job-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .job-list th,
+  .job-list td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .job-list th {
+    background-color: #f2f2f2;
+  }
+  
+  .job-list button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .job-list button:last-child {
+    background-color: #f44336;
+  }
+  
+  @media (max-width: 768px) {
+    .job-form input,
+    .job-form button {
+      flex: 1 1 100%;
+    }
+  
+    .job-list table,
+    .job-list thead,
+    .job-list tbody,
+    .job-list th,
+    .job-list td,
+    .job-list tr {
+      display: block;
+    }
+  
+    .job-list td {
+      position: relative;
+      padding-left: 50%;
+      text-align: right;
+    }
+  
+    .job-list td::before {
+      position: absolute;
+      left: 10px;
+      content: attr(data-label);
+      font-weight: bold;
+      text-align: left;
+    }
+  }
+  

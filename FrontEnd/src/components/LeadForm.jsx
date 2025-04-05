@@ -1,51 +1,51 @@
-import { useState } from "react";
-import "../style/LeadForm.css";
+import { useState, useEffect } from "react";
 
-const LeadForm = ({ addLead }) => {
-  const [formData, setFormData] = useState({ name: "", email: "", status: "Hot" });
+const LeadForm = ({ addLead, isEditing, editingLead, updateLead }) => {
+  const [leadData, setLeadData] = useState({ name: "", email: "", status: "Hot" });
+
+  useEffect(() => {
+    if (isEditing && editingLead) {
+      setLeadData(editingLead);
+    }
+  }, [isEditing, editingLead]);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setLeadData({ ...leadData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email) return;
-    addLead(formData);
-    alert("Lead added successfully!");
-    setFormData({ name: "", email: "", status: "Hot" });
+    if (isEditing) {
+      updateLead(leadData);
+    } else {
+      addLead(leadData);
+    }
+    setLeadData({ name: "", email: "", status: "Hot" });
   };
 
   return (
-    <div className="LF-lead-form">
-      <h3>Add New Lead</h3>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          className="LF-input"
-          onChange={handleChange}
-          value={formData.name}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          className="LF-input"
-          onChange={handleChange}
-          value={formData.email}
-          required
-        />
-        <select name="status" className="LF-select" onChange={handleChange} value={formData.status}>
-          <option value="Hot">Hot</option>
-          <option value="Warm">Warm</option>
-          <option value="Cold">Cold</option>
-        </select>
-        <button type="submit" className="LF-button">Add Lead</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input
+        name="name"
+        placeholder="Name"
+        value={leadData.name}
+        onChange={handleChange}
+        required
+      />
+      <input
+        name="email"
+        placeholder="Email"
+        value={leadData.email}
+        onChange={handleChange}
+        required
+      />
+      <select name="status" value={leadData.status} onChange={handleChange}>
+        <option value="Hot">Hot</option>
+        <option value="Warm">Warm</option>
+        <option value="Cold">Cold</option>
+      </select>
+      <button type="submit">{isEditing ? "Update Lead" : "Add Lead"}</button>
+    </form>
   );
 };
 

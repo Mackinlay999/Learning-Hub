@@ -78,6 +78,7 @@ function App() {
           <Route path="/program/marketing" element={<MarketingProgram />} />
           <Route path="/program/sales" element={<SalesProgram />} />
           <Route path="/program/finance" element={<FinanceProgram />} />
+          
           <Route path="*" element={<NotFound />} />{" "}
           {/* Catch-all route for 404 pages */}
         </Routes>
