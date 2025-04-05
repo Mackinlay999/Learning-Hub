@@ -1,124 +1,146 @@
-/* General styles */
+/* General container */
 .container {
-  width: 90%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: auto;
   padding: 20px;
-  text-align: center;
+  font-family: Arial, sans-serif;
 }
 
-/* Heading */
 h2 {
-  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-/* Dropdown */
+/* Form styles */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+form input,
+form select,
+form button {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+/* Dropdown filter */
 select {
   padding: 8px;
-  margin-bottom: 15px;
-  width: 100%;
-  max-width: 200px;
+  margin-bottom: 20px;
+  font-size: 14px;
 }
 
-/* Table Styles */
+/* Table styles */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
-/* Table Scroll for Mobile */
-.table-container {
-  overflow-x: auto;
-  width: 100%;
+table th,
+table td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
 }
 
-/* Ensure table cells wrap properly */
-th, td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: center;
-  white-space: nowrap; /* Prevents breaking text */
+table th {
+  background-color: #f2f2f2;
 }
 
-th {
-  background-color: #f4f4f4;
-}
-
-/* Buttons */
 button {
-  padding: 8px 14px;
-  cursor: pointer;
+  margin-right: 5px;
+  padding: 6px 10px;
   border: none;
-  background-color: #007bff;
-  color: white;
   border-radius: 4px;
-  transition: background 0.3s ease;
+  font-size: 13px;
 }
 
-button:hover {
-  background-color: #0056b3;
+button:nth-child(1) {
+  background-color: #2196f3;
+  color: white;
 }
 
-/* Modal Styles */
+button:nth-child(2) {
+  background-color: #ff9800;
+  color: white;
+}
+
+button:nth-child(3) {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Modal styles */
 .modal-container {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container > div {
   background: white;
   padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
   width: 90%;
-  max-width: 400px;
+  max-width: 500px;
 }
 
-.modal {
-  text-align: left;
-}
-
-/* 📌 Responsive Design for Mobile */
+/* Responsive styles */
 @media (max-width: 768px) {
-  .container {
-    width: 95%;
-    padding: 10px;
+  form {
+    flex-direction: column;
+    gap: 15px;
   }
 
-  select {
-    width: 100%;
-  }
-
-  /* Make the table scrollable */
-  .table-container {
-    overflow-x: auto;
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
     display: block;
   }
 
-  table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap; /* Prevents text wrapping */
+  table th {
+    display: none;
   }
 
-  th, td {
-    padding: 8px;
+  table td {
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
   }
 
-  button {
-    padding: 6px 10px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  th, td {
-    padding: 6px;
-    font-size: 12px;
-  }
-
-  button {
-    padding: 5px;
-    font-size: 12px;
+  table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    font-weight: bold;
+    text-align: left;
   }
 }

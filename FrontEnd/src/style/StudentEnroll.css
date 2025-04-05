@@ -1,73 +1,152 @@
-/* StudentEnrollment.css */
-
-/* Container Styling */
+/* Container */
 .se-container {
-    width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.se-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Form styles */
+.se-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.se-form input,
+.se-form select {
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+  max-width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.se-form button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.se-form button:hover {
+  background-color: #45a049;
+}
+
+/* Table styles */
+.se-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.se-table th,
+.se-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.se-table th {
+  background-color: #f4f4f4;
+}
+
+/* Row status coloring */
+.se-row.paid {
+  background-color: #e8f5e9;
+}
+
+.se-row.pending {
+  background-color: #fff8e1;
+}
+
+.se-row.overdue {
+  background-color: #ffebee;
+}
+
+/* Buttons inside table */
+.se-table button {
+  padding: 6px 12px;
+  font-size: 13px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.se-table button:first-child {
+  background-color: #2196f3;
+  color: white;
+}
+
+.se-table button:first-child:hover {
+  background-color: #1976d2;
+}
+
+.se-table button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+
+.se-table button:last-child:hover {
+  background-color: #d32f2f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .se-form {
+    flex-direction: column;
+    align-items: stretch;
   }
-  
-  /* Title Styling */
-  .se-title {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* Table Wrapper */
-  .se-table-wrapper {
-    overflow-x: auto;
-  }
-  
-  /* Table Styling */
-  .se-table {
+
+  .se-form input,
+  .se-form select,
+  .se-form button {
     width: 100%;
-    border-collapse: collapse;
-    background: #f9f9f9;
+    max-width: 100%;
   }
-  
-  .se-table th, .se-table td {
-    padding: 12px;
+
+  .se-table,
+  .se-table thead,
+  .se-table tbody,
+  .se-table th,
+  .se-table td,
+  .se-table tr {
+    display: block;
+  }
+
+  .se-table tr {
+    margin-bottom: 15px;
+  }
+
+  .se-table td {
+    padding-left: 50%;
+    position: relative;
+    text-align: right;
+  }
+
+  .se-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    font-weight: bold;
     text-align: left;
-    border-bottom: 1px solid #ddd;
   }
-  
+
   .se-table th {
-    background: #007bff;
-    color: white;
+    display: none;
   }
-  
-  .se-table tr:hover {
-    background: #f1f1f1;
-  }
-  
-  /* Payment Status Colors */
-  .se-status.paid {
-    color: green;
-    font-weight: bold;
-  }
-  
-  .se-status.pending {
-    color: orange;
-    font-weight: bold;
-  }
-  
-  .se-status.overdue {
-    color: red;
-    font-weight: bold;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 600px) {
-    .se-table th, .se-table td {
-      padding: 8px;
-      font-size: 14px;
-    }
-  }
-  
+}
