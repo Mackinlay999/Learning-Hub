@@ -1,53 +1,192 @@
-.payment-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
+/* Base container */
+.business-analytics-container {
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f6f8;
+  color: #333;
+}
+
+/* Header Section */
+.header-section {
+  text-align: center;
+  background: white;
+  color: rgb(0, 0, 0);
+  padding: 3rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.header-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-buttons {
+  margin-top: 2rem;
+}
+
+.cta-buttons .btn {
+  margin: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.cta-buttons .btn:hover {
+  transform: scale(1.05);
+}
+
+/* Section Headings */
+.program-overview,
+.curriculum,
+.program-benefits,
+.placement-assistance,
+.cta-section {
+  margin-bottom: 3rem;
+}
+
+.program-overview h2,
+.curriculum h2,
+.program-benefits h2,
+.placement-assistance h2,
+.cta-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #0d47a1;
+}
+
+/* Curriculum Modules */
+.bussiness-module {
+  background: white;
+  border-left: 6px solid #1976d2;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  animation: slideUp 0.6s ease;
+}
+
+.bussiness-module h3 {
+  color: #1565c0;
+  margin-bottom: 0.8rem;
+}
+
+.bussiness-module h4 {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #0d47a1;
+}
+
+.bussiness-module ul {
+  margin-left: 1.2rem;
+  list-style-type: square;
+}
+
+.bussiness-module li {
+  margin-bottom: 0.5rem;
+}
+
+/* Modal Overlay */
+.bussiness-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Form Modal */
+.bussiness-enroll-modal,
+.bussiness-payment-modal {
+  background: white;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.5s ease;
+}
+
+.bussiness-enroll-modal input {
+  display: block;
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+.bussiness-enroll-modal input:focus {
+  border-color: #1976d2;
+  outline: none;
+}
+
+.bussiness-enroll-modal .btn,
+.bussiness-payment-modal .btn {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+  background: #e3f2fd;
+  padding: 2rem 1rem;
+  border-radius: 10px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .payment-modal-content {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 400px;
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .bussiness-module {
+    padding: 1rem;
+  }
+
+  .bussiness-enroll-modal,
+  .bussiness-payment-modal {
     width: 90%;
   }
-  
-.business-analytics-container {
-    padding: 40px;
-    background-color: #f9f9f9;
-    color: #333;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  .header-section, .program-overview, .curriculum, .program-benefits, .placement-assistance, .cta-section {
-    margin-bottom: 40px;
-  }
-  
-  .module {
-    background: #fff;
-    border-left: 4px solid #003366;
-    padding: 20px;
-    margin-bottom: 30px;
-    border-radius: 6px;
-  }
-  
-  h1, h2, h3 {
-    color: #003366;
-  }
-  
-  ul {
-    padding-left: 20px;
-  }
-  
-  ul li {
-    margin-bottom: 5px;
-  }
-  
+}

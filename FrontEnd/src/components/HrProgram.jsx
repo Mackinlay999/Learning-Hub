@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../style/Hr.css"; // Create and style separately
 // import brochure from "../assets/Human Resources (HR) Training Program.pdf";
-import PaymentButton from "../components/PaymentButton"; // Adjust path if needed
+// import PaymentButton from "../components/PaymentButton"; // Adjust path if needed
 
 const HrProgram = () => {
   const [showFormModal, setShowFormModal] = useState(false);
@@ -27,32 +27,49 @@ const HrProgram = () => {
     <div className="hr-program-container">
       <section className="header-section">
         <h1>Human Resources Training Program</h1>
-        <p><strong>Duration:</strong> 3 Months</p>
-        <p><strong>Fees:</strong> ₹99,999 (INR)</p>
-        <p><strong>Mode:</strong> Online</p>
-        <p><strong>Certification:</strong> Certified HR Professional</p>
+        <p>
+          <strong>Duration:</strong> 3 Months
+        </p>
+        <p>
+          <strong>Fees:</strong> ₹99,999 (INR)
+        </p>
+        <p>
+          <strong>Mode:</strong> Online
+        </p>
+        <p>
+          <strong>Certification:</strong> Certified HR Professional
+        </p>
         <div className="cta-buttons">
           {/* <a href={brochure} download className="btn btn-primary">📄 Download Brochure</a> */}
-          <button onClick={() => setShowFormModal(true)} className="btn btn-success">📝 Enroll Now</button>
+          <button
+            onClick={() => setShowFormModal(true)}
+            className="btn btn-success"
+          >
+            📝 Enroll Now
+          </button>
         </div>
       </section>
 
       <section className="program-overview">
         <h2>Program Overview</h2>
         <p>
-          The Human Resources Training Program provides comprehensive training in recruitment,
-          employee engagement, labor law compliance, payroll, performance management, and HR analytics.
-          It's ideal for aspiring HR professionals looking to enter or grow in the HR field.
+          The Human Resources Training Program provides comprehensive training
+          in recruitment, employee engagement, labor law compliance, payroll,
+          performance management, and HR analytics. It's ideal for aspiring HR
+          professionals looking to enter or grow in the HR field.
         </p>
       </section>
 
       <section className="curriculum">
         <h2>Curriculum Overview</h2>
 
-        <div className="module">
+        <div className="hr-module">
           <h3>Module 1: Foundations of Human Resources</h3>
           <h4>Objective:</h4>
-          <p>Understand HR’s role in organizational development, functions, and ethical practices.</p>
+          <p>
+            Understand HR’s role in organizational development, functions, and
+            ethical practices.
+          </p>
           <h4>Topics Covered:</h4>
           <ul>
             <li>Evolution and role of HR</li>
@@ -66,10 +83,13 @@ const HrProgram = () => {
           </ul>
         </div>
 
-        <div className="module">
+        <div className="hr-module">
           <h3>Module 2: Recruitment & Onboarding</h3>
           <h4>Objective:</h4>
-          <p>Learn strategies for talent acquisition and efficient onboarding processes.</p>
+          <p>
+            Learn strategies for talent acquisition and efficient onboarding
+            processes.
+          </p>
           <h4>Topics Covered:</h4>
           <ul>
             <li>Job analysis and description writing</li>
@@ -84,10 +104,13 @@ const HrProgram = () => {
           </ul>
         </div>
 
-        <div className="module">
+        <div className="hr-module">
           <h3>Module 3: HR Operations & Compliance</h3>
           <h4>Objective:</h4>
-          <p>Master daily HR operations including payroll, leave, and compliance with labor laws.</p>
+          <p>
+            Master daily HR operations including payroll, leave, and compliance
+            with labor laws.
+          </p>
           <h4>Topics Covered:</h4>
           <ul>
             <li>Payroll management and benefits</li>
@@ -102,10 +125,12 @@ const HrProgram = () => {
           </ul>
         </div>
 
-        <div className="module">
-          <h3>Module 4: Performance & HR Analytics</h3>
+        <div className="hr-module">
+          <h3>module 4: Performance & HR Analytics</h3>
           <h4>Objective:</h4>
-          <p>Learn how to assess performance and make data-driven HR decisions.</p>
+          <p>
+            Learn how to assess performance and make data-driven HR decisions.
+          </p>
           <h4>Topics Covered:</h4>
           <ul>
             <li>KPI setting & performance appraisal</li>
@@ -134,8 +159,8 @@ const HrProgram = () => {
       <section className="placement-assistance">
         <h2>Placement Assistance Provided</h2>
         <p>
-          We offer career support including mock interviews, job referrals,
-          and personalized guidance to help you land your first or next HR role.
+          We offer career support including mock interviews, job referrals, and
+          personalized guidance to help you land your first or next HR role.
         </p>
       </section>
 
@@ -152,8 +177,8 @@ const HrProgram = () => {
 
       {/* Modal - Enrollment Form */}
       {showFormModal && (
-        <div className="modal-overlay">
-          <div className="enroll-modal">
+        <div className="hr-modal-overlay">
+          <div className="hr-enroll-modal">
             <h2>Enroll in HR Training Program</h2>
             <form onSubmit={handleFormSubmit}>
               <input
@@ -197,11 +222,18 @@ const HrProgram = () => {
 
       {/* Modal - Payment */}
       {showPaymentModal && (
-        <div className="modal-overlay">
-          <div className="payment-modal">
+        <div className="hr-modal-overlay">
+          <div className="hr-payment-modal">
             <h3>Confirm Payment</h3>
-            <p>Proceed to pay ₹99,999 for the HR Training Program</p>
-            <PaymentButton amount={9999900} user={formData} />
+            <p>Proceed to pay ₹79,999 for the Sales Mastery Program</p>
+            <a
+              href="https://razorpay.me/@mackinlay?amount=NzSQ5U9nmvnRFvfnpmXM2A%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-success"
+            >
+              Pay Now
+            </a>
             <button
               onClick={() => setShowPaymentModal(false)}
               className="btn btn-secondary mt-2"

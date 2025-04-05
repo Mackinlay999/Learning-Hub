@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../style/Finance.css"; // Create this stylesheet separately
 // import brochure from "../assets/Finance Training Program.pdf";
-import PaymentButton from "../components/PaymentButton"; // Adjust path if needed
+// import PaymentButton from "../components/PaymentButton"; // Adjust path if needed
 
 const FinanceProgram = () => {
   const [showFormModal, setShowFormModal] = useState(false);
@@ -25,17 +25,28 @@ const FinanceProgram = () => {
 
   return (
     <div className="finance-program-container">
-      <section className="header-section">
+      <section className="finance-header-section">
         <h1>Finance Training Program</h1>
-        <p><strong>Duration:</strong> 3 Months</p>
-        <p><strong>Fees:</strong> ₹65,999(INR)</p>
-        <p><strong>Mode:</strong> Online</p>
-        <p><strong>Certification:</strong> Certified Finance Professional</p>
+        <p>
+          <strong>Duration:</strong> 3 Months
+        </p>
+        <p>
+          <strong>Fees:</strong> ₹65,999(INR)
+        </p>
+        <p>
+          <strong>Mode:</strong> Online
+        </p>
+        <p>
+          <strong>Certification:</strong> Certified Finance Professional
+        </p>
         <div className="cta-buttons">
           {/* <a href={brochure} download className="btn btn-primary">
             📄 Download Brochure
           </a> */}
-          <button onClick={() => setShowFormModal(true)} className="btn btn-success">
+          <button
+            onClick={() => setShowFormModal(true)}
+            className="btn btn-success"
+          >
             📝 Enroll Now
           </button>
         </div>
@@ -46,8 +57,8 @@ const FinanceProgram = () => {
         <p>
           The Finance Training Program is crafted to provide students with
           essential knowledge in financial accounting, corporate finance,
-          investment analysis, and fintech innovations. The course includes
-          case studies, real-world simulations, and tools used in financial
+          investment analysis, and fintech innovations. The course includes case
+          studies, real-world simulations, and tools used in financial
           institutions globally.
         </p>
       </section>
@@ -56,7 +67,7 @@ const FinanceProgram = () => {
         <h2>Curriculum Overview</h2>
 
         {/* Module 1 */}
-        <div className="module">
+        <div className="finance-module">
           <h3>Module 1: Fundamentals of Financial Accounting</h3>
           <h4>Objective:</h4>
           <p>
@@ -78,7 +89,7 @@ const FinanceProgram = () => {
         </div>
 
         {/* Module 2 */}
-        <div className="module">
+        <div className="finance-module">
           <h3>Module 2: Corporate Finance & Budgeting</h3>
           <h4>Objective:</h4>
           <p>
@@ -99,7 +110,7 @@ const FinanceProgram = () => {
         </div>
 
         {/* Module 3 */}
-        <div className="module">
+        <div className="finance-module">
           <h3>Module 3: Investment Analysis</h3>
           <h4>Objective:</h4>
           <p>
@@ -120,7 +131,7 @@ const FinanceProgram = () => {
         </div>
 
         {/* Module 4 */}
-        <div className="module">
+        <div className="finance-module">
           <h3>Module 4: FinTech and Innovations</h3>
           <h4>Objective:</h4>
           <p>
@@ -173,8 +184,8 @@ const FinanceProgram = () => {
 
       {/* Modal - Enrollment Form */}
       {showFormModal && (
-        <div className="modal-overlay">
-          <div className="enroll-modal">
+        <div className="finance-module-modal-overlay">
+          <div className="finance-module-enroll-modal">
             <h2>Enroll in Finance Program</h2>
             <form onSubmit={handleFormSubmit}>
               <input
@@ -201,7 +212,9 @@ const FinanceProgram = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit" className="btn btn-success">Proceed to Payment</button>
+              <button type="submit" className="btn btn-success">
+                Proceed to Payment
+              </button>
               <button
                 type="button"
                 className="btn btn-secondary"
@@ -216,13 +229,18 @@ const FinanceProgram = () => {
 
       {/* Modal - Payment Confirmation */}
       {showPaymentModal && (
-        <div className="modal-overlay">
-          <div className="payment-modal">
+        <div className="finance-module-modal-overlay">
+          <div className="finance-module-payment-modal">
             <h3>Confirm Payment</h3>
-            <p>
-              Proceed to pay ₹99,999 for the Finance Training Program
-            </p>
-            <PaymentButton amount={9999900} user={formData} />
+            <p>Proceed to pay ₹79,999 for the Sales Mastery Program</p>
+            <a
+              href="https://razorpay.me/@mackinlay?amount=NzSQ5U9nmvnRFvfnpmXM2A%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-success"
+            >
+              Pay Now
+            </a>
             <button
               onClick={() => setShowPaymentModal(false)}
               className="btn btn-secondary mt-2"

@@ -23,7 +23,6 @@ const BusinessAnalytics = () => {
     setShowPaymentModal(true);
   };
 
-
   return (
     <div className="business-analytics-container">
       <section className="header-section">
@@ -45,7 +44,12 @@ const BusinessAnalytics = () => {
           {/* <a href={brochure} download className="btn btn-primary">
             📄 Download Brochure
           </a> */}
-          <button onClick={() => setShowFormModal(true)} className="btn btn-success">📝 Enroll Now</button>
+          <button
+            onClick={() => setShowFormModal(true)}
+            className="btn btn-success"
+          >
+            📝 Enroll Now
+          </button>
           {/* {showModal && (
             <div className="payment-modal">
               <div className="payment-modal-content">
@@ -83,7 +87,7 @@ const BusinessAnalytics = () => {
         <h2>Curriculum Overview</h2>
 
         {/* Module 1 */}
-        <div className="module">
+        <div className="bussiness-module">
           <h3>Module 1: Introduction to Business Analytics</h3>
           <h4>Objective:</h4>
           <p>
@@ -129,7 +133,7 @@ const BusinessAnalytics = () => {
         </div>
 
         {/* Module 2 */}
-        <div className="module">
+        <div className="bussiness-module">
           <h3>Module 2: Data Visualization and Reporting</h3>
           <h4>Objective:</h4>
           <p>
@@ -175,7 +179,7 @@ const BusinessAnalytics = () => {
         </div>
 
         {/* Module 3 */}
-        <div className="module">
+        <div className="bussiness-module">
           <h3>Module 3: Predictive Analytics</h3>
           <h4>Objective:</h4>
           <p>
@@ -218,7 +222,7 @@ const BusinessAnalytics = () => {
         </div>
 
         {/* Module 4 */}
-        <div className="module">
+        <div className="bussiness-module">
           <h3>Module 4: Big Data Applications</h3>
           <h4>Objective:</h4>
           <p>
@@ -314,8 +318,8 @@ const BusinessAnalytics = () => {
 
       {/* Modal - Enrollment Form */}
       {showFormModal && (
-        <div className="modal-overlay">
-          <div className="enroll-modal">
+        <div className="bussiness-modal-overlay">
+          <div className="bussiness-enroll-modal">
             <h2>Enroll in Business Analytics Program</h2>
             <form onSubmit={handleFormSubmit}>
               <input
@@ -342,7 +346,9 @@ const BusinessAnalytics = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit" className="btn btn-success">Proceed to Payment</button>
+              <button type="submit" className="btn btn-success">
+                Proceed to Payment
+              </button>
               <button
                 type="button"
                 className="btn btn-secondary"
@@ -357,16 +363,21 @@ const BusinessAnalytics = () => {
 
       {/* Modal - Payment Confirmation */}
       {showPaymentModal && (
-        <div className="modal-overlay">
-          <div className="payment-modal-content">
+        <div className="bussiness-modal-overlay">
+          <div className="bussiness-payment-modal">
             <h3>Confirm Payment</h3>
-            <p>
-              Proceed to pay <strong>₹1,29,999</strong> for the Business Analytics Training Program
-            </p>
-            <PaymentButton amount={12999900} user={formData} />
+            <p>Proceed to pay ₹79,999 for the Sales Mastery Program</p>
+            <a
+              href="https://razorpay.me/@mackinlay?amount=NzSQ5U9nmvnRFvfnpmXM2A%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-success"
+            >
+              Pay Now
+            </a>
             <button
-              className="btn btn-secondary mt-2"
               onClick={() => setShowPaymentModal(false)}
+              className="btn btn-secondary mt-2"
             >
               Cancel
             </button>
