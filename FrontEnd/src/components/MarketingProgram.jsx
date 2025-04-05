@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../style/Marketing.css"; // create this CSS file separately
-import brochure from "../assets/Marketing Training Program.pdf"; // update path if needed
-import PaymentButton from "../components/PaymentButton"; // adjust path if needed
+// import brochure from "../assets/Marketing Training Program.pdf"; // update path if needed
+// import PaymentButton from "../components/PaymentButton"; // adjust path if needed
 
 const MarketingProgram = () => {
   const [showFormModal, setShowFormModal] = useState(false);
@@ -25,32 +25,51 @@ const MarketingProgram = () => {
 
   return (
     <div className="marketing-program-container">
-      <section className="header-section">
+      <section className="market-header-section">
         <h1>Digital Marketing Training Program</h1>
-        <p><strong>Duration:</strong> 3 Months</p>
-        <p><strong>Fees:</strong> ₹89,999 (INR)</p>
-        <p><strong>Mode:</strong> Online</p>
-        <p><strong>Certification:</strong> Certified Digital Marketing Professional</p>
+        <p>
+          <strong>Duration:</strong> 3 Months
+        </p>
+        <p>
+          <strong>Fees:</strong> ₹89,999 (INR)
+        </p>
+        <p>
+          <strong>Mode:</strong> Online
+        </p>
+        <p>
+          <strong>Certification:</strong> Certified Digital Marketing
+          Professional
+        </p>
         <div className="cta-buttons">
-          <a href={brochure} download className="btn btn-primary">📄 Download Brochure</a>
-          <button onClick={() => setShowFormModal(true)} className="btn btn-success">📝 Enroll Now</button>
+          {/* <a href={brochure} download className="btn btn-primary">📄 Download Brochure</a> */}
+          <button
+            onClick={() => setShowFormModal(true)}
+            className="btn btn-success"
+          >
+            📝 Enroll Now
+          </button>
         </div>
       </section>
 
       <section className="program-overview">
         <h2>Program Overview</h2>
         <p>
-          This comprehensive Digital Marketing Training Program prepares students for the fast-paced world of online marketing. It covers SEO, SEM, social media marketing, email campaigns, content creation, analytics, and strategy building.
+          This comprehensive Digital Marketing Training Program prepares
+          students for the fast-paced world of online marketing. It covers SEO,
+          SEM, social media marketing, email campaigns, content creation,
+          analytics, and strategy building.
         </p>
       </section>
 
       <section className="curriculum">
         <h2>Curriculum Overview</h2>
 
-        <div className="module">
+        <div className="market-module">
           <h3>Module 1: Digital Marketing Fundamentals</h3>
           <h4>Objective:</h4>
-          <p>Understand the core concepts and components of digital marketing.</p>
+          <p>
+            Understand the core concepts and components of digital marketing.
+          </p>
           <h4>Topics Covered:</h4>
           <ul>
             <li>Introduction to Digital Marketing</li>
@@ -60,7 +79,7 @@ const MarketingProgram = () => {
           </ul>
         </div>
 
-        <div className="module">
+        <div className="market-module">
           <h3>Module 2: SEO and SEM</h3>
           <h4>Objective:</h4>
           <p>Optimize websites and run search engine marketing campaigns.</p>
@@ -73,10 +92,13 @@ const MarketingProgram = () => {
           </ul>
         </div>
 
-        <div className="module">
+        <div className="market-module">
           <h3>Module 3: Social Media & Content Marketing</h3>
           <h4>Objective:</h4>
-          <p>Use platforms like Facebook, Instagram, LinkedIn for content and engagement.</p>
+          <p>
+            Use platforms like Facebook, Instagram, LinkedIn for content and
+            engagement.
+          </p>
           <h4>Topics Covered:</h4>
           <ul>
             <li>Social Media Strategies</li>
@@ -86,10 +108,12 @@ const MarketingProgram = () => {
           </ul>
         </div>
 
-        <div className="module">
+        <div className="market-module">
           <h3>Module 4: Analytics and Email Campaigns</h3>
           <h4>Objective:</h4>
-          <p>Learn to track performance and run personalized email campaigns.</p>
+          <p>
+            Learn to track performance and run personalized email campaigns.
+          </p>
           <h4>Topics Covered:</h4>
           <ul>
             <li>Google Analytics & Tag Manager</li>
@@ -100,7 +124,7 @@ const MarketingProgram = () => {
         </div>
       </section>
 
-      <section className="program-benefits">
+      <section className="market-program-benefits">
         <h2>Program Benefits</h2>
         <ul>
           <li>✅ Learn from industry experts</li>
@@ -114,22 +138,27 @@ const MarketingProgram = () => {
       <section className="placement-assistance">
         <h2>Placement Assistance Provided</h2>
         <p>
-          Our career services include mock interviews, resume reviews, and connections with recruiters in top digital marketing firms and startups.
+          Our career services include mock interviews, resume reviews, and
+          connections with recruiters in top digital marketing firms and
+          startups.
         </p>
       </section>
 
       <section className="cta-section">
         <h3>Launch Your Career in Digital Marketing!</h3>
         <p>
-          Enroll today and become a <strong>Certified Digital Marketing Professional</strong>!
+          Enroll today and become a{" "}
+          <strong>Certified Digital Marketing Professional</strong>!
         </p>
-        <button onClick={() => setShowFormModal(true)} className="btn btn-info">Enroll Now</button>
+        <button onClick={() => setShowFormModal(true)} className="btn btn-info">
+          Enroll Now
+        </button>
       </section>
 
       {/* Modal - Enrollment Form */}
       {showFormModal && (
-        <div className="modal-overlay">
-          <div className="enroll-modal">
+        <div className="market-modal-overlay">
+          <div className="market-enroll-modal">
             <h2>Enroll in Marketing Program</h2>
             <form onSubmit={handleFormSubmit}>
               <input
@@ -156,7 +185,9 @@ const MarketingProgram = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit" className="btn btn-success">Proceed to Payment</button>
+              <button type="submit" className="btn btn-success">
+                Proceed to Payment
+              </button>
               <button
                 type="button"
                 className="btn btn-secondary"
@@ -171,11 +202,18 @@ const MarketingProgram = () => {
 
       {/* Modal - Payment Confirmation */}
       {showPaymentModal && (
-        <div className="modal-overlay">
-          <div className="payment-modal">
+        <div className="market-modal-overlay">
+          <div className="market-payment-modal">
             <h3>Confirm Payment</h3>
-            <p>Proceed to pay ₹99,999 for the Digital Marketing Training Program</p>
-            <PaymentButton amount={9999900} user={formData} />
+            <p>Proceed to pay ₹79,999 for the Sales Mastery Program</p>
+            <a
+              href="https://razorpay.me/@mackinlay?amount=NzSQ5U9nmvnRFvfnpmXM2A%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-success"
+            >
+              Pay Now
+            </a>
             <button
               onClick={() => setShowPaymentModal(false)}
               className="btn btn-secondary mt-2"

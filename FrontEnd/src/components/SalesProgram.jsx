@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import "../style/Sales.css"; // style separately
-import brochure from "../assets/Professional Sales Specialist Certification Program.pdf"; // replace with your actual file
-import PaymentButton from "../components/PaymentButton"; // adjust path if needed
+import "../style/Sales.css"; // Style separately
 
 const SalesProgram = () => {
   const [showFormModal, setShowFormModal] = useState(false);
@@ -24,24 +22,29 @@ const SalesProgram = () => {
   };
 
   return (
-    <div className="sales-program-container">
-      <section className="header-section">
-        <h1>Sales Mastery Program</h1>
-        <p><strong>Duration:</strong> 3 Months</p>
-        <p><strong>Fees:</strong> ₹79,999 (INR)</p>
-        <p><strong>Mode:</strong> Online</p>
-        <p><strong>Certification:</strong> Certified Sales Strategist</p>
-        <div className="cta-buttons">
-          <a href={brochure} download className="btn btn-primary">
+    <div className="sales-container">
+      <section className="sales-header">
+        <h1 className="sales-title">Sales Mastery Program</h1>
+        <div className="sales-info">
+          <p><strong>Duration:</strong> 3 Months</p>
+          <p><strong>Fees:</strong> ₹79,999 (INR)</p>
+          <p><strong>Mode:</strong> Online</p>
+          <p><strong>Certification:</strong> Certified Sales Strategist</p>
+        </div>
+        <div className="sales-cta-buttons">
+          {/* <a href={brochure} download className="btn btn-primary">
             📄 Download Brochure
-          </a>
-          <button onClick={() => setShowFormModal(true)} className="btn btn-success">
+          </a> */}
+          <button
+            onClick={() => setShowFormModal(true)}
+            className="btn btn-success"
+          >
             📝 Enroll Now
           </button>
         </div>
       </section>
 
-      <section className="program-overview">
+      <section className="sales-overview">
         <h2>Program Overview</h2>
         <p>
           The Sales Mastery Program equips professionals with cutting-edge
@@ -51,10 +54,10 @@ const SalesProgram = () => {
         </p>
       </section>
 
-      <section className="curriculum">
+      <section className="sales-curriculum">
         <h2>Curriculum Overview</h2>
 
-        <div className="module">
+        <div className="sales-module">
           <h3>Module 1: Fundamentals of Sales</h3>
           <p><strong>Objective:</strong> Understand the sales lifecycle and modern buyer behavior.</p>
           <ul>
@@ -64,7 +67,7 @@ const SalesProgram = () => {
           </ul>
         </div>
 
-        <div className="module">
+        <div className="sales-module">
           <h3>Module 2: Prospecting & Lead Generation</h3>
           <p><strong>Objective:</strong> Learn how to generate, qualify, and nurture leads effectively.</p>
           <ul>
@@ -74,7 +77,7 @@ const SalesProgram = () => {
           </ul>
         </div>
 
-        <div className="module">
+        <div className="sales-module">
           <h3>Module 3: Pitching & Objection Handling</h3>
           <p><strong>Objective:</strong> Master techniques to pitch persuasively and address objections.</p>
           <ul>
@@ -84,7 +87,7 @@ const SalesProgram = () => {
           </ul>
         </div>
 
-        <div className="module">
+        <div className="sales-module">
           <h3>Module 4: Closing & Follow-up</h3>
           <p><strong>Objective:</strong> Focus on deal closure and maintaining long-term relationships.</p>
           <ul>
@@ -95,7 +98,7 @@ const SalesProgram = () => {
         </div>
       </section>
 
-      <section className="program-benefits">
+      <section className="sales-benefits">
         <h2>Program Benefits</h2>
         <ul>
           <li>✅ Learn from Top Sales Mentors</li>
@@ -106,7 +109,7 @@ const SalesProgram = () => {
         </ul>
       </section>
 
-      <section className="placement-assistance">
+      <section className="sales-placement">
         <h2>Placement Assistance Provided</h2>
         <p>
           We support you with resume reviews, mock interviews, and job
@@ -115,7 +118,7 @@ const SalesProgram = () => {
         </p>
       </section>
 
-      <section className="cta-section">
+      <section className="sales-cta-final">
         <h3>Take the next step in your career!</h3>
         <p>
           Join our Sales Mastery Program and become a{" "}
@@ -126,12 +129,12 @@ const SalesProgram = () => {
         </button>
       </section>
 
-      {/* Modal - Enrollment Form */}
+      {/* Enrollment Modal */}
       {showFormModal && (
-        <div className="modal-overlay">
-          <div className="enroll-modal">
+        <div className="sales-modal-overlay">
+          <div className="sales-form-modal">
             <h2>Enroll in Sales Mastery Program</h2>
-            <form onSubmit={handleFormSubmit}>
+            <form onSubmit={handleFormSubmit} className="sales-form">
               <input
                 type="text"
                 name="name"
@@ -156,30 +159,37 @@ const SalesProgram = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit" className="btn btn-success">
-                Proceed to Payment
-              </button>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={() => setShowFormModal(false)}
-              >
-                Cancel
-              </button>
+              <div className="sales-form-buttons">
+                <button type="submit" className="btn btn-success">
+                  Proceed to Payment
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setShowFormModal(false)}
+                >
+                  Cancel
+                </button>
+              </div>
             </form>
           </div>
         </div>
       )}
 
-      {/* Modal - Payment */}
+      {/* Payment Modal */}
       {showPaymentModal && (
-        <div className="modal-overlay">
-          <div className="payment-modal">
+        <div className="sales-modal-overlay">
+          <div className="sales-payment-modal">
             <h3>Confirm Payment</h3>
-            <p>
-              Proceed to pay ₹99,999 for the Sales Mastery Program
-            </p>
-            <PaymentButton amount={9999900} user={formData} />
+            <p>Proceed to pay ₹79,999 for the Sales Mastery Program</p>
+            <a
+              href="https://razorpay.me/@mackinlay?amount=NzSQ5U9nmvnRFvfnpmXM2A%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-success"
+            >
+              Pay Now
+            </a>
             <button
               onClick={() => setShowPaymentModal(false)}
               className="btn btn-secondary mt-2"
