@@ -69,7 +69,7 @@ const LiveSessions = () => {
         </thead>
         <tbody>
           {sessions.map((session) => (
-            <tr key={session.id}>
+            <tr key={session.id} className="LS-tr">
               <td>{session.id}</td>
               <td>
                 {editSession && editSession.id === session.id ? (

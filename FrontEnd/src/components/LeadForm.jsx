@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef } from "react";
 
-const LeadForm = ({ addLead, isEditing, editingLead, updateLead }) => {
+const LeadForm = forwardRef(({ addLead, isEditing, editingLead, updateLead }, ref) => {
   const [leadData, setLeadData] = useState({ name: "", email: "", status: "Hot" });
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const LeadForm = ({ addLead, isEditing, editingLead, updateLead }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} ref={ref}>
       <input
         name="name"
         placeholder="Name"
@@ -44,9 +44,9 @@ const LeadForm = ({ addLead, isEditing, editingLead, updateLead }) => {
         <option value="Warm">Warm</option>
         <option value="Cold">Cold</option>
       </select>
-      <button type="submit">{isEditing ? "Update Lead" : "Add Lead"}</button>
+      <button type="LF-submit">{isEditing ? "Update Lead" : "Add Lead"}</button>
     </form>
   );
-};
+});
 
 export default LeadForm;

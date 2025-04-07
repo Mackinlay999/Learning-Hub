@@ -81,13 +81,31 @@
       justify-content: center;
     }
   
-    .d-sidebar-item::before {
-      content: "🔹";
-      font-size: 20px;
-    }
-  
-    .d-sidebar-item:hover::before {
-      content: "✔️";
-    }
+   
   }
   
+
+  /* design */
+  .d-sidebar-item {
+ 
+ display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 500;
+  
+  border-radius: 6px;
+  
+}
+
+.d-sidebar-item:hover {
+  background-color: #f0f0f0;
+}
+
+
+.d-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
