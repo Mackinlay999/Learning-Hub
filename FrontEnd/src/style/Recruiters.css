@@ -49,8 +49,9 @@
     align-items: center;
     justify-content: space-between;
     padding: 80px 100px;
-    background-image: linear-gradient(to right, #05152b 0%, rgba(16, 35, 60, 0.91) 46%, rgba(88, 98, 113, 0.8) 100%);
-    color: white;
+    /* background-image: linear-gradient(to right, #05152b 0%, rgba(16, 35, 60, 0.91) 46%, rgba(88, 98, 113, 0.8) 100%); */
+    background-color: white;
+    color: black;
   }
   
   .recruiters-content1 {
@@ -64,13 +65,13 @@
   }
   
   .recruiters-title1 span {
-    color: #4da8da;
+    color: #be2929;
   }
   
   .recruiters-description1 {
     font-size: 1.3rem;
     margin-bottom: 10px;
-    color: white;
+    color: black;
 
   }
   
@@ -78,7 +79,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 20px;
-    color: white;
+    color: black;
 
   }
   
@@ -97,8 +98,8 @@
   }
   
   .callback-btn1 {
-    background-color: white;
-    color: #660000;
+    background-color: #b30000;
+    color: white;
   }
   
   .post-job-btn1 {
@@ -108,8 +109,8 @@
   }
   
   .callback-btn1:hover {
-    background-color: #660000;
-    color: white;
+    background-color: #B71C1C;
+
   }
   
   .post-job-btn1:hover {

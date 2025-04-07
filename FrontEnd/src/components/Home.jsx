@@ -30,11 +30,11 @@ import feature3 from "../images/f3.png";
 import feature4 from "../images/f4.png";
 const Home = () => {
   const programs = [
-    { id: 1, title: "HR", icon: "👥", image: hrImg },
-    { id: 2, title: "Marketing", icon: "📢", image: marketingImg },
-    { id: 3, title: "Sales", icon: "💰", image: SalesImg },
-    { id: 4, title: "Business Analyst", icon: "📊", image: BusinessImg },
-    { id: 5, title: "Finance", icon: "💵", image: financeImg },
+    { id: 1, title: "HR", image: hrImg },
+    { id: 2, title: "Marketing", image: marketingImg },
+    { id: 3, title: "Sales", image: SalesImg },
+    { id: 4, title: "Business Analyst", image: BusinessImg },
+    { id: 5, title: "Finance", image: financeImg },
   ];
   const features = [
     {
@@ -89,20 +89,23 @@ const Home = () => {
   
   const [selectedProgram, setSelectedProgram] = useState("Our training programs");
   const [students, setStudents] = useState(1);
+  const [companies, setCompanies] = useState(1);
   const navigate = useNavigate();
-
   useEffect(() => {
-    let count = 1;
-    const interval = setInterval(() => {
-      if (count >= 100) {
-        clearInterval(interval);
-      } else {
-        count++;
-        setStudents(count);
-      }
+    const studentInterval = setInterval(() => {
+      setStudents(prev => (prev >= 100 ? 1 : prev + 1));
     }, 50);
-    return () => clearInterval(interval);
+
+    const companyInterval = setInterval(() => {
+      setCompanies(prev => (prev >= 1000 ? 1 : prev + 1));
+    }, 10);
+
+    return () => {
+      clearInterval(studentInterval);
+      clearInterval(companyInterval);
+    };
   }, []);
+
   return (
     <>
       {/* Mackinlay */}
@@ -305,7 +308,7 @@ const Home = () => {
                     onClick={() => setSelectedProgram(program.title)}
                     className="home-menu-item"
                   >
-                    <span className="home-menu-icon">{program.icon}</span>
+                    {/* <span className="home-menu-icon">{program.icon}</span> */}
                     <span className="home-menu-name">{program.title}</span>
                   </li>
                 ))}
@@ -429,15 +432,16 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.9 }}
         >
-          <h2 className="home-goal-statNumber2">1000+</h2>
+          <h2 className="home-goal-statNumber2">{companies}</h2>
           <p className="home-goal-statLabel2">HIRING COMPANIES*</p>
         </motion.div>
       </div>
       {/* Testimonial Section */}
+      <div className="home-testimonial-slider2-wrapper">
       <div className="home-testimonial-slider2">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          navigation
+          navigation={true}
           pagination={{ clickable: true }}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           loop={true}
@@ -472,18 +476,19 @@ const Home = () => {
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
                   <img src={item.image} alt={item.name} />
-                  <motion.button
+                  {/* <motion.button
                     className="home-watch-story2"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     ▶ Watch Story
-                  </motion.button>
+                  </motion.button> */}
                 </motion.div>
               </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
+        </div>
       </div>
       {/* Feature Section */}
       <motion.div

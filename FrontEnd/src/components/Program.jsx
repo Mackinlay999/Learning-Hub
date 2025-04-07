@@ -1,29 +1,22 @@
 import React, { useState, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import {
-  FaUserTie,
-  FaChartLine,
-  FaShoppingCart,
-  FaBusinessTime,
-  FaMoneyBillWave,
-} from "react-icons/fa";
 import "../style/Program.css";
 
 const programCategories = [
-  { name: "HR", icon: <FaUserTie /> },
-  { name: "Marketing", icon: <FaChartLine /> },
-  { name: "Sales", icon: <FaShoppingCart /> },
-  { name: "Business Analyst", icon: <FaBusinessTime /> },
-  { name: "Finance", icon: <FaMoneyBillWave /> },
+  { name: "HR"  },
+  { name: "Marketing" },
+  { name: "Sales" },
+  { name: "Business Analyst" },
+  { name: "Finance"},
 ];
 
 const programs = {
-  HR: [{ title: "HR Leadership Program", duration: "3 months", mode: "Online" }],
-  Marketing: [{ title: "Marketing Strategy Program", duration: "3 months", mode: "Online" }],
-  Sales: [{ title: "Sales Mastery Certification", duration: "3 months", mode: "Online" }],
-  "Business Analyst": [{ title: "Business Analytics Program", duration: "3 months", mode: "Online" }],
-  Finance: [{ title: "Finance Management Program", duration: "3 months", mode: "Online" }],
+  HR: [{ title: "Human Resource (HR) Training Program", duration: "3 months", mode: "Online" }],
+  Marketing: [{ title: "Marketing Training Program", duration: "3 months", mode: "Online" }],
+  Sales: [{ title: "Professional Sales Specialist Certification Program", duration: "3 months", mode: "Online" }],
+  "Business Analyst": [{ title: "Business  Analytics Training Program", duration: "3 months", mode: "Online" }],
+  Finance: [{ title: "Finance Training Program", duration: "3 months", mode: "Online" }],
 };
 
 const quickLinks = [
@@ -72,7 +65,7 @@ const Program = ({ showDropdown, setShowDropdown }) => {
           >
             <div className="program-dropdown-content">
               <aside className="program-sidebar" aria-label="Program Categories">
-                <h5 className="program-sidebar-title">Programs</h5>
+                <strong className="program-sidebar-title">Programs</strong>
                 <div
                   className={`program-sidebar-item ${selectedCategory === "Our Training Program" ? "active" : ""}`}
                   role="button"
@@ -81,7 +74,7 @@ const Program = ({ showDropdown, setShowDropdown }) => {
                 >
                   ⭐ <span>Our Training Program</span>
                 </div>
-                {programCategories.map(({ name, icon }) => (
+                {programCategories.map(({ name }) => (
                   <div
                     key={name}
                     className={`program-sidebar-item ${selectedCategory === name ? "active" : ""}`}
@@ -90,7 +83,7 @@ const Program = ({ showDropdown, setShowDropdown }) => {
                     onClick={() => handleCategoryChange(name)}
                     aria-label={`Select ${name} category`}
                   >
-                    {icon} <span>{name}</span>
+                     <span>{name}</span>
                   </div>
                 ))}
               </aside>

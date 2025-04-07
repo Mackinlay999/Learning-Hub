@@ -62,7 +62,7 @@
 /* Login Button */
 .login-btn-1 {
   /* Gold Accent */
-  background-color: red !important;
+  background-color: rgba(255, 0, 0, 0.719) !important;
   color: #ffffff !important ;
   padding: 8px 16px;
   font-size: 1rem;

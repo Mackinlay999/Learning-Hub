@@ -55,7 +55,7 @@
 
 .footer-main .footer-main-scroll-to-top {
   position: fixed;
-  bottom: 2rem;
+  bottom: 0.5rem;
   right: 2rem;
   z-index: 999;
   background-color: #D32F2F;

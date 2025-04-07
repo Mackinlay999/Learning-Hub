@@ -26,8 +26,8 @@
   }
   
   .program-sidebar-title {
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1.4rem;
+    font-weight: bolder;
     color: #d32f2f;
     margin-bottom: 10px;
   }
@@ -43,7 +43,7 @@
   }
   
   .program-sidebar-item:hover {
-    background-color: #ffc107; /* Gold accent on hover */
+    background-color: #ffc107a7; /* Gold accent on hover */
     color: #000;
   }
   
@@ -81,7 +81,7 @@
   .program-card2:hover {
     transform: scale(1.05); /* Slightly enlarge the card */
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
-    background: #ffc107;
+    background: #ffc107a7;
     color: black;
     font-weight: 600;
   }
@@ -117,7 +117,7 @@
   }
   
   .program-quick-link-item:hover {
-    background-color: #ffc107;
+    background-color: #ffc107a7;
     color: #000;
   }
   
