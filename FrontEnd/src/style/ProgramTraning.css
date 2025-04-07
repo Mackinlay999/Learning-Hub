@@ -1,92 +1,4 @@
-/* 
-.programs-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px 0;
-  }
-  
-  .container {
-    width: 80%;
-  }
-  
-  .programs-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-  }
-  
 
-  .programs-text {
-    flex: 1;
-    text-align: left;
-  }
-  
-  .programs-image {
-    flex: 1;
-    display: flex;
-    justify-content: start;
-    margin-right: 20px;
-    width: 600px;
-    height: 300px;
-    
-  }
-  
-  .programs-image img {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    
-    border-radius: 10px;
-   
-  }
-  
-
-  @media (max-width: 768px) {
-    .programs-content {
-      text-align: center; 
-    }
-  
-    .programs-image {
-      justify-content: center;
-    }
-  
-    .programs-text {
-      text-align: center;
-    }
-  
-    .programs-list {
-      text-align: left;
-      display: inline-block;
-    }
-  }
-  
-  .title {
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .subtitle {
-    font-size: 20px;
-    color: #666;
-  }
-  
-  .description {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  
-  .programs-list {
-    padding-left: 20px;
-  }
-  
-  .highlight {
-    font-size: 18px;
-    font-weight: bold;
-    color: #0073e6;
-  }
-    */
 
 
     .programs-section {
@@ -122,10 +34,11 @@
       
       .programs-image img {
         width: 100%;
-        max-width: 400px;
-        height: auto;
+        max-width: 900px;
+        height: 500px;
         border-radius: 10px;
       }
+      
       
       /* Mobile View: Image on Top, Text Below */
       @media (max-width: 768px) {
@@ -147,12 +60,20 @@
           text-align: left;
           display: inline-block;
         }
+        .programs-image img {
+          width: 100%;
+          max-width: 400px;
+          height: auto;
+          border-radius: 10px;
+        }
       }
       
       /* Typography */
-      .title {
+      .program-title {
         font-size: 28px;
         font-weight: bold;
+        text-align: left;
+       
       }
       
       .subtitle {

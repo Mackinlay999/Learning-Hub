@@ -8,12 +8,12 @@ const CareerSupport = () => {
         <div className="career-content">
           <div className="career-image">
             <img
-              src="https://imgproxy.epicpxls.com/8xjRLSoKB9DEK7F1K_kwG8ZpzGLQmNbIjDf3_8dFZeg/rs:fill:800:600:0/g:no/aHR0cHM6Ly9pdGVt/cy5lcGljcHhscy5j/b20vdXBsb2Fkcy9w/aG90by8xOWMwMjZj/N2FlNDIyOWQ4ZDA3/ODQ0YzBkZmMwMjU4/NA.jpg "
+              src="https://mycustomstaffing.com/wp-content/uploads/2017/11/How-to-advance-your-career-.jpg"
               alt="Career Support"
             />
           </div>
           <div className="career-text">
-            <h2 className="title">Career Support</h2>
+            <h2 className="career-title">Career Support</h2>
             <p className="subtitle">Unrivaled Career Acceleration</p>
             <p className="description">
               At Mackinlay Learning Hub, career success is not just a

@@ -15,7 +15,7 @@ const AdmissionsEnrollment = () => {
           </div>
 
           <div className="admissions-text">
-            <h2 className="title">Admissions & Enrollment</h2>
+            <h2 className="admission-title">Admissions & Enrollment</h2>
             <p className="subtitle">Your Pathway to Elite Education</p>
             <p className="description">
               Admission to Mackinlay Learning Hub is highly selective, ensuring a cohort of 

@@ -13,7 +13,7 @@ const JobBoards = () => {
       <div className="job-boards-container">
         {/* Left Section */}
         <div className="job-boards-text">
-          <h2>Job Boards</h2>
+          <h2 className="job-title">Job Boards</h2>
           <p>
             Our dedicated learner success team posts hand-picked opportunities
             from top organizations relevant to your profile and experience.

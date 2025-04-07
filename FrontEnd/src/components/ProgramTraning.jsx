@@ -15,7 +15,7 @@ const ProgramsTraning = () => {
           </div> 
           
           <div className="programs-text">
-            <h2 className="title">Programs & Courses</h2>
+            <h2 className="program-title">Programs & Courses</h2>
             <p className="subtitle">Elevate Your Learning, Redefine Your Career</p>
             <p className="description">
               Mackinlay Learning Hub offers a suite of elite programs that embody 

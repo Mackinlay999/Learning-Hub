@@ -83,6 +83,9 @@
     height: auto;
     border-radius: 5px;
 }
+.job-title{
+    text-align: center;
+}
 
 /* Responsive Design */
 @media (min-width: 768px) {
@@ -109,5 +112,8 @@
 
     .download-btn {
         width: auto;
+    }
+    .job-title{
+        text-align: left;
     }
 }
