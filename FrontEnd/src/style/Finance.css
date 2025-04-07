@@ -176,7 +176,7 @@
   }
   
   /* Buttons */
-  .btn {
+  .finance-btn {
     padding: 0.75rem 1.25rem;
     border-radius: 8px;
     border: none;
@@ -185,7 +185,7 @@
     font-weight: 600;
   }
   
-  .btn:hover {
+  .finance-btn:hover {
     transform: translateY(-2px);
   }
   

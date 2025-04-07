@@ -44,7 +44,7 @@
     margin-top: 1.5rem;
   }
   
-  .sales-cta-buttons .btn {
+  .sales-cta-buttons .sales-btn {
     margin: 0 0.5rem;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -54,23 +54,20 @@
     cursor: pointer;
   }
   
-  .sales-cta-buttons .btn:hover {
+  .sales-cta-buttons .sales-:hover {
     transform: translateY(-2px);
     opacity: 0.95;
   }
   
   /* Button Colors */
-  .btn-primary {
-    background-color: #D32F2F;
-    color: white;
-  }
   
-  .btn-secondary {
+  
+  .sales-btn-secondary {
     background-color: #6c757d;
     color: white;
   }
   
-  .btn-accent {
+  .sales-btn-accent {
     background-color: #FFC107;
     color: #333;
   }
