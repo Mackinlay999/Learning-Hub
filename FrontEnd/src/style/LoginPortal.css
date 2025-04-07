@@ -99,17 +99,17 @@
 }
 
 .forgot-password {
-  background: transparent;
-  color: #00509e ;
-  border: 2px solid #00509e;
-}
-
-.forgot-password:hover {
   background: #00509e;
   color: white;
 }
+
+.forgot-password:hover {
+  background: #003366;
+  transform: scale(1.05);
+}
 .forgot-password{
-  background-color:#00509e !important;
+  background-color: #003366;
+  color: white;
 }
 
 /* Register Link */

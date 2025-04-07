@@ -72,8 +72,9 @@ const LeadList = () => {
               <td>{lead.email}</td>
               <td>{lead.status}</td>
               <td>
-                <button onClick={() => setSelectedLead(lead)}>View</button>
+                <button  className="ld-bnt"  onClick={() => setSelectedLead(lead)}>View</button>
                 <button
+                   className="ld-bnt" 
                   onClick={() => {
                     setEditingLead(lead);
                     setIsEditing(true);
@@ -81,7 +82,7 @@ const LeadList = () => {
                 >
                   Edit
                 </button>
-                <button onClick={() => deleteLead(lead.id)}>Delete</button>
+                <button className="ld-bnt" onClick={() => deleteLead(lead.id)}>Delete</button>
               </td>
             </tr>
           ))}
