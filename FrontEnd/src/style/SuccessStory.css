@@ -92,7 +92,7 @@
   gap: 15px;
 }
 
-.success-story-btn-custom1 {
+.success-story-btn-custom-1 {
   background: var(--gold-accent);
   color: var(--dark-gray);
   font-weight: bold;
@@ -142,10 +142,10 @@
 }
 
 .success-story-card {
-  background: var(--black);
+  background: white;
   border-radius: 15px;
   padding: 30px;
-  color: var(--white);
+  color: var(--black);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -444,6 +444,12 @@
   background: white;
   border-radius: 10px;
   padding: 20px;
+  height: 22vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
@@ -619,6 +625,7 @@
   /* Slider Section */
   .success-story-slider-container-2 {
     flex-direction: column;
+
   }
 
   .success-story-arrow-container-2 {
