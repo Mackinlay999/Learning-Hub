@@ -7,7 +7,7 @@
 }
 
 /* Header Section */
-.header-section {
+.business-analytics-header-section {
   text-align: center;
   background: #ffffff;
   color: #333333;
@@ -17,17 +17,17 @@
   animation: fadeIn 1s ease-in-out;
 }
 
-.header-section h1 {
+.business-analytics-header-section h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: #D32F2F;
 }
 
-.cta-buttons {
+.business-analytics-cta-buttons {
   margin-top: 2rem;
 }
 
-.cta-buttons .btn {
+.business-analytics-cta-buttons .business-analytics-btn1 {
   background-color: #D32F2F;
   color: white;
   border: none;
@@ -38,25 +38,25 @@
   cursor: pointer;
 }
 
-.cta-buttons .btn:hover {
+.business-analytics-cta-buttons .business-analytics-btn1:hover {
   transform: scale(1.05);
   background-color: #b71c1c;
 }
 
 /* Section Headings */
-.program-overview,
-.curriculum,
+.business-analytics-program-overview,
+.business-analytics-curriculum,
 .bussiness-program-benefits,
-.placement-assistance,
-.cta-section {
+.business-analytics-placement-assistance,
+.business-analytics-cta-section {
   margin-bottom: 3rem;
 }
 
-.program-overview h2,
-.curriculum h2,
+.business-analytics-program-overview h2,
+.business-analytics-curriculum h2,
 .bussiness-program-benefits h2,
-.placement-assistance h2,
-.cta-section h3 {
+.business-analytics-placement-assistance h2,
+.business-analytics-cta-section h3 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
   color: #D32F2F;
@@ -135,8 +135,8 @@
   outline: none;
 }
 
-.bussiness-enroll-modal .btn,
-.bussiness-payment-modal .btn {
+.bussiness-enroll-modal .business-analytics-btn2,
+.bussiness-payment-modal .business-analytics-btn2 {
   margin-top: 1rem;
   width: 100%;
   background-color: #D32F2F;
@@ -148,13 +148,13 @@
   cursor: pointer;
 }
 
-.bussiness-enroll-modal .btn:hover,
-.bussiness-payment-modal .btn:hover {
+.bussiness-enroll-modal .business-analytics-btn2:hover,
+.bussiness-payment-modal .business-analytics-btn2:hover {
   background-color: #b71c1c;
 }
 
 /* CTA Section */
-.cta-section {
+.business-analytics-cta-section {
   text-align: center;
   background: #fff8e1; /* light gold background */
   padding: 2rem 1rem;
@@ -162,7 +162,7 @@
   color: #333333;
 }
 
-.cta-section .btn {
+.business-analytics-cta-section .business-analytics-btn3 {
   background-color: #FFC107;
   color: #333333;
   padding: 0.7rem 1.5rem;
@@ -172,7 +172,7 @@
   transition: background-color 0.3s ease;
 }
 
-.cta-section .btn:hover {
+.business-analytics-cta-section .business-analytics-btn3:hover {
   background-color: #ffb300;
 }
 
@@ -210,7 +210,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .header-section h1 {
+  .business-analytics-header-section h1 {
     font-size: 1.8rem;
   }
 

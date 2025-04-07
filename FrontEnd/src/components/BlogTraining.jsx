@@ -42,25 +42,25 @@ const BlogTraining = () => {
         <img src={image1} alt="Blog & Insights" />
       </motion.div>
     </motion.div>
-    <motion.div className="training-container">
+    <motion.div className="blog-training-container">
     <motion.div
-      className="training-content"
+      className="blog-training-content"
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 1 }}
     >
-      <h1 className="training-title">
+      <h1 className="blog-training-title">
         Free Online <motion.span>Program</motion.span>
       </h1>
-      <p className="training-description">
+      <p className="blog-training-description">
         Access high-quality, industry-relevant Program at no cost.  
       </p>
-      <p className="training-description">
+      <p className="blog-training-description">
         Expand your skill set with our free online learning modules, designed to 
         enhance your expertise and career prospects.
       </p>
       <motion.button
-        className="training-btn"
+        className="blog-training-btn"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
@@ -69,7 +69,7 @@ const BlogTraining = () => {
     </motion.div>
 
     <motion.div
-      className="training-image"
+      className="blog-training-image"
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 1 }}
