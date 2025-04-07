@@ -87,7 +87,7 @@
     margin-bottom: 20px;
   }
   
-  .highlight {
+  .about-highlight {
     background: #FFC107;
     color: #333333;
     padding: 5px 10px;
@@ -100,7 +100,7 @@
     line-height: 1.6;
   }
   
-  .cta-button {
+  .about-cta-button {
     background: #FFC107;
     color: #333333;
     padding: 12px 20px;
@@ -111,7 +111,7 @@
     border-radius: 5px;
   }
   
-  .cta-button:hover {
+  .about-cta-button:hover {
     background: black;
     color: #D32F2F;
   }
@@ -122,7 +122,7 @@
     justify-content: center;
   }
   
-  .video-container {
+  .about-video-container {
     position: relative;
     max-width: 500px;
   }
@@ -132,7 +132,7 @@
     border-radius: 10px;
   }
   
-  .play-button {
+  .about-play-button {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -148,7 +148,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
   
-  .play-icon {
+  .about-play-icon {
     font-size: 2rem;
     color: #D32F2F;
     transition: transform 0.2s ease-in-out;
@@ -166,7 +166,7 @@
   }
   
   /* Mission Section */
-.mission-section {
+.about-mission-section {
     background-color: white; /* black background */
     padding: 80px 5%;
     display: flex;
@@ -175,7 +175,7 @@
 }
 
 /* Mission Container - Horizontal Layout */
-.mission-container {
+.about-mission-container {
     display: flex;
     align-items: center;
     max-width: 1200px;
@@ -184,7 +184,7 @@
 }
 
 /* Left Side - Our Mission (Vertically Centered) */
-.mission-left {
+.about-mission-left {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -192,14 +192,14 @@
     text-align: center;
 }
 
-.mission-left h2 {
+.about-mission-left h2 {
     font-size: 2.5rem;
     font-weight: bold;
     color: #333333; /* Dark Gray */
 }
 
 /* Right Side - Mission Content */
-.mission-right {
+.about-mission-right {
     flex: 2;
     display: flex;
     flex-direction: column;
@@ -208,7 +208,7 @@
 }
 
 /* Heading Style */
-.mission-heading {
+.about-mission-heading {
     font-size: 2rem;
     font-weight: bold;
     color: #D32F2F; /* Primary Red */
@@ -216,12 +216,12 @@
 }
 
 /* Hover Effect */
-.mission-heading:hover {
+.about-mission-heading:hover {
     color: #FFC107; /* Gold Accent */
 }
 
 /* Paragraph Text */
-.mission-text {
+.about-mission-text {
     font-size: 1.1rem;
     color: #333333;
     line-height: 1.6;
@@ -256,7 +256,7 @@
     }
 } */
 /* Contact Section */
-.contact-section {
+.about-contact-section {
     background-color: white; /* Google Blue */
     padding: 60px 5%;
     display: flex;
@@ -265,7 +265,7 @@
 }
 
 /* Container - Horizontal Layout */
-.contact-container {
+.about-contact-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -275,12 +275,12 @@
 }
 
 /* Left Side - Text */
-.contact-left {
+.about-contact-left {
     flex: 1;
     color: black;
 }
 
-.contact-left h3 {
+.about-contact-left h3 {
     font-size: 1rem;
     font-weight: 500;
     opacity: 0;
@@ -298,7 +298,7 @@
 }
 
 /* Button */
-.contact-button {
+.about-contact-button {
     background-color: black;
     color: #D32F2F;
     border: none;
@@ -311,20 +311,20 @@
     border-radius: 5px;
 }
 
-.contact-button:hover {
+.about-contact-button:hover {
     background-color: #357AE8;
     color: black;
 }
 
 /* Right Side - Image */
-.contact-right {
+.about-contact-right {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.contact-right img {
+.about-contact-right img {
     width: 100%;
     max-width: 400px;
     opacity: 0;
@@ -384,43 +384,43 @@
   }
 
   /* Mission Section */
-  .mission-container {
+  .about-mission-container {
     flex-direction: column;
     text-align: center;
     gap: 20px;
   }
 
-  .mission-left,
-  .mission-right {
+  .about-mission-left,
+  .about-mission-right {
     text-align: center;
     width: 100%;
   }
 
-  .mission-heading {
+  .about-mission-heading {
     font-size: 1.8rem;
   }
 
-  .mission-text {
+  .about-mission-text {
     font-size: 1rem;
     padding: 0 15px;
   }
 
   /* Contact Section */
-  .contact-container {
+  .about-contact-container {
     flex-direction: column;
     text-align: center;
     gap: 20px;
   }
 
-  .contact-left h2 {
+  .about-contact-left h2 {
     font-size: 1.8rem;
   }
 
-  .contact-right img {
+  .about-contact-right img {
     max-width: 100%;
   }
 
-  .contact-button {
+  .about-contact-button {
     width: 100%;
     padding: 10px;
   }
