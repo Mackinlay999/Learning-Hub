@@ -131,7 +131,7 @@ const About = () => {
       <div className="about-contact-container">
         {/* Left Side - Text & Button */}
         <div className="about-contact-left">
-          <h3>GET IN TOUCH</h3>
+          <h3>GET IN TOUCH</h3> 
           <h2>For Queries, Feedback or Assistance</h2>
           <button className="about-contact-button">Contact Us</button>
         </div>

@@ -7,7 +7,7 @@
   }
   
   /* Header section */
-  .finance-header-section {
+  .finance-program-header-section {
     background: #ffffff;
     color: #D32F2F; /* primary red heading */
     padding: 3rem 2rem;
@@ -17,23 +17,23 @@
     transition: all 0.3s ease-in-out;
   }
   
-  .finance-header-section h1 {
+  .finance-program-header-section h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: #D32F2F;
   }
   
-  .cta-buttons {
+  .finance-program-cta-buttons {
     margin-top: 1.5rem;
   }
   
-  .cta-buttons .btn {
+  .finance-program-cta-buttons .finance-program-btn1 {
     margin: 0 0.5rem;
     font-weight: bold;
     transition: background-color 0.3s ease;
   }
   
-  .cta-buttons .btn:hover {
+  .finance-program-cta-buttons .finance-program-btn1:hover {
     opacity: 0.9;
   }
   
@@ -42,11 +42,11 @@
     margin-bottom: 2.5rem;
   }
   
-  .program-overview,
+  .finance-program-overview,
   .finance-program-benefits,
-  .placement-assistance,
-  .curriculum,
-  .cta-section {
+  .finance-program-placement-assistance,
+  .finance-program-curriculum,
+  .finance-program-cta-section {
     background-color: #fff;
     border-radius: 8px;
     padding: 2rem;
@@ -55,26 +55,26 @@
   }
   
   /* Module styling */
-  .finance-module {
+  .finance-program-module {
     margin-bottom: 2rem;
   }
   
-  .finance-module h3 {
+  .finance-program-module h3 {
     color: #D32F2F; /* primary red */
     font-size: 1.5rem;
   }
   
-  .finance-module h4 {
+  .finance-program-module h4 {
     color: #FFC107; /* gold accent */
     margin-top: 1rem;
     font-weight: 600;
   }
   
-  .finance-module ul {
+  .finance-program-module ul {
     padding-left: 1.5rem;
   }
   
-  .finance-module ul li {
+  .finance-program-module ul li {
     margin-bottom: 0.5rem;
   }
   
@@ -100,14 +100,14 @@
   }
   
   /* CTA section */
-  .cta-section {
+  .finance-program-cta-section {
     text-align: center;
     background-color: #fff3e0; /* soft gold tone */
     border-left: 5px solid #FFC107; /* gold accent */
   }
   
   /* Modal overlays */
-  .finance-module-modal-overlay {
+  .finance-program-module-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -131,8 +131,8 @@
   }
   
   /* Modal forms */
-  .finance-module-enroll-modal,
-  .finance-module-payment-modal {
+  .finance-program-module-enroll-modal,
+  .finance-program-module-payment-modal {
     background: white;
     padding: 2rem;
     border-radius: 10px;
@@ -153,7 +153,7 @@
     }
   }
   
-  .finance-module-enroll-modal form input {
+  .finance-program-module-enroll-modal form input {
     display: block;
     width: 100%;
     padding: 0.8rem;
@@ -163,20 +163,20 @@
     transition: border-color 0.3s ease;
   }
   
-  .finance-module-enroll-modal form input:focus {
+  .finance-program-module-enroll-modal form input:focus {
     border-color: #D32F2F;
     outline: none;
   }
   
-  .finance-module-enroll-modal form button,
-  .finance-module-payment-modal a,
-  .finance-module-payment-modal button {
+  .finance-program-module-enroll-modal form button,
+  .finance-program-module-payment-modal a,
+  .finance-program-module-payment-modal button {
     width: 100%;
     margin-top: 1rem;
   }
   
   /* Buttons */
-  .finance-btn {
+  .finance-program-btn2 {
     padding: 0.75rem 1.25rem;
     border-radius: 8px;
     border: none;
@@ -185,7 +185,7 @@
     font-weight: 600;
   }
   
-  .finance-btn:hover {
+  .finance-btn2:hover {
     transform: translateY(-2px);
   }
   
@@ -206,21 +206,21 @@
   
   /* Responsive Design */
   @media (max-width: 768px) {
-    .finance-header-section h1 {
+    .finance-program-header-section h1 {
       font-size: 2rem;
     }
   
-    .finance-module-enroll-modal,
-    .finance-module-payment-modal {
+    .finance-program-module-enroll-modal,
+    .finance-program-payment-modal {
       width: 95%;
       padding: 1.5rem;
     }
   
-    .program-overview,
+    .finance-program-overview,
     .finance-program-benefits,
-    .placement-assistance,
-    .curriculum,
-    .cta-section {
+    .finance-program-placement-assistance,
+    .finance-program-curriculum,
+    .finance-program-cta-section {
       padding: 1.2rem;
     }
   }
