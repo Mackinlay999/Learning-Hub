@@ -62,7 +62,7 @@ const ChatBot = () => {
             {messages.map((msg, index) => (
               <motion.div
                 key={index}
-                className={`message ${msg.sender}`}
+                className={`chatbot-message ${msg.sender}`}
                 initial={{ opacity: 0, x: msg.sender === 'user' ? 50 : -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3 }}
@@ -80,7 +80,7 @@ const ChatBot = () => {
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && handleSend()}
             />
-            <FaPaperPlane className="send-btn" onClick={handleSend} />
+            <FaPaperPlane className="chatbot-send-btn" onClick={handleSend} />
           </div>
         </motion.div>
       )}

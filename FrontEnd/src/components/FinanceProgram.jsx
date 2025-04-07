@@ -25,7 +25,7 @@ const FinanceProgram = () => {
 
   return (
     <div className="finance-program-container">
-      <section className="finance-header-section">
+      <section className="finance-program-header-section">
         <h1>Finance Training Program</h1>
         <p>
           <strong>Duration:</strong> 3 Months
@@ -39,20 +39,20 @@ const FinanceProgram = () => {
         <p>
           <strong>Certification:</strong> Certified Finance Professional
         </p>
-        <div className="cta-buttons">
+        <div className="finance-program-cta-buttons">
           {/* <a href={brochure} download className="btn btn-primary">
             📄 Download Brochure
           </a> */}
           <button
             onClick={() => setShowFormModal(true)}
-            className="finance-btn btn-success"
+            className="finance-program-btn1 btn-success"
           >
             📝 Enroll Now
           </button>
         </div>
       </section>
 
-      <section className="program-overview">
+      <section className="finance-program-overview">
         <h2>Program Overview</h2>
         <p>
           The Finance Training Program is crafted to provide students with
@@ -63,11 +63,11 @@ const FinanceProgram = () => {
         </p>
       </section>
 
-      <section className="curriculum">
+      <section className="finance-program-curriculum">
         <h2>Curriculum Overview</h2>
 
         {/* Module 1 */}
-        <div className="finance-module">
+        <div className="finance-program-module">
           <h3>Module 1: Fundamentals of Financial Accounting</h3>
           <h4>Objective:</h4>
           <p>
@@ -89,7 +89,7 @@ const FinanceProgram = () => {
         </div>
 
         {/* Module 2 */}
-        <div className="finance-module">
+        <div className="finance-program-module">
           <h3>Module 2: Corporate Finance & Budgeting</h3>
           <h4>Objective:</h4>
           <p>
@@ -110,7 +110,7 @@ const FinanceProgram = () => {
         </div>
 
         {/* Module 3 */}
-        <div className="finance-module">
+        <div className="finance-program-module">
           <h3>Module 3: Investment Analysis</h3>
           <h4>Objective:</h4>
           <p>
@@ -131,7 +131,7 @@ const FinanceProgram = () => {
         </div>
 
         {/* Module 4 */}
-        <div className="finance-module">
+        <div className="finance-program-module">
           <h3>Module 4: FinTech and Innovations</h3>
           <h4>Objective:</h4>
           <p>
@@ -163,7 +163,7 @@ const FinanceProgram = () => {
         </ul>
       </section>
 
-      <section className="placement-assistance">
+      <section className="finance-program-placement-assistance">
         <h2>Placement Assistance</h2>
         <p>
           We provide personalized career support including resume reviews,
@@ -171,21 +171,21 @@ const FinanceProgram = () => {
         </p>
       </section>
 
-      <section className="cta-section">
+      <section className="finance-program-cta-section">
         <h3>Ready to Transform Your Finance Career?</h3>
         <p>
           Join the Finance Training Program and become a{" "}
           <strong>Certified Finance Professional!</strong>
         </p>
-        <button onClick={() => setShowFormModal(true)} className="finance-btn btn-info">
+        <button onClick={() => setShowFormModal(true)} className="finance-program-btn2 btn-info">
           Enroll Now
         </button>
       </section>
 
       {/* Modal - Enrollment Form */}
       {showFormModal && (
-        <div className="finance-module-modal-overlay">
-          <div className="finance-module-enroll-modal">
+        <div className="finance-program-module-modal-overlay">
+          <div className="finance-program-enroll-modal">
             <h2>Enroll in Finance Program</h2>
             <form onSubmit={handleFormSubmit}>
               <input
@@ -212,12 +212,12 @@ const FinanceProgram = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit" className="finance-btn btn-success">
+              <button type="submit" className="finance-program-btn btn-success">
                 Proceed to Payment
               </button>
               <button
                 type="button"
-                className="finance-btn btn-secondary"
+                className="finance-program-btn btn-secondary"
                 onClick={() => setShowFormModal(false)}
               >
                 Cancel
@@ -229,8 +229,8 @@ const FinanceProgram = () => {
 
       {/* Modal - Payment Confirmation */}
       {showPaymentModal && (
-        <div className="finance-module-modal-overlay">
-          <div className="finance-module-payment-modal">
+        <div className="finance-program-module-modal-overlay">
+          <div className="finance-program-module-payment-modal">
             <h3>Confirm Payment</h3>
             <p>Proceed to pay ₹79,999 for the Sales Mastery Program</p>
             <a
@@ -243,7 +243,7 @@ const FinanceProgram = () => {
             </a>
             <button
               onClick={() => setShowPaymentModal(false)}
-              className="finance-btn btn-secondary mt-2"
+              className="finance-program-btn btn-secondary mt-2"
             >
               Cancel
             </button>
