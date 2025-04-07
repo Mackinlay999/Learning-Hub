@@ -100,13 +100,16 @@
 
 .forgot-password {
   background: transparent;
-  color: #00509e;
+  color: #00509e ;
   border: 2px solid #00509e;
 }
 
 .forgot-password:hover {
   background: #00509e;
   color: white;
+}
+.forgot-password{
+  background-color:#00509e !important;
 }
 
 /* Register Link */
