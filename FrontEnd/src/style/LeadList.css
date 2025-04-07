@@ -73,20 +73,20 @@ button {
   font-size: 13px;
 }
 
-/* button:nth-child(1) {
+.ld-bnt :nth-child(1) {
   background-color: #2196f3;
   color: white;
 }
 
-button:nth-child(2) {
+.ld-bnt :nth-child(2) {
   background-color: #ff9800;
   color: white;
 }
 
-button:nth-child(3) {
+.ld-bnt :nth-child(3) {
   background-color: #f44336;
   color: white;
-} */
+}
 
 /* Modal styles */
 .modal-container {
