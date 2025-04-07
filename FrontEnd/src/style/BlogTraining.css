@@ -5,7 +5,7 @@
   padding: 70px;
   background-color: white;
 }
-.training-container{
+.blog-training-container{
     display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,12 +14,12 @@
 }
 
 .blog-content,
-.training-content {
+.blog-training-content {
   max-width: 50%;
 }
 
 .blog-title,
-.training-title {
+.blog-training-title {
   font-size: 2.5rem;
   font-weight: bold;
   color: #be2929;
@@ -27,7 +27,7 @@
 }
 
 .blog-description,
-.training-description {
+.blog-training-description {
   font-size: 1.2rem;
   color: #555;
   line-height: 1.6;
@@ -35,7 +35,7 @@
 }
 
 .blog-btn,
-.training-btn {
+.blog-training-btn {
     background-color: #b30000;
   color: white;
   padding: 12px 20px;
@@ -47,12 +47,12 @@
 }
 
 .blog-btn:hover,
-.training-btn:hover {
+.blog-training-btn:hover {
     background-color: #B71C1C;
 }
 
 .blog-image img,
-.training-image img {
+.blog-training-image img {
   width: 100%;
   max-width: 500px;
   border-radius: 10px;
@@ -60,36 +60,36 @@
 
 @media (max-width: 768px) {
   .blog-container,
-  .training-container {
+  .blog-training-container {
     flex-direction: column;
     text-align: center;
     padding: 40px 20px;
   }
 
   .blog-content,
-  .training-content {
+  .blog-training-content {
     max-width: 100%;
     margin-bottom: 20px;
   }
 
   .blog-image img,
-  .training-image img {
+  .blog-training-image img {
     max-width: 100%;
     height: auto;
   }
 
   .blog-title,
-  .training-title {
+  .blog-training-title {
     font-size: 2rem;
   }
 
   .blog-description,
-  .training-description {
+  .blog-training-description {
     font-size: 1rem;
   }
 
   .blog-btn,
-  .training-btn {
+  .blog-training-btn {
     padding: 10px 15px;
     font-size: 0.9rem;
   }

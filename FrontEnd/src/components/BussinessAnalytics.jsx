@@ -25,7 +25,7 @@ const BusinessAnalytics = () => {
 
   return (
     <div className="business-analytics-container">
-      <section className="header-section">
+      <section className="business-analytics-header-section">
         <h1>Business Analytics Training Program</h1>
         <p>
           <strong>Duration:</strong> 3 Months
@@ -40,13 +40,13 @@ const BusinessAnalytics = () => {
           <strong>Certification:</strong> Certified Business Analytics
           Professional
         </p>
-        <div className="cta-buttons">
+        <div className="business-analytics-cta-buttons">
           {/* <a href={brochure} download className="btn btn-primary">
             📄 Download Brochure
           </a> */}
           <button
             onClick={() => setShowFormModal(true)}
-            className="btn btn-success"
+            className="business-analytics-btn1 btn-success"
           >
             📝 Enroll Now
           </button>
@@ -71,7 +71,7 @@ const BusinessAnalytics = () => {
         </div>
       </section>
 
-      <section className="program-overview">
+      <section className="business-analytics-program-overview">
         <h2>Program Overview</h2>
         <p>
           The Business Analytics Training Program is designed to equip students
@@ -83,7 +83,7 @@ const BusinessAnalytics = () => {
         </p>
       </section>
 
-      <section className="curriculum">
+      <section className="business-analytics-curriculum">
         <h2>Curriculum Overview</h2>
 
         {/* Module 1 */}
@@ -287,7 +287,7 @@ const BusinessAnalytics = () => {
         </ul>
       </section>
 
-      <section className="placement-assistance">
+      <section className="business-analytics-placement-assistance">
         <h2>Placement Assistance Provided</h2>
         <p>
           We are committed to helping students secure roles in business
@@ -297,7 +297,7 @@ const BusinessAnalytics = () => {
         </p>
       </section>
 
-      <section className="cta-section">
+      <section className="business-analytics-cta-section">
         <h3>Take the next step in your career!</h3>
         <p>
           Join our Business Analytics Training Program and become a{" "}
@@ -305,13 +305,13 @@ const BusinessAnalytics = () => {
         </p>
       </section>
       {/* Call to Action */}
-      <section className="cta-section">
+      <section className="business-analytics-cta-section">
         <h3>Take the next step in your career!</h3>
         <p>
           Join our Business Analytics Training Program and become a{" "}
           <strong>Certified Business Analytics Professional!</strong>
         </p>
-        <button onClick={() => setShowFormModal(true)} className="btn btn-info">
+        <button onClick={() => setShowFormModal(true)} className="business-analytics-btn2 btn-info">
           Enroll Now
         </button>
       </section>
@@ -346,12 +346,12 @@ const BusinessAnalytics = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit" className="btn btn-success">
+              <button type="submit" className="business-analytics-btn3 btn-success">
                 Proceed to Payment
               </button>
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="business-analytics-btn3 btn-secondary"
                 onClick={() => setShowFormModal(false)}
               >
                 Cancel
@@ -371,13 +371,13 @@ const BusinessAnalytics = () => {
               href="https://razorpay.me/@mackinlay?amount=NzSQ5U9nmvnRFvfnpmXM2A%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-success"
+              className="business-analytics-btn btn-success"
             >
               Pay Now
             </a>
             <button
               onClick={() => setShowPaymentModal(false)}
-              className="btn btn-secondary mt-2"
+              className="business-analytics-btn3 btn-secondary mt-2"
             >
               Cancel
             </button>
