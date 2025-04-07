@@ -14,7 +14,7 @@ const CorporateTraining = () => {
           </div>
 
           <div className="corporate-text">
-            <h2 className="title">Corporate Training & Executive Education</h2>
+            <h2 className="corporate-title">Corporate Training & Executive Education</h2>
             <p className="subtitle">Empowering Organizations. Transforming Leadership.</p>
             <p className="description">
               Our custom corporate training programs are designed for Fortune 500 companies 

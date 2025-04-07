@@ -9,7 +9,7 @@ const NetworkingSession = () => {
 
     <div className="networking-container">
       <div className="networking-content">
-        <h2>Networking sessions - MLH Confluence</h2>
+        <h2 className="networking-h2">Networking sessions - MLH Confluence</h2>
         <ul>
           <li>🔵 Connect with like-minded professionals</li>
           <li>🔵 Grow your professional network</li>
@@ -26,7 +26,7 @@ const NetworkingSession = () => {
     <div className="hackathon-container">
       {/* Left Section - Text Content */}
       <div className="hackathon-content">
-        <h2>Hackathons & Live Projects</h2>
+        <h2 className="hackathon-h2">Hackathons & Live Projects</h2>
         <ul>
           <li>🔵 Participate in hackathons sponsored by top companies</li>
           <li>🔵 Build industry experience that will be relevant to your future job</li>
