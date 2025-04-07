@@ -44,7 +44,7 @@ const MarketingProgram = () => {
           {/* <a href={brochure} download className="btn btn-primary">📄 Download Brochure</a> */}
           <button
             onClick={() => setShowFormModal(true)}
-            className="btn btn-success"
+            className="marketing-btn btn-success"
           >
             📝 Enroll Now
           </button>
@@ -150,7 +150,7 @@ const MarketingProgram = () => {
           Enroll today and become a{" "}
           <strong>Certified Digital Marketing Professional</strong>!
         </p>
-        <button onClick={() => setShowFormModal(true)} className="btn btn-info">
+        <button onClick={() => setShowFormModal(true)} className="marketing-btn btn-info">
           Enroll Now
         </button>
       </section>
@@ -185,12 +185,12 @@ const MarketingProgram = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit" className="btn btn-success">
+              <button type="submit" className="marketing-btn btn-success">
                 Proceed to Payment
               </button>
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="marketing-btn btn-secondary"
                 onClick={() => setShowFormModal(false)}
               >
                 Cancel
@@ -210,13 +210,13 @@ const MarketingProgram = () => {
               href="https://razorpay.me/@mackinlay?amount=NzSQ5U9nmvnRFvfnpmXM2A%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-success"
+              className="marketing-btn btn-success"
             >
               Pay Now
             </a>
             <button
               onClick={() => setShowPaymentModal(false)}
-              className="btn btn-secondary mt-2"
+              className="marketing-btn btn-secondary mt-2"
             >
               Cancel
             </button>

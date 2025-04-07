@@ -45,7 +45,7 @@ const FinanceProgram = () => {
           </a> */}
           <button
             onClick={() => setShowFormModal(true)}
-            className="btn btn-success"
+            className="finance-btn btn-success"
           >
             📝 Enroll Now
           </button>
@@ -177,7 +177,7 @@ const FinanceProgram = () => {
           Join the Finance Training Program and become a{" "}
           <strong>Certified Finance Professional!</strong>
         </p>
-        <button onClick={() => setShowFormModal(true)} className="btn btn-info">
+        <button onClick={() => setShowFormModal(true)} className="finance-btn btn-info">
           Enroll Now
         </button>
       </section>
@@ -212,12 +212,12 @@ const FinanceProgram = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit" className="btn btn-success">
+              <button type="submit" className="finance-btn btn-success">
                 Proceed to Payment
               </button>
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="finance-btn btn-secondary"
                 onClick={() => setShowFormModal(false)}
               >
                 Cancel
@@ -237,13 +237,13 @@ const FinanceProgram = () => {
               href="https://razorpay.me/@mackinlay?amount=NzSQ5U9nmvnRFvfnpmXM2A%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-success"
+              className="finance-btn btn-success"
             >
               Pay Now
             </a>
             <button
               onClick={() => setShowPaymentModal(false)}
-              className="btn btn-secondary mt-2"
+              className="finance-btn btn-secondary mt-2"
             >
               Cancel
             </button>

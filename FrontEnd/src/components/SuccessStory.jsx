@@ -96,14 +96,14 @@ const SuccessStory = () => {
   };
   return (
     <>
-    <motion.div className="success-container">
+    <motion.div className="success-story-container">
       <motion.div
-        className="success-content1"
+        className="success-story-content1"
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
       >
-        <h1 className="success-title1">
+        <h1 className="success-story-title1">
           Transforming Lives,{" "}
           <motion.span
             initial={{ opacity: 0 }}
@@ -113,14 +113,14 @@ const SuccessStory = () => {
             Defining Futures
           </motion.span>
         </h1>
-        <p className="success-description1">
+        <p className="success-story-description1">
           Hear from our alumni who have achieved exceptional career milestones 
           through our programs. Their journeys of transformation stand as a 
           testament to the unparalleled education and mentorship at Mackinlay 
           Learning Hub.
         </p>
         <motion.button
-          className="success-btn"
+          className="success-story-btn"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
@@ -129,7 +129,7 @@ const SuccessStory = () => {
       </motion.div>
 
       <motion.div
-        className="success-image1"
+        className="success-story-image1"
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
@@ -138,30 +138,30 @@ const SuccessStory = () => {
       </motion.div>
     </motion.div>
       {/* First Section */}
-      <motion.div fluid className="success-story">
+      <motion.div className="success-story1">
         <Row className="align-items-center">
           {/* Left Content */}
-          <Col lg={6} className="text-section">
+          <Col lg={6} className="success-story-text-section">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
             >
-              <div className="stats">
+              <div className="success-story-stats">
                 <span>4000+ Hiring Companies</span>
                 <span>50% Avg Salary Hike*</span>
               </div>
-              <h1>Inspiring stories of success from our learners</h1>
+              <h1 className="success-story-h1">Inspiring stories of success from our learners</h1>
               <motion.div
-                className="button-group"
+                className="success-story-button-group"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
-                <Button className="btn-primary-custom">Explore Career Transitions</Button>
-                <Button className="btn-outline-custom">View Testimonials</Button>
+                <Button className="success-story-btn-custom1">Explore Career Transitions</Button>
+                <Button className="success-story-btn-custom2">View Testimonials</Button>
               </motion.div>
-              <p className="trusted-text">
+              <p className="success-story-trusted-text">
                 Trusted by 12.4 Million+ learners from over 170 countries <br />
                 *Across all Great Learning programs
               </p>
@@ -169,11 +169,11 @@ const SuccessStory = () => {
           </Col>
 
           {/* Right Images */}
-          <Col lg={6} className="image-grid">
+          <Col lg={6} className="success-story-image-grid">
             {["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg"].map((img, index) => (
               <motion.div
                 key={index}
-                className="image-card"
+                className="success-story-image-card"
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -186,12 +186,12 @@ const SuccessStory = () => {
       </motion.div>
 
       {/* Second Section */}
-      <motion.div fluid className="success-story-1">
+      <motion.div className="success-story-2">
         <Row className="justify-content-center">
-          <Col lg={10} className="story-card">
+          <Col lg={10} className="success-story-card">
             <Row className="align-items-center">
               {/* Left Side - Photo Section */}
-              <Col lg={5} className="photo-section">
+              <Col lg={5} className="success-story-photo-section">
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
@@ -200,28 +200,28 @@ const SuccessStory = () => {
                   <img 
                     src={video} 
                     alt="Success Story" 
-                    className="profile-photo"
+                    className="success-story-profile-photo"
                   />
                 </motion.div>
-                <div className="user-info">
+                <div className="success-story-user-info">
                   <h4>Arpit Mishra</h4>
                   <p>SCM Director at a Professional Services Firm</p>
                 </div>
               </Col>
 
               {/* Right Side - Story Details */}
-              <Col lg={7} className="story-content">
+              <Col lg={7} className="success-story-content">
                 <motion.div
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 1 }}
                 >
-                  <div className="badge">FEATURED STORY</div>
-                  <h6 className="category">ARTIFICIAL INTELLIGENCE & MACHINE LEARNING</h6>
-                  <h2 className="story-title">I am now able to talk to clients with more confidence</h2>
-                  <div className="testimonial-info">
-                    <div className="testimonial-user">
-                      <div className="user-icon">👤</div>
+                  <div className="success-story-badge">FEATURED STORY</div>
+                  <h6 className="success-story-category">ARTIFICIAL INTELLIGENCE & MACHINE LEARNING</h6>
+                  <h2 className="success-story-title">I am now able to talk to clients with more confidence</h2>
+                  <div className="success-story-testimonial-info">
+                    <div className="success-story-testimonial-user">
+                      <div className="success-story-user-icon">👤</div>
                       <div>
                         <h5>Arpit Mishra</h5>
                         <p>Post Graduate Program in AI for Leaders</p>
@@ -230,7 +230,7 @@ const SuccessStory = () => {
                     <motion.div
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="share-icon"
+                      className="success-story-share-icon"
                     >
                       <FaRegShareSquare />
                       <span>Share URL</span>
@@ -242,11 +242,11 @@ const SuccessStory = () => {
           </Col>
         </Row>
       </motion.div>
-      <motion.div fluid className="success-story-2">
+      <motion.div className="success-story-3">
       <Row>
         <Col>
           <motion.h2
-            className="section-title-2"
+            className="success-story-section-title-2"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -256,46 +256,46 @@ const SuccessStory = () => {
         </Col>
       </Row>
 
-      <Row className="slider-container-2 align-items-center">
-        <Col xs={1} className="arrow-container-2">
+      <Row className="success-story-slider-container-2 align-items-center">
+        <Col xs={1} className="success-story-arrow-container-2">
           <motion.div
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
-            className="arrow-left-2"
+            className="success-story-arrow-left-2"
             onClick={prevSlide}
           >
             <FaArrowLeft />
           </motion.div>
         </Col>
 
-        <Col xs={10} className="slider-2">
+        <Col xs={10} className="success-story-slider-2">
           <motion.div
-            className="slide-2"
+            className="success-story-slide-2"
             key={currentIndex}
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="image-container-2">
+            <div className="success-story-image-container-2">
               <img src={successStories[currentIndex].image} alt="Story" />
             </div>
-            <h4 className="name-2">{successStories[currentIndex].name}</h4>
-            <p className="title-2">{successStories[currentIndex].title}</p>
+            <h4 className="success-story-name-2">{successStories[currentIndex].name}</h4>
+            <p className="success-story-title-2">{successStories[currentIndex].title}</p>
             <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              className="share-icon-2"
+              className="success-story-share-icon-2"
             >
               <FaRegShareSquare />
             </motion.div>
           </motion.div>
         </Col>
 
-        <Col xs={1} className="arrow-container-2">
+        <Col xs={1} className="success-story-arrow-container-2">
           <motion.div
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.9 }}
-            className="arrow-right-2"
+            className="success-story-arrow-right-2"
             onClick={nextSlide}
           >
             <FaArrowRight />
@@ -303,7 +303,7 @@ const SuccessStory = () => {
         </Col>
       </Row>
     </motion.div>
-    <motion.div className="success-story-container">
+    <motion.div className="success-story-container-1">
       <h2>Stories of learners like you</h2>
 
       <motion.div
@@ -316,20 +316,20 @@ const SuccessStory = () => {
             {stories.slice(row * 3, row * 3 + 3).map((story, index) => (
               <Col key={index} md={4}>
                 <motion.div variants={cardVariants}>
-                  <Card className="success-story-card">
-                    <div className="success-story-header">
+                  <Card className="success-story-card-1">
+                    <div className="success-story-header-1">
                       <img
                         src={story.image}
                         alt={story.name}
-                        className="success-story-profile"
+                        className="success-story-profile-1"
                       />
                       <div>
-                        <h5 className="success-story-name">{story.name}</h5>
-                        <p className="success-story-program">{story.program}</p>
+                        <h5 className="success-story-name-1">{story.name}</h5>
+                        <p className="success-story-program-1">{story.program}</p>
                       </div>
                     </div>
-                    <p className="success-story-feedback">{story.feedback}</p>
-                    <Button variant="outline-dark" className="success-story-readmore">
+                    <p className="success-story-feedback-1">{story.feedback}</p>
+                    <Button variant="outline-dark" className="success-story-readmore-1">
                       Read More
                     </Button>
                   </Card>
@@ -340,7 +340,7 @@ const SuccessStory = () => {
         ))}
       </motion.div>
 
-      <div className="success-story-viewmore">
+      <div className="success-story-viewmore-1">
         <motion.div whileHover={{ scale: 1.1 }}>
           <Button variant="primary">View More</Button>
         </motion.div>
