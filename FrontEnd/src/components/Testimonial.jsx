@@ -15,7 +15,8 @@ const Testimonial = () => {
         {/* Left Section - Video Thumbnail */}
         <div className="testimonial-video">
           <img src="https://ds393qgzrxwzn.cloudfront.net/resize/c500x500/cat1/img/images/0/52ooj4559c.jpg" alt="Testimonial Video" />
-          <div className="play-button">▶</div>
+          
+
         </div>
 
         {/* Right Section - Testimonial Content */}
