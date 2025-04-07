@@ -37,19 +37,19 @@
 }
 
 /* Button */
-.LF-button {
+.LF-submit {
     width: 100%;
     padding: 10px;
     font-size: 1rem;
     color: white;
-    background-color: #007bff;
+    background-color: #007bff !important;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease;
 }
 
-.LF-button:hover {
+.LF-submit:hover {
     background-color: #0056b3;
 }
 .LF-select {

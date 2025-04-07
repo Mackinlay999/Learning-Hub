@@ -76,7 +76,7 @@ function AdminManagement() {
   };
 
   return (
-    <div className="container">
+    <div className="AD-container">
       <h1>User & Role Management</h1>
 
       <form onSubmit={handleSubmit} className="admin-form">
@@ -143,7 +143,7 @@ function AdminManagement() {
 
       <table>
         <thead>
-          <tr>
+          <tr className='ad-tr'>
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>

@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState ,useRef} from "react";
 import LeadDetails from "./LeadDetails";
 import LeadForm from "./LeadForm";
 import "../style/LeadList.css";
 
 const LeadList = () => {
+  const formRef = useRef(null);
+
   const [leads, setLeads] = useState([
     { id: 1, name: "John Doe", email: "john@example.com", status: "Hot" },
     { id: 2, name: "Jane Smith", email: "jane@example.com", status: "Warm" },
@@ -39,15 +41,23 @@ const LeadList = () => {
     filter === "All" ? leads : leads.filter((lead) => lead.status === filter);
 
   return (
-    <div className="container">
+    <div className="LL-container">
       <h2>Lead List</h2>
-
+{/* 
       <LeadForm
         addLead={addLead}
         isEditing={isEditing}
         editingLead={editingLead}
         updateLead={updateLead}
-      />
+      /> */}
+      <LeadForm
+  ref={formRef}
+  addLead={addLead}
+  isEditing={isEditing}
+  editingLead={editingLead}
+  updateLead={updateLead}
+/>
+
 
       <select onChange={(e) => setFilter(e.target.value)}>
         <option value="All">All</option>
@@ -58,7 +68,7 @@ const LeadList = () => {
 
       <table>
         <thead>
-          <tr>
+          <tr className="LL-tr">
             <th>Name</th>
             <th>Email</th>
             <th>Status</th>
@@ -67,7 +77,7 @@ const LeadList = () => {
         </thead>
         <tbody>
           {filteredLeads.map((lead) => (
-            <tr key={lead.id}>
+            <tr key={lead.id} >
               <td>{lead.name}</td>
               <td>{lead.email}</td>
               <td>{lead.status}</td>
@@ -78,6 +88,7 @@ const LeadList = () => {
                   onClick={() => {
                     setEditingLead(lead);
                     setIsEditing(true);
+                    formRef.current?.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
                   Edit
