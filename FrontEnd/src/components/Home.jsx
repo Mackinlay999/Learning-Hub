@@ -596,7 +596,7 @@ const Home = () => {
       {/* Contact Section */}
       <motion.div>
         {/* Section 1: Free Programs */}
-        <Container className="home-program-section align-items-center">
+        <motion.div className="home-program-section align-items-center">
           <Row className="align-items-center">
             <Col md={6}>
               <motion.img
@@ -634,7 +634,7 @@ const Home = () => {
               </motion.div>
             </Col>
           </Row>
-        </Container>
+        </motion.div>
       </motion.div>
       {/* Hero Section */}
       {/* <div className="hero-section">
@@ -764,7 +764,7 @@ const Home = () => {
         </motion.p>
 
         {/* Get Started Section */}
-        <motion.div
+        {/* <motion.div
           className="home-get-started-section"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -780,7 +780,7 @@ const Home = () => {
           >
             Get Started
           </motion.button>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
 
       {/* ChatBot Floating Button */}

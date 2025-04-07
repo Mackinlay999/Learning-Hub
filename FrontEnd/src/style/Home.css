@@ -1117,12 +1117,13 @@
 
 /* Questions Box */
 .home-questions-box {
-  background: white; /* Gold Accent */
-  padding: 20px;
-  /* border-radius: 10px; */
-  text-align: center;
-  /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
-  transition: transform 0.3s ease-in-out;
+  background: white;
+  /*GoldAccent*/padding: 20px;
+  /*border-radius: 10px;
+  */text-align: center;
+  /*box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  */transition: transform 0.3s ease-in-out;
+  
 }
 
 .home-questions-box:hover {
@@ -1131,15 +1132,15 @@
 
 /* Questions Heading */
 .home-questions-box h3 {
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 25px;
+  font-weight: bolder;
   color: #d32f2f; /* Primary Red */
 }
 
 /* Questions Text */
 .home-questions-box p {
   font-size: 16px;
-  color: #333333; /* Dark Gray */
+  color: #000000; /* Dark Gray */
 }
 
 /* Contact Button */
