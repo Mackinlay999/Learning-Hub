@@ -25,7 +25,7 @@ const HrProgram = () => {
 
   return (
     <div className="hr-program-container">
-      <section className="header-section">
+      <section className="hr-program-header-section">
         <h1>Human Resources Training Program</h1>
         <p>
           <strong>Duration:</strong> 3 Months
@@ -39,18 +39,18 @@ const HrProgram = () => {
         <p>
           <strong>Certification:</strong> Certified HR Professional
         </p>
-        <div className="cta-buttons">
+        <div className="hr-program-cta-buttons">
           {/* <a href={brochure} download className="btn btn-primary">📄 Download Brochure</a> */}
           <button
             onClick={() => setShowFormModal(true)}
-            className="btn btn-success"
+            className="hr-program-btn btn-success"
           >
             📝 Enroll Now
           </button>
         </div>
       </section>
 
-      <section className="program-overview">
+      <section className="hr-program-program-overview">
         <h2>Program Overview</h2>
         <p>
           The Human Resources Training Program provides comprehensive training
@@ -60,10 +60,10 @@ const HrProgram = () => {
         </p>
       </section>
 
-      <section className="curriculum">
+      <section className="hr-program-curriculum">
         <h2>Curriculum Overview</h2>
 
-        <div className="hr-module">
+        <div className="hr-program-module">
           <h3>Module 1: Foundations of Human Resources</h3>
           <h4>Objective:</h4>
           <p>
@@ -83,7 +83,7 @@ const HrProgram = () => {
           </ul>
         </div>
 
-        <div className="hr-module">
+        <div className="hr-program-module">
           <h3>Module 2: Recruitment & Onboarding</h3>
           <h4>Objective:</h4>
           <p>
@@ -104,7 +104,7 @@ const HrProgram = () => {
           </ul>
         </div>
 
-        <div className="hr-module">
+        <div className="hr-program-module">
           <h3>Module 3: HR Operations & Compliance</h3>
           <h4>Objective:</h4>
           <p>
@@ -125,7 +125,7 @@ const HrProgram = () => {
           </ul>
         </div>
 
-        <div className="hr-module">
+        <div className="hr-program-module">
           <h3>module 4: Performance & HR Analytics</h3>
           <h4>Objective:</h4>
           <p>
@@ -156,7 +156,7 @@ const HrProgram = () => {
         </ul>
       </section>
 
-      <section className="placement-assistance">
+      <section className="hr-program-placement-assistance">
         <h2>Placement Assistance Provided</h2>
         <p>
           We offer career support including mock interviews, job referrals, and
@@ -164,21 +164,21 @@ const HrProgram = () => {
         </p>
       </section>
 
-      <section className="cta-section">
+      <section className="hr-program-cta-section">
         <h3>Advance your HR career now!</h3>
         <p>
           Join our Human Resources Training Program and become a{" "}
           <strong>Certified HR Professional!</strong>
         </p>
-        <button onClick={() => setShowFormModal(true)} className="btn btn-info">
+        <button onClick={() => setShowFormModal(true)} className="hr-program-btn btn-info">
           Enroll Now
         </button>
       </section>
 
       {/* Modal - Enrollment Form */}
       {showFormModal && (
-        <div className="hr-modal-overlay">
-          <div className="hr-enroll-modal">
+        <div className="hr-program-modal-overlay">
+          <div className="hr-program-enroll-modal">
             <h2>Enroll in HR Training Program</h2>
             <form onSubmit={handleFormSubmit}>
               <input
@@ -205,12 +205,12 @@ const HrProgram = () => {
                 onChange={handleInputChange}
                 required
               />
-              <button type="submit" className="btn btn-success">
+              <button type="submit" className="hr-program-btn  btn-success">
                 Proceed to Payment
               </button>
               <button
                 type="button"
-                className="btn btn-secondary"
+                className="hr-program-btn btn-secondary"
                 onClick={() => setShowFormModal(false)}
               >
                 Cancel
@@ -222,21 +222,21 @@ const HrProgram = () => {
 
       {/* Modal - Payment */}
       {showPaymentModal && (
-        <div className="hr-modal-overlay">
-          <div className="hr-payment-modal">
+        <div className="hr-program-modal-overlay">
+          <div className="hr-program-payment-modal">
             <h3>Confirm Payment</h3>
             <p>Proceed to pay ₹79,999 for the Sales Mastery Program</p>
             <a
               href="https://razorpay.me/@mackinlay?amount=NzSQ5U9nmvnRFvfnpmXM2A%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-success"
+              className="hr-program-btn btn-success"
             >
               Pay Now
             </a>
             <button
               onClick={() => setShowPaymentModal(false)}
-              className="btn btn-secondary mt-2"
+              className="hr-program-btn btn-secondary mt-2"
             >
               Cancel
             </button>
