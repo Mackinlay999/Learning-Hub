@@ -30,11 +30,11 @@ import feature3 from "../images/f3.png";
 import feature4 from "../images/f4.png";
 const Home = () => {
   const programs = [
-    { id: 1, title: "HR", icon: "👥", image: hrImg },
-    { id: 2, title: "Marketing", icon: "📢", image: marketingImg },
-    { id: 3, title: "Sales", icon: "💰", image: SalesImg },
-    { id: 4, title: "Business Analyst", icon: "📊", image: BusinessImg },
-    { id: 5, title: "Finance", icon: "💵", image: financeImg },
+    { id: 1, title: "HR", image: hrImg },
+    { id: 2, title: "Marketing", image: marketingImg },
+    { id: 3, title: "Sales", image: SalesImg },
+    { id: 4, title: "Business Analyst", image: BusinessImg },
+    { id: 5, title: "Finance", image: financeImg },
   ];
   const features = [
     {
@@ -89,20 +89,23 @@ const Home = () => {
   
   const [selectedProgram, setSelectedProgram] = useState("Our training programs");
   const [students, setStudents] = useState(1);
+  const [companies, setCompanies] = useState(1);
   const navigate = useNavigate();
-
   useEffect(() => {
-    let count = 1;
-    const interval = setInterval(() => {
-      if (count >= 100) {
-        clearInterval(interval);
-      } else {
-        count++;
-        setStudents(count);
-      }
+    const studentInterval = setInterval(() => {
+      setStudents(prev => (prev >= 100 ? 1 : prev + 1));
     }, 50);
-    return () => clearInterval(interval);
+
+    const companyInterval = setInterval(() => {
+      setCompanies(prev => (prev >= 1000 ? 1 : prev + 1));
+    }, 10);
+
+    return () => {
+      clearInterval(studentInterval);
+      clearInterval(companyInterval);
+    };
   }, []);
+
   return (
     <>
       {/* Mackinlay */}
@@ -139,7 +142,7 @@ const Home = () => {
             career success.
           </p>
           <motion.button
-            className="learn-more-btn"
+            className="home-learn-more-btn"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
@@ -156,20 +159,21 @@ const Home = () => {
           <img src={slider1} alt="Learning Hub" />
         </motion.div>
       </motion.div>
-      <motion.div className="mac-home-section">
+      {/* Mackinlay */}
+      <motion.div className="home-mac-home-section">
         <motion.div
-          className="mac-additional-content-container"
+          className="home-mac-additional-content-container"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
           {/* Left Content */}
-          <div className="mac-content">
+          <div className="home-mac-content">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="mac-section-title"
+              className="home-mac-section-title"
             >
               Explore Our Programs
             </motion.h2>
@@ -177,12 +181,12 @@ const Home = () => {
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-              className="mac-section-description"
+              className="home-mac-section-description"
             >
               Unlock your potential with our world-class financial services. Our
               programs are designed to help you achieve your goals efficiently.
             </motion.p>
-            <ul className="mac-feature-list">
+            <ul className="home-mac-feature-list">
               <motion.li
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -210,18 +214,18 @@ const Home = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 1 }}
             >
-              <Button className="btn-primary mac-explore-btn">
+              <Button className="btn-primary home-mac-explore-btn">
                 Discover More
               </Button>
             </motion.div>
           </div>
 
           {/* Right Image */}
-          <div className="mac-image-container">
+          <div className="home-mac-image-container">
             <motion.img
               src={slider3}
               alt="Explore Programs"
-              className="mac-additional-image"
+              className="home-mac-additional-image"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
@@ -285,27 +289,27 @@ const Home = () => {
         transition={{ duration: 0.6 }}
       >
         <Row>
-          <Col md={3} className="sidebar">
-            <h6 className="sidebar-heading">FIND YOUR IDEAL</h6>
-            <h2 className="sidebar-title">
+          <Col md={3} className="home-sidebar">
+            <h6 className="home-sidebar-heading">FIND YOUR IDEAL</h6>
+            <h2 className="home-sidebar-title">
               Programs from world’s best universities
             </h2>
             <motion.div
-              className="sidebar-menu"
+              className="home-sidebar-menu"
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <Button className="sidebar-button">Our training programs</Button>
-              <ul className="menu-list">
+              <Button className="home-sidebar-button">Our training programs</Button>
+              <ul className="home-menu-list">
                 {programs.map((program) => (
                   <li
                     key={program.id}
                     onClick={() => setSelectedProgram(program.title)}
-                    className="menu-item"
+                    className="home-menu-item"
                   >
-                    <span className="menu-icon">{program.icon}</span>
-                    <span className="menu-name">{program.title}</span>
+                    {/* <span className="home-menu-icon">{program.icon}</span> */}
+                    <span className="home-menu-name">{program.title}</span>
                   </li>
                 ))}
               </ul>
@@ -314,7 +318,7 @@ const Home = () => {
 
           {/* Popular programs Section */}
           <Col md={9}>
-            <h3 className="popular-title">{selectedProgram}</h3>
+            <h3 className="home-popular-title">{selectedProgram}</h3>
             <hr />
             <Row>
               {programs.map((program) => (
@@ -322,25 +326,25 @@ const Home = () => {
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="course-card"
+                    className="home-program-course-card"
                   >
-                    <Card className="course-card-body1">
+                    <Card className="home-program-course-card-body1">
                       <Card.Img
                         variant="top"
                         src={program.image}
-                        className="course-img"
+                        className="home-program-course-img"
                         alt={`${program.title} Program`}
                       />
                       <Card.Body>
-                        <Card.Title className="course-title">
+                        <Card.Title className="home-program-course-title">
                           {program.title} Program
                         </Card.Title>
-                        <Card.Text className="course-duration">
+                        <Card.Text className="home-program-course-duration">
                           3 Months · Online
                         </Card.Text>
                         <Button
                         variant="link"
-                        className="view-program"
+                        className="home-program-view-program"
                         onClick={() => {
                           const lowerTitle = program.title.toLowerCase();
                         
@@ -371,9 +375,9 @@ const Home = () => {
         </Row>
       </motion.div>
       {/* Goal Section */}
-      <div className="heading-container">
+      <div className="home-heading-container">
         <motion.p
-          className="subheading"
+          className="home-goal-subheading"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
@@ -382,7 +386,7 @@ const Home = () => {
         </motion.p>
 
         <motion.h1
-          className="main-heading"
+          className="home-main-heading"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -391,142 +395,144 @@ const Home = () => {
           success for a lifetime.
         </motion.h1>
       </div>
-      <div className="statsContainer2">
+      <div className="home-goal-statsContainer2">
         <motion.div
-          className="statBox2"
+          className="home-goal-statBox2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <h2 className="statNumber2">{students}</h2>
-          <p className="statLabel2">STUDENTS AND ALUMNI</p>
+          <h2 className="home-goal-statNumber2">{students}</h2>
+          <p className="home-goal-statLabel2">STUDENTS AND ALUMNI</p>
         </motion.div>
 
         <motion.div
-          className="statBox2"
+          className="home-goal-statBox2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          <h2 className="statNumber2">4.6/5</h2>
-          <p className="statLabel2">END PROGRAM RATING</p>
+          <h2 className="home-goal-statNumber2">4.6/5</h2>
+          <p className="home-goal-statLabel2">END PROGRAM RATING</p>
         </motion.div>
 
         {/* <motion.div
-        className="statBox2"
+        className="home-goal-statBox2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.6 }}
       >
-        <h2 className="statNumber2">50%</h2>
-        <p className="statLabel2">AVG. HIKE POST PROGRAM*</p>
+        <h2 className="home-goal-statNumber2">50%</h2>
+        <p className="home-goal-statLabel2">AVG. HIKE POST PROGRAM*</p>
       </motion.div> */}
 
         <motion.div
-          className="statBox2"
+          className="home-goal-statBox2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.9 }}
         >
-          <h2 className="statNumber2">1000+</h2>
-          <p className="statLabel2">HIRING COMPANIES*</p>
+          <h2 className="home-goal-statNumber2">{companies}</h2>
+          <p className="home-goal-statLabel2">HIRING COMPANIES*</p>
         </motion.div>
       </div>
       {/* Testimonial Section */}
-      <div className="testimonial-slider2">
+      <div className="home-testimonial-slider2-wrapper">
+      <div className="home-testimonial-slider2">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          navigation
+          navigation={true}
           pagination={{ clickable: true }}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           loop={true}
-          className="swiper-container2"
+          className="home-swiper-container2"
         >
           {testimonials.map((item, index) => (
             <SwiperSlide key={index}>
               <motion.div
-                className="testimonial-card2"
+                className="home-testimonial-card2"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
                 <motion.div
-                  className="testimonial-content2"
+                  className="home-testimonial-content2"
                   initial={{ x: -50, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  <h2 className="testimonial-heading2">{item.quote}</h2>
-                  <p className="testimonial-desc2">{item.description}</p>
-                  <div className="testimonial-author2">
+                  <h2 className="home-testimonial-heading2">{item.quote}</h2>
+                  <p className="home-testimonial-desc2">{item.description}</p>
+                  <div className="home-testimonial-author2">
                     <strong>{item.name}</strong>
                     <span>{item.title}</span>
                   </div>
                 </motion.div>
 
                 <motion.div
-                  className="testimonial-image2"
+                  className="home-testimonial-image2"
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
                   <img src={item.image} alt={item.name} />
-                  <motion.button
-                    className="watch-story2"
+                  {/* <motion.button
+                    className="home-watch-story2"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     ▶ Watch Story
-                  </motion.button>
+                  </motion.button> */}
                 </motion.div>
               </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
+        </div>
       </div>
       {/* Feature Section */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6 }}
-        className="features-section"
+        className="home-features-section"
       >
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="section-heading"
+          className="home-features-section-heading"
         >
           <h2>ONLINE LEARNING DONE BETTER</h2>
           <p>Discover what makes our programs unique</p>
         </motion.div>
 
         {/* Feature Cards */}
-        <Row className="feature-row">
+        <Row className="home-feature-row">
           {features.map((feature, index) => (
-            <Col key={index} md={5} className="feature-card">
+            <Col key={index} md={5} className="home-feature-card">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="feature-content"
+                className="home-feature-content"
               >
                 <img
                   src={feature.image}
                   alt={feature.title}
-                  className="feature-image"
+                  className="home-feature-image"
                 />
-                <h6 className="feature-subtitle">{feature.subtitle}</h6>
-                <h3 className="feature-title">{feature.title}</h3>
-                <p className="feature-description">{feature.description}</p>
+                <h6 className="home-feature-subtitle">{feature.subtitle}</h6>
+                <h3 className="home-feature-title">{feature.title}</h3>
+                <p className="home-feature-description">{feature.description}</p>
               </motion.div>
             </Col>
           ))}
         </Row>
       </motion.div>
       {/* Skill Section */}
-      <motion.div className="skills-section">
+      {/* <motion.div className="skills-section">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -534,7 +540,6 @@ const Home = () => {
           className="skills-content"
         >
           <Row className="align-items-center">
-            {/* Left Section */}
             <Col md={6} className="text-left">
               <motion.h6
                 initial={{ opacity: 0, y: -10 }}
@@ -563,8 +568,6 @@ const Home = () => {
                 programs are relevant to you.
               </motion.p>
             </Col>
-
-            {/* Right Section - Program List */}
             <Col md={6}>
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
@@ -589,17 +592,17 @@ const Home = () => {
             </Col>
           </Row>
         </motion.div>
-      </motion.div>
+      </motion.div> */}
       {/* Contact Section */}
       <motion.div>
         {/* Section 1: Free Programs */}
-        <Container className="course-section align-items-center">
+        <motion.div className="home-program-section align-items-center">
           <Row className="align-items-center">
             <Col md={6}>
               <motion.img
                 src={Explore}
                 alt="Course"
-                className="course-image"
+                className="home-program-image"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
@@ -610,19 +613,19 @@ const Home = () => {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
-                className="course-content"
+                className="home-program-content"
               >
-                <h6 className="course-subtitle">MACKINLAY LEARNING HUB</h6>
-                <h2 className="course-title">
+                <h6 className="home-program-subtitle">MACKINLAY LEARNING HUB</h6>
+                <h2 className="home-program-title">
                   Free short programs to gain industry-relevant skills.
                 </h2>
-                <p className="course-description">
+                <p className="home-program-description">
                   Start your online learning journey at Mackinlay Learning Hub
                   for free with our short-term basic programs across various
                   in-demand domains.
                 </p>
                 <motion.button
-                  className="explore-btn"
+                  className="home-program-explore-btn"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -631,7 +634,7 @@ const Home = () => {
               </motion.div>
             </Col>
           </Row>
-        </Container>
+        </motion.div>
       </motion.div>
       {/* Hero Section */}
       {/* <div className="hero-section">
@@ -705,7 +708,7 @@ const Home = () => {
         </p>
       </Container> */}
       {/* Call to Action */}
-      <motion.div className="text-center questions-section">
+      <motion.div className="text-center home-questions-section">
         {/* Section: Got More Questions? */}
         <motion.div
           // className="questions-section"
@@ -713,7 +716,7 @@ const Home = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <Row className="questions-container">
+          <Row className="home-questions-container">
             {/* <Col md={6}>
         <motion.img
           src={Explore} // Replace with relevant image
@@ -726,7 +729,7 @@ const Home = () => {
       </Col> */}
             <Col md={12}>
               <motion.div
-                className="questions-box"
+                className="home-questions-box"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7 }}
@@ -737,7 +740,7 @@ const Home = () => {
                 </p>
                 <Link to="/contact">
                   <motion.button
-                    className="contact-btn2"
+                    className="home-contact-btn2"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -751,7 +754,7 @@ const Home = () => {
 
         {/* Disclaimer */}
         <motion.p
-          className="disclaimer"
+          className="home-disclaimer"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -761,25 +764,24 @@ const Home = () => {
         </motion.p>
 
         {/* Get Started Section */}
-        <motion.div
-          className="get-started-section"
+        {/* <motion.div
+          className="home-get-started-section"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="section-title">
+          <h2 className="home-section-title1">
             Join Our Exclusive Community of Future Leaders
           </h2>
           <motion.button
-            className="get-started-btn2"
+            className="home-get-started-btn2"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
             Get Started
           </motion.button>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
-
       {/* ChatBot Floating Button */}
       <ChatBot />
     </>

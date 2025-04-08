@@ -16,14 +16,14 @@
 }
 
 /* Horizontal Layout */
-.program-content {
+.program-detail-content {
     display: flex;
     gap: 30px;
     align-items: center;
 }
 
 /* Image Section */
-.program-banner img {
+.program-detail-banner img {
     width: 350px;
     border-radius: 10px;
     max-height: 250px;
@@ -31,23 +31,23 @@
 }
 
 /* Details Section */
-.program-info {
+.program-detail-info {
     flex: 1;
 }
 
-h2 {
+.program-detail-title {
     color: var(--dark-gray);
     margin-top: 10px;
 }
 
-.program-description {
+.program-detail-description {
     font-size: 16px;
     color: #555;
     margin-bottom: 15px;
 }
 
 /* Features */
-.program-features div {
+.program-detail-features div {
     background: #f0f0f0;
     padding: 8px;
     border-radius: 5px;
@@ -55,7 +55,7 @@ h2 {
 }
 
 /* Application Deadline */
-.program-application-deadline {
+.program-detail-application-deadline {
     background: var(--gold-accent);
     padding: 10px;
     border-radius: 5px;
@@ -64,13 +64,13 @@ h2 {
 }
 
 /* Buttons */
-.program-buttons {
+.program-detail-buttons {
     display: flex;
     gap: 15px;
     margin: 20px 0;
 }
 
-.download-btn, .apply-btn {
+.program-detail-download-btn, .program-detail-apply-btn {
     padding: 12px 20px;
     border: none;
     cursor: pointer;
@@ -79,40 +79,40 @@ h2 {
     transition: all 0.3s ease;
 }
 
-.download-btn {
+.program-detail-download-btn {
     background-color: #007bff;
     color: white;
 }
 
-.apply-btn {
+.program-detail-apply-btn {
     background-color: #28a745;
     color: white;
 }
 
-.download-btn:hover {
+.program-detail-download-btn:hover {
     background-color: #0056b3;
 }
 
-.apply-btn:hover {
+.program-detail-apply-btn:hover {
     background-color: #218838;
 }
 
 /* Contact Section */
-.program-contact {
+.program-detail-contact {
     background: #f8f8f8;
     padding: 10px;
     border-radius: 5px;
     font-size: 16px;
 }
 
-.program-contact a {
+.program-detail-contact a {
     color: var(--dark-gray);
     text-decoration: none;
     font-weight: bold;
 }
 
 /* Back Button */
-.back-btn {
+.program-detail-back-btn {
     margin-top: 15px;
     padding: 10px 15px;
     background-color: var(--dark-gray);
@@ -124,10 +124,10 @@ h2 {
     transition: all 0.3s ease;
 }
 
-.back-btn:hover {
+.program-detail-back-btn:hover {
     background-color: var(--primary-red);
 }
-.program-payment {
+.program-detail-payment {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -138,17 +138,17 @@ h2 {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   }
   
-  .program-payment h3 {
+  .program-detail-payment h3 {
     font-size: 1.2rem;
     color: #333;
   }
   
   @media (max-width: 768px) {
-    .program-payment {
+    .program-detail-payment {
       padding: 15px;
     }
   
-    .program-payment h3 {
+    .program-detail-payment h3 {
       font-size: 1rem;
     }
   }
@@ -161,72 +161,72 @@ h2 {
         padding: 15px;
     }
 
-    .program-content {
+    .program-detail-content {
         flex-direction: column;
         text-align: center;
         gap: 20px;
     }
 
     /* Image Section */
-    .program-banner img {
+    .program-detail-banner img {
         width: 100%;
         max-height: 180px;
         border-radius: 8px;
     }
 
     /* Details Section */
-    .program-info {
+    .program-detail-info {
         width: 100%;
     }
 
-    h2 {
+    .program-detail-title {
         font-size: 1.4rem;
         margin-top: 5px;
     }
 
-    .program-description {
+    .program-detail-description {
         font-size: 14px;
         margin-bottom: 10px;
     }
 
     /* Features */
-    .program-features div {
+    .program-detail-features div {
         padding: 10px;
         font-size: 14px;
     }
 
     /* Application Deadline */
-    .program-application-deadline {
+    .program-detail-application-deadline {
         padding: 8px;
         font-size: 14px;
         margin: 8px 0;
     }
 
     /* Buttons */
-    .program-buttons {
+    .program-detail-buttons {
         flex-direction: column;
         align-items: center;
         gap: 10px;
     }
 
-    .download-btn, .apply-btn {
+    .program-detail-download-btn, .program-detail-apply-btn {
         width: 100%;
         padding: 10px;
         font-size: 15px;
     }
 
     /* Contact Section */
-    .program-contact {
+    .program-detail-program-contact {
         padding: 8px;
         font-size: 14px;
     }
 
-    .program-contact a {
+    .program-detail-program-contact a {
         font-size: 14px;
     }
 
     /* Back Button */
-    .back-btn {
+    .program-detail-back-btn {
         width: 100%;
         padding: 10px;
         font-size: 15px;

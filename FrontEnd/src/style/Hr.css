@@ -1,8 +1,8 @@
 /* Global Settings */
-* {
+/* * {
     box-sizing: border-box;
     transition: all 0.3s ease-in-out;
-  }
+  } */
   
   /* Main Container */
   .hr-program-container {
@@ -13,7 +13,7 @@
   }
   
   /* Header Section */
-  .header-section {
+  .hr-program-header-section {
     background-color: #ffffff;
     color: #333333;
     padding: 40px;
@@ -22,22 +22,22 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .header-section h1 {
+  .hr-program-header-section h1 {
     font-size: 2.5rem;
     color: #D32F2F;
     margin-bottom: 15px;
   }
   
-  .header-section p {
+  .hr-program-header-section p {
     font-size: 1.1rem;
   }
   
   /* CTA Buttons */
-  .cta-buttons {
+  .hr-program-cta-buttons {
     margin-top: 20px;
   }
   
-  .cta-buttons .btn {
+  .hr-program-cta-buttons .btn {
     padding: 12px 25px;
     font-size: 1.1rem;
     border-radius: 50px;
@@ -47,21 +47,21 @@
     cursor: pointer;
   }
   
-  .cta-buttons .btn:hover {
+  .hr-program-cta-buttons .hr-program-btn:hover {
     background-color: #B71C1C;
   }
   
   /* Section Spacing */
-  .program-overview,
-  .curriculum,
+  .hr-program-program-overview,
+  .hr-program-curriculum,
   .hr-program-benefits,
-  .placement-assistance,
-  .cta-section {
+  .hr-program-placement-assistance,
+  .hr-program-cta-section {
     margin: 40px 0;
   }
   
   /* HR Module Cards */
-  .hr-module {
+  .hr-program-module {
     background-color: #ffffff;
     padding: 20px;
     margin-bottom: 20px;
@@ -69,16 +69,16 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .hr-module:hover {
+  .hr-program-module:hover {
     transform: scale(1.03);
   }
   
-  .hr-module h4 {
+  .hr-program-module h4 {
     font-size: 1.2rem;
     color: #D32F2F;
   }
   
-  .hr-module ul {
+  .hr-program-module ul {
     list-style-type: disc;
     margin-left: 20px;
   }
@@ -98,11 +98,11 @@
   }
   
   /* Call-to-Action Section */
-  .cta-section {
+  .hr-program-cta-section {
     text-align: center;
   }
   
-  .cta-section button {
+  .hr-program-cta-section button {
     padding: 15px 30px;
     font-size: 1.2rem;
     border-radius: 50px;
@@ -112,12 +112,12 @@
     cursor: pointer;
   }
   
-  .cta-section button:hover {
+  .hr-program-cta-section button:hover {
     background-color: #FFA000;
   }
   
   /* Modal Overlay */
-  .hr-modal-overlay {
+  .hr-program-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -131,8 +131,8 @@
   }
   
   /* Modals */
-  .hr-enroll-modal,
-  .hr-payment-modal {
+  .hr-program-enroll-modal,
+  .hr-program-payment-modal {
     background-color: #ffffff;
     padding: 30px;
     border-radius: 10px;
@@ -141,14 +141,14 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
   
-  .hr-enroll-modal h2,
-  .hr-payment-modal h3 {
+  .hr-program-enroll-modal h2,
+  .hr-program-payment-modal h3 {
     text-align: center;
     color: #D32F2F;
   }
   
   /* Modal Form Elements */
-  .hr-enroll-modal form input {
+  .hr-program-enroll-modal form input {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
@@ -157,7 +157,7 @@
     font-size: 1rem;
   }
   
-  .hr-enroll-modal button {
+  .hr-program-enroll-modal button {
     width: 100%;
     padding: 12px;
     margin-top: 10px;
@@ -166,52 +166,52 @@
   }
   
   /* Modal Buttons */
-  .hr-enroll-modal .btn-secondary,
-  .hr-payment-modal .btn-secondary {
+  .hr-program-enroll-modal .btn-secondary,
+  .hr-program-payment-modal .btn-secondary {
     background-color: #E0E0E0;
     color: #333333;
   }
   
-  .hr-enroll-modal .btn-secondary:hover,
-  .hr-payment-modal .btn-secondary:hover {
+  .hr-program-enroll-modal .btn-secondary:hover,
+  .hr-program-payment-modal .btn-secondary:hover {
     background-color: #BDBDBD;
   }
   
-  .hr-payment-modal .btn-success {
+  .hr-program-payment-modal .btn-success {
     background-color: #D32F2F;
     color: #ffffff;
   }
   
-  .hr-payment-modal .btn-success:hover {
+  .hr-program-payment-modal .btn-success:hover {
     background-color: #B71C1C;
   }
   
   /* Responsive Design */
   @media (max-width: 768px) {
-    .header-section {
+    .hr-program-header-section {
       padding: 30px 20px;
     }
   
-    .header-section h1 {
+    .hr-program-header-section h1 {
       font-size: 2rem;
     }
   
-    .cta-buttons .btn {
+    .hr-program-cta-buttons .hr-program-btn {
       font-size: 1rem;
       padding: 10px 20px;
     }
   
-    .hr-module {
+    .hr-program-module {
       padding: 15px;
     }
   
-    .cta-section button {
+    .hr-program-cta-section button {
       padding: 12px 25px;
       font-size: 1rem;
     }
   
-    .hr-enroll-modal,
-    .hr-payment-modal {
+    .hr-program-enroll-modal,
+    .hr-program-payment-modal {
       padding: 20px;
     }
   }

@@ -19,20 +19,20 @@
   }
   
   /* Sidebar - Program Categories */
-  .program-sidebar {
+  .program-dropdown-sidebar {
     width: 20%;
     border-right: 2px solid #eee;
     padding-right: 20px;
   }
   
-  .program-sidebar-title {
-    font-size: 1.2rem;
-    font-weight: bold;
+  .program-dropdown-sidebar-title {
+    font-size: 1.4rem;
+    font-weight: bolder;
     color: #d32f2f;
     margin-bottom: 10px;
   }
   
-  .program-sidebar-item {
+  .program-dropdown-sidebar-item {
     display: flex;
     align-items: center;
     padding: 10px;
@@ -42,25 +42,25 @@
     transition: background-color 0.3s ease;
   }
   
-  .program-sidebar-item:hover {
-    background-color: #ffc107; /* Gold accent on hover */
+  .program-dropdown-sidebar-item:hover {
+    background-color: #ffc107a7; /* Gold accent on hover */
     color: #000;
   }
   
   /* Program Cards - Horizontal Layout */
-  .programs2 {
+  .program-dropdown-2 {
     width: 50%;
     padding: 0 20px;
   }
   
-  .program-grid2 {
+  .program-dropdown-grid2 {
     display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two equal columns */
   gap: 15px;
   flex-wrap: wrap;
   }
   
-  .program-card2 {
+  .program-dropdown-card2 {
     background: #f8f8f8;
     color: black;
     padding: 15px;
@@ -78,20 +78,20 @@
     justify-content: space-between; /* Space out title, duration, and mode */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
-  .program-card2:hover {
+  .program-dropdown-card2:hover {
     transform: scale(1.05); /* Slightly enlarge the card */
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
-    background: #ffc107;
+    background: #ffc107a7;
     color: black;
     font-weight: 600;
   }
   
-  .program-card2 h6 {
+  .program-dropdown-card2 h6 {
     font-size: 1.2rem;
     margin-bottom: 10px;
   }
   
-  .program-card2 p {
+  .program-dropdown-card2 p {
     font-size: 1rem;
     color: #555;
   }
@@ -100,15 +100,15 @@
   
   
   /* Quick Links */
-  .program-quick-links {
+  .program-dropdown-quick-links {
     width: 30%;
   }
   
-  .program-quick-links h5 {
+  .program-dropdown-quick-links h5 {
     color: #d32f2f;
   }
   
-  .program-quick-link-item {
+  .program-dropdown-quick-link-item {
     background: #f8f8f8;
     padding: 10px;
     border-radius: 5px;
@@ -116,13 +116,13 @@
     transition: background-color 0.3s ease;
   }
   
-  .program-quick-link-item:hover {
-    background-color: #ffc107;
+  .program-dropdown-quick-link-item:hover {
+    background-color: #ffc107a7;
     color: #000;
   }
   
   /* Close Button */
-  .program-close-btn1 {
+  .program-dropdown-close-btn1 {
     background: none;
     border: none;
     font-size: 1.2rem;
@@ -133,7 +133,7 @@
     right: 10px;
   }
   
-  .program-close-btn1:hover {
+  .program-dropdown-close-btn1:hover {
     color: #b71c1c;
   }
   
@@ -150,57 +150,57 @@
     }
   
     /* Sidebar - Program Categories */
-    .program-sidebar {
+    .program-dropdown-sidebar {
       width: 100%;
       padding-right: 0;
       margin-bottom: 15px;
       border-right: none;
     }
   
-    .program-sidebar-item {
+    .program-dropdown-sidebar-item {
       justify-content: center;
       padding: 12px;
     }
   
     /* Program Cards - Vertical Layout */
-    .programs2 {
+    .program-dropdown-2 {
       width: 100%;
       padding: 0;
     }
   
-    .program-grid2 {
+    .program-dropdown-grid2 {
       grid-template-columns: 1fr; /* Stack cards vertically */
       gap: 10px;
     }
   
-    .program-card2 {
+    .program-dropdown-card2 {
       width: 100%;
       height: auto;
       padding: 12px;
     }
   
-    .program-card2 h6 {
+    .program-dropdown-card2 h6 {
       font-size: 1rem;
       margin-bottom: 8px;
     }
   
-    .program-card2 p {
+    .program-dropdown-card2 p {
       font-size: 0.9rem;
     }
   
     /* Quick Links */
-    .program-quick-links {
+    .program-dropdown-quick-links {
       width: 100%;
       margin-top: 15px;
     }
   
-    .program-quick-link-item {
+    .program-dropdown-quick-link-item {
       text-align: center;
       padding: 12px;
     }
   
     /* Close Button */
-    .program-close-btn1 {
+    .program-dropdown-close-btn1 {
       top: 8px;
       right: 8px;
       font-size: 1rem;

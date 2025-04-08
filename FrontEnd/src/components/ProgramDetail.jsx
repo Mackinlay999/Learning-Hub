@@ -42,14 +42,14 @@ const ProgramDetail = () => {
   if (!program) {
     return (
       <motion.div
-        className="error-message"
+        className="program-detail-error-message"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
         <p>⚠ No program details found. Please go back and try again.</p>
         <motion.button
-          className="back-btn"
+          className="program-detail-back-btn"
           onClick={() => navigate(-1)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
@@ -67,9 +67,9 @@ const ProgramDetail = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="program-content">
+      <div className="program-detail-content">
         <motion.div
-          className="program-banner"
+          className="program-detail-banner"
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.7 }}
@@ -77,35 +77,35 @@ const ProgramDetail = () => {
           <img
             src={program.image || hr}
             alt={program.title || "Program Image"}
-            className="responsive-img"
+            className="program-detail-responsive-img"
           />
         </motion.div>
 
         <motion.div
-          className="program-info"
+          className="program-detail-program-info"
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.7 }}
         >
-          <h2>{program.title || "Untitled Program"}</h2>
-          <p className="program-description">
+          <h2 className="program-detail-title">{program.title || "Untitled Program"}</h2>
+          <p className="program-detail-description">
             {program.description ||
               `Build a successful career in ${program.title}. Gain expertise in cutting-edge technologies and earn certifications from leading institutions.`}
           </p>
 
-          <div className="program-features">
+          <div className="program-detail-features">
             <div><strong>📚 Duration:</strong> {program.duration || "N/A"}</div>
             <div><strong>⭐ Rating:</strong> {program.rating || "4.72"} <FaStar /> (9,245 ratings)</div>
             <div><strong>🧠 Hands-On Learning:</strong> Real-world case studies</div>
             <div><strong>🎓 Live Mentorship:</strong> From industry professionals</div>
           </div>
 
-          <div className="program-application-deadline">
+          <div className="program-detail-application-deadline">
             <FaPhone /> <strong>Application closes on:</strong> {program.deadline || "5th Apr 2025"}
           </div>
 
           <motion.div
-            className="program-payment"
+            className="program-detail-payment"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -120,7 +120,7 @@ const ProgramDetail = () => {
             )}
           </motion.div>
 
-          <div className="program-contact">
+          <div className="program-detail-contact">
             <FaPhone /> <span>Speak with our expert: </span>
             <a href="tel:+91 9363352660">+91 9363352660</a>
           </div>
@@ -129,7 +129,7 @@ const ProgramDetail = () => {
           {renderProgramComponent()}
 
           <motion.button
-            className="back-btn"
+            className="program-detail-back-btn"
             onClick={() => navigate(-1)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
