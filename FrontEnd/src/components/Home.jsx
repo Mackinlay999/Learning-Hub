@@ -782,7 +782,6 @@ const Home = () => {
           </motion.button>
         </motion.div> */}
       </motion.div>
-
       {/* ChatBot Floating Button */}
       <ChatBot />
     </>
