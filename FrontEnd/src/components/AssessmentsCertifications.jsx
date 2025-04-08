@@ -84,7 +84,7 @@ const AssessmentsCertifications = () => {
       </div>
       <table className="assessment-table">
         <thead>
-          <tr>
+          <tr className="C-tr">
             <th>ID</th>
             <th>Title</th>
             <th>Type</th>

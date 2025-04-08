@@ -61,6 +61,14 @@
     border: none;
     cursor: pointer;
   }
+  .d-btn{
+    background-color:blue;
+    color: white;
+  }
+  .d-btn:hover{
+    background: #003366;
+  
+  }
   
   /* Responsive Design */
   @media (max-width: 600px) {

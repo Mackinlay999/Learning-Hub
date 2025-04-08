@@ -24,8 +24,8 @@ const LeadAndStudentManagement = () => {
 
 
 
-
-      <LeadList />
+{
+      <LeadList /> }
       <LeadDetails />
       <StudentEnroll />
       <AttendanceProgressTracking />

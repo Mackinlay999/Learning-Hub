@@ -81,6 +81,9 @@
   background-color: #ffc107;
   color: white;
 }
+.C-tr th{
+  color: #333;
+}
 
 .course-table .delete {
   background-color: #dc3545;

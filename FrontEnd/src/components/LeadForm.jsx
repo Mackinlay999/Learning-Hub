@@ -44,7 +44,7 @@ const LeadForm = forwardRef(({ addLead, isEditing, editingLead, updateLead }, re
         <option value="Warm">Warm</option>
         <option value="Cold">Cold</option>
       </select>
-      <button type="LF-submit">{isEditing ? "Update Lead" : "Add Lead"}</button>
+      <button className="d-btn" type="submit">{isEditing ? "Update Lead" : "Add Lead"}</button>
     </form>
   );
 });
