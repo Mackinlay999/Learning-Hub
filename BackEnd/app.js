@@ -10,7 +10,8 @@ const rateLimit = require("express-rate-limit");
 
 const { errorHandler } = require("./middlewares/errorHandler");
 const ticketRoutes = require("./Route/TicketRoutes.js");
-// const feedbackRoutes =require("./Route/feedbackRoutes.js");
+const feedbackRoutes = require("./Route/FeedbackRoutes.js");
+
 
 const corsOptions = {
     origin: "http://localhost:5173", // ✅ Your frontend URL
@@ -40,6 +41,6 @@ app.get('/', (req, res) => {
 app.use("/api", AllRouters);
 app.use("/api", paymentRoutes);
 app.use("/api", ticketRoutes);
-// app.use("/api", feedbackRoutes);
+app.use("/api", feedbackRoutes);
 
 module.exports = app;
