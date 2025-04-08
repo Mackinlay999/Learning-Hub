@@ -56,3 +56,22 @@
    width: 500px !important;
    
 }
+.LF-btn:hover{
+    background-color: #0056b3 !important;
+    
+    
+}
+.LF-btn{
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff !important;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.LF-btn{
+    background-color: red !important;
+}

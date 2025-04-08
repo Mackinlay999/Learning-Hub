@@ -71,7 +71,7 @@ const CommissionPayouts = () => {
           <option value="Approved">Approved</option>
           <option value="Paid">Paid</option>
         </select>
-        <button onClick={addOrUpdateTransaction}>
+        <button className="d-btn"  onClick={addOrUpdateTransaction}>
           {editingIndex !== null ? "Update" : "Add"} Transaction
         </button>
       </div>

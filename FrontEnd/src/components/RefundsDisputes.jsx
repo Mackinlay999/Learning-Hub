@@ -65,7 +65,7 @@ const RefundsDisputes = () => {
           <option value="Rejected">Rejected</option>
           <option value="Resolved">Resolved</option>
         </select>
-        <button onClick={addOrUpdateRefund}>
+        <button className="d-btn" onClick={addOrUpdateRefund}>
           {editingIndex !== null ? "Update" : "Submit"} Refund Request
         </button>
       </div>

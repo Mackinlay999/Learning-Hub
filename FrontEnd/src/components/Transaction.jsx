@@ -75,7 +75,7 @@ const Transaction = () => {
           <option value="Pending">Pending</option>
           <option value="Paid">Paid</option>
         </select>
-        <button onClick={addOrUpdateTransaction}>
+        <button  className="d-btn" onClick={addOrUpdateTransaction}>
           {editingIndex !== null ? "Update" : "Add"} Transaction
         </button>
       </div>

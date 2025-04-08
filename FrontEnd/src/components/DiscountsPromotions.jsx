@@ -61,7 +61,7 @@ const DiscountsPromotions = () => {
 
       {/* Discount Creation/Update Form */}
       <div className="discount-form">
-        <button onClick={generateCode}>Generate Code</button>
+        <button  className="d-btn" onClick={generateCode}>Generate Code</button>
         <input type="text" placeholder="Discount Code" value={code} readOnly />
         <input
           type="number"
@@ -71,7 +71,7 @@ const DiscountsPromotions = () => {
         />
         <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
         <input type="date" value={expiryDate} onChange={(e) => setExpiryDate(e.target.value)} />
-        <button onClick={addOrUpdateDiscount}>{editingIndex !== null ? "Update" : "Add"} Discount</button>
+        <button className="d-btn"  onClick={addOrUpdateDiscount}>{editingIndex !== null ? "Update" : "Add"} Discount</button>
       </div>
 
       {/* Discount List */}

@@ -105,7 +105,7 @@ const CommunityEngagement = () => {
           onChange={handleForumChange}
           required
         ></textarea>
-        <button type="submit">{isEditingForum ? "Update" : "Post"}</button>
+        <button  className="d-btn"  type="submit">{isEditingForum ? "Update" : "Post"}</button>
       </form>
 
       {/* Forum List */}
@@ -143,7 +143,7 @@ const CommunityEngagement = () => {
           onChange={handlePollChange}
           required
         />
-        <button type="submit">{isEditingPoll ? "Update Poll" : "Add Poll"}</button>
+        <button className="d-btn"  type="submit">{isEditingPoll ? "Update Poll" : "Add Poll"}</button>
       </form>
 
       {/* Poll List */}

@@ -1,40 +1,66 @@
-import { useState } from "react";
-import "../style/LiveSession.css"; // Import the CSS file
-
+import { useEffect, useState } from "react";
+import axios from "./axios";
+import "../style/LiveSession.css";
 const LiveSessions = () => {
-  const [sessions, setSessions] = useState([
-    { id: 1, title: "React Advanced", platform: "Zoom", date: "2025-04-10", time: "10:00 AM", attendees: 50 },
-    { id: 2, title: "Node.js API Design", platform: "MS Teams", date: "2025-04-12", time: "2:00 PM", attendees: 30 },
-  ]);
+  const [sessions, setSessions] = useState([]);
   const [newSession, setNewSession] = useState({ title: "", platform: "Zoom", date: "", time: "", attendees: 0 });
   const [editSession, setEditSession] = useState(null);
 
-  // Handle Input Change
+  // 🔁 Fetch all sessions on mount
+  useEffect(() => {
+    fetchSessions();
+  }, []);
+
+  const fetchSessions = async () => {
+    try {
+      const res = await axios.get(`/getAllSessions`);
+      setSessions(res.data);
+    } catch (error) {
+      console.error("Error fetching sessions:", error);
+    }
+  };
+
+  // ✅ Add a new session
+  const addSession = async () => {
+    if (!newSession.title || !newSession.date || !newSession.time) return;
+    try {
+      await axios.post(`/createSession`, newSession);
+      fetchSessions();
+      setNewSession({ title: "", platform: "Zoom", date: "", time: "", attendees: 0 });
+    } catch (error) {
+      console.error("Error adding session:", error);
+    }
+  };
+
+  // ❌ Delete session
+  const deleteSession = async (id) => {
+    try {
+      await axios.delete(`/deleteSession/${id}`);
+      fetchSessions();
+    } catch (error) {
+      console.error("Error deleting session:", error);
+    }
+  };
+
+  // ✏️ Start editing
+  const startEdit = (session) => {
+    setEditSession({ ...session });
+  };
+
+  // 💾 Save edited session
+  const saveEdit = async () => {
+    try {
+      await axios.put(`/updateSession/${editSession._id}`, editSession);
+      fetchSessions();
+      setEditSession(null);
+    } catch (error) {
+      console.error("Error updating session:", error);
+    }
+  };
+
+  // 🧠 Input handlers
   const handleInputChange = (e) => {
     setNewSession({ ...newSession, [e.target.name]: e.target.value });
-  };
-
-  // Add a New Session
-  const addSession = () => {
-    if (!newSession.title || !newSession.date || !newSession.time) return;
-    setSessions([...sessions, { id: sessions.length + 1, ...newSession }]);
-    setNewSession({ title: "", platform: "Zoom", date: "", time: "", attendees: 0 });
-  };
-
-  // Delete a Session
-  const deleteSession = (id) => {
-    setSessions(sessions.filter((session) => session.id !== id));
-  };
-
-  // Edit a Session
-  const startEdit = (session) => {
-    setEditSession(session);
-  };
-
-  // Save Edited Session
-  const saveEdit = () => {
-    setSessions(sessions.map((s) => (s.id === editSession.id ? editSession : s)));
-    setEditSession(null);
   };
 
   return (
@@ -58,7 +84,6 @@ const LiveSessions = () => {
       <table className="session-table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Title</th>
             <th>Platform</th>
             <th>Date</th>
@@ -69,17 +94,16 @@ const LiveSessions = () => {
         </thead>
         <tbody>
           {sessions.map((session) => (
-            <tr key={session.id} className="LS-tr">
-              <td>{session.id}</td>
+            <tr key={session._id}>
               <td>
-                {editSession && editSession.id === session.id ? (
+                {editSession && editSession._id === session._id ? (
                   <input type="text" value={editSession.title} onChange={(e) => setEditSession({ ...editSession, title: e.target.value })} />
                 ) : (
                   session.title
                 )}
               </td>
               <td>
-                {editSession && editSession.id === session.id ? (
+                {editSession && editSession._id === session._id ? (
                   <select value={editSession.platform} onChange={(e) => setEditSession({ ...editSession, platform: e.target.value })}>
                     <option value="Zoom">Zoom</option>
                     <option value="MS Teams">MS Teams</option>
@@ -89,33 +113,33 @@ const LiveSessions = () => {
                 )}
               </td>
               <td>
-                {editSession && editSession.id === session.id ? (
+                {editSession && editSession._id === session._id ? (
                   <input type="date" value={editSession.date} onChange={(e) => setEditSession({ ...editSession, date: e.target.value })} />
                 ) : (
                   session.date
                 )}
               </td>
               <td>
-                {editSession && editSession.id === session.id ? (
+                {editSession && editSession._id === session._id ? (
                   <input type="time" value={editSession.time} onChange={(e) => setEditSession({ ...editSession, time: e.target.value })} />
                 ) : (
                   session.time
                 )}
               </td>
               <td>
-                {editSession && editSession.id === session.id ? (
+                {editSession && editSession._id === session._id ? (
                   <input type="number" value={editSession.attendees} onChange={(e) => setEditSession({ ...editSession, attendees: e.target.value })} />
                 ) : (
                   session.attendees
                 )}
               </td>
               <td>
-                {editSession && editSession.id === session.id ? (
+                {editSession && editSession._id === session._id ? (
                   <button className="save" onClick={saveEdit}>Save</button>
                 ) : (
                   <>
                     <button className="edit" onClick={() => startEdit(session)}>Edit</button>
-                    <button className="delete" onClick={() => deleteSession(session.id)}>Delete</button>
+                    <button className="delete" onClick={() => deleteSession(session._id)}>Delete</button>
                   </>
                 )}
               </td>
