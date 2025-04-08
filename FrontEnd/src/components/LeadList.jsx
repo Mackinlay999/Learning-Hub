@@ -1,4 +1,4 @@
-import { useState ,useRef} from "react";
+import { useState, useRef } from "react";
 import LeadDetails from "./LeadDetails";
 import LeadForm from "./LeadForm";
 import "../style/LeadList.css";
@@ -43,7 +43,7 @@ const LeadList = () => {
   return (
     <div className="LL-container">
       <h2>Lead List</h2>
-{/* 
+      {/* 
       <LeadForm
         addLead={addLead}
         isEditing={isEditing}
@@ -51,13 +51,12 @@ const LeadList = () => {
         updateLead={updateLead}
       /> */}
       <LeadForm
-  ref={formRef}
-  addLead={addLead}
-  isEditing={isEditing}
-  editingLead={editingLead}
-  updateLead={updateLead}
-/>
-
+        ref={formRef}
+        addLead={addLead}
+        isEditing={isEditing}
+        editingLead={editingLead}
+        updateLead={updateLead}
+      />
 
       <select onChange={(e) => setFilter(e.target.value)}>
         <option value="All">All</option>
@@ -77,14 +76,19 @@ const LeadList = () => {
         </thead>
         <tbody>
           {filteredLeads.map((lead) => (
-            <tr key={lead.id} >
+            <tr key={lead.id}>
               <td>{lead.name}</td>
               <td>{lead.email}</td>
               <td>{lead.status}</td>
               <td>
-                <button  className="ld-bnt"  onClick={() => setSelectedLead(lead)}>View</button>
                 <button
-                   className="ld-bnt" 
+                  className="ld-bnt"
+                  onClick={() => setSelectedLead(lead)}
+                >
+                  View
+                </button>
+                <button
+                  className="ld-bnt"
                   onClick={() => {
                     setEditingLead(lead);
                     setIsEditing(true);
@@ -93,7 +97,9 @@ const LeadList = () => {
                 >
                   Edit
                 </button>
-                <button className="ld-bnt" onClick={() => deleteLead(lead.id)}>Delete</button>
+                <button className="ld-bnt" onClick={() => deleteLead(lead.id)}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
