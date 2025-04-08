@@ -89,7 +89,7 @@
     margin-bottom: 30px;
   }
   
-  .callback-btn1, .post-job-btn1 {
+  .recruiters-callback-btn1, .recruiters-post-job-btn1 {
     padding: 12px 20px;
     font-size: 1.1rem;
     border: none;
@@ -97,23 +97,23 @@
     border-radius: 5px;
   }
   
-  .callback-btn1 {
+  .recruiters-callback-btn1 {
     background-color: #b30000;
     color: white;
   }
   
-  .post-job-btn1 {
+  .recruiters-post-job-btn1 {
     background-color: transparent;
     border: 2px solid white;
     color: white;
   }
   
-  .callback-btn1:hover {
+  .recruiters-callback-btn1:hover {
     background-color: #B71C1C;
 
   }
   
-  .post-job-btn1:hover {
+  .recruiters-post-job-btn1:hover {
     background-color: white;
     color: #003366;
   }
@@ -361,8 +361,8 @@
   /* Buttons Adjustments */
   .recruiters-buttons1,
   .recruiters-btn,
-  .callback-btn1,
-  .post-job-btn1 {
+  .recruiters-callback-btn1,
+  .recruiters-post-job-btn1 {
       width: 100%;
       font-size: 1rem;
       padding: 10px;

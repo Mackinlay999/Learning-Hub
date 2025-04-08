@@ -73,14 +73,14 @@ const Recruiters = () => {
       {/* Buttons */}
       <div className="recruiters-buttons1">
         <motion.button
-          className="callback-btn1"
+          className="recruiters-callback-btn1"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
           Request a Callback
         </motion.button>
         <motion.button
-          className="post-job-btn1"
+          className="recruiters-post-job-btn1"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
         >
