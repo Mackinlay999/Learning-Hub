@@ -20,7 +20,7 @@ const NavBar = () => {
         <Navbar expand="lg" className="w-100">
           <Container fluid>
             {/* Left Side: Logo */}
-            <Navbar.Brand as={Link} to="/" className="fw-bold logo">
+            <Navbar.Brand as={Link} to="/" className="fw-bold navbar-logo1">
               <motion.img
                 src={logo}
                 alt="Logo"
@@ -39,7 +39,7 @@ const NavBar = () => {
                 <Nav className="nav-links d-flex align-items-center">
                   <Nav.Link onClick={() => setShowDropdown(!showDropdown)}>
                     <motion.button
-                      className="btn-explore"
+                      className="navbar-btn-explore"
                       whileHover={{ scale: 1.05 }}
                     >
                       Explore Programs ⌄
@@ -66,7 +66,7 @@ const NavBar = () => {
                     Dashboard
                   </Nav.Link>
 
-                  <NavDropdown title="More" id="more-dropdown">
+                  <NavDropdown title="More" id="navbar-more-dropdown">
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -86,7 +86,7 @@ const NavBar = () => {
                 <div className="login">
                 <Link to="/login">
                   <motion.button 
-                    className="login-btn-1"
+                    className="navbar-login-btn-1"
                     whileHover={{ backgroundColor: "#D32F2F" , color: "#ffffff" }}
                   >
 
