@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../style/RealTimeInsightsDashboard.css";
+
+const BASE_URL = "http://localhost:3000/api/insights"; // replace if hosted elsewhere
 
 const RealTimeInsightsDashboard = () => {
   const [records, setRecords] = useState([]);
@@ -11,35 +14,53 @@ const RealTimeInsightsDashboard = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
+  useEffect(() => {
+    fetchRecords();
+  }, []);
+
+  const fetchRecords = async () => {
+    try {
+      const res = await axios.get(BASE_URL);
+      setRecords(res.data);
+    } catch (err) {
+      console.error("Failed to fetch insights:", err);
+    }
+  };
+
   const handleChange = (e) => {
     setRecord({ ...record, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEditing) {
-      setRecords(
-        records.map((rec) =>
-          rec.id === editingId ? { ...record, id: editingId } : rec
-        )
-      );
-      setIsEditing(false);
-      setEditingId(null);
-    } else {
-      const newRec = { ...record, id: Date.now() };
-      setRecords([...records, newRec]);
+    try {
+      if (isEditing) {
+        await axios.put(`${BASE_URL}/${editingId}`, record);
+        setIsEditing(false);
+        setEditingId(null);
+      } else {
+        await axios.post(BASE_URL, record);
+      }
+      setRecord({ metric: "", value: "", category: "Enrollment Trends" });
+      fetchRecords();
+    } catch (err) {
+      console.error("Failed to save record:", err);
     }
-    setRecord({ metric: "", value: "", category: "Enrollment Trends" });
   };
 
   const editRecord = (rec) => {
     setRecord(rec);
     setIsEditing(true);
-    setEditingId(rec.id);
+    setEditingId(rec._id);
   };
 
-  const deleteRecord = (id) => {
-    setRecords(records.filter((r) => r.id !== id));
+  const deleteRecord = async (id) => {
+    try {
+      await axios.delete(`${BASE_URL}/${id}`);
+      fetchRecords();
+    } catch (err) {
+      console.error("Failed to delete record:", err);
+    }
   };
 
   return (
@@ -92,13 +113,13 @@ const RealTimeInsightsDashboard = () => {
             </thead>
             <tbody>
               {records.map((rec) => (
-                <tr key={rec.id}>
+                <tr key={rec._id}>
                   <td>{rec.metric}</td>
                   <td>{rec.value}</td>
                   <td>{rec.category}</td>
                   <td>
                     <button onClick={() => editRecord(rec)}>Edit</button>
-                    <button onClick={() => deleteRecord(rec.id)}>Delete</button>
+                    <button onClick={() => deleteRecord(rec._id)}>Delete</button>
                   </td>
                 </tr>
               ))}

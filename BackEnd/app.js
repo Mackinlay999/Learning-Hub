@@ -9,6 +9,13 @@ const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 
 const { errorHandler } = require("./middlewares/errorHandler");
+const ticketRoutes = require("./Route/TicketRoutes.js");
+const feedbackRoutes = require("./Route/FeedbackRoutes.js");
+const communityRoutes = require("./Route/communityRoutes.js");
+const insightRoutes = require("./Route/insightRoutes.js");
+const reportRoutes = require("./Route/reportRoutes");
+const decisionInsightRoutes = require("./Route/decisionInsightRoutes.js");
+
 
 
 const corsOptions = {
@@ -25,7 +32,7 @@ app.use(helmet());
 app.use(
   rateLimit({
     windowMs: 15 * 60 * 1000, // 15 min
-    max: 100, // limit each IP to 100 requests
+    max: 200, // limit each IP to 100 requests
     message: "Too many requests from this IP, try again later.",
   })
 );
@@ -38,4 +45,13 @@ app.get('/', (req, res) => {
 
 app.use("/api", AllRouters);
 app.use("/api", paymentRoutes);
+app.use("/api", ticketRoutes);
+app.use("/api", feedbackRoutes);
+app.use("/api", communityRoutes);
+app.use("/api", insightRoutes);
+app.use("/api", reportRoutes);
+app.use("/api", decisionInsightRoutes);
+
+
+
 module.exports = app;

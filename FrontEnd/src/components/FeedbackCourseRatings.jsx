@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../style/FeedbackCourseRatings.css";
+
+const API_BASE_URL = "http://localhost:3000/api/feedback"; // Replace with your backend URL
 
 const FeedbackCourseRatings = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -13,42 +16,64 @@ const FeedbackCourseRatings = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
+  // Load feedbacks on mount
+  useEffect(() => {
+    fetchFeedbacks();
+  }, []);
+
+  const fetchFeedbacks = async () => {
+    try {
+      const res = await axios.get(`${API_BASE_URL}`);
+      setFeedbacks(res.data);
+    } catch (err) {
+      console.error("Error fetching feedbacks:", err);
+    }
+  };
+
   const handleChange = (e) => {
     setFeedback({ ...feedback, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEditing) {
-      setFeedbacks(
-        feedbacks.map((f) =>
-          f.id === editingId ? { ...feedback, id: editingId } : f
-        )
-      );
-      setIsEditing(false);
-      setEditingId(null);
-    } else {
-      const newFeedback = { ...feedback, id: Date.now() };
-      setFeedbacks([...feedbacks, newFeedback]);
-    }
+    try {
+      if (isEditing) {
+        const res = await axios.put(`${API_BASE_URL}/${editingId}`, feedback);
+        setFeedbacks((prev) =>
+          prev.map((f) => (f._id === editingId ? res.data : f))
+        );
+        setIsEditing(false);
+        setEditingId(null);
+      } else {
+        const res = await axios.post(`${API_BASE_URL}`, feedback);
+        setFeedbacks([res.data, ...feedbacks]);
+      }
 
-    setFeedback({
-      course: "",
-      mentor: "",
-      review: "",
-      rating: 1,
-      sentiment: "Positive",
-    });
+      setFeedback({
+        course: "",
+        mentor: "",
+        review: "",
+        rating: 1,
+        sentiment: "Positive",
+      });
+    } catch (err) {
+      console.error("Submit error:", err);
+    }
   };
 
-  const deleteFeedback = (id) => {
-    setFeedbacks(feedbacks.filter((f) => f.id !== id));
+  const deleteFeedback = async (id) => {
+    try {
+      await axios.delete(`${API_BASE_URL}/${id}`);
+      setFeedbacks(feedbacks.filter((f) => f._id !== id));
+    } catch (err) {
+      console.error("Delete error:", err);
+    }
   };
 
   const editFeedback = (data) => {
     setFeedback(data);
     setIsEditing(true);
-    setEditingId(data.id);
+    setEditingId(data._id);
   };
 
   return (
@@ -119,7 +144,7 @@ const FeedbackCourseRatings = () => {
             </thead>
             <tbody>
               {feedbacks.map((f) => (
-                <tr key={f.id}>
+                <tr key={f._id}>
                   <td>{f.course}</td>
                   <td>{f.mentor}</td>
                   <td>{f.review}</td>
@@ -127,7 +152,7 @@ const FeedbackCourseRatings = () => {
                   <td>{f.sentiment}</td>
                   <td>
                     <button onClick={() => editFeedback(f)}>Edit</button>
-                    <button onClick={() => deleteFeedback(f.id)}>Delete</button>
+                    <button onClick={() => deleteFeedback(f._id)}>Delete</button>
                   </td>
                 </tr>
               ))}

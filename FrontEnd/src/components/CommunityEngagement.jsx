@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../style/CommunityEngagement.css";
+
+const BASE_URL = "http://localhost:3000/api/community"; // Replace with Render URL if deployed
 
 const CommunityEngagement = () => {
   const [forums, setForums] = useState([]);
@@ -13,6 +16,30 @@ const CommunityEngagement = () => {
   const [isEditingPoll, setIsEditingPoll] = useState(false);
   const [editingPollId, setEditingPollId] = useState(null);
 
+  // Fetch data on mount
+  useEffect(() => {
+    fetchForums();
+    fetchPolls();
+  }, []);
+
+  const fetchForums = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/forums`);
+      setForums(res.data);
+    } catch (error) {
+      console.error("Error fetching forums:", error);
+    }
+  };
+
+  const fetchPolls = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/polls`);
+      setPolls(res.data);
+    } catch (error) {
+      console.error("Error fetching polls:", error);
+    }
+  };
+
   const handleForumChange = (e) => {
     setForum({ ...forum, [e.target.name]: e.target.value });
   };
@@ -21,56 +48,74 @@ const CommunityEngagement = () => {
     setPoll({ ...poll, [e.target.name]: e.target.value });
   };
 
-  const submitForum = (e) => {
+  const submitForum = async (e) => {
     e.preventDefault();
-    if (isEditingForum) {
-      setForums(
-        forums.map((f) =>
-          f.id === editingForumId ? { ...forum, id: editingForumId } : f
-        )
-      );
+    try {
+      if (isEditingForum) {
+        await axios.put(`${BASE_URL}/forums/${editingForumId}`, forum);
+      } else {
+        await axios.post(`${BASE_URL}/forums`, forum);
+      }
+      setForum({ title: "", author: "", content: "" });
       setIsEditingForum(false);
       setEditingForumId(null);
-    } else {
-      setForums([...forums, { ...forum, id: Date.now() }]);
+      fetchForums();
+    } catch (err) {
+      console.error("Forum submission error:", err);
     }
-    setForum({ title: "", author: "", content: "" });
   };
 
-  const submitPoll = (e) => {
+  const submitPoll = async (e) => {
     e.preventDefault();
-    if (isEditingPoll) {
-      setPolls(
-        polls.map((p) =>
-          p.id === editingPollId ? { ...poll, id: editingPollId } : p
-        )
-      );
+    try {
+      const pollData = {
+        question: poll.question,
+        options: poll.options.split(",").map((opt) => opt.trim()),
+      };
+
+      if (isEditingPoll) {
+        await axios.put(`${BASE_URL}/polls/${editingPollId}`, pollData);
+      } else {
+        await axios.post(`${BASE_URL}/polls`, pollData);
+      }
+
+      setPoll({ question: "", options: "" });
       setIsEditingPoll(false);
       setEditingPollId(null);
-    } else {
-      setPolls([...polls, { ...poll, id: Date.now() }]);
+      fetchPolls();
+    } catch (err) {
+      console.error("Poll submission error:", err);
     }
-    setPoll({ question: "", options: "" });
   };
 
   const editForum = (f) => {
     setForum(f);
     setIsEditingForum(true);
-    setEditingForumId(f.id);
+    setEditingForumId(f._id);
   };
 
-  const deleteForum = (id) => {
-    setForums(forums.filter((f) => f.id !== id));
+  const deleteForum = async (id) => {
+    try {
+      await axios.delete(`${BASE_URL}/forums/${id}`);
+      fetchForums();
+    } catch (err) {
+      console.error("Delete forum error:", err);
+    }
   };
 
   const editPoll = (p) => {
-    setPoll(p);
+    setPoll({ question: p.question, options: p.options.join(", ") });
     setIsEditingPoll(true);
-    setEditingPollId(p.id);
+    setEditingPollId(p._id);
   };
 
-  const deletePoll = (id) => {
-    setPolls(polls.filter((p) => p.id !== id));
+  const deletePoll = async (id) => {
+    try {
+      await axios.delete(`${BASE_URL}/polls/${id}`);
+      fetchPolls();
+    } catch (err) {
+      console.error("Delete poll error:", err);
+    }
   };
 
   return (
@@ -81,7 +126,7 @@ const CommunityEngagement = () => {
         Run polls and surveys.
       </p>
 
-      {/* Discussion Forum Form */}
+      {/* Forum Form */}
       <form className="CE-form" onSubmit={submitForum}>
         <h2>Discussion Forum</h2>
         <input
@@ -105,7 +150,9 @@ const CommunityEngagement = () => {
           onChange={handleForumChange}
           required
         ></textarea>
-        <button  className="d-btn"  type="submit">{isEditingForum ? "Update" : "Post"}</button>
+        <button className="d-btn" type="submit">
+          {isEditingForum ? "Update" : "Post"}
+        </button>
       </form>
 
       {/* Forum List */}
@@ -115,12 +162,12 @@ const CommunityEngagement = () => {
           <p>No discussions yet.</p>
         ) : (
           forums.map((f) => (
-            <div key={f.id} className="CE-card">
+            <div key={f._id} className="CE-card">
               <h4>{f.title}</h4>
               <p><strong>By:</strong> {f.author}</p>
               <p>{f.content}</p>
               <button onClick={() => editForum(f)}>Edit</button>
-              <button onClick={() => deleteForum(f.id)}>Delete</button>
+              <button onClick={() => deleteForum(f._id)}>Delete</button>
             </div>
           ))
         )}
@@ -143,7 +190,9 @@ const CommunityEngagement = () => {
           onChange={handlePollChange}
           required
         />
-        <button className="d-btn"  type="submit">{isEditingPoll ? "Update Poll" : "Add Poll"}</button>
+        <button className="d-btn" type="submit">
+          {isEditingPoll ? "Update Poll" : "Add Poll"}
+        </button>
       </form>
 
       {/* Poll List */}
@@ -153,15 +202,15 @@ const CommunityEngagement = () => {
           <p>No polls yet.</p>
         ) : (
           polls.map((p) => (
-            <div key={p.id} className="CE-card">
+            <div key={p._id} className="CE-card">
               <h4>{p.question}</h4>
               <ul>
-                {p.options.split(",").map((opt, idx) => (
-                  <li key={idx}>{opt.trim()}</li>
+                {p.options.map((opt, idx) => (
+                  <li key={idx}>{opt}</li>
                 ))}
               </ul>
               <button onClick={() => editPoll(p)}>Edit</button>
-              <button onClick={() => deletePoll(p.id)}>Delete</button>
+              <button onClick={() => deletePoll(p._id)}>Delete</button>
             </div>
           ))
         )}

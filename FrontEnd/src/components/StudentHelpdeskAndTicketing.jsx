@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../style/StudentHelpdeskAndTicketing.css";
+
+const API_URL = "http://localhost:3000/api/tickets"; // change if deployed
 
 const StudentHelpdeskAndTicketing = () => {
   const [tickets, setTickets] = useState([]);
@@ -12,35 +15,54 @@ const StudentHelpdeskAndTicketing = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
+  useEffect(() => {
+    fetchTickets();
+  }, []);
+
+  const fetchTickets = async () => {
+    try {
+      const res = await axios.get(API_URL);
+      setTickets(res.data);
+    } catch (err) {
+      console.error("Error fetching tickets:", err);
+    }
+  };
+
   const handleChange = (e) => {
     setTicket({ ...ticket, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEditing) {
-      setTickets(
-        tickets.map((t) =>
-          t.id === editingId ? { ...ticket, id: editingId } : t
-        )
-      );
+
+    try {
+      if (isEditing) {
+        await axios.put(`${API_URL}/${editingId}`, ticket);
+      } else {
+        await axios.post(API_URL, ticket);
+      }
+      setTicket({ name: "", email: "", issue: "", status: "Open" });
       setIsEditing(false);
       setEditingId(null);
-    } else {
-      const newTicket = { ...ticket, id: Date.now() };
-      setTickets([...tickets, newTicket]);
+      fetchTickets();
+    } catch (err) {
+      console.error("Error submitting ticket:", err);
     }
-    setTicket({ name: "", email: "", issue: "", status: "Open" });
   };
 
-  const deleteTicket = (id) => {
-    setTickets(tickets.filter((t) => t.id !== id));
+  const deleteTicket = async (id) => {
+    try {
+      await axios.delete(`${API_URL}/${id}`);
+      fetchTickets();
+    } catch (err) {
+      console.error("Error deleting ticket:", err);
+    }
   };
 
-  const editTicket = (ticket) => {
-    setTicket(ticket);
+  const editTicket = (t) => {
+    setTicket(t);
     setIsEditing(true);
-    setEditingId(ticket.id);
+    setEditingId(t._id);
   };
 
   return (
@@ -78,7 +100,9 @@ const StudentHelpdeskAndTicketing = () => {
           <option>Escalated</option>
           <option>Resolved</option>
         </select>
-        <button type="submit">{isEditing ? "Update Ticket" : "Submit Ticket"}</button>
+        <button type="submit">
+          {isEditing ? "Update Ticket" : "Submit Ticket"}
+        </button>
       </form>
 
       <div className="SH-list">
@@ -98,14 +122,14 @@ const StudentHelpdeskAndTicketing = () => {
             </thead>
             <tbody>
               {tickets.map((t) => (
-                <tr key={t.id}>
+                <tr key={t._id}>
                   <td>{t.name}</td>
                   <td>{t.email}</td>
                   <td>{t.issue}</td>
                   <td>{t.status}</td>
                   <td>
                     <button onClick={() => editTicket(t)}>Edit</button>
-                    <button onClick={() => deleteTicket(t.id)}>Delete</button>
+                    <button onClick={() => deleteTicket(t._id)}>Delete</button>
                   </td>
                 </tr>
               ))}
