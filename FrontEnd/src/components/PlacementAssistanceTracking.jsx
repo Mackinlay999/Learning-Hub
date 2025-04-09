@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "./axios";
 import "../style/PlacementAssistanceTracking.css";
 
 const PlacementAssistanceTracking = () => {
@@ -13,42 +14,60 @@ const PlacementAssistanceTracking = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
+
+  // Fetch all applications
+  useEffect(() => {
+    axios
+      .get(`/getAllApplications`)
+      .then((res) => setApplications(res.data))
+      .catch((err) => console.error("Error fetching data:", err));
+  }, []);
+
   const handleChange = (e) => {
     setApplication({ ...application, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEditing) {
-      setApplications(
-        applications.map((app) =>
-          app.id === editingId ? { ...application, id: editingId } : app
-        )
-      );
-      setIsEditing(false);
-      setEditingId(null);
-    } else {
-      const newApp = { ...application, id: Date.now() };
-      setApplications([...applications, newApp]);
-    }
+    try {
+      if (isEditing) {
+        await axios.put(`/updateApplication/${editingId}`, application);
+        setIsEditing(false);
+        setEditingId(null);
+      } else {
+        await axios.post(`/createApplication`, application);
+      }
 
-    setApplication({
-      studentName: "",
-      jobTitle: "",
-      company: "",
-      interviewStatus: "Pending",
-      placementStatus: "Not Placed",
-    });
+      // Refresh data
+      const res = await axios.get(`/getAllApplications`);
+      setApplications(res.data);
+
+      // Reset form
+      setApplication({
+        studentName: "",
+        jobTitle: "",
+        company: "",
+        interviewStatus: "Pending",
+        placementStatus: "Not Placed",
+      });
+    } catch (error) {
+      console.error("Error saving application:", error);
+    }
   };
 
-  const deleteApplication = (id) => {
-    setApplications(applications.filter((app) => app.id !== id));
+  const deleteApplication = async (id) => {
+    try {
+      await axios.delete(`/deleteApplication/${id}`);
+      setApplications(applications.filter((app) => app._id !== id));
+    } catch (err) {
+      console.error("Delete failed:", err);
+    }
   };
 
   const editApplication = (app) => {
     setApplication(app);
     setIsEditing(true);
-    setEditingId(app.id);
+    setEditingId(app._id);
   };
 
   return (
@@ -123,7 +142,7 @@ const PlacementAssistanceTracking = () => {
             </thead>
             <tbody>
               {applications.map((app) => (
-                <tr key={app.id}>
+                <tr key={app._id}>
                   <td>{app.studentName}</td>
                   <td>{app.jobTitle}</td>
                   <td>{app.company}</td>
@@ -131,7 +150,7 @@ const PlacementAssistanceTracking = () => {
                   <td>{app.placementStatus}</td>
                   <td>
                     <button onClick={() => editApplication(app)}>Edit</button>
-                    <button onClick={() => deleteApplication(app.id)}>Delete</button>
+                    <button onClick={() => deleteApplication(app._id)}>Delete</button>
                   </td>
                 </tr>
               ))}

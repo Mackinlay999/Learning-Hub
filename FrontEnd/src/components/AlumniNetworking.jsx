@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "./axios";
 import "../style/AlumniNetworking.css";
 
 const AlumniNetworking = () => {
@@ -12,35 +13,54 @@ const AlumniNetworking = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
+
+  useEffect(() => {
+    fetchAlumni();
+  }, []);
+
+  const fetchAlumni = async () => {
+    try {
+      const res = await axios.get(`/getAllAlumni`);
+      setAlumniList(res.data);
+    } catch (err) {
+      console.error("Error fetching alumni:", err);
+    }
+  };
+
   const handleChange = (e) => {
     setAlumni({ ...alumni, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEditing) {
-      setAlumniList(
-        alumniList.map((a) =>
-          a.id === editingId ? { ...alumni, id: editingId } : a
-        )
-      );
-      setIsEditing(false);
-      setEditingId(null);
-    } else {
-      const newAlumni = { ...alumni, id: Date.now() };
-      setAlumniList([...alumniList, newAlumni]);
+    try {
+      if (isEditing) {
+        await axios.put(`/updateAlumni/${editingId}`, alumni);
+        setIsEditing(false);
+        setEditingId(null);
+      } else {
+        await axios.post(`/createAlumni`, alumni);
+      }
+      setAlumni({ name: "", graduationYear: "", industry: "", testimonial: "" });
+      fetchAlumni();
+    } catch (err) {
+      console.error("Error submitting form:", err);
     }
-    setAlumni({ name: "", graduationYear: "", industry: "", testimonial: "" });
   };
 
   const handleEdit = (alum) => {
     setAlumni(alum);
     setIsEditing(true);
-    setEditingId(alum.id);
+    setEditingId(alum._id);
   };
 
-  const handleDelete = (id) => {
-    setAlumniList(alumniList.filter((a) => a.id !== id));
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/deleteAlumni/${id}`);
+      fetchAlumni();
+    } catch (err) {
+      console.error("Error deleting alumni:", err);
+    }
   };
 
   return (
@@ -105,14 +125,14 @@ const AlumniNetworking = () => {
             </thead>
             <tbody>
               {alumniList.map((a) => (
-                <tr key={a.id}>
+                <tr key={a._id}>
                   <td>{a.name}</td>
                   <td>{a.graduationYear}</td>
                   <td>{a.industry}</td>
                   <td>{a.testimonial}</td>
                   <td>
                     <button onClick={() => handleEdit(a)}>Edit</button>
-                    <button onClick={() => handleDelete(a.id)}>Delete</button>
+                    <button onClick={() => handleDelete(a._id)}>Delete</button>
                   </td>
                 </tr>
               ))}
