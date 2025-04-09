@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "./axios";
 import "../style/JobPostingAndRecruiter.css";
 
 const JobPostingAndRecruiter = () => {
@@ -14,33 +15,59 @@ const JobPostingAndRecruiter = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
+  
+
+  // 🔁 Fetch all jobs on mount
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
+  const fetchJobs = async () => {
+    try {
+      const res = await axios.get(`/getAllJobs`);
+      setJobs(res.data);
+    } catch (err) {
+      console.error("Error fetching jobs:", err);
+    }
+  };
+
   const handleChange = (e) => {
     setJob({ ...job, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEditing) {
-      setJobs(
-        jobs.map((j) => (j.id === editingId ? { ...job, id: editingId } : j))
-      );
-      setIsEditing(false);
-      setEditingId(null);
-    } else {
-      const newJob = { ...job, id: Date.now() };
-      setJobs([...jobs, newJob]);
+
+    try {
+      if (isEditing) {
+        const res = await axios.put(`/updateJob/${editingId}`, job);
+        setJobs(jobs.map((j) => (j._id === editingId ? res.data : j)));
+        setIsEditing(false);
+        setEditingId(null);
+      } else {
+        const res = await axios.post(`/createJob`, job);
+        setJobs([...jobs, res.data]);
+      }
+
+      setJob({ title: "", company: "", role: "", location: "", skills: "" });
+    } catch (err) {
+      console.error("Error saving job:", err);
     }
-    setJob({ title: "", company: "", role: "", location: "", skills: "" });
   };
 
-  const deleteJob = (id) => {
-    setJobs(jobs.filter((j) => j.id !== id));
+  const deleteJob = async (id) => {
+    try {
+      await axios.delete(`/deleteJob/${id}`);
+      setJobs(jobs.filter((j) => j._id !== id));
+    } catch (err) {
+      console.error("Error deleting job:", err);
+    }
   };
 
   const editJob = (j) => {
     setJob(j);
     setIsEditing(true);
-    setEditingId(j.id);
+    setEditingId(j._id);
   };
 
   return (
@@ -84,7 +111,7 @@ const JobPostingAndRecruiter = () => {
           onChange={handleChange}
           required
         />
-        <button type="submit">{isEditing ? "Update" : "Post Job"}</button>
+        <button type="submit">{isEditing ? "Update Job" : "Post Job"}</button>
       </form>
 
       <div className="job-list">
@@ -105,7 +132,7 @@ const JobPostingAndRecruiter = () => {
             </thead>
             <tbody>
               {jobs.map((j) => (
-                <tr key={j.id}>
+                <tr key={j._id}>
                   <td>{j.title}</td>
                   <td>{j.company}</td>
                   <td>{j.role}</td>
@@ -113,7 +140,7 @@ const JobPostingAndRecruiter = () => {
                   <td>{j.skills}</td>
                   <td>
                     <button onClick={() => editJob(j)}>Edit</button>
-                    <button onClick={() => deleteJob(j.id)}>Delete</button>
+                    <button onClick={() => deleteJob(j._id)}>Delete</button>
                   </td>
                 </tr>
               ))}

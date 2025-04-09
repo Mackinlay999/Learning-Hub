@@ -5,8 +5,12 @@ const  login =require("../Controller/login");
 const  auth  = require("../Utils/Auth");
 const Course =require("../Controller/TraningProgarm")
 const LiveSessionandWebinars =require("../Controller/LiveSessions")
+const JobController  = require("../Controller/JobController")
+const Assessment = require("../Controller/Assessment")
+
 
 const upload = require("../Utils/Multer");
+const { join } = require("path");
 
 const router = express.Router();
 
@@ -47,6 +51,22 @@ router.get('/getAllSessions', LiveSessionandWebinars.getAllSessions);
 router.put('/updateSession/:id', LiveSessionandWebinars.updateSession);
 router.delete('/deleteSession/:id', LiveSessionandWebinars.deleteSession);
 
+
+// Assessment
+router.post("/createAssessment", Assessment.createAssessment);
+router.get("/getAssessments", Assessment.getAssessments);
+router.put("/updateAssessment/:id", Assessment.updateAssessment);
+router.delete("/deleteAssessment/:id", Assessment.deleteAssessment);
+router.patch("/issueCertificate/:id", Assessment.issueCertificate);
+
+
+// job
+
+
+router.post("/createJob", JobController.createJob);
+router.get("/getAllJobs", JobController.getAllJobs);
+router.put("/updateJob/:id", JobController.updateJob);
+router.delete("/deleteJob/:id", JobController.deleteJob);
 
 
 module.exports = router;
