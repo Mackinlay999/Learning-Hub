@@ -23,7 +23,7 @@ const FeedbackCourseRatings = () => {
 
   const fetchFeedbacks = async () => {
     try {
-      const res = await axios.get(`${API_BASE_URL}/feedback`);
+      const res = await axios.get(`${API_BASE_URL}`);
       setFeedbacks(res.data);
     } catch (err) {
       console.error("Error fetching feedbacks:", err);
@@ -38,14 +38,14 @@ const FeedbackCourseRatings = () => {
     e.preventDefault();
     try {
       if (isEditing) {
-        const res = await axios.put(`${API_BASE_URL}/feedback/${editingId}`, feedback);
+        const res = await axios.put(`${API_BASE_URL}/${editingId}`, feedback);
         setFeedbacks((prev) =>
           prev.map((f) => (f._id === editingId ? res.data : f))
         );
         setIsEditing(false);
         setEditingId(null);
       } else {
-        const res = await axios.post(`${API_BASE_URL}/feedback`, feedback);
+        const res = await axios.post(`${API_BASE_URL}`, feedback);
         setFeedbacks([res.data, ...feedbacks]);
       }
 
@@ -63,7 +63,7 @@ const FeedbackCourseRatings = () => {
 
   const deleteFeedback = async (id) => {
     try {
-      await axios.delete(`${API_BASE_URL}/feedback/${id}`);
+      await axios.delete(`${API_BASE_URL}/${id}`);
       setFeedbacks(feedbacks.filter((f) => f._id !== id));
     } catch (err) {
       console.error("Delete error:", err);

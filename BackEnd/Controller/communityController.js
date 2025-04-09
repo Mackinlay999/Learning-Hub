@@ -42,11 +42,23 @@ exports.deleteForum = async (req, res) => {
 exports.createPoll = async (req, res) => {
   try {
     const { question, options } = req.body;
-    const poll = await Poll.create({ question, options: options.split(",").map(opt => opt.trim()) });
-    res.status(201).json(poll);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
+  //   const poll = await Poll.create({ question, options: options.split(",").map(opt => opt.trim()) });
+  //   res.status(201).json(poll);
+  // } catch (err) {
+  //   res.status(500).json({ message: err.message });
+  // }
+  if (!question || !options || !Array.isArray(options) || options.length === 0) {
+    return res.status(400).json({ message: "Invalid poll data" });
   }
+
+  const newPoll = new Poll({ question, options });
+  await newPoll.save();
+
+  res.status(201).json(newPoll);
+} catch (error) {
+  console.error("Error creating poll:", error);
+  res.status(500).json({ message: "Server error while creating poll" });
+}
 };
 
 exports.getPolls = async (req, res) => {
