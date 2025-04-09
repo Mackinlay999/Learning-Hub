@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../style/AIBasedDecision.css";
 
-const AIBasedDecision= () => {
+const AIBasedDecision = () => {
   const [insights, setInsights] = useState([]);
   const [insight, setInsight] = useState({
     customerSegment: "",
@@ -12,41 +13,66 @@ const AIBasedDecision= () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
+  // Update with your own backend base URL
+  const BASE_URL = "http://localhost:3000/api/decision-insights";
+
+  useEffect(() => {
+    fetchInsights();
+  }, []);
+
+  const fetchInsights = async () => {
+    try {
+      const res = await axios.get(BASE_URL);
+      setInsights(res.data);
+    } catch (err) {
+      console.error("Error fetching insights:", err.message);
+    }
+  };
+
   const handleChange = (e) => {
     setInsight({ ...insight, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEditing) {
-      setInsights(
-        insights.map((item) =>
-          item.id === editingId ? { ...insight, id: editingId } : item
-        )
-      );
-      setIsEditing(false);
-      setEditingId(null);
-    } else {
-      const newInsight = { ...insight, id: Date.now() };
-      setInsights([...insights, newInsight]);
+    try {
+      if (isEditing) {
+        await axios.put(`${BASE_URL}/${editingId}`, insight);
+        setIsEditing(false);
+        setEditingId(null);
+      } else {
+        await axios.post(BASE_URL, insight);
+      }
+      setInsight({
+        customerSegment: "",
+        churnPrediction: "",
+        retentionStrategy: "",
+        leadPriority: "Low",
+      });
+      fetchInsights();
+    } catch (err) {
+      console.error("Error submitting insight:", err.message);
     }
-
-    setInsight({
-      customerSegment: "",
-      churnPrediction: "",
-      retentionStrategy: "",
-      leadPriority: "Low",
-    });
   };
 
-  const deleteInsight = (id) => {
-    setInsights(insights.filter((item) => item.id !== id));
+  const deleteInsight = async (id) => {
+    try {
+      await axios.delete(`${BASE_URL}/${id}`);
+      fetchInsights();
+    } catch (err) {
+      console.error("Error deleting insight:", err.message);
+    }
   };
 
   const editInsight = (item) => {
-    setInsight(item);
+    setInsight({
+      customerSegment: item.customerSegment,
+      churnPrediction: item.churnPrediction,
+      retentionStrategy: item.retentionStrategy,
+      leadPriority: item.leadPriority,
+    });
     setIsEditing(true);
-    setEditingId(item.id);
+    setEditingId(item._id);
   };
 
   return (
@@ -82,7 +108,11 @@ const AIBasedDecision= () => {
           onChange={handleChange}
           required
         ></textarea>
-        <select name="leadPriority" value={insight.leadPriority} onChange={handleChange}>
+        <select
+          name="leadPriority"
+          value={insight.leadPriority}
+          onChange={handleChange}
+        >
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
@@ -107,14 +137,14 @@ const AIBasedDecision= () => {
             </thead>
             <tbody>
               {insights.map((item) => (
-                <tr key={item.id}>
+                <tr key={item._id}>
                   <td>{item.customerSegment}</td>
                   <td>{item.churnPrediction}%</td>
                   <td>{item.retentionStrategy}</td>
                   <td>{item.leadPriority}</td>
                   <td>
                     <button onClick={() => editInsight(item)}>Edit</button>
-                    <button onClick={() => deleteInsight(item.id)}>Delete</button>
+                    <button onClick={() => deleteInsight(item._id)}>Delete</button>
                   </td>
                 </tr>
               ))}

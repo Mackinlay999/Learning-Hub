@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../style/CustomReportsAndDataExports.css";
+
+const API_URL = "http://localhost:3000/api/reports"; // Replace with your backend URL
 
 const CustomReportsAndDataExports = () => {
   const [reports, setReports] = useState([]);
@@ -11,33 +14,62 @@ const CustomReportsAndDataExports = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
+  // Fetch all reports on mount
+  useEffect(() => {
+    fetchReports();
+  }, []);
+
+  const fetchReports = async () => {
+    try {
+      const response = await axios.get(API_URL);
+      setReports(response.data);
+    } catch (error) {
+      console.error("Error fetching reports:", error);
+    }
+  };
+
   const handleChange = (e) => {
     setReport({ ...report, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEditing) {
-      setReports(
-        reports.map((r) => (r.id === editingId ? { ...report, id: editingId } : r))
-      );
-      setIsEditing(false);
-      setEditingId(null);
-    } else {
-      const newReport = { ...report, id: Date.now() };
-      setReports([...reports, newReport]);
+    try {
+      if (isEditing) {
+        const { data } = await axios.put(`${API_URL}/${editingId}`, report);
+        setReports(
+          reports.map((r) => (r._id === editingId ? data : r))
+        );
+        setIsEditing(false);
+        setEditingId(null);
+      } else {
+        const { data } = await axios.post(API_URL, report);
+        setReports([...reports, data]);
+      }
+
+      setReport({ title: "", type: "Excel", prediction: "" });
+    } catch (error) {
+      console.error("Error saving report:", error);
     }
-    setReport({ title: "", type: "Excel", prediction: "" });
   };
 
-  const deleteReport = (id) => {
-    setReports(reports.filter((r) => r.id !== id));
+  const deleteReport = async (id) => {
+    try {
+      await axios.delete(`${API_URL}/${id}`);
+      setReports(reports.filter((r) => r._id !== id));
+    } catch (error) {
+      console.error("Error deleting report:", error);
+    }
   };
 
-  const editReport = (report) => {
-    setReport(report);
+  const editReport = (r) => {
+    setReport({
+      title: r.title,
+      type: r.type,
+      prediction: r.prediction,
+    });
     setIsEditing(true);
-    setEditingId(report.id);
+    setEditingId(r._id);
   };
 
   return (
@@ -87,13 +119,13 @@ const CustomReportsAndDataExports = () => {
             </thead>
             <tbody>
               {reports.map((r) => (
-                <tr key={r.id}>
+                <tr key={r._id}>
                   <td>{r.title}</td>
                   <td>{r.type}</td>
                   <td>{r.prediction}</td>
                   <td>
                     <button onClick={() => editReport(r)}>Edit</button>
-                    <button onClick={() => deleteReport(r.id)}>Delete</button>
+                    <button onClick={() => deleteReport(r._id)}>Delete</button>
                   </td>
                 </tr>
               ))}
@@ -105,4 +137,4 @@ const CustomReportsAndDataExports = () => {
   );
 };
 
-export  default CustomReportsAndDataExports;
+export default CustomReportsAndDataExports;
