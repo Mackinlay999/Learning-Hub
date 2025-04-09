@@ -15,6 +15,10 @@ const communityRoutes = require("./Route/communityRoutes.js");
 const insightRoutes = require("./Route/insightRoutes.js");
 const reportRoutes = require("./Route/reportRoutes");
 const decisionInsightRoutes = require("./Route/decisionInsightRoutes.js");
+const corporateClientRoutes = require("./Route/corporateClientRoutes");
+const employeeRoutes = require("./Route/employeeRoutes");
+const customLearningPathRoutes = require("./Route/customLearningPathRoutes");
+
 
 
 
@@ -51,6 +55,9 @@ app.use("/api", communityRoutes);
 app.use("/api", insightRoutes);
 app.use("/api", reportRoutes);
 app.use("/api", decisionInsightRoutes);
+app.use("/api", corporateClientRoutes);
+app.use("/api", employeeRoutes);
+app.use("/api", customLearningPathRoutes);
 
 
 

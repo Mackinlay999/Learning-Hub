@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../style/CorporateClientForm.css";
 
 const CorporateClientForm = () => {
@@ -15,45 +16,69 @@ const CorporateClientForm = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
+  const API_URL = "http://localhost:3000/api/clients"; // update with your backend URL if hosted
+
+  // Fetch clients from backend
+  const fetchClients = async () => {
+    try {
+      const res = await axios.get(API_URL);
+      setClients(res.data);
+    } catch (err) {
+      console.error("Error fetching clients:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchClients();
+  }, []);
+
+  // Handle input change
   const handleChange = (e) => {
     setClient({ ...client, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  // Submit form - Add or Update
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (isEditing) {
-      setClients(
-        clients.map((c) =>
-          c.id === editingId ? { ...client, id: editingId } : c
-        )
-      );
-      setIsEditing(false);
-      setEditingId(null);
-    } else {
-      const newClient = { ...client, id: Date.now() };
-      setClients([...clients, newClient]);
+    try {
+      if (isEditing) {
+        await axios.put(`${API_URL}/${editingId}`, client);
+        setIsEditing(false);
+        setEditingId(null);
+      } else {
+        await axios.post(API_URL, client);
+      }
+      setClient({
+        companyName: "",
+        contactPerson: "",
+        email: "",
+        phone: "",
+        contractStartDate: "",
+        contractEndDate: "",
+        status: "Pending",
+      });
+      fetchClients(); // Refresh list
+    } catch (err) {
+      console.error("Error submitting form:", err);
     }
-
-    setClient({
-      companyName: "",
-      contactPerson: "",
-      email: "",
-      phone: "",
-      contractStartDate: "",
-      contractEndDate: "",
-      status: "Pending",
-    });
   };
 
-  const deleteClient = (id) => {
-    setClients(clients.filter((c) => c.id !== id));
+  // Delete client
+  const deleteClient = async (id) => {
+    try {
+      await axios.delete(`${API_URL}/${id}`);
+      fetchClients();
+    } catch (err) {
+      console.error("Error deleting client:", err);
+    }
   };
 
+  // Set form for editing
   const editClient = (clientData) => {
     setClient(clientData);
     setIsEditing(true);
-    setEditingId(clientData.id);
+    setEditingId(clientData._id);
   };
 
   return (
@@ -138,18 +163,18 @@ const CorporateClientForm = () => {
             </thead>
             <tbody>
               {clients.map((c) => (
-                <tr key={c.id}>
+                <tr key={c._id}>
                   <td>{c.companyName}</td>
                   <td>{c.contactPerson}</td>
                   <td>{c.email}</td>
                   <td>{c.phone}</td>
                   <td>
-                    {c.contractStartDate} to {c.contractEndDate}
+                    {c.contractStartDate?.slice(0, 10)} to {c.contractEndDate?.slice(0, 10)}
                   </td>
                   <td>{c.status}</td>
                   <td>
                     <button onClick={() => editClient(c)}>Edit</button>{" "}
-                    <button onClick={() => deleteClient(c.id)}>Delete</button>
+                    <button onClick={() => deleteClient(c._id)}>Delete</button>
                   </td>
                 </tr>
               ))}

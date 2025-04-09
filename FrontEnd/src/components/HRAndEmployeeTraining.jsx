@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../style/HRAndEmployeeTraining.css";
 
 const HRAndEmployeeTraining = () => {
@@ -13,42 +14,68 @@ const HRAndEmployeeTraining = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
+  const API_URL = "http://localhost:3000/api/employees"; // update with your backend URL
+
+  // Fetch employees on load
+  useEffect(() => {
+    fetchEmployees();
+  }, []);
+
+  const fetchEmployees = async () => {
+    try {
+      const res = await axios.get(API_URL);
+      setEmployees(res.data);
+    } catch (err) {
+      console.error("Error fetching employees:", err);
+    }
+  };
+
   const handleChange = (e) => {
     setEmployee({ ...employee, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEditing) {
-      setEmployees(
-        employees.map((emp) =>
-          emp.id === editingId ? { ...employee, id: editingId } : emp
-        )
-      );
-      setIsEditing(false);
-      setEditingId(null);
-    } else {
-      const newEmployee = { ...employee, id: Date.now() };
-      setEmployees([...employees, newEmployee]);
+    try {
+      if (isEditing) {
+        await axios.put(`${API_URL}/${editingId}`, employee);
+        setIsEditing(false);
+        setEditingId(null);
+      } else {
+        await axios.post(API_URL, employee);
+      }
+      setEmployee({
+        name: "",
+        department: "",
+        skillLevel: "",
+        progress: "",
+        status: "Not Started",
+      });
+      fetchEmployees();
+    } catch (err) {
+      console.error("Error saving employee:", err);
     }
-
-    setEmployee({
-      name: "",
-      department: "",
-      skillLevel: "",
-      progress: "",
-      status: "Not Started",
-    });
   };
 
-  const deleteEmployee = (id) => {
-    setEmployees(employees.filter((e) => e.id !== id));
+  const deleteEmployee = async (id) => {
+    try {
+      await axios.delete(`${API_URL}/${id}`);
+      fetchEmployees();
+    } catch (err) {
+      console.error("Error deleting employee:", err);
+    }
   };
 
   const editEmployee = (emp) => {
-    setEmployee(emp);
+    setEmployee({
+      name: emp.name,
+      department: emp.department,
+      skillLevel: emp.skillLevel,
+      progress: emp.progress,
+      status: emp.status,
+    });
     setIsEditing(true);
-    setEditingId(emp.id);
+    setEditingId(emp._id);
   };
 
   return (
@@ -119,7 +146,7 @@ const HRAndEmployeeTraining = () => {
             </thead>
             <tbody>
               {employees.map((emp) => (
-                <tr key={emp.id}>
+                <tr key={emp._id}>
                   <td>{emp.name}</td>
                   <td>{emp.department}</td>
                   <td>{emp.skillLevel}</td>
@@ -127,7 +154,7 @@ const HRAndEmployeeTraining = () => {
                   <td>{emp.status}</td>
                   <td>
                     <button onClick={() => editEmployee(emp)}>Edit</button>
-                    <button onClick={() => deleteEmployee(emp.id)}>
+                    <button onClick={() => deleteEmployee(emp._id)}>
                       Delete
                     </button>
                   </td>
