@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../style/RealTimeInsightsDashboard.css";
 
-const BASE_URL = "http://localhost:5000/api/insights"; // replace if hosted elsewhere
+const BASE_URL = "http://localhost:3000/api/insights"; // replace if hosted elsewhere
 
 const RealTimeInsightsDashboard = () => {
   const [records, setRecords] = useState([]);
