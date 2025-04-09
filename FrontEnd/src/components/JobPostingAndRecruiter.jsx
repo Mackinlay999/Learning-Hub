@@ -121,7 +121,7 @@ const JobPostingAndRecruiter = () => {
         ) : (
           <table>
             <thead>
-              <tr>
+              <tr className="JP-tr">
                 <th>Title</th>
                 <th>Company</th>
                 <th>Role</th>

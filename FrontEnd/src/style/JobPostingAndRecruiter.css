@@ -71,6 +71,9 @@
     background-color: #f44336;
   }
   
+  .JP-tr{
+    color: #333;
+  }
   @media (max-width: 768px) {
     .job-form input,
     .job-form button {
@@ -98,6 +101,9 @@
       content: attr(data-label);
       font-weight: bold;
       text-align: left;
+    }
+    .JP-tr{
+      color: #333;
     }
   }
   

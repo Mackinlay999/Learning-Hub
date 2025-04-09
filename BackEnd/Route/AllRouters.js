@@ -6,7 +6,9 @@ const  auth  = require("../Utils/Auth");
 const Course =require("../Controller/TraningProgarm")
 const LiveSessionandWebinars =require("../Controller/LiveSessions")
 const JobController  = require("../Controller/JobController")
+const PlacementController =require("../Controller/PlacementApplication")
 const Assessment = require("../Controller/Assessment")
+const AlumniController  =require("../Controller/Alumni")
 
 
 const upload = require("../Utils/Multer");
@@ -67,6 +69,25 @@ router.post("/createJob", JobController.createJob);
 router.get("/getAllJobs", JobController.getAllJobs);
 router.put("/updateJob/:id", JobController.updateJob);
 router.delete("/deleteJob/:id", JobController.deleteJob);
+
+
+
+// PlacemaentApplication
+
+router.post("/createApplication", PlacementController.createApplication);
+router.get("/getAllApplications", PlacementController.getAllApplications);
+router.put("/updateApplication/:id", PlacementController.updateApplication);
+router.delete("/deleteApplication/:id", PlacementController.deleteApplication);
+
+
+
+
+// Alumni
+
+router.post("/createAlumni", AlumniController.createAlumni);
+router.get("/getAllAlumni", AlumniController.getAllAlumni);
+router.put("/updateAlumni/:id", AlumniController.updateAlumni);
+router.delete("/deleteAlumni/:id", AlumniController.deleteAlumni);
 
 
 module.exports = router;
