@@ -127,7 +127,7 @@ const AIBasedDecision = () => {
         ) : (
           <table className="AI-table">
             <thead>
-              <tr>
+              <tr className="ST-tr">
                 <th>Segment</th>
                 <th>Churn %</th>
                 <th>Strategy</th>

@@ -104,7 +104,7 @@ const RealTimeInsightsDashboard = () => {
         ) : (
           <table className="RD-table">
             <thead>
-              <tr>
+              <tr className="ST-tr">
                 <th>Metric</th>
                 <th>Value</th>
                 <th>Category</th>

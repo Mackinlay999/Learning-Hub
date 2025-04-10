@@ -112,7 +112,7 @@ const StudentHelpdeskAndTicketing = () => {
         ) : (
           <table className="SH-table">
             <thead>
-              <tr>
+              <tr className="ST-tr">
                 <th>Name</th>
                 <th>Email</th>
                 <th>Issue</th>

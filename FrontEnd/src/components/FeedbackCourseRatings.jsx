@@ -133,7 +133,7 @@ const FeedbackCourseRatings = () => {
         ) : (
           <table className="FB-table">
             <thead>
-              <tr>
+              <tr className="ST-tr">
                 <th>Course</th>
                 <th>Mentor</th>
                 <th>Review</th>

@@ -115,7 +115,7 @@ const AlumniNetworking = () => {
         ) : (
           <table className="AN-table">
             <thead>
-              <tr>
+              <tr className="ST-tr">
                 <th>Name</th>
                 <th>Year</th>
                 <th>Industry</th>

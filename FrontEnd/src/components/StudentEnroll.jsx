@@ -82,7 +82,7 @@ const StudentEnroll = () => {
 
       <table className="se-table">
         <thead>
-          <tr>
+          <tr className="ST-tr">
             <th>ID</th>
             <th>Name</th>
             <th>Payment Status</th>

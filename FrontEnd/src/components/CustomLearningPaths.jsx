@@ -132,7 +132,7 @@ const CustomLearningPaths = () => {
         ) : (
           <table className="CLP-table">
             <thead>
-              <tr>
+              <tr className="ST-tr">
                 <th>Company</th>
                 <th>Courses</th>
                 <th>Objective</th>
