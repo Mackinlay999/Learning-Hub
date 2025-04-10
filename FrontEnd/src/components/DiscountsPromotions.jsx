@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import "../style/DiscountsPromotions.css";
+
+const API_URL = "http://localhost:3000/api/discounts"; // Change this if you're hosting it elsewhere
 
 const DiscountsPromotions = () => {
   const [discounts, setDiscounts] = useState([]);
@@ -7,87 +10,112 @@ const DiscountsPromotions = () => {
   const [percentage, setPercentage] = useState("");
   const [startDate, setStartDate] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
-  const [editingIndex, setEditingIndex] = useState(null);
+  const [editingId, setEditingId] = useState(null);
+
+  useEffect(() => {
+    fetchDiscounts();
+  }, []);
+
+  const fetchDiscounts = async () => {
+    try {
+      const res = await axios.get(API_URL);
+      setDiscounts(res.data);
+    } catch (err) {
+      console.error("Error fetching discounts", err);
+    }
+  };
 
   const generateCode = () => {
     const newCode = `DISC-${Math.random().toString(36).substr(2, 6).toUpperCase()}`;
     setCode(newCode);
   };
 
-  const addOrUpdateDiscount = () => {
+  const addOrUpdateDiscount = async () => {
     if (!code || !percentage || !startDate || !expiryDate) return;
 
-    if (editingIndex !== null) {
-      // Update existing discount
-      const updatedDiscounts = discounts.map((discount, index) =>
-        index === editingIndex ? { ...discount, code, percentage, startDate, expiryDate } : discount
-      );
-      setDiscounts(updatedDiscounts);
-      setEditingIndex(null);
-    } else {
-      // Add new discount
-      setDiscounts([...discounts, { code, percentage, startDate, expiryDate, usage: 0 }]);
-    }
+    const payload = {
+      code,
+      percentage,
+      startDate,
+      expiryDate,
+    };
 
-    // Reset form fields
+    try {
+      if (editingId) {
+        // UPDATE
+        await axios.put(`${API_URL}/${editingId}`, payload);
+        setEditingId(null);
+      } else {
+        // ADD
+        await axios.post(API_URL, payload);
+      }
+      fetchDiscounts();
+      resetForm();
+    } catch (err) {
+      console.error("Error saving discount", err);
+    }
+  };
+
+  const resetForm = () => {
     setCode("");
     setPercentage("");
     setStartDate("");
     setExpiryDate("");
+    setEditingId(null);
   };
 
-  const applyDiscount = (index) => {
-    const updatedDiscounts = [...discounts];
-    updatedDiscounts[index].usage += 1;
-    setDiscounts(updatedDiscounts);
+  const applyDiscount = async (id) => {
+    try {
+      await axios.patch(`${API_URL}/${id}/apply`);
+      fetchDiscounts();
+    } catch (err) {
+      console.error("Error applying discount", err);
+    }
   };
 
-  const editDiscount = (index) => {
-    const discount = discounts[index];
+  const editDiscount = (discount) => {
     setCode(discount.code);
     setPercentage(discount.percentage);
-    setStartDate(discount.startDate);
-    setExpiryDate(discount.expiryDate);
-    setEditingIndex(index);
+    setStartDate(discount.startDate.split("T")[0]);
+    setExpiryDate(discount.expiryDate.split("T")[0]);
+    setEditingId(discount._id);
   };
 
-  const removeDiscount = (index) => {
-    setDiscounts(discounts.filter((_, i) => i !== index));
+  const removeDiscount = async (id) => {
+    try {
+      await axios.delete(`${API_URL}/${id}`);
+      fetchDiscounts();
+    } catch (err) {
+      console.error("Error deleting discount", err);
+    }
   };
 
   return (
     <div className="discounts-container">
       <h2>Discounts, Coupons & Promotions</h2>
 
-      {/* Discount Creation/Update Form */}
       <div className="discount-form">
-        <button  className="d-btn" onClick={generateCode}>Generate Code</button>
+        <button className="d-btn" onClick={generateCode}>Generate Code</button>
         <input type="text" placeholder="Discount Code" value={code} readOnly />
-        <input
-          type="number"
-          placeholder="Discount %"
-          value={percentage}
-          onChange={(e) => setPercentage(e.target.value)}
-        />
+        <input type="number" placeholder="Discount %" value={percentage} onChange={(e) => setPercentage(e.target.value)} />
         <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
         <input type="date" value={expiryDate} onChange={(e) => setExpiryDate(e.target.value)} />
-        <button className="d-btn"  onClick={addOrUpdateDiscount}>{editingIndex !== null ? "Update" : "Add"} Discount</button>
+        <button className="d-btn" onClick={addOrUpdateDiscount}>{editingId ? "Update" : "Add"} Discount</button>
       </div>
 
-      {/* Discount List */}
       <div className="discount-list">
         {discounts.length === 0 ? (
           <p>No discounts available</p>
         ) : (
-          discounts.map((discount, index) => (
-            <div className="discount-card" key={index}>
+          discounts.map((discount) => (
+            <div className="discount-card" key={discount._id}>
               <p><strong>Code:</strong> {discount.code}</p>
               <p><strong>Discount:</strong> {discount.percentage}%</p>
-              <p><strong>Valid:</strong> {discount.startDate} - {discount.expiryDate}</p>
+              <p><strong>Valid:</strong> {discount.startDate.split("T")[0]} - {discount.expiryDate.split("T")[0]}</p>
               <p><strong>Usage:</strong> {discount.usage} times</p>
-              <button className="apply-btn" onClick={() => applyDiscount(index)}>Apply</button>
-              <button className="edit-btn" onClick={() => editDiscount(index)}>Edit</button>
-              <button className="remove-btn" onClick={() => removeDiscount(index)}>Remove</button>
+              <button className="apply-btn" onClick={() => applyDiscount(discount._id)}>Apply</button>
+              <button className="edit-btn" onClick={() => editDiscount(discount)}>Edit</button>
+              <button className="remove-btn" onClick={() => removeDiscount(discount._id)}>Remove</button>
             </div>
           ))
         )}

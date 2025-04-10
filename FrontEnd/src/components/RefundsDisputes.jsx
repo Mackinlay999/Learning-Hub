@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import "../style/RefundsDisputes.css";
 
 const RefundsDisputes = () => {
@@ -7,26 +8,43 @@ const RefundsDisputes = () => {
   const [reason, setReason] = useState("");
   const [status, setStatus] = useState("Pending");
   const [editingIndex, setEditingIndex] = useState(null);
+  const [editingId, setEditingId] = useState(null); // For backend update
 
-  const addOrUpdateRefund = () => {
+  const API_URL = "http://localhost:3000/api/refunds"; // 🔁 Replace with actual backend URL
+
+  // Fetch all refunds on load
+  useEffect(() => {
+    fetchRefunds();
+  }, []);
+
+  const fetchRefunds = async () => {
+    try {
+      const res = await axios.get(API_URL);
+      setRefunds(res.data);
+    } catch (error) {
+      console.error("Error fetching refunds:", error);
+    }
+  };
+
+  const addOrUpdateRefund = async () => {
     if (!amount || !reason) return;
 
-    if (editingIndex !== null) {
-      // Update refund request
-      const updatedRefunds = refunds.map((r, index) =>
-        index === editingIndex ? { ...r, amount, reason, status } : r
-      );
-      setRefunds(updatedRefunds);
-      setEditingIndex(null);
-    } else {
-      // Add new refund request
-      setRefunds([...refunds, { amount, reason, status }]);
-    }
+    const refundData = { amount, reason, status };
 
-    // Reset form
-    setAmount("");
-    setReason("");
-    setStatus("Pending");
+    try {
+      if (editingIndex !== null) {
+        // Update refund
+        await axios.put(`${API_URL}/${editingId}`, refundData);
+      } else {
+        // Add refund
+        await axios.post(API_URL, refundData);
+      }
+
+      fetchRefunds();
+      resetForm();
+    } catch (error) {
+      console.error("Error submitting refund:", error);
+    }
   };
 
   const editRefund = (index) => {
@@ -35,10 +53,24 @@ const RefundsDisputes = () => {
     setReason(r.reason);
     setStatus(r.status);
     setEditingIndex(index);
+    setEditingId(r._id); // Set MongoDB _id for PUT
   };
 
-  const deleteRefund = (index) => {
-    setRefunds(refunds.filter((_, i) => i !== index));
+  const deleteRefund = async (id) => {
+    try {
+      await axios.delete(`${API_URL}/${id}`);
+      fetchRefunds();
+    } catch (error) {
+      console.error("Error deleting refund:", error);
+    }
+  };
+
+  const resetForm = () => {
+    setAmount("");
+    setReason("");
+    setStatus("Pending");
+    setEditingIndex(null);
+    setEditingId(null);
   };
 
   return (
@@ -76,12 +108,12 @@ const RefundsDisputes = () => {
           <p>No refund requests</p>
         ) : (
           refunds.map((r, index) => (
-            <div className="refund-card" key={index}>
+            <div className="refund-card" key={r._id}>
               <p><strong>Amount:</strong> ₹{r.amount}</p>
               <p><strong>Reason:</strong> {r.reason}</p>
               <p><strong>Status:</strong> {r.status}</p>
               <button className="edit-btn" onClick={() => editRefund(index)}>Edit</button>
-              <button className="delete-btn" onClick={() => deleteRefund(index)}>Delete</button>
+              <button className="delete-btn" onClick={() => deleteRefund(r._id)}>Delete</button>
             </div>
           ))
         )}

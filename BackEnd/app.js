@@ -15,6 +15,17 @@ const communityRoutes = require("./Route/communityRoutes.js");
 const insightRoutes = require("./Route/insightRoutes.js");
 const reportRoutes = require("./Route/reportRoutes");
 const decisionInsightRoutes = require("./Route/decisionInsightRoutes.js");
+const corporateClientRoutes = require("./Route/corporateClientRoutes");
+const employeeRoutes = require("./Route/employeeRoutes");
+const customLearningPathRoutes = require("./Route/customLearningPathRoutes");
+const transactionRoutes = require("./Route/transactionRoutes");
+const refundRoutes = require("./Route/refundRoutes");
+const commissionPayoutRoutes = require("./Route/commissionPayoutRoutes");
+const adminRoutes = require("./Route/adminRoutes"); // ✅ Import
+const websiteContentRoutes = require("./Route/websiteContentRoutes");
+const emailCampaignRoutes = require("./Route/emailCampaignRoutes"); // ⬅️ Import
+const funnelEntryRoutes = require("./Route/funnelEntryRoutes.js");
+const discountRoutes = require("./Route/discountRoutes");
 
 
 
@@ -51,6 +62,17 @@ app.use("/api", communityRoutes);
 app.use("/api", insightRoutes);
 app.use("/api", reportRoutes);
 app.use("/api", decisionInsightRoutes);
+app.use("/api", corporateClientRoutes);
+app.use("/api", employeeRoutes);
+app.use("/api", customLearningPathRoutes);
+app.use("/api", transactionRoutes);
+app.use("/api", refundRoutes);
+app.use("/api", commissionPayoutRoutes);
+app.use("/api", adminRoutes); // ✅ Use
+app.use("/api", websiteContentRoutes);
+app.use("/api", emailCampaignRoutes); 
+app.use("/api", funnelEntryRoutes);
+app.use("/api", discountRoutes);
 
 
 

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "../style/WebsiteContentManager.css";
 
 const WebsiteContentManager = () => {
@@ -13,6 +14,28 @@ const WebsiteContentManager = () => {
       keywords: ""
     }
   });
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  // ✅ Fetch existing content on mount
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/api/website-content");
+        if (res.data) {
+          setContent(res.data);
+        }
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching content:", err);
+        setError("Failed to load content.");
+        setLoading(false);
+      }
+    };
+
+    fetchContent();
+  }, []);
 
   const handleChange = (field, value) => {
     setContent((prev) => ({
@@ -31,10 +54,19 @@ const WebsiteContentManager = () => {
     }));
   };
 
-  const handleSubmit = () => {
-    console.log("Submitted Content:", content);
-    alert("Content Saved (Frontend Only)");
+  // ✅ Submit content to backend
+  const handleSubmit = async () => {
+    try {
+      await axios.post("http://localhost:3000/api/website-content", content);
+      alert("Content saved successfully!");
+    } catch (err) {
+      console.error("Error saving content:", err);
+      alert("Failed to save content.");
+    }
   };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p style={{ color: "red" }}>{error}</p>;
 
   return (
     <div className="content-manager">
@@ -94,7 +126,9 @@ const WebsiteContentManager = () => {
         />
       </div>
 
-      <button className="save-button" onClick={handleSubmit}>Save Changes</button>
+      <button className="save-button" onClick={handleSubmit}>
+        Save Changes
+      </button>
     </div>
   );
 };
