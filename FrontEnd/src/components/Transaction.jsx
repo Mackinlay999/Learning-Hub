@@ -1,48 +1,76 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import "../style/Transaction.css";
+
+// 🔗 Backend base URL
+const BASE_URL = "http://localhost:3000/api/transactions"; // Change this to your backend
 
 const Transaction = () => {
   const [transactions, setTransactions] = useState([]);
   const [amount, setAmount] = useState("");
   const [paymentMode, setPaymentMode] = useState("");
   const [status, setStatus] = useState("Pending");
-  const [editingIndex, setEditingIndex] = useState(null);
+  const [editingId, setEditingId] = useState(null);
 
-  // Calculate Revenue Summary
-  const totalRevenue = transactions.reduce((sum, t) => (t.status === "Paid" ? sum + Number(t.amount) : sum), 0);
-  const pendingPayments = transactions.reduce((sum, t) => (t.status === "Pending" ? sum + Number(t.amount) : sum), 0);
+  // ✅ Fetch all transactions on component mount
+  useEffect(() => {
+    axios.get(BASE_URL)
+      .then((res) => setTransactions(res.data))
+      .catch((err) => console.error("Fetch Error:", err));
+  }, []);
 
-  const addOrUpdateTransaction = () => {
+  // ✅ Calculate Revenue Summary
+  const totalRevenue = transactions.reduce(
+    (sum, t) => (t.status === "Paid" ? sum + Number(t.amount) : sum),
+    0
+  );
+  const pendingPayments = transactions.reduce(
+    (sum, t) => (t.status === "Pending" ? sum + Number(t.amount) : sum),
+    0
+  );
+
+  // ✅ Add or Update transaction
+  const addOrUpdateTransaction = async () => {
     if (!amount || !paymentMode) return;
 
-    if (editingIndex !== null) {
-      // Update transaction
-      const updatedTransactions = transactions.map((t, index) =>
-        index === editingIndex ? { ...t, amount, paymentMode, status } : t
-      );
-      setTransactions(updatedTransactions);
-      setEditingIndex(null);
-    } else {
-      // Add new transaction
-      setTransactions([...transactions, { amount, paymentMode, status }]);
+    const newTransaction = { amount, paymentMode, status };
+
+    try {
+      if (editingId) {
+        await axios.put(`${BASE_URL}/${editingId}`, newTransaction);
+      } else {
+        await axios.post(BASE_URL, newTransaction);
+      }
+      const res = await axios.get(BASE_URL); // Refresh list
+      setTransactions(res.data);
+    } catch (err) {
+      console.error("Add/Update Error:", err);
     }
 
     // Reset form
     setAmount("");
     setPaymentMode("");
     setStatus("Pending");
+    setEditingId(null);
   };
 
-  const editTransaction = (index) => {
-    const t = transactions[index];
+  // ✅ Edit transaction
+  const editTransaction = (t) => {
     setAmount(t.amount);
     setPaymentMode(t.paymentMode);
     setStatus(t.status);
-    setEditingIndex(index);
+    setEditingId(t._id);
   };
 
-  const deleteTransaction = (index) => {
-    setTransactions(transactions.filter((_, i) => i !== index));
+  // ✅ Delete transaction
+  const deleteTransaction = async (id) => {
+    try {
+      await axios.delete(`${BASE_URL}/${id}`);
+      const res = await axios.get(BASE_URL);
+      setTransactions(res.data);
+    } catch (err) {
+      console.error("Delete Error:", err);
+    }
   };
 
   return (
@@ -75,8 +103,8 @@ const Transaction = () => {
           <option value="Pending">Pending</option>
           <option value="Paid">Paid</option>
         </select>
-        <button  className="d-btn" onClick={addOrUpdateTransaction}>
-          {editingIndex !== null ? "Update" : "Add"} Transaction
+        <button className="d-btn" onClick={addOrUpdateTransaction}>
+          {editingId ? "Update" : "Add"} Transaction
         </button>
       </div>
 
@@ -85,13 +113,13 @@ const Transaction = () => {
         {transactions.length === 0 ? (
           <p>No transactions available</p>
         ) : (
-          transactions.map((t, index) => (
-            <div className="transaction-card" key={index}>
+          transactions.map((t) => (
+            <div className="transaction-card" key={t._id}>
               <p><strong>Amount:</strong> ₹{t.amount}</p>
               <p><strong>Payment Mode:</strong> {t.paymentMode}</p>
               <p><strong>Status:</strong> {t.status}</p>
-              <button className="edit-btn" onClick={() => editTransaction(index)}>Edit</button>
-              <button className="delete-btn" onClick={() => deleteTransaction(index)}>Delete</button>
+              <button className="edit-btn" onClick={() => editTransaction(t)}>Edit</button>
+              <button className="delete-btn" onClick={() => deleteTransaction(t._id)}>Delete</button>
             </div>
           ))
         )}

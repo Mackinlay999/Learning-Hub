@@ -18,7 +18,9 @@ const decisionInsightRoutes = require("./Route/decisionInsightRoutes.js");
 const corporateClientRoutes = require("./Route/corporateClientRoutes");
 const employeeRoutes = require("./Route/employeeRoutes");
 const customLearningPathRoutes = require("./Route/customLearningPathRoutes");
-
+const transactionRoutes = require("./Route/transactionRoutes");
+const refundRoutes = require("./Route/refundRoutes");
+const commissionPayoutRoutes = require("./Route/commissionPayoutRoutes");
 
 
 
@@ -58,6 +60,9 @@ app.use("/api", decisionInsightRoutes);
 app.use("/api", corporateClientRoutes);
 app.use("/api", employeeRoutes);
 app.use("/api", customLearningPathRoutes);
+app.use("/api", transactionRoutes);
+app.use("/api", refundRoutes);
+app.use("/api", commissionPayoutRoutes);
 
 
 

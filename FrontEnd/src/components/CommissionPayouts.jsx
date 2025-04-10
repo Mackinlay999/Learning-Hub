@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import "../style/CommissionPayouts.css";
+
+const API_BASE = "http://localhost:3000/api/commission-payouts"; // or your deployed backend URL
 
 const CommissionPayouts = () => {
   const [transactions, setTransactions] = useState([]);
@@ -7,48 +10,73 @@ const CommissionPayouts = () => {
   const [amount, setAmount] = useState("");
   const [type, setType] = useState("Instructor Payout");
   const [status, setStatus] = useState("Pending");
-  const [editingIndex, setEditingIndex] = useState(null);
+  const [editingId, setEditingId] = useState(null);
 
-  const addOrUpdateTransaction = () => {
+  // Fetch all transactions on mount
+  useEffect(() => {
+    fetchTransactions();
+  }, []);
+
+  const fetchTransactions = async () => {
+    try {
+      const res = await axios.get(`${API_BASE}`);
+      setTransactions(res.data);
+    } catch (error) {
+      console.error("Failed to fetch payouts:", error);
+    }
+  };
+
+  const addOrUpdateTransaction = async () => {
     if (!name || !amount) return;
 
-    if (editingIndex !== null) {
-      // Update existing transaction
-      const updatedTransactions = transactions.map((t, index) =>
-        index === editingIndex ? { ...t, name, amount, type, status } : t
-      );
-      setTransactions(updatedTransactions);
-      setEditingIndex(null);
-    } else {
-      // Add new transaction
-      setTransactions([...transactions, { name, amount, type, status }]);
-    }
+    const data = { name, amount, type, status };
 
-    // Reset form
+    try {
+      if (editingId) {
+        // Update
+        await axios.put(`${API_BASE}/${editingId}`, data);
+      } else {
+        // Add new
+        await axios.post(`${API_BASE}`, data);
+      }
+
+      fetchTransactions(); // Refresh data
+      resetForm();
+    } catch (error) {
+      console.error("Error saving transaction:", error);
+    }
+  };
+
+  const editTransaction = (transaction) => {
+    setName(transaction.name);
+    setAmount(transaction.amount);
+    setType(transaction.type);
+    setStatus(transaction.status);
+    setEditingId(transaction._id);
+  };
+
+  const deleteTransaction = async (id) => {
+    try {
+      await axios.delete(`${API_BASE}/${id}`);
+      fetchTransactions();
+    } catch (error) {
+      console.error("Error deleting transaction:", error);
+    }
+  };
+
+  const resetForm = () => {
     setName("");
     setAmount("");
     setType("Instructor Payout");
     setStatus("Pending");
-  };
-
-  const editTransaction = (index) => {
-    const t = transactions[index];
-    setName(t.name);
-    setAmount(t.amount);
-    setType(t.type);
-    setStatus(t.status);
-    setEditingIndex(index);
-  };
-
-  const deleteTransaction = (index) => {
-    setTransactions(transactions.filter((_, i) => i !== index));
+    setEditingId(null);
   };
 
   return (
     <div className="commission-container">
       <h2>Commission & Payouts</h2>
 
-      {/* Form for Adding Transactions */}
+      {/* Form for Adding/Editing Transactions */}
       <div className="commission-form">
         <input
           type="text"
@@ -71,8 +99,8 @@ const CommissionPayouts = () => {
           <option value="Approved">Approved</option>
           <option value="Paid">Paid</option>
         </select>
-        <button className="d-btn"  onClick={addOrUpdateTransaction}>
-          {editingIndex !== null ? "Update" : "Add"} Transaction
+        <button className="d-btn" onClick={addOrUpdateTransaction}>
+          {editingId ? "Update" : "Add"} Transaction
         </button>
       </div>
 
@@ -81,14 +109,14 @@ const CommissionPayouts = () => {
         {transactions.length === 0 ? (
           <p>No commission or payout records</p>
         ) : (
-          transactions.map((t, index) => (
-            <div className="commission-card" key={index}>
+          transactions.map((t) => (
+            <div className="commission-card" key={t._id}>
               <p><strong>Name:</strong> {t.name}</p>
               <p><strong>Amount:</strong> ₹{t.amount}</p>
               <p><strong>Type:</strong> {t.type}</p>
               <p><strong>Status:</strong> {t.status}</p>
-              <button className="edit-btn" onClick={() => editTransaction(index)}>Edit</button>
-              <button className="delete-btn" onClick={() => deleteTransaction(index)}>Delete</button>
+              <button className="edit-btn" onClick={() => editTransaction(t)}>Edit</button>
+              <button className="delete-btn" onClick={() => deleteTransaction(t._id)}>Delete</button>
             </div>
           ))
         )}
