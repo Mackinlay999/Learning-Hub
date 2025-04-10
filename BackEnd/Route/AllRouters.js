@@ -9,6 +9,9 @@ const JobController  = require("../Controller/JobController")
 const PlacementController =require("../Controller/PlacementApplication")
 const Assessment = require("../Controller/Assessment")
 const AlumniController  =require("../Controller/Alumni")
+const leadController =require("../Controller/LeadController")
+const StudentController = require("../Controller/Studentpay") 
+const AttendanceController =require("../Controller/AttendanceController")
 
 
 const upload = require("../Utils/Multer");
@@ -88,6 +91,29 @@ router.post("/createAlumni", AlumniController.createAlumni);
 router.get("/getAllAlumni", AlumniController.getAllAlumni);
 router.put("/updateAlumni/:id", AlumniController.updateAlumni);
 router.delete("/deleteAlumni/:id", AlumniController.deleteAlumni);
+
+
+
+// Lead
+router.post("/createLead", leadController.createLead);
+router.get("/getLeads", leadController.getLeads);
+router.get("/getLeadById/:id", leadController.getLeadById);
+router.put("/updateLead/:id", leadController.updateLead);
+router.delete("/deleteLead/:id", leadController.deleteLead);
+
+// StudentEnrollAndPaymentScheme
+
+router.post("/createStudents", StudentController.createStudent);
+router.get("/getStudents", StudentController. getStudents);
+router.put("/updateStudent/:id", StudentController.updateStudent);
+router.delete("/deleteStudent/:id", StudentController.deleteStudent);
+
+
+// attendanceProgresS
+router.post("/createRecord", AttendanceController.createRecord);
+router.get("/getRecords", AttendanceController.getRecords);
+router.put("/updateRecord/:id", AttendanceController.updateRecord);
+router.delete("/deleteRecord/:id", AttendanceController.deleteRecord);
 
 
 module.exports = router;

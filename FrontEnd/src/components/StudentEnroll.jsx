@@ -1,41 +1,63 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "./axios";
 import "../style/StudentEnroll.css";
 
-const initialStudents = [
-  { id: 1, name: "John Doe", status: "Paid" },
-  { id: 2, name: "Jane Smith", status: "Pending" },
-  { id: 3, name: "Mark Wilson", status: "Overdue" },
-];
-
 const StudentEnroll = () => {
-  const [students, setStudents] = useState(initialStudents);
+  const [students, setStudents] = useState([]);
   const [newStudent, setNewStudent] = useState({ name: "", status: "Pending" });
   const [editStudent, setEditStudent] = useState(null);
+
+
+  // Fetch all students on component mount
+  useEffect(() => {
+    fetchStudents();
+  }, []);
+
+  const fetchStudents = async () => {
+    try {
+      const res = await axios.get(`/getStudents`);
+      setStudents(res.data);
+    } catch (error) {
+      console.error("Failed to fetch students", error);
+    }
+  };
 
   const handleInputChange = (e) => {
     setNewStudent({ ...newStudent, [e.target.name]: e.target.value });
   };
 
-  const addStudent = () => {
+  const addStudent = async () => {
     if (!newStudent.name.trim()) return;
-    const newId = students.length > 0 ? students[students.length - 1].id + 1 : 1;
-    setStudents([...students, { id: newId, ...newStudent }]);
-    setNewStudent({ name: "", status: "Pending" });
+    try {
+      const res = await axios.post(`/createStudents`, newStudent);
+      setStudents([...students, res.data]);
+      setNewStudent({ name: "", status: "Pending" });
+    } catch (err) {
+      console.error("Error adding student", err);
+    }
   };
 
-  const deleteStudent = (id) => {
-    setStudents(students.filter((student) => student.id !== id));
+  const deleteStudent = async (id) => {
+    try {
+      await axios.delete(`/deleteStudent/${id}`);
+      setStudents(students.filter((student) => student._id !== id));
+    } catch (err) {
+      console.error("Error deleting student", err);
+    }
   };
 
   const startEdit = (student) => {
-    setEditStudent(student);
+    setEditStudent({ ...student }); // clone for editing
   };
 
-  const saveEdit = () => {
-    setStudents(
-      students.map((s) => (s.id === editStudent.id ? editStudent : s))
-    );
-    setEditStudent(null);
+  const saveEdit = async () => {
+    try {
+      const res = await axios.put(`/updateStudent/${editStudent._id}`, editStudent);
+      setStudents(students.map((s) => (s._id === editStudent._id ? res.data : s)));
+      setEditStudent(null);
+    } catch (err) {
+      console.error("Error updating student", err);
+    }
   };
 
   return (
@@ -53,7 +75,7 @@ const StudentEnroll = () => {
         <select name="status" value={newStudent.status} onChange={handleInputChange}>
           <option value="Paid">Paid</option>
           <option value="Pending">Pending</option>
-          <option value="Overdue">Overdue</option>
+          <option value="EMI">EMI</option>
         </select>
         <button onClick={addStudent}>Add Student</button>
       </div>
@@ -75,11 +97,11 @@ const StudentEnroll = () => {
               </td>
             </tr>
           ) : (
-            students.map((student) => (
-              <tr key={student.id} className={`se-row ${student.status.toLowerCase()}`}>
-                <td>{student.id}</td>
+            students.map((student, index) => (
+              <tr key={student._id} className={`se-row ${student.status.toLowerCase()}`}>
+                <td>{index + 1}</td>
                 <td>
-                  {editStudent && editStudent.id === student.id ? (
+                  {editStudent && editStudent._id === student._id ? (
                     <input
                       type="text"
                       value={editStudent.name}
@@ -92,7 +114,7 @@ const StudentEnroll = () => {
                   )}
                 </td>
                 <td>
-                  {editStudent && editStudent.id === student.id ? (
+                  {editStudent && editStudent._id === student._id ? (
                     <select
                       value={editStudent.status}
                       onChange={(e) =>
@@ -108,12 +130,12 @@ const StudentEnroll = () => {
                   )}
                 </td>
                 <td>
-                  {editStudent && editStudent.id === student.id ? (
+                  {editStudent && editStudent._id === student._id ? (
                     <button onClick={saveEdit}>Save</button>
                   ) : (
                     <>
                       <button onClick={() => startEdit(student)}>Edit</button>
-                      <button onClick={() => deleteStudent(student.id)}>Delete</button>
+                      <button onClick={() => deleteStudent(student._id)}>Delete</button>
                     </>
                   )}
                 </td>

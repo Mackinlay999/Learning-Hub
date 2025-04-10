@@ -83,6 +83,7 @@ const AttendanceProgressTracking = () => {
           value={record.certificationIssued}
           onChange={handleChange}
         >
+          <option value="NO" >Certificate</option>
           <option value="No">No</option>
           <option value="Yes">Yes</option>
         </select>
