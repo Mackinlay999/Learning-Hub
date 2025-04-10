@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import "../style/AdminManagement.css";
+
+const API_URL = "http://localhost:3000/api/admins"; // replace with your backend
 
 const roles = ['Super Admin', 'Admin', 'Analyst', 'Support Staff'];
 const permissions = ['View Users', 'Edit Users', 'Delete Users', 'Manage Roles', 'Approve Actions'];
@@ -13,20 +16,20 @@ function AdminManagement() {
     permissions: [],
     approvalRequired: false
   });
-  const [editIndex, setEditIndex] = useState(null);
+  const [editId, setEditId] = useState(null);
 
-  // Load from localStorage
   useEffect(() => {
-    const storedAdmins = localStorage.getItem('admins');
-    if (storedAdmins) {
-      setAdmins(JSON.parse(storedAdmins));
-    }
+    fetchAdmins();
   }, []);
 
-  // Save to localStorage
-  useEffect(() => {
-    localStorage.setItem('admins', JSON.stringify(admins));
-  }, [admins]);
+  const fetchAdmins = async () => {
+    try {
+      const res = await axios.get(API_URL);
+      setAdmins(res.data);
+    } catch (error) {
+      console.error("Failed to fetch admins:", error);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -42,17 +45,40 @@ function AdminManagement() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (editIndex !== null) {
-      const updatedAdmins = [...admins];
-      updatedAdmins[editIndex] = formData;
-      setAdmins(updatedAdmins);
-      setEditIndex(null);
-    } else {
-      setAdmins([...admins, formData]);
-    }
 
+    try {
+      if (editId) {
+        await axios.put(`${API_URL}/${editId}`, formData);
+      } else {
+        await axios.post(API_URL, formData);
+      }
+      fetchAdmins();
+      resetForm();
+    } catch (error) {
+      console.error("Error saving admin:", error);
+    }
+  };
+
+  const handleEdit = (admin) => {
+    setFormData(admin);
+    setEditId(admin._id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this admin?")) {
+      try {
+        await axios.delete(`${API_URL}/${id}`);
+        fetchAdmins();
+      } catch (error) {
+        console.error("Error deleting admin:", error);
+      }
+    }
+  };
+
+  const resetForm = () => {
     setFormData({
       name: '',
       email: '',
@@ -60,19 +86,7 @@ function AdminManagement() {
       permissions: [],
       approvalRequired: false
     });
-  };
-
-  const handleEdit = (index) => {
-    setFormData(admins[index]);
-    setEditIndex(index);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleDelete = (index) => {
-    if (window.confirm("Are you sure you want to delete this admin?")) {
-      const updatedAdmins = admins.filter((_, i) => i !== index);
-      setAdmins(updatedAdmins);
-    }
+    setEditId(null);
   };
 
   return (
@@ -137,7 +151,7 @@ function AdminManagement() {
         </label>
 
         <button type="submit">
-          {editIndex !== null ? 'Update' : 'Add'} Admin
+          {editId ? 'Update' : 'Add'} Admin
         </button>
       </form>
 
@@ -153,16 +167,16 @@ function AdminManagement() {
           </tr>
         </thead>
         <tbody>
-          {admins.map((admin, index) => (
-            <tr key={index}>
+          {admins.map((admin) => (
+            <tr key={admin._id}>
               <td data-label="Name">{admin.name}</td>
               <td data-label="Email">{admin.email}</td>
               <td data-label="Role">{admin.role}</td>
               <td data-label="Permissions">{admin.permissions.join(', ')}</td>
               <td data-label="Approval">{admin.approvalRequired ? 'Yes' : 'No'}</td>
               <td data-label="Actions">
-                <button onClick={() => handleEdit(index)}>Edit</button>
-                <button onClick={() => handleDelete(index)}>Delete</button>
+                <button onClick={() => handleEdit(admin)}>Edit</button>
+                <button onClick={() => handleDelete(admin._id)}>Delete</button>
               </td>
             </tr>
           ))}

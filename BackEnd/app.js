@@ -21,6 +21,8 @@ const customLearningPathRoutes = require("./Route/customLearningPathRoutes");
 const transactionRoutes = require("./Route/transactionRoutes");
 const refundRoutes = require("./Route/refundRoutes");
 const commissionPayoutRoutes = require("./Route/commissionPayoutRoutes");
+const adminRoutes = require("./Route/adminRoutes"); // ✅ Import
+const websiteContentRoutes = require("./Route/websiteContentRoutes");
 
 
 
@@ -63,6 +65,8 @@ app.use("/api", customLearningPathRoutes);
 app.use("/api", transactionRoutes);
 app.use("/api", refundRoutes);
 app.use("/api", commissionPayoutRoutes);
+app.use("/api", adminRoutes); // ✅ Use
+app.use("/api", websiteContentRoutes);
 
 
 
