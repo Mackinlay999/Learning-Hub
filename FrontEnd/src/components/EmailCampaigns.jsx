@@ -1,55 +1,70 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import "../style/EmailCampaigns.css";
 
 const EmailCampaigns = () => {
-  const [campaigns, setCampaigns] = useState([
-    {
-      id: 1,
-      name: "Welcome Series",
-      status: "Active",
-      emailsSent: 120,
-      emails: [{ id: 1, subject: "Welcome to our platform!", content: "Hello, we are excited to have you!" }],
-    },
-    {
-      id: 2,
-      name: "Course Follow-Up",
-      status: "Draft",
-      emailsSent: 50,
-      emails: [{ id: 1, subject: "Your course has started!", content: "Check your dashboard for new lessons." }],
-    },
-  ]);
-
+  const [campaigns, setCampaigns] = useState([]);
   const [newCampaign, setNewCampaign] = useState({ name: "", status: "Draft" });
   const [editCampaign, setEditCampaign] = useState(null);
   const [selectedCampaign, setSelectedCampaign] = useState(null);
   const [newEmail, setNewEmail] = useState({ subject: "", content: "" });
 
-  // Handle input for new campaign
+  const API_BASE = "http://localhost:3000/api/email-campaigns"; // Change if hosted elsewhere
+
+  // Fetch all campaigns
+  const fetchCampaigns = async () => {
+    try {
+      const res = await axios.get(API_BASE);
+      setCampaigns(res.data);
+    } catch (err) {
+      console.error("Error fetching campaigns:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchCampaigns();
+  }, []);
+
+  // Handle campaign form change
   const handleCampaignInputChange = (e) => {
     setNewCampaign({ ...newCampaign, [e.target.name]: e.target.value });
   };
 
-  // Add new campaign
-  const addCampaign = () => {
-    if (!newCampaign.name) return;
-    setCampaigns([...campaigns, { id: campaigns.length + 1, ...newCampaign, emailsSent: 0, emails: [] }]);
-    setNewCampaign({ name: "", status: "Draft" });
+  // Add campaign
+  const addCampaign = async () => {
+    try {
+      const res = await axios.post(API_BASE, newCampaign);
+      setCampaigns([...campaigns, res.data]);
+      setNewCampaign({ name: "", status: "Draft" });
+    } catch (err) {
+      console.error("Error adding campaign:", err);
+    }
   };
 
   // Delete campaign
-  const deleteCampaign = (id) => {
-    setCampaigns(campaigns.filter((campaign) => campaign.id !== id));
+  const deleteCampaign = async (id) => {
+    try {
+      await axios.delete(`${API_BASE}/${id}`);
+      setCampaigns(campaigns.filter((c) => c._id !== id));
+    } catch (err) {
+      console.error("Error deleting campaign:", err);
+    }
   };
 
-  // Start editing campaign
+  // Start editing
   const startEditCampaign = (campaign) => {
     setEditCampaign(campaign);
   };
 
-  // Save campaign edits
-  const saveCampaignEdit = () => {
-    setCampaigns(campaigns.map((c) => (c.id === editCampaign.id ? editCampaign : c)));
-    setEditCampaign(null);
+  // Save edited campaign
+  const saveCampaignEdit = async () => {
+    try {
+      const res = await axios.put(`${API_BASE}/${editCampaign._id}`, editCampaign);
+      setCampaigns(campaigns.map((c) => (c._id === editCampaign._id ? res.data : c)));
+      setEditCampaign(null);
+    } catch (err) {
+      console.error("Error updating campaign:", err);
+    }
   };
 
   // Select campaign to manage emails
@@ -58,31 +73,38 @@ const EmailCampaigns = () => {
     setNewEmail({ subject: "", content: "" });
   };
 
-  // Handle input for new email
+  // Handle email input
   const handleEmailInputChange = (e) => {
     setNewEmail({ ...newEmail, [e.target.name]: e.target.value });
   };
 
   // Add new email to selected campaign
-  const addEmail = () => {
-    if (!newEmail.subject || !newEmail.content) return;
-    setCampaigns(
-      campaigns.map((c) =>
-        c.id === selectedCampaign.id
-          ? { ...c, emails: [...c.emails, { id: c.emails.length + 1, ...newEmail }] }
-          : c
-      )
-    );
-    setNewEmail({ subject: "", content: "" });
+  const addEmail = async () => {
+    try {
+      const res = await axios.post(`${API_BASE}/${selectedCampaign._id}/emails`, newEmail);
+      const updatedCampaign = campaigns.map((c) =>
+        c._id === selectedCampaign._id ? res.data : c
+      );
+      setCampaigns(updatedCampaign);
+      setSelectedCampaign(res.data); // Update selected campaign with new data
+      setNewEmail({ subject: "", content: "" });
+    } catch (err) {
+      console.error("Error adding email:", err);
+    }
   };
 
-  // Delete an email from the campaign
-  const deleteEmail = (emailId) => {
-    setCampaigns(
-      campaigns.map((c) =>
-        c.id === selectedCampaign.id ? { ...c, emails: c.emails.filter((e) => e.id !== emailId) } : c
-      )
-    );
+  // Delete an email from campaign
+  const deleteEmail = async (emailId) => {
+    try {
+      const res = await axios.delete(`${API_BASE}/${selectedCampaign._id}/emails/${emailId}`);
+      const updatedCampaign = campaigns.map((c) =>
+        c._id === selectedCampaign._id ? res.data : c
+      );
+      setCampaigns(updatedCampaign);
+      setSelectedCampaign(res.data); // Update selected campaign with new data
+    } catch (err) {
+      console.error("Error deleting email:", err);
+    }
   };
 
   return (
@@ -104,7 +126,6 @@ const EmailCampaigns = () => {
       <table className="campaign-table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Name</th>
             <th>Status</th>
             <th>Emails Sent</th>
@@ -113,11 +134,14 @@ const EmailCampaigns = () => {
         </thead>
         <tbody>
           {campaigns.map((campaign) => (
-            <tr key={campaign.id}>
-              <td>{campaign.id}</td>
+            <tr key={campaign._id}>
               <td>
-                {editCampaign && editCampaign.id === campaign.id ? (
-                  <input type="text" value={editCampaign.name} onChange={(e) => setEditCampaign({ ...editCampaign, name: e.target.value })} />
+                {editCampaign && editCampaign._id === campaign._id ? (
+                  <input
+                    type="text"
+                    value={editCampaign.name}
+                    onChange={(e) => setEditCampaign({ ...editCampaign, name: e.target.value })}
+                  />
                 ) : (
                   campaign.name
                 )}
@@ -125,12 +149,12 @@ const EmailCampaigns = () => {
               <td>{campaign.status}</td>
               <td>{campaign.emailsSent}</td>
               <td>
-                {editCampaign && editCampaign.id === campaign.id ? (
+                {editCampaign && editCampaign._id === campaign._id ? (
                   <button className="save" onClick={saveCampaignEdit}>Save</button>
                 ) : (
                   <>
                     <button className="edit" onClick={() => startEditCampaign(campaign)}>Edit</button>
-                    <button className="delete" onClick={() => deleteCampaign(campaign.id)}>Delete</button>
+                    <button className="delete" onClick={() => deleteCampaign(campaign._id)}>Delete</button>
                     <button className="manage-emails" onClick={() => openCampaignEmails(campaign)}>Manage Emails</button>
                   </>
                 )}
@@ -156,7 +180,6 @@ const EmailCampaigns = () => {
           <table className="email-table">
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Subject</th>
                 <th>Content</th>
                 <th>Actions</th>
@@ -164,12 +187,11 @@ const EmailCampaigns = () => {
             </thead>
             <tbody>
               {selectedCampaign.emails.map((email) => (
-                <tr key={email.id}>
-                  <td>{email.id}</td>
+                <tr key={email._id}>
                   <td>{email.subject}</td>
                   <td>{email.content}</td>
                   <td>
-                    <button className="delete" onClick={() => deleteEmail(email.id)}>Delete</button>
+                    <button className="delete" onClick={() => deleteEmail(email._id)}>Delete</button>
                   </td>
                 </tr>
               ))}

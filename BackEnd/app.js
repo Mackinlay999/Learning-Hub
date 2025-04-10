@@ -23,6 +23,9 @@ const refundRoutes = require("./Route/refundRoutes");
 const commissionPayoutRoutes = require("./Route/commissionPayoutRoutes");
 const adminRoutes = require("./Route/adminRoutes"); // ✅ Import
 const websiteContentRoutes = require("./Route/websiteContentRoutes");
+const emailCampaignRoutes = require("./Route/emailCampaignRoutes"); // ⬅️ Import
+const funnelEntryRoutes = require("./Route/funnelEntryRoutes.js");
+const discountRoutes = require("./Route/discountRoutes");
 
 
 
@@ -67,6 +70,9 @@ app.use("/api", refundRoutes);
 app.use("/api", commissionPayoutRoutes);
 app.use("/api", adminRoutes); // ✅ Use
 app.use("/api", websiteContentRoutes);
+app.use("/api", emailCampaignRoutes); 
+app.use("/api", funnelEntryRoutes);
+app.use("/api", discountRoutes);
 
 
 
