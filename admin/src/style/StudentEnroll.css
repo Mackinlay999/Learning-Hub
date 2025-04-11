@@ -1,0 +1,133 @@
+/* Container */
+.se-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.se-title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* Form */
+.se-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.se-form input,
+.se-form select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 200px;
+}
+
+.se-form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.se-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Table */
+.se-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.se-table th,
+.se-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.se-table th {
+  background-color: #f8f8f8;
+  font-size: 16px;
+}
+
+/* Row Colors */
+.se-row.paid {
+  background-color: #e9f9ee;
+}
+
+.se-row.pending {
+  background-color: #fffce0;
+}
+
+.se-row.overdue {
+  background-color: #ffeaea;
+}
+
+/* Buttons */
+.se-table button {
+  margin: 2px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.se-table button:first-child {
+  background-color: #28a745;
+  color: white;
+}
+
+.se-table button:nth-child(2) {
+  background-color: #dc3545;
+  color: white;
+}
+
+.se-table button:hover {
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .se-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .se-form input,
+  .se-form select {
+    width: 90%;
+  }
+
+  .se-title {
+    font-size: 22px;
+  }
+
+  .se-table th,
+  .se-table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+.ST-tr th{
+  color: #222;
+}

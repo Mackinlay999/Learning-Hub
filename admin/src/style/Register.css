@@ -1,0 +1,145 @@
+/* General Container */
+.r-register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+/* Register Box */
+.r-register-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 450px;
+}
+
+/* Heading */
+.r-register-box h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    
+}
+
+/* Form Styling */
+.r-register-box form {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.r-register-box label {
+    text-align: left;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #555;
+    
+}
+
+/* Input Fields */
+.r-register-box input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+
+/* Password Toggle Button */
+.r-password-toggle {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    margin-top: 5px;
+    /* width: 450px ; */
+    font-size: 0.9rem;
+}
+.r-password-container input{
+    width: 450px !important;
+   
+    
+   
+}
+
+/* Error Messages */
+.r-error-text {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+/* Submit Button */
+.r-register-box button[type="submit"] {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.r-register-box button[type="submit"]:hover {
+    background: #0056b3;
+}
+
+/* Login Link */
+.r-register-box p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.r-register-box p span {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.r-register-box p span:hover {
+    text-decoration: underline;
+}
+
+.r-password-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100% !important;
+}
+
+.r-password-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 10px;
+    color: #555;
+    
+}
+.r-num{
+    margin-top: 10px;
+    
+}
+.r-password-toggle{
+
+    background-color:transparent !important;
+}
+   
+
+
+
+
+
+
+
+
+
+
+
+
+

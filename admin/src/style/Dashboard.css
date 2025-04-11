@@ -1,0 +1,111 @@
+/* General Reset */
+
+  
+  /* Dashboard Container */
+  .d-dashboard-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f6f9;
+  }
+  
+  /* Sidebar */
+  .d-sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    /* transition: 0.3s; */
+  }
+  
+  .d-sidebar-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #ffcc00;
+  }
+  
+  .d-sidebar-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .d-sidebar-item {
+    padding: 12px;
+    margin: 6px 0;
+    cursor: pointer;
+    background: #34495e;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    font-size: 16px;
+  }
+  
+  .d-sidebar-item:hover,
+  .d-sidebar-item.d-active {
+    background: #ffcc00;
+    color: #1e1e2f;
+    /* transform: scale(1.05); */
+  }
+  
+  /* Main Content */
+  .d-content {
+    flex: 1;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    margin: 10px;
+  }
+  
+  /* Responsive Sidebar */
+  @media (max-width: 768px) {
+    .d-sidebar {
+      width: 60px;
+      padding: 10px;
+    }
+  
+    .d-sidebar-title {
+      display: none;
+    }
+  
+    .d-sidebar-item {
+      font-size: 0;
+      height: 40px;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+   
+  }
+  
+
+  /* design */
+  .d-sidebar-item {
+ 
+ display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 500;
+  
+  border-radius: 6px;
+  
+}
+
+.d-sidebar-item:hover {
+  background-color: #f0f0f0;
+}
+
+
+.d-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

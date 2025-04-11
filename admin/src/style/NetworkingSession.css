@@ -1,0 +1,185 @@
+.networking-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: #cfd1d4; */
+    
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+  }
+  
+  .networking-content {
+    width: 50%;
+   
+
+  }
+  .network{
+   
+    background-color: #fff;
+  }
+ 
+  
+  .networking-h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 0;
+   margin-right: 240px;
+  }
+  
+  .networking-content ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .networking-content ul li {
+    font-size: 18px;
+    color: #555;
+    margin: 8px 0;
+  }
+  
+  .networking-content h3 {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #444;
+  }
+  
+  .company-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .company-logos img {
+    width: 80px;
+    height: auto;
+    margin-left: 10px;
+  }
+  
+  .networking-image img {
+    /* width: 100%; */
+    /* max-width: 400px; */
+    width: 500px;
+    height: 300px;
+    margin-right: 200px;
+    border-radius: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .networking-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      
+    }
+    .networking-image{
+        margin-top: 25px;
+      
+    }
+    .networking-image img {
+      /* width: 100%; */
+      /* max-width: 400px; */
+      width:70%;
+      
+      border-radius: 10px;
+    }
+    .networking-h2 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-top: 0;
+     display: block;
+     margin:  0 auto;
+    }
+  
+    .networking-content, .networking-image {
+      width: 100%;
+    }
+  
+    .company-logos {
+      justify-content: center;
+    }
+  }
+  
+
+  /* Container */
+.hackathon-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    gap: 20px;
+  }
+  
+  /* Left Section - Text Content */
+  .hackathon-content {
+    width: 50%;
+   
+  }
+  
+  .hackathon-h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #222;
+    margin-right: 350px;
+  }
+  
+  .hackathon-content ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .hackathon-content ul li {
+    font-size: 18px;
+    color: #555;
+    margin: 8px 0;
+  }
+  
+  /* Right Section - Image */
+  .hackathon-image {
+    width: 50%;
+  }
+  
+  .hackathon-image img {
+    width:72%;
+    margin-left: 20px;
+    border-radius: 10px;
+    /* max-width: 450px; */
+    border-radius: 10px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .hackathon-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .hackathon-h2 {
+      font-size: 26px;
+      font-weight: bold;
+      color: #222;
+  display: block;
+  margin: 0 auto;
+     
+    }
+  
+    .hackathon-content,
+    .hackathon-image {
+      width: 100%;
+    }
+    .networking-image img {
+      /* width: 100%; */
+      /* max-width: 400px; */
+      width: 300px;
+      height: 200px;
+     margin: 0 auto;
+      border-radius: 10px;
+    }
+  }
+  

@@ -1,0 +1,103 @@
+.SH-main {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .SH-title {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+  
+  .SH-subtitle {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .SH-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .SH-form input,
+  .SH-form textarea,
+  .SH-form select,
+  .SH-form button {
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .SH-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .SH-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .SH-list {
+    overflow-x: auto;
+  }
+  
+  .SH-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .SH-table th,
+  .SH-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .SH-table th {
+    background-color: #f0f0f0;
+  }
+  
+  .SH-empty {
+    color: #777;
+  }
+  
+  .SH-faq {
+    margin-top: 30px;
+  }
+  
+  .SH-faq ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .SH-faq li {
+    margin-bottom: 10px;
+  }
+  
+  @media (max-width: 600px) {
+    .SH-form input,
+    .SH-form textarea,
+    .SH-form select,
+    .SH-form button {
+      font-size: 13px;
+    }
+  
+    .SH-table th,
+    .SH-table td {
+      font-size: 12px;
+      padding: 8px;
+    }
+  
+    .SH-title {
+      font-size: 22px;
+    }
+  }
+  

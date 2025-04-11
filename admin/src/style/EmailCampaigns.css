@@ -1,0 +1,198 @@
+Global Styles
+.email-campaigns {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.campaign-form, .email-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.campaign-form input, .email-form input, .email-form textarea, .campaign-form select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.campaign-form button, .email-form button {
+  padding: 10px 15px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.campaign-form button:hover, .email-form button:hover {
+  background: #0056b3;
+}
+
+
+.campaign-table, .email-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.campaign-table th, .campaign-table td,
+.email-table th, .email-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.campaign-table th, .email-table th {
+  background: #007bff;
+  color: white;
+}
+
+.campaign-table tr:nth-child(even),
+.email-table tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+button.edit {
+  background: #ffc107;
+}
+
+button.delete {
+  background: #dc3545;
+}
+
+button.manage-emails {
+  background: #17a2b8;
+}
+
+button.save, button.close-emails {
+  background: #28a745;
+}
+
+button.edit:hover {
+  background: #e0a800;
+}
+
+button.delete:hover {
+  background: #c82333;
+}
+
+button.manage-emails:hover {
+  background: #138496;
+}
+
+button.save:hover, button.close-emails:hover {
+  background: #218838;
+}
+
+.email-management {
+  margin-top: 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.email-management h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .campaign-form, .email-form {
+    flex-direction: column;
+  }
+  
+  .campaign-form input, .email-form input, .email-form textarea, .campaign-form select {
+    width: 100%;
+  }
+  
+  .campaign-table, .email-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* .email-campaigns-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.campaign-form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.campaign-form h2 {
+  margin-bottom: 20px;
+}
+
+.campaign-form label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.campaign-form input,
+.campaign-form select,
+.campaign-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.campaign-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.campaign-form button:hover {
+  background-color: #0056b3;
+}
+
+.campaign-list h2 {
+  margin-bottom: 20px;
+}
+
+.campaign-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+} */
+

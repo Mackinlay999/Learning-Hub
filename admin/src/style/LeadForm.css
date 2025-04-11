@@ -1,0 +1,77 @@
+/* Container */
+.LF-lead-form {
+    width: 100%;
+    max-width: 350px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Heading */
+.LF-lead-form h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Input fields */
+.LF-input,
+.LF-select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 300px !important;
+    transition: border 0.3s ease;
+}
+
+.LF-input:focus,
+.LF-select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button */
+.LF-submit {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff !important;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.LF-submit:hover {
+    background-color: #0056b3;
+}
+.LF-select {
+   width: 500px !important;
+   
+}
+.LF-btn:hover{
+    background-color: #0056b3 !important;
+    
+    
+}
+.LF-btn{
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff !important;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.LF-btn{
+    background-color: red !important;
+}

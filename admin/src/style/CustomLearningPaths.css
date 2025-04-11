@@ -1,0 +1,91 @@
+.CLP-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .CLP-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .CLP-description {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .CLP-form {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .CLP-form input,
+  .CLP-form button {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .CLP-form button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .CLP-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .CLP-list h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .CLP-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .CLP-table th,
+  .CLP-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .CLP-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .CLP-table button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .CLP-table button:last-child {
+    background-color: #dc3545;
+  }
+  
+  @media (max-width: 768px) {
+    .CLP-form {
+      grid-template-columns: 1fr;
+    }
+  
+    .CLP-table {
+      font-size: 0.9rem;
+    }
+  
+    .CLP-title {
+      font-size: 1.5rem;
+    }
+  }
+  

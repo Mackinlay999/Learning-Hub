@@ -1,0 +1,92 @@
+/* Modal Background */
+.modal-overlay {
+    position:absolute;
+    top: 160px;
+    z-index: +1;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(0, 0, 0, 0.5); */
+    display: flex;
+    margin-top: 700px !important;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Modal Container */
+  .modal-container {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+  }
+  
+  /* Close Button */
+  .career-close-btn {
+    position: absolute;
+    top: 0;
+    color: red;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 36px;
+    cursor: pointer;
+  }
+  
+  /* Form Fields */
+  .career-form input,
+  .career-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Phone Input */
+  .phone-input {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .phone-input select {
+    width: 30%;
+  }
+  
+  .phone-input input {
+    flex: 1;
+  }
+  
+  /* Consent Text */
+  .consent-text {
+    font-size: 10px;
+    color: #666;
+    margin-top: 10px;
+  }
+  
+  .consent-text a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  /* Download Button */
+  .download-btn {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top:2px;
+  }
+  
+  .download-btn:hover {
+    background-color: #0056b3;
+  }
+  

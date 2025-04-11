@@ -1,0 +1,377 @@
+.recruiters-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px;
+    background-color: white;
+  }
+  
+  .recruiters-content {
+    max-width: 50%;
+  }
+  
+  .recruiters-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #be2929;
+    margin-bottom: 20px;
+  }
+  
+  .recruiters-description {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .recruiters-btn {
+    background-color: #b30000;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .recruiters-btn:hover {
+    background-color: #B71C1C;
+  }
+  
+  .recruiters-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+  }
+  .recruiters-container1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 100px;
+    /* background-image: linear-gradient(to right, #05152b 0%, rgba(16, 35, 60, 0.91) 46%, rgba(88, 98, 113, 0.8) 100%); */
+    background-color: white;
+    color: black;
+  }
+  
+  .recruiters-content1 {
+    max-width: 50%;
+  }
+  
+  .recruiters-title1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .recruiters-title1 span {
+    color: #be2929;
+  }
+  
+  .recruiters-description1 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: black;
+
+  }
+  
+  .recruiters-highlight1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: black;
+
+  }
+  
+  .recruiters-buttons1 {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .recruiters-callback-btn1, .recruiters-post-job-btn1 {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .recruiters-callback-btn1 {
+    background-color: #b30000;
+    color: white;
+  }
+  
+  .recruiters-post-job-btn1 {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+  }
+  
+  .recruiters-callback-btn1:hover {
+    background-color: #B71C1C;
+
+  }
+  
+  .recruiters-post-job-btn1:hover {
+    background-color: white;
+    color: #003366;
+  }
+  
+  .recruiters-stats1 {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+  }
+  
+  .recruiters-stats1 div {
+    text-align: center;
+  }
+  
+  .recruiters-stats1 h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .recruiters-stats1 p {
+    font-size: 1rem;
+    color: white;
+  }
+  
+  .recruiters-image1 img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+  }
+
+  .recruiters-section2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 100px;
+    background-color: 
+    #ffffff;
+  }
+  
+  .recruiters-image2 {
+    flex: 1;
+    max-width: 50%;
+  }
+  
+  .recruiters-image2 img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .recruiters-content2 {
+    flex: 1;
+    max-width: 50%;
+    padding-left: 50px;
+  }
+  
+  .recruiters-heading2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #000;
+  }
+  
+  .recruiters-subheading2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #000;
+  }
+  
+  .recruiters-text2 {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 1024px) {
+    .recruiters-section2 {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .recruiters-content2 {
+      max-width: 100%;
+      padding-left: 0;
+    }
+  
+    .recruiters-image2 {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  
+
+  .recruiters-section3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 100px;
+    background-color: 
+    white;
+  }
+  
+  .recruiters-content3 {
+    flex: 1;
+    max-width: 50%;
+    padding-right: 50px;
+  }
+  
+  .recruiters-heading3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #000;
+  }
+  
+  .recruiters-text3 {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+  }
+  
+  .recruiters-image3 {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .recruiters-image3 img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  @media (max-width: 1024px) {
+    .recruiters-section3 {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .recruiters-content3 {
+      max-width: 100%;
+      padding-right: 0;
+    }
+  
+    .recruiters-image3 {
+      max-width: 100%;
+      margin-top: 20px;
+    }
+  }
+  .recruiters-section4 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 100px;
+    background-color:  #ffffff;
+}
+  
+  /* Left Side - Image */
+  .recruiters-image4 img {
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Right Side - Content */
+  .recruiters-content4 {
+    flex: 1;
+    max-width: 50%;
+    padding-left: 50px;
+  }
+  
+  .recruiters-heading4 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #000;
+  }
+  
+  .recruiters-text4 {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+ /* Mobile Styles for Recruiters Sections */
+@media (max-width: 768px) {
+  /* General Container Adjustments */
+  .recruiters-container,
+  .recruiters-container1,
+  .recruiters-section2,
+  .recruiters-section3,
+  .recruiters-section4 {
+      flex-direction: column;
+      text-align: center;
+      padding: 40px 20px;
+  }
+
+  /* Image Adjustments */
+  .recruiters-image img,
+  .recruiters-image1 img,
+  .recruiters-image2 img,
+  .recruiters-image3 img,
+  .recruiters-image4 img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+  }
+
+  /* Content Adjustments */
+  .recruiters-content,
+  .recruiters-content1,
+  .recruiters-content2,
+  .recruiters-content3,
+  .recruiters-content4 {
+      max-width: 100%;
+      padding: 0;
+  }
+
+  /* Title Adjustments */
+  .recruiters-title,
+  .recruiters-title1,
+  .recruiters-heading2,
+  .recruiters-heading3,
+  .recruiters-heading4 {
+      font-size: 1.8rem;
+  }
+
+  /* Description Adjustments */
+  .recruiters-description,
+  .recruiters-description1,
+  .recruiters-text2,
+  .recruiters-text3,
+  .recruiters-text4 {
+      font-size: 1rem;
+      line-height: 1.5;
+  }
+
+  /* Buttons Adjustments */
+  .recruiters-buttons1,
+  .recruiters-btn,
+  .recruiters-callback-btn1,
+  .recruiters-post-job-btn1 {
+      width: 100%;
+      font-size: 1rem;
+      padding: 10px;
+      margin-bottom: 10px;
+  }
+
+  /* Stats Adjustments */
+  .recruiters-stats1 {
+      flex-direction: column;
+      gap: 15px;
+  }
+}

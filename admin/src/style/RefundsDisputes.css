@@ -1,0 +1,67 @@
+.refunds-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .refund-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .refund-form input,
+  .refund-form select,
+  .refund-form button {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .refund-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .refund-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f9f9f9;
+    text-align: left;
+  }
+  
+  .refund-card p {
+    margin: 5px 0;
+  }
+  
+  .edit-btn {
+    background: orange;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .delete-btn {
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .refund-form {
+      flex-direction: column;
+    }
+  
+    .refund-card {
+      padding: 10px;
+    }
+  }
+  

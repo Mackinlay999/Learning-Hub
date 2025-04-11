@@ -1,0 +1,122 @@
+/* Container */
+.courses {
+  max-width: 850px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* Title */
+.page-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form Styles */
+.course-form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.course-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 180px;
+}
+
+.course-form button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.course-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Table Styles */
+.course-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.course-table th,
+.course-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.course-table th {
+  background-color: #f4f4f4;
+}
+
+/* Buttons */
+.course-table button {
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 2px;
+  transition: 0.3s;
+}
+
+.course-table .edit {
+  background-color: #ffc107;
+  color: white;
+}
+.C-tr th{
+  color: #333;
+}
+
+.course-table .delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.course-table .save {
+  background-color: #28a745;
+  color: white;
+}
+
+.course-table button:hover {
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .courses {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .course-table th, .course-table td {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .course-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .course-form input, .course-form button {
+    width: 90%;
+  }
+}

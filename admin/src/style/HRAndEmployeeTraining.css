@@ -1,0 +1,146 @@
+/* Main Container */
+.HR-main {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fefefe;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title */
+  .HR-title {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #222;
+  }
+  
+  .HR-subtitle {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  /* Form */
+  .HR-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .HR-form input,
+  .HR-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .HR-form button {
+    grid-column: span 2;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .HR-form button:hover {
+    background-color: #218838;
+  }
+  
+  /* Employee List */
+  .HR-list {
+    overflow-x: auto;
+  }
+  
+  .HR-section-title {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .HR-empty {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+  }
+  
+  /* Table */
+  .HR-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+  
+  .HR-table th,
+  .HR-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .HR-table th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .HR-table td button {
+    padding: 6px 10px;
+    margin: 2px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .HR-table td button:first-child {
+    background-color: #ffc107;
+    color: black;
+  }
+  
+  .HR-table td button:last-child {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  /* Responsive Breakpoints */
+  @media (max-width: 768px) {
+    .HR-form {
+      grid-template-columns: 1fr;
+    }
+  
+    .HR-form button {
+      grid-column: span 1;
+    }
+  
+    .HR-table {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .HR-title {
+      font-size: 22px;
+    }
+  
+    .HR-subtitle {
+      font-size: 14px;
+    }
+  
+    .HR-table th,
+    .HR-table td {
+      padding: 8px;
+    }
+  
+    .HR-table {
+      min-width: 100%;
+    }
+  }
+  

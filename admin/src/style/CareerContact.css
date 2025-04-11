@@ -1,0 +1,249 @@
+.contact-page {
+    /* font-family: Arial, sans-serif; */
+    padding: 50px;
+    text-align: center;
+  
+  }
+  
+  .map-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  
+  .map-image {
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+  }
+  
+  .content-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    background: #f9f9f9;
+   
+    border-radius: 10px;
+  }
+  
+  .text-content {
+    max-width: 400px;
+    text-align: left;
+  }
+  
+  .image-content {
+    max-width: 400px;
+  }
+  
+  .content-image {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .footer {
+    margin-top: 20px;
+    padding: 10px;
+    background: #333;
+    color: white;
+    text-align: center;
+  }
+
+
+
+
+  /* de,mo */
+
+
+
+  .g-form-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+
+    background: #f9f9f9;
+    border-radius: 10px;
+  }
+  
+  .image-content {
+    width: 900px;
+    /* max-width: 00px; */
+  }
+  
+  .form-image {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .g-form-content {
+    max-width: 500px;
+    text-align: left;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .career-button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .career-button :hover {
+    background-color: #0056b3;
+  }
+  
+  .footer {
+    margin-top: 20px;
+    padding: 10px;
+    background: #333;
+    color: white;
+    text-align: center;
+  }
+
+
+
+
+  /* GoogleMap.css */
+
+.contact-page {
+    /* font-family: Arial, sans-serif; */
+    padding: 20px;
+    text-align: center;
+    background: #f4f4f4;
+  }
+  
+  .map-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .map-image {
+    width: 80%;
+    max-width: 700px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 50px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image-content {
+    max-width: 400px;
+  }
+  .g-select{
+  
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 400px;
+  }
+  
+  .content-image {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .form-content {
+    max-width: 400px;
+    text-align: left;
+  }
+  
+  google-from {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  g-from {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  
+  .career-button  {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .career-button :hover {
+    background-color: #0056b3;
+  }
+  
+  .content-container {
+    padding: 20px;
+    background: #fff;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-content {
+    text-align: left;
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .footer {
+    margin-top: 20px;
+    padding: 10px;
+    background: #333;
+    color: white;
+    text-align: center;
+  }
+  .content-image{
+    width: 550px;
+  }
+
+  @media (max-width:764px){
+    .content-image{
+      width: 400px;
+    }
+  }
+  

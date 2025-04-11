@@ -1,0 +1,94 @@
+
+
+
+   /* Container Styling */
+.c-container {
+    /* margin-top: 46px; */
+    /* background-color: #cfd1d4; */
+    padding: 20px;
+   
+    display: flex;
+    flex-direction: column;
+    
+    width: 100%;
+  }
+  .filter-h2{
+    text-align: center;
+  }
+  
+  /* Form Styling */
+  .c-form {
+    display: flex;
+    justify-content: space-around !important;
+    flex-direction: row;
+      flex-wrap: wrap;
+  
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    /* max-width: 800px; */
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Label */
+  .c-form label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  /* Dropdown & Input Fields */
+  .c-select,
+  .c-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 10px;
+    width: 330px;
+    
+    cursor: pointer;
+  }
+  
+  /* File Input */
+  .c-input {
+    width: 330px;
+  }
+  
+  /* Apply Button */
+  .c-submit {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    width: 330px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .c-submit:hover {
+    background-color: #2c6ad6;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .c-form {
+      flex-direction: column;
+      gap: 12px;
+    }
+  
+    .c-select,
+    .c-input,
+    .c-submit {
+      width: 100%;
+    }
+  }
+  
+
+

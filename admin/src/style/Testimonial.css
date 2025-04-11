@@ -1,0 +1,142 @@
+/* Container */
+.testimonial-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  text-align: center;
+}
+
+.testimonial-container h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+/* Card Layout */
+.testimonial-card {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+}
+
+/* Left Section - Video Thumbnail */
+.testimonial-video {
+  position: relative;
+  width: 50%;
+}
+
+.testimonial-video img {
+  width: 100%;
+  border-radius: 10px;
+  
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+  cursor: pointer;
+}
+
+/* Right Section - Text Content */
+.testimonial-content {
+  width: 50%;
+  text-align: left;
+}
+
+.testimonial-content p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.quote-mark {
+  font-size: 22px;
+  font-weight: bold;
+  color: #aaa;
+}
+
+/* Name & Title */
+.testimonial-content h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  
+}
+
+.job-title {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Company Logo */
+.company-logo {
+  width: 50px;
+  margin-top: 10px;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .testimonial-card {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .testimonial-video {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .testimonial-video img {
+    width: 90%; /* Adjust width for a better mobile fit */
+  }
+
+  .play-button {
+    font-size: 20px;
+    padding: 15px;
+  }
+
+  .testimonial-content {
+    width: 100%;
+    text-align: center;
+  }
+
+  .testimonial-content p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .quote-mark {
+    font-size: 20px;
+  }
+
+  .testimonial-content h3 {
+    font-size: 18px;
+    margin-top: 8px;
+  }
+
+  .job-title {
+    font-size: 13px;
+  }
+
+  .company-logo {
+    width: 40px;
+    margin-top: 8px;
+  }
+}

@@ -1,0 +1,165 @@
+/* ====== Container ====== */
+.APT-main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+  }
+  
+  /* ====== Title & Subtitle ====== */
+  .APT-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #34495e;
+    margin-bottom: 5px;
+  }
+  
+  .APT-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    color: #7f8c8d;
+    margin-bottom: 25px;
+  }
+  
+  /* ====== Form Styles ====== */
+  .APT-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+  }
+  
+  .APT-form input,
+  .APT-form select {
+    flex: 1 1 calc(48% - 10px);
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fdfdfd;
+    transition: border-color 0.3s ease;
+  }
+  
+  .APT-form input:focus,
+  .APT-form select:focus {
+    outline: none;
+    border-color: #3498db;
+  }
+  
+  .APT-form button {
+    flex: 1 1 100%;
+    padding: 10px;
+    background-color: #2ecc71;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .APT-form button:hover {
+    background-color: #27ae60;
+  }
+  
+  /* ====== Table Styles ====== */
+  .APT-section-title {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .APT-empty {
+    color: #bdc3c7;
+    text-align: center;
+    font-style: italic;
+    margin-top: 20px;
+  }
+  
+  .APT-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .APT-table th,
+  .APT-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ecf0f1;
+  }
+  
+  .APT-table th {
+    background-color: #f8f9fa;
+    color: #34495e;
+    font-weight: 600;
+  }
+  
+  .APT-table td {
+    color: #555;
+  }
+  
+  .APT-table td button {
+    padding: 6px 10px;
+    margin: 0 3px;
+    font-size: 13px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .APT-table td button:first-child {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .APT-table td button:first-child:hover {
+    background-color: #2980b9;
+  }
+  
+  .APT-table td button:last-child {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  .APT-table td button:last-child:hover {
+    background-color: #c0392b;
+  }
+  
+  /* ====== Responsive Styles ====== */
+  @media (max-width: 768px) {
+    .APT-form {
+      flex-direction: column;
+    }
+  
+    .APT-form input,
+    .APT-form select,
+    .APT-form button {
+      flex: 1 1 100%;
+    }
+  
+    .APT-table th,
+    .APT-table td {
+      padding: 10px;
+      font-size: 13px;
+    }
+  
+    .APT-title {
+      font-size: 1.6rem;
+    }
+  
+    .APT-subtitle {
+      font-size: 0.95rem;
+    }
+  }
+  

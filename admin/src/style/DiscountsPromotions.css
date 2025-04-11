@@ -1,0 +1,83 @@
+.discounts-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .discount-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .discount-form input,
+  .discount-form button {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .discount-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .discount-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f9f9f9;
+    text-align: left;
+  }
+  
+  .discount-card p {
+    margin: 5px 0;
+  }
+  
+  .apply-btn {
+    background: green;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .edit-btn {
+    background: orange;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .remove-btn {
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  .d-btn{
+    background-color:blue;
+    color: white;
+  }
+  .d-btn:hover{
+    background: #003366;
+  
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .discount-form {
+      flex-direction: column;
+    }
+  
+    .discount-card {
+      padding: 10px;
+    }
+  }
+  

@@ -1,0 +1,210 @@
+
+/* Dropdown Menu */
+.program-dropdown-menu-container {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    padding: 20px;
+    z-index: 1000;
+  }
+  
+  .program-dropdown-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  /* Sidebar - Program Categories */
+  .program-dropdown-sidebar {
+    width: 20%;
+    border-right: 2px solid #eee;
+    padding-right: 20px;
+  }
+  
+  .program-dropdown-sidebar-title {
+    font-size: 1.4rem;
+    font-weight: bolder;
+    color: #d32f2f;
+    margin-bottom: 10px;
+  }
+  
+  .program-dropdown-sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #333333;
+    transition: background-color 0.3s ease;
+  }
+  
+  .program-dropdown-sidebar-item:hover {
+    background-color: #ffc107a7; /* Gold accent on hover */
+    color: #000;
+  }
+  
+  /* Program Cards - Horizontal Layout */
+  .program-dropdown-2 {
+    width: 50%;
+    padding: 0 20px;
+  }
+  
+  .program-dropdown-grid2 {
+    display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  gap: 15px;
+  flex-wrap: wrap;
+  }
+  
+  .program-dropdown-card2 {
+    background: #f8f8f8;
+    color: black;
+    padding: 15px;
+    border-radius: 5px;
+
+    transition: transform 0.3s;
+    width: 280px;  /* Fixed width */
+
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    width: 290px;  /* Fixed width */
+
+    height: 130px; /* Fixed height */
+    display: flex;
+    flex-direction: column;  /* Arrange items vertically inside the card */
+    justify-content: space-between; /* Space out title, duration, and mode */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .program-dropdown-card2:hover {
+    transform: scale(1.05); /* Slightly enlarge the card */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
+    background: #ffc107a7;
+    color: black;
+    font-weight: 600;
+  }
+  
+  .program-dropdown-card2 h6 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .program-dropdown-card2 p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  
+  
+  
+  /* Quick Links */
+  .program-dropdown-quick-links {
+    width: 30%;
+  }
+  
+  .program-dropdown-quick-links h5 {
+    color: #d32f2f;
+  }
+  
+  .program-dropdown-quick-link-item {
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .program-dropdown-quick-link-item:hover {
+    background-color: #ffc107a7;
+    color: #000;
+  }
+  
+  /* Close Button */
+  .program-dropdown-close-btn1 {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #d32f2f;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .program-dropdown-close-btn1:hover {
+    color: #b71c1c;
+  }
+  
+  @media (max-width: 768px) {
+    .program-dropdown-menu-container {
+      top: 80px; /* Adjusted top positioning for smaller screens */
+      padding: 15px;
+    }
+  
+    .program-dropdown-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    /* Sidebar - Program Categories */
+    .program-dropdown-sidebar {
+      width: 100%;
+      padding-right: 0;
+      margin-bottom: 15px;
+      border-right: none;
+    }
+  
+    .program-dropdown-sidebar-item {
+      justify-content: center;
+      padding: 12px;
+    }
+  
+    /* Program Cards - Vertical Layout */
+    .program-dropdown-2 {
+      width: 100%;
+      padding: 0;
+    }
+  
+    .program-dropdown-grid2 {
+      grid-template-columns: 1fr; /* Stack cards vertically */
+      gap: 10px;
+    }
+  
+    .program-dropdown-card2 {
+      width: 100%;
+      height: auto;
+      padding: 12px;
+    }
+  
+    .program-dropdown-card2 h6 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+  
+    .program-dropdown-card2 p {
+      font-size: 0.9rem;
+    }
+  
+    /* Quick Links */
+    .program-dropdown-quick-links {
+      width: 100%;
+      margin-top: 15px;
+    }
+  
+    .program-dropdown-quick-link-item {
+      text-align: center;
+      padding: 12px;
+    }
+  
+    /* Close Button */
+    .program-dropdown-close-btn1 {
+      top: 8px;
+      right: 8px;
+      font-size: 1rem;
+    }
+  }
+  
+  
