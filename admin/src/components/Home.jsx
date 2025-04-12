@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
   Container,
   Row,
@@ -45,6 +46,35 @@ const fadeInUp = {
 };
 
 const Home = () => {
+  // State variables for holding fetched data
+  const [totalLeads, setTotalLeads] = useState(0);
+  const [activeStudents, setActiveStudents] = useState(0);
+  const [courseCount, setCourseCount] = useState(0);
+  const [revenue, setRevenue] = useState(0);
+  const [paymentStatus, setPaymentStatus] = useState({
+    paid: 0,
+    pending: 0,
+    overdue: 0,
+  });
+
+  // Fetch data from backend API
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/api/dashboard") // Replace with your backend endpoint
+      .then((response) => {
+        // Assuming response contains an object with total leads, active students, course count, and revenue info
+        const { leads, students, courses, revenue, payments } = response.data;
+        setTotalLeads(leads);
+        setActiveStudents(students);
+        setCourseCount(courses);
+        setRevenue(revenue.totalRevenue);
+        setPaymentStatus(payments);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching data:", error);
+      });
+  }, []);
+
   return (
     <Container fluid className="p-4 bg-light min-vh-100 home-dashboard">
       {/* Animated Header */}
@@ -79,9 +109,9 @@ const Home = () => {
 
       {/* Dashboard Overview Cards */}
       <Row className="g-3">
-        {[{ title: "Total Leads", value: 250, link: "/leads" },
-          { title: "Active Students", value: 120, link: "/students" },
-          { title: "Course Count", value: 15, link: "/courses" }]
+        {[{ title: "Total Leads", value: totalLeads, link: "/leads" },
+          { title: "Active Students", value: activeStudents, link: "/students" },
+          { title: "Course Count", value: courseCount, link: "/courses" }]
           .map((item, idx) => (
             <Col md={4} sm={6} key={idx}>
               <motion.div
@@ -126,8 +156,8 @@ const Home = () => {
                   </BarChart>
                 </ResponsiveContainer>
                 <div className="mt-3">
-                  <p>Total Revenue: $15,000</p>
-                  <p>Revenue This Month: $3,000</p>
+                  <p>Total Revenue: ${revenue}</p>
+                  <p>Revenue This Month: ${revenue * 0.2}</p>
                 </div>
               </Card.Body>
             </Card>
@@ -147,15 +177,15 @@ const Home = () => {
                 <div className="d-flex justify-content-around">
                   <div>
                     <h5>Paid</h5>
-                    <p>75%</p>
+                    <p>{paymentStatus.paid}%</p>
                   </div>
                   <div>
                     <h5>Pending</h5>
-                    <p>20%</p>
+                    <p>{paymentStatus.pending}%</p>
                   </div>
                   <div>
                     <h5>Overdue</h5>
-                    <p>5%</p>
+                    <p>{paymentStatus.overdue}%</p>
                   </div>
                 </div>
               </Card.Body>

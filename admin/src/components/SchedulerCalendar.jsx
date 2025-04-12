@@ -1,35 +1,75 @@
-// src/components/SchedulerCalendar.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction'; // for selectable, drag & drop
+import '../style/scheduler.css'; // Custom styles for the calendar
 
 const SchedulerCalendar = () => {
-  const [events, setEvents] = useState([
-    { title: 'Team Meeting', date: '2025-04-15' },
-    { title: 'Assignment Submission', date: '2025-04-17' },
-  ]);
+  const [events, setEvents] = useState([]);
+  
+  // Fetch events from local storage on initial load
+  useEffect(() => {
+    const savedEvents = JSON.parse(localStorage.getItem('events')) || [];
+    setEvents(savedEvents);
+  }, []);
+  
+  // Persist events to local storage whenever they change
+  useEffect(() => {
+    localStorage.setItem('events', JSON.stringify(events));
+  }, [events]);
 
+  // Handle event creation
   const handleDateSelect = (selectInfo) => {
     const title = prompt('Enter event title:');
+    const description = prompt('Enter event description (optional):');
     let calendarApi = selectInfo.view.calendar;
     calendarApi.unselect();
 
     if (title) {
       const newEvent = {
         title,
+        description,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
         allDay: selectInfo.allDay,
       };
-      calendarApi.addEvent(newEvent);
+      setEvents((prevEvents) => [...prevEvents, newEvent]);
+    } else {
+      alert("Event title is required!");
     }
   };
 
+  // Handle event click (deleting or editing)
   const handleEventClick = (clickInfo) => {
-    if (window.confirm(`Delete event "${clickInfo.event.title}"?`)) {
-      clickInfo.event.remove();
+    const action = prompt(
+      `Event "${clickInfo.event.title}"\n1. Delete\n2. Edit\n3. Cancel`
+    );
+
+    if (action === "1") {
+      if (window.confirm(`Delete event "${clickInfo.event.title}"?`)) {
+        setEvents((prevEvents) =>
+          prevEvents.filter((event) => event.start !== clickInfo.event.start)
+        );
+        clickInfo.event.remove();
+      }
+    } else if (action === "2") {
+      const newTitle = prompt('Enter new title:', clickInfo.event.title);
+      const newDescription = prompt('Enter new description:', clickInfo.event.extendedProps.description);
+
+      if (newTitle) {
+        clickInfo.event.setProp('title', newTitle);
+        clickInfo.event.setExtendedProps({ description: newDescription });
+        setEvents((prevEvents) =>
+          prevEvents.map((event) =>
+            event.start === clickInfo.event.start
+              ? { ...event, title: newTitle, description: newDescription }
+              : event
+          )
+        );
+      } else {
+        alert("Event title is required for editing!");
+      }
     }
   };
 

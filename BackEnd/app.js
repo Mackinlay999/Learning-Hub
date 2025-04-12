@@ -26,6 +26,9 @@ const websiteContentRoutes = require("./Route/websiteContentRoutes");
 const emailCampaignRoutes = require("./Route/emailCampaignRoutes"); // ⬅️ Import
 const funnelEntryRoutes = require("./Route/funnelEntryRoutes.js");
 const discountRoutes = require("./Route/discountRoutes");
+const dashboardRoutes = require('./Route/dashboardRoutes');
+
+
 
 
 
@@ -73,7 +76,8 @@ app.use("/api", websiteContentRoutes);
 app.use("/api", emailCampaignRoutes); 
 app.use("/api", funnelEntryRoutes);
 app.use("/api", discountRoutes);
-
+// Add the dashboard route
+app.use('/api', dashboardRoutes);
 
 
 module.exports = app;
