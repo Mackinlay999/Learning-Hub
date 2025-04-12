@@ -16,8 +16,6 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
 import { FaSearch, FaBell } from "react-icons/fa";
 import { motion } from "framer-motion";
 import "../style/Home.css";
@@ -57,8 +55,8 @@ const Home = () => {
       >
         <Row className="mb-4 align-items-center dashboard-header">
           <Col md={6}>
-            <h4>Hello Firoz 👋</h4>
-            <p>Let’s learn something new today!</p>
+            <h4>Hello Admin 👋</h4>
+            <p>Welcome to your Dashboard</p>
           </Col>
           <Col
             md={6}
@@ -79,35 +77,34 @@ const Home = () => {
         </Row>
       </motion.div>
 
-      {/* Overview Cards */}
+      {/* Dashboard Overview Cards */}
       <Row className="g-3">
-        {[
-          { title: "Order in progress", value: 15, variant: "danger" },
-          { title: "Certificates Earned", value: 90, variant: "primary" },
-          { title: "Course Completed", value: 70, variant: "success" },
-          { title: "Community Support", value: 320, variant: "warning" },
-        ].map((item, idx) => (
-          <Col md={3} sm={6} key={idx}>
-            <motion.div
-              custom={idx}
-              initial="hidden"
-              animate="visible"
-              variants={fadeInUp}
-              whileHover={{ scale: 1.05 }}
-              className="h-100"
-            >
-              <Card className="shadow-sm card-stats">
-                <Card.Body>
-                  <Card.Title className="fs-6">{item.title}</Card.Title>
-                  <h3 className={`text-${item.variant}`}>{item.value}</h3>
-                </Card.Body>
-              </Card>
-            </motion.div>
-          </Col>
-        ))}
+        {[{ title: "Total Leads", value: 250, link: "/leads" },
+          { title: "Active Students", value: 120, link: "/students" },
+          { title: "Course Count", value: 15, link: "/courses" }]
+          .map((item, idx) => (
+            <Col md={4} sm={6} key={idx}>
+              <motion.div
+                custom={idx}
+                initial="hidden"
+                animate="visible"
+                variants={fadeInUp}
+                whileHover={{ scale: 1.05 }}
+                className="h-100"
+              >
+                <Card className="shadow-sm card-stats">
+                  <Card.Body>
+                    <Card.Title className="fs-6">{item.title}</Card.Title>
+                    <h3>{item.value}</h3>
+                    <Button variant="link" href={item.link}>View</Button>
+                  </Card.Body>
+                </Card>
+              </motion.div>
+            </Col>
+          ))}
       </Row>
 
-      {/* Charts */}
+      {/* Revenue & Payment Status */}
       <Row className="mt-4 g-3">
         <Col md={6}>
           <motion.div
@@ -118,7 +115,7 @@ const Home = () => {
           >
             <Card className="shadow-sm chart-card h-100">
               <Card.Body>
-                <Card.Title>Activity Hours</Card.Title>
+                <Card.Title>Revenue</Card.Title>
                 <ResponsiveContainer width="100%" height={200}>
                   <BarChart data={activityData}>
                     <CartesianGrid strokeDasharray="3 3" />
@@ -129,9 +126,8 @@ const Home = () => {
                   </BarChart>
                 </ResponsiveContainer>
                 <div className="mt-3">
-                  <p>Time spent: 28h (143%)</p>
-                  <p>Lessons Done: 50 (84%)</p>
-                  <p>Exams Passed: 10 (100%)</p>
+                  <p>Total Revenue: $15,000</p>
+                  <p>Revenue This Month: $3,000</p>
                 </div>
               </Card.Body>
             </Card>
@@ -147,16 +143,20 @@ const Home = () => {
           >
             <Card className="shadow-sm chart-card h-100">
               <Card.Body>
-                <Card.Title>Performance</Card.Title>
-                <div className="text-center my-4">
-                  <motion.h2
-                    className="text-success"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    9.301
-                  </motion.h2>
-                  <p>5th in Leaderboard</p>
-                  <ProgressBar now={75} label="75%" />
+                <Card.Title>Payment Status</Card.Title>
+                <div className="d-flex justify-content-around">
+                  <div>
+                    <h5>Paid</h5>
+                    <p>75%</p>
+                  </div>
+                  <div>
+                    <h5>Pending</h5>
+                    <p>20%</p>
+                  </div>
+                  <div>
+                    <h5>Overdue</h5>
+                    <p>5%</p>
+                  </div>
                 </div>
               </Card.Body>
             </Card>
@@ -164,43 +164,9 @@ const Home = () => {
         </Col>
       </Row>
 
-      {/* Submission & Sidebar */}
-      <Row className="mt-4 g-3">
-      <Col md={4}>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-          >
-            {/* Profile Card */}
-            <Card className="shadow-sm mb-3 text-center profile-card">
-              <Card.Body>
-                <motion.img
-                  src="https://via.placeholder.com/80"
-                  alt="profile"
-                  className="profile-img mb-2"
-                  whileHover={{ scale: 1.1 }}
-                />
-                <h6 className="mb-0">Md. Firoz Ahmed</h6>
-                <small className="text-muted">UI/UX Student</small>
-              </Card.Body>
-            </Card>
-
-            {/* Community Groups */}
-            <Card className="shadow-sm community-card">
-              <Card.Body>
-                <Card.Title>Community Groups</Card.Title>
-                <ul className="list-unstyled mt-3">
-                  <li className="mb-2">🔹 Design Community USA (112k)</li>
-                  <li className="mb-2">📢 SEO Helpline 24/7 (78k)</li>
-                  <li>🌐 UI/UX Worldwide (498k)</li>
-                </ul>
-              </Card.Body>
-            </Card>
-          </motion.div>
-        </Col>
-        <Col md={8}>
+      {/* Attendance Snapshot */}
+      <Row className="mt-4">
+        <Col md={6}>
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -209,35 +175,50 @@ const Home = () => {
           >
             <Card className="shadow-sm h-100">
               <Card.Body>
-                <Card.Title>Upcoming Submission</Card.Title>
-                <p className="mb-1">Wireframe E-Course Dashboard</p>
-                <small className="text-muted">UI/UX Design for Beginner</small>
-                <div className="d-flex justify-content-between align-items-center mt-3">
-                  <span className="text-warning fw-bold">
-                    Thu 21 April 2022
-                  </span>
-                  <motion.div whileTap={{ scale: 0.95 }}>
-                    <Button variant="primary">Submit Task</Button>
-                  </motion.div>
-                </div>
+                <Card.Title>Attendance Snapshot</Card.Title>
+                <p>Total Attendance: 85%</p>
+                <ProgressBar now={85} label="85%" />
               </Card.Body>
             </Card>
           </motion.div>
         </Col>
-        {/* Calendar */}
-        <Row className="mt-4">
-          <Col>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeInUp}
-            >
-              <SchedulerCalendar />
-            </motion.div>
-          </Col>
-        </Row>
-        
+      </Row>
+
+      {/* Today's Events */}
+      <Row className="mt-4">
+        <Col md={12}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <Card className="shadow-sm h-100">
+              <Card.Body>
+                <Card.Title>Today's Events</Card.Title>
+                <ul>
+                  <li>Live Class: React Basics - 10:00 AM</li>
+                  <li>Webinar: Advanced JavaScript - 2:00 PM</li>
+                  <li>Live Class: Node.js Fundamentals - 4:00 PM</li>
+                </ul>
+              </Card.Body>
+            </Card>
+          </motion.div>
+        </Col>
+      </Row>
+
+      {/* Calendar */}
+      <Row className="mt-4">
+        <Col>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+          >
+            <SchedulerCalendar />
+          </motion.div>
+        </Col>
       </Row>
     </Container>
   );

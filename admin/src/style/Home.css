@@ -1,124 +1,148 @@
 /* Home.css */
 
-.home-dashboard {
-  background-color: #ffffff;
-  color: #333333;
+/* Global Styles */
+body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7fb;
 }
 
-.dashboard-header h4 {
-  color: #D32F2F;
+.home-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h4 {
+  font-size: 28px;
   font-weight: 600;
 }
 
-.dashboard-header p {
-  color: #555;
-  margin-top: -5px;
-}
-
 .search-bar {
+  width: 250px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #dcdcdc;
   display: flex;
   align-items: center;
-  border: 1px solid #ccc;
-  padding: 6px 10px;
-  border-radius: 25px;
-  background-color: #fff;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 5px rgba(0,0,0,0.05);
 }
 
 .search-bar input {
   border: none;
   outline: none;
-  background: transparent;
-  width: 150px;
+  width: 100%;
+  padding-left: 10px;
 }
 
-.search-bar:hover {
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+.dashboard-header .me-2 {
+  font-size: 20px;
+  color: #aaa;
 }
 
-/* Cards */
+/* Card Styles */
 .card-stats {
-  border-left: 5px solid #D32F2F;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 12px;
-}
-
-.card-stats:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-}
-
-.chart-card {
-  border-radius: 12px;
-}
-
-.profile-card .profile-img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #D32F2F;
-  transition: transform 0.3s ease;
-}
-
-.community-card ul li {
-  font-size: 0.95rem;
-  color: #333333;
-}
-
-/* Submission section */
-.card-title {
-  color: #D32F2F;
-  font-weight: 600;
-}
-
-button.btn-primary {
-  background-color: #D32F2F;
-  border: none;
-  padding: 8px 20px;
-  transition: background-color 0.3s ease;
   border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px;
 }
 
-button.btn-primary:hover {
-  background-color: #b71c1c;
+.card-stats h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
 }
 
-/* ProgressBar */
+.card-stats .fs-6 {
+  color: #777;
+}
+
+.card-stats button {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.card-stats button:hover {
+  color: #0056b3;
+}
+
+/* Chart Card Styling */
+.chart-card {
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.chart-card .mt-3 {
+  margin-top: 15px;
+}
+
+.chart-card .d-flex {
+  justify-content: space-between;
+}
+
+.chart-card h5 {
+  font-weight: 600;
+  color: #333;
+}
+
+.chart-card p {
+  color: #777;
+}
+
 .progress-bar {
-  background-color: #FFC107 !important;
+  border-radius: 20px;
+  background-color: #007bff;
 }
 
-/* Calendar custom styling */
-.react-calendar {
+.progress-bar .progress {
+  height: 20px;
+  border-radius: 20px;
+}
+
+/* Calendar */
+.scheduler-calendar {
+  margin-top: 40px;
+}
+
+.scheduler-calendar iframe {
   border: none;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
+  width: 100%;
+  height: 400px;
 }
 
-.react-calendar__tile--active {
-  background: #D32F2F !important;
-  color: #fff !important;
-}
-
-/* Responsive */
+/* Responsive Design */
 @media (max-width: 768px) {
-  .search-bar input {
-    width: 100px;
+  .search-bar {
+    width: 200px;
   }
 
   .dashboard-header h4 {
-    font-size: 1.2rem;
+    font-size: 22px;
   }
 
-  .dashboard-header p {
-    font-size: 0.9rem;
+  .dashboard-header .me-2 {
+    font-size: 18px;
   }
 
-  .profile-card,
-  .community-card {
-    text-align: center;
+  .card-stats h3 {
+    font-size: 20px;
+  }
+
+  .card-stats {
+    padding: 15px;
+  }
+
+  .chart-card {
+    padding: 15px;
+  }
+
+  .scheduler-calendar iframe {
+    height: 300px;
   }
 }
