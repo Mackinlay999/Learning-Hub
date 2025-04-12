@@ -7,6 +7,7 @@ import {
   Card,
   Button,
   ProgressBar,
+  Spinner,
 } from "react-bootstrap";
 import {
   BarChart,
@@ -46,7 +47,6 @@ const fadeInUp = {
 };
 
 const Home = () => {
-  // State variables for holding fetched data
   const [totalLeads, setTotalLeads] = useState(0);
   const [activeStudents, setActiveStudents] = useState(0);
   const [courseCount, setCourseCount] = useState(0);
@@ -56,24 +56,33 @@ const Home = () => {
     pending: 0,
     overdue: 0,
   });
+  const [loading, setLoading] = useState(true);
 
-  // Fetch data from backend API
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/dashboard") // Replace with your backend endpoint
+      .get("http://localhost:3000/api/dashboard")
       .then((response) => {
-        // Assuming response contains an object with total leads, active students, course count, and revenue info
         const { leads, students, courses, revenue, payments } = response.data;
         setTotalLeads(leads);
         setActiveStudents(students);
         setCourseCount(courses);
         setRevenue(revenue.totalRevenue);
         setPaymentStatus(payments);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("There was an error fetching data:", error);
+        setLoading(false);
       });
   }, []);
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center min-vh-100">
+        <Spinner animation="border" />
+      </div>
+    );
+  }
 
   return (
     <Container fluid className="p-4 bg-light min-vh-100 home-dashboard">
@@ -88,10 +97,7 @@ const Home = () => {
             <h4>Hello Admin 👋</h4>
             <p>Welcome to your Dashboard</p>
           </Col>
-          <Col
-            md={6}
-            className="d-flex justify-content-end gap-3 align-items-center"
-          >
+          <Col md={6} className="d-flex justify-content-end gap-3 align-items-center">
             <motion.div
               whileFocus={{ scale: 1.03 }}
               whileHover={{ scale: 1.02 }}
