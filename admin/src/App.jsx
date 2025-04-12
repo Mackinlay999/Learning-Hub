@@ -27,6 +27,7 @@ import PaymentFailure from "./components/PaymentFailure";
 function App() {
   return (
     <Router>
+           
       <div className="App">
         <Navbar />
         <ToastContainer
@@ -35,6 +36,7 @@ function App() {
           hideProgressBar={false}
         />
         <Routes>
+        
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
