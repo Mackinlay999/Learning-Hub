@@ -1,0 +1,124 @@
+/* Home.css */
+
+.home-dashboard {
+  background-color: #ffffff;
+  color: #333333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-header h4 {
+  color: #D32F2F;
+  font-weight: 600;
+}
+
+.dashboard-header p {
+  color: #555;
+  margin-top: -5px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  border-radius: 25px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 150px;
+}
+
+.search-bar:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Cards */
+.card-stats {
+  border-left: 5px solid #D32F2F;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+}
+
+.card-stats:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.chart-card {
+  border-radius: 12px;
+}
+
+.profile-card .profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #D32F2F;
+  transition: transform 0.3s ease;
+}
+
+.community-card ul li {
+  font-size: 0.95rem;
+  color: #333333;
+}
+
+/* Submission section */
+.card-title {
+  color: #D32F2F;
+  font-weight: 600;
+}
+
+button.btn-primary {
+  background-color: #D32F2F;
+  border: none;
+  padding: 8px 20px;
+  transition: background-color 0.3s ease;
+  border-radius: 8px;
+}
+
+button.btn-primary:hover {
+  background-color: #b71c1c;
+}
+
+/* ProgressBar */
+.progress-bar {
+  background-color: #FFC107 !important;
+}
+
+/* Calendar custom styling */
+.react-calendar {
+  border: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.react-calendar__tile--active {
+  background: #D32F2F !important;
+  color: #fff !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-bar input {
+    width: 100px;
+  }
+
+  .dashboard-header h4 {
+    font-size: 1.2rem;
+  }
+
+  .dashboard-header p {
+    font-size: 0.9rem;
+  }
+
+  .profile-card,
+  .community-card {
+    text-align: center;
+  }
+}
