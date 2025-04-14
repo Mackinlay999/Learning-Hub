@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "./axios";
 import { useNavigate } from "react-router-dom";
-import "../style/PasswordReset.css"; // Import the CSS file
+import "../style/PasswordReset.css"; // Import your CSS
 
 const PasswordReset = () => {
   const [email, setEmail] = useState("");
@@ -18,10 +18,10 @@ const PasswordReset = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/forgetpassword", { email });
+      const response = await axios.post("/admin/forgetpassword", { email });
       alert(response.data.message);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       alert(error.response?.data?.message || "Error sending reset link.");
     }
   };
@@ -33,9 +33,12 @@ const PasswordReset = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/setNewPassword", { token, newPassword });
+      const response = await axios.post("/admin/setNewPassword", {
+        token,
+        newPassword,
+      });
       alert(response.data.message);
-      navigate('/Login');
+      navigate("/Login");
     } catch (error) {
       console.error(error);
       alert(error.response?.data?.message || "Error resetting password.");
@@ -45,9 +48,9 @@ const PasswordReset = () => {
   return (
     <div className="reset-container">
       <div className="reset-card">
-        <h1 className="reset-title">Password Reset</h1>
+        <h1 className="reset-title">Admin Password Reset</h1>
 
-        {/* Email Input and Generate Link */}
+        {/* Email Section */}
         <div className="reset-input-group">
           <label>Email</label>
           <input
@@ -55,14 +58,14 @@ const PasswordReset = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="reset-input"
-            placeholder="Enter your email"
+            placeholder="Enter your admin email"
           />
           <button onClick={handleGenerateResetLink} className="reset-btn reset-btn-blue">
-            Generate Reset Link
+            Send Reset Link
           </button>
         </div>
 
-        {/* Token Input */}
+        {/* Token Section */}
         <div className="reset-input-group">
           <label>Token</label>
           <div className="reset-input-wrapper">
@@ -71,7 +74,7 @@ const PasswordReset = () => {
               value={token}
               onChange={(e) => setToken(e.target.value)}
               className="reset-input"
-              placeholder="Enter the token"
+              placeholder="Enter the reset token"
             />
             <svg
               onClick={() => setIsTokenVisible(!isTokenVisible)}
@@ -86,7 +89,7 @@ const PasswordReset = () => {
           </div>
         </div>
 
-        {/* New Password Input */}
+        {/* New Password Section */}
         <div className="reset-input-group">
           <label>New Password</label>
           <div className="reset-input-wrapper">

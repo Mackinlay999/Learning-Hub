@@ -12,7 +12,9 @@ const AlumniController  =require("../Controller/Alumni")
 const leadController =require("../Controller/LeadController")
 const StudentController = require("../Controller/Studentpay") 
 const AttendanceController =require("../Controller/AttendanceController")
-
+const Admincontroller = require("../Controller/Adminlogin")
+const Verifyrole = require("../Utils/Verifyrole")
+const DeleteUser = require("../Utils/DeleteUser")
 
 const upload = require("../Utils/Multer");
 const { join } = require("path");
@@ -114,6 +116,20 @@ router.post("/createRecord", AttendanceController.createRecord);
 router.get("/getRecords", AttendanceController.getRecords);
 router.put("/updateRecord/:id", AttendanceController.updateRecord);
 router.delete("/deleteRecord/:id", AttendanceController.deleteRecord);
+
+
+
+// Adminroute
+
+router.post("/admin/register",  Admincontroller.register)
+router.get("/admin/alluser",  Admincontroller.getallrole)
+router.post("/admin/login",  Admincontroller.login)
+router.post("/admin/logout",  Admincontroller.logout)
+router.post("/admin/forgetpassword",  Admincontroller.forgetpassword)
+router.post("/admin/setNewPassword",  Admincontroller.setNewPassword)
+router.put("/admin/update-role", Verifyrole.verifyToken , Admincontroller.updateRole);
+router.get("/admin/me" ,  auth.authverify,  Admincontroller.me)
+router.delete("/admin/deleteUser", DeleteUser.User ,  Admincontroller.deleteUser);
 
 
 module.exports = router;

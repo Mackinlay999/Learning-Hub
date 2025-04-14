@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from './axios';
 import '../style/UserDetails.css';
 
 const Userdetails = () => {
@@ -13,26 +13,27 @@ const Userdetails = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/api/me', { withCredentials: true })
+      .get('/admin/me', { withCredentials: true })
       .then((response) => {
-        setName(response.data.username);
-        setEmail(response.data.email);
-        setNumber(response.data.number);
-        setResumeURL(response.data.resumeUrl); // Resume URL from backend
+        const { username, email, number, resumeUrl } = response.data;
+        setName(username);
+        setEmail(email);
+        setNumber(number);
+        setResumeURL(resumeUrl);
       })
       .catch((error) => {
         if (error.response && error.response.status === 401) {
-          alert('Unauthorized: Please log in first.');
+          alert('Unauthorized: Please log in.');
           navigate('/login');
         } else {
-          console.error('Error fetching user info:', error);
+          console.error('Error fetching admin info:', error);
         }
       });
   }, [navigate]);
 
   const handleSignOut = () => {
     axios
-      .post('http://localhost:3000/api/logout', {}, { withCredentials: true })
+      .post('/admin/logout', {}, { withCredentials: true })
       .then((response) => {
         alert(response.data.message);
         navigate('/login');
@@ -57,13 +58,13 @@ const Userdetails = () => {
     formData.append('resume', resume);
 
     axios
-      .post('http://localhost:3000/api/profileResume', formData, {
+      .post('http://localhost:3000/api/admin/profileResume', formData, {
         withCredentials: true,
         headers: { 'Content-Type': 'multipart/form-data' },
       })
       .then((response) => {
         alert('Resume uploaded successfully!');
-        setResumeURL(response.data.resumeUrl); // Update resume link
+        setResumeURL(response.data.resumeUrl);
       })
       .catch((error) => {
         console.error('Error uploading resume:', error);
@@ -73,17 +74,16 @@ const Userdetails = () => {
   return (
     <div className="user-container">
       <div className="user-card">
-        <h1 className="user-h1">User Profile</h1>
+        <h1 className="user-h1">Admin Profile</h1>
         <div className="info">
           <p><strong>Name:</strong> {name}</p>
           <p><strong>Email:</strong> {email}</p>
-          <p><strong>number:</strong> {number}</p>
-          {resumeURL && (
-            <p><strong>Resume:</strong> <a href={resumeURL} target="_blank" rel="noopener noreferrer">View Resume</a></p>
-          )}
+         
+         
         </div>
-        <input className='user-file' type="file" accept=".pdf,.doc,.docx" onChange={handleResumeUpload} />
-        <button onClick={handleUpload} className="upload-btn">Upload Resume</button>
+
+       
+
         <button onClick={handleSignOut} className="signout-btn">Sign Out</button>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "./axios";
 import "../style/LoginPortal.css";
 
 const LoginPortal = () => {
@@ -9,9 +9,10 @@ const LoginPortal = () => {
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
+  // Check if user is already logged in
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/me", { withCredentials: true }) // Removed unnecessary empty object
+      .get("/admin/me", { withCredentials: true })
       .then(() => {
         navigate("/userdetails");
       })
@@ -26,12 +27,13 @@ const LoginPortal = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (!email) return alert("Please Enter Valid Email");
-    if (!password) return alert("Please Fill Password");
+
+    if (!email) return alert("Please Enter a Valid Email");
+    if (!password) return alert("Please Enter Your Password");
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/login",
+        "/admin/login",
         { email, password },
         { withCredentials: true }
       );
@@ -50,8 +52,6 @@ const LoginPortal = () => {
       }
     }
   };
-     
-  
 
   return (
     <div className="login-container">
@@ -70,6 +70,7 @@ const LoginPortal = () => {
               required
             />
           </div>
+
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <div className="password-container">
@@ -90,6 +91,7 @@ const LoginPortal = () => {
               </span>
             </div>
           </div>
+
           <div className="button-group">
             <button type="submit" className="login-button">
               Login
@@ -99,9 +101,10 @@ const LoginPortal = () => {
               className="forgot-password"
               onClick={() => navigate("/PasswordReset")}
             >
-              Forget Password
+              Forgot Password
             </button>
           </div>
+
           <p className="register-link">
             Don’t have an account yet?{" "}
             <span onClick={() => navigate("/register")}>Create a new Account</span>

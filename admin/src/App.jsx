@@ -37,6 +37,11 @@ function App() {
 
   return (
     <Router>
+<<<<<<< HEAD
+           
+      <div className="App">
+        <Navbar />
+=======
       <div
         className="d-flex flex-column flex-md-row"
         style={{ minHeight: "100vh" }}
@@ -48,11 +53,38 @@ function App() {
           </div>
         )}
 
+>>>>>>> e81fc5466f075855b86849b1579f56cb10ba4dc8
         <ToastContainer
           position="top-right"
           autoClose={3000}
           hideProgressBar={false}
         />
+<<<<<<< HEAD
+        <Routes>
+        
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/PasswordReset" element={<PasswordReset />} />
+          <Route path="/Userdetails" element={<Userdetails />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/payment-failure" element={<PaymentFailure />} />
+          {/* <Route path="/program/:id" element={<ProgramDetail />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/payment-failure" element={<PaymentFailure />} />
+          <Route path="/program" element={<Program />} />
+          <Route path="/program/business" element={<BusinessAnalytics />} />
+          <Route path="/program/hr" element={<HrProgram />} />
+          <Route path="/program/marketing" element={<MarketingProgram />} />
+          <Route path="/program/sales" element={<SalesProgram />} />
+          <Route path="/program/finance" element={<FinanceProgram />} /> */}
+          
+          <Route path="*" element={<NotFound />} />{" "}
+          {/* Catch-all route for 404 pages */}
+        </Routes>
+        <Footer />
+=======
 
         {/* Main Content */}
         <div className="flex-grow-1" style={{ background: "#f8f9fa" }}>
@@ -107,6 +139,7 @@ function App() {
           {/* Footer (optional to show conditionally) */}
           {/* <Footer /> */}
         </div>
+>>>>>>> e81fc5466f075855b86849b1579f56cb10ba4dc8
       </div>
     </Router>
   );
