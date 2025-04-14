@@ -28,6 +28,7 @@ const funnelEntryRoutes = require("./Route/funnelEntryRoutes.js");
 const discountRoutes = require("./Route/discountRoutes");
 const dashboardRoutes = require('./Route/dashboardRoutes');
 
+const mentorRoutes = require("./Route/mentorRoutes");
 
 
 
@@ -102,6 +103,7 @@ app.use("/api", funnelEntryRoutes);
 app.use("/api", discountRoutes);
 // Add the dashboard route
 app.use('/api', dashboardRoutes);
+app.use("/api", mentorRoutes);
 
 
 module.exports = app;

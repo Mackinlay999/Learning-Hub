@@ -8,10 +8,13 @@ import { NavLink } from 'react-router-dom';
 import '../style/Sidebar.css';
 
 const sections = [
+  { name: "Login", icon: <ShieldCheck size={18} />, path: "/login" },
+
   { name: "Dashboard", icon: <ShieldCheck size={18} />, path: "/" },
   { name: "Super Admin Panel", icon: <ShieldCheck size={18} />, path: "/super-admin" },
   { name: "Lead & Student Management", icon: <Users size={18} />, path: "/lead-student" },
   { name: "Training Program", icon: <BookOpenCheck size={18} />, path: "/training-program" },
+  { name: "Mentor", icon: <ShieldCheck size={18} />, path: "/mentors" },
   { name: "Email Marketing", icon: <Mail size={18} />, path: "/email-marketing" },
   { name: "Finance & Payment", icon: <CreditCard size={18} />, path: "/finance-payment" },
   { name: "Corporate Training", icon: <Building2 size={18} />, path: "/corporate-training" },
