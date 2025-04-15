@@ -1,8 +1,8 @@
-import express from "express";
-import { getStudentById } from "../Controller/studentDetailController.js";
+const express = require("express");
+const StudentDetailController = require("../Controller/studentDetailController");
 
 const router = express.Router();
 
-router.get("/studentDetail/:id", getStudentById);
+router.get("/studentDetail/:id", StudentDetailController.getStudentById);
 
-export default router;
+module.exports = router;
