@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import Sidebar from "./components/Sidebar";
 import NotFound from "./components/NotFound";
 import "./style/App.css";
@@ -27,7 +27,7 @@ import CorporateTrainingEnterprice from "./components/CorporateTrainingEnterpric
 import AnalyticsAndReports from "./components/AnalyticsAndReports";
 import SupportAndFeedback from "./components/SupportAndFeedback";
 import RecruiterAndPlacementManagement from "./components/RecruiterAndPlacementManagement";
-
+// import Navbar  from "./components/Navbar"
 function App() {
   const [showSidebar, setShowSidebar] = useState(true);
 
@@ -37,11 +37,10 @@ function App() {
 
   return (
     <Router>
-<<<<<<< HEAD
-           
-      <div className="App">
-        <Navbar />
-=======
+
+    
+        {/* // <Navbar />  */}
+
       <div
         className="d-flex flex-column flex-md-row"
         style={{ minHeight: "100vh" }}
@@ -53,13 +52,13 @@ function App() {
           </div>
         )}
 
->>>>>>> e81fc5466f075855b86849b1579f56cb10ba4dc8
         <ToastContainer
           position="top-right"
           autoClose={3000}
           hideProgressBar={false}
         />
-<<<<<<< HEAD
+      
+           
         <Routes>
         
           <Route path="/" element={<Home />} />
@@ -67,9 +66,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/PasswordReset" element={<PasswordReset />} />
           <Route path="/Userdetails" element={<Userdetails />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
+          {/* <Route path="/Dashboard" element={<Dashboard />} /> */}
           <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/payment-failure" element={<PaymentFailure />} />
+        
           {/* <Route path="/program/:id" element={<ProgramDetail />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/payment-failure" element={<PaymentFailure />} />
@@ -80,26 +80,24 @@ function App() {
           <Route path="/program/sales" element={<SalesProgram />} />
           <Route path="/program/finance" element={<FinanceProgram />} /> */}
           
-          <Route path="*" element={<NotFound />} />{" "}
+        
           {/* Catch-all route for 404 pages */}
         </Routes>
-        <Footer />
-=======
+        {/* <Footer /> */}
+
 
         {/* Main Content */}
         <div className="flex-grow-1" style={{ background: "#f8f9fa" }}>
           {/* Toggle button for small screens */}
           <div className="d-md-none p-2 bg-white border-bottom shadow-sm sticky-top z-3">
-            <Button variant="outline-primary" onClick={toggleSidebar}>
-              <FaBars /> Menu
-            </Button>
+            
             {showSidebar && <Sidebar />}
           </div>
 
           {/* Page Content */}
           <div className="p-3">
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/Home" element={<Home />} />
               <Route path="/super-admin" element={<SuperAdminPanel />} />
               <Route
                 path="/lead-student"
@@ -132,14 +130,13 @@ function App() {
               <Route path="/Dashboard" element={<Dashboard />} />
               <Route path="/payment-success" element={<PaymentSuccess />} />
               <Route path="/payment-failure" element={<PaymentFailure />} />
-              <Route path="*" element={<NotFound />} />
+              {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
           </div>
 
-          {/* Footer (optional to show conditionally) */}
-          {/* <Footer /> */}
+          
         </div>
->>>>>>> e81fc5466f075855b86849b1579f56cb10ba4dc8
+
       </div>
     </Router>
   );

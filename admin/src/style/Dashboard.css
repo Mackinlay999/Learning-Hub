@@ -63,10 +63,7 @@
   
   /* Responsive Sidebar */
   @media (max-width: 768px) {
-    .d-sidebar {
-      width: 60px;
-      padding: 10px;
-    }
+    
   
     .d-sidebar-title {
       display: none;
@@ -79,6 +76,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .d-content {
+      flex: 1;
+      padding: 15px;
+      width: 100%;
+      margin: 0;
+      border-radius: 0;
+    }
+    .d-sidebar {
+      display: none;
     }
   
    

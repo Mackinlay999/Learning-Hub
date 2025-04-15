@@ -1,4 +1,4 @@
-/* Sidebar.css */
+Sidebar.css
 
 .custom-sidebar {
     width: 260px;
@@ -26,6 +26,7 @@
     font-size: 1.25rem;
     font-weight: 700;
     color: #0056b3;
+    
     text-align: center;
   }
   
@@ -34,6 +35,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+   
   }
   
   .sidebar-nav-link {
@@ -47,12 +49,14 @@
     text-decoration: none;
     transition: background 0.2s ease, color 0.2s ease;
     font-weight: 500;
+   
   }
   
   .sidebar-nav-link:hover {
     background-color: #e8f0ff;
     color: #0056b3;
     transform: translateX(3px);
+    
     box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
   }
   
@@ -65,6 +69,7 @@
   
   .sidebar-nav-link.active svg {
     color: #ffffff;
+    
   }
   
   .sidebar-nav-link svg {
@@ -81,6 +86,7 @@
   /* Scrollbar for sidebar if needed */
   .custom-sidebar::-webkit-scrollbar {
     width: 6px;
+   
   }
   .custom-sidebar::-webkit-scrollbar-thumb {
     background: #ccc;
@@ -102,9 +108,7 @@
       border-bottom: 1px solid #ddd;
     }
   
-    .sidebar-header {
-      display: none;
-    }
+    
   
     .sidebar-nav {
       flex-direction: row;
@@ -123,5 +127,9 @@
     .sidebar-nav-link svg {
       margin-right: 0.25rem;
     }
+    
+    
   }
+  
+  
   

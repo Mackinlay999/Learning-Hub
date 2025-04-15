@@ -10,7 +10,7 @@ const FinanceAndPayment = () => {
     <div>
         <h3>Finance & Payment Management </h3>
         <Transaction />
-        <RefundsDisputes />
+       
         <CommissionPayouts />
         {/* <Finances />
         <Report /> */}

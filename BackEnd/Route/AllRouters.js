@@ -15,6 +15,8 @@ const AttendanceController =require("../Controller/AttendanceController")
 const Admincontroller = require("../Controller/Adminlogin")
 const Verifyrole = require("../Utils/Verifyrole")
 const DeleteUser = require("../Utils/DeleteUser")
+const RevenueController = require("../Controller/RevenueController")
+const Studentrefund =require("../Controller/RefundsController")
 
 const upload = require("../Utils/Multer");
 const { join } = require("path");
@@ -131,5 +133,22 @@ router.put("/admin/update-role", Verifyrole.verifyToken , Admincontroller.update
 router.get("/admin/me" ,  auth.authverify,  Admincontroller.me)
 router.delete("/admin/deleteUser", DeleteUser.User ,  Admincontroller.deleteUser);
 
+
+
+// Revenue
+
+router.get("/getRevenue", RevenueController.getRevenue);
+router.post("/addRevenue", RevenueController.addRevenue);
+router.put("/updateRevenue/:id", RevenueController.updateRevenue);
+router.delete("/deleteRevenue/:id", RevenueController.deleteRevenue);
+
+
+
+// Student Refund
+
+router.get("/getAllStudentRefunds", Studentrefund.getAllStudentRefunds );
+router.post("/createStudentRefund", Studentrefund.createStudentRefund);
+router.put("/updateStudentRefund/:id", Studentrefund.updateStudentRefund );
+router.delete("/deleteStudentRefund/:id", Studentrefund.deleteStudentRefund );
 
 module.exports = router;

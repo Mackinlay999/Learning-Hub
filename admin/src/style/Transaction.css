@@ -72,3 +72,56 @@
     }
   }
   
+
+
+  /* Button Styles */
+.refund-btn {
+  background-color: #f0ad4e; /* Amber color for attention */
+  color: white;
+  padding: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effect */
+.refund-btn:hover {
+  background-color: #ec971f; /* Darker amber */
+  transform: scale(1.05); /* Slight scaling effect */
+}
+
+/* Active (click) Effect */
+.refund-btn:active {
+  background-color: #d89c1a; /* Even darker amber */
+  transform: scale(1);
+}
+
+/* Disabled Button */
+.refund-btn:disabled {
+  background-color: #e0e0e0;
+  color: #bdbdbd;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .refund-btn {
+    font-size: 14px;
+    padding: 8px 16px;
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .refund-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+.refund{
+  margin-top: 30px;
+}
