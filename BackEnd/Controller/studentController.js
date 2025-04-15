@@ -1,7 +1,7 @@
 const Student = require("../Models/studentModel.js");
 
 // Get all students
-export const getStudents = async (req, res) => {
+ const getStudents = async (req, res) => {
   try {
     const students = await Student.find();
     res.json(students);
@@ -11,7 +11,7 @@ export const getStudents = async (req, res) => {
 };
 
 // Get single student
-export const getStudentById = async (req, res) => {
+ const getStudentById = async (req, res) => {
   try {
     const student = await Student.findById(req.params.id);
     if (!student) return res.status(404).json({ message: "Student not found" });
@@ -22,7 +22,7 @@ export const getStudentById = async (req, res) => {
 };
 
 // Create student
-export const createStudent = async (req, res) => {
+ const createStudent = async (req, res) => {
   try {
     const student = new Student(req.body);
     const savedStudent = await student.save();
@@ -33,7 +33,7 @@ export const createStudent = async (req, res) => {
 };
 
 // Update student details
-export const updateStudent = async (req, res) => {
+const updateStudent = async (req, res) => {
   try {
     const student = await Student.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!student) return res.status(404).json({ message: "Student not found" });
@@ -44,7 +44,7 @@ export const updateStudent = async (req, res) => {
 };
 
 // Add attendance record
-export const addAttendance = async (req, res) => {
+const addAttendance = async (req, res) => {
   const { date, status } = req.body;
   if (!date || !status) {
     return res.status(400).json({ message: "Date and status are required" });
@@ -62,8 +62,8 @@ export const addAttendance = async (req, res) => {
   }
 };
 
-// Delete student
-export const deleteStudent = async (req, res) => {
+
+ const deleteStudent = async (req, res) => {
   try {
     const deleted = await Student.findByIdAndDelete(req.params.id);
     if (!deleted) return res.status(404).json({ message: "Student not found" });
