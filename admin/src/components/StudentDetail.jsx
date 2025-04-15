@@ -9,7 +9,7 @@ const StudentDetail = () => {
   const [student, setStudent] = useState(null);
 
   useEffect(() => {
-    axios.get(`/api/students/${id}`)
+    axios.get(`http://localhost:3000/api/students/${id}`)
       .then((res) => setStudent(res.data))
       .catch((err) => console.error("Error fetching student details", err));
   }, [id]);

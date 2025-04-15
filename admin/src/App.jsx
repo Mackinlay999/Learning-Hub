@@ -7,6 +7,13 @@ import "./style/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+<<<<<<< HEAD
+=======
+import { Button } from "react-bootstrap";
+import { FaBars } from "react-icons/fa";
+import { Students, StudentDetail } from "./components/studentManagement";
+
+>>>>>>> 8607f500d2be52bf3d1c7bdd273790f01f585607
 
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -76,8 +83,23 @@ function App() {
                 <Route path="/recruitment" element={<RecruiterAndPlacementManagement />} />
                 <Route path="/mentors" element={<Mentors />} />
 
+<<<<<<< HEAD
                 {/* 404 Page */}
                 <Route path="*" element={<NotFound />} />
+=======
+                <Route path="/login" element={<Login />} />
+                <Route path="/students" element={<Students />} />
+                <Route path="/student/:id" element={<StudentDetail />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/PasswordReset" element={<PasswordReset />} />
+                <Route path="/Userdetails" element={<Userdetails />} />
+                <Route path="/Dashboard" element={<Dashboard />} />
+                <Route path="/payment-success" element={<PaymentSuccess />} />
+                <Route path="/payment-failure" element={<PaymentFailure />} />
+                <Route path="/mentors" element={<Mentors />} /> {/* Catch-all route for 404 pages */}
+                
+                <Route path="*" element={<NotFound />} /> {/* Catch-all route for 404 pages */}
+>>>>>>> 8607f500d2be52bf3d1c7bdd273790f01f585607
               </Routes>
             </div>
           </div>
