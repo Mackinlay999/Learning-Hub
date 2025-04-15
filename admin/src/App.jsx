@@ -9,6 +9,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Button } from "react-bootstrap";
 import { FaBars } from "react-icons/fa";
+import { Students, StudentDetail } from "./components/studentManagement";
+
 
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -72,6 +74,8 @@ function App() {
                 <Route path="/recruitment" element={<RecruiterAndPlacementManagement />} />
 
                 <Route path="/login" element={<Login />} />
+                <Route path="/students" element={<Students />} />
+                <Route path="/student/:id" element={<StudentDetail />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/PasswordReset" element={<PasswordReset />} />
                 <Route path="/Userdetails" element={<Userdetails />} />

@@ -14,7 +14,7 @@ const Students = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const { data } = await axios.get("/api/students");
+        const { data } = await axios.get("http://localhost:3000/api/students");
         setStudents(data);
       } catch (error) {
         console.error("Error fetching students:", error);
@@ -26,7 +26,7 @@ const Students = () => {
 
   const handleDelete = useCallback(async (id) => {
     try {
-      await axios.delete(`/api/students/${id}`);
+      await axios.delete(`http://localhost:3000/api/students/${id}`);
       setStudents((prevStudents) => prevStudents.filter((student) => student._id !== id));
     } catch (error) {
       console.error("Error deleting student:", error);
@@ -107,7 +107,7 @@ const Students = () => {
         <div className="col-md-2 text-end">
           <motion.button
             className="students-btn btn-primary w-100"
-            onClick={() => navigate("/students/add")}
+            onClick={() => navigate("http://localhost:3000/students/add")}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -165,7 +165,7 @@ const Students = () => {
                 <td>
                   <motion.button
                     className="students-btn btn-sm btn-info me-2"
-                    onClick={() => navigate(`/students/${s._id}`)}
+                    onClick={() => navigate(`http://localhost:3000/students/${s._id}`)}
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -173,7 +173,7 @@ const Students = () => {
                   </motion.button>
                   <motion.button
                     className="students-btn btn-sm btn-warning me-2"
-                    onClick={() => navigate(`/students/edit/${s._id}`)}
+                    onClick={() => navigate(`http://localhost:3000/students/edit/${s._id}`)}
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -189,7 +189,7 @@ const Students = () => {
                   </motion.button>
                   <motion.button
                     className="students-btn btn-sm btn-dark ms-2"
-                    onClick={() => navigate(`/attendance/${s._id}`)}
+                    onClick={() => navigate(`http://localhost:3000/attendance/${s._id}`)}
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.2 }}
                   >

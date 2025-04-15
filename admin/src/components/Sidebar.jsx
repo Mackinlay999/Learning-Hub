@@ -9,7 +9,8 @@ import '../style/Sidebar.css';
 
 const sections = [
   { name: "Login", icon: <ShieldCheck size={18} />, path: "/login" },
-
+  { name: "Student-Management", icon: <ShieldCheck size={18} />, path: "/students" },
+  { name: "Student-Detail", icon: <ShieldCheck size={18} />, path: "/student/:id" },
   { name: "Dashboard", icon: <ShieldCheck size={18} />, path: "/" },
   { name: "Super Admin Panel", icon: <ShieldCheck size={18} />, path: "/super-admin" },
   { name: "Lead & Student Management", icon: <Users size={18} />, path: "/lead-student" },

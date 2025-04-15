@@ -1,64 +1,74 @@
-const Student = require("../Model/student.js");
+const Student = require("../Models/studentModel.js");
 
 // Get all students
-const getAllStudents = async (req, res) => {
+export const getStudents = async (req, res) => {
   try {
     const students = await Student.find();
-    res.status(200).json(students);
+    res.json(students);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching students", error: error.message });
+    res.status(500).json({ message: "Error fetching students", error });
   }
 };
 
-// Create a new student
-const createStudent = async (req, res) => {
-  try {
-    const { name, email, course, status, photo } = req.body;
-    const newStudent = new Student({ name, email, course, status, photo });
-    await newStudent.save();
-    res.status(201).json(newStudent);
-  } catch (error) {
-    res.status(500).json({ message: "Error creating student", error: error.message });
-  }
-};
-
-// Get a single student by ID
-const getStudentById = async (req, res) => {
+// Get single student
+export const getStudentById = async (req, res) => {
   try {
     const student = await Student.findById(req.params.id);
-    if (!student) {
-      return res.status(404).json({ message: "Student not found" });
-    }
-    res.status(200).json(student);
+    if (!student) return res.status(404).json({ message: "Student not found" });
+    res.json(student);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching student", error: error.message });
+    res.status(500).json({ message: "Error fetching student", error });
   }
 };
 
-// Update a student
-const updateStudent = async (req, res) => {
+// Create student
+export const createStudent = async (req, res) => {
+  try {
+    const student = new Student(req.body);
+    const savedStudent = await student.save();
+    res.status(201).json(savedStudent);
+  } catch (error) {
+    res.status(400).json({ message: "Error creating student", error });
+  }
+};
+
+// Update student details
+export const updateStudent = async (req, res) => {
   try {
     const student = await Student.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!student) {
-      return res.status(404).json({ message: "Student not found" });
-    }
-    res.status(200).json(student);
+    if (!student) return res.status(404).json({ message: "Student not found" });
+    res.json(student);
   } catch (error) {
-    res.status(500).json({ message: "Error updating student", error: error.message });
+    res.status(400).json({ message: "Error updating student", error });
   }
 };
 
-// Delete a student
-const deleteStudent = async (req, res) => {
+// Add attendance record
+export const addAttendance = async (req, res) => {
+  const { date, status } = req.body;
+  if (!date || !status) {
+    return res.status(400).json({ message: "Date and status are required" });
+  }
+
   try {
-    const student = await Student.findByIdAndDelete(req.params.id);
-    if (!student) {
-      return res.status(404).json({ message: "Student not found" });
-    }
-    res.status(200).json({ message: "Student deleted successfully" });
+    const student = await Student.findById(req.params.id);
+    if (!student) return res.status(404).json({ message: "Student not found" });
+
+    student.attendance.push({ date, status });
+    await student.save();
+    res.status(201).json(student);
   } catch (error) {
-    res.status(500).json({ message: "Error deleting student", error: error.message });
+    res.status(500).json({ message: "Error adding attendance", error });
   }
 };
 
-module.exports = { getAllStudents, createStudent, getStudentById, updateStudent, deleteStudent };
+// Delete student
+export const deleteStudent = async (req, res) => {
+  try {
+    const deleted = await Student.findByIdAndDelete(req.params.id);
+    if (!deleted) return res.status(404).json({ message: "Student not found" });
+    res.json({ message: "Student deleted" });
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting student", error });
+  }
+};
