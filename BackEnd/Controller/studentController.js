@@ -1,7 +1,11 @@
 const Student = require("../Model/student.js");
 
 // Get all students
+<<<<<<< HEAD
 const getStudents = async (req, res) => {
+=======
+ const getStudents = async (req, res) => {
+>>>>>>> 75e8fcd44766eda5d9e2eba7466368f20885cb04
   try {
     const students = await Student.find();
     res.json(students);
@@ -11,7 +15,11 @@ const getStudents = async (req, res) => {
 };
 
 // Get single student
+<<<<<<< HEAD
 const getStudentById = async (req, res) => {
+=======
+ const getStudentById = async (req, res) => {
+>>>>>>> 75e8fcd44766eda5d9e2eba7466368f20885cb04
   try {
     const student = await Student.findById(req.params.id);
     if (!student) return res.status(404).json({ message: "Student not found" });
@@ -22,7 +30,11 @@ const getStudentById = async (req, res) => {
 };
 
 // Create student
+<<<<<<< HEAD
 const createStudent = async (req, res) => {
+=======
+ const createStudent = async (req, res) => {
+>>>>>>> 75e8fcd44766eda5d9e2eba7466368f20885cb04
   try {
     const student = new Student(req.body);
     const savedStudent = await student.save();
@@ -62,8 +74,13 @@ const addAttendance = async (req, res) => {
   }
 };
 
+<<<<<<< HEAD
 // Delete student
 const deleteStudent = async (req, res) => {
+=======
+
+ const deleteStudent = async (req, res) => {
+>>>>>>> 75e8fcd44766eda5d9e2eba7466368f20885cb04
   try {
     const deleted = await Student.findByIdAndDelete(req.params.id);
     if (!deleted) return res.status(404).json({ message: "Student not found" });
