@@ -92,9 +92,9 @@ const Home = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <Row className="mb-4 align-items-center dashboard-header">
+        <Row className="mb-4 align-items-center home-dashboard-header">
           <Col md={6}>
-            <h4>Hello Admin 👋</h4>
+            <h4 className="home-admin-text">Hello Admin 👋</h4>
             <p>Welcome to your Dashboard</p>
           </Col>
           <Col md={6} className="d-flex justify-content-end gap-3 align-items-center">
@@ -128,7 +128,7 @@ const Home = () => {
                 whileHover={{ scale: 1.05 }}
                 className="h-100"
               >
-                <Card className="shadow-sm card-stats">
+                <Card className="shadow-sm home-card-stats">
                   <Card.Body>
                     <Card.Title className="fs-6">{item.title}</Card.Title>
                     <h3>{item.value}</h3>
@@ -149,7 +149,7 @@ const Home = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <Card className="shadow-sm chart-card h-100">
+            <Card className="shadow-sm home-chart-card h-100">
               <Card.Body>
                 <Card.Title>Revenue</Card.Title>
                 <ResponsiveContainer width="100%" height={200}>
@@ -177,7 +177,7 @@ const Home = () => {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <Card className="shadow-sm chart-card h-100">
+            <Card className="shadow-sm home-chart-card h-100">
               <Card.Body>
                 <Card.Title>Payment Status</Card.Title>
                 <div className="d-flex justify-content-around">

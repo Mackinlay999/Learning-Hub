@@ -28,6 +28,11 @@ const funnelEntryRoutes = require("./Route/funnelEntryRoutes.js");
 const discountRoutes = require("./Route/discountRoutes");
 const dashboardRoutes = require('./Route/dashboardRoutes');
 
+const mentorRoutes = require("./Route/mentorRoutes");
+const studentRoutes = require("./Route/studentRoutes"); 
+const studentDetailRoutes = require("./Route/studentDetailRoutes"); // Import student routes
+
+// Your existing middleware, CORS, etc. here...
 
 
 
@@ -102,6 +107,10 @@ app.use("/api", funnelEntryRoutes);
 app.use("/api", discountRoutes);
 // Add the dashboard route
 app.use('/api', dashboardRoutes);
+app.use("/api", mentorRoutes);
+app.use("/api", studentRoutes);
+app.use("/api", studentDetailRoutes); 
+
 
 
 module.exports = app;
