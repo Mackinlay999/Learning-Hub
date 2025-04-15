@@ -50,3 +50,4 @@ const LeadForm = forwardRef(({ addLead, isEditing, editingLead, updateLead }, re
 });
 
 export default LeadForm;
+
