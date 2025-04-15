@@ -8,26 +8,23 @@ import { NavLink } from 'react-router-dom';
 import '../style/Sidebar.css';
 
 const sections = [
-<<<<<<< HEAD
+
 
   { name: "Dashboard", icon: <ShieldCheck size={18} />, path: "/Home" },
   
   { name: "Login", icon: <ShieldCheck size={18} />, path: "/login" },
-=======
-<<<<<<< HEAD
-  { name: "Dashboard", icon: <ShieldCheck size={18} />, path: "/Home" },
+
+  
   { name: "Super Admin Panel", icon: <ShieldCheck size={18} />, path: "/super-admin" },
   { name: "Lead & Student Management", icon: <Users size={18} />, path: "/lead-student" },
   { name: "Training Program", icon: <BookOpenCheck size={18} />, path: "/training-program" },
-=======
+
   { name: "Login", icon: <ShieldCheck size={18} />, path: "/login" },
   { name: "Student-Management", icon: <ShieldCheck size={18} />, path: "/students" },
   { name: "Student-Detail", icon: <ShieldCheck size={18} />, path: "/student/:id" },
   { name: "Dashboard", icon: <ShieldCheck size={18} />, path: "/" },
->>>>>>> 8607f500d2be52bf3d1c7bdd273790f01f585607
-  { name: "Super Admin Panel", icon: <ShieldCheck size={18} />, path: "/super-admin" },
-  { name: "Lead & Student Management", icon: <Users size={18} />, path: "/lead-student" },
-  { name: "Training Program", icon: <BookOpenCheck size={18} />, path: "/training-program" },
+
+  
 
 
  
