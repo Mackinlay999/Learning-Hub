@@ -66,6 +66,7 @@ const addAttendance = async (req, res) => {
 };
 
 
+
 // Delete student
 
  const deleteStudent = async (req, res) => {
@@ -78,6 +79,36 @@ const addAttendance = async (req, res) => {
     res.status(500).json({ message: "Error deleting student", error });
   }
 };
+// Controller for adding a certificate
+const addCertificate = async (req, res) => {
+  const { name, link } = req.body;
+  if (!name || !link) {
+    return res.status(400).json({ message: "Certificate name and link are required" });
+  }
+
+  try {
+    const student = await Student.findById(req.params.id);
+    if (!student) return res.status(404).json({ message: "Student not found" });
+
+    student.certificates.push({ name, link });
+    await student.save();
+    res.status(201).json(student);
+  } catch (error) {
+    res.status(500).json({ message: "Error adding certificate", error });
+  }
+};
+
+// Controller for fetching certificates
+const getCertificates = async (req, res) => {
+  try {
+    const student = await Student.findById(req.params.id);
+    if (!student) return res.status(404).json({ message: "Student not found" });
+    
+    res.status(200).json(student.certificates);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching certificates", error });
+  }
+};
 
 module.exports = {
   getStudents,
@@ -85,5 +116,7 @@ module.exports = {
   createStudent,
   updateStudent,
   addAttendance,
-  deleteStudent
+  deleteStudent,
+  addCertificate,
+  getCertificates
 };

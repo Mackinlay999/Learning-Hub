@@ -179,7 +179,6 @@ const sections = [
   { name: "Training Program", icon: <BookOpenCheck size={18} />, path: "/training-program" },
   { name: "Login", icon: <ShieldCheck size={18} />, path: "/login" },
   { name: "Student-Management", icon: <ShieldCheck size={18} />, path: "/students" },
-  { name: "Student-Detail", icon: <ShieldCheck size={18} />, path: "/student/:id" },
   { name: "Mentor", icon: <ShieldCheck size={18} />, path: "/mentors" },
   { name: "Email Marketing", icon: <Mail size={18} />, path: "/email-marketing" },
   { name: "Finance & Payment", icon: <CreditCard size={18} />, path: "/finance-payment" },
