@@ -23,14 +23,16 @@ const StudentDetail = () => {
     const fetchStudentDetails = async () => {
       try {
         const res = await axios.get(`http://localhost:3000/api/students/${id}`);
-        setStudent(res.data);
+        const studentData = res.data;
+        setStudent(studentData);
+        setAttendance(studentData.attendance || []);
         setLoading(false);
       } catch (err) {
         setError("Error fetching student details.");
         setLoading(false);
       }
     };
-
+    
     const fetchAttendance = async () => {
       try {
         const res = await axios.get(`http://localhost:3000/api/students/${id}`);
