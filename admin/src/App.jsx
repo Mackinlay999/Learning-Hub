@@ -12,8 +12,8 @@ import { Button } from "react-bootstrap";
 import { FaBars } from "react-icons/fa";
 import { Students, StudentDetail } from "./components/studentManagement";
 
-
-
+import AddStudent from "./components/AddStudent";
+import EditStudent from "./components/EditStudent";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import PasswordReset from "./components/PasswordReset";
@@ -42,8 +42,10 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <div className="d-flex flex-column flex-md-row" style={{ minHeight: "100vh" }}>
-          
+        <div
+          className="d-flex flex-column flex-md-row"
+          style={{ minHeight: "100vh" }}
+        >
           {/* Sidebar */}
           {showSidebar && (
             <div className="d-none d-md-block">
@@ -53,7 +55,6 @@ function App() {
 
           {/* Main Content */}
           <div className="flex-grow-1" style={{ background: "#f8f9fa" }}>
-            
             {/* Toggle button for small screens */}
             <div className="d-md-none p-2 bg-white border-bottom shadow-sm sticky-top z-3">
               {showSidebar && <Sidebar />}
@@ -72,40 +73,61 @@ function App() {
                 <Route path="/payment-success" element={<PaymentSuccess />} />
                 <Route path="/payment-failure" element={<PaymentFailure />} />
                 <Route path="/super-admin" element={<SuperAdminPanel />} />
-                <Route path="/lead-student" element={<LeadAndStudentManagement />} />
+                <Route
+                  path="/lead-student"
+                  element={<LeadAndStudentManagement />}
+                />
                 <Route path="/training-program" element={<Trainingprogram />} />
                 <Route path="/email-marketing" element={<EMailMarketing />} />
-                <Route path="/finance-payment" element={<FinanceAndPayment />} />
-                <Route path="/corporate-training" element={<CorporateTrainingEnterprice />} />
-                <Route path="/analytics-reports" element={<AnalyticsAndReports />} />
-                <Route path="/support-feedback" element={<SupportAndFeedback />} />
-                <Route path="/recruitment" element={<RecruiterAndPlacementManagement />} />
+                <Route
+                  path="/finance-payment"
+                  element={<FinanceAndPayment />}
+                />
+                <Route
+                  path="/corporate-training"
+                  element={<CorporateTrainingEnterprice />}
+                />
+                <Route
+                  path="/analytics-reports"
+                  element={<AnalyticsAndReports />}
+                />
+                <Route
+                  path="/support-feedback"
+                  element={<SupportAndFeedback />}
+                />
+                <Route
+                  path="/recruitment"
+                  element={<RecruiterAndPlacementManagement />}
+                />
                 <Route path="/mentors" element={<Mentors />} />
-
-
                 {/* 404 Page */}
                 <Route path="*" element={<NotFound />} />
-
                 <Route path="/login" element={<Login />} />
                 <Route path="/students" element={<Students />} />
-                <Route path="/student/:id" element={<StudentDetail />} />
+                <Route path="/students/:id" element={<StudentDetail />} />
+                <Route path="/add-student" element={<AddStudent />} />
+                <Route path="/edit-student/:id" element={<EditStudent />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/PasswordReset" element={<PasswordReset />} />
                 <Route path="/Userdetails" element={<Userdetails />} />
                 <Route path="/Dashboard" element={<Dashboard />} />
                 <Route path="/payment-success" element={<PaymentSuccess />} />
                 <Route path="/payment-failure" element={<PaymentFailure />} />
-                <Route path="/mentors" element={<Mentors />} /> {/* Catch-all route for 404 pages */}
-                
-                <Route path="*" element={<NotFound />} /> {/* Catch-all route for 404 pages */}
-
+                <Route path="/mentors" element={<Mentors />} />{" "}
+                {/* Catch-all route for 404 pages */}
+                <Route path="*" element={<NotFound />} />{" "}
+                {/* Catch-all route for 404 pages */}
               </Routes>
             </div>
           </div>
         </div>
 
         {/* Toast Notifications */}
-        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+        />
       </div>
     </Router>
   );
