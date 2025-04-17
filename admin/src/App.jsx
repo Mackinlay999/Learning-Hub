@@ -31,12 +31,16 @@ import AnalyticsAndReports from "./components/AnalyticsAndReports";
 import SupportAndFeedback from "./components/SupportAndFeedback";
 import RecruiterAndPlacementManagement from "./components/RecruiterAndPlacementManagement";
 import Mentors from "./components/Mentors";
+
+import Suceess from "./components/Suceess";
+
 import BlogWebinar from "./components/BlogWebinar";
 import RecruiterDashboard from "./components/RecruiterDashboard";
 import Partners from "./components/Partners";
 import PostJob from "./components/PostJob";
 import Applicants from "./components/Applicants";
 import ScheduleInterview from "./components/ScheduleInterview";
+
 
 
 function App() {
@@ -120,8 +124,13 @@ function App() {
                 <Route path="/Dashboard" element={<Dashboard />} />
                 <Route path="/payment-success" element={<PaymentSuccess />} />
                 <Route path="/payment-failure" element={<PaymentFailure />} />
+
+                <Route path="/payment-failure" element={<PaymentFailure />} />
+                <Route path="/Suceess" element={ <Suceess />} />{" "}
+
                 <Route path="/mentors" element={<Mentors />} />
                 <Route path="/blog-webinar" element={<BlogWebinar />} />
+<<<<<<< HEAD
                 <Route
                   path="/recruiters/dashboard"
                   element={<RecruiterDashboard />}
@@ -133,6 +142,10 @@ function App() {
                   path="/recruiters/schedule"
                   element={<ScheduleInterview />}
                 />
+=======
+                <Route path="/recruiters" element={<RecruiterDashboard />} />
+
+>>>>>>> 09a0981a0e22054799b4317f53555fcb3684fe05
                 {/* Catch-all route for 404 pages */}
                 <Route path="*" element={<NotFound />} />{" "}
                 {/* Catch-all route for 404 pages */}

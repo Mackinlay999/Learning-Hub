@@ -1,0 +1,96 @@
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    font-family: sans-serif;
+  }
+  
+  .title, .subtitle {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    background-color: #f9f9f9;
+  }
+  
+  .form input[type="text"],
+  .form input[type="file"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .btn {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .story-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .story-card {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 6px;
+    background: #fff;
+  }
+  
+  .story-name {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .edit-btn {
+    color: #007bff;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .delete-btn {
+    color: #dc3545;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .toggle-btn {
+    color: #28a745;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .S-btn:hover{
+
+    background-color: #007bff;
+  }
+  

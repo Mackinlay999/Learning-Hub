@@ -177,3 +177,62 @@ input {
   width: 100%;
 }
 
+
+
+.courses {
+  width: 95%;
+  padding: 15px;
+}
+
+.course-table th, .course-table td {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.course-form {
+  flex-direction: column;
+  align-items: center;
+}
+
+.course-form input, .course-form button {
+  width: 90%;
+}
+
+/* Action Button Wrapper */
+.c-course-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Common Button Styles */
+.c-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Edit / Save Button */
+.c-btn-edit {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.c-btn-edit:hover {
+  background-color: #138496;
+}
+
+/* Delete Button */
+.c-btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.c-btn-delete:hover {
+  background-color: #bd2130;
+}
+
