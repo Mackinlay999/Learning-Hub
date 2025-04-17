@@ -186,6 +186,7 @@ const sections = [
   { name: "Analytics & Reports", icon: <BarChart2 size={18} />, path: "/analytics-reports" },
   { name: "Support & Feedback", icon: <MessageCircle size={18} />, path: "/support-feedback" },
   { name: "Recruiter & Placement", icon: <Briefcase size={18} />, path: "/recruitment" },
+  { name: "Blog & Webinar", icon: <ShieldCheck size={18} />, path: "/blog-webinar" },
 ];
 
 const Sidebar = () => {
