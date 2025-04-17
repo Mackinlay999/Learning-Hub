@@ -31,7 +31,12 @@ import AnalyticsAndReports from "./components/AnalyticsAndReports";
 import SupportAndFeedback from "./components/SupportAndFeedback";
 import RecruiterAndPlacementManagement from "./components/RecruiterAndPlacementManagement";
 import Mentors from "./components/Mentors";
+<<<<<<< HEAD
 import Suceess from "./components/Suceess";
+=======
+import BlogWebinar from "./components/BlogWebinar";
+import RecruiterDashboard from "./components/RecruiterDashboard";
+>>>>>>> c16b11e322f33537a4a4d8a52dc791393783d4ef
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -114,8 +119,14 @@ function App() {
                 <Route path="/Dashboard" element={<Dashboard />} />
                 <Route path="/payment-success" element={<PaymentSuccess />} />
                 <Route path="/payment-failure" element={<PaymentFailure />} />
+<<<<<<< HEAD
                 <Route path="/payment-failure" element={<PaymentFailure />} />
                 <Route path="/Suceess" element={ <Suceess />} />{" "}
+=======
+                <Route path="/mentors" element={<Mentors />} />
+                <Route path="/blog-webinar" element={<BlogWebinar />} />
+                <Route path="/recruiters" element={<RecruiterDashboard />} />
+>>>>>>> c16b11e322f33537a4a4d8a52dc791393783d4ef
                 {/* Catch-all route for 404 pages */}
                 <Route path="*" element={<NotFound />} />{" "}
                 {/* Catch-all route for 404 pages */}
