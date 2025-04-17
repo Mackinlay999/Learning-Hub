@@ -1,0 +1,133 @@
+/* src/style/Partners.css */
+
+/* Container Styling */
+.Partners-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Heading Styling */
+  .Partners-container h3 {
+    font-size: 2rem;
+    color: #333;
+    font-weight: 700;
+  }
+  
+  /* Card Styling */
+  .Partners-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .Partners-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Modal Styling */
+  .Modal-content {
+    transition: transform 0.3s ease-out;
+  }
+  
+  /* Button Styling */
+  .Partners-submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .Partners-submit-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .Partners-container .btn-success {
+    background-color: #28a745;
+    border: none;
+  }
+  
+  .Partners-container .btn-success:hover {
+    background-color: #218838;
+  }
+  
+  .Partners-container .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  
+  .Partners-container .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  .Partners-container .btn-warning {
+    background-color: #ffc107;
+    border: none;
+  }
+  
+  .Partners-container .btn-warning:hover {
+    background-color: #e0a800;
+  }
+  
+  .Partners-container .btn-danger {
+    background-color: #dc3545;
+    border: none;
+  }
+  
+  .Partners-container .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  /* Alert Box Styling */
+  .Alert {
+    margin-bottom: 20px;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Mobile Responsiveness */
+  @media screen and (max-width: 768px) {
+    .Partners-container {
+      padding: 20px;
+    }
+  
+    .Partners-container h3 {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  
+    .Partners-card {
+      margin-bottom: 15px;
+    }
+  
+    .Partners-card .card-body {
+      padding: 20px;
+    }
+  
+    .d-flex {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .d-flex .btn {
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .Partners-container h3 {
+      font-size: 1.3rem;
+    }
+  
+    .Partners-card {
+      margin-bottom: 10px;
+    }
+  
+    .Partners-submit-btn {
+      font-size: 1rem;
+    }
+  }
+  

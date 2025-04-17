@@ -32,8 +32,7 @@ const mentorRoutes = require("./Route/mentorRoutes");
 const studentRoutes = require("./Route/studentRoutes.js");
 const blogRoutes = require("./Route/blogRoutes");
 const webinarRoutes = require("./Route/webinarRoutes");
-
-
+const recruiterRoutes = require("./Route/recruiterRoutes");
 
 
 
@@ -41,8 +40,6 @@ const allowedOrigins = [
   "http://localhost:5173", // Frontend 1
   "http://localhost:5174"  // Frontend 2
 ];
-
-
 
 
 const corsOptions = {
@@ -114,6 +111,7 @@ app.use("/api", studentRoutes);
 
 app.use("/api", blogRoutes);
 app.use("/api", webinarRoutes);
+app.use("/api", recruiterRoutes);
 
 
 

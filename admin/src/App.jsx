@@ -33,6 +33,11 @@ import RecruiterAndPlacementManagement from "./components/RecruiterAndPlacementM
 import Mentors from "./components/Mentors";
 import BlogWebinar from "./components/BlogWebinar";
 import RecruiterDashboard from "./components/RecruiterDashboard";
+import Partners from "./components/Partners";
+import PostJob from "./components/PostJob";
+import Applicants from "./components/Applicants";
+import ScheduleInterview from "./components/ScheduleInterview";
+
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -117,7 +122,17 @@ function App() {
                 <Route path="/payment-failure" element={<PaymentFailure />} />
                 <Route path="/mentors" element={<Mentors />} />
                 <Route path="/blog-webinar" element={<BlogWebinar />} />
-                <Route path="/recruiters" element={<RecruiterDashboard />} />
+                <Route
+                  path="/recruiters/dashboard"
+                  element={<RecruiterDashboard />}
+                />
+                <Route path="/recruiters/partners" element={<Partners />} />
+                <Route path="/recruiters/post" element={<PostJob />} />
+                <Route path="/recruiters/applicants" element={<Applicants />} />
+                <Route
+                  path="/recruiters/schedule"
+                  element={<ScheduleInterview />}
+                />
                 {/* Catch-all route for 404 pages */}
                 <Route path="*" element={<NotFound />} />{" "}
                 {/* Catch-all route for 404 pages */}

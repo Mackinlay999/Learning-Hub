@@ -1,0 +1,172 @@
+/* Applicants Container */
+.Applicant-container {
+    background-color: #f8f9fb;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    animation: fadeIn 0.5s ease-in-out;
+    max-width: 100%;
+  }
+  
+  /* Title */
+  .Applicant-title {
+    color: #003366;
+    font-weight: 700;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    animation: slideDown 0.6s ease;
+  }
+  
+  /* Alert Message */
+  .Applicant-alert {
+    font-size: 0.95rem;
+    animation: fadeIn 0.3s ease-in-out;
+    border-radius: 8px;
+  }
+  
+  /* Table */
+  .Applicant-table {
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    animation: fadeIn 0.4s ease-in-out;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
+  
+  .Applicant-table thead {
+    background-color: #003366;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  
+  .Applicant-table th,
+  .Applicant-table td {
+    padding: 0.9rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .Applicant-table tbody tr:hover {
+    background-color: #f1f7ff;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  /* Shortlisted Row */
+  .Applicant-row-shortlisted {
+    background-color: #e6f4ea !important;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Buttons */
+  .Applicant-shortlist-btn {
+    transition: all 0.2s ease;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 8px;
+  }
+  
+  .Applicant-shortlist-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    background-color: #002244;
+    color: #fff;
+  }
+  
+  /* Loader Spinner */
+  .Applicant-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 180px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Empty State */
+  .Applicant-empty {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    font-size: 1rem;
+    margin-top: 2rem;
+    animation: fadeIn 0.4s ease;
+  }
+  
+  /* Resume Link */
+  .Applicant-table a {
+    text-decoration: none;
+    color: #0056b3;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+  }
+  
+  .Applicant-table a:hover {
+    color: #003366;
+    text-decoration: underline;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .Applicant-container {
+      padding: 1.5rem;
+    }
+  
+    .Applicant-title {
+      font-size: 1.75rem;
+    }
+  
+    .Applicant-table th,
+    .Applicant-table td {
+      font-size: 0.9rem;
+      padding: 0.6rem;
+    }
+  
+    .Applicant-shortlist-btn {
+      font-size: 0.85rem;
+      width: 100%;
+      margin-top: 0.4rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .Applicant-container {
+      padding: 1rem;
+    }
+  
+    .Applicant-title {
+      font-size: 1.5rem;
+    }
+  
+    .Applicant-table th,
+    .Applicant-table td {
+      font-size: 0.85rem;
+    }
+  
+    .Applicant-alert {
+      font-size: 0.85rem;
+    }
+  }
+  

@@ -181,6 +181,7 @@ const sections = [
   { name: "Student-Management", icon: <ShieldCheck size={18} />, path: "/students" },
   { name: "Mentor", icon: <ShieldCheck size={18} />, path: "/mentors" },
   { name: "Email Marketing", icon: <Mail size={18} />, path: "/email-marketing" },
+  { name: "Recruiter Dashboard", icon: <ShieldCheck size={18} />, path: "/recruiters/dashboard" },
   { name: "Finance & Payment", icon: <CreditCard size={18} />, path: "/finance-payment" },
   { name: "Corporate Training", icon: <Building2 size={18} />, path: "/corporate-training" },
   { name: "Analytics & Reports", icon: <BarChart2 size={18} />, path: "/analytics-reports" },
