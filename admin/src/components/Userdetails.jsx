@@ -6,20 +6,20 @@ import '../style/UserDetails.css';
 const Userdetails = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [number, setNumber] = useState('');
-  const [resume, setResume] = useState(null);
-  const [resumeURL, setResumeURL] = useState('');
+ 
+  const [role, setRole] = useState('');
+ 
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get('/admin/me', { withCredentials: true })
       .then((response) => {
-        const { username, email, number, resumeUrl } = response.data;
+        const { username, email, role} = response.data;
         setName(username);
         setEmail(email);
-        setNumber(number);
-        setResumeURL(resumeUrl);
+        setRole(role);
+       
       })
       .catch((error) => {
         if (error.response && error.response.status === 401) {
@@ -78,6 +78,7 @@ const Userdetails = () => {
         <div className="info">
           <p><strong>Name:</strong> {name}</p>
           <p><strong>Email:</strong> {email}</p>
+          <p><strong>Role:</strong> {role}</p>
          
          
         </div>
