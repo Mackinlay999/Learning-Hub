@@ -31,6 +31,7 @@ import AnalyticsAndReports from "./components/AnalyticsAndReports";
 import SupportAndFeedback from "./components/SupportAndFeedback";
 import RecruiterAndPlacementManagement from "./components/RecruiterAndPlacementManagement";
 import Mentors from "./components/Mentors";
+import Suceess from "./components/Suceess";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -113,7 +114,8 @@ function App() {
                 <Route path="/Dashboard" element={<Dashboard />} />
                 <Route path="/payment-success" element={<PaymentSuccess />} />
                 <Route path="/payment-failure" element={<PaymentFailure />} />
-                <Route path="/mentors" element={<Mentors />} />{" "}
+                <Route path="/payment-failure" element={<PaymentFailure />} />
+                <Route path="/Suceess" element={ <Suceess />} />{" "}
                 {/* Catch-all route for 404 pages */}
                 <Route path="*" element={<NotFound />} />{" "}
                 {/* Catch-all route for 404 pages */}

@@ -3,9 +3,9 @@
 
 import { useEffect, useState } from "react";
 import "../style/Courses.css";
-import axios from "./axios";  // Import Axios
+import axios from "./axios";  
 
- // Define your API base URL
+
 
 const Courses = () => {
   const [courses, setCourses] = useState([]);
@@ -16,7 +16,7 @@ const Courses = () => {
     mode: "",
     ProgramOverview: "",
     Curriculumtitle: "",
-    objective: [""],  // ✨ 
+    objective: [""],   
     topics: "",
     assessments: "",
     Programbenefits: "",
@@ -125,21 +125,9 @@ const Courses = () => {
         <input type="text" name="ProgramOverview" placeholder="Program Overview" value={newCourse.ProgramOverview} onChange={handleInputChange} />
         <input type="text" name="Curriculumtitle" placeholder="Curriculum Title" value={newCourse.Curriculumtitle} onChange={handleInputChange} />
 
-        {/* Dynamic Objectives */}
-        {/* {newCourse.objective.map((obj, index) => (
-          <input
-            key={index}
-            type="text"
-            placeholder={`Objective ${index + 1}`}
-            value={obj}
-            onChange={(e) => handleObjectiveChange(index, e.target.value)}
-          />
-        ))} */}
-        {Array.isArray(newCourse.objective)
-  ? newCourse.objective.map((obj, i) => <li key={i}>{obj}</li>)
-  : <li>{newCourse.objective}</li>
-}
-        <button onClick={addObjectiveField}>+ Add Objective</button>
+        <input type="text" name="objective" placeholder="objective" value={newCourse.objective} onChange={handleInputChange} />
+
+
 
         <input type="text" name="topics" placeholder="Topics" value={newCourse.topics} onChange={handleInputChange} />
         <input type="text" name="assessments" placeholder="Assessments" value={newCourse.assessments} onChange={handleInputChange} />
@@ -160,7 +148,7 @@ const Courses = () => {
       <div className="course-header">
         <h3>Course {index + 1}</h3>
 
-        <button
+        {/* <button className="c-button"
   onClick={() => {
     if (editCourse && editCourse._id === course._id) {
       handleSaveEdit(); // 👈 this should save
@@ -172,7 +160,30 @@ const Courses = () => {
   {editCourse && editCourse._id === course._id ? "Save" : "Edit"}
 </button>
 
-        <button onClick={() => handleDeleteCourse(course._id)}>Delete</button>
+        <button onClick={() => handleDeleteCourse(course._id)}>Delete</button> */}
+
+<div className="c-course-actions">
+  <button
+    className="c-btn c-btn-edit"
+    onClick={() => {
+      if (editCourse && editCourse._id === course._id) {
+        handleSaveEdit(); // Save action
+      } else {
+        handleEditCourse(course); // Edit mode
+      }
+    }}
+  >
+    {editCourse && editCourse._id === course._id ? "Save" : "Edit"}
+  </button>
+
+  <button
+    className="c-btn c-btn-delete"
+    onClick={() => handleDeleteCourse(course._id)}
+  >
+    Delete
+  </button>
+</div>
+
       </div>
       <div className="course-details">
         <div className="detail">

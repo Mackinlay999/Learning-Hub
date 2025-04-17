@@ -17,6 +17,7 @@ const Verifyrole = require("../Utils/Verifyrole")
 const DeleteUser = require("../Utils/DeleteUser")
 const RevenueController = require("../Controller/RevenueController")
 const Studentrefund =require("../Controller/RefundsController")
+const SuccessStroy = require("../Controller/successStoryController")
 
 const upload = require("../Utils/Multer");
 const { join } = require("path");
@@ -150,5 +151,14 @@ router.get("/getAllStudentRefunds", Studentrefund.getAllStudentRefunds );
 router.post("/createStudentRefund", Studentrefund.createStudentRefund);
 router.put("/updateStudentRefund/:id", Studentrefund.updateStudentRefund );
 router.delete("/deleteStudentRefund/:id", Studentrefund.deleteStudentRefund );
+
+
+
+// successStory
+router.get("/getAllStories", SuccessStroy.getAllStories);
+router.post("/createStory", upload.single("photo"), SuccessStroy.createStory);
+router.put("/updateStory/:id", upload.single("photo"), SuccessStroy.updateStory);
+router.delete("/deleteStory/:id", SuccessStroy.deleteStory);
+
 
 module.exports = router;
