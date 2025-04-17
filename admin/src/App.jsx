@@ -130,7 +130,6 @@ function App() {
 
                 <Route path="/mentors" element={<Mentors />} />
                 <Route path="/blog-webinar" element={<BlogWebinar />} />
-<<<<<<< HEAD
                 <Route
                   path="/recruiters/dashboard"
                   element={<RecruiterDashboard />}
@@ -142,10 +141,8 @@ function App() {
                   path="/recruiters/schedule"
                   element={<ScheduleInterview />}
                 />
-=======
                 <Route path="/recruiters" element={<RecruiterDashboard />} />
 
->>>>>>> 09a0981a0e22054799b4317f53555fcb3684fe05
                 {/* Catch-all route for 404 pages */}
                 <Route path="*" element={<NotFound />} />{" "}
                 {/* Catch-all route for 404 pages */}
