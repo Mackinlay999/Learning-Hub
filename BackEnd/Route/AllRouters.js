@@ -47,7 +47,7 @@ router.get("/me" ,  auth.authverify, login.me)
 
 
 // traningProgram
-router.get("/getProgram",  Course.getProgram);
+router.get("/getAllPrograms",  Course.getAllPrograms);
 router.post("/createProgram", Course.createProgram );
 router.put("/updateProgram/:id",  Course.updateProgram);
 router.delete("/deleteProgram/:id",  Course.deleteProgram);

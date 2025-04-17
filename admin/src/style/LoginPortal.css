@@ -8,7 +8,8 @@
 }
 
 .login-box {
-  background: #ffffff;
+  background:#001f3f;
+  color: #ffffff;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -30,7 +31,7 @@
 
 .form-group label {
   font-weight: bold;
-  color: #003366;
+  color:#ffffff;
   display: block;
   margin-bottom: 5px;
 }
@@ -38,7 +39,7 @@
 .form-group input {
   width: 100%;
   padding: 10px;
-  border: 2px solid #003366;
+  border: 2px solid #ffffff;
   border-radius: 5px;
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
@@ -91,6 +92,8 @@
 .login-button {
   background: #00509e;
   color: white;
+ 
+
 }
 
 .login-button:hover {
@@ -99,7 +102,7 @@
 }
 
 .forgot-password {
-  background: #00509e;
+  background: #005fa3;
   color: white;
 }
 
@@ -119,7 +122,7 @@
 }
 
 .register-link span {
-  color: #00509e;
+  color:#005fa3;
   font-weight: bold;
   cursor: pointer;
   transition: color 0.3s ease-in-out;

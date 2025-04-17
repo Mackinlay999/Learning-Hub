@@ -47,7 +47,7 @@ const Admincontroller = {
         try {
            
             
-             const alldata =await Adminlogin.find()
+             const alldata =await Adminlogin.find({}, 'username email role')
             
              
           res.status(200).json(alldata)
@@ -237,7 +237,7 @@ const Admincontroller = {
         console.log("Update role request");
     
         const AdminloginId = req.userid;
-        const { id, name, email, role,  } = req.body;
+        const { id, username, email, role,  } = req.body;
     
         const loggedInUser = await Adminlogin.findById(AdminloginId);
         if (!loggedInUser) {
@@ -254,7 +254,7 @@ const Admincontroller = {
         }
     
         // Update fields
-        userToUpdate.username = name;
+        userToUpdate.username = username;
         userToUpdate.email = email;
         userToUpdate.role = role;
         
