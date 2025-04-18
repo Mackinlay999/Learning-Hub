@@ -1,0 +1,68 @@
+.drip-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .drip-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .drip-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .drip-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .drip-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .drip-button:hover {
+    background-color: #45a049;
+  }
+  
+  .drip-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .drip-item {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 4px solid #4caf50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+  }
+  
+  .drip-step {
+    flex-grow: 1;
+  }
+  
+  .drip-delete {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
