@@ -36,6 +36,11 @@ import Suceess from "./components/Suceess";
 
 import BlogWebinar from "./components/BlogWebinar";
 import RecruiterDashboard from "./components/RecruiterDashboard";
+import Partners from "./components/Partners";
+import PostJob from "./components/PostJob";
+import Applicants from "./components/Applicants";
+import ScheduleInterview from "./components/ScheduleInterview";
+
 
 import EmailCampaign from "./components/EmailCampaign";
 
@@ -127,6 +132,17 @@ function App() {
 
                 <Route path="/mentors" element={<Mentors />} />
                 <Route path="/blog-webinar" element={<BlogWebinar />} />
+                <Route
+                  path="/recruiters/dashboard"
+                  element={<RecruiterDashboard />}
+                />
+                <Route path="/recruiters/partners" element={<Partners />} />
+                <Route path="/recruiters/post" element={<PostJob />} />
+                <Route path="/recruiters/applicants" element={<Applicants />} />
+                <Route
+                  path="/recruiters/schedule"
+                  element={<ScheduleInterview />}
+                />
                 <Route path="/recruiters" element={<RecruiterDashboard />} />
                 <Route path="/EmailCampaign" element={<EmailCampaign />} />
 
