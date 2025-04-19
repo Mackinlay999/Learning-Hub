@@ -1,0 +1,100 @@
+.cam-card {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cam-title {
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 1.6rem;
+    color: #333;
+  }
+  
+  .cam-form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .cam-input,
+  .cam-textarea {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.4rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .cam-textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .cam-checkbox {
+    margin-top: 0.5rem;
+  }
+  
+  .cam-button {
+    padding: 0.7rem 1.2rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .cam-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .cam-campaigns {
+    margin-top: 2rem;
+  }
+  
+  .cam-campaign-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .cam-campaign-item {
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .cam-btn-edit,
+  .cam-btn-delete {
+    margin-right: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .cam-btn-edit {
+    background-color: #ffc107;
+    color: black;
+  }
+  
+  .cam-btn-edit:hover {
+    background-color: #e0a800;
+  }
+  
+  .cam-btn-delete {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .cam-btn-delete:hover {
+    background-color: #c82333;
+  }
+  

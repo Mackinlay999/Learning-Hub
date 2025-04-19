@@ -18,6 +18,8 @@ const DeleteUser = require("../Utils/DeleteUser")
 const RevenueController = require("../Controller/RevenueController")
 const Studentrefund =require("../Controller/RefundsController")
 const SuccessStroy = require("../Controller/successStoryController")
+const campaignController = require("../Controller/campaignController")
+const  leademail = require("../Controller/leademail")
 
 const upload = require("../Utils/Multer");
 const { join } = require("path");
@@ -159,6 +161,22 @@ router.get("/getAllStories", SuccessStroy.getAllStories);
 router.post("/createStory", upload.single("photo"), SuccessStroy.createStory);
 router.put("/updateStory/:id", upload.single("photo"), SuccessStroy.updateStory);
 router.delete("/deleteStory/:id", SuccessStroy.deleteStory);
+
+// campaign
+
+router.post('/createCampaign', campaignController.createCampaign);
+router.get('/getCampaigns', campaignController.getCampaigns);
+router.put('/updateCampaign/:id', campaignController.updateCampaign);
+router.delete('/deleteCampaign/:id',campaignController.deleteCampaign);
+
+
+// LeadEmails
+router.post('/createLeademail', leademail.createLeademail);
+router.get('/getLeademail', leademail.getLeademail);
+router.delete('/deleteLeademail/:leadId', leademail.deleteLeademail);
+router.put('/updateLeademail/:id', leademail.updateLeademail);
+
+
 
 
 module.exports = router;

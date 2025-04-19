@@ -42,6 +42,8 @@ import Applicants from "./components/Applicants";
 import ScheduleInterview from "./components/ScheduleInterview";
 
 
+import EmailCampaign from "./components/EmailCampaign";
+
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -142,6 +144,7 @@ function App() {
                   element={<ScheduleInterview />}
                 />
                 <Route path="/recruiters" element={<RecruiterDashboard />} />
+                <Route path="/EmailCampaign" element={<EmailCampaign />} />
 
                 {/* Catch-all route for 404 pages */}
                 <Route path="*" element={<NotFound />} />{" "}
