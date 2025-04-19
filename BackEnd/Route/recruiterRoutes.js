@@ -18,8 +18,20 @@ router.post("/recruiters/post", recruiterController.postJob);
 
 // View applicants
 router.get("/recruiters/applicants", recruiterController.getApplicants);
-
+// route
+router.post("/recruiters/schedule", recruiterController.scheduleInterview);
 // Shortlist/Schedule
-router.put("/recruiters/schedule/:id", recruiterController.updateApplicant);
+router.put("/recruiters/schedule/:id", recruiterController.updateInterview);
+// POST new applicant
+router.post('/', recruiterController.createApplicant);
+
+// PUT update applicant
+router.put('/:id', recruiterController.updateApplicant);
+
+// DELETE applicant
+router.delete('/:id', recruiterController.deleteApplicant);
+
+// PUT shortlist applicant
+router.put('/:id/shortlist', recruiterController.shortlistApplicant);
 
 module.exports = router;

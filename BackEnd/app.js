@@ -81,7 +81,7 @@ app.use(errorHandler);
   
 
 app.get('/', (req, res) => {
-    res.send('Server is running');
+  res.send('Server is running');
 });
 
 app.use("/api", AllRouters);

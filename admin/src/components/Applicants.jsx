@@ -1,8 +1,15 @@
-// src/pages/Applicants.jsx
 import React, { useEffect, useState } from 'react';
 import axios from '../api/axios';
-import { Container, Table, Button, Alert, Spinner } from 'react-bootstrap';
-import '../style/Applicants.css'; // Don't forget the CSS import
+import {
+  Container,
+  Table,
+  Button,
+  Alert,
+  Spinner,
+  Modal,
+  Form,
+} from 'react-bootstrap';
+import '../style/Applicants.css';
 
 const Applicants = () => {
   const [applicants, setApplicants] = useState([]);
@@ -10,21 +17,31 @@ const Applicants = () => {
   const [loading, setLoading] = useState(true);
   const [shortlistingId, setShortlistingId] = useState(null);
 
-  useEffect(() => {
-    const fetchApplicants = async () => {
-      try {
-        const res = await axios.get('/recruiters/applicants');
-        setApplicants(res.data);
-      } catch (error) {
-        console.error('Error fetching applicants:', error);
-        setMessage({ type: 'danger', text: 'Failed to load applicants.' });
-      } finally {
-        setLoading(false);
-      }
-    };
+  const [showForm, setShowForm] = useState(false);
+  const [formMode, setFormMode] = useState('add'); // 'add' or 'edit'
+  const [currentApplicant, setCurrentApplicant] = useState({
+    name: '',
+    email: '',
+    resumeUrl: '',
+    _id: null,
+  });
 
+  // Fetch applicants on mount
+  useEffect(() => {
     fetchApplicants();
   }, []);
+
+  const fetchApplicants = async () => {
+    try {
+      const res = await axios.get('/recruiters/applicants');
+      setApplicants(res.data);
+    } catch (error) {
+      console.error('Error fetching applicants:', error);
+      setMessage({ type: 'danger', text: 'Failed to load applicants.' });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleShortlist = async (id) => {
     setShortlistingId(id);
@@ -44,9 +61,59 @@ const Applicants = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    if (!window.confirm('Are you sure you want to delete this applicant?')) return;
+    try {
+      await axios.delete(`/recruiters/applicants/${id}`);
+      setApplicants(applicants.filter((app) => app._id !== id));
+      setMessage({ type: 'success', text: 'Applicant deleted successfully.' });
+    } catch (error) {
+      console.error('Delete error:', error);
+      setMessage({ type: 'danger', text: 'Error deleting applicant.' });
+    }
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (formMode === 'add') {
+        const res = await axios.post('/recruiters/applicants', currentApplicant);
+        setApplicants([...applicants, res.data]);
+        setMessage({ type: 'success', text: 'Applicant added!' });
+      } else {
+        const res = await axios.put(`/recruiters/applicants/${currentApplicant._id}`, currentApplicant);
+        setApplicants((prev) =>
+          prev.map((app) =>
+            app._id === currentApplicant._id ? res.data : app
+          )
+        );
+        setMessage({ type: 'success', text: 'Applicant updated!' });
+      }
+      setShowForm(false);
+    } catch (error) {
+      console.error('Form submit error:', error);
+      setMessage({ type: 'danger', text: 'Error submitting form.' });
+    }
+  };
+
+  const openEditForm = (app) => {
+    setCurrentApplicant(app);
+    setFormMode('edit');
+    setShowForm(true);
+  };
+
+  const openAddForm = () => {
+    setCurrentApplicant({ name: '', email: '', resumeUrl: '' });
+    setFormMode('add');
+    setShowForm(true);
+  };
+
   return (
     <Container className="Applicant-container py-5">
       <h3 className="Applicant-title mb-4">Applicants</h3>
+      <Button variant="success" onClick={openAddForm} className="mb-3">
+        + Add Applicant
+      </Button>
 
       {message.text && (
         <Alert
@@ -72,7 +139,7 @@ const Applicants = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Resume</th>
-              <th>Action</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -81,9 +148,7 @@ const Applicants = () => {
                 <td>{app.name}</td>
                 <td>{app.email}</td>
                 <td>
-                  <a href={app.resumeUrl} target="_blank" rel="noreferrer">
-                    View
-                  </a>
+                  <a href={app.resumeUrl} target="_blank" rel="noreferrer">View</a>
                 </td>
                 <td>
                   {app.shortlisted ? (
@@ -94,7 +159,7 @@ const Applicants = () => {
                       size="sm"
                       onClick={() => handleShortlist(app._id)}
                       disabled={shortlistingId === app._id}
-                      className="Applicant-shortlist-btn"
+                      className="me-2"
                     >
                       {shortlistingId === app._id ? (
                         <>
@@ -106,12 +171,70 @@ const Applicants = () => {
                       )}
                     </Button>
                   )}
+                  <Button variant="outline-secondary" size="sm" className="me-2" onClick={() => openEditForm(app)}>
+                    Edit
+                  </Button>
+                  <Button variant="outline-danger" size="sm" onClick={() => handleDelete(app._id)}>
+                    Delete
+                  </Button>
                 </td>
               </tr>
             ))}
           </tbody>
         </Table>
       )}
+
+      {/* Add/Edit Modal */}
+      <Modal show={showForm} onHide={() => setShowForm(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>{formMode === 'add' ? 'Add Applicant' : 'Edit Applicant'}</Modal.Title>
+        </Modal.Header>
+        <Form onSubmit={handleFormSubmit}>
+          <Modal.Body>
+            <Form.Group className="mb-3">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                required
+                value={currentApplicant.name}
+                onChange={(e) =>
+                  setCurrentApplicant({ ...currentApplicant, name: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                required
+                value={currentApplicant.email}
+                onChange={(e) =>
+                  setCurrentApplicant({ ...currentApplicant, email: e.target.value })
+                }
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label>Resume URL</Form.Label>
+              <Form.Control
+                type="text"
+                required
+                value={currentApplicant.resumeUrl}
+                onChange={(e) =>
+                  setCurrentApplicant({ ...currentApplicant, resumeUrl: e.target.value })
+                }
+              />
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowForm(false)}>
+              Cancel
+            </Button>
+            <Button type="submit" variant="primary">
+              {formMode === 'add' ? 'Add' : 'Update'}
+            </Button>
+          </Modal.Footer>
+        </Form>
+      </Modal>
     </Container>
   );
 };
