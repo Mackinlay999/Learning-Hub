@@ -173,5 +173,10 @@ router.delete('/deleteCampaign/:id',campaignController.deleteCampaign);
 // LeadEmails
 router.post('/createLeademail', leademail.createLeademail);
 router.get('/getLeademail', leademail.getLeademail);
+router.delete('/deleteLeademail/:leadId', leademail.deleteLeademail);
+router.put('/updateLeademail/:id', leademail.updateLeademail);
+
+
+
 
 module.exports = router;
