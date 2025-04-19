@@ -14,11 +14,12 @@ const ScheduleInterview = () => {
   const [message, setMessage] = useState({ type: "", text: "" });
   const [loading, setLoading] = useState(false);
   const [applicants, setApplicants] = useState([]);
+  const [validationErrors, setValidationErrors] = useState({});
 
   useEffect(() => {
     const fetchApplicants = async () => {
       try {
-        const res = await axios.get("/applicants"); // 🔁 Update the endpoint if needed
+        const res = await axios.get("/recruiters/applicants"); // 🔁 Update the endpoint if needed
         setApplicants(res.data);
       } catch (error) {
         console.error("Failed to fetch applicants:", error);
@@ -36,13 +37,29 @@ const ScheduleInterview = () => {
     }));
   };
 
+  const validateForm = () => {
+    const errors = {};
+    if (!formData.applicantId) {
+      errors.applicantId = "Applicant is required.";
+    }
+    if (!formData.date) {
+      errors.date = "Date is required.";
+    }
+    if (!formData.time) {
+      errors.time = "Time is required.";
+    }
+    return errors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setMessage({ type: "", text: "" });
+    setValidationErrors({});
 
-    if (!formData.applicantId) {
-      setMessage({ type: "danger", text: "Please select an applicant" });
+    const errors = validateForm();
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
       setLoading(false);
       return;
     }
@@ -93,6 +110,7 @@ const ScheduleInterview = () => {
             onChange={handleChange}
             required
             className="ScheduleInterview-input"
+            isInvalid={validationErrors.applicantId}
           >
             <option value="">-- Select an Applicant --</option>
             {applicants.map((applicant) => (
@@ -101,6 +119,11 @@ const ScheduleInterview = () => {
               </option>
             ))}
           </Form.Select>
+          {validationErrors.applicantId && (
+            <Form.Control.Feedback type="invalid">
+              {validationErrors.applicantId}
+            </Form.Control.Feedback>
+          )}
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -112,7 +135,13 @@ const ScheduleInterview = () => {
             onChange={handleChange}
             required
             className="ScheduleInterview-input"
+            isInvalid={validationErrors.date}
           />
+          {validationErrors.date && (
+            <Form.Control.Feedback type="invalid">
+              {validationErrors.date}
+            </Form.Control.Feedback>
+          )}
         </Form.Group>
 
         <Form.Group className="mb-4">
@@ -124,7 +153,13 @@ const ScheduleInterview = () => {
             onChange={handleChange}
             required
             className="ScheduleInterview-input"
+            isInvalid={validationErrors.time}
           />
+          {validationErrors.time && (
+            <Form.Control.Feedback type="invalid">
+              {validationErrors.time}
+            </Form.Control.Feedback>
+          )}
         </Form.Group>
 
         <div className="text-center">

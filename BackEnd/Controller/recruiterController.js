@@ -2,6 +2,8 @@
 const Jobs = require("../Model/Job");
 const Applicant = require("../Model/Applicant");
 const Company = require("../Model/Company");
+
+
 const mongoose = require("mongoose");
 
 const getPartnerCompanies = async (req, res) => {
@@ -72,6 +74,7 @@ const updateInterview = async (req, res) => {
 // controller
 
 // Schedule Interview
+
 const scheduleInterview = async (req, res) => {
   try {
     const { applicantId, date, time } = req.body;
@@ -80,13 +83,19 @@ const scheduleInterview = async (req, res) => {
       return res.status(400).json({ message: "All fields are required." });
     }
 
-    const newInterview = new Interview({
+    // Update applicant status and interview date
+    const updatedApplicant = await Applicant.findByIdAndUpdate(
       applicantId,
-      date,
-      time,
-    });
+      {
+        status: "Interview Scheduled",
+        interviewDate: new Date(`${date}T${time}`),
+      },
+      { new: true }
+    );
 
-    await newInterview.save();
+    if (!updatedApplicant) {
+      return res.status(404).json({ message: "Applicant not found." });
+    }
 
     res.status(201).json({ message: "Interview scheduled successfully!" });
   } catch (error) {
@@ -175,5 +184,5 @@ module.exports = {
   updateApplicant,
   deleteApplicant,
   shortlistApplicant,
-  
+
 };

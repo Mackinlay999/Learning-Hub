@@ -23,15 +23,10 @@ router.post("/recruiters/schedule", recruiterController.scheduleInterview);
 // Shortlist/Schedule
 router.put("/recruiters/schedule/:id", recruiterController.updateInterview);
 // POST new applicant
-router.post('/', recruiterController.createApplicant);
+router.post('/recruiters/applicants', recruiterController.createApplicant);
 
-// PUT update applicant
-router.put('/:id', recruiterController.updateApplicant);
-
-// DELETE applicant
-router.delete('/:id', recruiterController.deleteApplicant);
-
-// PUT shortlist applicant
-router.put('/:id/shortlist', recruiterController.shortlistApplicant);
+router.put('/recruiters/applicants/:id', recruiterController.updateApplicant);
+router.delete('/recruiters/applicants/:id', recruiterController.deleteApplicant);
+router.put('/recruiters/applicants/:id/shortlist', recruiterController.shortlistApplicant);
 
 module.exports = router;
