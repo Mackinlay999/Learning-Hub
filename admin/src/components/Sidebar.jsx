@@ -23,7 +23,7 @@ const sections = [
   { name: "Recruiter & Placement", icon: <Briefcase size={18} />, path: "/recruitment" },
 { name: "Suceess Story", icon: <Briefcase size={18} />, path: "/Suceess" },
 { name: "Blog & Webinar", icon: <ShieldCheck size={18} />, path: "/blog-webinar" },
-{ name: "EmailCampaignDashboard", icon: <Briefcase size={18} />, path: "/EmailCampaignDashboard" },
+
 
 ];
 

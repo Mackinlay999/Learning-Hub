@@ -13,13 +13,13 @@ const EmailCampaign = () => {
         <CampaignBuilder />
   
       
-        <ScheduleEmail />
+        {/* <ScheduleEmail /> */}
   
      
-        <DripCampaignView/>
+        {/* <DripCampaignView/> */}
    
-     
-        <EmailAnalytics />
+{/*      
+        <EmailAnalytics /> */}
       
    
     </div>
