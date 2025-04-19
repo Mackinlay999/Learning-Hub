@@ -2,6 +2,7 @@
 const Jobs = require("../Model/Job");
 const Applicant = require("../Model/Applicant");
 const Company = require("../Model/Company");
+const mongoose = require("mongoose");
 
 const getPartnerCompanies = async (req, res) => {
   const companies = await Company.find();
@@ -59,7 +60,8 @@ const getApplicants = async (req, res) => {
   res.json(applicants);
 };
 
-const updateApplicant = async (req, res) => {
+// schedule interview
+const updateInterview = async (req, res) => {
   const { id } = req.params;
   const updated = await Applicant.findByIdAndUpdate(id, req.body, {
     new: true,
@@ -67,12 +69,111 @@ const updateApplicant = async (req, res) => {
   res.json(updated);
 };
 
+// controller
+
+// Schedule Interview
+const scheduleInterview = async (req, res) => {
+  try {
+    const { applicantId, date, time } = req.body;
+
+    if (!applicantId || !date || !time) {
+      return res.status(400).json({ message: "All fields are required." });
+    }
+
+    const newInterview = new Interview({
+      applicantId,
+      date,
+      time,
+    });
+
+    await newInterview.save();
+
+    res.status(201).json({ message: "Interview scheduled successfully!" });
+  } catch (error) {
+    console.error("Error scheduling interview:", error);
+    res.status(500).json({ message: "Server error while scheduling interview." });
+  }
+};
+
+
+// POST a new applicant
+const createApplicant = async (req, res) => {
+  try {
+    const { name, email, resumeUrl } = req.body;
+    const newApplicant = new Applicant({
+      resume: resumeUrl,
+      status: 'Applied',
+    });
+
+    // Temporarily attach name & email for frontend display
+    newApplicant.name = name;
+    newApplicant.email = email;
+
+    await newApplicant.save();
+    res.status(201).json(newApplicant);
+  } catch (error) {
+    res.status(400).json({ message: 'Error adding applicant', error });
+  }
+};
+
+// PUT (edit) an applicant
+const updateApplicant = async (req, res) => {
+  try {
+    const { name, email, resumeUrl } = req.body;
+    const updated = await Applicant.findByIdAndUpdate(
+      req.params.id,
+      {
+        resume: resumeUrl,
+        name,
+        email,
+      },
+      { new: true }
+    );
+    res.json(updated);
+  } catch (error) {
+    res.status(400).json({ message: 'Error updating applicant', error });
+  }
+};
+
+// DELETE an applicant
+const deleteApplicant = async (req, res) => {
+  try {
+    await Applicant.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Applicant deleted' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error deleting applicant', error });
+  }
+};
+
+// PUT – Shortlist an applicant
+const shortlistApplicant = async (req, res) => {
+  try {
+    const updated = await Applicant.findByIdAndUpdate(
+      req.params.id,
+      { status: 'Shortlisted' },
+      { new: true }
+    );
+    res.json(updated);
+  } catch (error) {
+    res.status(400).json({ message: 'Error shortlisting applicant', error });
+  }
+};
+
+
+
+
 module.exports = {
   getPartnerCompanies,
   postJob,
   getApplicants,
-  updateApplicant,
+  updateInterview,
   addPartnerCompany,
   updatePartnerCompany,
   deletePartnerCompany,
+  scheduleInterview,
+  createApplicant,
+  updateApplicant,
+  deleteApplicant,
+  shortlistApplicant,
+  
 };

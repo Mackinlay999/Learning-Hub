@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from '../api/axios';
 import { Container, Form, Button, Alert, Spinner } from 'react-bootstrap';
 import '../style/PostJob.css';
-const JOB_TYPES = ['Job', 'Internship'];
+const JOB_TYPES = ['Full-time', 'Internship'];
 
 const PostJob = () => {
   const [formData, setFormData] = useState({

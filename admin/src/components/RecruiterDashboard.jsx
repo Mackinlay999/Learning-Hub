@@ -45,13 +45,13 @@ const features = [
 const RecruiterDashboard = () => {
   const [partnerCompanies, setPartnerCompanies] = useState([]);
 
-//   useEffect(() => {
-//     const fetchPartnerCompanies = async () => {
-//       const companies = await features[0].apiCall(); // Fetch data from the API
-//       setPartnerCompanies(companies);
-//     };
-//     fetchPartnerCompanies();
-//   }, []);
+  useEffect(() => {
+    const fetchPartnerCompanies = async () => {
+      const companies = await features[0].apiCall(); // Fetch data from the API
+      setPartnerCompanies(companies);
+    };
+    fetchPartnerCompanies();
+  }, []);
 
   return (
     <Container className="RecruiterDashboard-container py-5">
@@ -66,7 +66,7 @@ const RecruiterDashboard = () => {
 
       <Row className="RecruiterDashboard-row g-4">
         {features.map((item, index) => (
-          <Col key={index} xs={12} sm={6} lg={4} xl={3}>
+          <Col xs={12} sm={6} lg={6} xl={6} key={item.id || index}>
             <motion.div
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
