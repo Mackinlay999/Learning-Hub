@@ -21,10 +21,22 @@ const sections = [
   { name: "Analytics & Reports", icon: <BarChart2 size={18} />, path: "/analytics-reports" },
   { name: "Support & Feedback", icon: <MessageCircle size={18} />, path: "/support-feedback" },
   { name: "Recruiter & Placement", icon: <Briefcase size={18} />, path: "/recruitment" },
+<<<<<<< HEAD
   { name: "Sucess Story", icon: <Briefcase size={18} />, path: "/Suceess" },
   { name: "Blog & Webinar", icon: <ShieldCheck size={18} />, path: "/blog-webinar" },
 { name: "Suceess Story", icon: <Briefcase size={18} />, path: "/Suceess" },
 { name: "Blog & Webinar", icon: <ShieldCheck size={18} />, path: "/blog-webinar" },
+=======
+
+  { name: "Sucess Story", icon: <Briefcase size={18} />, path: "/Suceess" },
+  { name: "Blog & Webinar", icon: <ShieldCheck size={18} />, path: "/blog-webinar" },
+
+{ name: "Suceess Story", icon: <Briefcase size={18} />, path: "/Suceess" },
+{ name: "Blog & Webinar", icon: <ShieldCheck size={18} />, path: "/blog-webinar" },
+
+
+
+>>>>>>> 7b079523f38d5286f2525976a0f35630a2fdc8ac
 ];
 
 const Sidebar = () => {

@@ -1,7 +1,6 @@
-// src/pages/ScheduleInterview.jsx
 import React, { useState, useEffect } from "react";
 import axios from "../api/axios";
-import { Container, Form, Button, Alert, Spinner } from "react-bootstrap";
+import { Container, Form, Button, Alert, Spinner, Table } from "react-bootstrap";
 import "../style/ScheduleInterview.css"; // optional CSS import for styling
 
 const ScheduleInterview = () => {
@@ -14,19 +13,32 @@ const ScheduleInterview = () => {
   const [message, setMessage] = useState({ type: "", text: "" });
   const [loading, setLoading] = useState(false);
   const [applicants, setApplicants] = useState([]);
+  const [interviews, setInterviews] = useState([]); // Store scheduled interviews
   const [validationErrors, setValidationErrors] = useState({});
 
   useEffect(() => {
+    // Fetch applicants for scheduling
     const fetchApplicants = async () => {
       try {
-        const res = await axios.get("/recruiters/applicants"); // 🔁 Update the endpoint if needed
+        const res = await axios.get("/recruiters/applicants");
         setApplicants(res.data);
       } catch (error) {
         console.error("Failed to fetch applicants:", error);
       }
     };
 
+    // Fetch scheduled interviews
+    const fetchInterviews = async () => {
+      try {
+        const res = await axios.get("/recruiters/interviews"); // Endpoint to fetch scheduled interviews
+        setInterviews(res.data);
+      } catch (error) {
+        console.error("Failed to fetch interviews:", error);
+      }
+    };
+
     fetchApplicants();
+    fetchInterviews();
   }, []);
 
   const handleChange = (e) => {
@@ -71,6 +83,7 @@ const ScheduleInterview = () => {
         text: "Interview scheduled successfully!",
       });
       setFormData({ applicantId: "", date: "", time: "" });
+      fetchInterviews(); // Reload the interviews list after scheduling
     } catch (error) {
       console.error("Error scheduling interview:", error);
       setMessage({
@@ -79,6 +92,42 @@ const ScheduleInterview = () => {
       });
     } finally {
       setLoading(false);
+    }
+  };
+
+  // Handle Interview Update (e.g., change date or time)
+  const handleUpdate = async (interviewId, updatedData) => {
+    try {
+      await axios.put(`/recruiters/interviews/${interviewId}`, updatedData);
+      setMessage({
+        type: "success",
+        text: "Interview updated successfully!",
+      });
+      fetchInterviews(); // Reload interviews after update
+    } catch (error) {
+      console.error("Error updating interview:", error);
+      setMessage({
+        type: "danger",
+        text: "Error updating interview.",
+      });
+    }
+  };
+
+  // Handle Interview Deletion
+  const handleDelete = async (interviewId) => {
+    try {
+      await axios.delete(`/recruiters/interviews/${interviewId}`);
+      setMessage({
+        type: "success",
+        text: "Interview deleted successfully!",
+      });
+      fetchInterviews(); // Reload interviews after delete
+    } catch (error) {
+      console.error("Error deleting interview:", error);
+      setMessage({
+        type: "danger",
+        text: "Error deleting interview.",
+      });
     }
   };
 
@@ -101,9 +150,7 @@ const ScheduleInterview = () => {
 
       <Form onSubmit={handleSubmit} className="ScheduleInterview-form">
         <Form.Group className="mb-3">
-          <Form.Label className="ScheduleInterview-label">
-            Select Applicant
-          </Form.Label>
+          <Form.Label className="ScheduleInterview-label">Select Applicant</Form.Label>
           <Form.Select
             name="applicantId"
             value={formData.applicantId}
@@ -180,6 +227,42 @@ const ScheduleInterview = () => {
           </Button>
         </div>
       </Form>
+
+      <h4 className="mt-5">Scheduled Interviews</h4>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Applicant</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {interviews.map((interview) => (
+            <tr key={interview._id}>
+              <td>{interview.applicantId.name}</td>
+              <td>{interview.date}</td>
+              <td>{interview.time}</td>
+              <td>
+                <Button
+                  variant="warning"
+                  onClick={() => handleUpdate(interview._id, { date: "newDate", time: "newTime" })}
+                >
+                  Update
+                </Button>
+                <Button
+                  variant="danger"
+                  onClick={() => handleDelete(interview._id)}
+                  className="ms-2"
+                >
+                  Delete
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </Container>
   );
 };

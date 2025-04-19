@@ -513,6 +513,7 @@ const CampaignBuilder = () => {
             {campaigns.map((c, index) => (
               <li key={index} className="cam-campaign-item">
                 <strong>Subject:</strong> {c.subject} <br />
+                <strong>Body:</strong> {c.body} <br />
                 <strong>Recipients:</strong>{' '}
                 {c.recipients.join(', ')}
                 <br />
