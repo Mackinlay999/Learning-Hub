@@ -12,7 +12,7 @@ const SuperAdminPanel = () => {
       <AdminManagement />
 
  {/* <SecurityCompliance /> */}
- <WebsiteContentManager />
+ {/* <WebsiteContentManager /> */}
     </div>
   )
 }

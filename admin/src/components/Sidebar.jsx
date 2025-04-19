@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 5851d77695b260b4ad3629d51f2cf39fa4ad78b3
 import React, { useState } from 'react';
 import {
   ShieldCheck, Users, BookOpenCheck, Mail, CreditCard,
@@ -25,14 +21,14 @@ const sections = [
   { name: "Analytics & Reports", icon: <BarChart2 size={18} />, path: "/analytics-reports" },
   { name: "Support & Feedback", icon: <MessageCircle size={18} />, path: "/support-feedback" },
   { name: "Recruiter & Placement", icon: <Briefcase size={18} />, path: "/recruitment" },
-<<<<<<< HEAD
+
   { name: "Sucess Story", icon: <Briefcase size={18} />, path: "/Suceess" },
   { name: "Blog & Webinar", icon: <ShieldCheck size={18} />, path: "/blog-webinar" },
-=======
+
 { name: "Suceess Story", icon: <Briefcase size={18} />, path: "/Suceess" },
 { name: "Blog & Webinar", icon: <ShieldCheck size={18} />, path: "/blog-webinar" },
 
->>>>>>> 5851d77695b260b4ad3629d51f2cf39fa4ad78b3
+
 
 ];
 
