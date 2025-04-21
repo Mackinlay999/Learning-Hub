@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
-import axios from '../api/axios';
-import { Container, Form, Button, Alert, Spinner } from 'react-bootstrap';
-import '../style/PostJob.css';
-const JOB_TYPES = ['Full-time', 'Internship'];
+import React, { useState } from "react";
+import axios from "../api/axios";
+import { Container, Form, Button, Alert, Spinner } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
+import "../style/PostJob.css";
+const JOB_TYPES = ["Full-time", "Internship"];
 
 const PostJob = () => {
   const [formData, setFormData] = useState({
-    title: '',
-    description: '',
+    title: "",
+    description: "",
     type: JOB_TYPES[0],
   });
 
-  const [status, setStatus] = useState({ type: '', message: '' });
+  const [status, setStatus] = useState({ type: "", message: "" });
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,15 +25,21 @@ const PostJob = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setStatus({ type: '', message: '' });
+    setStatus({ type: "", message: "" });
 
     try {
-      await axios.post('/recruiters/post', formData);
-      setFormData({ title: '', description: '', type: JOB_TYPES[0] });
-      setStatus({ type: 'success', message: 'Job/Internship posted successfully!' });
+      await axios.post("/recruiters/post", formData);
+      setFormData({ title: "", description: "", type: JOB_TYPES[0] });
+      setStatus({
+        type: "success",
+        message: "Job/Internship posted successfully!",
+      });
     } catch (error) {
-      console.error('Error posting job:', error);
-      setStatus({ type: 'danger', message: error.response?.data?.message || 'Failed to post job.' });
+      console.error("Error posting job:", error);
+      setStatus({
+        type: "danger",
+        message: error.response?.data?.message || "Failed to post job.",
+      });
     } finally {
       setLoading(false);
     }
@@ -38,13 +47,21 @@ const PostJob = () => {
 
   return (
     <Container className="postjob-container py-5">
-      <h3 className="postjob-title mb-4 fw-bold">Post Job/Internship</h3>
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h3 className="postjob-title fw-bold">Post Job/Internship</h3>
+        <Button
+          variant="secondary"
+          onClick={() => navigate("/recruiters/dashboard")}
+        >
+          Back to Dashboard
+        </Button>
+      </div>
 
       {status.message && (
         <Alert
           variant={status.type}
           className="postjob-alert"
-          onClose={() => setStatus({ type: '', message: '' })}
+          onClose={() => setStatus({ type: "", message: "" })}
           dismissible
         >
           {status.message}
@@ -106,7 +123,7 @@ const PostJob = () => {
               Posting...
             </>
           ) : (
-            'Post'
+            "Post"
           )}
         </Button>
       </Form>

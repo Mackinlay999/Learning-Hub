@@ -2,6 +2,8 @@
 const Jobs = require("../Model/Job");
 const Applicant = require("../Model/Applicant");
 const Company = require("../Model/Company");
+
+
 const mongoose = require("mongoose");
 
 const getPartnerCompanies = async (req, res) => {
@@ -61,17 +63,57 @@ const getApplicants = async (req, res) => {
 };
 
 // schedule interview
+// Update interview details (e.g., reschedule)
 const updateInterview = async (req, res) => {
-  const { id } = req.params;
-  const updated = await Applicant.findByIdAndUpdate(id, req.body, {
-    new: true,
-  });
-  res.json(updated);
+  try {
+    const { interviewId } = req.params;
+    const { date, time } = req.body;
+
+    if (!date || !time) {
+      return res.status(400).json({ message: "Date and time are required." });
+    }
+
+    const updatedInterview = await Applicant.findOneAndUpdate(
+      { _id: interviewId, status: "Interview Scheduled" },
+      { interviewDate: new Date(`${date}T${time}`) },
+      { new: true }
+    );
+
+    if (!updatedInterview) {
+      return res.status(404).json({ message: "Interview not found or already completed." });
+    }
+
+    res.status(200).json({ message: "Interview updated successfully!" });
+  } catch (error) {
+    console.error("Error updating interview:", error);
+    res.status(500).json({ message: "Server error while updating interview." });
+  }
 };
 
-// controller
+// Delete an interview
+const deleteInterview = async (req, res) => {
+  try {
+    const { interviewId } = req.params;
+
+    const deletedInterview = await Applicant.findOneAndUpdate(
+      { _id: interviewId, status: "Interview Scheduled" },
+      { status: "Applied", interviewDate: null },
+      { new: true }
+    );
+
+    if (!deletedInterview) {
+      return res.status(404).json({ message: "Interview not found or already cancelled." });
+    }
+
+    res.status(200).json({ message: "Interview deleted successfully!" });
+  } catch (error) {
+    console.error("Error deleting interview:", error);
+    res.status(500).json({ message: "Server error while deleting interview." });
+  }
+};
 
 // Schedule Interview
+
 const scheduleInterview = async (req, res) => {
   try {
     const { applicantId, date, time } = req.body;
@@ -80,13 +122,19 @@ const scheduleInterview = async (req, res) => {
       return res.status(400).json({ message: "All fields are required." });
     }
 
-    const newInterview = new Interview({
+    // Update applicant status and interview date
+    const updatedApplicant = await Applicant.findByIdAndUpdate(
       applicantId,
-      date,
-      time,
-    });
+      {
+        status: "Interview Scheduled",
+        interviewDate: new Date(`${date}T${time}`),
+      },
+      { new: true }
+    );
 
-    await newInterview.save();
+    if (!updatedApplicant) {
+      return res.status(404).json({ message: "Applicant not found." });
+    }
 
     res.status(201).json({ message: "Interview scheduled successfully!" });
   } catch (error) {
@@ -95,23 +143,35 @@ const scheduleInterview = async (req, res) => {
   }
 };
 
+// Get all scheduled interviews
+const getScheduledInterviews = async (req, res) => {
+  try {
+    const interviews = await Applicant.find({ status: "Interview Scheduled" });
+    res.status(200).json(interviews);
+  } catch (error) {
+    console.error("Error fetching scheduled interviews:", error);
+    res.status(500).json({ message: "Server error while fetching interviews." });
+  }
+};
+
+
+
 
 // POST a new applicant
 const createApplicant = async (req, res) => {
   try {
     const { name, email, resumeUrl } = req.body;
     const newApplicant = new Applicant({
-      resume: resumeUrl,
+      name,
+      email,
+      resumeUrl,
       status: 'Applied',
     });
-
-    // Temporarily attach name & email for frontend display
-    newApplicant.name = name;
-    newApplicant.email = email;
-
     await newApplicant.save();
+    
     res.status(201).json(newApplicant);
   } catch (error) {
+    console.error("Error adding applicant:", error);
     res.status(400).json({ message: 'Error adding applicant', error });
   }
 };
@@ -123,7 +183,7 @@ const updateApplicant = async (req, res) => {
     const updated = await Applicant.findByIdAndUpdate(
       req.params.id,
       {
-        resume: resumeUrl,
+        resumeUrl,
         name,
         email,
       },
@@ -175,5 +235,6 @@ module.exports = {
   updateApplicant,
   deleteApplicant,
   shortlistApplicant,
-  
+  deleteInterview,
+  getScheduledInterviews,
 };

@@ -21,17 +21,18 @@ router.get("/recruiters/applicants", recruiterController.getApplicants);
 // route
 router.post("/recruiters/schedule", recruiterController.scheduleInterview);
 // Shortlist/Schedule
-router.put("/recruiters/schedule/:id", recruiterController.updateInterview);
+// router.put("/recruiters/schedule/:id", recruiterController.updateInterview);
+// Route for updating an interview (rescheduling)
+router.put("/recruiters/schedule/interviews/:interviewId", recruiterController.updateInterview);
+// 🔥 This is the missing GET route
+router.get("/recruiters/schedule/interviews", recruiterController.getScheduledInterviews);
+// Route for deleting an interview (cancel interview)
+router.delete("/recruiters/schedule/interviews/:interviewId", recruiterController.deleteInterview);
 // POST new applicant
-router.post('/', recruiterController.createApplicant);
+router.post('/recruiters/applicants', recruiterController.createApplicant);
 
-// PUT update applicant
-router.put('/:id', recruiterController.updateApplicant);
-
-// DELETE applicant
-router.delete('/:id', recruiterController.deleteApplicant);
-
-// PUT shortlist applicant
-router.put('/:id/shortlist', recruiterController.shortlistApplicant);
+router.put('/recruiters/applicants/:id', recruiterController.updateApplicant);
+router.delete('/recruiters/applicants/:id', recruiterController.deleteApplicant);
+router.put('/recruiters/applicants/:id/shortlist', recruiterController.shortlistApplicant);
 
 module.exports = router;
