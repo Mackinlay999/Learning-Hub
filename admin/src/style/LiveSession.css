@@ -11,7 +11,13 @@
   text-align: center;
   margin-bottom: 20px;
   font-size: 26px;
-  color: #2c3e50;
+  color: #D32F2F; /* Primary Red */
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.title:hover {
+  color: #FFC107; /* Gold Accent */
 }
 
 /* Form Styling */
@@ -39,13 +45,15 @@
 
 .session-form input:focus,
 .session-form select:focus {
-  border-color: #4caf50;
+  border-color: #D32F2F; /* Primary Red */
   outline: none;
+  box-shadow: 0 0 5px rgba(211, 47, 47, 0.3); /* Light Red */
 }
 
+/* Add Session Button */
 .add-session {
   flex: 1 1 160px;
-  background-color: #4caf50;
+  background-color: #D32F2F; /* Primary Red */
   color: white;
   border: none;
   border-radius: 6px;
@@ -57,7 +65,7 @@
 }
 
 .add-session:hover {
-  background-color: #388e3c;
+  background-color: #B71C1C; /* Darker Red */
 }
 
 /* Table Styling */
@@ -79,6 +87,10 @@
   font-weight: 600;
 }
 
+.session-table td {
+  color: #333; /* Dark Gray */
+}
+
 /* Button Styling */
 .session-table button {
   padding: 6px 12px;
@@ -91,30 +103,36 @@
 }
 
 .edit {
-  background-color: #2196f3;
+  background-color: #2196f3; /* Blue */
   color: white;
 }
 
 .edit:hover {
-  background-color: #1976d2;
+  background-color: #1976d2; /* Darker Blue */
 }
 
 .delete {
-  background-color: #f44336;
+  background-color: #f44336; /* Red */
   color: white;
 }
 
 .delete:hover {
-  background-color: #d32f2f;
+  background-color: #D32F2F; /* Primary Red */
 }
 
 .save {
-  background-color: #4caf50;
+  background-color: #4caf50; /* Green */
   color: white;
 }
 
 .save:hover {
-  background-color: #388e3c;
+  background-color: #388e3c; /* Darker Green */
+}
+
+/* Hover Effects */
+.session-table button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive Design */
@@ -193,4 +211,3 @@
     width: auto;
   }
 }
-

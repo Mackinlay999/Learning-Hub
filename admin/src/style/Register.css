@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f8f9fa;
+    background-color: #f8f9fa; /* White background for readability */
 }
 
 /* Register Box */
@@ -15,28 +15,31 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 450px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.r-register-box:hover {
+    transform: scale(1.02); /* Subtle hover effect */
 }
 
 /* Heading */
 .r-register-box h3 {
     margin-bottom: 1rem;
-    color: #333;
-    
+    color: #333333; /* Dark Gray for headings */
 }
 
 /* Form Styling */
 .r-register-box form {
     display: flex;
     flex-direction: column;
-    
 }
 
+/* Labels */
 .r-register-box label {
     text-align: left;
     font-weight: bold;
     margin-top: 10px;
-    color: #555;
-    
+    color: #333333; /* Dark Gray for text */
 }
 
 /* Input Fields */
@@ -46,8 +49,13 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+.r-register-box input:focus {
+    border-color: #D32F2F; /* Primary Red for focused input */
+    box-shadow: 0 0 5px rgba(211, 47, 47, 0.5); /* Soft red glow */
+}
 
 /* Password Toggle Button */
 .r-password-toggle {
@@ -56,14 +64,12 @@
     color: #007bff;
     cursor: pointer;
     margin-top: 5px;
-    /* width: 450px ; */
     font-size: 0.9rem;
 }
-.r-password-container input{
-    width: 450px !important;
-   
-    
-   
+
+/* Password Container */
+.r-password-container input {
+    width: 450px !important; /* Ensure full width */
 }
 
 /* Error Messages */
@@ -75,7 +81,7 @@
 
 /* Submit Button */
 .r-register-box button[type="submit"] {
-    background: #007bff;
+    background: #D32F2F; /* Primary Red for button */
     color: white;
     border: none;
     padding: 10px;
@@ -83,10 +89,12 @@
     margin-top: 15px;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .r-register-box button[type="submit"]:hover {
-    background: #0056b3;
+    background: #a00000; /* Darker red on hover */
+    transform: scale(1.05); /* Slight enlarge on hover */
 }
 
 /* Login Link */
@@ -96,14 +104,17 @@
 }
 
 .r-register-box p span {
-    color: #007bff;
+    color: #007bff; /* Blue link color */
     cursor: pointer;
+    transition: color 0.3s ease-in-out;
 }
 
 .r-register-box p span:hover {
+    color: #003366; /* Darker blue on hover */
     text-decoration: underline;
 }
 
+/* Password Container - Positioning */
 .r-password-container {
     display: flex;
     align-items: center;
@@ -111,35 +122,37 @@
     width: 100% !important;
 }
 
+/* Password Visibility Toggle */
 .r-password-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
+    background-color: transparent !important;
     font-size: 1.2rem;
     position: absolute;
     right: 10px;
-    color: #555;
-    
+    color: #555; /* Dark gray for visibility toggle */
 }
-.r-num{
-    margin-top: 10px;
-    
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .r-register-box {
+        padding: 1.5rem;
+        width: 90%;
+    }
 }
-.r-password-toggle{
 
-    background-color:transparent !important;
+@media (max-width: 480px) {
+    .r-register-box {
+        padding: 1rem;
+    }
+
+    .r-register-box h3 {
+        font-size: 1.2rem; /* Adjust heading size */
+    }
+
+    .r-register-box input {
+        font-size: 0.9rem; /* Smaller input font on smaller screens */
+    }
+
+    .r-register-box button[type="submit"] {
+        font-size: 0.9rem; /* Adjust button size */
+    }
 }
-   
-
-
-
-
-
-
-
-
-
-
-
-
-

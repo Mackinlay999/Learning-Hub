@@ -1,132 +1,138 @@
-/* Mentor.css */
+/* Mentor.css */ 
 
 .mentors-container {
-    background: linear-gradient(to right, #f8f9fa, #e9ecef);
-    min-height: 100vh;
-    padding: 2rem;
-    transition: background 0.3s ease-in-out;
-  }
-  
-  .mentors-title-effect {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #003366;
-    position: relative;
-    animation: slideDown 0.6s ease-in-out;
-  }
-  
-  @keyframes slideDown {
-    0% {
+  background: linear-gradient(to right, #f8f9fa, #e9ecef);
+  min-height: 100vh;
+  padding: 2rem;
+  transition: background 0.3s ease-in-out;
+}
+
+.mentors-title-effect {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #D32F2F; /* Primary Red */
+  position: relative;
+  animation: slideDown 0.6s ease-in-out;
+}
+
+@keyframes slideDown {
+  0% {
       transform: translateY(-30px);
       opacity: 0;
-    }
-    100% {
+  }
+  100% {
       transform: translateY(0);
       opacity: 1;
-    }
   }
-  
-  .mentors-form-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .mentors-form-card:hover {
-    transform: scale(1.01);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .mentors-card-body {
-    padding: 1.5rem;
-  }
-  
-  .mentors-form-control {
-    width: 100%;
-    padding: 10px 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    transition: border-color 0.3s ease;
-    font-size: 1rem;
-  }
-  
-  .mentors-form-control:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-  }
-  
-  .mentors-submit-btn {
-    padding: 10px;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: background 0.3s ease;
-  }
-  
-  .mentors-submit-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .mentor-card {
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #ffffff;
-    animation: fadeInUp 0.6s ease forwards;
-  }
-  
-  .mentor-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-  }
-  
-  @keyframes fadeInUp {
-    from {
+}
+
+.mentors-form-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mentors-form-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mentors-card-body {
+  padding: 1.5rem;
+}
+
+.mentors-form-control {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.mentors-form-control:focus {
+  outline: none;
+  border-color: #D32F2F; /* Primary Red */
+  box-shadow: 0 0 5px rgba(211, 47, 47, 0.3); /* Light Red */
+}
+
+.mentors-submit-btn {
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #D32F2F; /* Primary Red */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.mentors-submit-btn:hover {
+  background-color: #B71C1C; /* Darker Red */
+}
+
+.mentor-card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.mentor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeInUp {
+  from {
       opacity: 0;
       transform: translateY(30px);
-    }
-    to {
+  }
+  to {
       opacity: 1;
       transform: translateY(0);
-    }
   }
-  
-  .mentors-card-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #003366;
-  }
-  
-  .mentors-card-text {
-    font-size: 0.95rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .card-footer button {
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .card-footer button:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Responsive layout */
-  @media (max-width: 768px) {
-    .mentors-title-effect {
+}
+
+.mentors-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #D32F2F; /* Primary Red */
+}
+
+.mentors-card-text {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: #333333; /* Dark Gray */
+}
+
+.card-footer button {
+  transition: all 0.2s ease-in-out;
+}
+
+.card-footer button:hover {
+  transform: scale(1.05);
+  background-color: #FFC107; /* Gold Accent */
+  color: #ffffff;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .mentors-title-effect {
       font-size: 1.5rem;
       text-align: center;
-    }
-  
-    .mentors-form-control {
-      font-size: 0.95rem;
-    }
-  
-    .mentor-card {
-      margin-bottom: 1rem;
-    }
-  
-    .mentors-card-title {
-      font-size: 1.1rem;
-    }
   }
-  
+
+  .mentors-form-control {
+      font-size: 0.95rem;
+  }
+
+  .mentor-card {
+      margin-bottom: 1rem;
+  }
+
+  .mentors-card-title {
+      font-size: 1.1rem;
+  }
+}

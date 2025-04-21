@@ -1,96 +1,192 @@
-.container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    font-family: sans-serif;
-  }
-  
-  .title, .subtitle {
-    margin-bottom: 15px;
-    text-align: center;
-  }
-  
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 40px;
-    background-color: #f9f9f9;
-  }
-  
-  .form input[type="text"],
-  .form input[type="file"] {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .checkbox {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .btn {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .story-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .story-card {
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 6px;
-    background: #fff;
-  }
-  
-  .story-name {
-    font-weight: bold;
-    font-size: 18px;
-  }
-  
-  .actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  .edit-btn {
-    color: #007bff;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .delete-btn {
-    color: #dc3545;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .toggle-btn {
-    color: #28a745;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  .S-btn:hover{
+/* Color Palette */ 
+:root {
+  --primary-red: #D32F2F; /* Call-to-action buttons, headings, icons */
+  --dark-gray: #333333;   /* Text & contrast sections */
+  --white: #FFFFFF;       /* Background for readability */
+  --gold-accent: #FFC107; /* Highlighting important sections */
+  --btn-hover: #007bff;   /* Hover color for buttons */
+}
 
-    background-color: #007bff;
+/* Container styling */
+.success-story-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  font-family: sans-serif;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title & Subtitle */
+.success-story-title, .success-story-subtitle {
+  margin-bottom: 15px;
+  text-align: center;
+  color: var(--dark-gray);
+}
+
+.success-story-title {
+  font-size: 2rem;
+  color: var(--primary-red);
+}
+
+.success-story-subtitle {
+  font-size: 1.2rem;
+  color: var(--dark-gray);
+}
+
+/* Form Styling */
+.success-story-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.success-story-form:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.success-story-form input[type="text"],
+.success-story-form input[type="file"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.success-story-form input[type="text"]:focus,
+.success-story-form input[type="file"]:focus {
+  border-color: var(--primary-red);
+}
+
+/* Button Styling */
+.success-story-btn {
+  padding: 10px 20px;
+  background-color: var(--primary-red);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.success-story-btn:hover {
+  background-color: var(--btn-hover);
+  transform: translateY(-2px);
+}
+
+/* Story List */
+.success-story-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Story Card */
+.success-story-card {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 6px;
+  background: #fff;
+  transition: box-shadow 0.3s ease;
+}
+
+.success-story-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Story Name */
+.success-story-name {
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--dark-gray);
+}
+
+/* Action Buttons inside Story Cards */
+.success-story-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.success-story-edit-btn,
+.success-story-delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.success-story-edit-btn {
+  color: var(--primary-red);
+}
+
+.success-story-delete-btn {
+  color: #dc3545;
+}
+
+.success-story-edit-btn:hover {
+  color: var(--gold-accent);
+}
+
+.success-story-delete-btn:hover {
+  color: #ff5733;
+}
+
+/* Button hover effects */
+.success-story-btn:hover {
+  background-color: var(--btn-hover);
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.success-story-title, .success-story-subtitle, .success-story-form, .success-story-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .success-story-container {
+    padding: 15px;
+  }
+
+  .success-story-form {
+    padding: 15px;
+  }
+
+  .success-story-btn {
+    padding: 12px 20px;
+  }
+
+  .success-story-list {
+    gap: 10px;
+  }
+
+  .success-story-card {
+    flex-direction: column;
+  }
+
+  .success-story-actions {
+    justify-content: space-around;
+  }
+}

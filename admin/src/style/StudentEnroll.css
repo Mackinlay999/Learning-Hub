@@ -1,12 +1,21 @@
+/* Enhanced Theme Colors */
+:root {
+  --primary-red: #D32F2F;
+  --dark-gray: #333333;
+  --white: #FFFFFF;
+  --gold-accent: #FFC107;
+}
+
 /* Container */
 .se-container {
   max-width: 900px;
   margin: auto;
   padding: 20px;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #fff;
+  background-color: var(--white);
   border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
 }
 
 /* Title */
@@ -14,7 +23,9 @@
   text-align: center;
   font-size: 26px;
   margin-bottom: 20px;
-  color: #222;
+  color: var(--primary-red);
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 }
 
 /* Form */
@@ -33,27 +44,37 @@
   border: 1px solid #ccc;
   font-size: 16px;
   width: 200px;
+  transition: border 0.3s ease;
+}
+
+.se-form input:focus,
+.se-form select:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
 }
 
 .se-form button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: var(--primary-red);
   color: #fff;
   font-weight: bold;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .se-form button:hover {
-  background-color: #0056b3;
+  background-color: #b71c1c;
+  transform: scale(1.05);
 }
 
 /* Table */
 .se-table {
   width: 100%;
   border-collapse: collapse;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .se-table th,
@@ -61,11 +82,13 @@
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 .se-table th {
-  background-color: #f8f8f8;
+  background-color: var(--gold-accent);
   font-size: 16px;
+  color: var(--dark-gray);
 }
 
 /* Row Colors */
@@ -89,6 +112,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
+  transition: all 0.3s ease-in-out;
 }
 
 .se-table button:first-child {
@@ -97,12 +121,13 @@
 }
 
 .se-table button:nth-child(2) {
-  background-color: #dc3545;
+  background-color: var(--primary-red);
   color: white;
 }
 
 .se-table button:hover {
-  opacity: 0.8;
+  opacity: 0.9;
+  transform: scale(1.05);
 }
 
 /* Responsive */
@@ -128,6 +153,22 @@
   }
 }
 
-.ST-tr th{
-  color: #222;
+/* Gold-accented status highlight effect */
+.se-table td.status-highlight {
+  background-color: var(--gold-accent);
+  font-weight: bold;
+  color: var(--dark-gray);
+}
+
+/* Optional subtle hover effect for rows */
+.se-table tr:hover {
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+/* Additional heading row */
+.ST-tr th {
+  color: var(--dark-gray);
+  background-color: #f2f2f2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }

@@ -1,26 +1,24 @@
 /* Home.css */
 
-/* Global Styles */
-/* body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f7fb;
-} */
-
 .home-dashboard {
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Header Section */
 .home-dashboard-header {
   background: #fff;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #D32F2F;
+  animation: fadeIn 0.4s ease-in-out;
 }
 
-.home-admin-text{
+.home-admin-text {
   font-size: 28px;
   font-weight: 600;
+  color: #D32F2F;
 }
 
 .home-search-bar {
@@ -30,6 +28,8 @@
   border: 1px solid #dcdcdc;
   display: flex;
   align-items: center;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
 }
 
 .home-search-bar input {
@@ -37,11 +37,18 @@
   outline: none;
   width: 100%;
   padding-left: 10px;
+  background: transparent;
+  color: #333;
 }
 
+.home-search-bar:hover {
+  box-shadow: 0 0 0 2px #D32F2F55;
+}
+
+/* Search Icon */
 .home-dashboard-header .me-2 {
   font-size: 20px;
-  color: #aaa;
+  color: #D32F2F;
 }
 
 /* Card Styles */
@@ -50,12 +57,18 @@
   background: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-card-stats:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(211, 47, 47, 0.1);
 }
 
 .home-card-stats h3 {
   font-size: 24px;
   font-weight: 700;
-  color: #333;
+  color: #333333;
 }
 
 .home-card-stats .fs-6 {
@@ -63,12 +76,15 @@
 }
 
 .home-card-stats button {
-  color: #007bff;
-  text-decoration: none;
+  color: #D32F2F;
+  background: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .home-card-stats button:hover {
-  color: #0056b3;
+  color: #FFC107;
 }
 
 /* Chart Card Styling */
@@ -76,6 +92,14 @@
   border-radius: 8px;
   background: #fff;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  border-top: 3px solid #FFC107;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-chart-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 
 .home-chart-card .mt-3 {
@@ -88,21 +112,23 @@
 
 .home-chart-card h5 {
   font-weight: 600;
-  color: #333;
+  color: #333333;
 }
 
 .home-chart-card p {
   color: #777;
 }
 
+/* Progress Bar */
 .home-progress-bar {
   border-radius: 20px;
-  background-color: #007bff;
+  background-color: #D32F2F;
 }
 
 .home-progress-bar .progress {
   height: 20px;
   border-radius: 20px;
+  background-color: #FFC107;
 }
 
 /* Calendar */
@@ -114,6 +140,8 @@
   border: none;
   width: 100%;
   height: 400px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 /* Responsive Design */
@@ -144,5 +172,17 @@
 
   .scheduler-calendar iframe {
     height: 300px;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -1,83 +1,148 @@
+/* Color Palette & Branding */
+:root {
+  --primary-red: #D32F2F; /* Call-to-action buttons, headings, icons */
+  --dark-gray: #333333; /* Text & contrast sections */
+  --white: #FFFFFF; /* Background for readability */
+  --gold-accent: #FFC107; /* Highlighting important sections */
+  --green: #4caf50; /* Button green */
+  --orange: #ffa500; /* Button orange */
+  --red: #dc3545; /* Button red */
+  --blue: #007bff; /* Button blue */
+  --hover-blue: #003366; /* Hover effect for blue button */
+  --light-gray: #f9f9f9; /* Light background color */
+  --border-color: #ddd; /* Border color */
+  --shadow: rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+/* Discounts Container */
 .discounts-container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
-  }
-  
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.discounts-container:hover {
+  transform: translateY(-5px); /* Slight lift effect */
+  box-shadow: 0px 6px 15px var(--shadow); /* Enhanced shadow effect */
+}
+
+/* Discount Form */
+.discount-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Discount Input & Button */
+.discount-form input,
+.discount-form button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.discount-form input:focus,
+.discount-form button:focus {
+  border-color: var(--primary-red);
+  box-shadow: 0 0 5px var(--primary-red);
+}
+
+/* Discount List */
+.discount-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Discount Card */
+.discount-card {
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  border-radius: 8px;
+  background: var(--light-gray);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.discount-card:hover {
+  transform: translateY(-5px); /* Slight lift effect */
+  box-shadow: 0px 4px 8px var(--shadow); /* Enhanced shadow effect */
+}
+
+.discount-card p {
+  margin: 5px 0;
+  color: var(--dark-gray);
+}
+
+/* Buttons */
+.apply-btn,
+.edit-btn,
+.remove-btn {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.apply-btn {
+  background: var(--green);
+  color: var(--white);
+}
+
+.apply-btn:hover {
+  background: var(--green); /* Green stays the same on hover */
+  transform: translateY(-3px); /* Slight lift effect */
+}
+
+.edit-btn {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.edit-btn:hover {
+  background: var(--gold-accent); /* Gold accent on hover */
+  transform: translateY(-3px); /* Slight lift effect */
+}
+
+.remove-btn {
+  background: var(--red);
+  color: var(--white);
+}
+
+.remove-btn:hover {
+  background: var(--gold-accent); /* Gold accent on hover */
+  transform: translateY(-3px); /* Slight lift effect */
+}
+
+/* Discount Button (Blue) */
+.d-btn {
+  background-color: var(--blue);
+  color: var(--white);
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.d-btn:hover {
+  background: var(--hover-blue); /* Hover effect for blue button */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
   .discount-form {
-    display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
   }
-  
-  .discount-form input,
-  .discount-form button {
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  .discount-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
+
   .discount-card {
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 8px;
-    background: #f9f9f9;
-    text-align: left;
+    padding: 10px;
   }
-  
-  .discount-card p {
-    margin: 5px 0;
-  }
-  
-  .apply-btn {
-    background: green;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    margin-right: 5px;
-  }
-  
-  .edit-btn {
-    background: orange;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    margin-right: 5px;
-  }
-  
-  .remove-btn {
-    background: red;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-  }
-  .d-btn{
-    background-color:blue;
-    color: white;
-  }
-  .d-btn:hover{
-    background: #003366;
-  
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 600px) {
-    .discount-form {
-      flex-direction: column;
-    }
-  
-    .discount-card {
-      padding: 10px;
-    }
-  }
-  
+}

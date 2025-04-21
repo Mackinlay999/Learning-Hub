@@ -81,7 +81,7 @@ const BlogWebinar = () => {
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -30 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.4 }}
           className="blog-webinar-appear"
         >
           <h2 className="blog-webinar-section-title mb-4">Create Blog Post</h2>
@@ -136,7 +136,7 @@ const BlogWebinar = () => {
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 30 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.4 }}
           className="blog-webinar-appear"
         >
           <h2 className="blog-webinar-section-title mb-4">Schedule Upcoming Webinars</h2>

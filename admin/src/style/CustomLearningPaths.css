@@ -1,91 +1,141 @@
 .CLP-container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  .CLP-title {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  .CLP-description {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  background-color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.CLP-title {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #D32F2F;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.CLP-description {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  color: #555555;
+}
+
+.CLP-form {
+  display: grid;
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.CLP-form input,
+.CLP-form button {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease-in-out;
+}
+
+.CLP-form input:focus {
+  border-color: #D32F2F;
+  outline: none;
+  box-shadow: 0 0 6px rgba(211, 47, 47, 0.3);
+}
+
+.CLP-form button {
+  background-color: #D32F2F;
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+}
+
+.CLP-form button:hover {
+  background-color: #b71c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.CLP-list h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  color: #D32F2F;
+  border-bottom: 2px solid #FFC107;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.CLP-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.CLP-table th,
+.CLP-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.CLP-table th {
+  background-color: #f9f9f9;
+  color: #D32F2F;
+  font-weight: 600;
+}
+
+.CLP-table td {
+  background-color: #ffffff;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.CLP-table tr:hover td {
+  background-color: #fff3e0;
+}
+
+.CLP-table button {
+  margin-right: 5px;
+  padding: 7px 12px;
+  border: none;
+  background-color: #D32F2F;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.CLP-table button:hover {
+  background-color: #b71c1c;
+  transform: scale(1.05);
+}
+
+.CLP-table button:last-child {
+  background-color: #dc3545;
+}
+
+.CLP-table button:last-child:hover {
+  background-color: #b52a37;
+}
+
+@media (max-width: 768px) {
   .CLP-form {
-    display: grid;
-    gap: 10px;
-    margin-bottom: 30px;
+    grid-template-columns: 1fr;
   }
-  
-  .CLP-form input,
-  .CLP-form button {
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .CLP-form button {
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .CLP-form button:hover {
-    background-color: #0056b3;
-  }
-  
-  .CLP-list h2 {
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
+
   .CLP-table {
-    width: 100%;
-    border-collapse: collapse;
+    font-size: 0.9rem;
   }
-  
-  .CLP-table th,
-  .CLP-table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
+
+  .CLP-title {
+    font-size: 1.8rem;
   }
-  
-  .CLP-table th {
-    background-color: #f2f2f2;
-  }
-  
-  .CLP-table button {
-    margin-right: 5px;
-    padding: 5px 10px;
-    border: none;
-    background-color: #28a745;
-    color: white;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .CLP-table button:last-child {
-    background-color: #dc3545;
-  }
-  
-  @media (max-width: 768px) {
-    .CLP-form {
-      grid-template-columns: 1fr;
-    }
-  
-    .CLP-table {
-      font-size: 0.9rem;
-    }
-  
-    .CLP-title {
-      font-size: 1.5rem;
-    }
-  }
-  
+}

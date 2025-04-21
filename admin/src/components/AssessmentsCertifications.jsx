@@ -122,21 +122,23 @@ const AssessmentsCertifications = () => {
   };
 
   return (
-    <div className="assessments">
-      <h2 className="title">Assessments & Certifications</h2>
+    <div className="assessments-certifications">
+      <h2 className="assessments-certifications-title">Assessments & Certifications</h2>
 
-      <div className="assessment-form">
+      <div className="assessments-certifications-form">
         <input
           type="text"
           name="title"
           placeholder="Assessment Title"
           value={newAssessment.title}
           onChange={handleInputChange}
+          className="assessments-certifications-input"
         />
         <select
           name="type"
           value={newAssessment.type}
           onChange={handleInputChange}
+          className="assessments-certifications-select"
         >
           <option value="">Select Type</option>
           <option value="Quiz">Quiz</option>
@@ -147,20 +149,21 @@ const AssessmentsCertifications = () => {
           name="status"
           value={newAssessment.status}
           onChange={handleInputChange}
+          className="assessments-certifications-select"
         >
           <option value="">Select Status</option>
           <option value="Pending">Pending</option>
           <option value="Active">Active</option>
           <option value="Completed">Completed</option>
         </select>
-        <button className="add-assessment" onClick={addAssessment}>
+        <button className="assessments-certifications-add" onClick={addAssessment}>
           Add Assessment
         </button>
       </div>
 
-      <table className="assessment-table">
+      <table className="assessments-certifications-table">
         <thead>
-          <tr className="C-tr">
+          <tr className="assessments-certifications-tr">
             <th>ID</th>
             <th>Title</th>
             <th>Type</th>
@@ -189,6 +192,7 @@ const AssessmentsCertifications = () => {
                           title: e.target.value,
                         })
                       }
+                      className="assessments-certifications-input"
                     />
                   ) : (
                     assessment.title
@@ -204,6 +208,7 @@ const AssessmentsCertifications = () => {
                           type: e.target.value,
                         })
                       }
+                      className="assessments-certifications-select"
                     >
                       <option value="Quiz">Quiz</option>
                       <option value="Assignment">Assignment</option>
@@ -223,6 +228,7 @@ const AssessmentsCertifications = () => {
                           status: e.target.value,
                         })
                       }
+                      className="assessments-certifications-select"
                     >
                       <option value="Pending">Pending</option>
                       <option value="Active">Active</option>
@@ -237,26 +243,26 @@ const AssessmentsCertifications = () => {
                 </td>
                 <td>
                   {editAssessment && editAssessment._id === assessment._id ? (
-                    <button className="save" onClick={saveEdit}>
+                    <button className="assessments-certifications-save" onClick={saveEdit}>
                       Save
                     </button>
                   ) : (
                     <>
                       <button
-                        className="edit"
+                        className="assessments-certifications-edit"
                         onClick={() => startEdit(assessment)}
                       >
                         Edit
                       </button>
                       <button
-                        className="delete"
+                        className="assessments-certifications-delete"
                         onClick={() => deleteAssessment(assessment._id)}
                       >
                         Delete
                       </button>
                       {!assessment.issuedCertificate ? (
                         <button
-                          className="certificate"
+                          className="assessments-certifications-certificate"
                           onClick={() => issueCertificate(assessment._id)}
                           disabled={loadingId === assessment._id}
                         >
@@ -266,7 +272,7 @@ const AssessmentsCertifications = () => {
                         </button>
                       ) : (
                         <button
-                          className="download"
+                          className="assessments-certifications-download"
                           onClick={() => {
                             setLastIssued(assessment);
                             generateCertificate(assessment);
@@ -289,12 +295,15 @@ const AssessmentsCertifications = () => {
           ref={canvasRef}
           width={400}
           height={250}
-          style={{ border: "1px solid #ccc", marginTop: "20px" }}
+          className="assessments-certifications-canvas"
         ></canvas>
       )}
 
       {lastIssued && (
-        <button className="download-btn" onClick={downloadCertificate}>
+        <button
+          className="assessments-certifications-download-btn"
+          onClick={downloadCertificate}
+        >
           Download Certificate as Image
         </button>
       )}

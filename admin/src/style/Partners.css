@@ -2,132 +2,159 @@
 
 /* Container Styling */
 .Partners-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* Heading Styling */
-  .Partners-container h3 {
-    font-size: 2rem;
-    color: #333;
-    font-weight: 700;
-  }
-  
-  /* Card Styling */
-  .Partners-card {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  .Partners-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Modal Styling */
-  .Modal-content {
-    transition: transform 0.3s ease-out;
-  }
-  
-  /* Button Styling */
-  .Partners-submit-btn {
-    width: 100%;
-    padding: 12px;
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .Partners-submit-btn:hover {
-    background-color: #45a049;
-  }
-  
-  .Partners-container .btn-success {
-    background-color: #28a745;
-    border: none;
-  }
-  
-  .Partners-container .btn-success:hover {
-    background-color: #218838;
-  }
-  
-  .Partners-container .btn-primary {
-    background-color: #007bff;
-    border: none;
-  }
-  
-  .Partners-container .btn-primary:hover {
-    background-color: #0056b3;
-  }
-  
-  .Partners-container .btn-warning {
-    background-color: #ffc107;
-    border: none;
-  }
-  
-  .Partners-container .btn-warning:hover {
-    background-color: #e0a800;
-  }
-  
-  .Partners-container .btn-danger {
-    background-color: #dc3545;
-    border: none;
-  }
-  
-  .Partners-container .btn-danger:hover {
-    background-color: #c82333;
-  }
-  
-  /* Alert Box Styling */
-  .Alert {
-    margin-bottom: 20px;
-    transition: opacity 0.3s ease;
-  }
-  
-  /* Mobile Responsiveness */
-  @media screen and (max-width: 768px) {
-    .Partners-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #FFFFFF; /* White background for readability */
+}
+
+/* Heading Styling */
+.Partners-container h3 {
+  font-size: 2rem;
+  color: #333333; /* Dark Gray text */
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Card Styling */
+.Partners-card {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #FFFFFF; /* White background for cards */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.Partners-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal Styling */
+.Modal-content {
+  transition: transform 0.3s ease-out;
+}
+
+/* Button Styling */
+.Partners-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #D32F2F; /* Primary Red for call-to-action buttons */
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.Partners-submit-btn:hover {
+  background-color: #B71C1C; /* Darker red for hover effect */
+}
+
+/* Success Button Styling */
+.Partners-container .btn-success {
+  background-color: #28a745; /* Green for success */
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.Partners-container .btn-success:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Primary Button Styling */
+.Partners-container .btn-primary {
+  background-color: #007bff; /* Blue for primary actions */
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.Partners-container .btn-primary:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Warning Button Styling */
+.Partners-container .btn-warning {
+  background-color: #FFC107; /* Gold Accent for highlighting */
+  border: none;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.Partners-container .btn-warning:hover {
+  background-color: #E0A800; /* Darker gold on hover */
+}
+
+/* Danger Button Styling */
+.Partners-container .btn-danger {
+  background-color: #DC3545; /* Red for danger/warnings */
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.Partners-container .btn-danger:hover {
+  background-color: #C82333; /* Darker red on hover */
+}
+
+/* Alert Box Styling */
+.Alert {
+  margin-bottom: 20px;
+  transition: opacity 0.3s ease;
+  background-color: #F8D7DA; /* Light red for alert box */
+  color: #721C24; /* Red text for alerts */
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #F5C6CB;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .Partners-container {
       padding: 20px;
-    }
-  
-    .Partners-container h3 {
+  }
+
+  .Partners-container h3 {
       font-size: 1.5rem;
       text-align: center;
-    }
-  
-    .Partners-card {
+  }
+
+  .Partners-card {
       margin-bottom: 15px;
-    }
-  
-    .Partners-card .card-body {
+  }
+
+  .Partners-card .card-body {
       padding: 20px;
-    }
-  
-    .d-flex {
+  }
+
+  .d-flex {
       flex-direction: column;
       align-items: center;
-    }
-  
-    .d-flex .btn {
-      margin-bottom: 10px;
-    }
   }
-  
-  @media screen and (max-width: 480px) {
-    .Partners-container h3 {
+
+  .d-flex .btn {
+      margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Partners-container h3 {
       font-size: 1.3rem;
-    }
-  
-    .Partners-card {
-      margin-bottom: 10px;
-    }
-  
-    .Partners-submit-btn {
-      font-size: 1rem;
-    }
   }
-  
+
+  .Partners-card {
+      margin-bottom: 10px;
+  }
+
+  .Partners-submit-btn {
+      font-size: 1rem;
+  }
+}
