@@ -4,11 +4,16 @@ const leadSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true },
+   
+    number : {type : Number},
+    program: { type: String, required: true },
+    Joiningtime : {type : String},
     status: {
       type: String,
-      enum: ["Very interested", "Interested", " Inactive"],
-      default: "Inactive",
+     
     },
+
+
   },
   { timestamps: true }
 );
