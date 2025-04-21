@@ -13,10 +13,12 @@ const LeadList = () => {
   const [leadData, setLeadData] = useState({
     name: "",
     email: "",
-    status: "Very interested",
+    number: "",
+    program: "",
+    Joiningtime: "",
+    status: "",
   });
 
-  // Fetch leads on load
   useEffect(() => {
     fetchLeads();
   }, []);
@@ -24,8 +26,7 @@ const LeadList = () => {
   const fetchLeads = async () => {
     try {
       const res = await axios.get("/getLeads");
-      console.log("Fetched Leads:", res.data);
-      setLeads(res.data); // If res.data.leads → change accordingly
+      setLeads(res.data);
     } catch (err) {
       console.error("Failed to fetch leads", err);
     }
@@ -41,9 +42,7 @@ const LeadList = () => {
       if (isEditing) {
         const res = await axios.put(`/updateLead/${editingLead._id}`, leadData);
         setLeads(
-          leads.map((lead) =>
-            lead._id === editingLead._id ? res.data : lead
-          )
+          leads.map((lead) => (lead._id === editingLead._id ? res.data : lead))
         );
         setIsEditing(false);
         setEditingLead(null);
@@ -51,7 +50,14 @@ const LeadList = () => {
         const res = await axios.post("/createLead", leadData);
         setLeads([...leads, res.data]);
       }
-      setLeadData({ name: "", email: "", status: "Very interested" });
+      setLeadData({
+        name: "",
+        email: "",
+        number: "",
+        program: "",
+        Joiningtime :"",
+        status: "",
+      });
     } catch (err) {
       console.error("Failed to save lead", err);
     }
@@ -90,6 +96,7 @@ const LeadList = () => {
           value={leadData.name}
           onChange={handleChange}
           required
+          className="L-input"
         />
         <input
           name="email"
@@ -97,11 +104,42 @@ const LeadList = () => {
           value={leadData.email}
           onChange={handleChange}
           required
+          className="L-input"
         />
-        <select name="status" value={leadData.status} onChange={handleChange}>
-          <option value="Very interested">Hot</option>
-          <option value="Interested">Warm</option>
-          <option value="Inactive">Cold</option>
+        <input
+          name="number"
+          placeholder="Phone Number"
+          value={leadData.number}
+          onChange={handleChange}
+          required
+          maxLength={10}
+          className="L-input"
+        />
+        <select name="program" value={leadData.program} onChange={handleChange} className="L-section" required>
+  <option value="">What Training Program Do You Need?</option>
+  <option value="HR">HR</option>
+  <option value="Marketing">Marketing</option>
+  <option value="Sales">Sales</option>
+  <option value="Business Analyst">Business Analyst</option>
+  <option value="Finance">Finance</option>
+</select>
+
+
+
+<select name="Joiningtime" value={leadData.Joiningtime} className="L-section" onChange={handleChange} required>
+  <option value="">Preferred Joining Time</option>
+  <option value="This month">This month</option>
+  <option value="Next month">Next month</option>
+  <option value="After 3 months">After 3 months</option>
+  <option value="After 6 months">After 6 months</option>
+</select>
+
+        
+        <select name="status" value={leadData.status} onChange={handleChange} className="L-section">
+        <option value="Status">Status</option>
+          <option value="Interested">Interest</option>
+          <option value="not interest">Not Interest</option>
+          
         </select>
         <button className="d-btn" type="submit">
           {isEditing ? "Update Lead" : "Add Lead"}
@@ -111,9 +149,8 @@ const LeadList = () => {
       {/* FILTER */}
       <select onChange={(e) => setFilter(e.target.value)}>
         <option value="All">All</option>
-        <option value="Very interested">Hot</option>
-        <option value="Interested">Warm</option>
-        <option value="Inactive">Cold</option>
+        <option value="Interested">Interest</option>
+        <option value="not interest">Not Interest</option>
       </select>
 
       {/* TABLE */}
@@ -122,8 +159,11 @@ const LeadList = () => {
           <tr className="LL-tr">
             <th>Name</th>
             <th>Email</th>
-            <th>Status</th>
+            <th>Number</th>
+            <th>Program</th>
             <th>Action</th>
+            <th>Status</th>
+            <th>Edit</th>
           </tr>
         </thead>
         <tbody>
@@ -131,6 +171,9 @@ const LeadList = () => {
             <tr key={lead._id}>
               <td>{lead.name}</td>
               <td>{lead.email}</td>
+              <td>{lead.number}</td>
+              <td>{lead.program}</td>
+              <td>{lead.Joiningtime}</td>
               <td>{lead.status}</td>
               <td>
                 <button className="ld-bnt" onClick={() => setSelectedLead(lead)}>
@@ -155,6 +198,9 @@ const LeadList = () => {
             <h3>Lead Details</h3>
             <p><strong>Name:</strong> {selectedLead.name}</p>
             <p><strong>Email:</strong> {selectedLead.email}</p>
+            <p><strong>Number:</strong> {selectedLead.number}</p>
+            <p><strong>Program</strong> {selectedLead.program}</p>
+            <p><strong>Joining Time</strong> {selectedLead.Joiningtime}</p>
             <p><strong>Status:</strong> {selectedLead.status}</p>
             <button onClick={() => setSelectedLead(null)}>Close</button>
           </div>

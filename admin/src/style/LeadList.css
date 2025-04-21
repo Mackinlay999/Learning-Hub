@@ -224,4 +224,11 @@ tbody td {
     width: 100%;
   }
 }
+.L-section{
+  width: 100% !important;
+  
+}
+.L-input{
+  margin-top: 20px;
+}
 

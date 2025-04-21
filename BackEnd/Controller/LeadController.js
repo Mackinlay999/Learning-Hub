@@ -6,11 +6,11 @@ const LeadController = {
         try {
            console.log("create lead");
            
-            const {name,email,status } = req.body
-            if(!name ||!email ||!status ){
+            const {name,email,status,program,Joiningtime,number } = req.body
+            if(!name ||!email ||!status || !program ||!number || !Joiningtime ){
                 return res.status(400).json({err:"fill the form"})
             }
-          const newLead = new Lead({name,email,status });
+          const newLead = new Lead({name,email,status,program,Joiningtime,number });
           await newLead.save();
           res.status(201).json(newLead);
         } catch (err) {
