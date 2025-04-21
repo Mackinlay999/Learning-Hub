@@ -74,12 +74,12 @@ const sections = [
   },
 
   { name: "Sucess Story", icon: <Briefcase size={18} />, path: "/Suceess" },
-<<<<<<< HEAD
+
   { name: "Blog & Webinar", icon: <ShieldCheck size={18} />, path: "/blog-webinar" },
 
 
 
-=======
+
   {
     name: "Blog & Webinar",
     icon: <ShieldCheck size={18} />,
@@ -91,7 +91,7 @@ const sections = [
     icon: <ShieldCheck size={18} />,
     path: "/blog-webinar",
   },
->>>>>>> e1825eefbd844d84603a93e03cf36e502f371eee
+
 
   { name: "Sucess Story", icon: <Briefcase size={18} />, path: "/Suceess" },
   {
