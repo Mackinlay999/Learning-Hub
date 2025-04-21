@@ -25,8 +25,7 @@ const sections = [
   { name: "Sucess Story", icon: <Briefcase size={18} />, path: "/Suceess" },
   { name: "Blog & Webinar", icon: <ShieldCheck size={18} />, path: "/blog-webinar" },
 
-{ name: "Suceess Story", icon: <Briefcase size={18} />, path: "/Suceess" },
-{ name: "Blog & Webinar", icon: <ShieldCheck size={18} />, path: "/blog-webinar" },
+
 
 
 
