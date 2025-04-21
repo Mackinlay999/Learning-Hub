@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "../api/axios";
-import { Container, Form, Button, Alert, Spinner, Table } from "react-bootstrap";
-import "../style/ScheduleInterview.css"; // optional CSS import for styling
+import {
+  Container,
+  Form,
+  Button,
+  Alert,
+  Spinner,
+  Table,
+} from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import "../style/ScheduleInterview.css";
 
 const ScheduleInterview = () => {
   const [formData, setFormData] = useState({
@@ -9,34 +17,35 @@ const ScheduleInterview = () => {
     date: "",
     time: "",
   });
+  const navigate = useNavigate();
 
   const [message, setMessage] = useState({ type: "", text: "" });
   const [loading, setLoading] = useState(false);
   const [applicants, setApplicants] = useState([]);
-  const [interviews, setInterviews] = useState([]); // Store scheduled interviews
+  const [interviews, setInterviews] = useState([]);
   const [validationErrors, setValidationErrors] = useState({});
+  const [editingInterviewId, setEditingInterviewId] = useState(null);
+  const [editFormData, setEditFormData] = useState({ date: "", time: "" });
+
+  const fetchApplicants = async () => {
+    try {
+      const res = await axios.get("/recruiters/applicants");
+      setApplicants(res.data);
+    } catch (error) {
+      console.error("Failed to fetch applicants:", error);
+    }
+  };
+
+  const fetchInterviews = async () => {
+    try {
+      const res = await axios.get("/recruiters/schedule/interviews");
+      setInterviews(res.data);
+    } catch (error) {
+      console.error("Failed to fetch interviews:", error);
+    }
+  };
 
   useEffect(() => {
-    // Fetch applicants for scheduling
-    const fetchApplicants = async () => {
-      try {
-        const res = await axios.get("/recruiters/applicants");
-        setApplicants(res.data);
-      } catch (error) {
-        console.error("Failed to fetch applicants:", error);
-      }
-    };
-
-    // Fetch scheduled interviews
-    const fetchInterviews = async () => {
-      try {
-        const res = await axios.get("/recruiters/interviews"); // Endpoint to fetch scheduled interviews
-        setInterviews(res.data);
-      } catch (error) {
-        console.error("Failed to fetch interviews:", error);
-      }
-    };
-
     fetchApplicants();
     fetchInterviews();
   }, []);
@@ -83,7 +92,7 @@ const ScheduleInterview = () => {
         text: "Interview scheduled successfully!",
       });
       setFormData({ applicantId: "", date: "", time: "" });
-      fetchInterviews(); // Reload the interviews list after scheduling
+      fetchInterviews();
     } catch (error) {
       console.error("Error scheduling interview:", error);
       setMessage({
@@ -95,15 +104,36 @@ const ScheduleInterview = () => {
     }
   };
 
-  // Handle Interview Update (e.g., change date or time)
-  const handleUpdate = async (interviewId, updatedData) => {
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setEditFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const startEditing = (interview) => {
+    setEditingInterviewId(interview._id);
+    setEditFormData({ date: interview.date, time: interview.time });
+  };
+
+  const cancelEditing = () => {
+    setEditingInterviewId(null);
+    setEditFormData({ date: "", time: "" });
+  };
+
+  const handleUpdate = async (interviewId) => {
     try {
-      await axios.put(`/recruiters/interviews/${interviewId}`, updatedData);
+      await axios.put(
+        `/recruiters/schedule/interviews/${interviewId}`,
+        editFormData
+      );
       setMessage({
         type: "success",
         text: "Interview updated successfully!",
       });
-      fetchInterviews(); // Reload interviews after update
+      setEditingInterviewId(null);
+      fetchInterviews();
     } catch (error) {
       console.error("Error updating interview:", error);
       setMessage({
@@ -113,15 +143,14 @@ const ScheduleInterview = () => {
     }
   };
 
-  // Handle Interview Deletion
   const handleDelete = async (interviewId) => {
     try {
-      await axios.delete(`/recruiters/interviews/${interviewId}`);
+      await axios.delete(`/recruiters/schedule/interviews/${interviewId}`);
       setMessage({
         type: "success",
         text: "Interview deleted successfully!",
       });
-      fetchInterviews(); // Reload interviews after delete
+      fetchInterviews();
     } catch (error) {
       console.error("Error deleting interview:", error);
       setMessage({
@@ -133,6 +162,9 @@ const ScheduleInterview = () => {
 
   return (
     <Container className="ScheduleInterview-container py-5">
+      <Button variant="secondary" onClick={() => navigate(-1)} className="mb-3">
+        Back
+      </Button>
       <h3 className="ScheduleInterview-title mb-4 text-center">
         Schedule Interview
       </h3>
@@ -150,7 +182,9 @@ const ScheduleInterview = () => {
 
       <Form onSubmit={handleSubmit} className="ScheduleInterview-form">
         <Form.Group className="mb-3">
-          <Form.Label className="ScheduleInterview-label">Select Applicant</Form.Label>
+          <Form.Label className="ScheduleInterview-label">
+            Select Applicant
+          </Form.Label>
           <Form.Select
             name="applicantId"
             value={formData.applicantId}
@@ -166,11 +200,9 @@ const ScheduleInterview = () => {
               </option>
             ))}
           </Form.Select>
-          {validationErrors.applicantId && (
-            <Form.Control.Feedback type="invalid">
-              {validationErrors.applicantId}
-            </Form.Control.Feedback>
-          )}
+          <Form.Control.Feedback type="invalid">
+            {validationErrors.applicantId}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -184,11 +216,9 @@ const ScheduleInterview = () => {
             className="ScheduleInterview-input"
             isInvalid={validationErrors.date}
           />
-          {validationErrors.date && (
-            <Form.Control.Feedback type="invalid">
-              {validationErrors.date}
-            </Form.Control.Feedback>
-          )}
+          <Form.Control.Feedback type="invalid">
+            {validationErrors.date}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-4">
@@ -202,11 +232,9 @@ const ScheduleInterview = () => {
             className="ScheduleInterview-input"
             isInvalid={validationErrors.time}
           />
-          {validationErrors.time && (
-            <Form.Control.Feedback type="invalid">
-              {validationErrors.time}
-            </Form.Control.Feedback>
-          )}
+          <Form.Control.Feedback type="invalid">
+            {validationErrors.time}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <div className="text-center">
@@ -241,23 +269,68 @@ const ScheduleInterview = () => {
         <tbody>
           {interviews.map((interview) => (
             <tr key={interview._id}>
-              <td>{interview.applicantId.name}</td>
-              <td>{interview.date}</td>
-              <td>{interview.time}</td>
+              <td>{interview.name}</td>
               <td>
-                <Button
-                  variant="warning"
-                  onClick={() => handleUpdate(interview._id, { date: "newDate", time: "newTime" })}
-                >
-                  Update
-                </Button>
-                <Button
-                  variant="danger"
-                  onClick={() => handleDelete(interview._id)}
-                  className="ms-2"
-                >
-                  Delete
-                </Button>
+                {editingInterviewId === interview._id ? (
+                  <Form.Control
+                    type="date"
+                    name="date"
+                    value={editFormData.date}
+                    onChange={handleEditChange}
+                  />
+                ) : (
+                  new Date(interview.interviewDate).toLocaleDateString()
+                )}
+              </td>
+              <td>
+                {editingInterviewId === interview._id ? (
+                  <Form.Control
+                    type="time"
+                    name="time"
+                    value={editFormData.time}
+                    onChange={handleEditChange}
+                  />
+                ) : (
+                  new Date(interview.interviewDate).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })
+                )}
+              </td>
+              <td>
+                {editingInterviewId === interview._id ? (
+                  <>
+                    <Button
+                      variant="success"
+                      onClick={() => handleUpdate(interview._id)}
+                    >
+                      Save
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      className="ms-2"
+                      onClick={cancelEditing}
+                    >
+                      Cancel
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      variant="warning"
+                      onClick={() => startEditing(interview)}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      variant="danger"
+                      className="ms-2"
+                      onClick={() => handleDelete(interview._id)}
+                    >
+                      Delete
+                    </Button>
+                  </>
+                )}
               </td>
             </tr>
           ))}

@@ -41,9 +41,9 @@ import PostJob from "./components/PostJob";
 import Applicants from "./components/Applicants";
 import ScheduleInterview from "./components/ScheduleInterview";
 
-
 import EmailCampaign from "./components/EmailCampaign";
-
+// In App.jsx or your routing file
+import ResumeViewer from "./components/ResumeViewer";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -126,10 +126,8 @@ function App() {
                 <Route path="/Dashboard" element={<Dashboard />} />
                 <Route path="/payment-success" element={<PaymentSuccess />} />
                 <Route path="/payment-failure" element={<PaymentFailure />} />
-
                 <Route path="/payment-failure" element={<PaymentFailure />} />
-                <Route path="/Suceess" element={ <Suceess />} />{" "}
-
+                <Route path="/Suceess" element={<Suceess />} />{" "}
                 <Route path="/mentors" element={<Mentors />} />
                 <Route path="/blog-webinar" element={<BlogWebinar />} />
                 <Route
@@ -145,7 +143,7 @@ function App() {
                 />
                 <Route path="/recruiters" element={<RecruiterDashboard />} />
                 <Route path="/EmailCampaign" element={<EmailCampaign />} />
-
+                <Route path="/resume" element={<ResumeViewer />} />
                 {/* Catch-all route for 404 pages */}
                 <Route path="*" element={<NotFound />} />{" "}
                 {/* Catch-all route for 404 pages */}

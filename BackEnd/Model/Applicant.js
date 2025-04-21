@@ -14,7 +14,7 @@ const applicantSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  resume: {
+  resumeUrl: {
     type: String,
     required: true,
   },
