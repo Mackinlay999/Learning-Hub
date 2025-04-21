@@ -168,10 +168,10 @@ const createApplicant = async (req, res) => {
       status: 'Applied',
     });
     await newApplicant.save();
-    console.log("Created applicant:", newApplicant);
+    
     res.status(201).json(newApplicant);
   } catch (error) {
-    console.error("Error creating applicant:", error);
+    console.error("Error adding applicant:", error);
     res.status(400).json({ message: 'Error adding applicant', error });
   }
 };
