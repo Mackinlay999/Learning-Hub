@@ -154,9 +154,6 @@ const getScheduledInterviews = async (req, res) => {
   }
 };
 
-
-
-
 // POST a new applicant
 const createApplicant = async (req, res) => {
   try {
