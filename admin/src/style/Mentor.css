@@ -1,138 +1,220 @@
-/* Mentor.css */ 
-
+/* Mentors Container */
 .mentors-container {
-  background: linear-gradient(to right, #f8f9fa, #e9ecef);
-  min-height: 100vh;
-  padding: 2rem;
-  transition: background 0.3s ease-in-out;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #FFFFFF;
+  color: #333333;
 }
 
-.mentors-title-effect {
+.mentors-title {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
   font-size: 2rem;
-  font-weight: bold;
-  color: #D32F2F; /* Primary Red */
-  position: relative;
-  animation: slideDown 0.6s ease-in-out;
+  color: #D32F2F;
+  text-shadow: 1px 1px 1px #ffc107;
 }
 
-@keyframes slideDown {
-  0% {
-      transform: translateY(-30px);
-      opacity: 0;
-  }
-  100% {
-      transform: translateY(0);
-      opacity: 1;
-  }
+.mentors-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.mentors-form-card {
-  background-color: #ffffff;
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.mentors-form-card:hover {
-  transform: scale(1.01);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.mentors-card-body {
-  padding: 1.5rem;
-}
-
-.mentors-form-control {
+/* Form Controls */
+.mentors-form-control,
+.mentors-form-select {
   width: 100%;
-  padding: 10px 15px;
-  border-radius: 8px;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
   border: 1px solid #ccc;
-  transition: border-color 0.3s ease;
+  background-color: #fff;
   font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-.mentors-form-control:focus {
+.mentors-form-control:focus,
+.mentors-form-select:focus {
+  border-color: #D32F2F;
   outline: none;
-  border-color: #D32F2F; /* Primary Red */
-  box-shadow: 0 0 5px rgba(211, 47, 47, 0.3); /* Light Red */
+  box-shadow: 0 0 5px rgba(211, 47, 47, 0.4);
 }
 
-.mentors-submit-btn {
-  padding: 10px;
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: #D32F2F; /* Primary Red */
-  color: #ffffff;
+/* Buttons */
+.mentors-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
   border: none;
-  border-radius: 8px;
-  transition: background 0.3s ease;
-}
-
-.mentors-submit-btn:hover {
-  background-color: #B71C1C; /* Darker Red */
-}
-
-.mentor-card {
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background-color: #ffffff;
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.mentor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-}
-
-@keyframes fadeInUp {
-  from {
-      opacity: 0;
-      transform: translateY(30px);
-  }
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
-}
-
-.mentors-card-title {
-  font-size: 1.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
   font-weight: 600;
-  color: #D32F2F; /* Primary Red */
 }
 
-.mentors-card-text {
-  font-size: 0.95rem;
-  margin-bottom: 0.5rem;
-  color: #333333; /* Dark Gray */
+.mentors-btn:hover {
+  opacity: 0.95;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-.card-footer button {
-  transition: all 0.2s ease-in-out;
+.mentors-btn:focus {
+  outline: none;
 }
 
-.card-footer button:hover {
-  transform: scale(1.05);
-  background-color: #FFC107; /* Gold Accent */
-  color: #ffffff;
+/* Button specific styles */
+.mentors-btn.btn-primary {
+  background-color: #D32F2F;
+  color: white;
 }
 
-/* Responsive layout */
+.mentors-btn.btn-info {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.mentors-btn.btn-warning {
+  background-color: #FFC107;
+  color: black;
+}
+
+.mentors-btn.btn-danger {
+  background-color: #c62828;
+  color: white;
+}
+
+.mentors-btn.btn-dark {
+  background-color: #333333;
+  color: white;
+}
+
+.mentors-btn:active {
+  transform: scale(0.97);
+  background-color: #b71c1c;
+}
+
+/* Table Styles */
+.mentors-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.mentors-table th, .mentors-table td {
+  padding: 12px;
+  text-align: left;
+  font-size: 1rem;
+  color: #333333;
+}
+
+.mentors-table th {
+  background-color: #D32F2F;
+  color: white;
+  font-weight: 600;
+}
+
+.mentors-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.mentors-table-row {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.mentors-table-row:hover {
+  background-color: #FFF3E0;
+  transform: scale(1.01);
+}
+
+/* Badges */
+.mentors-table .badge {
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  border-radius: 12px;
+  color: white;
+}
+
+.mentors-table .badge.bg-success {
+  background-color: #28a745;
+}
+
+.mentors-table .badge.bg-secondary {
+  background-color: #6c757d;
+}
+
+.mentors-table .badge.bg-warning {
+  background-color: #FFC107;
+  color: #333;
+}
+
+/* Circle Images */
+.mentors-rounded-circle {
+  border-radius: 50%;
+  border: 2px solid #D32F2F;
+}
+
+/* Light Table Background */
+.mentors-table-light {
+  background-color: #f8f9fa;
+}
+
+/* Hover Effects */
+.mentors-btn:focus,
+.mentors-btn:hover {
+  background-color: #B71C1C;
+  box-shadow: 0 0 10px rgba(211, 47, 47, 0.3);
+}
+
+.mentors-table-row:hover {
+  transform: scale(1.02);
+}
+
+.mentors-btn:active {
+  transform: scale(0.98);
+  background-color: #a31818;
+}
+
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .mentors-title-effect {
-      font-size: 1.5rem;
-      text-align: center;
+  .mentors-row {
+    flex-direction: column;
   }
 
-  .mentors-form-control {
-      font-size: 0.95rem;
+  .mentors-form-control,
+  .mentors-form-select {
+    width: 100%;
   }
 
-  .mentor-card {
-      margin-bottom: 1rem;
+  .mentors-btn {
+    width: 100%;
+    margin-top: 10px;
   }
 
-  .mentors-card-title {
-      font-size: 1.1rem;
+  .mentors-table td, .mentors-table th {
+    font-size: 0.9rem;
+  }
+
+  .mentors-table .badge {
+    font-size: 0.8rem;
+  }
+
+  .mentors-btn.btn-sm {
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mentors-title {
+    font-size: 1.2rem;
+  }
+
+  .mentors-table td, .mentors-table th {
+    font-size: 0.8rem;
   }
 }
