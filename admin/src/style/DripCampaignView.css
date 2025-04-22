@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /* DripCampaignManager.css */
 
 .drip-campaign-container {
@@ -76,7 +76,7 @@ button:hover {
   .drip-form input, .drip-form textarea {
     font-size: 14px;
   }
-=======
+
 /* Color Palette & Branding */
 :root {
   --primary-red: #D32F2F; /* Call-to-action buttons, headings, icons */
@@ -200,6 +200,5 @@ button:hover {
 }
 
 .drip-delete:hover {
-  color: var(--gold-accent); /* Gold accent on hover */
->>>>>>> 9c5856f72506d951ab51581c2b94ccccb341c58e
+  color: var(--gold-accent);}
 }
