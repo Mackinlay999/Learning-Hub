@@ -24,6 +24,41 @@ const BlogWebinar = () => {
     webinarLink: "", // new
     typeofprogram: "", // new
   });
+  const [registrants, setRegistrants] = useState([]);
+  const [showRegistrants, setShowRegistrants] = useState(false);
+
+  const handleViewRegistrants = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/api/webinars/registrants"
+      );
+      setRegistrants(response.data); // Assuming backend returns an array
+      setShowRegistrants(true);
+    } catch (error) {
+      console.error("Error fetching registrants:", error);
+    }
+  };
+  const handleExportAttendance = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/api/webinars/export",
+        {
+          responseType: "blob", // Important for downloading files
+        }
+      );
+
+      // Create a blob URL and trigger download
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "attendance.xlsx"); // Adjust filename/extension
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    } catch (error) {
+      console.error("Error exporting attendance:", error);
+    }
+  };
 
   const handleImageChange = (e) => {
     setFormData({
@@ -42,40 +77,42 @@ const BlogWebinar = () => {
     e.preventDefault();
     try {
       const data = new FormData();
-      data.append('title', formData.blogTitle);
-      data.append('content', formData.blogContent);
-      data.append('publish', publish);
+      data.append("title", formData.blogTitle);
+      data.append("content", formData.blogContent);
+      data.append("publish", publish);
       if (formData.blogImage) {
-        data.append('image', formData.blogImage);
+        data.append("image", formData.blogImage);
       }
-  
-      const response = await axios.post('http://localhost:3000/api/blog', data, {
-        headers: { 'Content-Type': 'multipart/form-data' },
-      });
-  
-      console.log('Blog created:', response.data);
+
+      const response = await axios.post(
+        "http://localhost:3000/api/blog",
+        data,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
+
+      console.log("Blog created:", response.data);
     } catch (error) {
-      console.error('Error creating blog:', error);
+      console.error("Error creating blog:", error);
     }
   };
-  
 
   const handleWebinarSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/webinars', {
+      const response = await axios.post("http://localhost:3000/api/webinars", {
         title: formData.webinarTitle,
         dateTime: formData.webinarDateTime,
         description: formData.webinarDescription,
         link: formData.webinarLink,
         typeofprogram: formData.typeofprogram,
       });
-      console.log('Webinar scheduled:', response.data);
+      console.log("Webinar scheduled:", response.data);
     } catch (error) {
-      console.error('Error scheduling webinar:', error);
+      console.error("Error scheduling webinar:", error);
     }
   };
-  
 
   return (
     <Container className="blog-webinar-container py-5">
@@ -270,16 +307,38 @@ const BlogWebinar = () => {
 
             <div className="d-flex flex-wrap gap-3">
               <Button
-                type="submit"
+                type="button"
                 className="blog-webinar-button-view"
                 variant="primary"
+                onClick={handleViewRegistrants}
               >
                 View Registrants
               </Button>
-              <Button className="blog-webinar-button-export" variant="info">
+
+              <Button
+                className="blog-webinar-button-export"
+                variant="info"
+                onClick={handleExportAttendance}
+              >
                 Export Attendance Post-Session
               </Button>
             </div>
+            {showRegistrants && (
+              <div className="mt-4">
+                <h4>Registrants</h4>
+                <ul>
+                  {registrants.length === 0 ? (
+                    <li>No registrants found.</li>
+                  ) : (
+                    registrants.map((r, idx) => (
+                      <li key={idx}>
+                        {r.name} ({r.email})
+                      </li>
+                    ))
+                  )}
+                </ul>
+              </div>
+            )}
           </Form>
         </motion.div>
       )}
