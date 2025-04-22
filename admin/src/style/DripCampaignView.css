@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* DripCampaignManager.css */
 
 .drip-campaign-container {
@@ -75,4 +76,130 @@ button:hover {
   .drip-form input, .drip-form textarea {
     font-size: 14px;
   }
+=======
+/* Color Palette & Branding */
+:root {
+  --primary-red: #D32F2F; /* Call-to-action buttons, headings, icons */
+  --dark-gray: #333333; /* Text & contrast sections */
+  --white: #FFFFFF; /* Background for readability */
+  --gold-accent: #FFC107; /* Highlighting important sections */
+  --green: #4caf50; /* Button green */
+  --green-hover: #45a049; /* Hover effect for green buttons */
+  --light-gray: #f9f9f9; /* Light background color */
+  --shadow: rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  --border-color: #ddd; /* Border color */
+}
+
+/* Drip Card */
+.drip-card {
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 8px;
+  background-color: var(--light-gray);
+  box-shadow: 0px 4px 10px var(--shadow);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.drip-card:hover {
+  transform: translateY(-5px); /* Slight lift effect */
+  box-shadow: 0px 6px 15px var(--shadow); /* Enhanced shadow effect */
+}
+
+/* Drip Title */
+.drip-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-red);
+  transition: color 0.3s ease;
+}
+
+.drip-title:hover {
+  color: var(--gold-accent); /* Gold accent on hover */
+}
+
+/* Drip Form Group */
+.drip-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Drip Input */
+.drip-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.drip-input:focus {
+  border-color: var(--primary-red);
+  box-shadow: 0 0 5px var(--primary-red);
+}
+
+/* Drip Button */
+.drip-button {
+  background-color: var(--green);
+  color: var(--white);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.drip-button:hover {
+  background-color: var(--green-hover);
+  transform: translateY(-3px); /* Slight lift effect */
+}
+
+/* Drip List */
+.drip-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+/* Drip Item */
+.drip-item {
+  background-color: var(--white);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-left: 4px solid var(--green);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.drip-item:hover {
+  background-color: var(--light-gray); /* Hover effect for list items */
+  box-shadow: 0px 2px 5px var(--shadow);
+}
+
+/* Drip Step */
+.drip-step {
+  flex-grow: 1;
+  color: var(--dark-gray);
+  font-size: 16px;
+}
+
+/* Drip Delete Button */
+.drip-delete {
+  background: none;
+  border: none;
+  color: var(--primary-red);
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.drip-delete:hover {
+  color: var(--gold-accent); /* Gold accent on hover */
+>>>>>>> 9c5856f72506d951ab51581c2b94ccccb341c58e
 }

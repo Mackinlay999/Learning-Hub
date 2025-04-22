@@ -1,19 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
-import "../style/Mentor.css";
-
-const API_URL = "http://localhost:3000/api/mentors";
+import { useNavigate } from "react-router-dom";
 
 const Mentors = () => {
   const [mentors, setMentors] = useState([]);
-  const [form, setForm] = useState({
+  const [search, setSearch] = useState("");
+  const [expertiseFilter, setExpertiseFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
+  const [newMentor, setNewMentor] = useState({
     name: "",
+    expertise: "",
+    status: "Active",
+    photo: "",
     email: "",
-    courses: "",
-    sessions: "",
-    feedback: "",
+    mobile: "",
   });
-  const [editing, setEditing] = useState(null);
+  const [editId, setEditId] = useState(null);
+  const [editedMentor, setEditedMentor] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchMentors();
@@ -21,138 +25,333 @@ const Mentors = () => {
 
   const fetchMentors = async () => {
     try {
-      const res = await axios.get(API_URL);
-      setMentors(res.data);
-    } catch (err) {
-      console.error("Error fetching mentors:", err);
+      const { data } = await axios.get("http://localhost:3000/api/mentors");
+      setMentors(data);
+    } catch (error) {
+      console.error("Error fetching mentors:", error);
     }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      if (editing) {
-        await axios.put(`${API_URL}/${editing}`, form);
-      } else {
-        await axios.post(API_URL, form);
-      }
-      fetchMentors();
-      setForm({ name: "", email: "", courses: "", sessions: "", feedback: "" });
-      setEditing(null);
-    } catch (err) {
-      console.error("Error saving mentor:", err);
-    }
-  };
-
-  const handleEdit = (mentor) => {
-    setForm({
-      name: mentor.name,
-      email: mentor.email,
-      courses: mentor.courses,
-      sessions: mentor.sessions || "",
-      feedback: mentor.feedback || "",
-    });
-    setEditing(mentor._id);
   };
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${API_URL}/${id}`);
-      fetchMentors();
-    } catch (err) {
-      console.error("Error deleting mentor:", err);
+      await axios.delete(`http://localhost:3000/api/mentors/${id}`);
+      setMentors((prev) => prev.filter((m) => m._id !== id));
+    } catch (error) {
+      console.error("Error deleting mentor:", error);
     }
   };
 
-  return (
-    <div className="container py-4 mentors-container">
-      <h2 className="text-center mb-4 mentors-title-effect">Faculty & Mentor Management</h2>
+  const handleAddMentor = async () => {
+    try {
+      const { data } = await axios.post(
+        "http://localhost:3000/api/mentors",
+        newMentor
+      );
+      setMentors([...mentors, data]);
+      setNewMentor({
+        name: "",
+        expertise: "",
+        status: "Active",
+        photo: "",
+        email: "",
+        mobile: "",
+      });
+    } catch (error) {
+      console.error("Error adding mentor:", error);
+    }
+  };
 
-      {/* Form */}
-      <div className="card shadow mb-4 mentors-form-card">
-        <div className="mentors-card-body">
-          <form onSubmit={handleSubmit} className="row g-3">
-            <div className="col-md-4">
-              <input
-                type="text"
-                className="mentors-form-control"
-                placeholder="Mentor Name"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                required
-              />
-            </div>
-            <div className="col-md-4">
-              <input
-                type="email"
-                className="mentors-form-control"
-                placeholder="Email"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                required
-              />
-            </div>
-            <div className="col-md-4">
-              <input
-                type="text"
-                className="mentors-form-control"
-                placeholder="Assigned Courses (comma-separated)"
-                value={form.courses}
-                onChange={(e) => setForm({ ...form, courses: e.target.value })}
-              />
-            </div>
-            <div className="col-md-6">
-              <input
-                type="number"
-                className="mentors-form-control"
-                placeholder="Sessions Handled"
-                value={form.sessions}
-                onChange={(e) => setForm({ ...form, sessions: e.target.value })}
-              />
-            </div>
-            <div className="col-md-6">
-              <input
-                type="number"
-                step="0.1"
-                className="mentors-form-control"
-                placeholder="Feedback Score (1 to 5)"
-                value={form.feedback}
-                onChange={(e) => setForm({ ...form, feedback: e.target.value })}
-              />
-            </div>
-            <div className="col-12 d-grid">
-              <button type="submit" className="btn btn-primary mentors-submit-btn">
-                {editing ? "Update Mentor" : "Add Mentor"}
-              </button>
-            </div>
-          </form>
+  const handleEdit = (mentor) => {
+    setEditId(mentor._id);
+    setEditedMentor({ ...mentor });
+  };
+
+  const handleSaveEdit = async () => {
+    try {
+      const { data } = await axios.put(
+        `http://localhost:3000/api/mentors/${editId}`,
+        editedMentor
+      );
+      setMentors((prev) =>
+        prev.map((mentor) => (mentor._id === editId ? data : mentor))
+      );
+      setEditId(null);
+      setEditedMentor({});
+    } catch (error) {
+      console.error("Error updating mentor:", error);
+    }
+  };
+
+  const getStatusBadgeClass = (status) => {
+    switch (status) {
+      case "Active":
+        return "success";
+      case "Inactive":
+        return "secondary";
+      case "Retired":
+        return "warning";
+      default:
+        return "light";
+    }
+  };
+
+  const filteredMentors = useMemo(() => {
+    return mentors.filter(
+      (m) =>
+        m.name.toLowerCase().includes(search.toLowerCase()) &&
+        (expertiseFilter ? m.expertise === expertiseFilter : true) &&
+        (statusFilter ? m.status === statusFilter : true)
+    );
+  }, [mentors, search, expertiseFilter, statusFilter]);
+
+  return (
+    <div className="container mt-4">
+      <h3 className="mb-4">Mentor Management</h3>
+
+      {/* Filters */}
+      <div className="row mb-3 g-2">
+        <div className="col-md-4">
+          <input
+            className="form-control"
+            placeholder="Search by name"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
+        <div className="col-md-3">
+          <select
+            className="form-select"
+            value={expertiseFilter}
+            onChange={(e) => setExpertiseFilter(e.target.value)}
+          >
+            <option value="">Filter by Expertise</option>
+            <option value="Human-resource">Human-resource</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Business-Analytics">Business Analytics</option>
+            <option value="Finances">Finances</option>
+            <option value="Sales">Sales</option>
+          </select>
+        </div>
+        <div className="col-md-3">
+          <select
+            className="form-select"
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+          >
+            <option value="">Filter by Status</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+            <option value="Retired">Retired</option>
+          </select>
         </div>
       </div>
 
-      {/* Mentor Cards */}
-      <div className="row">
-        {mentors.map((mentor) => (
-          <div key={mentor._id} className="col-md-4 mb-4">
-            <div className="card mentor-card shadow h-100">
-              <div className="mentors-card-body">
-                <h5 className="mentors-card-title">{mentor.name}</h5>
-                <p className="mentors-card-text text-muted">{mentor.email}</p>
-                <p className="mentors-card-text"><strong>Courses:</strong> {mentor.courses}</p>
-                <p className="mentors-card-text text-success"><strong>Sessions:</strong> {mentor.sessions || 0}</p>
-                <p className="mentors-card-text text-info"><strong>Feedback:</strong> {mentor.feedback || "N/A"}</p>
-              </div>
-              <div className="card-footer d-flex justify-content-between">
-                <button className="btn btn-outline-secondary btn-sm" onClick={() => handleEdit(mentor)}>
-                  Edit
-                </button>
-                <button className="btn btn-danger btn-sm" onClick={() => handleDelete(mentor._id)}>
+      {/* Add Mentor */}
+      <div className="card mb-4 p-3">
+        <h5>Add New Mentor</h5>
+        <div className="row g-2">
+          <input
+            className="form-control col"
+            placeholder="Name"
+            value={newMentor.name}
+            onChange={(e) =>
+              setNewMentor({ ...newMentor, name: e.target.value })
+            }
+          />
+          <input
+            className="form-control col"
+            placeholder="Expertise"
+            value={newMentor.expertise}
+            onChange={(e) =>
+              setNewMentor({ ...newMentor, expertise: e.target.value })
+            }
+          />
+          <input
+            className="form-control col"
+            placeholder="Photo URL"
+            value={newMentor.photo}
+            onChange={(e) =>
+              setNewMentor({ ...newMentor, photo: e.target.value })
+            }
+          />
+          <input
+            className="form-control col"
+            placeholder="Email"
+            value={newMentor.email}
+            onChange={(e) =>
+              setNewMentor({ ...newMentor, email: e.target.value })
+            }
+          />
+          <input
+            className="form-control col"
+            placeholder="Mobile"
+            value={newMentor.mobile}
+            onChange={(e) =>
+              setNewMentor({ ...newMentor, mobile: e.target.value })
+            }
+          />
+          <select
+            className="form-control col"
+            value={newMentor.status}
+            onChange={(e) =>
+              setNewMentor({ ...newMentor, status: e.target.value })
+            }
+          >
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+            <option value="Retired">Retired</option>
+          </select>
+          <button className="btn btn-primary col" onClick={handleAddMentor}>
+            Add
+          </button>
+        </div>
+      </div>
+
+      {/* Table View */}
+      <table className="table table-striped table-hover table-bordered shadow-sm">
+        <thead className="table-dark">
+          <tr>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Expertise</th>
+            <th>Status</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredMentors.map((mentor) => (
+            <tr key={mentor._id}>
+              <td>
+                <img
+                  src={mentor.photo}
+                  alt="mentor"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                  }}
+                />
+              </td>
+              <td>
+                {editId === mentor._id ? (
+                  <input
+                    value={editedMentor.name}
+                    onChange={(e) =>
+                      setEditedMentor({
+                        ...editedMentor,
+                        name: e.target.value,
+                      })
+                    }
+                  />
+                ) : (
+                  <span
+                    onClick={() => navigate(`/mentors/${mentor._id}`)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {mentor.name}
+                  </span>
+                )}
+              </td>
+              <td>
+                {editId === mentor._id ? (
+                  <input
+                    value={editedMentor.expertise}
+                    onChange={(e) =>
+                      setEditedMentor({
+                        ...editedMentor,
+                        expertise: e.target.value,
+                      })
+                    }
+                  />
+                ) : (
+                  mentor.expertise
+                )}
+              </td>
+              <td>
+                {editId === mentor._id ? (
+                  <select
+                    value={editedMentor.status}
+                    onChange={(e) =>
+                      setEditedMentor({
+                        ...editedMentor,
+                        status: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                    <option value="Retired">Retired</option>
+                  </select>
+                ) : (
+                  <span
+                    className={`badge bg-${getStatusBadgeClass(
+                      mentor.status
+                    )}`}
+                  >
+                    {mentor.status}
+                  </span>
+                )}
+              </td>
+              <td>
+                {editId === mentor._id ? (
+                  <input
+                    value={editedMentor.email}
+                    onChange={(e) =>
+                      setEditedMentor({
+                        ...editedMentor,
+                        email: e.target.value,
+                      })
+                    }
+                  />
+                ) : (
+                  mentor.email
+                )}
+              </td>
+              <td>
+                {editId === mentor._id ? (
+                  <input
+                    value={editedMentor.mobile}
+                    onChange={(e) =>
+                      setEditedMentor({
+                        ...editedMentor,
+                        mobile: e.target.value,
+                      })
+                    }
+                  />
+                ) : (
+                  mentor.mobile
+                )}
+              </td>
+              <td>
+                {editId === mentor._id ? (
+                  <button
+                    className="btn btn-sm btn-success me-2"
+                    onClick={handleSaveEdit}
+                  >
+                    Save
+                  </button>
+                ) : (
+                  <button
+                    className="btn btn-sm btn-warning me-2"
+                    onClick={() => handleEdit(mentor)}
+                  >
+                    Edit
+                  </button>
+                )}
+                <button
+                  className="btn btn-sm btn-danger"
+                  onClick={() => handleDelete(mentor._id)}
+                >
                   Delete
                 </button>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

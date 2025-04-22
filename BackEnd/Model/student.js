@@ -15,19 +15,29 @@ const attendanceSchema = new mongoose.Schema({
   status: { type: String, enum: ["Present", "Absent"] },
 });
 
-const studentSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: String,
-  phone: String,
-  photo: String,
-  course: String,
-  status: { type: String, enum: ["Active", "Inactive", "Completed"], default: "Active" },
-  progress: { type: Number, default: 0 },
-  payments: [paymentSchema],
-  certificates: [certificateSchema],
-  attendance: [attendanceSchema],
-  recruiterNote: String,
-}, { timestamps: true });
+const studentSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    email: String,
+    mobile: {
+      type: String,
+      required: true,
+    },
+    photo: String,
+    course: String,
+    status: {
+      type: String,
+      enum: ["Active", "Inactive", "Completed"],
+      default: "Active",
+    },
+    progress: { type: Number, default: 0 },
+    payments: [paymentSchema],
+    certificates: [certificateSchema],
+    attendance: [attendanceSchema],
+    recruiterNote: String,
+  },
+  { timestamps: true }
+);
 
 const Student = mongoose.model("Student", studentSchema);
 

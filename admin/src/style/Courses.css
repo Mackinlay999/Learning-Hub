@@ -4,10 +4,10 @@
   margin: 20px auto;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: #FFFFFF;
   text-align: center;
   font-family: Arial, sans-serif;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Title */
@@ -15,7 +15,9 @@
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #333;
+  color: #D32F2F;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Form Styles */
@@ -33,20 +35,28 @@
   border-radius: 5px;
   font-size: 14px;
   width: 180px;
+  background-color: #f9f9f9;
+  transition: border 0.3s ease;
+}
+
+.course-form input:focus {
+  outline: none;
+  border-color: #D32F2F;
 }
 
 .course-form button {
   padding: 10px 15px;
-  background-color: #007bff;
-  color: white;
+  background-color: #D32F2F;
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: transform 0.3s, background-color 0.3s;
 }
 
 .course-form button:hover {
-  background-color: #0056b3;
+  background-color: #B71C1C;
+  transform: scale(1.05);
 }
 
 /* Table Styles */
@@ -61,10 +71,21 @@
   border: 1px solid #ddd;
   padding: 10px;
   text-align: center;
+  transition: background 0.3s ease;
 }
 
 .course-table th {
-  background-color: #f4f4f4;
+  background-color: #FFC107;
+  color: #333;
+  font-weight: 600;
+}
+
+.course-table tr:nth-child(even) {
+  background-color: #fdfdfd;
+}
+
+.course-table tr:hover {
+  background-color: #fff8e1;
 }
 
 /* Buttons */
@@ -78,15 +99,12 @@
 }
 
 .course-table .edit {
-  background-color: #ffc107;
-  color: white;
-}
-.C-tr th{
+  background-color: #FFC107;
   color: #333;
 }
 
 .course-table .delete {
-  background-color: #dc3545;
+  background-color: #D32F2F;
   color: white;
 }
 
@@ -96,7 +114,12 @@
 }
 
 .course-table button:hover {
-  opacity: 0.8;
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.C-tr th {
+  color: #333;
 }
 
 /* Responsive Design */
@@ -106,7 +129,8 @@
     padding: 15px;
   }
 
-  .course-table th, .course-table td {
+  .course-table th,
+  .course-table td {
     padding: 8px;
     font-size: 14px;
   }
@@ -116,17 +140,13 @@
     align-items: center;
   }
 
-  .course-form input, .course-form button {
+  .course-form input,
+  .course-form button {
     width: 90%;
   }
 }
 
-
-/* 
-
-
-new pattern */
-
+/* New Pattern */
 .course-container {
   display: flex;
   flex-direction: column;
@@ -134,10 +154,16 @@ new pattern */
 }
 
 .course-card {
-  background-color: #f4f4f9;
+  background-color: #FFFFFF;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #D32F2F;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease-in-out;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
 }
 
 .course-header {
@@ -157,17 +183,19 @@ new pattern */
   justify-content: space-between;
 }
 
+/* Generic Button */
 button {
   padding: 8px 16px;
-  background-color: #007bff;
+  background-color: #D32F2F;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #B71C1C;
 }
 
 input {
@@ -175,27 +203,6 @@ input {
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
-}
-
-
-
-.courses {
-  width: 95%;
-  padding: 15px;
-}
-
-.course-table th, .course-table td {
-  padding: 8px;
-  font-size: 14px;
-}
-
-.course-form {
-  flex-direction: column;
-  align-items: center;
-}
-
-.course-form input, .course-form button {
-  width: 90%;
 }
 
 /* Action Button Wrapper */
@@ -218,21 +225,20 @@ input {
 
 /* Edit / Save Button */
 .c-btn-edit {
-  background-color: #17a2b8;
-  color: white;
+  background-color: #FFC107;
+  color: #333;
 }
 
 .c-btn-edit:hover {
-  background-color: #138496;
+  background-color: #e0a800;
 }
 
 /* Delete Button */
 .c-btn-delete {
-  background-color: #dc3545;
+  background-color: #D32F2F;
   color: white;
 }
 
 .c-btn-delete:hover {
-  background-color: #bd2130;
+  background-color: #B71C1C;
 }
-

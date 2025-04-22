@@ -159,14 +159,12 @@ import React, { useEffect, useState } from "react";
 import axios from "./axios";
 import "../style/SuccessStories.css";
 
-
 const SuccessStories = () => {
   const [stories, setStories] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     company: "",
     photo: null,
-   
   });
   const [editId, setEditId] = useState(null);
 
@@ -204,7 +202,6 @@ const SuccessStories = () => {
     data.append("name", formData.name);
     data.append("company", formData.company);
     if (formData.photo) data.append("photo", formData.photo);
-    
 
     try {
       if (editId) {
@@ -254,9 +251,9 @@ const SuccessStories = () => {
   };
 
   return (
-    <div className="container">
-      <h2 className="title">Add / Edit Student Success Story</h2>
-      <form onSubmit={handleSubmit} className="form">
+    <div className="success-story-container">
+      <h2 className="success-story-title">Add / Edit Student Success Story</h2>
+      <form onSubmit={handleSubmit} className="success-story-form">
         <input
           type="text"
           name="name"
@@ -280,45 +277,36 @@ const SuccessStories = () => {
           onChange={handleChange}
         />
         
-        <button type="submit" className="S-btn">
+        <button type="submit" className="success-story-btn">
           {editId ? "Update" : "Add"}
         </button>
       </form>
 
-      <h2 className="subtitle">All Success Stories</h2>
-      <div className="story-list">
+      <h2 className="success-story-subtitle">All Success Stories</h2>
+      <div className="success-story-list">
         {stories.map((story) => (
-          <div key={story._id} className="story-card">
+          <div key={story._id} className="success-story-card">
             <div>
-              <p className="story-name">Name: {story.name}</p>
+              <p className="success-story-name">Name: {story.name}</p>
               <p>Company: {story.company}</p>
               {story.photo && (
                 <img
                   src={story.photo}
                   alt={story.name}
-                  className="story-photo"
+                  className="success-story-photo"
                 />
               )}
-              
             </div>
-            <div className="actions">
-              <button onClick={() => handleEdit(story)} className="edit-btn">
+            <div className="success-story-actions">
+              <button onClick={() => handleEdit(story)} className="success-story-edit-btn">
                 Edit
               </button>
               <button
                 onClick={() => handleDelete(story._id)}
-                className="delete-btn"
+                className="success-story-delete-btn"
               >
                 Delete
               </button>
-              {/* <button
-                onClick={() =>
-                  handleToggleVisibility(story._id, story.visible)
-                }
-                className="toggle-btn"
-              >
-                Toggle Visibility
-              </button> */}
             </div>
           </div>
         ))}
@@ -328,4 +316,5 @@ const SuccessStories = () => {
 };
 
 export default SuccessStories;
+
 

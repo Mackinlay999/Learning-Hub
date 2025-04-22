@@ -31,6 +31,7 @@ import AnalyticsAndReports from "./components/AnalyticsAndReports";
 import SupportAndFeedback from "./components/SupportAndFeedback";
 import RecruiterAndPlacementManagement from "./components/RecruiterAndPlacementManagement";
 import Mentors from "./components/Mentors";
+import MentorDetail from "./components/MentorDetail";
 
 import Suceess from "./components/Suceess";
 
@@ -118,6 +119,8 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/students" element={<Students />} />
                 <Route path="/students/:id" element={<StudentDetail />} />
+                <Route path="/mentors" element={<Mentors />} />
+                <Route path="/mentors/:id" element={<MentorDetail />} />
                 <Route path="/add-student" element={<AddStudent />} />
                 <Route path="/edit-student/:id" element={<EditStudent />} />
                 <Route path="/register" element={<Register />} />
@@ -128,7 +131,6 @@ function App() {
                 <Route path="/payment-failure" element={<PaymentFailure />} />
                 <Route path="/payment-failure" element={<PaymentFailure />} />
                 <Route path="/Suceess" element={<Suceess />} />{" "}
-                <Route path="/mentors" element={<Mentors />} />
                 <Route path="/blog-webinar" element={<BlogWebinar />} />
                 <Route
                   path="/recruiters/dashboard"

@@ -2,16 +2,17 @@ const express = require("express");
 const router = express.Router();
 const {
   getAllMentors,
-  addMentor,
+  createMentor,
   updateMentor,
   deleteMentor,
+  getMentorById,
 } = require("../Controller/mentorController.js");
 
 // Get all mentors
 router.get("/mentors", getAllMentors);
-
+router.get("/mentors/:id", getMentorById);
 // Add a new mentor
-router.post("/mentors", addMentor);
+router.post("/mentors", createMentor);
 
 // Update an existing mentor
 router.put("/mentors/:id", updateMentor);

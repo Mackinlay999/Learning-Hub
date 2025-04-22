@@ -1,5 +1,5 @@
 const StudentDetail = require("../Model/studentDetail");
-const { getStudentById } = require("../Controller/studentDetailController");
+// const { getStudentById } = require("../Controller/studentDetailController");
 
 const StudentDetailController = { 
   getStudentById: async (req, res) => {

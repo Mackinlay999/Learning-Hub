@@ -69,10 +69,10 @@ const WebsiteContentManager = () => {
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
   return (
-    <div className="content-manager">
-      <h2>Website & Content Management</h2>
+    <div className="website-content-manager">
+      <h2 className="website-content-manager-title">Website & Content Management</h2>
 
-      <div className="section">
+      <div className="website-content-manager-section">
         <label>Homepage Content</label>
         <textarea
           rows="4"
@@ -102,7 +102,7 @@ const WebsiteContentManager = () => {
         />
       </div>
 
-      <div className="section">
+      <div className="website-content-manager-section">
         <h3>SEO & Metadata</h3>
         <label>Page Title</label>
         <input
@@ -126,7 +126,7 @@ const WebsiteContentManager = () => {
         />
       </div>
 
-      <button className="save-button" onClick={handleSubmit}>
+      <button className="website-content-manager-save-button" onClick={handleSubmit}>
         Save Changes
       </button>
     </div>

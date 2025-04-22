@@ -1,68 +1,96 @@
-/* StoryPage.css */
-
 .story-page {
-    padding: 40px 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f9f9f9;
-    min-height: 100vh;
-  }
-  
-  .story-page h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: #333;
-    margin-bottom: 40px;
-  }
-  
-  .story-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .story-item {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .story-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-  }
-  
-  .story-image {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 16px;
-  }
-  
-  .story-title {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 8px;
-    text-transform: capitalize;
-  }
-  
-  .story-author {
-   
-    color: #2c3e50;
-    font-weight: 600;
-    font-size: 1.4rem;
-    text-align: center;
-    text-transform: capitalize;
-  }
-  .story-arrow {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-top: 10px;
-    color: #888;
-  }
-  
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #FFFFFF; /* Changed to white for readability */
+  min-height: 100vh;
+}
+
+.story-page h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #D32F2F; /* Primary red for heading */
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.story-page h1::after {
+  content: '';
+  display: block;
+  margin: 10px auto 0;
+  width: 80px;
+  height: 4px;
+  background-color: #FFC107; /* Gold Accent underline */
+  border-radius: 2px;
+}
+
+.story-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.story-item {
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(51, 51, 51, 0.05); /* Soft dark gray shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #eee;
+  position: relative;
+}
+
+.story-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(51, 51, 51, 0.1);
+  border-color: #D32F2F;
+}
+
+.story-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  border: 2px solid #FFC107; /* Gold accent border */
+  transition: border 0.3s ease;
+}
+
+.story-item:hover .story-image {
+  border-color: #D32F2F;
+}
+
+.story-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #D32F2F; /* Primary red for title */
+  margin-bottom: 8px;
+  text-transform: capitalize;
+}
+
+.story-author {
+  color: #333333; /* Dark Gray for author name */
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-align: center;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.story-arrow {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #FFC107; /* Gold accent */
+  transition: transform 0.2s ease;
+}
+
+.story-arrow:hover {
+  transform: translateY(-3px);
+  color: #D32F2F; /* Highlight arrow on hover */
+  cursor: pointer;
+}

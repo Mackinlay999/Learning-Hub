@@ -6,20 +6,17 @@ import '../style/UserDetails.css';
 const Userdetails = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
- 
   const [role, setRole] = useState('');
- 
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get('/admin/me', { withCredentials: true })
       .then((response) => {
-        const { username, email, role} = response.data;
+        const { username, email, role } = response.data;
         setName(username);
         setEmail(email);
         setRole(role);
-       
       })
       .catch((error) => {
         if (error.response && error.response.status === 401) {
@@ -72,20 +69,16 @@ const Userdetails = () => {
   };
 
   return (
-    <div className="user-container">
-      <div className="user-card">
-        <h1 className="user-h1">Admin Profile</h1>
-        <div className="info">
+    <div className="user-detail-container">
+      <div className="user-detail-card">
+        <h1 className="user-detail-h1">Admin Profile</h1>
+        <div className="user-detail-info">
           <p><strong>Name:</strong> {name}</p>
           <p><strong>Email:</strong> {email}</p>
           <p><strong>Role:</strong> {role}</p>
-         
-         
         </div>
 
-       
-
-        <button onClick={handleSignOut} className="signout-btn">Sign Out</button>
+        <button onClick={handleSignOut} className="user-detail-signout-btn">Sign Out</button>
       </div>
     </div>
   );
