@@ -3,8 +3,8 @@ const Webinar = require("../Model/webinarModel");
 // Create a new webinar
 const createWebinar = async (req, res) => {
   try {
-    const { title, dateTime, description } = req.body;
-    const newWebinar = new Webinar({ title, dateTime, description });
+    const { title, dateTime, description, link, typeofProgram } = req.body;
+    const newWebinar = new Webinar({ title, dateTime, description, link, typeofProgram });
     await newWebinar.save();
     res.status(201).json({ message: "Webinar created successfully", webinar: newWebinar });
   } catch (error) {

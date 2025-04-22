@@ -3,8 +3,8 @@ const Blog = require("../Model/blogModel");
 // Create a new blog
 const createBlog = async (req, res) => {
   try {
-    const { title, content, publish } = req.body;
-    const newBlog = new Blog({ title, content, publish });
+    const { title, content, image, publish } = req.body;
+    const newBlog = new Blog({ title, content, image, publish });
     await newBlog.save();
     res.status(201).json({ message: "Blog created successfully", blog: newBlog });
   } catch (error) {
