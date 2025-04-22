@@ -293,6 +293,22 @@ const login = {
           res.status(500).json({ message: "Error saving file", error: error.message });
         }
       },
+
+      getAlluser : async (req,res,) =>{
+           try {
+                   
+                    
+                    const alldata =await user.find({}, 'username email role')
+                    
+                     
+                  res.status(200).json(alldata)
+                       
+                } catch (error) {
+                    res.status(400).json({meaasge:error.message})
+                    
+                }
+
+      }
   
     
     

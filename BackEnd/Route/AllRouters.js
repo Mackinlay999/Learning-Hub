@@ -20,6 +20,7 @@ const Studentrefund =require("../Controller/RefundsController")
 const SuccessStroy = require("../Controller/successStoryController")
 const campaignController = require("../Controller/campaignController")
 const  leademail = require("../Controller/leademail")
+const dripCampaignController = require("../Controller/dripCampaignsController")
 
 const upload = require("../Utils/Multer");
 const { join } = require("path");
@@ -35,7 +36,7 @@ router.post("/upload", upload.single("file"), uploadFile);
 router.post("/contact", contactController.submitContactForm);
 
 
-// Userr
+// User login
 
 
 router.post("/register", login.register)
@@ -44,6 +45,7 @@ router.post("/login", login.login)
 router.post("/logout", login.logout)
 router.post("/forgetpassword", login.forgetpassword)
 router.post("/setNewPassword", login.setNewPassword)
+router.get("/getAlluser", login.getAlluser)
 router.post("/profileResume", upload.single("resume"), login.profileResume)
 router.get("/me" ,  auth.authverify, login.me)
 
@@ -175,6 +177,15 @@ router.post('/createLeademail', leademail.createLeademail);
 router.get('/getLeademail', leademail.getLeademail);
 router.delete('/deleteLeademail/:leadId', leademail.deleteLeademail);
 router.put('/updateLeademail/:id', leademail.updateLeademail);
+
+
+// DripCompains 
+
+router.post("/sendDripCampaignEmails" , dripCampaignController.sendDripCampaignEmails)
+router.post("/createdrip" , dripCampaignController.createdrip)
+router.get("/getAllDripSteps" , dripCampaignController.getAllDripSteps)
+router.put("/updateDripStep/:id" , dripCampaignController.updateDripStep)
+router.delete("/deleteDripStep/:id" , dripCampaignController.deleteDripStep)
 
 
 

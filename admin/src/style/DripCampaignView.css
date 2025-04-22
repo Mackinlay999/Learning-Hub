@@ -1,68 +1,78 @@
-.drip-card {
-    border: 1px solid #ddd;
-    padding: 20px;
-    max-width: 600px;
-    margin: auto;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  
-  .drip-title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .drip-form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .drip-input {
+/* DripCampaignManager.css */
+
+.drip-campaign-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+.drip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.drip-form input, .drip-form textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.drip-form button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.drip-form button:hover {
+  background-color: #45a049;
+}
+
+.drip-steps-list {
+  list-style: none;
+  padding: 0;
+}
+
+.drip-steps-list li {
+  padding: 15px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drip-steps-list li div {
+  max-width: 500px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e41f17;
+}
+
+@media (max-width: 600px) {
+  .drip-campaign-container {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
   }
-  
-  .drip-button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  .drip-form input, .drip-form textarea {
+    font-size: 14px;
   }
-  
-  .drip-button:hover {
-    background-color: #45a049;
-  }
-  
-  .drip-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-  }
-  
-  .drip-item {
-    background-color: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-left: 4px solid #4caf50;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 5px;
-  }
-  
-  .drip-step {
-    flex-grow: 1;
-  }
-  
-  .drip-delete {
-    background: none;
-    border: none;
-    color: red;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
+}
