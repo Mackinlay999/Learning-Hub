@@ -125,10 +125,11 @@ const Mentors = () => {
             onChange={(e) => setExpertiseFilter(e.target.value)}
           >
             <option value="">Filter by Expertise</option>
-            <option value="Leadership">Leadership</option>
+            <option value="Human-resource">Human-resource</option>
             <option value="Marketing">Marketing</option>
-            <option value="Finance">Finance</option>
-            <option value="Tech">Tech</option>
+            <option value="Business-Analytics">Business Analytics</option>
+            <option value="Finances">Finances</option>
+            <option value="Sales">Sales</option>
           </select>
         </div>
         <div className="col-md-3">

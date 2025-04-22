@@ -8,6 +8,7 @@ const MentorDetail = () => {
   const { id } = useParams();
   const [mentor, setMentor] = useState(null);
   const [sessions, setSessions] = useState([]);
+  const [feedbacks, setFeedbacks] = useState([]);
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -20,6 +21,7 @@ const MentorDetail = () => {
         setMentor(res.data);
         setSessions(res.data.sessions || []);
         setStudents(res.data.students || []);
+        setFeedbacks(res.data.feedbacks || []); // Assuming feedbacks are part of mentor data
         setLoading(false);
       } catch (err) {
         setError("Error fetching mentor details.");
@@ -90,6 +92,15 @@ const MentorDetail = () => {
                   >
                     {session.title} - {session.date}
                     <span className="badge bg-primary">{session.topic}</span>
+                    {/* Feedback for this session */}
+                    {feedbacks
+                      .filter(feedback => feedback.sessionId === session._id)
+                      .map((feedback, idx) => (
+                        <div key={idx} className="mt-2">
+                          <p className="text-muted">{feedback.studentName}: {feedback.comment}</p>
+                          <span className="badge bg-success">Rating: {feedback.rating}</span>
+                        </div>
+                      ))}
                   </li>
                 ))}
               </ul>
