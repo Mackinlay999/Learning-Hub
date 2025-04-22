@@ -2,7 +2,10 @@ const mongoose = require("mongoose")
 const StudentDetailSchema = new mongoose.Schema({
   name: String,
   email: String,
-  phone: String,
+  mobile: {
+    type: String,
+    required: true,
+  },  
   course: String,
   photo: String,
   status: {
@@ -14,9 +17,9 @@ const StudentDetailSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  // payments: [PaymentSchema],
-  // certificates: [CertificateSchema],
-  // attendance: [AttendanceSchema],
+  payments: [PaymentSchema],
+  certificates: [CertificateSchema],
+  attendance: [AttendanceSchema],
   recruiterNote: String,
 });
 

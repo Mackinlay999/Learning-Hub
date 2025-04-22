@@ -32,7 +32,7 @@ const StudentDetail = () => {
         setLoading(false);
       }
     };
-    
+
     const fetchAttendance = async () => {
       try {
         const res = await axios.get(`http://localhost:3000/api/students/${id}`);
@@ -45,7 +45,9 @@ const StudentDetail = () => {
 
     const fetchCertificates = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/students/${id}/certificates`);
+        const res = await axios.get(
+          `http://localhost:3000/api/students/${id}/certificates`
+        );
 
         setCertificates(res.data);
       } catch (err) {
@@ -141,7 +143,7 @@ const StudentDetail = () => {
             />
             <p className="text-muted studentDetailText">{student.email}</p>
             <p className="text-muted studentDetailText">
-              {student.phone || "Phone not provided"}
+              {student.mobile || "mobile not provided"}
             </p>
           </motion.div>
 
@@ -296,6 +298,7 @@ const Students = () => {
     status: "Active",
     photo: "",
     email: "",
+    mobile: "",
   });
   const [editId, setEditId] = useState(null);
   const [editedStudent, setEditedStudent] = useState({});
@@ -336,6 +339,7 @@ const Students = () => {
         status: "Active",
         photo: "",
         email: "",
+        mobile: "",
       });
     } catch (error) {
       console.error("Error adding student:", error);
@@ -463,6 +467,15 @@ const Students = () => {
               setNewStudent({ ...newStudent, email: e.target.value })
             }
           />
+          <input
+            className="form-control col"
+            placeholder="Mobile Number"
+            value={newStudent.mobile}
+            onChange={(e) =>
+              setNewStudent({ ...newStudent, mobile: e.target.value })
+            }
+          />
+
           <select
             className="form-control col"
             value={newStudent.status}
@@ -489,6 +502,7 @@ const Students = () => {
             <th>Course</th>
             <th>Status</th>
             <th>Email</th>
+            <th>Mobile</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -582,6 +596,22 @@ const Students = () => {
                   student.email
                 )}
               </td>
+              <td>
+                {editId === student._id ? (
+                  <input
+                    value={editedStudent.mobile}
+                    onChange={(e) =>
+                      setEditedStudent({
+                        ...editedStudent,
+                        mobile: e.target.value,
+                      })
+                    }
+                  />
+                ) : (
+                  student.mobile
+                )}
+              </td>
+
               <td>
                 {editId === student._id ? (
                   <button
