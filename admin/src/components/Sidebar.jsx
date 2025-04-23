@@ -76,10 +76,9 @@ const sections = [
   { name: "Sucess Story", icon: <Briefcase size={18} />, path: "/Suceess" },
 
   { name: "Blog & Webinar", icon: <ShieldCheck size={18} />, path: "/blog-webinar" },
-<<<<<<< HEAD
 
-=======
->>>>>>> 60b44b058f648231c3e45e89d1256f627a59d344
+
+
 ];
 
 const Sidebar = () => {
