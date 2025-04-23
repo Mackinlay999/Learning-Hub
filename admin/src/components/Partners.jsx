@@ -11,7 +11,7 @@ import {
   Form,
   Alert,
 } from "react-bootstrap";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import "../style/Partners.css"; // Don't forget the CSS import
 
@@ -23,10 +23,15 @@ const Partners = () => {
     name: "",
     description: "",
     website: "",
+    about: "",
+    email: "",
+    phoneNumber: "",
+    logoUrl: "",
+    linkedin: "",
   });
+
   const [message, setMessage] = useState({ type: "", text: "" });
   const navigate = useNavigate();
-
 
   // Fetch partners from backend
   useEffect(() => {
@@ -46,9 +51,14 @@ const Partners = () => {
     if (partner) {
       setEditingPartner(partner);
       setFormData({
-        name: partner.name,
-        description: partner.description,
-        website: partner.website,
+        name: partner.name || "",
+        description: partner.description || "",
+        website: partner.website || "",
+        about: partner.about || "",
+        email: partner.email || "",
+        phoneNumber: partner.phoneNumber || "",
+        logoUrl: partner.logoUrl || "",
+        linkedin: partner.linkedin || "",
       });
     } else {
       setEditingPartner(null);
@@ -59,7 +69,17 @@ const Partners = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    setFormData({ name: "", description: "", website: "" });
+    setFormData({
+      name: "",
+      description: "",
+      website: "",
+      about: "",
+      email: "",
+      phoneNumber: "",
+      logoUrl: "",
+      linkedin: "",
+    });
+
     setMessage({ type: "", text: "" });
   };
 
@@ -177,6 +197,38 @@ const Partners = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
+              <Form.Label>About</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={2}
+                name="about"
+                value={formData.about}
+                onChange={handleChange}
+                placeholder="Enter more about the company"
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter contact email"
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Phone Number</Form.Label>
+              <Form.Control
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                placeholder="Enter phone number"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
               <Form.Label>Description</Form.Label>
               <Form.Control
                 as="textarea"
@@ -186,6 +238,26 @@ const Partners = () => {
                 onChange={handleChange}
                 required
                 placeholder="Enter partner description"
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Logo URL</Form.Label>
+              <Form.Control
+                name="logoUrl"
+                value={formData.logoUrl}
+                onChange={handleChange}
+                placeholder="Enter logo image URL"
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>LinkedIn</Form.Label>
+              <Form.Control
+                name="linkedin"
+                value={formData.linkedin}
+                onChange={handleChange}
+                placeholder="Enter LinkedIn URL"
               />
             </Form.Group>
             <Form.Group className="mb-3">
