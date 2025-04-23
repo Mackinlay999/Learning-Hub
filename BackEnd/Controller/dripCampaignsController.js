@@ -9,42 +9,14 @@ const DripCompainscontroller = {
     
   },
 
-//   sendDripCampaignEmails: async (req, res) => {
-// console.log(" send dripcampains")
-//     const dripSteps = req.body;
-
-//     try {
-//       const recentUsers = await DripCompainscontroller.getRecentUsers(); 
-
-//       if (!Array.isArray(dripSteps) || dripSteps.length === 0) {
-//         return res.status(400).json({ message: 'No steps provided.' });
-//       }
-
-//       recentUsers.forEach((user) => {
-//         dripSteps.forEach((step) => {
-//           const delayInMs = step.delayDays * 1000;
-
-//           setTimeout(async () => {
-//             await sendEmail(user.email, step.step, step.content);
-//             console.log(`Email sent to ${user.email} for ${step.step}`);
-//           }, delayInMs);
-//         });
-//       });
-
-//       res.status(200).json({ message: 'Drip campaign emails are being sent.' });
-//     } catch (error) {
-//       console.error('Error sending emails:', error);
-//       res.status(500).json({ message: 'Error sending emails' });
-//     }
-//   },
 
 
 sendDripCampaignEmails: async (req, res) => {
-  console.log("Sending Drip Campaigns");
+  console.log("🚀 Sending Drip Campaigns");
 
   try {
     const recentUsers = await DripCompainscontroller.getRecentUsers(); // New users (last 24 hrs)
-    const dripSteps = await DripCompains.find().sort({ delayDays: 1 }); // All saved drip steps
+    const dripSteps = await DripCompains.find().sort({ delayDays: 1 });
 
     if (!dripSteps.length) {
       return res.status(400).json({ message: 'No drip steps found in DB.' });
@@ -54,20 +26,36 @@ sendDripCampaignEmails: async (req, res) => {
       return res.status(200).json({ message: 'Drip steps available, but no new users to send emails to.' });
     }
 
-    recentUsers.forEach((user) => {
-      dripSteps.forEach((step) => {
-        const delayInMs = step.delayDays * 24 * 60 * 60 * 1000;
+    for (const user of recentUsers) {
+      for (const step of dripSteps) {
+        const alreadySent = user.dripStepsSent?.some((s) => s.step === step.step);
 
-        setTimeout(async () => {
-          try {
-            await sendEmail(user.email, step.step, step.content);
-            console.log(`✅ Email sent to ${user.email} for Step: ${step.step}`);
-          } catch (error) {
-            console.error(`❌ Failed to send email to ${user.email} for Step: ${step.step}`, error);
-          }
-        }, delayInMs);
-      });
-    });
+        if (!alreadySent) {
+          const delayInMs = step.delayDays * 24 * 60 * 60 * 1000;
+
+          setTimeout(async () => {
+            try {
+              await sendEmail(user.email, step.step, step.content);
+              console.log(`✅ Email sent to ${user.email} for Step: ${step.step}`);
+
+              // Update user record to mark this step as sent
+              await userModel.findByIdAndUpdate(user._id, {
+                $push: {
+                  dripStepsSent: {
+                    step: step.step,
+                    sentAt: new Date(),
+                  },
+                },
+              });
+            } catch (error) {
+              console.error(`❌ Failed to send email to ${user.email} for Step: ${step.step}`, error);
+            }
+          }, delayInMs);
+        } else {
+          console.log(`⏭️ Step "${step.step}" already sent to ${user.email}. Skipping.`);
+        }
+      }
+    }
 
     res.status(200).json({ message: 'Drip campaign scheduling initiated.' });
   } catch (error) {
@@ -76,21 +64,22 @@ sendDripCampaignEmails: async (req, res) => {
   }
 },
 
+
 createdrip  : async (req,res) =>{
   console.log(
 "create dripcampaigns"
   )
   try {
-    const { step, delayDays, content } = req.body;
+    const { step, delayDays, content,fromEmail  } = req.body;
 
     // Save new drip step
-    const newStep = new DripCompains({ step, delayDays, content });
+    const newStep = new DripCompains({ step, delayDays, content,fromEmail  });
     await newStep.save();
 
     return res.status(200).json ({message : "dripcampains created successfully"})
     
   } catch (error) {
-    return res.status(401).json({err})
+    return res.status(401).json({message:"not add this dripcompains"})
   }
 },
 

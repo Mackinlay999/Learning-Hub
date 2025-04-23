@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from './axios';
 import '../style/Register.css'; // Importing external CSS file
 
 const Register = () => {
@@ -20,18 +20,19 @@ const Register = () => {
         if (email === '' || !validateEmail) return alert("Please Enter Valid Email ID");
         if (password === '' || password !== reEnteredPassword) return alert("Please Enter the same password in both fields");
 
-        axios.post("http://localhost:3000/api/register", {username: name, email, password,  number })
+        axios.post("/register", {username: name, email, password,  number })
             .then(() => {
                 alert("User Created Successfully. Now You can login with those credentials");
                 navigate('/Login');
             })
             .catch((error) => {
                 if (error.response && error.response.status === 400) {
-                    alert(error.response.data.error);
+                    alert(error.response.data.message); // ✅ match the key "message"
                 } else {
-                    alert("Registration failed:");
+                    alert("Registration failed");
                 }
             });
+            
     }
 
     const handleEmailChange = (e) => {

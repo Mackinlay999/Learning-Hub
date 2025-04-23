@@ -12,7 +12,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+<<<<<<< HEAD
     "backend": "file:",
+=======
+    "backend": "file:../backend",
+>>>>>>> 8f5ec8a34c6fbe26e06695bbeda2ad0f31c625bf
     "bcrypt": "^5.1.1",
     "body-parser": "^2.2.0",
     "cookie-parser": "^1.4.7",

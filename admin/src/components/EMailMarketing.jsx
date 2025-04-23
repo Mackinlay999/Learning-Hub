@@ -8,9 +8,8 @@ const EMailMarketing = () => {
     <div>
       <h3>E-Mail Marketing</h3>
 
-      {/* <EmailCampaigns /> */}
       <EmailCampaign />
-      {/* <SalesFunnelConversion /> */}
+     
       <DiscountsPromotions />
     </div>
   )

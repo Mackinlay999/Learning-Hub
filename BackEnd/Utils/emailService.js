@@ -10,10 +10,10 @@ const transporter = nodemailer.createTransport({
 });
 
 // Function to send email
-const sendEmail = async (to, subject, text) => {
+const sendEmail = async (to, subject, text ,from = process.env.EMAIL) => {
   try {
     const info = await transporter.sendMail({
-      from: 'rjerald6803@gmail.com',
+      from,
       to,
       subject,
       text,
