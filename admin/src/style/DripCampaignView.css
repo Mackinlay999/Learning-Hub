@@ -1,204 +1,224 @@
+/* DripCampaignView.css */
 
-/* DripCampaignManager.css */
-
-.drip-campaign-container {
-  padding: 20px;
-  max-width: 900px;
-  margin: auto;
+/* Main container */
+.drip-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f9f9ff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", sans-serif;
 }
 
-h2 {
+.drip-heading {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: #333;
   text-align: center;
 }
 
 .drip-form {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
-}
 
-.drip-form input, .drip-form textarea {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.drip-form button {
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.drip-form button:hover {
-  background-color: #45a049;
-}
-
-.drip-steps-list {
-  list-style: none;
-  padding: 0;
-}
-
-.drip-steps-list li {
-  padding: 15px;
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.drip-steps-list li div {
-  max-width: 500px;
-}
-
-button {
-  padding: 5px 10px;
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #e41f17;
-}
-
-@media (max-width: 600px) {
-  .drip-campaign-container {
-    padding: 10px;
-  }
-  .drip-form input, .drip-form textarea {
-    font-size: 14px;
-  }
-
-/* Color Palette & Branding */
-:root {
-  --primary-red: #D32F2F; /* Call-to-action buttons, headings, icons */
-  --dark-gray: #333333; /* Text & contrast sections */
-  --white: #FFFFFF; /* Background for readability */
-  --gold-accent: #FFC107; /* Highlighting important sections */
-  --green: #4caf50; /* Button green */
-  --green-hover: #45a049; /* Hover effect for green buttons */
-  --light-gray: #f9f9f9; /* Light background color */
-  --shadow: rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-  --border-color: #ddd; /* Border color */
-}
-
-/* Drip Card */
-.drip-card {
-  border: 1px solid var(--border-color);
-  padding: 20px;
-  max-width: 600px;
-  margin: auto;
-  border-radius: 8px;
-  background-color: var(--light-gray);
-  box-shadow: 0px 4px 10px var(--shadow);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.drip-card:hover {
-  transform: translateY(-5px); /* Slight lift effect */
-  box-shadow: 0px 6px 15px var(--shadow); /* Enhanced shadow effect */
-}
-
-/* Drip Title */
-.drip-title {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--primary-red);
-  transition: color 0.3s ease;
-}
-
-.drip-title:hover {
-  color: var(--gold-accent); /* Gold accent on hover */
-}
-
-/* Drip Form Group */
-.drip-form-group {
-  display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: row;
+  
   gap: 10px;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+  flex-direction: column;
+ 
+  
 }
 
-/* Drip Input */
 .drip-input {
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 220px;
+  font-size: 14px;
 }
 
-.drip-input:focus {
-  border-color: var(--primary-red);
-  box-shadow: 0 0 5px var(--primary-red);
-}
-
-/* Drip Button */
 .drip-button {
-  background-color: var(--green);
-  color: var(--white);
-  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
 }
 
 .drip-button:hover {
-  background-color: var(--green-hover);
-  transform: translateY(-3px); /* Slight lift effect */
+  background-color: #0056b3;
 }
 
-/* Drip List */
-.drip-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
+.drip-list,
+.drip-sent-list {
+  padding-left: 20px;
+  list-style: decimal;
 }
 
-/* Drip Item */
-.drip-item {
-  background-color: var(--white);
-  padding: 10px;
+.drip-list-item,
+.drip-sent-item {
+  background-color: #fff;
+  padding: 12px;
   margin-bottom: 10px;
-  border-left: 4px solid var(--green);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  border: 1px solid #ddd;
 }
 
-.drip-item:hover {
-  background-color: var(--light-gray); /* Hover effect for list items */
-  box-shadow: 0px 2px 5px var(--shadow);
+.drip-step-title {
+  font-size: 1.1rem;
+  color: #007bff;
 }
 
-/* Drip Step */
-.drip-step {
-  flex-grow: 1;
-  color: var(--dark-gray);
-  font-size: 16px;
+.drip-delay {
+  color: #666;
+  margin-left: 10px;
+  font-style: italic;
 }
 
-/* Drip Delete Button */
-.drip-delete {
-  background: none;
+.drip-content {
+  margin: 5px 0;
+  color: #444;
+}
+
+.drip-from {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.drip-controls {
+  margin-top: 8px;
+}
+
+.drip-edit-btn,
+.drip-delete-btn {
+  padding: 6px 12px;
+  margin-right: 8px;
   border: none;
-  color: var(--primary-red);
+  border-radius: 5px;
+  font-size: 13px;
   cursor: pointer;
-  font-size: 16px;
-  transition: color 0.3s ease;
 }
 
-.drip-delete:hover {
-  color: var(--gold-accent);}
+.drip-edit-btn {
+  background-color: #007bff;
+  color: white;
 }
+
+.drip-edit-btn:hover {
+  background-color: #0056b3;
+}
+
+.drip-delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.drip-delete-btn:hover {
+  background-color: #a71d2a;
+}
+
+.drip-divider {
+  margin: 2rem 0;
+  border-top: 1px solid #ccc;
+}
+
+/* Responsive Styles */
+
+/* Mobile (up to 600px) */
+@media (max-width: 600px) {
+  .drip-container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .drip-heading {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .drip-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .drip-input {
+    max-width: 100%;
+  }
+
+  .drip-button {
+    width: 100%;
+  }
+
+  .drip-list-item,
+  .drip-sent-item {
+    padding: 10px;
+  }
+
+  .drip-step-title {
+    font-size: 1rem;
+  }
+}
+
+/* Tablet (600px - 1024px) */
+@media (max-width: 1024px) {
+  .drip-container {
+    padding: 1.5rem;
+    margin: 1.5rem;
+  }
+
+  .drip-heading {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .drip-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .drip-input {
+    max-width: 100%;
+  }
+
+  .drip-button {
+    width: 100%;
+  }
+
+  .drip-list-item,
+  .drip-sent-item {
+    padding: 11px;
+  }
+
+  .drip-step-title {
+    font-size: 1.05rem;
+  }
+}
+
+/* Desktop (1024px and above) */
+@media (min-width: 1025px) {
+  .drip-form {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  .drip-input {
+    max-width: 220px;
+  }
+
+  .drip-button {
+    width: auto;
+  }
+}
+
+.drip-input {
+  max-width: 100%;
+}
+
+

@@ -36,6 +36,12 @@ const userScheme = new mongoose.Schema({
         type:Date,
         default:Date.now
     },
+    dripStepsSent: [
+      {
+        step: String,
+        sentAt: Date,
+      },
+    ],
     lastLogin: { type: Date,  },
     resetPasswordToken:String,
     resetPasswordExpires : Date

@@ -12,8 +12,8 @@ const EmailCampaign = () => {
     
         <CampaignBuilder />
   
-      
-        <ScheduleEmail />
+{/*       
+        <ScheduleEmail /> */}
   
      
         <DripCampaignView/>

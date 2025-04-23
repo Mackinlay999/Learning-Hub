@@ -254,15 +254,15 @@ const Transaction = () => {
               <p><strong>Date:</strong> {new Date(t.date).toLocaleDateString()}</p>
               <button className="edit-btn" onClick={() => editTransaction(t)}>Edit</button>
               <button className="delete-btn" onClick={() => deleteTransaction(t._id)}>Delete</button>
-              <button className="refund-btn" onClick={() => handleRefundRequest(t)}>Refund</button>
+              {/* <button className="refund-btn" onClick={() => handleRefundRequest(t)}>Refund</button> */}
             </div>
           ))
         )}
       </div>
 
       {/* 💸 Refund Section */}
-      <h2 className="refund">Refund Requests</h2>
-      <div className="refund-form">
+      {/* <h2 className="refund">Refund Requests</h2> */}
+      {/* <div className="refund-form">
         <input type="text" placeholder="Username" value={refundUsername} onChange={(e) => setRefundUsername(e.target.value)} />
         <input type="email" placeholder="Email" value={refundEmail} onChange={(e) => setRefundEmail(e.target.value)} />
         <input type="number" placeholder="Refund Amount (₹)" value={refundAmount} onChange={(e) => setRefundAmount(e.target.value)} />
@@ -275,10 +275,10 @@ const Transaction = () => {
         <button className="d-btn" onClick={addOrUpdateRefund}>
           {refundEditingId ? "Update" : "Submit"} Refund
         </button>
-      </div>
+      </div> */}
 
       {/* 📋 Refund List */}
-      <div className="refund-list">
+      {/* <div className="refund-list">
         {refunds.length === 0 ? (
           <p>No refund requests available</p>
         ) : (
@@ -295,7 +295,7 @@ const Transaction = () => {
             </div>
           ))
         )}
-      </div>
+      </div> */}
     </div>
   );
 };
