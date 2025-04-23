@@ -1,3 +1,82 @@
+
+/* DripCampaignManager.css */
+
+.drip-campaign-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+.drip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.drip-form input, .drip-form textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.drip-form button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.drip-form button:hover {
+  background-color: #45a049;
+}
+
+.drip-steps-list {
+  list-style: none;
+  padding: 0;
+}
+
+.drip-steps-list li {
+  padding: 15px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drip-steps-list li div {
+  max-width: 500px;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e41f17;
+}
+
+@media (max-width: 600px) {
+  .drip-campaign-container {
+    padding: 10px;
+  }
+  .drip-form input, .drip-form textarea {
+    font-size: 14px;
+  }
+
 /* Color Palette & Branding */
 :root {
   --primary-red: #D32F2F; /* Call-to-action buttons, headings, icons */
@@ -121,5 +200,5 @@
 }
 
 .drip-delete:hover {
-  color: var(--gold-accent); /* Gold accent on hover */
+  color: var(--gold-accent);}
 }

@@ -21,6 +21,7 @@ const userScheme = new mongoose.Schema({
             default:"user"
 
     },
+    
 
     filename: { type: String },
     path: { type: String  }, 
@@ -35,12 +36,15 @@ const userScheme = new mongoose.Schema({
         type:Date,
         default:Date.now
     },
+    lastLogin: { type: Date,  },
     resetPasswordToken:String,
     resetPasswordExpires : Date
     // resetPasswordExpires: Date.now ,
 
 
-})
+},
+
+{ timestamps: true });
 
 module.exports =mongoose.model("user",userScheme)
 
