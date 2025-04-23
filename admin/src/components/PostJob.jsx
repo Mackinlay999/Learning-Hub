@@ -4,13 +4,25 @@ import { Container, Form, Button, Alert, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 import "../style/PostJob.css";
+
 const JOB_TYPES = ["Full-time", "Internship"];
+const EXPERIENCE_LEVELS = ["Fresher", "0-1 year", "2+ years"];
 
 const PostJob = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     type: JOB_TYPES[0],
+    duration: "",
+    startDate: "",
+    endDate: "",
+    stipend: "",
+    deadline: "",
+    openings: "",
+    location: "",
+    skills: "",
+    experience: EXPERIENCE_LEVELS[0],
+    applyLink: ""
   });
 
   const [status, setStatus] = useState({ type: "", message: "" });
@@ -29,7 +41,21 @@ const PostJob = () => {
 
     try {
       await axios.post("/recruiters/post", formData);
-      setFormData({ title: "", description: "", type: JOB_TYPES[0] });
+      setFormData({
+        title: "",
+        description: "",
+        type: JOB_TYPES[0],
+        duration: "",
+        startDate: "",
+        endDate: "",
+        stipend: "",
+        deadline: "",
+        openings: "",
+        location: "",
+        skills: "",
+        experience: EXPERIENCE_LEVELS[0],
+        applyLink: ""
+      });
       setStatus({
         type: "success",
         message: "Job/Internship posted successfully!",
@@ -69,6 +95,7 @@ const PostJob = () => {
       )}
 
       <Form onSubmit={handleSubmit} className="postjob-form">
+        {/* Existing Fields */}
         <Form.Group controlId="title" className="postjob-group">
           <Form.Label className="postjob-label">Title</Form.Label>
           <Form.Control
@@ -109,6 +136,127 @@ const PostJob = () => {
               </option>
             ))}
           </Form.Select>
+        </Form.Group>
+
+        {/* Additional Fields */}
+        <Form.Group controlId="duration" className="postjob-group mt-3">
+          <Form.Label className="postjob-label">Duration</Form.Label>
+          <Form.Control
+            name="duration"
+            className="postjob-input"
+            placeholder="e.g. 6 months"
+            value={formData.duration}
+            onChange={handleChange}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="startDate" className="postjob-group mt-3">
+          <Form.Label className="postjob-label">Start Date</Form.Label>
+          <Form.Control
+            type="date"
+            name="startDate"
+            className="postjob-input"
+            value={formData.startDate}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="endDate" className="postjob-group mt-3">
+          <Form.Label className="postjob-label">End Date</Form.Label>
+          <Form.Control
+            type="date"
+            name="endDate"
+            className="postjob-input"
+            value={formData.endDate}
+            onChange={handleChange}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="stipend" className="postjob-group mt-3">
+          <Form.Label className="postjob-label">Stipend / Salary</Form.Label>
+          <Form.Control
+            name="stipend"
+            className="postjob-input"
+            placeholder="e.g. ₹10,000/month or ₹6-8 LPA"
+            value={formData.stipend}
+            onChange={handleChange}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="deadline" className="postjob-group mt-3">
+          <Form.Label className="postjob-label">Application Deadline</Form.Label>
+          <Form.Control
+            type="date"
+            name="deadline"
+            className="postjob-input"
+            value={formData.deadline}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="openings" className="postjob-group mt-3">
+          <Form.Label className="postjob-label">Number of Openings</Form.Label>
+          <Form.Control
+            type="number"
+            name="openings"
+            className="postjob-input"
+            placeholder="e.g. 3"
+            value={formData.openings}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="location" className="postjob-group mt-3">
+          <Form.Label className="postjob-label">Location</Form.Label>
+          <Form.Control
+            name="location"
+            className="postjob-input"
+            placeholder="e.g. Chennai / Remote"
+            value={formData.location}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="skills" className="postjob-group mt-3">
+          <Form.Label className="postjob-label">Required Skills</Form.Label>
+          <Form.Control
+            name="skills"
+            className="postjob-input"
+            placeholder="e.g. React, Node.js, MongoDB"
+            value={formData.skills}
+            onChange={handleChange}
+          />
+        </Form.Group>
+
+        <Form.Group controlId="experience" className="postjob-group mt-3">
+          <Form.Label className="postjob-label">Experience Level</Form.Label>
+          <Form.Select
+            name="experience"
+            className="postjob-select"
+            value={formData.experience}
+            onChange={handleChange}
+          >
+            {EXPERIENCE_LEVELS.map((exp, i) => (
+              <option key={i} value={exp}>
+                {exp}
+              </option>
+            ))}
+          </Form.Select>
+        </Form.Group>
+
+        <Form.Group controlId="applyLink" className="postjob-group mt-3">
+          <Form.Label className="postjob-label">How to Apply</Form.Label>
+          <Form.Control
+            name="applyLink"
+            className="postjob-input"
+            placeholder="e.g. https://yourcompany.com/careers"
+            value={formData.applyLink}
+            onChange={handleChange}
+          />
         </Form.Group>
 
         <Button

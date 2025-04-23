@@ -154,18 +154,50 @@ const getScheduledInterviews = async (req, res) => {
   }
 };
 
-// POST a new applicant
 const createApplicant = async (req, res) => {
   try {
-    const { name, email, resumeUrl } = req.body;
+    const {
+      name,
+      email,
+      phone,
+      location,
+      highestQualification,
+      institutionName,
+      graduationYear,
+      skills,
+      resumeUrl,
+      portfolioUrl,
+      githubUrl,
+      linkedinUrl,
+      whyHire,
+      preferredType,
+      willingToRelocate,
+      job,
+      user
+    } = req.body;
+
     const newApplicant = new Applicant({
       name,
       email,
+      phone,
+      location,
+      highestQualification,
+      institutionName,
+      graduationYear,
+      skills,
       resumeUrl,
-      status: 'Applied',
+      portfolioUrl,
+      githubUrl,
+      linkedinUrl,
+      whyHire,
+      preferredType,
+      willingToRelocate,
+      job,
+      user,
+      status: "Applied" // Default status
     });
+
     await newApplicant.save();
-    
     res.status(201).json(newApplicant);
   } catch (error) {
     console.error("Error adding applicant:", error);
@@ -176,21 +208,57 @@ const createApplicant = async (req, res) => {
 // PUT (edit) an applicant
 const updateApplicant = async (req, res) => {
   try {
-    const { name, email, resumeUrl } = req.body;
-    const updated = await Applicant.findByIdAndUpdate(
+    const { 
+      name, 
+      email, 
+      phone, 
+      location, 
+      highestQualification, 
+      institutionName, 
+      graduationYear, 
+      skills, 
+      resumeUrl, 
+      portfolioUrl, 
+      githubUrl, 
+      linkedinUrl, 
+      whyHire, 
+      preferredType, 
+      willingToRelocate, 
+      job, 
+      user 
+    } = req.body;
+
+    const updatedApplicant = await Applicant.findByIdAndUpdate(
       req.params.id,
       {
-        resumeUrl,
         name,
         email,
+        phone,
+        location,
+        highestQualification,
+        institutionName,
+        graduationYear,
+        skills,
+        resumeUrl,
+        portfolioUrl,
+        githubUrl,
+        linkedinUrl,
+        whyHire,
+        preferredType,
+        willingToRelocate,
+        job,
+        user
       },
       { new: true }
     );
-    res.json(updated);
+
+    res.json(updatedApplicant);
   } catch (error) {
+    console.error("Error updating applicant:", error);
     res.status(400).json({ message: 'Error updating applicant', error });
   }
 };
+
 
 // DELETE an applicant
 const deleteApplicant = async (req, res) => {
