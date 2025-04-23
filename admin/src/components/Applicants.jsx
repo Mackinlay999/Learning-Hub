@@ -24,9 +24,18 @@ const Applicants = () => {
   const [currentApplicant, setCurrentApplicant] = useState({
     name: "",
     email: "",
+    phone: "",
+    location: "",
+    qualification: "",
+    institution: "",
+    graduationYear: "",
+    skills: "",
+    profileLink: "",
     resumeUrl: "",
+    reason: "",
     _id: null,
   });
+
   const navigate = useNavigate();
 
   // Fetch applicants on mount
@@ -81,10 +90,10 @@ const Applicants = () => {
     e.preventDefault();
     try {
       if (formMode === "add") {
-        const res = await axios.post(
-          "/recruiters/applicants",
-          { ...currentApplicant, resumeUrl: currentApplicant.resumeUrl }
-        );
+        const res = await axios.post("/recruiters/applicants", {
+          ...currentApplicant,
+          resumeUrl: currentApplicant.resumeUrl,
+        });
         setApplicants([...applicants, res.data]);
         setMessage({ type: "success", text: "Applicant added!" });
       } else {
@@ -103,7 +112,6 @@ const Applicants = () => {
       setMessage({ type: "danger", text: "Error submitting form." });
     }
   };
-  
 
   const openEditForm = (app) => {
     setCurrentApplicant(app);
@@ -112,7 +120,19 @@ const Applicants = () => {
   };
 
   const openAddForm = () => {
-    setCurrentApplicant({ name: "", email: "", resumeUrl: "" });
+    setCurrentApplicant({
+      name: "",
+      email: "",
+      phone: "",
+      location: "",
+      qualification: "",
+      institution: "",
+      graduationYear: "",
+      skills: "",
+      profileLink: "",
+      resumeUrl: "",
+      reason: "",
+    });
     setFormMode("add");
     setShowForm(true);
   };
@@ -156,7 +176,15 @@ const Applicants = () => {
             <tr>
               <th>Name</th>
               <th>Email</th>
+              <th>Phone</th>
+              <th>Location</th>
+              <th>Highest Qualification</th>
+              <th>Institution Name</th>
+              <th>Graduation Year</th>
+              <th>Key Skills</th>
+              <th>LinkedIn / GitHub / Portfolio</th>
               <th>Resume</th>
+              <th>Why should we hire you?</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -168,20 +196,27 @@ const Applicants = () => {
               >
                 <td>{app.name}</td>
                 <td>{app.email}</td>
+                <td>{app.phone}</td>
+                <td>{app.location}</td>
+                <td>{app.qualification}</td>
+                <td>{app.institution}</td>
+                <td>{app.graduationYear}</td>
+                <td>{app.skills}</td>
+                <td>{app.profileLink}</td>
                 <td>
                   <Button
                     variant="link"
                     className="p-0"
-                    onClick={() => {
-                      console.log("Navigating to resume:", app.resumeUrl);
+                    onClick={() =>
                       navigate("/resume", {
                         state: { resumeUrl: app.resumeUrl },
-                      });
-                    }}
+                      })
+                    }
                   >
                     View
                   </Button>
                 </td>
+                <td>{app.reason}</td>
                 <td>
                   {app.shortlisted ? (
                     <span className="text-success fw-semibold">
@@ -240,48 +275,156 @@ const Applicants = () => {
         </Modal.Header>
         <Form onSubmit={handleFormSubmit}>
           <Modal.Body>
-            <Form.Group className="mb-3">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                required
-                value={currentApplicant.name}
-                onChange={(e) =>
-                  setCurrentApplicant({
-                    ...currentApplicant,
-                    name: e.target.value,
-                  })
-                }
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                required
-                value={currentApplicant.email}
-                onChange={(e) =>
-                  setCurrentApplicant({
-                    ...currentApplicant,
-                    email: e.target.value,
-                  })
-                }
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Resume URL</Form.Label>
-              <Form.Control
-                type="text"
-                required
-                value={currentApplicant.resumeUrl}
-                onChange={(e) =>
-                  setCurrentApplicant({
-                    ...currentApplicant,
-                    resumeUrl: e.target.value,
-                  })
-                }
-              />
-            </Form.Group>
+            <Modal.Body>
+              <Form.Group className="mb-3">
+                <Form.Label>Full Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  required
+                  value={currentApplicant.name}
+                  onChange={(e) =>
+                    setCurrentApplicant({
+                      ...currentApplicant,
+                      name: e.target.value,
+                    })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  required
+                  value={currentApplicant.email}
+                  onChange={(e) =>
+                    setCurrentApplicant({
+                      ...currentApplicant,
+                      email: e.target.value,
+                    })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Phone</Form.Label>
+                <Form.Control
+                  type="tel"
+                  value={currentApplicant.phone || ""}
+                  onChange={(e) =>
+                    setCurrentApplicant({
+                      ...currentApplicant,
+                      phone: e.target.value,
+                    })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Location</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={currentApplicant.location || ""}
+                  onChange={(e) =>
+                    setCurrentApplicant({
+                      ...currentApplicant,
+                      location: e.target.value,
+                    })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Highest Qualification</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={currentApplicant.qualification || ""}
+                  onChange={(e) =>
+                    setCurrentApplicant({
+                      ...currentApplicant,
+                      qualification: e.target.value,
+                    })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Institution Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={currentApplicant.institution || ""}
+                  onChange={(e) =>
+                    setCurrentApplicant({
+                      ...currentApplicant,
+                      institution: e.target.value,
+                    })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Graduation Year</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={currentApplicant.graduationYear || ""}
+                  onChange={(e) =>
+                    setCurrentApplicant({
+                      ...currentApplicant,
+                      graduationYear: e.target.value,
+                    })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Key Skills</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="e.g., React, Node.js, MongoDB"
+                  value={currentApplicant.skills || ""}
+                  onChange={(e) =>
+                    setCurrentApplicant({
+                      ...currentApplicant,
+                      skills: e.target.value,
+                    })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>LinkedIn / GitHub / Portfolio</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={currentApplicant.profileLink || ""}
+                  onChange={(e) =>
+                    setCurrentApplicant({
+                      ...currentApplicant,
+                      profileLink: e.target.value,
+                    })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Resume URL</Form.Label>
+                <Form.Control
+                  type="text"
+                  required
+                  value={currentApplicant.resumeUrl}
+                  onChange={(e) =>
+                    setCurrentApplicant({
+                      ...currentApplicant,
+                      resumeUrl: e.target.value,
+                    })
+                  }
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Why should we hire you?</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  value={currentApplicant.reason || ""}
+                  onChange={(e) =>
+                    setCurrentApplicant({
+                      ...currentApplicant,
+                      reason: e.target.value,
+                    })
+                  }
+                />
+              </Form.Group>
+            </Modal.Body>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={() => setShowForm(false)}>

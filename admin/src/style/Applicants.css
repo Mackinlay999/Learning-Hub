@@ -39,14 +39,12 @@
   color: var(--dark-gray);
 }
 
-/* Table */
 .Applicant-table {
   background-color: var(--white);
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   animation: fadeIn 0.4s ease-in-out;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
 }
 
 .Applicant-table thead {
@@ -57,7 +55,7 @@
 
 .Applicant-table th,
 .Applicant-table td {
-  padding: 0.9rem;
+  padding: 1rem;
   text-align: center;
   vertical-align: middle;
 }
@@ -67,7 +65,6 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-/* Shortlisted Row */
 .Applicant-row-shortlisted {
   background-color: #e6f4ea !important;
   transition: all 0.3s ease-in-out;
@@ -75,7 +72,6 @@
 
 /* Buttons */
 .Applicant-shortlist-btn {
-  transition: all 0.2s ease;
   font-weight: 500;
   padding: 6px 12px;
   border-radius: 8px;
@@ -83,6 +79,7 @@
   color: var(--white);
   cursor: pointer;
   border: none;
+  transition: all 0.2s ease;
 }
 
 .Applicant-shortlist-btn:hover {
@@ -98,16 +95,6 @@
   align-items: center;
   height: 180px;
   animation: fadeIn 0.5s ease-in-out;
-}
-
-/* Empty State */
-.Applicant-empty {
-  text-align: center;
-  font-style: italic;
-  color: #888;
-  font-size: 1rem;
-  margin-top: 2rem;
-  animation: fadeIn 0.4s ease;
 }
 
 /* Resume Link */
@@ -148,18 +135,10 @@
 
 /* Responsive Styling */
 @media (max-width: 768px) {
-  .Applicant-container {
-    padding: 1.5rem;
-  }
-
-  .Applicant-title {
-    font-size: 1.75rem;
-  }
-
   .Applicant-table th,
   .Applicant-table td {
     font-size: 0.9rem;
-    padding: 0.6rem;
+    padding: 0.8rem;
   }
 
   .Applicant-shortlist-btn {
@@ -170,20 +149,13 @@
 }
 
 @media (max-width: 480px) {
-  .Applicant-container {
-    padding: 1rem;
-  }
-
-  .Applicant-title {
-    font-size: 1.5rem;
-  }
-
   .Applicant-table th,
   .Applicant-table td {
     font-size: 0.85rem;
+    padding: 0.6rem;
   }
 
-  .Applicant-alert {
-    font-size: 0.85rem;
+  .Applicant-shortlist-btn {
+    font-size: 0.8rem;
   }
 }

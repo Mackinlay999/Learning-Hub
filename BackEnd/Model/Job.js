@@ -1,14 +1,26 @@
-// models/Job.js
 const mongoose = require("mongoose");
 
 const jobsSchema = new mongoose.Schema({
-  title: String,
+  title: { type: String, required: true },
+  type: { type: String, enum: ["Full-time", "Part-time", "Internship", "Remote"], required: true },
   description: String,
-  type: { type: String, enum: ['Internship', 'Full-time'], required: true },
-  company: String,
+  requirements: String,
+  duration: String,
+  startDate: Date,
+  endDate: Date,
+  stipend: String,
+  deadline: Date,
+  openings: Number,
   location: String,
-  postedBy: { type: mongoose.Schema.Types.ObjectId, ref: "Recruiter" },
-  createdAt: { type: Date, default: Date.now },
+  skills: [String],
+  experience: String,
+  applyLink: String,
+  company: {
+    name: String,
+    logoUrl: String,
+    website: String,
+    email: String
+  }
 });
 
 module.exports = mongoose.model("Jobs", jobsSchema);
