@@ -34,7 +34,7 @@ const blogRoutes = require("./Route/blogRoutes");
 const webinarRoutes = require("./Route/webinarRoutes");
 const recruiterRoutes = require("./Route/recruiterRoutes");
 
-
+app.use('/uploads', express.static('uploads'))
 
 const allowedOrigins = [
   "http://localhost:5173", // Frontend 1

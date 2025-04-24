@@ -14,13 +14,16 @@ getAllStories : async (req, res) => {
 createStory : async (req, res) => {
   try {
     const uploadedPhoto = req.file ? `/uploads/${req.file.filename}` : null; // use public path
-    const { name, company } = req.body;
+    const { name, company,LinkedinUrl } = req.body;
 
     const story = new SuccessStory({
       name,
       company,
       photo: uploadedPhoto,
+      LinkedinUrl: req.body.LinkedinUrl, 
     });
+    console.log("Uploaded file path:", req.file.path);
+
 
     await story.save();
     res.status(201).json(story);
@@ -33,9 +36,9 @@ createStory : async (req, res) => {
 updateStory : async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, company } = req.body;
+    const { name, company,  LinkedinUrl  } = req.body;
 
-    const updatedFields = { name, company };
+    const updatedFields = { name, company,  LinkedinUrl  };
 
     if (req.file) {
       updatedFields.photo = `/uploads/${req.file.filename}`; // publicly accessible path
