@@ -23,7 +23,7 @@ import ProgramDetail from './components/ProgramDetail'
 import Program from './components/Program' 
 
 import Userdetails from "./components/Userdetails"
-import Dashboard from "./components/Dashboard"
+
 
 
 import PaymentSuccess from "./components/PaymentSuccess";
@@ -62,7 +62,6 @@ function App() {
 
           <Route path="/program/:title" element={<ProgramDetail />} />
           <Route path="/Userdetails" element={<Userdetails />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
         <Route path="/payment-failure" element={<PaymentFailure />} />
 
