@@ -1,5 +1,7 @@
+
+
 import React, { useEffect, useMemo, useState } from "react";
-import axios from "axios";
+import axios from "./axios";
 import { useNavigate } from "react-router-dom";
 
 const Mentors = () => {
@@ -11,65 +13,83 @@ const Mentors = () => {
     name: "",
     expertise: "",
     status: "Active",
-    photo: "",
+    photo: null, // For handling file input
     email: "",
     mobile: "",
   });
   const [editId, setEditId] = useState(null);
   const [editedMentor, setEditedMentor] = useState({});
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Fetch mentors on component mount
   useEffect(() => {
     fetchMentors();
   }, []);
 
   const fetchMentors = async () => {
+    setLoading(true);
     try {
-      const { data } = await axios.get("http://localhost:3000/api/mentors");
+      const { data } = await axios.get("/mentors");
       setMentors(data);
     } catch (error) {
       console.error("Error fetching mentors:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
+  // Delete mentor
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/mentors/${id}`);
+      await axios.delete(`/mentors/${id}`);
       setMentors((prev) => prev.filter((m) => m._id !== id));
     } catch (error) {
       console.error("Error deleting mentor:", error);
     }
   };
 
+  // Add mentor
   const handleAddMentor = async () => {
+    const formData = new FormData();
+    Object.entries(newMentor).forEach(([key, value]) =>
+      formData.append(key, value)
+    );
+
     try {
+      setLoading(true);
       const { data } = await axios.post(
-        "http://localhost:3000/api/mentors",
-        newMentor
+        "/mentors",
+        formData
       );
       setMentors([...mentors, data]);
       setNewMentor({
         name: "",
         expertise: "",
         status: "Active",
-        photo: "",
+        photo: null,
         email: "",
         mobile: "",
       });
     } catch (error) {
       console.error("Error adding mentor:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
+  // Edit mentor
   const handleEdit = (mentor) => {
     setEditId(mentor._id);
     setEditedMentor({ ...mentor });
   };
 
+  // Save edited mentor
   const handleSaveEdit = async () => {
     try {
+      setLoading(true);
       const { data } = await axios.put(
-        `http://localhost:3000/api/mentors/${editId}`,
+        `/mentors/${editId}`,
         editedMentor
       );
       setMentors((prev) =>
@@ -79,9 +99,12 @@ const Mentors = () => {
       setEditedMentor({});
     } catch (error) {
       console.error("Error updating mentor:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
+  // Get badge class for mentor status
   const getStatusBadgeClass = (status) => {
     switch (status) {
       case "Active":
@@ -95,6 +118,7 @@ const Mentors = () => {
     }
   };
 
+  // Filter mentors based on search, expertise, and status filters
   const filteredMentors = useMemo(() => {
     return mentors.filter(
       (m) =>
@@ -167,11 +191,11 @@ const Mentors = () => {
             }
           />
           <input
-            className="form-control col"
-            placeholder="Photo URL"
-            value={newMentor.photo}
+            type="file"
+            name="photo"
+            accept="image/*"
             onChange={(e) =>
-              setNewMentor({ ...newMentor, photo: e.target.value })
+              setNewMentor({ ...newMentor, photo: e.target.files[0] })
             }
           />
           <input
@@ -201,7 +225,11 @@ const Mentors = () => {
             <option value="Inactive">Inactive</option>
             <option value="Retired">Retired</option>
           </select>
-          <button className="btn btn-primary col" onClick={handleAddMentor}>
+          <button
+            className="btn btn-primary col"
+            onClick={handleAddMentor}
+            disabled={loading}
+          >
             Add
           </button>
         </div>
@@ -225,13 +253,14 @@ const Mentors = () => {
             <tr key={mentor._id}>
               <td>
                 <img
-                  src={mentor.photo}
+                  src={`http://localhost:3000${mentor.photo}`}
                   alt="mentor"
                   style={{
                     width: "40px",
                     height: "40px",
                     borderRadius: "50%",
                     objectFit: "cover",
+                    objectPosition:"top"
                   }}
                 />
               </td>
@@ -357,3 +386,4 @@ const Mentors = () => {
 };
 
 export default Mentors;
+

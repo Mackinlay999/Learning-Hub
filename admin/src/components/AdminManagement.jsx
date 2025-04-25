@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import axios from './axios';
 import "../style/AdminManagement.css";
 
-const roles = ['Super Admin', 'Admin', 'Analyst', 'Support Staff'];
+const roles = ['Super Admin', 'Admin', 'Analyst', 'Recruiter']; 
 
 function AdminManagement() {
   const [admins, setAdmins] = useState([]);

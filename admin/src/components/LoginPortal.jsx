@@ -39,8 +39,11 @@ const LoginPortal = () => {
       );
 
       if (response.status === 200) {
+        const token = response.data.token; // Assuming the token is in the response
+      localStorage.setItem("token", token);
         alert("Login Successful");
         navigate("/userdetails");
+        // navigate("/training-program");
       }
     } catch (error) {
       if (error.response) {

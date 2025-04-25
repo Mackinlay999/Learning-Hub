@@ -6,6 +6,8 @@ const AllRouters =require("./Route/AllRouters")
 const cors = require("cors")
 const paymentRoutes = require("./Route/PaymentRoutes")
 const helmet = require("helmet");
+const path = require("path");
+
 const rateLimit = require("express-rate-limit");
 
 const { errorHandler } = require("./middlewares/errorHandler");
@@ -34,7 +36,8 @@ const blogRoutes = require("./Route/blogRoutes");
 const webinarRoutes = require("./Route/webinarRoutes");
 const recruiterRoutes = require("./Route/recruiterRoutes");
 
-app.use('/uploads', express.static('uploads'))
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 
 const allowedOrigins = [
   "http://localhost:5173", // Frontend 1

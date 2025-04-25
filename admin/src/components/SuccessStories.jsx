@@ -1,159 +1,4 @@
-// import React, { useEffect, useState } from "react";
-// import "../style/SuccessStories.css"; // Import the CSS file
 
-// const SuccessStories = () => {
-//   const [stories, setStories] = useState([]);
-//   const [formData, setFormData] = useState({
-//     name: "",
-//     company: "",
-//     photo: null,
-    
-   
-//   });
-//   const [editId, setEditId] = useState(null);
-
-//   // Using demo/mock data for preview
-//   useEffect(() => {
-//     const demoStories = [
-//       {
-//         _id: "1",
-//         name: "Ananya Sharma",
-//         company: "Google",
-//         visible: true,
-//          photo: "https://tse3.mm.bing.net/th?id=OIP.ExUMGcgLhnkYGwDJXWDd1QHaF8&pid=Api&P=0&h=220"
-//       },
-//       {
-//         _id: "2",
-//         name: "Rahul Verma",
-//         company: "Microsoft",
-//         visible: false,
-//       },
-//     ];
-//     setStories(demoStories);
-//   }, []);
-
-//   const handleChange = (e) => {
-//     const { name, value, type, checked, files } = e.target;
-//     if (type === "file") {
-//       setFormData({ ...formData, [name]: files[0] });
-//     } else if (type === "checkbox") {
-//       setFormData({ ...formData, [name]: checked });
-//     } else {
-//       setFormData({ ...formData, [name]: value });
-//     }
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     const newStory = {
-//       _id: Math.random().toString(),
-//       name: formData.name,
-//       company: formData.company,
-//       visible: formData.visible,
-//     };
-
-//     if (editId) {
-//       setStories(stories.map((s) => (s._id === editId ? newStory : s)));
-//       setEditId(null);
-//     } else {
-//       setStories([newStory, ...stories]);
-//     }
-
-//     setFormData({
-//         name: story.name,
-//         company: story.company,
-//         visible: story.visible,
-//         photo: null,
-//       });
-//   };
-
-//   const handleEdit = (story) => {
-//     setEditId(story._id);
-//     setFormData({
-//       name: story.name,
-//       company: story.company,
-//       visible: story.visible,
-//       photo: null,
-//       letter: null,
-//     });
-//   };
-
-//   const handleDelete = (id) => {
-//     setStories(stories.filter((story) => story._id !== id));
-//   };
-
-//   const handleToggleVisibility = (id, current) => {
-//     setStories(
-//       stories.map((story) =>
-//         story._id === id ? { ...story, visible: !current } : story
-//       )
-//     );
-//   };
-
-//   return (
-//     <div className="container">
-//       <h2 className="title">Add / Edit Student Success Story</h2>
-//       <form onSubmit={handleSubmit} className="form">
-//         <input
-//           type="text"
-//           name="name"
-//           placeholder="Student Name"
-//           value={formData.name}
-//           onChange={handleChange}
-//           required
-//         />
-//         <input
-//           type="text"
-//           name="company"
-//           placeholder="Placed At"
-//           value={formData.company}
-//           onChange={handleChange}
-//           required
-//         />
-//         <input type="file" name="photo" accept="image/*" onChange={handleChange} />
-//         {/* <input type="file" name="letter" accept="application/pdf,image/*" onChange={handleChange} /> */}
-//         {/* <label className="checkbox">
-//           <input
-//             type="checkbox"
-//             name="visible"
-//             checked={formData.visible}
-//             onChange={handleChange}
-//           />
-//           Show on Website
-//         </label> */}
-//         <button type="submit" className="btn">
-//           {editId ? "Update" : "Add"}
-//         </button>
-//       </form>
-
-//       <h2 className="subtitle">All Success Stories</h2>
-//       <div className="story-list">
-//         {stories.map((story) => (
-//           <div key={story._id} className="story-card">
-//             <div>
-//               <p className="story-name">Name :{story.name}</p>
-//               <p>Company: {story.company}</p>
-//               <img src={story.photo}  alt={story.name} />
-             
-//             </div>
-//             <div className="actions">
-//               <button onClick={() => handleEdit(story)} className="edit-btn">Edit</button>
-//               <button onClick={() => handleDelete(story._id)} className="delete-btn">Delete</button>
-//               <button
-//                 onClick={() => handleToggleVisibility(story._id, story.visible)}
-//                 className="toggle-btn"
-//               >
-//                 Toggle
-//               </button>
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default SuccessStories;
 
 import React, { useEffect, useState } from "react";
 import axios from "./axios";
@@ -298,11 +143,24 @@ const SuccessStories = () => {
         {stories.map((story) => (
           <div key={story._id} className="success-story-card">
             <div>
-              <p className="success-story-name">Name: {story.name}</p>
-              <p>Company: {story.company}</p>
-               <p>LinkedinUrl  {story.LinkedinUrl}</p>
+              <p className="success-story-name"><span className="success-span">Name:</span>    {story.name}</p>
+              <p className="success-story-name"> <span className="success-span">Company:</span> {story.company}</p>
+              <p className="success-story-name">
+  <span className="success-span">LinkedinUrl:</span> 
+  <a 
+    href={story.LinkedinUrl} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="linkedin-link"
+  >
+    {story.LinkedinUrl}
+  </a>
+</p>
+
                 <img
-                  src={story.photo}
+                  // src={story.photo}
+                  src={`http://localhost:3000${story.photo}`}
+                  alt={story.name}
                    
                   className="success-story-photo"
                 />
