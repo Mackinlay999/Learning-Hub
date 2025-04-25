@@ -5,21 +5,24 @@
   align-items: center;
   height: 100vh;
   padding: 20px;
+  background: linear-gradient(to right, #ffffff, #ffe5e5); /* light red tint */
 }
 
 .login-box {
   background: #ffffff;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 20px rgba(211, 47, 47, 0.2);
   width: 100%;
-  max-width: 450px; /* Increased width for desktop */
+  max-width: 450px;
   text-align: center;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-top: 5px solid #D32F2F;
 }
 
 .login-box:hover {
   transform: scale(1.02);
+  box-shadow: 0px 6px 25px rgba(211, 47, 47, 0.3);
 }
 
 /* Input Fields */
@@ -30,7 +33,7 @@
 
 .form-group label {
   font-weight: bold;
-  color: #003366;
+  color: #333333;
   display: block;
   margin-bottom: 5px;
 }
@@ -38,14 +41,14 @@
 .form-group input {
   width: 100%;
   padding: 10px;
-  border: 2px solid #003366;
+  border: 2px solid #D32F2F;
   border-radius: 5px;
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .form-group input:focus {
-  border-color: #00509e;
-  box-shadow: 0px 0px 5px rgba(0, 80, 158, 0.5);
+  border-color: #FFC107;
+  box-shadow: 0px 0px 8px rgba(255, 193, 7, 0.5);
   outline: none;
 }
 
@@ -66,19 +69,25 @@
   transform: translateY(-50%);
   cursor: pointer;
   font-size: 18px;
+  color: #D32F2F;
+  transition: color 0.3s;
+}
+
+.toggle-password:hover {
+  color: #FFC107;
 }
 
 /* Buttons */
 .button-group {
   display: flex;
-  flex-direction: row; /* Always row on all screen sizes */
+  flex-direction: row;
   gap: 10px;
   margin-top: 10px;
 }
 
 .login-button,
 .forgot-password {
-  width: 50%; /* Each button takes up half the space */
+  width: 50%;
   padding: 10px;
   font-size: 16px;
   font-weight: bold;
@@ -86,29 +95,20 @@
   border: none;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-}
-
-.login-button {
-  background: #00509e;
+  background: #D32F2F;
   color: white;
+  box-shadow: 0 4px 8px rgba(211, 47, 47, 0.2);
 }
 
-.login-button:hover {
-  background: #003366;
+.login-button:hover,
+.forgot-password:hover {
+  background: #B71C1C;
   transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(211, 47, 47, 0.4);
 }
 
 .forgot-password {
-  background: #00509e;
-  color: white;
-}
-
-.forgot-password:hover {
-  background: #003366;
-  transform: scale(1.05);
-}
-.forgot-password{
-  background-color: #003366;
+  background-color: #D32F2F;
   color: white;
 }
 
@@ -119,14 +119,14 @@
 }
 
 .register-link span {
-  color: #00509e;
+  color: #D32F2F;
   font-weight: bold;
   cursor: pointer;
   transition: color 0.3s ease-in-out;
 }
 
 .register-link span:hover {
-  color: #003366;
+  color: #FFC107;
   text-decoration: underline;
 }
 
@@ -147,7 +147,6 @@
     font-size: 14px;
   }
 
-  /* Ensure buttons stay in a row on small screens too */
   .button-group {
     flex-direction: row;
     gap: 5px;
