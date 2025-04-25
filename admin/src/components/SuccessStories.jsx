@@ -165,6 +165,7 @@ const SuccessStories = () => {
     name: "",
     company: "",
     photo: null,
+    LinkedinUrl:""
   });
   const [editId, setEditId] = useState(null);
 
@@ -201,6 +202,7 @@ const SuccessStories = () => {
     const data = new FormData();
     data.append("name", formData.name);
     data.append("company", formData.company);
+    data.append("LinkedinUrl", formData.LinkedinUrl);
     if (formData.photo) data.append("photo", formData.photo);
 
     try {
@@ -211,7 +213,7 @@ const SuccessStories = () => {
       }
       await fetchStories();
       setEditId(null);
-      setFormData({ name: "", company: "", photo: null, visible: true });
+      setFormData({ name: "", company: "", LinkedinUrl:"", photo: null, visible: true });
     } catch (err) {
       console.error("Error submitting story:", err);
     }
@@ -223,6 +225,7 @@ const SuccessStories = () => {
     setFormData({
       name: story.name,
       company: story.company,
+      LinkedinUrl: story.LinkedinUrl,
       visible: story.visible ?? true,
       photo: null,
     });
@@ -270,6 +273,14 @@ const SuccessStories = () => {
           onChange={handleChange}
           required
         />
+         <input
+          type="text"
+          name="LinkedinUrl"
+          placeholder="LinkedinUrl"
+          value={formData.LinkedinUrl}
+          onChange={handleChange}
+          required
+        />
         <input
           type="file"
           name="photo"
@@ -289,13 +300,19 @@ const SuccessStories = () => {
             <div>
               <p className="success-story-name">Name: {story.name}</p>
               <p>Company: {story.company}</p>
-              {story.photo && (
+               <p>LinkedinUrl  {story.LinkedinUrl}</p>
                 <img
                   src={story.photo}
-                  alt={story.name}
+                   
                   className="success-story-photo"
                 />
-              )}
+
+                
+
+                
+
+                
+              
             </div>
             <div className="success-story-actions">
               <button onClick={() => handleEdit(story)} className="success-story-edit-btn">
