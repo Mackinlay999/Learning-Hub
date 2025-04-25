@@ -25,11 +25,11 @@ const sections = [
     icon: <Users size={18} />,
     path: "/lead-student",
   },
-  {
-    name: "Training Program",
-    icon: <BookOpenCheck size={18} />,
-    path: "/training-program",
-  },
+  // {
+  //   name: "Training Program",
+  //   icon: <BookOpenCheck size={18} />,
+  //   path: "/training-program",
+  // },
   { name: "Login", icon: <ShieldCheck size={18} />, path: "/login" },
   {
     name: "Student-Management",

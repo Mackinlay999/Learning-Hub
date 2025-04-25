@@ -23,6 +23,7 @@
   margin-bottom: 15px;
   text-align: center;
   color: var(--dark-gray);
+ 
 }
 
 .success-story-title {
@@ -46,10 +47,11 @@
   margin-bottom: 40px;
   background-color: #f9f9f9;
   transition: all 0.3s ease;
+ 
 }
 
 .success-story-form:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px #0000001a;
 }
 
 .success-story-form input[type="text"],
@@ -108,6 +110,8 @@
   font-weight: bold;
   font-size: 18px;
   color: var(--dark-gray);
+  color: #007bff;
+  text-transform: capitalize;
 }
 
 /* Action Buttons inside Story Cards */
@@ -147,7 +151,9 @@
   background-color: var(--btn-hover);
   transform: translateY(-2px);
 }
-
+.success-span{
+  color: #333333;
+}
 /* Animations */
 @keyframes fadeIn {
   from {
@@ -189,4 +195,14 @@
   .success-story-actions {
     justify-content: space-around;
   }
+}
+.success-story-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  object-position: top;
+  border: 2px solid #0077b5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+ 
 }
