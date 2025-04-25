@@ -67,12 +67,7 @@ const sections = [
     icon: <MessageCircle size={18} />,
     path: "/support-feedback",
   },
-  // {
-  //   name: "Recruiter & Placement",
-  //   icon: <Briefcase size={18} />,
-  //   path: "/recruitment",
-  // },
-
+  
   { name: "Sucess Story", icon: <Briefcase size={18} />, path: "/Suceess" },
 
   { name: "Blog & Webinar", icon: <ShieldCheck size={18} />, path: "/blog-webinar" },
