@@ -8,6 +8,7 @@ import SecurityCompliance from './SecurityCompliance'
 import WebsiteContentManager from './WebsiteContentManager'
 
 import AdminManagement from './AdminManagement'
+import LeadsByDate from './LeadByDate'
 
 
 
@@ -29,6 +30,7 @@ const LeadAndStudentManagement = () => {
       <LeadDetails />
       <StudentEnroll />
       <AttendanceProgressTracking />
+      {/* <LeadsByDate /> */}
       
     </div>
   )

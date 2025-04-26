@@ -96,7 +96,8 @@ const addCertificate = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Error adding certificate", error });
   }
-};
+}
+
 
 // Controller for fetching certificates
 const getCertificates = async (req, res) => {
@@ -107,8 +108,19 @@ const getCertificates = async (req, res) => {
     res.status(200).json(student.certificates);
   } catch (error) {
     res.status(500).json({ message: "Error fetching certificates", error });
-  }
-};
+  };
+}
+
+  const getActiveStudents = async (req, res) => {
+    try {
+      const activeStudents = await Student.find({ isActive: true });
+      res.status(200).json(activeStudents);
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching active students", error });
+    }
+  };
+  
+
 
 module.exports = {
   getStudents,
@@ -118,5 +130,7 @@ module.exports = {
   addAttendance,
   deleteStudent,
   addCertificate,
-  getCertificates
-};
+  getCertificates,
+  getActiveStudents
+
+}

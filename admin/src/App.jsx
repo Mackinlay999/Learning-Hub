@@ -47,6 +47,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import EmailCampaign from "./components/EmailCampaign";
 // In App.jsx or your routing file
 import ResumeViewer from "./components/ResumeViewer";
+import LeadsByDate from "./components/LeadByDate";
 
 function App() {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -159,6 +160,7 @@ function App() {
                 <Route path="/recruiters" element={<RecruiterDashboard />} />
                 <Route path="/EmailCampaign" element={<EmailCampaign />} />
                 <Route path="/resume" element={<ResumeViewer />} />
+                <Route path="/LeadsByDate" element={<LeadsByDate />} />
                 {/* Catch-all route for 404 pages */}
                 <Route path="*" element={<NotFound />} />{" "}
                 {/* Catch-all route for 404 pages */}

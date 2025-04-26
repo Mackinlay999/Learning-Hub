@@ -23,7 +23,7 @@ const studentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    photo: String,
+   
     course: String,
     status: {
       type: String,
@@ -35,7 +35,12 @@ const studentSchema = new mongoose.Schema(
     certificates: [certificateSchema],
     attendance: [attendanceSchema],
     recruiterNote: String,
+    isActive: {
+      type: Boolean,
+      default: true   // By default, new students are active
+    },
   },
+ 
   { timestamps: true }
 );
 
