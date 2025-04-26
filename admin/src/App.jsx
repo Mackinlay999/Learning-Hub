@@ -41,8 +41,6 @@ import Partners from "./components/Partners";
 import PostJob from "./components/PostJob";
 import Applicants from "./components/Applicants";
 import ScheduleInterview from "./components/ScheduleInterview";
-import PrivateRoute from "./components/PrivateRoute";
-
 
 import EmailCampaign from "./components/EmailCampaign";
 // In App.jsx or your routing file
@@ -94,18 +92,7 @@ function App() {
                   path="/lead-student"
                   element={<LeadAndStudentManagement />}
                 />
-
-
-<Route path="/unauthorized" element={<h2>You are not authorized to access this page.</h2>} />
-
-
-<Route element={<PrivateRoute allowedRoles={['Super Admin']} />}>
-
-</Route>
-
-
-<Route path="/training-program" element={<Trainingprogram />} />
-   
+                <Route path="/training-program" element={<Trainingprogram />} />
                 <Route path="/email-marketing" element={<EMailMarketing />} />
                 <Route
                   path="/finance-payment"

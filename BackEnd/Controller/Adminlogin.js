@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const app  = require("../app");
 require("dotenv").config();
 const nodemailer =require('nodemailer')
-const Resume = require("../Model/ProfileResumeScheme")
+// const Resume = require("../Model/ProfileResumeScheme")
 
 const path = require("path");
 
