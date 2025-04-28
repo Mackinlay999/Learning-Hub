@@ -42,13 +42,13 @@ import Applicants from "./components/Applicants";
 import ScheduleInterview from "./components/ScheduleInterview";
 import EmailCampaign from "./components/EmailCampaign";
 import ResumeViewer from "./components/ResumeViewer";
-<<<<<<< HEAD
+
 import AuthProvider from "./context/AuthContext"; // Adjust path as necessary
 
 import { useAuth } from "./context/AuthContext";
-=======
+
 import LeadsByDate from "./components/LeadByDate";
->>>>>>> 872210fabc9e0646b9a33e1d0cc349d809459fb8
+
 
 function App() {
   const { auth } = useAuth();
@@ -304,7 +304,6 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
-<<<<<<< HEAD
                 <Route
                   path="/recruiters"
                   element={
@@ -334,7 +333,6 @@ function App() {
 
                 {/* Fallback 404 */}
                 <Route path="*" element={<NotFound />} />
-=======
                 <Route path="/recruiters" element={<RecruiterDashboard />} />
                 <Route path="/EmailCampaign" element={<EmailCampaign />} />
                 <Route path="/resume" element={<ResumeViewer />} />
@@ -342,7 +340,6 @@ function App() {
                 {/* Catch-all route for 404 pages */}
                 <Route path="*" element={<NotFound />} />{" "}
                 {/* Catch-all route for 404 pages */}
->>>>>>> 872210fabc9e0646b9a33e1d0cc349d809459fb8
               </Routes>
             </div>
           </div>
