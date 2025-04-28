@@ -64,6 +64,31 @@ deleteLead : async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
+},
+// Group leads by date
+getLeadsByDate: async (req, res) => {
+  try {
+    const result = await Lead.aggregate([
+      {
+        $group: {
+          _id: {
+            $dateToString: { format: "%Y-%m-%d", date: "$createdAt" }
+          },
+          totalLeads: { $sum: 1 },
+          leads: { $push: "$$ROOT" } // Optional: include full lead data
+        }
+      },
+      { $sort: { _id: -1 } } // Latest date first
+    ]);
+
+    res.json({
+      totalLeadsByDate: result,
+      totalLeadsOverall: result.reduce((sum, day) => sum + day.totalLeads, 0) // Calculate overall total leads
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 }
+
 }
 module.exports = LeadController;

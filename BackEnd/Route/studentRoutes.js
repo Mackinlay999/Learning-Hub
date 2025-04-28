@@ -6,6 +6,7 @@ const {
   updateStudent,
   addAttendance,
   deleteStudent,
+  getActiveStudents,
   addCertificate,
   getCertificates,
 } = require("../Controller/studentController.js"); // Importing the controller functions
@@ -20,4 +21,5 @@ router.post("/students/:id/attendance", addAttendance); // Endpoint to add atten
 router.delete("/students/:id", deleteStudent);
 router.post("/students/:id/certificates", addCertificate);
 router.get("/students/:id/certificates", getCertificates);
+router.get("/getActiveStudents",  getActiveStudents);
 module.exports = router;

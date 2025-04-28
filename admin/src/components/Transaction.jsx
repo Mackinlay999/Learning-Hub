@@ -16,7 +16,7 @@ const Transaction = () => {
   const [filter, setFilter] = useState("all");
 
   // 🔁 Refunds State
-  const [refunds, setRefunds] = useState([]);
+
   const [refundUsername, setRefundUsername] = useState("");
   const [refundEmail, setRefundEmail] = useState("");
   const [refundAmount, setRefundAmount] = useState("");
