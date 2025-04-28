@@ -273,3 +273,14 @@
 .S-icon {
   transition: color 0.3s ease, transform 0.3s ease;
 }
+.sidebar-logout-btn {
+  background: red;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+}

@@ -134,9 +134,9 @@ router.post("/admin/login",  Admincontroller.login)
 router.post("/admin/logout",  Admincontroller.logout)
 router.post("/admin/forgetpassword",  Admincontroller.forgetpassword)
 router.post("/admin/setNewPassword",  Admincontroller.setNewPassword)
-router.put("/admin/update-role", Verifyrole.verifyToken , Admincontroller.updateRole);
-router.get("/admin/me" ,  auth.authverify,  Admincontroller.me)
-router.delete("/admin/deleteUser", DeleteUser.User ,  Admincontroller.deleteUser);
+router.put("/admin/update-role", Verifyrole.verifyToken, Admincontroller.updateRole); // Role-based check here
+router.get("/admin/me", Verifyrole.verifyToken, Admincontroller.me);
+router.delete("/admin/deleteUser", Verifyrole.verifyToken, Admincontroller.deleteUser); // Role-based check here
 
 
 
