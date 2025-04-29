@@ -10,6 +10,7 @@ import {
   BarChart2,
   MessageCircle,
   Briefcase,
+  BookOpenCheck,
 } from "lucide-react";
 import "../style/Sidebar.css"; // Your existing CSS remains
 
@@ -116,18 +117,14 @@ const Sidebar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { auth = {}, logout } = useAuth();
   const { role, loading } = auth;
-
-  console.log('Role in Sidebar:', auth.role);
-  console.log('Auth state:', auth); // Add this to check the full auth state
   
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  // Filter sections based on user's role
-  // Filter sections only after auth is loaded
-  const availableSections = !loading && role ? allSections.filter(section => section.roles.includes(role)) : [];
-
+  const availableSections = !loading && role
+  ? allSections.filter(section => section.roles ? section.roles.includes(role) : true)
+  : [];
 
   return (
     <>
