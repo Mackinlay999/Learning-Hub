@@ -14,7 +14,7 @@ const LoginPortal = () => {
   const roleToRoute = useMemo(() => ({
     'Super Admin': '/home',
     'Admin': '/home',
-    'Recruiter': '/recruiters', 
+    'Recruiter': '/recruiters/dashboard', 
     'Mentor': '/mentors',
     // Add more roles here if needed
   }), []);

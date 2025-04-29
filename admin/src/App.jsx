@@ -306,7 +306,7 @@ function App() {
                   }
                 />
                 <Route
-                  path="/recruiters"
+                  path="/recruiters/dashboard"
                   element={
                     <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
                       <RecruiterDashboard />

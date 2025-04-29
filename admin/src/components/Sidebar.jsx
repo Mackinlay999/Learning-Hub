@@ -10,6 +10,7 @@ import {
   BarChart2,
   MessageCircle,
   Briefcase,
+  BookOpenCheck,
 } from "lucide-react";
 import "../style/Sidebar.css"; // Your existing CSS remains
 
@@ -32,6 +33,7 @@ const allSections = [
     path: "/lead-student",
     roles: ["Admin", "Super Admin"],
   },
+<<<<<<< HEAD
   {
     name: "Login",
     icon: <ShieldCheck size={18} />,
@@ -46,6 +48,19 @@ const allSections = [
   // },
   { name: "Login", icon: <ShieldCheck size={18} />, path: "/login" },
 
+=======
+  // {
+  //   name: "Login",
+  //   icon: <ShieldCheck size={18} />,
+  //   path: "/login",
+  //   roles: ["Super Admin", "Admin", "Recruiter", "Mentor", "Super Admin"],
+  // },
+  {
+    name: "Training Program",
+    icon: <BookOpenCheck size={18} />,
+    path: "/training-program",
+  },
+>>>>>>> ed93a19c72ff1767b690381dcfd562f1f8046d21
   {
     name: "Student-Management",
     icon: <ShieldCheck size={18} />,
@@ -112,18 +127,14 @@ const Sidebar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { auth = {}, logout } = useAuth();
   const { role, loading } = auth;
-
-  console.log('Role in Sidebar:', auth.role);
-  console.log('Auth state:', auth); // Add this to check the full auth state
   
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  // Filter sections based on user's role
-  // Filter sections only after auth is loaded
-  const availableSections = !loading && role ? allSections.filter(section => section.roles.includes(role)) : [];
-
+  const availableSections = !loading && role
+  ? allSections.filter(section => section.roles ? section.roles.includes(role) : true)
+  : [];
 
   return (
     <>
