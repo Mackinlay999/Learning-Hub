@@ -61,7 +61,7 @@ const Admincontroller = {
     
  
 
-    login : async (req, res) => {
+    login: async (req, res) => {
       try {
           console.log("Login request received");
   
@@ -91,23 +91,18 @@ const Admincontroller = {
               return res.status(400).json({ message: "Wrong password" });
           }
   
-          // Generate JWT token
-          // const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET,
-            const token = jwt.sign({ id: verifyUser._id }, process.env.JWT_SECRET, 
-              {
-              expiresIn: "1h",
-          });
+          // Generate JWT token with user id and role
+          const token = jwt.sign(
+              { id: verifyUser._id, role: verifyUser.role }, // Include the role here
+              process.env.JWT_SECRET,
+              { expiresIn: "1h" }
+          );
   
-          // Set HTTP-only cookie
-          // res.cookie("token", token, {
-          //     httpOnly: true,
-          //     secure: process.env.NODE_ENV === "production",
-          //     sameSite: "none",
-          // });
+          // Set the token in an HTTP-only cookie
           res.cookie("token", token, {
-            httpOnly: true,
-            secure: false, // ✅ Set to false for local development
-            sameSite: "lax", // ✅ 'lax' is recommended for local development
+              httpOnly: true,
+              secure: false, // Set to true for production
+              sameSite: "lax", // Recommended for local development
           });
   
           return res.status(200).json({ message: "Login successful", token });
@@ -116,6 +111,7 @@ const Admincontroller = {
           res.status(500).json({ message: err.message });
       }
   },
+  
   
     logout : async (req,res)=>{
         try {
@@ -135,24 +131,34 @@ const Admincontroller = {
         }
 
     },
-    me : async(req,res)=>{
-       try {
-         console.log("me is login");
-         const userid  =  req.userid;
-
-         const User = await Adminlogin.findOne({ _id: userid });
-
-         
-        //  const user =await user.findbyID(userid).select("-password -__v -createdAT -updateAt -.id")
-         console.log(  "user is " + User);
-         
-         return res.status(200).json(User)
-
-       }
-        catch (err) {
-          res.status(400).json({message : err.meaasge})
-       }
+    me: async (req, res) => {
+      try {
+        console.log("me is login");
+        const userid = req.userid;  // Extract the user id from the JWT payload
+    
+        // Find the user by their ID and exclude sensitive fields like password
+        const user = await Adminlogin.findOne({ _id: userid }).select("-password -__v -createdAt -updatedAt");
+    
+        // If no user is found, send a 404 error
+        if (!user) {
+          return res.status(404).json({ message: "User not found" });
+        }
+    
+        console.log("User found:", user);
+    
+        // Return the user data, including their role
+        return res.status(200).json({
+          userId: user._id,
+          role: user.role,  // Assuming 'role' is stored in your user schema
+          name: user.name,  // Adjust based on your schema
+          email: user.email  // Adjust based on your schema
+        });
+      } catch (err) {
+        console.error("Error fetching user:", err);
+        return res.status(400).json({ message: err.message || "An error occurred while fetching the user data" });
+      }
     },
+    
     forgetpassword :async (req,res)=>{
       try {
         console.log("forget");
@@ -236,14 +242,15 @@ const Admincontroller = {
       try {
         console.log("Update role request");
     
-        const AdminloginId = req.userid;
-        const { id, username, email, role,  } = req.body;
+        const AdminloginId = req.userid;  // Logged-in user's ID from token
+        const { id, username, email, role } = req.body;
     
         const loggedInUser = await Adminlogin.findById(AdminloginId);
         if (!loggedInUser) {
           return res.status(401).json({ message: "Unauthorized: Admin not found" });
         }
     
+        // Ensure only "Super Admin" can update roles
         if (loggedInUser.role !== "Super Admin") {
           return res.status(403).json({ message: "Access denied: Only Super Admin can update roles" });
         }
@@ -257,17 +264,16 @@ const Admincontroller = {
         userToUpdate.username = username;
         userToUpdate.email = email;
         userToUpdate.role = role;
-        
     
         await userToUpdate.save();
     
         res.status(200).json({ message: "User updated successfully", updatedUser: userToUpdate });
-    
       } catch (error) {
         console.error("Error updating role:", error);
         res.status(500).json({ message: "Internal Server Error", error: error.message });
       }
     },
+    
   
     
     deleteUser: async (req, res) => {
@@ -276,15 +282,16 @@ const Admincontroller = {
     
         const adminId = req.userid; // from auth middleware
         const { userIdToDelete } = req.body;
-
+    
         console.log("Logged in Admin ID:", adminId);
-    console.log("User to delete ID:", userIdToDelete);
+        console.log("User to delete ID:", userIdToDelete);
     
         const loggedInAdmin = await Adminlogin.findById(adminId);
         if (!loggedInAdmin) {
           return res.status(401).json({ message: "Unauthorized: Admin not found" });
         }
     
+        // Ensure only "Super Admin" can delete users
         if (loggedInAdmin.role !== "Super Admin") {
           return res.status(403).json({ message: "Access denied: Only Super Admin can delete users" });
         }
@@ -296,12 +303,12 @@ const Admincontroller = {
     
         await Adminlogin.findByIdAndDelete(userIdToDelete);
         return res.status(200).json({ message: "User deleted successfully" });
-    
       } catch (error) {
         console.error("Error deleting user:", error);
         return res.status(500).json({ message: "Internal Server Error", error: error.message });
       }
     }
+    
     
 }
 
