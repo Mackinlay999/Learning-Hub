@@ -1,77 +1,34 @@
-
 const TraningProgram = require("../Model/TraningProgramScheme");
 
 const TraningProgramController = {
   createProgram: async (req, res) => {
     try {
-      const {
-        name,
-        mode,
-        duration,
-        price,
-        ProgramOverview = "",
-        Curriculumtitle = "",
-        objective = [],
-        topics = "",
-        assessments = "",
-        Programbenefits = "",
-        placementAssistance = "",
-        enrollkeytitle = "",
-        enrollkeycontent = "",
-      } = req.body;
-      
-
-      if (!name || !mode || !duration || !price) {
-        return res.status(400).json({ error: "Please fill all required fields." });
-      }
-
-      const newProgram = new TraningProgram({
-        name,
-        mode,
-        duration,
-        price,
-        ProgramOverview,
-        Curriculumtitle,
-        objective,
-        topics,
-        assessments,
-        Programbenefits,
-        placementAssistance,
-        enrollkeytitle,
-        enrollkeycontent,
-      });
-
-      await newProgram.save();
-      res.status(201).json({ message: "Program created successfully." });
-    } catch (err) {
-      res.status(500).json({ error: err.message });
+      const newTrainingProgram = new TraningProgram(req.body);
+      await newTrainingProgram.save();
+      res.status(201).json({ message: "Training Program created successfully", newTrainingProgram });
+    } catch (error) {
+      res.status(500).json({ message: "Error creating training program", error });
     }
   },
 
   updateProgram: async (req, res) => {
     try {
-      const { id } = req.params;
-      const updateData = req.body;
-
-      const updatedProgram = await TraningProgram.findByIdAndUpdate(id, updateData, {
-        new: true,
-      });
-
-      if (!updatedProgram)
-        return res.status(404).json({ message: "Program not found." });
-
-      res.json(updatedProgram);
-    } catch (err) {
-      res.status(500).json({ error: err.message });
+      const updatedProgram = await TraningProgram.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      if (!updatedProgram) {
+        return res.status(404).json({ message: "Training Program not found" });
+      }
+      res.status(200).json(updatedProgram);
+    } catch (error) {
+      res.status(500).json({ message: "Error updating the training program", error });
     }
   },
 
-  getAllPrograms: async (req, res) => {
+  getAllPrograms: getAllTrainingPrograms = async (req, res) => {
     try {
       const programs = await TraningProgram.find();
-      res.json(programs);
-    } catch (err) {
-      res.status(500).json({ error: err.message });
+      res.status(200).json(programs);
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching training programs", error });
     }
   },
 
@@ -80,12 +37,10 @@ const TraningProgramController = {
       const { id } = req.params;
       const deleted = await TraningProgram.findByIdAndDelete(id);
 
-      if (!deleted)
-        return res.status(404).json({ message: "Program not found." });
+      if (!deleted) return res.status(404).json({ message: "Program not found." });
 
       res.json({ message: "Program deleted successfully." });
     } catch (err) {
-      console.error("Create Program Error:", err);  
       res.status(500).json({ error: err.message });
     }
   },
@@ -95,18 +50,13 @@ const TraningProgramController = {
       const { id } = req.params;
       const program = await TraningProgram.findById(id);
 
-      if (!program) return res.status(404).json({ message: "Not found" });
+      if (!program) return res.status(404).json({ message: "Program not found." });
 
       res.json(program);
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
   },
- 
-
 };
 
 module.exports = TraningProgramController;
-
-    
-      

@@ -43,6 +43,7 @@ const Home = () => {
   const [showModal, setShowModal] = useState(false);
 
 
+
   // /revenue
   const [transactions, setTransactions] = useState([]);
   const [revenue, setRevenue] = useState(0);
@@ -113,8 +114,33 @@ setTodayRevenue(todayRevenueSum);
   };
 
 
+  
+  const fetchActiveStudents = async () => {
+    try {
+      const res = await axios.get('/getActiveStudents'); // Adjust your backend URL if needed
+      setActiveStudents(res.data.length); // We set the count
+    } catch (error) {
+      console.error('Error fetching active students', error);
+    }
+  };
+
+
   useEffect(() => {
+    
+    fetchActiveStudents();
     fetchTransactions();
+
+
+
+    // Fetch all courses and get the count
+    axios.get("/getAllPrograms")
+      .then(response => {
+        setCourseCount(response.data.length); // Set course count based on the length of the array
+      })
+      .catch(error => {
+        console.error("Error fetching course count:", error);
+      });
+
     // Fetch Dashboard main data
     axios.get("/dashboard")
       .then((response) => {
@@ -161,6 +187,13 @@ setTodayRevenue(todayRevenueSum);
   if (loading) {
     return <div className="loader">Loading...</div>;
   }
+
+
+
+
+
+
+  
 
   return (
     <div className="home-container">
@@ -222,22 +255,24 @@ setTodayRevenue(todayRevenueSum);
 
 
         {/* Active Students */}
-        <motion.div className="card" custom={2} initial="hidden" animate="visible" variants={fadeInUp}>
-          <div className="card-body">
-            <h6>Active Students</h6>
-            <h3>{activeStudents}</h3>
-            <a href="/students" className="view-link">View</a>
-          </div>
-        </motion.div>
+        
+
+<motion.div className="card" custom={2} initial="hidden" animate="visible" variants={fadeInUp}>
+      <div className="card-body">
+        <h6>Active Students</h6>
+        <h3>{activeStudents}</h3> {/* This shows the count */}
+        <a href="/students" className="view-link">View</a>
+      </div>
+    </motion.div>
 
         {/* Course Count */}
         <motion.div className="card" custom={3} initial="hidden" animate="visible" variants={fadeInUp}>
-          <div className="card-body">
-            <h6>Course Count</h6>
-            <h3>5</h3>
-            <a href="/courses" className="view-link">View</a>
-          </div>
-        </motion.div>
+      <div className="card-body">
+        <h6>Course Count</h6>
+        <h3>{courseCount}</h3> {/* Display the course count */}
+        <a href="/courses" className="view-link">View</a>
+      </div>
+    </motion.div>
       </div>
 
     

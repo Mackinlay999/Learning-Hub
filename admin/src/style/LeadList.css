@@ -214,8 +214,14 @@ tbody td {
 /* Model */
 .L-section {
   width: 100% !important;
+  border-radius: 8px;
 }
-
+.L-input{
+  width: 100%;
+  padding: 6px;
+  border-radius: 8px;
+  
+}
 .L-input {
   margin-top: 20px;
 }

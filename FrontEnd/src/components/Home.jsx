@@ -86,7 +86,9 @@ const Home = () => {
       image: video1, // Replace with actual image or video source
     },
   ];
-  
+
+
+
   const [selectedProgram, setSelectedProgram] = useState("Our training programs");
   const [students, setStudents] = useState(1);
   const [companies, setCompanies] = useState(1);
@@ -105,6 +107,30 @@ const Home = () => {
       clearInterval(companyInterval);
     };
   }, []);
+
+
+    
+  const [allprograms, setallPrograms] = useState([]); // State to hold program data
+  const [selectednewProgram, setnewSelectedProgram] = useState(''); // State for selected program
+
+
+
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      try {
+        const response = await axios.get('/getAllPrograms'); // Replace with your API endpoint
+        setallPrograms(response.data); // Assuming the response is an array of programs
+      } catch (error) {
+        console.error('Error fetching programs:', error);
+      }
+    };
+
+    fetchPrograms();
+  }, []);
+
+
+
+  
 
   return (
     <>
@@ -282,6 +308,10 @@ const Home = () => {
       </motion.div> */}
 
       {/* Program Section */}
+
+
+
+      
       <motion.div
         className="home-container"
         initial={{ opacity: 0, x: -50 }}
@@ -374,6 +404,8 @@ const Home = () => {
           </Col>
         </Row>
       </motion.div>
+
+      z
       {/* Goal Section */}
       <div className="home-heading-container">
         <motion.p
