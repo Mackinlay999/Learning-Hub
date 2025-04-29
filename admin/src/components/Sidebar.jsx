@@ -38,15 +38,14 @@ const allSections = [
     path: "/login",
     roles: ["Super Admin", "Admin", "Recruiter", "Mentor", "Super Admin"],
   },
-<<<<<<< HEAD
-  {
-    name: "Training Program",
-    icon: <BookOpenCheck size={18} />,
-    path: "/training-program",
-  },
+
+  // {
+  //   name: "Training Program",
+  //   icon: <BookOpenCheck size={18} />,
+  //   path: "/training-program",
+  // },
   { name: "Login", icon: <ShieldCheck size={18} />, path: "/login" },
-=======
->>>>>>> 80060eb908b9bb90d1cc6612ab3052161bab3fcb
+
   {
     name: "Student-Management",
     icon: <ShieldCheck size={18} />,
