@@ -6,18 +6,29 @@ const TraningProgramScheme = new mongoose.Schema({
     mode : {type : String , required :true},
     duration:{type : String , required :true},
     price:{type : String , required :true},
+    Certification : String,
     ProgramOverview : String,
-    Curriculumtitle: String,
-  objective: [String],
-  topics: [String],
-  assessments: [String],
+  
+
+ 
+
+  
+
+  modules: [
+    {
+      ModuleTitle: String,
+      Objective: String,
+      Topics: String,
+      Assessments: String,
+    }
+  ],
 
 
   Programbenefits: [String], // Array of benefit points
-  placementAssistance: String,
+  PlacementAssistance: String,
 
-  enrollkeytitle: String,
-  enrollkeycontent: String,
+  Enrollkeytitle: String,
+  Enrollkeycontent: String,
 
 
 })

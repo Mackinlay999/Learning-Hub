@@ -13,6 +13,7 @@ import LeadsByDate from './LeadByDate'
 
 
 
+
 const LeadAndStudentManagement = () => {
   return (
     <div>
@@ -31,6 +32,7 @@ const LeadAndStudentManagement = () => {
       <StudentEnroll />
       <AttendanceProgressTracking />
       {/* <LeadsByDate /> */}
+     
       
     </div>
   )

@@ -3,6 +3,7 @@ import Courses from './Courses';
 import LiveSessions from './LiveSession';
 import AssessmentsCertifications from './AssessmentsCertifications';
 
+
 const Trainingprogram = () => {
   return (
     <div>
@@ -10,6 +11,7 @@ const Trainingprogram = () => {
       <Courses />
       <LiveSessions />
       <AssessmentsCertifications />
+      
     </div>
   )
 }

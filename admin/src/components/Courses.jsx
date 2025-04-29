@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 import "../style/Courses.css";
 import axios from "./axios";  
 
-
-
 const Courses = () => {
   const [courses, setCourses] = useState([]);
   const [newCourse, setNewCourse] = useState({ 
@@ -14,15 +12,13 @@ const Courses = () => {
     duration: "", 
     price: "", 
     mode: "",
+    Certification :"",
     ProgramOverview: "",
-    Curriculumtitle: "",
-    objective: [""],   
-    topics: "",
-    assessments: "",
-    Programbenefits: "",
-    placementAssistance: "",
-    enrollkeytitle: "",
-    enrollkeycontent: "",
+    modules: [{ ModuleTitle: "", Objective: "", Topics: "", Assessments: "" }],
+    Programbenefits: [""], // This is an array, initialized with one empty string
+    PlacementAssistance: "",
+    Enrollkeytitle: "",
+    Enrollkeycontent: "",
   });
   const [editCourse, setEditCourse] = useState(null);
 
@@ -38,79 +34,74 @@ const Courses = () => {
     setNewCourse({ ...newCourse, [e.target.name]: e.target.value });
   };
 
-  // Add a new course using axios
+  // Handle dynamic changes for modules
+  const handleModuleChange = (index, e) => {
+    const updatedModules = [...newCourse.modules];
+    updatedModules[index][e.target.name] = e.target.value;
+    setNewCourse({ ...newCourse, modules: updatedModules });
+  };
+
+  // Add a new module
+  const addModule = () => {
+    setNewCourse({ ...newCourse, modules: [...newCourse.modules, { ModuleTitle: "", Objective: "", Topics: "", Assessments: "" }] });
+  };
+
+  // Delete a module
+  const deleteModule = (index) => {
+    const updatedModules = newCourse.modules.filter((_, i) => i !== index);
+    setNewCourse({ ...newCourse, modules: updatedModules });
+  };
+
+  // Add a new program benefit
+  const addBenefit = () => {
+    setNewCourse({ ...newCourse, Programbenefits: [...newCourse.Programbenefits, ""] });
+  };
+
+  // Handle program benefits change
+  const handleBenefitChange = (index, e) => {
+    const updatedBenefits = [...newCourse.Programbenefits];
+    updatedBenefits[index] = e.target.value;
+    setNewCourse({ ...newCourse, Programbenefits: updatedBenefits });
+  };
+
+  // Handle saving the new course
   const handleAddCourse = () => {
     if (!newCourse.name || !newCourse.mode || !newCourse.duration || !newCourse.price) return;
   
     axios.post(`/createProgram`, newCourse)
       .then(() => {
-        // ✅ FIX: This nested .then was broken earlier
+        // ✅ Reset the form after successful submission
         axios.get(`/getAllPrograms`)
           .then((response) => setCourses(response.data));
-        
-        // ✅ Reset the form AFTER data is fetched
         setNewCourse({
           name: "",
           mode: "",
           duration: "",
           price: "",
+          Certification :"",
           ProgramOverview: "",
-          Curriculumtitle: "",
-          objective: "",
-          topics: "",
-          assessments: "",
-          Programbenefits: "",
-          placementAssistance: "",
-          enrollkeytitle: "",
-          enrollkeycontent: "",
+          modules: [{ ModuleTitle: "", Objective: "", Topics: "", Assessments: "" }],
+          Programbenefits: [""], // Reset array to empty string
+          PlacementAssistance: "",
+          Enrollkeytitle: "",
+          Enrollkeycontent: "",
         });
       })
       .catch((error) => console.error("Failed to add course", error));
   };
-  
 
-  // Delete a course using axios
+  // Delete a course
   const handleDeleteCourse = (id) => {
     axios.delete(`/deleteProgram/${id}`)
       .then(() => setCourses(courses.filter((c) => c._id !== id)))
       .catch((error) => console.error("Delete failed", error));
   };
 
-  // Start editing a course
-  const handleEditCourse = (course) => {
-    setEditCourse(course);
+  const deleteBenefit = (index) => {
+    const updatedBenefits = newCourse.Programbenefits.filter((_, i) => i !== index);
+    setNewCourse({ ...newCourse, Programbenefits: updatedBenefits });
   };
-
-  // Handle input changes while editing
-  const handleEditChange = (e) => {
-    setEditCourse({ ...editCourse, [e.target.name]: e.target.value });
-  };
-
-  // Save edited course using axios
-  const handleSaveEdit = () => {
-    axios.put(`/updateProgram/${editCourse._id}`, editCourse)
-      .then(() => {
-        setCourses(courses.map((c) => (c._id === editCourse._id ? editCourse : c)));
-        setEditCourse(null);
-      })
-      .catch((error) => console.error("Failed to save course", error));
-  };
-
-  // Handle dynamic objective changes
-  const handleObjectiveChange = (index, value) => {
-    const updatedObjectives = [...newCourse.objective];
-    updatedObjectives[index] = value;
-    setNewCourse({ ...newCourse, objective: updatedObjectives });
-  };
-
-  const addObjectiveField = () => {
-    setNewCourse({ ...newCourse, objective: [...newCourse.objective, ""] });
-  };
-
-  const deleteObjectiveField = (index) => {
-    const updatedObjectives = newCourse.objective.filter((_, i) => i !== index);
-    setNewCourse({ ...newCourse, objective: updatedObjectives });
-  };
+  
 
   return (
     <div className="courses">
@@ -122,182 +113,113 @@ const Courses = () => {
         <input type="text" name="duration" placeholder="Duration" value={newCourse.duration} onChange={handleInputChange} />
         <input type="text" name="price" placeholder="Price" value={newCourse.price} onChange={handleInputChange} />
         <input type="text" name="mode" placeholder="Mode" value={newCourse.mode} onChange={handleInputChange} />
+        <input type="text" name="Certification" placeholder="Certification" value={newCourse.Certification} onChange={handleInputChange} />
         <input type="text" name="ProgramOverview" placeholder="Program Overview" value={newCourse.ProgramOverview} onChange={handleInputChange} />
-        <input type="text" name="Curriculumtitle" placeholder="Curriculum Title" value={newCourse.Curriculumtitle} onChange={handleInputChange} />
 
-        <input type="text" name="objective" placeholder="objective" value={newCourse.objective} onChange={handleInputChange} />
+        {/* Programbenefits */}
+        <div>
+          {newCourse.Programbenefits.map((benefit, index) => (
+            <div key={index} className="benefit-form">
+              <input
+                type="text"
+                name="Programbenefits"
+                placeholder="Program benefits"
+                value={benefit}
+                onChange={(e) => handleBenefitChange(index, e)}
+              />
+              <button type="button" onClick={addBenefit}>Add Benefit</button>
+              <button type="button" onClick={() => deleteBenefit(index)}>Delete Benefit</button>
+            </div>
+          ))}
+        </div>
 
-
-
-        <input type="text" name="topics" placeholder="Topics" value={newCourse.topics} onChange={handleInputChange} />
-        <input type="text" name="assessments" placeholder="Assessments" value={newCourse.assessments} onChange={handleInputChange} />
-        <input type="text" name="Programbenefits" placeholder="Program Benefits" value={newCourse.Programbenefits} onChange={handleInputChange} />
-        <input type="text" name="placementAssistance" placeholder="Placement Assistance" value={newCourse.placementAssistance} onChange={handleInputChange} />
-        <input type="text" name="enrollkeytitle" placeholder="Enroll Key Title" value={newCourse.enrollkeytitle} onChange={handleInputChange} />
-        <input type="text" name="enrollkeycontent" placeholder="Enroll Key Content" value={newCourse.enrollkeycontent} onChange={handleInputChange} />
+        <input type="text" name="PlacementAssistance" placeholder="Placement Assistance" value={newCourse.PlacementAssistance} onChange={handleInputChange} />
+        <input type="text" name="Enrollkeytitle" placeholder="Enroll Key Title" value={newCourse.Enrollkeytitle} onChange={handleInputChange} />
+        <input type="text" name="Enrollkeycontent" placeholder="Enroll Key Content" value={newCourse.Enrollkeycontent} onChange={handleInputChange} />
+      
+        {/* Modules */}
+        <div>
+          {newCourse.modules.map((module, index) => (
+            <div key={index} className="module-form">
+              <input
+                type="text"
+                name="ModuleTitle"
+                placeholder="Module Title"
+                value={module.ModuleTitle}
+                onChange={(e) => handleModuleChange(index, e)}
+              />
+              <input
+                type="text"
+                name="Objective"
+                placeholder="Objective"
+                value={module.Objective}
+                onChange={(e) => handleModuleChange(index, e)}
+              />
+              <input
+                type="text"
+                name="Topics"
+                placeholder="Topics"
+                value={module.Topics}
+                onChange={(e) => handleModuleChange(index, e)}
+              />
+              <input
+                type="text"
+                name="Assessments"
+                placeholder="Assessments"
+                value={module.Assessments}
+                onChange={(e) => handleModuleChange(index, e)}
+              />
+              <button type="button" onClick={() => deleteModule(index)}>Delete Module</button>
+            </div>
+          ))}
+          <button type="button" className="cou-addmodule" onClick={addModule}>Add Module</button>
+        </div>
 
         <button className="add-course" onClick={handleAddCourse}>Add Course</button>
       </div>
 
-      
+      {/* Display Courses */}
+      <div className="course-container">
+        {courses.map((course, index) => (
+          <div className="course-card" key={course._id}>
+            <div className="course-header">
+              <h3>Course {index + 1}</h3>
+              <button className="c-btn c-btn-edit" onClick={() => setEditCourse(course)}>
+                Edit
+              </button>
+              <button className="c-btn c-btn-delete" onClick={() => handleDeleteCourse(course._id)}>
+                Delete
+              </button>
+            </div>
+            <div className="course-details">
+              <div><strong>Name:</strong> {course.name}</div>
+              <div><strong>Duration:</strong> {course.duration}</div>
+              <div><strong>Price:</strong> {course.price}</div>
+              <div><strong>Mode:</strong> {course.mode}</div>
+              <div><strong>Certification </strong> {course.Certification}</div>
+              
+              <div><strong>Modules:</strong></div>
+              {course.modules.map((module, i) => (
+                <div key={i}>
+                  <div><strong>Module Title:</strong> {module.ModuleTitle}</div>
+                  <div><strong>Objective:</strong> {module.Objective}</div>
+                  <div><strong>Topics:</strong> {module.Topics}</div>
+                  <div><strong>Assessments:</strong> {module.Assessments}</div>
+                </div>
+              ))}
 
-
-<div className="course-container">
-  {courses.map((course, index) => (
-    <div className="course-card" key={course._id}>
-      <div className="course-header">
-        <h3>Course {index + 1}</h3>
-
-        {/* <button className="c-button"
-  onClick={() => {
-    if (editCourse && editCourse._id === course._id) {
-      handleSaveEdit(); // 👈 this should save
-    } else {
-      handleEditCourse(course); // 👈 this enables edit mode
-    }
-  }}
->
-  {editCourse && editCourse._id === course._id ? "Save" : "Edit"}
-</button>
-
-        <button onClick={() => handleDeleteCourse(course._id)}>Delete</button> */}
-
-<div className="c-course-actions">
-  <button
-    className="c-btn c-btn-edit"
-    onClick={() => {
-      if (editCourse && editCourse._id === course._id) {
-        handleSaveEdit(); // Save action
-      } else {
-        handleEditCourse(course); // Edit mode
-      }
-    }}
-  >
-    {editCourse && editCourse._id === course._id ? "Save" : "Edit"}
-  </button>
-
-  <button
-    className="c-btn c-btn-delete"
-    onClick={() => handleDeleteCourse(course._id)}
-  >
-    Delete
-  </button>
-</div>
-
+<div><strong>Programbenefits:</strong> {course.Programbenefits.join(", ")}</div>
+              <div><strong>PlacementAssistance:</strong> {course.PlacementAssistance}</div>
+              <div><strong>Enrollkeytitle:</strong> {course.Enrollkeytitle}</div>
+              <div><strong>Enrollkeycontent:</strong> {course.Enrollkeycontent}</div>
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="course-details">
-        <div className="detail">
-          <strong>ID:</strong> {index + 1}
-        </div>
-        <div className="detail">
-          <strong>Name:</strong>
-          {editCourse && editCourse._id === course._id ? (
-            <input type="text" name="name" value={editCourse.name} onChange={handleEditChange} />
-          ) : (
-            course.name
-          )}
-        </div>
-        <div className="detail">
-          <strong>Duration:</strong>
-          {editCourse && editCourse._id === course._id ? (
-            <input type="text" name="duration" value={editCourse.duration} onChange={handleEditChange} />
-          ) : (
-            course.duration
-          )}
-        </div>
-        <div className="detail">
-          <strong>Fees:</strong>
-          {editCourse && editCourse._id === course._id ? (
-            <input type="text" name="price" value={editCourse.price} onChange={handleEditChange} />
-          ) : (
-            course.price
-          )}
-        </div>
-        <div className="detail">
-          <strong>Mode:</strong>
-          {editCourse && editCourse._id === course._id ? (
-            <input type="text" name="mode" value={editCourse.mode} onChange={handleEditChange} />
-          ) : (
-            course.mode
-          )}
-        </div>
-        <div className="detail">
-          <strong>Curriculum Title:</strong>
-          {editCourse && editCourse._id === course._id ? (
-            <input type="text" name="Curriculumtitle" value={editCourse.Curriculumtitle} onChange={handleEditChange} />
-          ) : (
-            course.Curriculumtitle
-          )}
-        </div>
-        <div className="detail">
-          <strong>Objective:</strong>
-          {editCourse && editCourse._id === course._id ? (
-            <input
-              type="text"
-              name="objective"
-              value={Array.isArray(editCourse.objective) ? editCourse.objective.join(', ') : editCourse.objective}
-              onChange={handleEditChange}
-            />
-          ) : (
-            Array.isArray(course.objective) ? course.objective.join(', ') : course.objective
-          )}
-        </div>
-        <div className="detail">
-          <strong>Topics:</strong>
-          {editCourse && editCourse._id === course._id ? (
-            <input type="text" name="topics" value={editCourse.topics} onChange={handleEditChange} />
-          ) : (
-            course.topics
-          )}
-        </div>
-        <div className="detail">
-          <strong>Assessments:</strong>
-          {editCourse && editCourse._id === course._id ? (
-            <input type="text" name="assessments" value={editCourse.assessments} onChange={handleEditChange} />
-          ) : (
-            course.assessments
-          )}
-        </div>
-        <div className="detail">
-          <strong>Program Benefits:</strong>
-          {editCourse && editCourse._id === course._id ? (
-            <input type="text" name="Programbenefits" value={editCourse.Programbenefits} onChange={handleEditChange} />
-          ) : (
-            course.Programbenefits
-          )}
-        </div>
-        <div className="detail">
-          <strong>Placement Assistance:</strong>
-          {editCourse && editCourse._id === course._id ? (
-            <input type="text" name="placementAssistance" value={editCourse.placementAssistance} onChange={handleEditChange} />
-          ) : (
-            course.placementAssistance
-          )}
-        </div>
-        <div className="detail">
-          <strong>Enroll Key Title:</strong>
-          {editCourse && editCourse._id === course._id ? (
-            <input type="text" name="enrollkeytitle" value={editCourse.enrollkeytitle} onChange={handleEditChange} />
-          ) : (
-            course.enrollkeytitle
-          )}
-        </div>
-        <div className="detail">
-          <strong>Enroll Key Content:</strong>
-          {editCourse && editCourse._id === course._id ? (
-            <input type="text" name="enrollkeycontent" value={editCourse.enrollkeycontent} onChange={handleEditChange} />
-          ) : (
-            course.enrollkeycontent
-          )}
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
-
     </div>
   );
 };
 
 export default Courses;
+
 
