@@ -50,7 +50,6 @@ function AdminManagement() {
       const token = localStorage.getItem("token");
       if (editId) {
         // Update admin
-        console.log("Updating admin with ID:", editId);  // Debugging log
         const res = await axios.put(
           `/admin/update-role`,
           {
@@ -64,7 +63,6 @@ function AdminManagement() {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
-        console.log("Update response:", res);  // Debugging log
       } else {
         // Create new admin
         await axios.post(`/admin/register`, formData);
@@ -77,7 +75,6 @@ function AdminManagement() {
   };
 
   const handleEdit = (admin) => {
-    console.log("Editing admin:", admin);  // Debugging log
     setFormData({
       username: admin.username || '',
       email: admin.email || '',
@@ -90,7 +87,6 @@ function AdminManagement() {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this admin?")) {
       try {
-        console.log("Deleting admin with ID:", id);  // Debugging log
         await axios.delete(`/admin/deleteUser`, {
           data: { userIdToDelete: id },
           withCredentials: true,

@@ -1,9 +1,14 @@
-
-
-
 import React, { useEffect, useState } from "react";
-import axios from "./axios";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import axios from "../api/axios";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 import { FaSearch, FaBell } from "react-icons/fa";
 import { motion } from "framer-motion";
 import SchedulerCalendar from "../components/SchedulerCalendar";
@@ -42,12 +47,14 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
 
-
-
   // /revenue
   const [transactions, setTransactions] = useState([]);
   const [revenue, setRevenue] = useState(0);
-  const [paymentStatus, setPaymentStatus] = useState({ paid: 0, pending: 0, overdue: 0 });
+  const [paymentStatus, setPaymentStatus] = useState({
+    paid: 0,
+    pending: 0,
+    overdue: 0,
+  });
   const [activityData, setActivityData] = useState([]);
   const [todayRevenue, setTodayRevenue] = useState(0);
 
@@ -59,40 +66,49 @@ const Home = () => {
 
       // 1. Calculate total revenue
       const totalRevenue = data
-        .filter(item => item.status === "Paid")
+        .filter((item) => item.status === "Paid")
         .reduce((sum, item) => sum + item.amount, 0);
       setRevenue(totalRevenue);
 
       // 2. Calculate payment status percentages
       const totalCount = data.length;
-      const paidCount = data.filter(item => item.status === "Paid").length;
-      const pendingCount = data.filter(item => item.status === "Pending").length;
-      const overdueCount = data.filter(item => item.status === "Overdue").length;
+      const paidCount = data.filter((item) => item.status === "Paid").length;
+      const pendingCount = data.filter(
+        (item) => item.status === "Pending"
+      ).length;
+      const overdueCount = data.filter(
+        (item) => item.status === "Overdue"
+      ).length;
 
       setPaymentStatus({
         paid: totalCount ? ((paidCount / totalCount) * 100).toFixed(1) : 0,
-        pending: totalCount ? ((pendingCount / totalCount) * 100).toFixed(1) : 0,
-        overdue: totalCount ? ((overdueCount / totalCount) * 100).toFixed(1) : 0,
+        pending: totalCount
+          ? ((pendingCount / totalCount) * 100).toFixed(1)
+          : 0,
+        overdue: totalCount
+          ? ((overdueCount / totalCount) * 100).toFixed(1)
+          : 0,
       });
 
-
-// 4. Calculate today's revenue
+      // 4. Calculate today's revenue
       const today = new Date().toDateString(); // 'Sat Apr 26 2025'
-const todayTransactions = data.filter(item => {
-  const itemDate = new Date(item.date).toDateString();
-  return itemDate === today && item.status === "Paid";
-});
-const todayRevenueSum = todayTransactions.reduce((sum, item) => sum + item.amount, 0);
+      const todayTransactions = data.filter((item) => {
+        const itemDate = new Date(item.date).toDateString();
+        return itemDate === today && item.status === "Paid";
+      });
+      const todayRevenueSum = todayTransactions.reduce(
+        (sum, item) => sum + item.amount,
+        0
+      );
 
-setTodayRevenue(todayRevenueSum);
-
-
-
+      setTodayRevenue(todayRevenueSum);
 
       // 3. Prepare BarChart data based on transaction dates (optional simple sample)
       const dailyRevenue = {};
-      data.forEach(item => {
-        const date = new Date(item.date).toLocaleDateString('en-US', { weekday: 'short' }); // like 'Mon', 'Tue'
+      data.forEach((item) => {
+        const date = new Date(item.date).toLocaleDateString("en-US", {
+          weekday: "short",
+        }); // like 'Mon', 'Tue'
         if (!dailyRevenue[date]) {
           dailyRevenue[date] = 0;
         }
@@ -101,48 +117,43 @@ setTodayRevenue(todayRevenueSum);
         }
       });
 
-      const formattedActivityData = Object.keys(dailyRevenue).map(day => ({
+      const formattedActivityData = Object.keys(dailyRevenue).map((day) => ({
         day,
         hours: dailyRevenue[day] / 1000, // Dividing just to make the graph smaller; you can change
       }));
 
       setActivityData(formattedActivityData);
-
     } catch (error) {
       console.error("Error fetching transactions:", error);
     }
   };
 
-
-  
   const fetchActiveStudents = async () => {
     try {
-      const res = await axios.get('/getActiveStudents'); // Adjust your backend URL if needed
+      const res = await axios.get("/getActiveStudents"); // Adjust your backend URL if needed
       setActiveStudents(res.data.length); // We set the count
     } catch (error) {
-      console.error('Error fetching active students', error);
+      console.error("Error fetching active students", error);
     }
   };
 
-
   useEffect(() => {
-    
     fetchActiveStudents();
     fetchTransactions();
 
-
-
     // Fetch all courses and get the count
-    axios.get("/getAllPrograms")
-      .then(response => {
+    axios
+      .get("/getAllPrograms")
+      .then((response) => {
         setCourseCount(response.data.length); // Set course count based on the length of the array
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error fetching course count:", error);
       });
 
     // Fetch Dashboard main data
-    axios.get("/dashboard")
+    axios
+      .get("/dashboard")
       .then((response) => {
         const { leads, students, courses, revenue, payments } = response.data;
         setTotalLeads(leads);
@@ -158,28 +169,22 @@ setTodayRevenue(todayRevenueSum);
       });
 
     // Fetch Leads by Date
-    axios.get("/getLeadsByDate")
-    .then((res) => {
-      setTotalLeads(res.data.totalLeadsOverall);
+    axios
+      .get("/getLeadsByDate")
+      .then((res) => {
+        setTotalLeads(res.data.totalLeadsOverall);
 
-      const todayData = res.data.totalLeadsByDate[0]; // safely get the first item
-      if (todayData) {
-        setTodayLeads(todayData.totalLeads);
-        console.log("Today's leads: " + todayData.totalLeads);
-      } else {
-        setTodayLeads(0);
-        console.log("No leads found for today.");
-      }
-  
-
-       
-       setLoading(false);
-    })
-    .catch((err) => console.error("Error fetching leads by date:", err));
-
-},
-
-[]);
+        const todayData = res.data.totalLeadsByDate[0]; // safely get the first item
+        if (todayData) {
+          setTodayLeads(todayData.totalLeads);
+        } else {
+          setTodayLeads(0);
+          console.log("No leads found for today.");
+        }
+        setLoading(false);
+      })
+      .catch((err) => console.error("Error fetching leads by date:", err));
+  }, []);
 
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
@@ -188,17 +193,14 @@ setTodayRevenue(todayRevenueSum);
     return <div className="loader">Loading...</div>;
   }
 
-
-
-
-
-
-  
-
   return (
     <div className="home-container">
       {/* Header */}
-      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="home-header">
           <div>
             <h4>Hello Admin 👋</h4>
@@ -218,117 +220,153 @@ setTodayRevenue(todayRevenueSum);
 
       {/* Stats Cards */}
       <div className="stats-grid">
-       
-
-
-
-{/* Combined Leads Card */}
-<motion.div className="card double-lead-card" custom={0} initial="hidden" animate="visible" variants={fadeInUp}>
-  <div className="card-body">
-    <h6>Leads Overview</h6>
-    <div className="lead-counts">
-      <div>
-        <p className="label">Today's Leads</p>
-        <h3>{todayLeads}</h3>
-      </div>
-      <div>
-        <p className="label">Total Leads</p>
-        <h3>{totalLeads}</h3> 
-      </div>
-    </div>
-    <div className="lead-links">
-      <button className="view-link" onClick={openModal}>Daily</button>
-      <a className="view-link" href="/LeadsByDate">All</a>
-    </div>
-  </div>
-</motion.div>
-
-
-
-  
-
-
-
-
-
-
-
+        {/* Combined Leads Card */}
+        <motion.div
+          className="card double-lead-card"
+          custom={0}
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
+        >
+          <div className="card-body">
+            <h6>Leads Overview</h6>
+            <div className="lead-counts">
+              <div>
+                <p className="label">Today's Leads</p>
+                <h3>{todayLeads}</h3>
+              </div>
+              <div>
+                <p className="label">Total Leads</p>
+                <h3>{totalLeads}</h3>
+              </div>
+            </div>
+            <div className="lead-links">
+              <button className="view-link" onClick={openModal}>
+                Daily
+              </button>
+              <a className="view-link" href="/LeadsByDate">
+                All
+              </a>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Active Students */}
-        
 
-<motion.div className="card" custom={2} initial="hidden" animate="visible" variants={fadeInUp}>
-      <div className="card-body">
-        <h6>Active Students</h6>
-        <h3>{activeStudents}</h3> {/* This shows the count */}
-        <a href="/students" className="view-link">View</a>
-      </div>
-    </motion.div>
+        <motion.div
+          className="card"
+          custom={2}
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
+        >
+          <div className="card-body">
+            <h6>Active Students</h6>
+            <h3>{activeStudents}</h3> {/* This shows the count */}
+            <a href="/students" className="view-link">
+              View
+            </a>
+          </div>
+        </motion.div>
 
         {/* Course Count */}
-        <motion.div className="card" custom={3} initial="hidden" animate="visible" variants={fadeInUp}>
-      <div className="card-body">
-        <h6>Course Count</h6>
-        <h3>{courseCount}</h3> {/* Display the course count */}
-        <a href="/courses" className="view-link">View</a>
-      </div>
-    </motion.div>
-      </div>
-
-    
-
-<div className="charts-grid">
-      <motion.div className="card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-        <div className="card-body">
-          <h5>Revenue</h5>
-          <ResponsiveContainer width="100%" height={200}>
-            <BarChart data={activityData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="day" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="hours" fill="#007bff" />
-            </BarChart>
-          </ResponsiveContainer>
-          <p>Total Revenue: ${revenue}</p>
-          <p>Revenue This Month: ${(revenue).toFixed(2)}</p> {/* Example logic */}
-          <p>Today Revenue: ${todayRevenue}</p>
-        </div>
-      </motion.div>
-
-      <motion.div className="card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
-        <div className="card-body">
-          <h5>Payment Status</h5>
-          <div className="payment-status">
-            <div><h6>Paid</h6><p>{paymentStatus.paid}%</p></div>
-            <div><h6>Pending</h6><p>{paymentStatus.pending}%</p></div>
-            <div><h6>Overdue</h6><p>{paymentStatus.overdue}%</p></div>
+        <motion.div
+          className="card"
+          custom={3}
+          initial="hidden"
+          animate="visible"
+          variants={fadeInUp}
+        >
+          <div className="card-body">
+            <h6>Course Count</h6>
+            <h3>{courseCount}</h3> {/* Display the course count */}
+            <a href="/courses" className="view-link">
+              View
+            </a>
           </div>
-        </div>
-      </motion.div>
-    </div>
+        </motion.div>
+      </div>
 
+      <div className="charts-grid">
+        <motion.div
+          className="card"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
+          <div className="card-body">
+            <h5>Revenue</h5>
+            <ResponsiveContainer width="100%" height={200}>
+              <BarChart data={activityData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="day" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="hours" fill="#007bff" />
+              </BarChart>
+            </ResponsiveContainer>
+            <p>Total Revenue: ${revenue}</p>
+            <p>Revenue This Month: ${revenue.toFixed(2)}</p>{" "}
+            {/* Example logic */}
+            <p>Today Revenue: ${todayRevenue}</p>
+          </div>
+        </motion.div>
 
-
-
-
-
-
-
+        <motion.div
+          className="card"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+        >
+          <div className="card-body">
+            <h5>Payment Status</h5>
+            <div className="payment-status">
+              <div>
+                <h6>Paid</h6>
+                <p>{paymentStatus.paid}%</p>
+              </div>
+              <div>
+                <h6>Pending</h6>
+                <p>{paymentStatus.pending}%</p>
+              </div>
+              <div>
+                <h6>Overdue</h6>
+                <p>{paymentStatus.overdue}%</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
 
       {/* Attendance Snapshot */}
-      <motion.div className="card attendance-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+      <motion.div
+        className="card attendance-card"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
         <div className="card-body">
           <h5>Attendance Snapshot</h5>
           <p>Total Attendance: 85%</p>
           <div className="progress-bar-wrapper">
-            <div className="progress-bar" style={{ width: "85%" }}>85%</div>
+            <div className="progress-bar" style={{ width: "85%" }}>
+              85%
+            </div>
           </div>
         </div>
       </motion.div>
 
       {/* Today's Events */}
-      <motion.div className="card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+      <motion.div
+        className="card"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
         <div className="card-body">
           <h5>Today's Events</h5>
           <ul>
@@ -340,7 +378,12 @@ setTodayRevenue(todayRevenueSum);
       </motion.div>
 
       {/* Calendar */}
-      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeInUp}
+      >
         <SchedulerCalendar />
       </motion.div>
 
@@ -349,7 +392,9 @@ setTodayRevenue(todayRevenueSum);
         <div className="modal-overlay">
           <div className="modal-content">
             <h2>📆 Daily Leads Overview</h2>
-            <button className="close-btn" onClick={closeModal}>X</button>
+            <button className="close-btn" onClick={closeModal}>
+              X
+            </button>
             <table border="1" cellPadding="8">
               <thead>
                 <tr>
@@ -358,7 +403,7 @@ setTodayRevenue(todayRevenueSum);
                 </tr>
               </thead>
               <tbody>
-                {dailyLeads.map(day => (
+                {dailyLeads.map((day) => (
                   <tr key={day._id}>
                     <td>{day._id}</td>
                     <td>{day.totalLeads}</td>
@@ -374,4 +419,3 @@ setTodayRevenue(todayRevenueSum);
 };
 
 export default Home;
-
