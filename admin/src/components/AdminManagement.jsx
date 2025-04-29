@@ -23,7 +23,6 @@ function AdminManagement() {
   const fetchAdmins = async () => {
     try {
       const res = await axios.get(`/admin/alluser`);
-      console.log("Fetched Admins:", res.data);  // Debugging log
       setAdmins(res.data);
     } catch (error) {
       console.error("Failed to fetch admins:", error);
