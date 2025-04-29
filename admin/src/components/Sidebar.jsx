@@ -32,12 +32,12 @@ const allSections = [
     path: "/lead-student",
     roles: ["Admin", "Super Admin"],
   },
-  {
-    name: "Login",
-    icon: <ShieldCheck size={18} />,
-    path: "/login",
-    roles: ["Super Admin", "Admin", "Recruiter", "Mentor", "Super Admin"],
-  },
+  // {
+  //   name: "Login",
+  //   icon: <ShieldCheck size={18} />,
+  //   path: "/login",
+  //   roles: ["Super Admin", "Admin", "Recruiter", "Mentor", "Super Admin"],
+  // },
   {
     name: "Student-Management",
     icon: <ShieldCheck size={18} />,
