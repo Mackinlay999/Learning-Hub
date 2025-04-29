@@ -1,177 +1,151 @@
-/* Color Palette */
-:root {
-  --primary-red: #D32F2F;   /* Call-to-action buttons, headings, icons */
-  --dark-gray: #333333;     /* Text & contrast sections */
-  --white: #FFFFFF;         /* Background for readability */
-  --gold-accent: #FFC107;   /* Highlighting important sections */
-  --amber: #f0ad4e;         /* Amber for attention (Refund button) */
-  --amber-hover: #ec971f;   /* Darker amber for hover */
-  --amber-active: #d89c1a;  /* Even darker amber for active */
-  --gray-light: #f0f0f0;    /* Light gray for background sections */
-  --gray-dark: #ddd;        /* Dark gray for borders */
-  --background-light: #f9f9f9; /* Light gray for cards */
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
 
-/* General Container */
 .transactions-container {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
-    background-color: var(--white);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h2 {
+  text-align: center;
+  color:#e53935;
+}
+
+/* Filter Options */
+.filter-options {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-options label {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.filter-options select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 /* Revenue Summary */
 .revenue-summary {
-    background: var(--gray-light);
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.revenue-summary p {
+  margin: 0;
 }
 
 /* Transaction Form */
 .transaction-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
 .transaction-form input,
-.transaction-form select,
-.transaction-form button {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 6px;
-    border: 1px solid var(--gray-dark);
-    transition: border 0.3s ease;
+.transaction-form select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
 }
 
-.transaction-form input:focus,
-.transaction-form select:focus {
-    border-color: var(--primary-red);
+.transaction-form button {
+  grid-column: span 2;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.transaction-form button:hover {
+  background-color: #45a049;
 }
 
 /* Transaction List */
 .transaction-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-/* Transaction Card */
 .transaction-card {
-    border: 1px solid var(--gray-dark);
-    padding: 15px;
-    border-radius: 8px;
-    background: var(--background-light);
-    text-align: left;
-    transition: box-shadow 0.3s ease;
-}
-
-.transaction-card:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .transaction-card p {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
-/* Button Styles */
+.transaction-card button {
+  padding: 8px 12px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.transaction-card button:hover {
+  background-color: #e53935;
+}
+
 .edit-btn {
-    background: var(--gold-accent);
-    color: var(--white);
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    margin-right: 5px;
-    border-radius: 5px;
-    transition: background 0.3s ease, transform 0.3s ease;
+  background-color: #2196F3;
 }
 
 .edit-btn:hover {
-    background: darkorange;
-    transform: scale(1.05);
+  background-color: #1e88e5;
 }
 
 .delete-btn {
-    background: var(--primary-red);
-    color: var(--white);
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s ease, transform 0.3s ease;
+  background-color: #f44336;
 }
 
 .delete-btn:hover {
-    background: darkred;
-    transform: scale(1.05);
+  background-color: #e53935;
 }
 
-/* Refund Button */
-.refund-btn {
-    background-color: var(--amber); /* Amber color for attention */
-    color: var(--white);
-    padding: 6px;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 20px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .transaction-form {
+    grid-template-columns: 1fr;
+  }
 
-/* Hover Effect */
-.refund-btn:hover {
-    background-color: var(--amber-hover); /* Darker amber */
-    transform: scale(1.05); /* Slight scaling effect */
-}
+  .transaction-form button {
+    grid-column: span 1;
+  }
 
-/* Active (click) Effect */
-.refund-btn:active {
-    background-color: var(--amber-active); /* Even darker amber */
-    transform: scale(1);
-}
-
-/* Disabled Button */
-.refund-btn:disabled {
-    background-color: #e0e0e0;
-    color: #bdbdbd;
-    cursor: not-allowed;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .refund-btn {
-        font-size: 14px;
-        padding: 8px 16px;
-        margin-left: 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .refund-btn {
-        font-size: 12px;
-        padding: 6px 12px;
-    }
-}
-
-/* Responsive Design for Transaction Form */
-@media (max-width: 600px) {
-    .transaction-form {
-        flex-direction: column;
-    }
-
-    .transaction-card {
-        padding: 10px;
-    }
-}
-
-.refund {
-    margin-top: 30px;
+  .transaction-list {
+    margin-top: 20px;
+  }
 }

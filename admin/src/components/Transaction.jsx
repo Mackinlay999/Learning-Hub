@@ -253,7 +253,7 @@ const Transaction = () => {
               <p><strong>Status:</strong> {t.status}</p>
               <p><strong>Date:</strong> {new Date(t.date).toLocaleDateString()}</p>
               <button className="edit-btn" onClick={() => editTransaction(t)}>Edit</button>
-              <button className="delete-btn" onClick={() => deleteTransaction(t._id)}>Delete</button>
+              <button className="t-delete-btn" onClick={() => deleteTransaction(t._id)}>Delete</button>
               {/* <button className="refund-btn" onClick={() => handleRefundRequest(t)}>Refund</button> */}
             </div>
           ))

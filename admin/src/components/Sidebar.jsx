@@ -33,7 +33,7 @@ const allSections = [
     path: "/lead-student",
     roles: ["Admin", "Super Admin"],
   },
-<<<<<<< HEAD
+
   {
     name: "Login",
     icon: <ShieldCheck size={18} />,
@@ -41,26 +41,17 @@ const allSections = [
     roles: ["Super Admin", "Admin", "Recruiter", "Mentor", "Super Admin"],
   },
 
-  // {
-  //   name: "Training Program",
-  //   icon: <BookOpenCheck size={18} />,
-  //   path: "/training-program",
-  // },
-  { name: "Login", icon: <ShieldCheck size={18} />, path: "/login" },
-
-=======
-  // {
-  //   name: "Login",
-  //   icon: <ShieldCheck size={18} />,
-  //   path: "/login",
-  //   roles: ["Super Admin", "Admin", "Recruiter", "Mentor", "Super Admin"],
-  // },
   {
     name: "Training Program",
     icon: <BookOpenCheck size={18} />,
     path: "/training-program",
   },
->>>>>>> ed93a19c72ff1767b690381dcfd562f1f8046d21
+  { name: "Login", icon: <ShieldCheck size={18} />, path: "/login" },
+
+
+  
+  
+
   {
     name: "Student-Management",
     icon: <ShieldCheck size={18} />,

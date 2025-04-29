@@ -140,9 +140,17 @@ const SuccessStories = () => {
 
       <h2 className="success-story-subtitle">All Success Stories</h2>
       <div className="success-story-list">
+        
         {stories.map((story) => (
           <div key={story._id} className="success-story-card">
             <div>
+            <img
+                  // src={story.photo}
+                  src={`http://localhost:3000${story.photo}`}
+                  alt={story.name}
+                   
+                  className="success-story-photo"
+                />
               <p className="success-story-name"><span className="success-span">Name:</span>    {story.name}</p>
               <p className="success-story-name"> <span className="success-span">Company:</span> {story.company}</p>
               <p className="success-story-name">
@@ -156,22 +164,7 @@ const SuccessStories = () => {
     {story.LinkedinUrl}
   </a>
 </p>
-
-                <img
-                  // src={story.photo}
-                  src={`http://localhost:3000${story.photo}`}
-                  alt={story.name}
-                   
-                  className="success-story-photo"
-                />
-
-                
-
-                
-
-                
-              
-            </div>
+  </div>
             <div className="success-story-actions">
               <button onClick={() => handleEdit(story)} className="success-story-edit-btn">
                 Edit
