@@ -42,7 +42,7 @@
 }
 
 .drip-button {
-  background-color: #007bff;
+  background-color:#dc3545;
   color: white;
   padding: 10px 16px;
   border: none;
@@ -53,8 +53,7 @@
 }
 
 .drip-button:hover {
-  background-color: #0056b3;
-}
+  background-color:#a71d2a;}
 
 .drip-list,
 .drip-sent-list {
@@ -107,12 +106,12 @@
 }
 
 .drip-edit-btn {
-  background-color: #007bff;
+  background-color:#FFC107;
   color: white;
 }
 
 .drip-edit-btn:hover {
-  background-color: #0056b3;
+  background-color:#FFC107;
 }
 
 .drip-delete-btn {
@@ -121,7 +120,7 @@
 }
 
 .drip-delete-btn:hover {
-  background-color: #a71d2a;
+  background-color:#a71d2a;
 }
 
 .drip-divider {

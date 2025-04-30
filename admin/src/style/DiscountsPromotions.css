@@ -44,9 +44,13 @@
 .discount-form button {
   padding: 10px;
   font-size: 16px;
+  
   border-radius: 5px;
   border: 1px solid var(--border-color);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.discount-form button{
+background-color: #dc3545;
 }
 
 .discount-form input:focus,
@@ -84,7 +88,7 @@
 
 /* Buttons */
 .apply-btn,
-.edit-btn,
+.d-edit-btn,
 .remove-btn {
   padding: 5px 10px;
   border: none;
@@ -103,12 +107,13 @@
   transform: translateY(-3px); /* Slight lift effect */
 }
 
-.edit-btn {
+.d-edit-btn {
   background: var(--orange);
   color: var(--white);
+  margin-left: 10px;
 }
 
-.edit-btn:hover {
+.d-edit-btn:hover {
   background: var(--gold-accent); /* Gold accent on hover */
   transform: translateY(-3px); /* Slight lift effect */
 }
@@ -116,6 +121,7 @@
 .remove-btn {
   background: var(--red);
   color: var(--white);
+  margin-left: 10px;
 }
 
 .remove-btn:hover {
@@ -146,3 +152,7 @@
     padding: 10px;
   }
 }
+.discount-form button:hover{
+  background-color:#D32F2F;
+  }
+  

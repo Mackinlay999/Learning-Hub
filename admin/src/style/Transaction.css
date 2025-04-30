@@ -72,7 +72,7 @@ h2 {
 .transaction-form button {
   grid-column: span 2;
   padding: 10px;
-  background-color: #4CAF50;
+  background-color:#f44336;
   color: white;
   border: none;
   border-radius: 5px;
@@ -81,7 +81,7 @@ h2 {
 }
 
 .transaction-form button:hover {
-  background-color: #45a049;
+  background-color:#e53935;
 }
 
 /* Transaction List */

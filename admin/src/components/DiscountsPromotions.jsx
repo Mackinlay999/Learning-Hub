@@ -114,7 +114,7 @@ const DiscountsPromotions = () => {
               <p><strong>Valid:</strong> {discount.startDate.split("T")[0]} - {discount.expiryDate.split("T")[0]}</p>
               <p><strong>Usage:</strong> {discount.usage} times</p>
               <button className="apply-btn" onClick={() => applyDiscount(discount._id)}>Apply</button>
-              <button className="edit-btn" onClick={() => editDiscount(discount)}>Edit</button>
+              <button className="d-edit-btn" onClick={() => editDiscount(discount)}>Edit</button>
               <button className="remove-btn" onClick={() => removeDiscount(discount._id)}>Remove</button>
             </div>
           ))

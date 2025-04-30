@@ -48,7 +48,7 @@
 }
 
 .cam-button:hover, .cam-btn:hover, .cam-btn-edit:hover, .cam-btn-delete:hover {
-  background-color: #0056b3;
+  background-color:#c82333;
 }
 
 .cam-checkbox {
@@ -122,7 +122,7 @@
   max-width: 160px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #28a745;
+  background-color:#dc3545;
 }
 
 /* Buttons */
@@ -130,11 +130,11 @@
   width: 100%;
   max-width: 220px;
   margin: 15px auto;
-  background-color: #007bff;
+  background-color:#c82333;
 }
 
 .cam-btn:hover {
-  background-color: #0056b3;
+  background-color:#c82333;
 }
 .cam-form-group input[type="text"], .cam-form-group input[type="email"] {
   width: 100%;

@@ -135,7 +135,7 @@ const HRAndEmployeeTraining = () => {
         ) : (
           <table className="HR-table">
             <thead>
-              <tr>
+              <tr className="hr-tr">
                 <th>Name</th>
                 <th>Department</th>
                 <th>Skill Level</th>
