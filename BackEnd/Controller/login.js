@@ -7,6 +7,7 @@ require("dotenv").config();
 const nodemailer =require('nodemailer')
 const Resume = require("../Model/ProfileResumeScheme")
 const DripCompains = require("../Model/dripCampaign");
+// const dripQueue = require("../Utils/dripQueue")
 
 const path = require("path");
 const { sendEmail } = require("../Utils/emailService");
@@ -15,68 +16,7 @@ const { sendEmail } = require("../Utils/emailService");
 
 
 const login = {
-    // register : async (req,res)=>{
-    //      try {
-    //         console.log("register ");
-    //         console.log(req.body);
-            
-    //        const { username , email,password,number} = req.body
-
-    //        const verifyemail = await user.findOne({email:email}) 
-    //           console.log(verifyemail);
-              
-    //        if(verifyemail){
-    //         return res.status(400).json({message:"user already there"})
-    //        }
-
-
-    //        if (!/^\d{10}$/.test(number)) {
-    //         return res.status(400).json({ message: "Invalid phone number" });
-    //       }
-
-    //   const hashpassword = await  bcrypt.hash(password , 10)
-    //        const newuser = new user ({
-    //         username ,  email, number , password : hashpassword 
-    //        })
-
-    //        await newuser.save()
-
-    //        const dripSteps = await DripCompains.find().sort({ delayDays: 1 });
-    //        const sentSteps = newuser.dripStepsSent?.map(s => s.step) || [];
-           
-    //        const nextStep = dripSteps.find(step => !sentSteps.includes(step.step));
-           
-    //        if (nextStep) {
-    //          const delayInMs = nextStep.delayDays * 24 * 60 * 60 * 1000;
-           
-    //          setTimeout(async () => {
-    //            try {
-    //              await sendEmail(newuser.email, nextStep.step, nextStep.content);
-    //              console.log(`📨 Email sent to ${newuser.email} - Step: ${nextStep.step}`);
-           
-    //              await user.findByIdAndUpdate(newuser._id, {
-    //                $push: {
-    //                  dripStepsSent: {
-    //                    step: nextStep.step,
-    //                    sentAt: new Date(),
-    //                  },
-    //                },
-    //              });
-    //            } catch (err) {
-    //              console.error(`❌ Email failed to ${newuser.email}`, err);
-    //            }
-    //          }, delayInMs);
-    //        }
-         
-            
-
-
-
-    //      } catch (err) {
-    //       res.status(400).json({ error: err.message });
-
-    //      }
-    // },
+  
 
 
     register: async (req, res) => {

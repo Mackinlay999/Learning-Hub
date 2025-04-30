@@ -1,94 +1,65 @@
-/* CampaignBuilder.css */
-
+/* General Styles */
 .cam-card {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background: #ffffff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  border-radius: 12px;
-  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 30px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .cam-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #2c3e50;
+  font-size: 2rem;
   text-align: center;
+  color: #333;
+  margin-bottom: 25px;
 }
 
 .cam-form-group {
   margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
 }
 
-.cam-form-group label {
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #34495e;
-}
-
-.cam-input,
-.cam-textarea {
-  padding: 10px;
+.cam-input, .cam-textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
- 
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .cam-textarea {
-  height: 100px;
+  height: 150px;
   resize: vertical;
+}
+
+.cam-button, .cam-btn, .cam-btn-edit, .cam-btn-delete {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.cam-button:hover, .cam-btn:hover, .cam-btn-edit:hover, .cam-btn-delete:hover {
+  background-color: #0056b3;
 }
 
 .cam-checkbox {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-evenly;
-  
-  padding: 6px 0;
-  border-bottom: 1px solid #eee;
- 
+  margin-bottom: 12px;
 }
 
-.cam-checkbox input[type="checkbox"] {
-  margin-right: 50px ;
-  
-}
-
-.cam-checkbox button {
-  background: #e74c3c;
-  border: none;
-  color: #fff;
-  padding: 4px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 12px;
-  margin-left: auto;
-  margin-left: 30px;
-}
-
-.cam-checkbox button:hover {
-  background: #c0392b;
-}
-
-.cam-button {
-  padding: 10px 16px;
-  background-color: #3498db;
-  border: none;
-  color: #fff;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 10px;
-}
-
-.cam-button:hover {
-  background-color: #2980b9;
+.cam-ratio {
+  margin-right: 12px;
 }
 
 .cam-campaigns {
@@ -101,153 +72,138 @@
 }
 
 .cam-campaign-item {
+  background-color: #fff;
   border: 1px solid #ddd;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  background: #f9f9f9;
-}
-
-.cam-campaign-item strong {
-  color: #2c3e50;
-}
-
-.cam-btn-edit,
-.cam-btn-delete {
-  padding: 6px 12px;
-  margin-right: 10px;
-  margin-top: 10px;
-  border: none;
+  padding: 20px;
+  margin-bottom: 20px;
   border-radius: 6px;
-  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cam-btn-edit, .cam-btn-delete {
+  margin-top: 10px;
 }
 
 .cam-btn-edit {
-  background-color: #f39c12;
-  color: white;
+  background-color: #ffc107;
 }
 
 .cam-btn-edit:hover {
-  background-color: #d68910;
+  background-color: #e0a800;
 }
 
 .cam-btn-delete {
-  background-color: #e74c3c;
-  color: white;
+  background-color: #dc3545;
 }
 
 .cam-btn-delete:hover {
-  background-color: #c0392b;
-}
-.cam-ratio{
- position:absolute;
-
- right: 90px;
- margin-top: 6px;
- 
+  background-color: #c82333;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 600px) {
-  .cam-card {
+.cam-form-group label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+/* New Lead Form */
+.cam-form-group input[type="text"], .cam-form-group input[type="email"] {
+  width: 48%;
+  margin-right: 4%;
+}
+
+.cam-form-group input[type="text"]:last-child, .cam-form-group input[type="email"]:last-child {
+  margin-right: 0;
+}
+
+.cam-form-group button {
+  display: inline-block;
+  width: 100%;
+  max-width: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #28a745;
+}
+
+/* Buttons */
+.cam-btn {
+  width: 100%;
+  max-width: 220px;
+  margin: 15px auto;
+  background-color: #007bff;
+}
+
+.cam-btn:hover {
+  background-color: #0056b3;
+}
+.cam-form-group input[type="text"], .cam-form-group input[type="email"] {
+  width: 100%;
+  margin-right: 0;
+}
+.cam-input, .cam-textarea {
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+.cam-button {
+  width: 100%;
+  margin-top: 10px;
+}
+.cam-btn-delete{
+  margin-left: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .cam-input, .cam-textarea {
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+
+  .cam-form-group input[type="text"], .cam-form-group input[type="email"] {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .cam-button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .cam-btn, .cam-btn-edit, .cam-btn-delete {
+    width: 100%;
+    max-width: none;
+  }
+
+
+  .cam-campaign-item {
     padding: 15px;
   }
+  .cam-btn-delete{
+    margin-left: 0px !important;
+  }
+}
 
+@media (max-width: 480px) {
   .cam-title {
-    font-size: 20px;
+    font-size: 1.6rem;
+
   }
 
-  .cam-input,
-  .cam-textarea {
-    font-size: 13px;
+  .cam-form-group {
+    margin-bottom: 15px;
+    
   }
 
-  .cam-checkbox {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .cam-checkbox button {
-    margin-top: 6px;
-    margin-left: 0;
-  }
-
-  .cam-btn-edit,
-  .cam-btn-delete {
-    width: 100%;
-    margin: 5px 0;
-  }
-}
-
-
-.cam-recipient-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.cam-recipient-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid #ddd;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  flex-wrap: wrap;
-}
-
-.cam-recipient-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex: 1;
-}
-
-.cam-recipient-text {
-  font-size: 0.95rem;
-  color: #333;
-  word-break: break-word;
-}
-
-.cam-btn-delete-lead {
-  background-color: #ff4d4f;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.cam-btn-delete-lead:hover {
-  background-color: #e04345;
-}
-
-@media (max-width: 600px) {
-  .cam-recipient-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .cam-btn-delete-lead {
-    align-self: flex-end;
+  .cam-input, .cam-textarea {
+    font-size: 0.875rem;
+    
   }
   
-  .cam-ratio{
-    position:relative;
-
-    
-   }
-   .cam-checkbox{
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-   }
+  .cam-button {
+    width: 100%;
+ 
+   
+  }
 }
-
-
 
 
