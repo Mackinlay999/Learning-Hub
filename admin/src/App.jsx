@@ -49,6 +49,7 @@ import { useAuth } from "./context/AuthContext";
 
 import LeadsByDate from "./components/LeadByDate";
 import LeadDetails from "./components/LeadDetails";
+import Courses from "./components/Courses";
 
 
 function App() {
@@ -97,6 +98,28 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
+
+
+
+               
+
+<Route
+                  path="/courses"
+                  element={
+                    <ProtectedRoute
+                      allowedRoles={["Admin", "Super Admin", "Recruiter"]}
+                    >
+                      <Courses />
+                    </ProtectedRoute>
+                  }
+                />
+
+
+
+
+
+
+
                 <Route
                   path="/Userdetails"
                   element={
