@@ -26,6 +26,7 @@ const LeadsByDate = () => {
             <th>Number of Leads</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Number</th>
           </tr>
         </thead>
         <tbody>
@@ -36,6 +37,7 @@ const LeadsByDate = () => {
                 <td>{day.totalLeads}</td>
                 <td>{lead.name}</td>
                 <td>{lead.email}</td>
+                <td>{lead.number}</td>
               </tr>
             ))
           ))}

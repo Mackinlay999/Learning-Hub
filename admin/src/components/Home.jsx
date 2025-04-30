@@ -241,13 +241,14 @@ const Home = () => {
               </div>
             </div>
             <div className="lead-links">
-              <button className="view-link" onClick={openModal}>
-                Daily
-              </button>
+              
               <a className="view-link" href="/LeadsByDate">
+                Daily
+              </a>
+              <a className="view-link" href="/lead-student">
                 All
               </a>
-            </div>
+            </div>  
           </div>
         </motion.div>
 

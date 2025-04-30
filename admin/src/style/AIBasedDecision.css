@@ -68,7 +68,7 @@
 /* Submit Button Styling */
 .AI-form button {
   padding: 10px;
-  background-color: var(--blue);
+  background-color: #D32F2F;
   color: var(--white);
   border: none;
   border-radius: 5px;
@@ -77,7 +77,7 @@
 }
 
 .AI-form button:hover {
-  background-color: var(--hover-blue); /* Button hover effect */
+  background-color:#D32F2F; /* Button hover effect */
 }
 
 /* List Section */
