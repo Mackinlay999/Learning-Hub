@@ -14,7 +14,8 @@ const AuthProvider = ({ children }) => {
   // On mount, load token/role from localStorage if present
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const role = localStorage.getItem('role'); 
+    const role = localStorage.getItem('role');
+    console.log('Loaded from localStorage:', role);  
     if (token && role) {
       setAuth({ token, role, loading: false });
     } else {
@@ -24,12 +25,16 @@ const AuthProvider = ({ children }) => {
 
 
 
-  // Call this on successful login to set token and role
   const login = (token, role) => {
+    if (!token || !role) {
+      console.error("Invalid login data:", { token, role });
+      return;
+    }
     localStorage.setItem('token', token);
     localStorage.setItem('role', role);
     setAuth({ token, role, loading: false });
   };
+  
 
   // Call this to logout the user
   const logout = () => {

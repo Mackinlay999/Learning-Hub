@@ -48,7 +48,6 @@ import AuthProvider from "./context/AuthContext"; // Adjust path as necessary
 import { useAuth } from "./context/AuthContext";
 
 import LeadsByDate from "./components/LeadByDate";
-import Courses from "./components/Courses";
 
 
 function App() {
@@ -337,7 +336,6 @@ function App() {
                 <Route path="/recruiters" element={<RecruiterDashboard />} />
                 <Route path="/EmailCampaign" element={<EmailCampaign />} />
                 <Route path="/resume" element={<ResumeViewer />} />
-                <Route path="/Courses" element={<Courses/>} />
                 <Route path="/LeadsByDate" element={<LeadsByDate />} />
                 {/* Catch-all route for 404 pages */}
                 <Route path="*" element={<NotFound />} />{" "}

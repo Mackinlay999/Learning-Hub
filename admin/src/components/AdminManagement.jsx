@@ -1,6 +1,6 @@
 
 
-// admin management page
+
 import React, { useState, useEffect } from 'react';
 import axios from './axios';
 import "../style/AdminManagement.css";
@@ -23,6 +23,7 @@ function AdminManagement() {
   const fetchAdmins = async () => {
     try {
       const res = await axios.get(`/admin/alluser`);
+      console.log("Fetched Admins:", res.data);  // Debugging log
       setAdmins(res.data);
     } catch (error) {
       console.error("Failed to fetch admins:", error);
@@ -50,6 +51,7 @@ function AdminManagement() {
       const token = localStorage.getItem("token");
       if (editId) {
         // Update admin
+        console.log("Updating admin with ID:", editId);  // Debugging log
         const res = await axios.put(
           `/admin/update-role`,
           {
@@ -63,6 +65,7 @@ function AdminManagement() {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
+        console.log("Update response:", res);  // Debugging log
       } else {
         // Create new admin
         await axios.post(`/admin/register`, formData);
@@ -75,6 +78,7 @@ function AdminManagement() {
   };
 
   const handleEdit = (admin) => {
+    console.log("Editing admin:", admin);  // Debugging log
     setFormData({
       username: admin.username || '',
       email: admin.email || '',
@@ -87,6 +91,7 @@ function AdminManagement() {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this admin?")) {
       try {
+        console.log("Deleting admin with ID:", id);  // Debugging log
         await axios.delete(`/admin/deleteUser`, {
           data: { userIdToDelete: id },
           withCredentials: true,
@@ -171,4 +176,3 @@ function AdminManagement() {
 }
 
 export default AdminManagement;
-

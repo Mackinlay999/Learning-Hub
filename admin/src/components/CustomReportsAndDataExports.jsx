@@ -14,7 +14,6 @@ const CustomReportsAndDataExports = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
-  // Fetch all reports on mount
   useEffect(() => {
     fetchReports();
   }, []);
@@ -37,9 +36,7 @@ const CustomReportsAndDataExports = () => {
     try {
       if (isEditing) {
         const { data } = await axios.put(`${API_URL}/${editingId}`, report);
-        setReports(
-          reports.map((r) => (r._id === editingId ? data : r))
-        );
+        setReports(reports.map((r) => (r._id === editingId ? data : r)));
         setIsEditing(false);
         setEditingId(null);
       } else {
@@ -70,6 +67,25 @@ const CustomReportsAndDataExports = () => {
     });
     setIsEditing(true);
     setEditingId(r._id);
+  };
+
+  const downloadReport = async (id, type, title) => {
+    try {
+      const response = await axios.get(`${API_URL}/download/${id}`, {
+        responseType: "blob", // important for file download
+      });
+
+      const fileExtension = type === "Excel" ? "xlsx" : type.toLowerCase();
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", `${title}.${fileExtension}`);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    } catch (error) {
+      console.error("Error downloading report:", error);
+    }
   };
 
   return (
@@ -126,6 +142,7 @@ const CustomReportsAndDataExports = () => {
                   <td>
                     <button onClick={() => editReport(r)}>Edit</button>
                     <button onClick={() => deleteReport(r._id)}>Delete</button>
+                    <button onClick={() => downloadReport(r._id, r.type, r.title)}>Download</button>
                   </td>
                 </tr>
               ))}
