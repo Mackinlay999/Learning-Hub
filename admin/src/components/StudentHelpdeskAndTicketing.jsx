@@ -9,9 +9,11 @@ const StudentHelpdeskAndTicketing = () => {
   const [ticket, setTicket] = useState({
     name: "",
     email: "",
+    phone: "", // ← Add this
     issue: "",
     status: "Open",
   });
+
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
@@ -87,6 +89,14 @@ const StudentHelpdeskAndTicketing = () => {
           onChange={handleChange}
           required
         />
+        <input
+          name="phone"
+          placeholder="Phone Number"
+          value={ticket.phone}
+          onChange={handleChange}
+          required
+        />
+
         <textarea
           name="issue"
           placeholder="Describe your issue..."
@@ -115,6 +125,7 @@ const StudentHelpdeskAndTicketing = () => {
               <tr className="ST-tr">
                 <th>Name</th>
                 <th>Email</th>
+                <th>Phone</th>
                 <th>Issue</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -125,6 +136,8 @@ const StudentHelpdeskAndTicketing = () => {
                 <tr key={t._id}>
                   <td>{t.name}</td>
                   <td>{t.email}</td>
+                  <td>{t.phone}</td>
+
                   <td>{t.issue}</td>
                   <td>{t.status}</td>
                   <td>
@@ -141,9 +154,18 @@ const StudentHelpdeskAndTicketing = () => {
       <div className="SH-faq">
         <h2>📚 FAQs & Knowledge Base</h2>
         <ul>
-          <li><strong>How do I reset my password?</strong> — Click "Forgot Password" on the login page.</li>
-          <li><strong>How do I contact a faculty member?</strong> — Use the Faculty Directory under "Academics".</li>
-          <li><strong>Can I edit my submitted ticket?</strong> — Yes, use the Edit button in your ticket list.</li>
+          <li>
+            <strong>How do I reset my password?</strong> — Click "Forgot
+            Password" on the login page.
+          </li>
+          <li>
+            <strong>How do I contact a faculty member?</strong> — Use the
+            Faculty Directory under "Academics".
+          </li>
+          <li>
+            <strong>Can I edit my submitted ticket?</strong> — Yes, use the Edit
+            button in your ticket list.
+          </li>
         </ul>
       </div>
     </div>

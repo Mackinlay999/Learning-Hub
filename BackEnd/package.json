@@ -33,6 +33,7 @@
     "node-cron": "^3.0.3",
     "nodemailer": "^6.10.0",
     "path": "^0.12.7",
+    "pdfkit": "^0.17.0",
     "razorpay": "^2.9.6"
   },
   "devDependencies": {
