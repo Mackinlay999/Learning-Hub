@@ -6,7 +6,7 @@ import Login from "./components/Login"; // Assuming Login acts as LoginPortal
 import NotAuthorized from "./components/NotAuthorized";
 import { Navigate } from "react-router-dom";
 
-import Home from "./components/Home";
+import AdminHome from "./components/AdminHome";
 import NotFound from "./components/NotFound";
 import "./style/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -94,7 +94,7 @@ function App() {
                   path="/home"
                   element={
                     <ProtectedRoute allowedRoles={["Super Admin", "Admin"]}>
-                      <Home />
+                      <AdminHome />
                     </ProtectedRoute>
                   }
                 />
