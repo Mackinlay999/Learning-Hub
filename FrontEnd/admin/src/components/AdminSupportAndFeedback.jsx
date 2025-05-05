@@ -1,15 +1,15 @@
 import React from 'react'
-import StudentHelpdeskAndTicketing from './StudentHelpdeskAndTicketing'
-import FeedbackCourseRatings from './FeedbackCourseRatings'
-import CommunityEngagement from './CommunityEngagement'
+import AdminStudentHelpdeskAndTicketing from './AdminStudentHelpdeskAndTicketing'
+import AdminFeedbackCourseRatings from './AdminFeedbackCourseRatings'
+import AdminCommunityEngagement from './AdminCommunityEngagement'
 
 const AdminSupportAndFeedback = () => {
   return (
     <div>
       <h3>Support & Feedback</h3>
-      <StudentHelpdeskAndTicketing />
-      <FeedbackCourseRatings />
-      <CommunityEngagement />
+      <AdminStudentHelpdeskAndTicketing />
+      <AdminFeedbackCourseRatings />
+      <AdminCommunityEngagement />
     </div>
   )
 }

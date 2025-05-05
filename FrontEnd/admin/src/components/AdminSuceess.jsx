@@ -1,13 +1,13 @@
 import React from 'react'
-import SuccessStories from './SuccessStories'
-import StoryPage from './StoryPage'
+import AdminSuccessStories from './AdminSuccessStories'
+import AdminStoryPage from './AdminStoryPage'
 
 
 const AdminSuceess = () => {
   return (
     <div>
-        <SuccessStories />
-        <StoryPage />
+        <AdminSuccessStories />
+        <AdminStoryPage />
         
      
       

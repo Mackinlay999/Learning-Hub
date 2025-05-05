@@ -1,5 +1,5 @@
 import React from "react";
-import "../style/CareerFooter.css";
+import "../style/AdminCareerFooter.css";
 import { FaFacebook, FaTwitter, FaLinkedin, FaYoutube, FaInstagram } from "react-icons/fa";
 
 const AdminCareerFooter = () => {

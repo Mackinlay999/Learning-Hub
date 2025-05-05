@@ -13,7 +13,7 @@ import { FaSearch, FaBell } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 import AdminSchedulerCalendar from "../components/AdminSchedulerCalendar";
-import "../style/Home.css"; // Using your existing dashboard style
+import "../style/AdminHome.css"; // Using your existing dashboard style
 
 import SchedulerCalendar from "../components/SchedulerCalendar";
 import "../style/AdminHome.css"; // Using your existing dashboard style

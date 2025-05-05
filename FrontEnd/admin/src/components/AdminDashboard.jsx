@@ -163,17 +163,17 @@ import {
   Briefcase
 } from 'lucide-react';
 
-import DashboardAdmin from "../components/DashboardAdmin";
-import LeadAndStudentManagement from './LeadAndStudentManagement';
-import Trainingprogram from './Traningprogram';
-import EMailMarketing from './EMailMarketing';
-import FinanceAndPayment from './FinanceAndPayment';
-import CorporateTrainingEnterprice from './CorporateTrainingEnterprice';
-import AnalyticsAndReports from './AnalyticsAndReports';
-import SupportAndFeedback from './SupportAndFeedback';
-import RecruiterAndPlacementManagement from './RecruiterAndPlacementManagement';
-import "../style/Dashboard.css";
-import SuperAdminPanel from './SuperAdminPanel';
+import DashboardAdmin from "../components/AdminDashboardAdmin";
+import LeadAndStudentManagement from './AdminLeadAndStudentManagement';
+import Trainingprogram from './AdminTraningprogram';
+import EMailMarketing from './AdminEMailMarketing';
+import FinanceAndPayment from './AdminFinanceAndPayment';
+import CorporateTrainingEnterprice from './AdminCorporateTrainingEnterprice';
+import AnalyticsAndReports from './AdminAnalyticsAndReports';
+import SupportAndFeedback from './AdminSupportAndFeedback';
+import RecruiterAndPlacementManagement from './AdminRecruiterAndPlacementManagement';
+import "../style/AdminDashboard.css";
+import SuperAdminPanel from './AdminSuperAdminPanel';
 
 
 

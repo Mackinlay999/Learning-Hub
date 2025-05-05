@@ -1,6 +1,6 @@
 import React from 'react'
-import SecurityCompliance from './SecurityCompliance'
-import WebsiteContentManager from './WebsiteContentManager'
+import AdminSecurityCompliance from './AdminSecurityCompliance'
+import AdminWebsiteContentManager from './AdminWebsiteContentManager'
 
 import AdminManagement from './AdminManagement'
 
@@ -11,8 +11,8 @@ const SuperAdminPanel = () => {
       <h1>Super Admin Panel</h1>
       <AdminManagement />
 
- {/* <SecurityCompliance /> */}
- {/* <WebsiteContentManager /> */}
+ {/* <AdminSecurityCompliance /> */}
+ {/* <AdminWebsiteContentManager /> */}
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "./axios";
-import "../style/LiveSession.css";
+import "../style/AdminLiveSession.css";
 const AdminLiveSessions = () => {
   const [sessions, setSessions] = useState([]);
   const [newSession, setNewSession] = useState({ title: "", platform: "Zoom", date: "", time: "", attendees: 0 });

@@ -1,15 +1,15 @@
 import React from 'react'
-import JobPostingAndRecruiter from './JobPostingAndRecruiter'
-import PlacementAssistanceTracking from './PlacementAssistanceTracking'
-import AlumniNetworking from './AlumniNetworking'
+import AdminJobPostingAndRecruiter from './AdminJobPostingAndRecruiter'
+import AdminPlacementAssistanceTracking from './AdminPlacementAssistanceTracking'
+import AdminAlumniNetworking from './AdminAlumniNetworking'
 
 const AdminRecruiterAndPlacementManagement = () => {
   return (
     <div>
       <h3>Recruiter & Placement Management</h3>
-      <JobPostingAndRecruiter />
-      <PlacementAssistanceTracking />
-      <AlumniNetworking />
+      <AdminJobPostingAndRecruiter />
+      <AdminPlacementAssistanceTracking />
+      <AdminAlumniNetworking />
     </div>
   )
 }

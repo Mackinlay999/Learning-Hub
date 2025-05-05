@@ -54,7 +54,7 @@
 
 
 import { useState } from "react";
-import "../style/Setting.css"
+import "../style/AdminSetting.css"
 const AdminSetting = () => {
   const [settings, setSettings] = useState({
     siteName: "EduTech Admin",

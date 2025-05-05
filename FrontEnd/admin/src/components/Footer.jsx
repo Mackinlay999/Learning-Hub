@@ -9,10 +9,10 @@ import {
   FaInstagram,
   FaArrowUp,
 } from "react-icons/fa";
-import "../style/Footer.css";
+import "../style/AdminFooter.css";
 import Logo from "../images/logo.png";
 
-const Footer = () => {
+const AdminFooter = () => {
   const [showScroll, setShowScroll] = useState(false);
 
   useEffect(() => {
@@ -171,4 +171,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default AdminFooter;
