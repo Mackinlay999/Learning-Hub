@@ -10,6 +10,11 @@ const AdminSchema = new mongoose.Schema({
     enum: ["Super Admin", "Admin", "Analyst", "Recruiter"],
     default: "Recruiter"
   },
+  status: {
+    type: String,
+    enum: ["pending", "approved", "rejected"],
+    default: "pending"
+  },
   resetPasswordToken: String,
   resetPasswordExpires: Date,
 }, { timestamps: true });
