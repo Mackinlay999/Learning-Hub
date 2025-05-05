@@ -1,0 +1,108 @@
+/* Refunds Section Container */
+.refunds-container { 
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+  background: #fff; /* White background for readability */
+  border-radius: 8px; /* Rounded corners for a modern look */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* Refund Form Layout */
+.refund-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Input, Select and Button Styling */
+.refund-form input,
+.refund-form select,
+.refund-form button {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px; /* Rounded corners for inputs */
+  border: 1px solid #ccc; /* Border color */
+  transition: border 0.3s ease, transform 0.2s ease; /* Smooth effect for border and scale on focus */
+}
+
+.refund-form input:focus,
+.refund-form select:focus,
+.refund-form button:focus {
+  border-color: #D32F2F; /* Red border when focused */
+  transform: scale(1.05); /* Slight scaling effect when focused */
+}
+
+/* Refund List Layout */
+.refund-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Individual Refund Card Styling */
+.refund-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  background: #f9f9f9;
+  text-align: left;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for cards */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+}
+
+.refund-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.refund-card p {
+  margin: 5px 0;
+  color: #333; /* Dark gray text for readability */
+}
+
+/* Edit Button Styling */
+.edit-btn {
+  background: #FFC107; /* Gold accent color for edit button */
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+.edit-btn:hover {
+  background: #FFB300; /* Slightly darker gold on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* Delete Button Styling */
+.delete-btn {
+  background: #D32F2F; /* Red for delete action */
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+.delete-btn:hover {
+  background: #b71c1c; /* Darker red on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 600px) {
+  .refund-form {
+      flex-direction: column;
+      align-items: center; /* Center the form on smaller screens */
+  }
+
+  .refund-card {
+      padding: 10px; /* Reduced padding for smaller screens */
+  }
+}

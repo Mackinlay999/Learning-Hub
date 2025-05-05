@@ -1,0 +1,165 @@
+/* Color Palette */
+:root {
+    --primary-red: #D32F2F;   /* Call-to-action buttons, headings, icons */
+    --dark-gray: #333333;     /* Text & contrast sections */
+    --white: #FFFFFF;         /* Background for readability */
+    --gold-accent: #FFC107;   /* Highlighting important sections */
+    --btn-hover: #005fa3;     /* Hover color for buttons */
+    --upload-btn-hover: #4cae4c; /* Hover effect for upload button */
+    --signout-btn-hover: #c9302c; /* Hover effect for signout button */
+  }
+  
+  /* General Container Styling */
+  .user-detail-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+      padding: 20px;
+      animation: fadeIn 0.5s ease-out;
+  }
+  
+  /* User Card Styling */
+  .user-detail-card {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      transition: transform 0.3s ease;
+  }
+  
+  .user-detail-card:hover {
+      transform: translateY(-5px);
+  }
+  
+  /* Heading Styling */
+  .user-detail-h1 {
+      font-size: 28px;
+      color: var(--dark-gray);
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-transform: capitalize;
+  }
+  
+  /* User Info Section */
+  .user-detail-info {
+      font-size: 18px;
+      color: #444;
+      font-weight: 500;
+      margin-bottom: 25px;
+  }
+  
+  .user-detail-info p {
+      margin: 10px 0;
+      font-size: 16px;
+      color: #555;
+  }
+  
+  /* Email and Username Box Alignment */
+  .user-detail-info div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f9f9f9;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+  }
+  
+  .user-detail-info div:hover {
+      background-color: #efefef;
+  }
+  
+  .user-detail-info span {
+      color: var(--dark-gray);
+  }
+  
+  /* Upload Section */
+  .upload-section {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+      border-top: 2px solid #eee;
+      padding-top: 15px;
+  }
+  
+  /* File Input */
+  input[type="file"] {
+      padding: 8px;
+      width: 100%;
+      max-width: 320px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-bottom: 15px;
+      transition: border-color 0.3s ease;
+  }
+  
+  input[type="file"]:focus {
+      border-color: var(--primary-red);
+  }
+  
+  /* Buttons */
+  .upload-btn, .user-detail-signout-btn {
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+  }
+  
+  .upload-btn {
+      background-color: #5cb85c;
+      color: var(--white);
+  }
+  
+  .upload-btn:hover {
+      background-color: var(--upload-btn-hover);
+      transform: translateY(-2px);
+  }
+  
+  .user-detail-signout-btn {
+      background-color: #d9534f;
+      color: var(--white);
+      margin-top: 15px;
+  }
+  
+  .user-detail-signout-btn:hover {
+      background-color: var(--signout-btn-hover);
+      transform: translateY(-2px);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+      .user-detail-card {
+          max-width: 90%;
+          padding: 20px;
+      }
+  
+      .user-detail-h1 {
+          font-size: 24px;
+      }
+  }
+  
+  /* Fade-in Animation */
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+          transform: translateY(20px);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+  

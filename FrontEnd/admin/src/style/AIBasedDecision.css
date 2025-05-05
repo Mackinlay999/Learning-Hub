@@ -1,0 +1,170 @@
+/* Color Palette & Branding */
+:root {
+  --primary-red: #D32F2F;    /* Call-to-action buttons, headings, icons */
+  --dark-gray: #333333;      /* Text & contrast sections */
+  --white: #FFFFFF;          /* Background for readability */
+  --gold-accent: #FFC107;    /* Highlighting important sections */
+  --blue: #007bff;           /* Button background color */
+  --hover-blue: #0056b3;     /* Button hover color */
+  --gray-light: #f4f4f4;     /* Table header background */
+  --gray-dark: #ddd;         /* Table border and row color */
+  --text-dark: #2c3e50;      /* Dark text for headings */
+  --text-light: #555;        /* Lighter text for subtitles */
+  --text-muted: #999;        /* Text color for empty states */
+}
+
+/* Main container */
+.AI-main { 
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  font-family: sans-serif;
+  background-color: var(--white); /* Ensure background is white */
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Title */
+.AI-title {
+  font-size: 2rem;
+  text-align: center;
+  color: var(--dark-gray);
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in effect */
+}
+
+/* Subtitle */
+.AI-subtitle {
+  text-align: center;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+.AI-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.AI-form input,
+.AI-form textarea,
+.AI-form select {
+  padding: 10px;
+  border: 1px solid var(--gray-dark);
+  border-radius: 5px;
+  resize: vertical;
+  transition: border-color 0.3s ease;
+}
+
+.AI-form input:focus,
+.AI-form textarea:focus,
+.AI-form select:focus {
+  border-color: var(--primary-red); /* Focus effect */
+}
+
+/* Submit Button Styling */
+.AI-form button {
+  padding: 10px;
+  background-color: #D32F2F;
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.AI-form button:hover {
+  background-color:#D32F2F; /* Button hover effect */
+}
+
+/* List Section */
+.AI-list {
+  margin-top: 20px;
+}
+
+/* Table Styling */
+.AI-table {
+  width: 100%;
+  border-collapse: collapse;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.AI-table th,
+.AI-table td {
+  border: 1px solid var(--gray-dark);
+  padding: 8px;
+  text-align: center;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.AI-table th {
+  background-color: var(--gray-light);
+  font-weight: bold;
+}
+
+.AI-table tr:hover {
+  background-color: #f1f1f1; /* Hover effect for rows */
+}
+
+.AI-empty {
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design for mobile */
+@media (max-width: 768px) {
+  .AI-form {
+    gap: 8px;
+  }
+
+  .AI-table,
+  .AI-table thead,
+  .AI-table tbody,
+  .AI-table th,
+  .AI-table td,
+  .AI-table tr {
+    display: block;
+  }
+
+  .AI-table th {
+    display: none; /* Hide header for better mobile view */
+  }
+
+  .AI-table td {
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid var(--gray-dark);
+  }
+
+  .AI-table td::before {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .AI-table td:nth-of-type(1)::before { content: "Segment"; }
+  .AI-table td:nth-of-type(2)::before { content: "Churn %"; }
+  .AI-table td:nth-of-type(3)::before { content: "Strategy"; }
+  .AI-table td:nth-of-type(4)::before { content: "Priority"; }
+  .AI-table td:nth-of-type(5)::before { content: "Actions"; }
+}

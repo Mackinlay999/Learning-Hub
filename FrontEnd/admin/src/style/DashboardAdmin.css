@@ -1,0 +1,99 @@
+/* Color Palette & Branding */
+:root {
+  --primary-red: #D32F2F; /* Call-to-action buttons, headings, icons */
+  --dark-gray: #333333; /* Text & contrast sections */
+  --white: #FFFFFF; /* Background for readability */
+  --gold-accent: #FFC107; /* Highlighting important sections */
+  --blue: #007bff; /* Icon blue */
+  --green: #4caf50; /* Icon green */
+  --orange: #ffa500; /* Icon orange */
+  --light-gray: #f9f9f9; /* Card background light gray */
+  --shadow-color: rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  --hover-scale: 1.05; /* Hover scale effect */
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: var(--white);
+  color: var(--dark-gray);
+  box-shadow: 0px 4px 10px var(--shadow-color);
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-container:hover {
+  transform: translateY(-5px); /* Lift effect */
+  box-shadow: 0px 6px 15px var(--shadow-color); /* Enhanced shadow */
+}
+
+/* Dashboard Title */
+.dashboard-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--primary-red);
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* Dashboard Card */
+.dashboard-card {
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px var(--shadow-color);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: scale(var(--hover-scale)); /* Scale effect */
+  box-shadow: 0px 4px 10px var(--shadow-color); /* Enhanced shadow */
+}
+
+/* Dashboard Card Icon */
+.dashboard-icon {
+  font-size: 30px;
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+/* Icon Colors */
+.users-icon { color: var(--blue); }
+.courses-icon { color: var(--green); }
+.revenue-icon { color: var(--orange); }
+.reports-icon { color: var(--primary-red); }
+
+/* Card Title */
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--dark-gray);
+}
+
+/* Card Text */
+.card-text {
+  font-size: 14px;
+  color: var(--dark-gray);
+}
+
+/* Hover Effects on Card Title */
+.card-title:hover {
+  color: var(--primary-red); /* Color change on hover for titles */
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}

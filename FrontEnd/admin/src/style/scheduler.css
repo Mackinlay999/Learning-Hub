@@ -1,0 +1,136 @@
+/* src/styles/scheduler.css */
+
+/* General Styles for Calendar Container */
+.calendar-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-top: 4px solid #D32F2F; /* Red branding stripe */
+}
+
+/* Calendar Title */
+.calendar-container h5 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #333333; /* Dark Gray text */
+  transition: color 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+/* Hover effect for the calendar container */
+.calendar-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Style for FullCalendar toolbar */
+.fc-toolbar {
+  background-color: #003366; /* Dark Blue background for contrast */
+  border-radius: 8px;
+  color: white;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for the toolbar */
+.fc-toolbar:hover {
+  background-color: #005bb5; /* Lighter blue on hover */
+}
+
+/* Style for navigation buttons (prev, next, today) */
+.fc-prev-button,
+.fc-next-button,
+.fc-today-button {
+  background-color: #007bff; /* Blue buttons */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+/* Hover effect for buttons */
+.fc-prev-button:hover,
+.fc-next-button:hover,
+.fc-today-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .calendar-container {
+      padding: 15px;
+      font-size: 0.9rem;
+  }
+
+  .fc-toolbar {
+      padding: 8px 12px;
+  }
+
+  .calendar-container h5 {
+      font-size: 1.1rem;
+  }
+
+  .fc-prev-button,
+  .fc-next-button,
+  .fc-today-button {
+      padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-container {
+      padding: 10px;
+  }
+
+  .fc-toolbar {
+      padding: 6px 10px;
+  }
+
+  .calendar-container h5 {
+      font-size: 1rem;
+  }
+
+  .fc-prev-button,
+  .fc-next-button,
+  .fc-today-button {
+      padding: 3px 6px;
+  }
+}
+
+/* Smooth transitions for the FullCalendar events */
+.fc-event {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hover effect for events */
+.fc-event:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Event deletion confirmation dialog */
+.fc-event:active {
+  transform: scale(0.98);
+}
+
+/* Add animation when the event is selected */
+.fc-selected {
+  animation: event-select 0.3s ease-out;
+}
+
+@keyframes event-select {
+  0% {
+      transform: scale(0.95);
+      opacity: 0;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}

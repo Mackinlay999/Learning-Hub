@@ -1,0 +1,170 @@
+/* Color Palette & Branding */
+:root {
+  --primary-red: #D32F2F; /* Call-to-action buttons, headings, icons */
+  --dark-gray: #333333; /* Text & contrast sections */
+  --white: #FFFFFF; /* Background for readability */
+  --gold-accent: #FFC107; /* Highlighting important sections */
+  --secondary-green: #2ecc71; /* For button background */
+  --secondary-green-dark: #27ae60; /* Darker shade for button hover */
+  --blue: #3498db; /* Button color for table actions */
+  --blue-dark: #2980b9; /* Darker blue for button hover */
+  --light-gray: #f4f4f4; /* Light gray background */
+  --border-color: #ccc; /* Border color */
+  --table-header-bg: #f0f0f0; /* Table header background */
+  --gray-text: #555; /* Gray text for subtitles */
+  --dark-title-color: #2c3e50; /* Dark color for titles */
+}
+
+/* Main Container */
+.FB-main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+  background-color: var(--white); /* White background for readability */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Title Styling */
+.FB-title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--dark-title-color); /* Dark title color */
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Subtitle Styling */
+.FB-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--gray-text); /* Light gray text for subtitle */
+  margin-bottom: 1.5rem;
+}
+
+/* Form Styling */
+.FB-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  background: var(--light-gray); /* Light gray background */
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Add transition effects */
+}
+
+.FB-form:hover {
+  transform: translateY(-5px); /* Hover effect: slight lift */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+/* Input Fields & Buttons */
+.FB-form input,
+.FB-form textarea,
+.FB-form select,
+.FB-form button {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color); /* Standard border color */
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.3s ease, transform 0.3s ease; /* Focus effects */
+}
+
+.FB-form input:focus,
+.FB-form textarea:focus,
+.FB-form select:focus {
+  border-color: var(--primary-red); /* Focus effect with primary red */
+  outline: none;
+  transform: translateY(-2px); /* Slight lift effect on focus */
+}
+
+/* Textarea Styling */
+.FB-form textarea {
+  resize: vertical;
+}
+
+/* Button Styling */
+.FB-form button {
+  background-color: var(--secondary-green); /* Green background for submit button */
+  color: var(--white); /* White text on button */
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Button hover effect */
+}
+
+.FB-form button:hover {
+  background-color: var(--secondary-green-dark); /* Darker green on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Section List */
+.FB-list {
+  margin-top: 2rem;
+}
+
+/* Section Title */
+.FB-section-title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--dark-title-color); /* Dark title color */
+}
+
+/* Table Styling */
+.FB-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.FB-table th,
+.FB-table td {
+  border: 1px solid #ddd;
+  padding: 0.7rem;
+  text-align: center;
+}
+
+.FB-table th {
+  background-color: var(--table-header-bg); /* Light background for headers */
+  color: var(--dark-title-color);
+}
+
+.FB-empty {
+  text-align: center;
+  color: gray;
+}
+
+/* Table Button Styling */
+.FB-table button {
+  margin: 0 5px;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--blue); /* Blue button */
+  color: var(--white);
+  transition: background-color 0.3s ease;
+}
+
+.FB-table button:hover {
+  background-color: var(--blue-dark); /* Darker blue on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .FB-form {
+    padding: 0.8rem;
+  }
+
+  .FB-table th,
+  .FB-table td {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .FB-title {
+    font-size: 1.5rem;
+  }
+}

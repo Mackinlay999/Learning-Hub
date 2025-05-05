@@ -1,0 +1,182 @@
+/* Base Colors */
+:root {
+  --primary-red: #D32F2F;
+  --dark-gray: #333333;
+  --white: #FFFFFF;
+  --gold-accent: #FFC107;
+  --light-gray: #f9f9f9;
+  --dark-gray-border: #ccc;
+  --primary-button-bg: #2ecc71;
+  --primary-button-hover-bg: #27ae60;
+  --secondary-button-bg: #3498db;
+  --secondary-button-hover-bg: #2980b9;
+  --danger-button-bg: #e74c3c;
+  --danger-button-hover-bg: #c0392b;
+  --table-header-bg: #f8f9fa;
+  --table-text-color: #555;
+}
+
+/* ====== Container ====== */
+.APT-main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+/* ====== Title & Subtitle ====== */
+.APT-title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--dark-gray);
+  margin-bottom: 5px;
+}
+
+.APT-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-bottom: 25px;
+}
+
+/* ====== Form Styles ====== */
+.APT-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+  justify-content: space-between;
+}
+
+.APT-form input,
+.APT-form select {
+  flex: 1 1 calc(48% - 10px);
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid var(--dark-gray-border);
+  border-radius: 6px;
+  background-color: #fdfdfd;
+  transition: border-color 0.3s ease;
+}
+
+.APT-form input:focus,
+.APT-form select:focus {
+  outline: none;
+  border-color: var(--primary-red);
+}
+
+.APT-form button {
+  flex: 1 1 100%;
+  padding: 10px;
+  background-color: var(--primary-button-bg);
+  color: var(--white);
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.APT-form button:hover {
+  background-color: var(--primary-button-hover-bg);
+}
+
+/* ====== Table Styles ====== */
+.APT-section-title {
+  font-size: 1.5rem;
+  color: var(--dark-gray);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.APT-empty {
+  color: #bdc3c7;
+  text-align: center;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.APT-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.APT-table th,
+.APT-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.APT-table th {
+  background-color: var(--table-header-bg);
+  color: var(--dark-gray);
+  font-weight: 600;
+}
+
+.APT-table td {
+  color: var(--table-text-color);
+}
+
+.APT-table td button {
+  padding: 6px 10px;
+  margin: 0 3px;
+  font-size: 13px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.APT-table td button:first-child {
+  background-color: var(--secondary-button-bg);
+  color: var(--white);
+}
+
+.APT-table td button:first-child:hover {
+  background-color: var(--secondary-button-hover-bg);
+}
+
+.APT-table td button:last-child {
+  background-color: var(--danger-button-bg);
+  color: var(--white);
+}
+
+.APT-table td button:last-child:hover {
+  background-color: var(--danger-button-hover-bg);
+}
+
+/* ====== Responsive Styles ====== */
+@media (max-width: 768px) {
+  .APT-form {
+    flex-direction: column;
+  }
+
+  .APT-form input,
+  .APT-form select,
+  .APT-form button {
+    flex: 1 1 100%;
+  }
+
+  .APT-table th,
+  .APT-table td {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .APT-title {
+    font-size: 1.6rem;
+  }
+
+  .APT-subtitle {
+    font-size: 0.95rem;
+  }
+}

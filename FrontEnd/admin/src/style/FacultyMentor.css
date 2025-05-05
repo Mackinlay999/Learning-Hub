@@ -1,0 +1,112 @@
+/* Color Palette & Branding */
+:root {
+  --primary-red: #D32F2F; /* Call-to-action buttons, headings, icons */
+  --dark-gray: #333333; /* Text & contrast sections */
+  --white: #FFFFFF; /* Background for readability */
+  --gold-accent: #FFC107; /* Highlighting important sections */
+  --blue: #007bff; /* Blue for highlights */
+  --light-gray: #f8f9fa; /* Light background for sections */
+  --gray-text: #555; /* Gray text for subtitles */
+  --lighter-gray: #666; /* Lighter gray for descriptions */
+  --highlight-background: #007bff; /* Highlight background */
+  --highlight-color: #fff; /* Highlight text color */
+}
+
+/* Faculty Mentors Section */
+.faculty-section {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: var(--light-gray); /* Light background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faculty-section:hover {
+  transform: translateY(-5px); /* Hover effect: slight lift */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Title Styling */
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--dark-gray); /* Dark text color */
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.title:hover {
+  color: var(--primary-red); /* Red color on hover */
+}
+
+/* Subtitle Styling */
+.subtitle {
+  font-size: 1.5rem;
+  color: var(--gray-text); /* Gray subtitle */
+  margin-top: 10px;
+  transition: color 0.3s ease;
+}
+
+.subtitle:hover {
+  color: var(--primary-red); /* Red color on hover */
+}
+
+/* Description Styling */
+.description {
+  font-size: 1rem;
+  color: var(--lighter-gray); /* Lighter gray for description text */
+  margin-top: 15px;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.description:hover {
+  color: var(--primary-red); /* Red color on hover */
+}
+
+/* Highlighted Section */
+.highlight {
+  font-size: 1.2rem;
+  font-weight: bold;
+  background-color: var(--highlight-background); /* Blue highlight background */
+  color: var(--highlight-color); /* White text for highlights */
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.highlight:hover {
+  background-color: var(--primary-red); /* Red color on hover */
+  transform: translateY(-3px); /* Slight lift on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+
+  .highlight {
+    font-size: 1.1rem;
+  }
+}

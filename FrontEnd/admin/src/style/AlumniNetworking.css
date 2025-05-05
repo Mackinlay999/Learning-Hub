@@ -1,0 +1,205 @@
+/* Color Palette & Branding */
+:root {
+  --primary-red: #D32F2F;    /* Call-to-action buttons, headings, icons */
+  --dark-gray: #333333;      /* Text & contrast sections */
+  --white: #FFFFFF;          /* Background for readability */
+  --gold-accent: #FFC107;    /* Highlighting important sections */
+  --blue: #2980b9;           /* Button background color */
+  --hover-blue: #1f6391;     /* Button hover color */
+  --green: #2ecc71;          /* Success button background */
+  --hover-green: #27ae60;    /* Success button hover color */
+  --red: #e74c3c;            /* Danger button background */
+  --hover-red: #c0392b;      /* Danger button hover color */
+  --gray: #f4f4f4;           /* Table header background */
+}
+
+/* Main container */
+.AN-main { 
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  font-family: sans-serif;
+  background-color: var(--white); /* Ensure background is white */
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Title */
+.AN-title {
+  text-align: center;
+  font-size: 28px;
+  color: var(--dark-gray); /* Dark gray color for text */
+  font-weight: 700;
+  animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in effect */
+}
+
+/* Subtitle */
+.AN-subtitle {
+  text-align: center;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+.AN-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.AN-form input,
+.AN-form textarea {
+  flex: 1 1 45%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease; /* Subtle border transition */
+}
+
+.AN-form input:focus,
+.AN-form textarea:focus {
+  border-color: var(--primary-red); /* Focus effect */
+}
+
+.AN-form textarea {
+  flex: 1 1 100%;
+  resize: vertical;
+  min-height: 60px;
+}
+
+.AN-form button {
+  flex: 1 1 100%;
+  padding: 10px;
+  background-color: var(--blue);
+  color: var(--white);
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.AN-form button:hover {
+  background-color: var(--hover-blue); /* Hover effect */
+}
+
+/* List Section */
+.AN-list h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: var(--dark-gray);
+}
+
+/* Empty State */
+.AN-empty {
+  text-align: center;
+  color: #777;
+  font-size: 16px;
+}
+
+/* Table Styling */
+.AN-table {
+  width: 100%;
+  border-collapse: collapse;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.AN-table th,
+.AN-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.AN-table th {
+  background-color: var(--gray);
+}
+
+.AN-table tr:hover {
+  background-color: #f1f1f1; /* Hover effect for rows */
+}
+
+.AN-table button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.AN-table button:first-child {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.AN-table button:last-child {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.AN-table button:first-child:hover {
+  background-color: var(--hover-green);
+  transform: scale(1.05);
+}
+
+.AN-table button:last-child:hover {
+  background-color: var(--hover-red);
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .AN-form input,
+  .AN-form textarea {
+    flex: 1 1 100%; /* Ensure full-width on smaller screens */
+  }
+
+  .AN-table th,
+  .AN-table td {
+    font-size: 12px;
+  }
+}
+
+/* Ensuring overall smooth visual transition for important elements */
+@media screen and (max-width: 480px) {
+  .AN-title {
+    font-size: 24px;
+  }
+
+  .AN-subtitle {
+    font-size: 14px;
+  }
+
+  .AN-table th,
+  .AN-table td {
+    font-size: 11px;
+  }
+
+  .AN-form input,
+  .AN-form textarea {
+    font-size: 12px;
+  }
+
+  .AN-form button {
+    font-size: 14px;
+  }
+}

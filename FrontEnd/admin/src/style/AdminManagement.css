@@ -1,0 +1,199 @@
+/* AdminManagement.css */
+
+/* Color Palette & Branding */
+:root {
+  --primary-red: #D32F2F;    /* Call-to-action buttons, headings, icons */
+  --dark-gray: #333333;      /* Text & contrast sections */
+  --white: #FFFFFF;          /* Background for readability */
+  --gold-accent: #FFC107;    /* Highlighting important sections */
+  --blue: #3498db;           /* Button and link color */
+  --blue-hover: #2980b9;     /* Button hover color */
+  --light-gray: #f4f6f8;     /* Background for containers */
+  --gray-dark: #2c3e50;      /* Dark text for headings */
+  --gray-light: #ecf0f1;     /* Light gray for labels */
+  --muted-text: #7f8c8d;     /* Muted text for subtle elements */
+}
+
+/* General Container */
+.AD-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--light-gray); /* Light gray background */
+  color: var(--dark-gray);  /* Dark text for readability */
+}
+
+/* Main Title */
+.AD-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary-red); /* Red color for headings */
+}
+
+/* Admin Form */
+.admin-form {
+  background-color: var(--white); /* White background for form */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Form Inputs */
+.admin-form input[type="text"],
+.admin-form input[type="email"],
+.admin-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+  transition: border-color 0.3s ease;
+}
+
+.admin-form input[type="text"]:focus,
+.admin-form input[type="email"]:focus,
+.admin-form select:focus {
+  border-color: var(--primary-red); /* Red border on focus */
+}
+
+/* Form Labels */
+.admin-form label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted-text);  /* Muted text color */
+}
+
+/* Permissions Styling */
+.permissions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.permissions p {
+  width: 100%;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.permissions label {
+  background-color: var(--gray-light); /* Light gray background for labels */
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--dark-gray);  /* Dark text for clarity */
+}
+
+/* Form Button */
+.admin-form button {
+  padding: 10px 15px;
+  background-color: var(--blue);
+  color: var(--white);
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: fit-content;
+  align-self: flex-start;
+}
+
+.admin-form button:hover {
+  background-color: var(--blue-hover); /* Darker blue on hover */
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--white); /* White background for table */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background-color: var(--primary-red); /* Red background for table header */
+  color: var(--white);
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+td button {
+  margin-right: 8px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+td button:first-child {
+  background-color: #2ecc71;
+  color: var(--white);
+}
+
+td button:last-child {
+  background-color: #e74c3c;
+  color: var(--white);
+}
+
+td button:hover {
+  opacity: 0.9;
+}
+
+/* Table Row Text */
+.ad-tr {
+  color: var(--white); /* White text for table rows */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admin-form {
+    padding: 15px;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 20px;
+    background-color: var(--white); /* White background for rows */
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: var(--muted-text); /* Muted text for labels */
+  }
+
+  td:last-child {
+    border-bottom: none;
+  }
+}

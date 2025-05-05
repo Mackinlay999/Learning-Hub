@@ -1,0 +1,163 @@
+/* Query.css */
+
+/* Container */
+.Q-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff; /* White background for readability */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Heading */
+.Q-heading {
+  text-align: center;
+  color: #D32F2F; /* Primary Red for heading */
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Controls (Search, Button) */
+.Q-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+/* Input Field */
+.Q-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease, transform 0.2s ease; /* Smooth effects */
+}
+
+/* Input Focus */
+.Q-input:focus {
+  border-color: #D32F2F; /* Red border on focus */
+  transform: scale(1.05); /* Slightly enlarge input on focus */
+}
+
+/* Button */
+.Q-button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #D32F2F; /* Primary Red for button */
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Button hover effect */
+}
+
+.Q-button:hover {
+  background-color: #B71C1C; /* Darker red on hover */
+  transform: translateY(-2px); /* Lift effect */
+}
+
+/* Table Container */
+.Q-table-container {
+  overflow-x: auto;
+}
+
+/* Table */
+.Q-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect on table */
+}
+
+/* Table Header */
+.Q-th {
+  padding: 12px;
+  text-align: left;
+  background-color: #D32F2F; /* Primary Red for table header */
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.Q-th:hover {
+  background-color: #B71C1C; /* Darker red on hover */
+}
+
+/* Table Rows */
+.Q-td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Table Row Hover */
+.Q-tr:hover {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+/* Edit Input */
+.Q-edit-input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Action Buttons (Edit, Delete) */
+.Q-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Delete Button */
+.Q-delete {
+  background-color: #DC3545; /* Red for delete */
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Hover effect */
+}
+
+.Q-delete:hover {
+  background-color: #C82333; /* Darker red on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* No Data Message */
+.Q-no-data {
+  text-align: center;
+  color: #888;
+  font-size: 16px;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  /* Controls and Form Inputs */
+  .Q-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .Q-input,
+  .Q-button {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  /* Table Layout */
+  .Q-table {
+    font-size: 14px;
+  }
+
+  .Q-th, .Q-td {
+    padding: 8px;
+  }
+}

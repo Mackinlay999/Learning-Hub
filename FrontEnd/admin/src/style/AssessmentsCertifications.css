@@ -1,0 +1,156 @@
+/* Color Palette & Branding Variables */
+:root {
+  --primary-red: #D32F2F; /* Primary Red for call-to-action buttons, headings, icons */
+  --dark-gray: #333333; /* Dark Gray for text & contrast sections */
+  --white: #FFFFFF; /* White for background */
+  --gold-accent: #FFC107; /* Gold Accent for highlighting important sections */
+  --blue: #007bff; /* Standard blue for buttons */
+  --blue-hover: #0056b3; /* Darker blue for button hover effect */
+}
+
+/* General Styles */
+.assessments-certifications {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: var(--white); /* White background for readability */
+}
+
+/* Title */
+.assessments-certifications-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--dark-gray); /* Dark Gray text for title */
+  transition: color 0.3s ease;
+}
+
+.assessments-certifications-title:hover {
+  color: var(--primary-red); /* Change title color to Primary Red on hover */
+}
+
+/* Form Styling */
+.assessments-certifications-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.assessments-certifications-input,
+.assessments-certifications-select,
+.assessments-certifications-add {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.assessments-certifications-input:focus,
+.assessments-certifications-select:focus {
+  border-color: var(--primary-red); /* Focus effect with primary red */
+  background-color: #fff5f5; /* Slight red background for focus */
+  outline: none;
+}
+
+.assessments-certifications-add {
+  background-color: var(--blue); /* Blue background for add button */
+  color: var(--white);
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.assessments-certifications-add:hover {
+  background-color: var(--blue-hover); /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight hover lift effect */
+}
+
+/* Table Styles */
+.assessments-certifications-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--white); /* White background for table */
+}
+
+.assessments-certifications-tr {
+  background-color: #f8f8f8;
+  transition: background-color 0.3s ease;
+}
+
+.assessments-certifications-table th,
+.assessments-certifications-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.assessments-certifications-table th {
+  background-color: #f1f1f1;
+  font-weight: bold;
+  color: var(--dark-gray);
+}
+
+.assessments-certifications-tr:hover {
+  background-color: #f1f1f1; /* Highlight row on hover */
+}
+
+/* Buttons */
+.assessments-certifications-add,
+.assessments-certifications-save,
+.assessments-certifications-edit,
+.assessments-certifications-delete,
+.assessments-certifications-certificate,
+.assessments-certifications-download,
+.assessments-certifications-download-btn {
+  background-color: var(--blue); /* Blue button for all actions */
+  color: var(--white);
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.assessments-certifications-add:hover,
+.assessments-certifications-save:hover,
+.assessments-certifications-edit:hover,
+.assessments-certifications-delete:hover,
+.assessments-certifications-certificate:hover,
+.assessments-certifications-download:hover,
+.assessments-certifications-download-btn:hover {
+  background-color: var(--blue-hover); /* Darker blue on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* Canvas Styles */
+.assessments-certifications-canvas {
+  display: block;
+  margin: auto;
+  border: 1px solid #ccc;
+  max-width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .assessments-certifications-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .assessments-certifications-input,
+  .assessments-certifications-select,
+  .assessments-certifications-add {
+    font-size: 14px;
+    padding: 8px;
+  }
+  .assessments-certifications-table th,
+  .assessments-certifications-table td {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+

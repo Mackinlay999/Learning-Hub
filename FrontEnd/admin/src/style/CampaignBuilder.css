@@ -1,0 +1,209 @@
+/* General Styles */
+.cam-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 30px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cam-title {
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.cam-form-group {
+  margin-bottom: 20px;
+}
+
+.cam-input, .cam-textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.cam-textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.cam-button, .cam-btn, .cam-btn-edit, .cam-btn-delete {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.cam-button:hover, .cam-btn:hover, .cam-btn-edit:hover, .cam-btn-delete:hover {
+  background-color:#c82333;
+}
+
+.cam-checkbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.cam-ratio {
+  margin-right: 12px;
+}
+
+.cam-campaigns {
+  margin-top: 30px;
+}
+
+.cam-campaign-list {
+  list-style: none;
+  padding: 0;
+}
+
+.cam-campaign-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cam-btn-edit, .cam-btn-delete {
+  margin-top: 10px;
+}
+
+.cam-btn-edit {
+  background-color: #ffc107;
+}
+
+.cam-btn-edit:hover {
+  background-color: #e0a800;
+}
+
+.cam-btn-delete {
+  background-color: #dc3545;
+}
+
+.cam-btn-delete:hover {
+  background-color: #c82333;
+}
+
+.cam-form-group label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+/* New Lead Form */
+.cam-form-group input[type="text"], .cam-form-group input[type="email"] {
+  width: 48%;
+  margin-right: 4%;
+}
+
+.cam-form-group input[type="text"]:last-child, .cam-form-group input[type="email"]:last-child {
+  margin-right: 0;
+}
+
+.cam-form-group button {
+  display: inline-block;
+  width: 100%;
+  max-width: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:#dc3545;
+}
+
+/* Buttons */
+.cam-btn {
+  width: 100%;
+  max-width: 220px;
+  margin: 15px auto;
+  background-color:#c82333;
+}
+
+.cam-btn:hover {
+  background-color:#c82333;
+}
+.cam-form-group input[type="text"], .cam-form-group input[type="email"] {
+  width: 100%;
+  margin-right: 0;
+}
+.cam-input, .cam-textarea {
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+.cam-button {
+  width: 100%;
+  margin-top: 10px;
+}
+.cam-btn-delete{
+  margin-left: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .cam-input, .cam-textarea {
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+
+  .cam-form-group input[type="text"], .cam-form-group input[type="email"] {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .cam-button {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .cam-btn, .cam-btn-edit, .cam-btn-delete {
+    width: 100%;
+    max-width: none;
+  }
+
+
+  .cam-campaign-item {
+    padding: 15px;
+  }
+  .cam-btn-delete{
+    margin-left: 0px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .cam-title {
+    font-size: 1.6rem;
+
+  }
+
+  .cam-form-group {
+    margin-bottom: 15px;
+    
+  }
+
+  .cam-input, .cam-textarea {
+    font-size: 0.875rem;
+    
+  }
+  
+  .cam-button {
+    width: 100%;
+ 
+   
+  }
+}
+
+

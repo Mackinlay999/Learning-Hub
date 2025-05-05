@@ -1,0 +1,104 @@
+/* Payment Failure Container */
+.payment-failure-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Failure Card */
+  .failure-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+    animation: slideDown 0.6s ease-in-out;
+  }
+  
+  /* Failure Icon */
+  .failure-icon {
+    font-size: 3rem;
+    color: #ff4b2b;
+    animation: shake 0.5s ease-in-out infinite alternate;
+  }
+  
+  /* Title */
+  .failure-card h2 {
+    color: #ff4b2b;
+    font-size: 1.8rem;
+    margin: 10px 0;
+  }
+  
+  /* Description */
+  .failure-card p {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Retry Button */
+  .retry-btn {
+    background: #ff4b2b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .retry-btn:hover {
+    background: #ff1c1c;
+    transform: scale(1.05);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes shake {
+    0% {
+      transform: translateX(-5px);
+    }
+    100% {
+      transform: translateX(5px);
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 480px) {
+    .failure-card {
+      padding: 1.5rem;
+    }
+    .failure-card h2 {
+      font-size: 1.5rem;
+    }
+    .retry-btn {
+      font-size: 0.9rem;
+      padding: 8px 15px;
+    }
+  }
+  

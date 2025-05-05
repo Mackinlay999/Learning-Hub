@@ -1,0 +1,158 @@
+/* General Container */
+.r-register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa; /* White background for readability */
+}
+
+/* Register Box */
+.r-register-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 450px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.r-register-box:hover {
+    transform: scale(1.02); /* Subtle hover effect */
+}
+
+/* Heading */
+.r-register-box h3 {
+    margin-bottom: 1rem;
+    color: #333333; /* Dark Gray for headings */
+}
+
+/* Form Styling */
+.r-register-box form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Labels */
+.r-register-box label {
+    text-align: left;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333333; /* Dark Gray for text */
+}
+
+/* Input Fields */
+.r-register-box input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.r-register-box input:focus {
+    border-color: #D32F2F; /* Primary Red for focused input */
+    box-shadow: 0 0 5px rgba(211, 47, 47, 0.5); /* Soft red glow */
+}
+
+/* Password Toggle Button */
+.r-password-toggle {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+/* Password Container */
+.r-password-container input {
+    width: 450px !important; /* Ensure full width */
+}
+
+/* Error Messages */
+.r-error-text {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+/* Submit Button */
+.r-register-box button[type="submit"] {
+    background: #D32F2F; /* Primary Red for button */
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.r-register-box button[type="submit"]:hover {
+    background: #a00000; /* Darker red on hover */
+    transform: scale(1.05); /* Slight enlarge on hover */
+}
+
+/* Login Link */
+.r-register-box p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.r-register-box p span {
+    color: #007bff; /* Blue link color */
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.r-register-box p span:hover {
+    color: #003366; /* Darker blue on hover */
+    text-decoration: underline;
+}
+
+/* Password Container - Positioning */
+.r-password-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100% !important;
+}
+
+/* Password Visibility Toggle */
+.r-password-toggle {
+    background-color: transparent !important;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 10px;
+    color: #555; /* Dark gray for visibility toggle */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .r-register-box {
+        padding: 1.5rem;
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .r-register-box {
+        padding: 1rem;
+    }
+
+    .r-register-box h3 {
+        font-size: 1.2rem; /* Adjust heading size */
+    }
+
+    .r-register-box input {
+        font-size: 0.9rem; /* Smaller input font on smaller screens */
+    }
+
+    .r-register-box button[type="submit"] {
+        font-size: 0.9rem; /* Adjust button size */
+    }
+}

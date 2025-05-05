@@ -1,0 +1,129 @@
+/* Color Palette & Branding */
+:root {
+  --primary-red: #D32F2F; /* Call-to-action buttons, headings, icons */
+  --dark-gray: #333333; /* Text & contrast sections */
+  --white: #FFFFFF; /* Background for readability */
+  --gold-accent: #FFC107; /* Highlighting important sections */
+}
+
+/* Container Styling */
+.c-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--white); /* White background for readability */
+  color: var(--dark-gray); /* Dark gray text */
+}
+
+.filter-h2 {
+  text-align: center;
+  color: var(--primary-red); /* Primary red for filter heading */
+  font-size: 1.8rem;
+}
+
+/* Form Styling */
+.c-form {
+  display: flex;
+  justify-content: space-around !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  background: var(--white); /* White background */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Added transition for hover effect */
+}
+
+.c-form:hover {
+  transform: translateY(-5px); /* Hover effect for slight lift */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Deeper shadow on hover */
+}
+
+/* Label */
+.c-form label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark-gray); /* Dark gray text */
+  transition: color 0.3s ease;
+}
+
+/* Dropdown & Input Fields */
+.c-select,
+.c-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+  width: 330px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, transform 0.3s ease; /* Added transition for focus effect */
+}
+
+.c-select:focus,
+.c-input:focus {
+  border-color: var(--primary-red); /* Focus effect with primary red border */
+  outline: none;
+  transform: translateY(-2px); /* Slight lift on focus */
+}
+
+/* File Input */
+.c-input {
+  width: 330px;
+}
+
+/* Apply Button */
+.c-submit {
+  background-color: var(--primary-red); /* Primary red button */
+  color: var(--white); /* White text on red button */
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  width: 330px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.c-submit:hover {
+  background-color: #c62828; /* Darker red on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .c-form {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .c-select,
+  .c-input,
+  .c-submit {
+    width: 100%;
+  }
+}
+
+/* Animation & Effects */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.c-container {
+  animation: fadeIn 0.5s ease;
+}
+
+/* Additional Hover Effects */
+.c-form:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}

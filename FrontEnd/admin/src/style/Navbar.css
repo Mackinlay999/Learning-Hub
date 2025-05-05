@@ -1,0 +1,140 @@
+/* Navbar Styling */
+.custom-navbar {
+  background-color: #ffffff; /* White Background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo Styling */
+/* .navbar-logo1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #D32F2F;
+  transition: transform 0.3s ease-in-out;
+} */
+
+/* .navbar-logo1:hover {
+  transform: scale(1.1);
+} */
+
+/* Nav Links Styling */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links .nav-link {
+  color: black; /* Dark Gray Text */
+  font-weight: 600;
+  transition: color 0.3s ease-in-out;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.nav-links .nav-link:hover {
+  color: #D32F2F; /* Red Hover Effect */
+}
+
+/* Explore Button */
+.navbar-btn-explore {
+  background-color: #D32F2F;
+  border: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.navbar-btn-explore:hover {
+  background-color: #B71C1C; /* Darker Red */
+  transform: scale(1.05);
+}
+
+/* Login Button */
+.navbar-login-btn-1 {
+  /* Gold Accent */
+  background-color: rgba(255, 0, 0, 0.719) !important;
+  color: #ffffff !important ;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-login-btn:hover {
+  background-color: #D32F2F;
+  border: 2pc solid whitesmoke !important;
+ 
+}
+
+/* Responsive Navbar */
+@media (max-width: 992px) {
+  .custom-navbar {
+    flex-direction: row;
+   
+  }
+
+  .nav-links {
+    /* flex-direction: column; */
+    /* justify-content: center;
+    align-items: center; */
+    
+    display: block;  
+    margin:0 auto;  
+    width: fit-content; 
+ 
+  }
+
+  .navbar-login-btn {
+    width: 100%;
+    margin-top: 540px;
+    
+    
+  
+  }
+  
+  
+}
+
+/* Navbar Logo */
+.navbar-logo {
+  width: 200px; /* Increase width */
+  height: 70px; /* Set a proportional height */
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.1);
+}
+
+
+.navbar-logo:hover {
+  transform: scale(1.1);
+}
+
+/* Align Logo & Brand Name */
+.navbar-logo1 {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #D32F2F; /* Primary Red */
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.1);
+}
+
+

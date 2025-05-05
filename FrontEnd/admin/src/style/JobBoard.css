@@ -1,0 +1,137 @@
+/* Color Palette */
+:root {
+    --primary-red: #D32F2F;  /* Primary Red */
+    --dark-gray: #333333;    /* Dark Gray */
+    --white: #FFFFFF;        /* White */
+    --gold-accent: #FFC107;  /* Gold Accent */
+    --button-background: #007bff;  /* Button Background (Blue) */
+    --button-hover: #0056b3;      /* Button Hover (Dark Blue) */
+}
+
+/* Job Boards Container */
+.job-boards {
+    background-color: var(--white); /* Background color to make it more readable */
+    padding: 40px 5%;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Job Boards Container Flex Layout */
+.job-boards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Job Boards Text */
+.job-boards-text {
+    width: 100%;
+}
+
+.job-boards-text h2 {
+    font-size: 24px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--dark-gray);
+}
+
+.job-boards-text p {
+    font-size: 14px;
+    color: var(--dark-gray);
+    margin: 10px 0;
+}
+
+.job-boards-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.job-boards-text ul li {
+    font-size: 14px;
+    color: #444;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.job-boards-text ul li::before {
+    content: "●";
+    color: var(--primary-red);
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+/* Download Button */
+.download-btn {
+    background-color: var(--primary-red);
+    color: var(--white);
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: var(--button-hover);
+}
+
+/* Job Boards Image */
+.job-boards-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.job-boards-image img {
+    max-width: 60%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.job-boards-image img:hover {
+    transform: scale(1.05);
+}
+
+/* Job Title Section */
+.job-title {
+    text-align: center;
+    color: var(--dark-gray);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .job-boards-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .job-boards-text {
+        text-align: left;
+        flex: 1;
+    }
+
+    .job-boards-image {
+        flex: 1;
+        margin-top: 30px;
+    }
+
+    .download-btn {
+        width: auto;
+    }
+
+    .job-title {
+        text-align: left;
+    }
+}

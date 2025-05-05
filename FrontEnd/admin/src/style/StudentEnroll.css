@@ -1,0 +1,174 @@
+/* Enhanced Theme Colors */
+:root {
+  --primary-red: #D32F2F;
+  --dark-gray: #333333;
+  --white: #FFFFFF;
+  --gold-accent: #FFC107;
+}
+
+/* Container */
+.se-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Title */
+.se-title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: var(--primary-red);
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+/* Form */
+.se-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.se-form input,
+.se-form select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 200px;
+  transition: border 0.3s ease;
+}
+
+.se-form input:focus,
+.se-form select:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
+}
+
+.se-form button {
+  padding: 10px 20px;
+  background-color: var(--primary-red);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.se-form button:hover {
+  background-color: #b71c1c;
+  transform: scale(1.05);
+}
+
+/* Table */
+.se-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.se-table th,
+.se-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.se-table th {
+  background-color: var(--gold-accent);
+  font-size: 16px;
+  color: var(--dark-gray);
+}
+
+/* Row Colors */
+.se-row.paid {
+  background-color: #e9f9ee;
+}
+
+.se-row.pending {
+  background-color: #fffce0;
+}
+
+.se-row.overdue {
+  background-color: #ffeaea;
+}
+
+/* Buttons */
+.se-table button {
+  margin: 2px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+}
+
+.se-table button:first-child {
+  background-color: #28a745;
+  color: white;
+}
+
+.se-table button:nth-child(2) {
+  background-color: var(--primary-red);
+  color: white;
+}
+
+.se-table button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .se-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .se-form input,
+  .se-form select {
+    width: 90%;
+  }
+
+  .se-title {
+    font-size: 22px;
+  }
+
+  .se-table th,
+  .se-table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+/* Gold-accented status highlight effect */
+.se-table td.status-highlight {
+  background-color: var(--gold-accent);
+  font-weight: bold;
+  color: var(--dark-gray);
+}
+
+/* Optional subtle hover effect for rows */
+.se-table tr:hover {
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+/* Additional heading row */
+.ST-tr th {
+  color: var(--dark-gray);
+  background-color: #f2f2f2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

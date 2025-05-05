@@ -1,0 +1,282 @@
+/* Career Prep Container */
+.career-prep-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  background: #fff;
+}
+
+/* Text Section */
+.career-text {
+  max-width: 500px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #D32F2F; /* Red for headings */
+}
+
+p {
+  font-size: 16px;
+  color: #333333; /* Dark gray for text */
+  margin-bottom: 20px;
+}
+
+/* Button */
+.counseling-button {
+  background-color: #D32F2F; /* Red for primary button */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.counseling-button:hover {
+  background-color: #B71C1C; /* Darker red on hover */
+}
+
+/* Career Cards */
+.career-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* Ensures wrapping for smaller screens */
+}
+
+.card {
+  padding: 20px;
+  width: 200px; /* Adjusted for better fit */
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Slight hover effect */
+}
+
+.yellow-card {
+  background: #FADC7C; /* Soft yellow */
+  height: 135px;
+}
+
+.pink-card {
+  background: #F8B8B8; /* Soft pink */
+  height: 135px;
+}
+
+.card h3 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #D32F2F; /* Red for headings */
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Career Transition Section */
+.career-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+}
+
+/* Career Service Section */
+.service {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.service:hover {
+  transform: scale(1.02); /* Slight scale effect on hover */
+}
+
+.service-img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.service-content {
+  flex: 1;
+}
+
+.service-content h2 {
+  color: #2d2d2d;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #D32F2F; /* Red for titles */
+}
+
+.service-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.service-content ul li {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .career-prep-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .career-cards {
+    justify-content: center;
+  }
+
+  .service {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .service-img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+}
+
+@media (max-width: 764px) {
+  .career-prep-container {
+    padding: 20px;
+  }
+
+  .career-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .yellow-card,
+  .pink-card {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    margin-top: 20px;
+  }
+
+  .service {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .service-content h2 {
+    font-size: 18px;
+  }
+
+  .service-content ul li {
+    font-size: 14px;
+  }
+}
+
+/* FacultyMentors.css */
+.career-section {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+.description {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.career-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+.career-list li {
+  font-size: 1rem;
+  color: #444;
+  margin: 5px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.career-list li::before {
+  content: "✔";
+  margin-right: 10px;
+  color: #007bff;
+}
+
+.highlight {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-top: 20px;
+}
+
+.career-title {
+  text-align: left;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .career-title {
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+  }
+
+  .description,
+  .career-list li {
+    font-size: 0.95rem;
+  }
+
+  .highlight {
+    font-size: 1.1rem;
+  }
+}

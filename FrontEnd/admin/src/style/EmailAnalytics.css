@@ -1,0 +1,101 @@
+/* Color Palette & Branding */
+:root {
+  --primary-red: #D32F2F; /* Call-to-action buttons, headings, icons */
+  --dark-gray: #333333; /* Text & contrast sections */
+  --white: #FFFFFF; /* Background for readability */
+  --gold-accent: #FFC107; /* Highlighting important sections */
+  --light-gray: #f9f9f9; /* Light background for sections */
+  --button-hover-green: #45a049; /* Hover effect for buttons */
+  --button-green: #4caf50; /* Default green for buttons */
+}
+
+/* Email Card */
+.email-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 8px;
+  background-color: var(--light-gray);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.email-card:hover {
+  transform: translateY(-5px); /* Hover effect for lift */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Enhanced shadow on hover */
+}
+
+/* Title */
+.email-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--dark-gray); /* Dark text */
+  transition: color 0.3s ease;
+}
+
+.email-title:hover {
+  color: var(--primary-red); /* Red on hover */
+}
+
+/* Form Group */
+.email-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Email Input Styling */
+.email-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.email-input:focus {
+  border-color: var(--primary-red); /* Red border on focus */
+}
+
+/* Email Button Styling */
+.email-button {
+  background-color: var(--button-green); /* Default green button */
+  color: var(--white);
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.email-button:hover {
+  background-color: var(--button-hover-green); /* Darker green on hover */
+  transform: translateY(-3px); /* Lift effect on hover */
+}
+
+/* Email Stats */
+.email-stats {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: var(--dark-gray);
+}
+
+.email-stats p {
+  margin: 5px 0;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .email-form-group {
+    flex-direction: column;
+  }
+
+  .email-button {
+    width: 100%;
+  }
+}

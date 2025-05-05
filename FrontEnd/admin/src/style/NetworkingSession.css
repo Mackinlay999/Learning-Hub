@@ -1,0 +1,238 @@
+/* General Container Styling */
+.networking-container, .hackathon-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFFFFF; /* White for readability */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Container Hover Effect */
+.networking-container:hover, .hackathon-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Text Content Styling */
+.networking-content, .hackathon-content {
+  width: 50%;
+}
+
+/* Heading Styling */
+.networking-h2, .hackathon-h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333; /* Dark Gray for text */
+  margin-top: 0;
+  margin-right: 240px;
+  transition: color 0.3s ease;
+}
+
+/* Heading Hover Effect */
+.networking-h2:hover, .hackathon-h2:hover {
+  color: #D32F2F; /* Primary Red color on hover */
+}
+
+/* List Styling */
+.networking-content ul, .hackathon-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.networking-content ul li, .hackathon-content ul li {
+  font-size: 18px;
+  color: #555555; /* Slightly lighter gray for text */
+  margin: 8px 0;
+}
+
+/* Section Title Styling */
+.networking-content h3, .hackathon-content h3 {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #444444; /* Slightly darker gray */
+}
+
+/* Company Logos Styling */
+.company-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.company-logos img {
+  width: 80px;
+  height: auto;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Logo Hover Effect */
+.company-logos img:hover {
+  transform: scale(1.1);
+}
+
+/* Networking Image Styling */
+.networking-image img, .hackathon-image img {
+  width: 500px;
+  height: 300px;
+  margin-right: 200px;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Image Hover Effect */
+.networking-image img:hover, .hackathon-image img:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile Responsiveness for Networking */
+@media (max-width: 768px) {
+  .networking-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .networking-image img {
+    width: 70%;
+    border-radius: 10px;
+  }
+
+  .networking-h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 0;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .networking-content, .networking-image {
+    width: 100%;
+  }
+
+  .company-logos {
+    justify-content: center;
+  }
+}
+
+/* Mobile Responsiveness for Hackathon */
+@media (max-width: 768px) {
+  .hackathon-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hackathon-h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #222;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .hackathon-content, .hackathon-image {
+    width: 100%;
+  }
+
+  .networking-image img {
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+}
+
+/* Button Styling */
+.Partners-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #D32F2F; /* Primary Red */
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Button Hover Effect */
+.Partners-submit-btn:hover {
+  background-color: #FFC107; /* Gold Accent */
+  transform: translateY(-5px);
+}
+
+/* Button Variants */
+.Partners-container .btn-success {
+  background-color: #28a745;
+  border: none;
+}
+
+.Partners-container .btn-success:hover {
+  background-color: #218838;
+}
+
+.Partners-container .btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.Partners-container .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.Partners-container .btn-warning {
+  background-color: #FFC107;
+  border: none;
+}
+
+.Partners-container .btn-warning:hover {
+  background-color: #e0a800;
+}
+
+.Partners-container .btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.Partners-container .btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Alert Box Styling */
+.Alert {
+  margin-bottom: 20px;
+  transition: opacity 0.3s ease;
+}
+
+/* Responsive Design for Hackathon */
+@media screen and (max-width: 768px) {
+  .hackathon-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hackathon-image img {
+    width: 70%;
+    border-radius: 10px;
+  }
+}
+
+/* General Effect on All Containers */
+.networking-container, .hackathon-container {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect for Containers */
+.networking-container:hover, .hackathon-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 12px 16px rgba(0, 0, 0, 0.12);
+}

@@ -1,0 +1,65 @@
+Container
+.leads-container {
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Table wrapper for responsiveness */
+  .table-wrapper {
+    overflow-x: auto;
+  }
+  
+  /* Table styling */
+  .leads-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    min-width: 600px;
+  }
+  
+  /* Header */
+  .last-th {
+  
+    color: white;
+  }
+  
+  .last-tr th {
+    padding: 12px;
+    text-align: left;
+    font-size: 16px;
+  }
+  
+  /* Table body */
+  .leads-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px;
+  }
+  
+  /* Hover effect */
+  .leads-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Responsive for small screens */
+  @media (max-width: 768px) {
+    .leads-container {
+      padding: 10px;
+    }
+  
+    .leads-table {
+      min-width: 100%;
+    }
+  
+    .last-tr th,
+    .leads-table td {
+      padding: 8px;
+      font-size: 14px;
+    }
+    
+    
+  }
+
+  
+  
+  

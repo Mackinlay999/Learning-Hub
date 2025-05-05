@@ -1,0 +1,149 @@
+/* Color Palette */
+:root {
+  --primary-red: #D32F2F;  /* Primary Red */
+  --dark-gray: #333333;    /* Dark Gray */
+  --white: #FFFFFF;        /* White */
+  --gold-accent: #FFC107;  /* Gold Accent */
+  --button-hover: #388e3c; /* Button Hover (Green) */
+  --button-background: #4caf50; /* Button Background (Green) */
+  --delete-btn-background: #f44336; /* Delete Button Background (Red) */
+  --edit-btn-background: #2196f3; /* Edit Button Background (Blue) */
+  --table-header-background: #f2f2f2; /* Table Header Background */
+}
+
+/* Job Dashboard */
+.job-dashboard { 
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Dashboard Heading */
+.job-dashboard h1 {
+  text-align: center;
+  color: var(--dark-gray);
+  font-size: 2rem;
+}
+
+/* Dashboard Paragraph */
+.job-dashboard p {
+  text-align: center;
+  color: gray;
+  font-size: 1rem;
+}
+
+/* Job Form */
+.job-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+/* Job Form Inputs and Buttons */
+.job-form input,
+.job-form button {
+  flex: 1 1 45%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* Job Form Button (Add Job) */
+.job-form button {
+  background-color: var(--button-background);
+  color: var(--white);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.job-form button:hover {
+  background-color: var(--button-hover);
+}
+
+/* Job List Table */
+.job-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* Table Header */
+.job-list th {
+  background-color: var(--table-header-background);
+  color: var(--dark-gray);
+  padding: 10px;
+}
+
+/* Table Cells */
+.job-list th,
+.job-list td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Job List Buttons (Edit/Delete) */
+.job-list button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  background-color: var(--edit-btn-background);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.job-list button:hover {
+  background-color: darkblue;
+}
+
+.job-list button:last-child {
+  background-color: var(--delete-btn-background);
+}
+
+.job-list button:last-child:hover {
+  background-color: darkred;
+}
+
+/* Row Text Color */
+.JP-tr {
+  color: var(--dark-gray);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .job-form input,
+  .job-form button {
+      flex: 1 1 100%;
+  }
+
+  .job-list table,
+  .job-list thead,
+  .job-list tbody,
+  .job-list th,
+  .job-list td,
+  .job-list tr {
+      display: block;
+  }
+
+  .job-list td {
+      position: relative;
+      padding-left: 50%;
+      text-align: right;
+  }
+
+  .job-list td::before {
+      position: absolute;
+      left: 10px;
+      content: attr(data-label);
+      font-weight: bold;
+      text-align: left;
+  }
+
+  .JP-tr {
+      color: var(--dark-gray);
+  }
+}

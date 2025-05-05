@@ -1,0 +1,96 @@
+.blog-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 70px;
+  background-color: white;
+}
+.blog-training-container{
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 70px;
+  background-color: white;
+}
+
+.blog-content,
+.blog-training-content {
+  max-width: 50%;
+}
+
+.blog-title,
+.blog-training-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #be2929;
+  margin-bottom: 20px;
+}
+
+.blog-description,
+.blog-training-description {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.blog-btn,
+.blog-training-btn {
+    background-color: #b30000;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.blog-btn:hover,
+.blog-training-btn:hover {
+    background-color: #B71C1C;
+}
+
+.blog-image img,
+.blog-training-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .blog-container,
+  .blog-training-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .blog-content,
+  .blog-training-content {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .blog-image img,
+  .blog-training-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .blog-title,
+  .blog-training-title {
+    font-size: 2rem;
+  }
+
+  .blog-description,
+  .blog-training-description {
+    font-size: 1rem;
+  }
+
+  .blog-btn,
+  .blog-training-btn {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}

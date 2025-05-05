@@ -1,0 +1,176 @@
+Container
+.testimonial-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #ffffff; /* White background */
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease;
+}
+
+.testimonial-container h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #D32F2F; /* Primary Red */
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Card Layout */
+.testimonial-card {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  gap: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+/* Left Section - Video Thumbnail */
+.testimonial-video {
+  position: relative;
+  width: 50%;
+}
+
+.testimonial-video img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.testimonial-video img:hover {
+  transform: scale(1.03);
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffffcc; /* Slight transparent white */
+  padding: 18px;
+  border-radius: 50%;
+  font-size: 26px;
+  font-weight: bold;
+  color: #D32F2F; /* Primary Red */
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.play-button:hover {
+  background-color: #FFC107; /* Gold Accent */
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+/* Right Section - Text Content */
+.testimonial-content {
+  width: 50%;
+  text-align: left;
+}
+
+.testimonial-content p {
+  font-size: 16px;
+  color: #333333; /* Dark Gray */
+  line-height: 1.6;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.quote-mark {
+  font-size: 26px;
+  font-weight: bold;
+  color: #FFC107; /* Gold Accent */
+}
+
+/* Name & Title */
+.testimonial-content h3 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 12px;
+  color: #D32F2F; /* Primary Red */
+}
+
+.job-title {
+  font-size: 14px;
+  color: #555555;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+/* Company Logo */
+.company-logo {
+  width: 50px;
+  margin-top: 10px;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.company-logo:hover {
+  filter: grayscale(0%);
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .testimonial-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .testimonial-video {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .testimonial-video img {
+    width: 90%;
+  }
+
+  .play-button {
+    font-size: 22px;
+    padding: 16px;
+  }
+
+  .testimonial-content {
+    width: 100%;
+    text-align: center;
+  }
+
+  .testimonial-content p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .quote-mark {
+    font-size: 22px;
+  }
+
+  .testimonial-content h3 {
+    font-size: 20px;
+    margin-top: 8px;
+  }
+
+  .job-title {
+    font-size: 13px;
+  }
+
+  .company-logo {
+    width: 40px;
+    margin-top: 8px;
+  }
+}

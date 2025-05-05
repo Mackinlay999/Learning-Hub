@@ -1,0 +1,116 @@
+.corporate-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+  background-color: #FFFFFF;
+}
+
+.container {
+  width: 80%;
+}
+
+.corporate-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.corporate-content:hover {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Default: Image on Left, Content on Right */
+.corporate-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  width: 600px;
+  height: 300px;
+}
+
+.corporate-image img {
+  width: 100%;
+  max-width: 400px;
+  height: 330px;
+  border-radius: 10px;
+  border: 4px solid #D32F2F;
+  transition: transform 0.3s ease-in-out;
+}
+
+.corporate-image img:hover {
+  transform: scale(1.05);
+}
+
+.corporate-text {
+  flex: 1;
+  text-align: left;
+  color: #333333;
+}
+
+/* Responsive: Stack Image on Top for Mobile */
+@media (max-width: 768px) {
+  .corporate-content {
+    flex-direction: column; /* Stack elements */
+    text-align: center; /* Center text */
+    padding: 20px;
+  }
+
+  .corporate-image {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .corporate-text {
+    text-align: center;
+  }
+
+  .corporate-image img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+  }
+}
+
+.corporate-title {
+  font-size: 28px;
+  font-weight: bold;
+  text-align: left;
+  color: #D32F2F;
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #333333;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 12px;
+}
+
+.highlight {
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFC107;
+  display: inline-block;
+  margin-top: 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+.highlight:hover {
+  color: #D32F2F;
+}

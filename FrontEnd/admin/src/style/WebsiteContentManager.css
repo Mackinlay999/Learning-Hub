@@ -1,0 +1,123 @@
+/* Color Palette */
+:root {
+  --primary-red: #D32F2F;   /* Call-to-action buttons, headings, icons */
+  --dark-gray: #333333;     /* Text & contrast sections */
+  --white: #FFFFFF;         /* Background for readability */
+  --gold-accent: #FFC107;   /* Highlighting important sections */
+  --btn-hover: #005fa3;     /* Hover color for buttons */
+}
+
+/* Website Content Manager Container */
+.website-content-manager {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Title Styling */
+.website-content-manager-title {
+  text-align: center;
+  color: var(--dark-gray);
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Section Styling */
+.website-content-manager-section {
+  margin-bottom: 30px;
+}
+
+/* Label Styling */
+.website-content-manager-section label {
+  display: block;
+  font-weight: bold;
+  margin-top: 15px;
+  color: var(--dark-gray);
+  font-size: 1.1rem;
+}
+
+/* Input & Textarea Styling */
+.website-content-manager-section input,
+.website-content-manager-section textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.website-content-manager-section input:focus,
+.website-content-manager-section textarea:focus {
+  border-color: var(--primary-red);
+  box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
+}
+
+/* Button Styling */
+.website-content-manager-save-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary-red);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.website-content-manager-save-button:hover {
+  background-color: var(--btn-hover);
+  transform: translateY(-2px);
+}
+
+/* Button Focus Styling */
+.website-content-manager-save-button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
+}
+
+/* Section Hover Effect */
+.website-content-manager-section:hover {
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .website-content-manager {
+    padding: 15px;
+  }
+
+  .website-content-manager-save-button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .website-content-manager-section input,
+  .website-content-manager-section textarea {
+    padding: 8px;
+  }
+}

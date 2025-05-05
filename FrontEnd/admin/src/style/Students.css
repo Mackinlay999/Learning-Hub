@@ -1,0 +1,220 @@
+/* Students Container */
+.students-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #FFFFFF;
+  color: #333333;
+}
+
+.students-title {
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #D32F2F;
+  text-shadow: 1px 1px 1px #ffc107;
+}
+
+.students-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Form Controls */
+.students-form-control,
+.students-form-select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.students-form-control:focus,
+.students-form-select:focus {
+  border-color: #D32F2F;
+  outline: none;
+  box-shadow: 0 0 5px rgba(211, 47, 47, 0.4);
+}
+
+/* Buttons */
+.students-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.students-btn:hover {
+  opacity: 0.95;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.students-btn:focus {
+  outline: none;
+}
+
+/* Button specific styles */
+.students-btn.btn-primary {
+  background-color: #D32F2F;
+  color: white;
+}
+
+.students-btn.btn-info {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.students-btn.btn-warning {
+  background-color: #FFC107;
+  color: black;
+}
+
+.students-btn.btn-danger {
+  background-color: #c62828;
+  color: white;
+}
+
+.students-btn.btn-dark {
+  background-color: #333333;
+  color: white;
+}
+
+.students-btn:active {
+  transform: scale(0.97);
+  background-color: #b71c1c;
+}
+
+/* Table Styles */
+.students-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.students-table th, .students-table td {
+  padding: 12px;
+  text-align: left;
+  font-size: 1rem;
+  color: #333333;
+}
+
+.students-table th {
+  background-color: #D32F2F;
+  color: white;
+  font-weight: 600;
+}
+
+.students-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.students-table-row {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.students-table-row:hover {
+  background-color: #FFF3E0;
+  transform: scale(1.01);
+}
+
+/* Badges */
+.students-table .badge {
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  border-radius: 12px;
+  color: white;
+}
+
+.students-table .badge.bg-success {
+  background-color: #28a745;
+}
+
+.students-table .badge.bg-secondary {
+  background-color: #6c757d;
+}
+
+.students-table .badge.bg-warning {
+  background-color: #FFC107;
+  color: #333;
+}
+
+/* Circle Images */
+.students-rounded-circle {
+  border-radius: 50%;
+  border: 2px solid #D32F2F;
+}
+
+/* Light Table Background */
+.students-table-light {
+  background-color: #f8f9fa;
+}
+
+/* Hover Effects */
+.students-btn:focus,
+.students-btn:hover {
+  background-color: #B71C1C;
+  box-shadow: 0 0 10px rgba(211, 47, 47, 0.3);
+}
+
+.students-table-row:hover {
+  transform: scale(1.02);
+}
+
+.students-btn:active {
+  transform: scale(0.98);
+  background-color: #a31818;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .students-row {
+    flex-direction: column;
+  }
+
+  .students-form-control,
+  .students-form-select {
+    width: 100%;
+  }
+
+  .students-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .students-table td, .students-table th {
+    font-size: 0.9rem;
+  }
+
+  .students-table .badge {
+    font-size: 0.8rem;
+  }
+
+  .students-btn.btn-sm {
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .students-title {
+    font-size: 1.2rem;
+  }
+
+  .students-table td, .students-table th {
+    font-size: 0.8rem;
+  }
+}

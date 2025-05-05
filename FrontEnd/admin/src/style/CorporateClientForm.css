@@ -1,0 +1,160 @@
+/* Container */
+.CT-main {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.CT-main:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Headings */
+.CT-title {
+  font-size: 26px;
+  color: #D32F2F;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.CT-subtitle {
+  font-size: 20px;
+  color: #333333;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.CT-description {
+  font-size: 16px;
+  color: #666666;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Form */
+.CT-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.CT-form input,
+.CT-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  transition: border 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+.CT-form input:focus,
+.CT-form select:focus {
+  border: 1px solid #D32F2F;
+  box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
+  outline: none;
+}
+
+.CT-form button {
+  grid-column: span 2;
+  padding: 12px;
+  background-color: #D32F2F;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.CT-form button:hover {
+  background-color: #B71C1C;
+  transform: scale(1.02);
+}
+
+/* Table */
+.CT-list {
+  overflow-x: auto;
+}
+
+.CT-section-title {
+  font-size: 20px;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #D32F2F;
+}
+
+.CT-empty {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+}
+
+.CT-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.CT-table th,
+.CT-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.CT-table th {
+  background-color: #D32F2F;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.CT-table td button {
+  margin: 0 5px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+
+.CT-table td button:first-child {
+  background-color: #FFC107;
+  color: #333333;
+}
+
+.CT-table td button:first-child:hover {
+  background-color: #e0a800;
+}
+
+.CT-table td button:last-child {
+  background-color: #D32F2F;
+  color: white;
+}
+
+.CT-table td button:last-child:hover {
+  background-color: #B71C1C;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .CT-form {
+    grid-template-columns: 1fr;
+  }
+
+  .CT-title,
+  .CT-subtitle,
+  .CT-description {
+    text-align: left;
+  }
+}

@@ -1,0 +1,111 @@
+.support {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  border: 2px solid #D32F2F; /* subtle red border */
+  transition: box-shadow 0.3s ease;
+}
+
+.support:hover {
+  box-shadow: 0px 6px 15px rgba(211, 47, 47, 0.2);
+}
+
+.page-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #D32F2F; /* Primary Red */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.support-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.support-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333333; /* Dark Gray */
+  background-color: #fafafa;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.support-form input:focus {
+  outline: none;
+  border: 1px solid #D32F2F;
+  box-shadow: 0 0 5px rgba(211, 47, 47, 0.3);
+}
+
+.add-ticket {
+  padding: 10px;
+  background: #D32F2F; /* Primary Red */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.add-ticket:hover {
+  background: #B71C1C; /* darker red */
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
+}
+
+.support-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.support-table th,
+.support-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  color: #333333; /* Dark Gray */
+}
+
+.support-table th {
+  background: #D32F2F; /* Primary Red */
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.support-table tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.support-table tr:hover {
+  background: #FFF8E1; /* light gold background on hover */
+  transition: background 0.2s ease-in;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .support-form input {
+    width: 100%;
+  }
+
+  .support-table {
+    font-size: 14px;
+  }
+
+  .add-ticket {
+    width: 100%;
+  }
+}

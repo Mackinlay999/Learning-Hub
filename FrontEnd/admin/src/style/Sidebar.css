@@ -1,0 +1,286 @@
+.sidebar-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  background-color: #1e293b;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+  border-right: 2px solid #FFC107; /* Gold Accent */
+}
+
+.custom-sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.sidebar-header {
+  color: #D32F2F; /* Primary Red */
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #FFC107;
+  padding-bottom: 10px;
+}
+
+.toggle-btn {
+  background-color: #D32F2F; /* Primary Red */
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background-color: #b71c1c; /* Darker Red */
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #2f3e52;
+}
+
+.sidebar-nav-link {
+  display: flex;
+  align-items: center;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-nav-link:hover {
+  background-color: #D32F2F;
+  color: #fff;
+}
+
+.sidebar-nav-link:hover .S-icon {
+  color: #FFC107; /* Gold Icon Hover */
+}
+
+.sidebar-nav-link.active {
+  background-color: #D32F2F; /* Primary Red */
+  color: white;
+  font-weight: bold;
+}
+
+.S-content {
+  margin-left: 15px;
+}
+
+.S-icon {
+  color: #cbd5e1;
+  transition: color 0.3s ease;
+}
+
+.toggle-btn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar-wrapper {
+    width: 16%;
+    position: absolute;
+    z-index: 100;
+    height: 100vh;
+    padding-top: 2rem;
+  }
+
+  .sidebar-nav-link {
+    font-size: 14px;
+    width: auto;
+    padding: 10px 20px;
+    justify-content: flex-start;
+  }
+
+  .S-content {
+    display: none;
+  }
+
+  .brand-text {
+    display: none;
+  }
+
+  .S-icon {
+    margin-right: 10px;
+  }
+
+  /* menu pattern */
+  .sidebar-wrapper {
+    position: fixed;
+    top: 20px;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background-color: #1e293b;
+    transition: left 0.3s ease-in-out;
+    z-index: 100;
+    border-right: 2px solid #FFC107;
+  }
+
+  .sidebar-wrapper.open {
+    left: 0;
+  }
+
+  .custom-sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .sidebar-header {
+    padding: 20px;
+    background-color: #1e293b;
+    color: #D32F2F;
+    text-align: center;
+  }
+
+  .S-sidebar {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+
+  .sidebar-nav {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .sidebar-nav li {
+    border-bottom: 1px solid #444;
+  }
+
+  .sidebar-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .sidebar-nav-link.active {
+    background-color: #D32F2F;
+    color: white;
+  }
+
+  .S-icon {
+    margin-right: 10px;
+    color: #cbd5e1;
+  }
+
+  .S-content {
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .S-sidebar ul li:hover {
+    background-color: #D32F2F;
+  }
+
+  .toggle-btn {
+    display: block;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    padding: 10px;
+    background-color: #D32F2F;
+    color: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 101;
+    border-radius: 4px;
+  }
+
+  .toggle-btn:hover {
+    background-color: #b71c1c;
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+  }
+}
+/* --- Animations --- */
+@keyframes slideIn {
+  from {
+    transform: translateX(-15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIcon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* --- Apply animations to nav links and icons --- */
+.sidebar-nav-link {
+  display: flex;
+  align-items: center;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  animation: slideIn 0.4s ease forwards;
+}
+
+.sidebar-nav-link:hover {
+  background-color: #D32F2F;
+  color: #fff;
+  transform: translateX(3px); /* subtle move on hover */
+  box-shadow: 0 0 8px rgba(211, 47, 47, 0.4); /* subtle red glow */
+}
+
+.sidebar-nav-link:hover .S-icon {
+  animation: bounceIcon 0.6s ease;
+  color: #FFC107; /* gold on hover */
+}
+
+/* Optional: make active link stand out more */
+.sidebar-nav-link.active {
+  background-color: #D32F2F;
+  color: white;
+  font-weight: bold;
+  box-shadow: inset 2px 0 0 #FFC107; /* gold accent line on left */
+}
+
+/* Optional: Add smooth icon appearance */
+.S-icon {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.sidebar-logout-btn {
+  background: red;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+}

@@ -1,0 +1,182 @@
+/* Main layout */ 
+.CR-main {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1000px;
+  margin: auto;
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Titles and subtitles */
+.CR-title {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #D32F2F; /* Primary Red */
+  font-weight: 700;
+  border-bottom: 2px solid #FFC107; /* Gold Accent underline */
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+.CR-subtitle {
+  font-size: 16px;
+  text-align: center;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Form styles */
+.CR-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.CR-form input,
+.CR-form select,
+.CR-form textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.CR-form input:focus,
+.CR-form select:focus,
+.CR-form textarea:focus {
+  border-color: #D32F2F;
+  box-shadow: 0 0 6px rgba(211, 47, 47, 0.3);
+  outline: none;
+}
+
+.CR-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.CR-form button {
+  background-color: #D32F2F;
+  color: #FFFFFF;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.CR-form button:hover {
+  background-color: #B71C1C;
+  transform: translateY(-1px);
+}
+
+/* Table styles */
+.CR-list {
+  overflow-x: auto;
+}
+
+.CR-section-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333333;
+  border-left: 4px solid #FFC107;
+  padding-left: 10px;
+}
+
+.CR-empty {
+  color: #888;
+  font-style: italic;
+}
+
+/* Enhanced table style */
+.CR-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.CR-table th,
+.CR-table td {
+  padding: 12px 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 15px;
+}
+
+.CR-table th {
+  background-color: #D32F2F;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.CR-table td {
+  background-color: #FFFFFF;
+  color: #333333;
+}
+
+/* Action buttons */
+.CR-table button {
+  margin-right: 5px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.CR-table button:first-of-type {
+  background-color: #FFC107;
+  color: #333333;
+}
+
+.CR-table button:first-of-type:hover {
+  background-color: #e0a800;
+  transform: scale(1.05);
+}
+
+.CR-table button:last-of-type {
+  background-color: #D32F2F;
+  color: white;
+}
+
+.CR-table button:last-of-type:hover {
+  background-color: #B71C1C;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .CR-form {
+    gap: 8px;
+  }
+
+  .CR-form input,
+  .CR-form select,
+  .CR-form textarea {
+    font-size: 13px;
+  }
+
+  .CR-title {
+    font-size: 26px;
+  }
+
+  .CR-table th,
+  .CR-table td {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+
+  .CR-main {
+    padding: 15px;
+  }
+}

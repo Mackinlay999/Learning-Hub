@@ -1,0 +1,170 @@
+/* Color Palette & Branding */
+:root {
+  --primary-red: #D32F2F; /* Call-to-action buttons, headings, icons */
+  --dark-gray: #333333; /* Text & contrast sections */
+  --white: #FFFFFF; /* Background for readability */
+  --gold-accent: #FFC107; /* Highlighting important sections */
+  --light-gray: #f9f9f9; /* Light background for sections */
+  --button-blue: #007bff; /* Blue buttons */
+  --button-green: #28a745; /* Green buttons */
+  --button-red: #dc3545; /* Red buttons */
+  --button-hover-green: #45a049; /* Hover green */
+  --button-hover-blue: #0056b3; /* Hover blue */
+  --button-hover-red: #c82333; /* Hover red */
+  --shadow: rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+/* Users Container */
+.users-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Page Title */
+.page-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--dark-gray);
+  transition: color 0.3s ease;
+}
+
+.page-title:hover {
+  color: var(--primary-red); /* Red on hover */
+}
+
+/* User Actions Button */
+.user-actions {
+  margin-bottom: 15px;
+}
+
+.add-user {
+  padding: 10px 15px;
+  background-color: var(--button-blue);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-user:hover {
+  background-color: var(--button-hover-blue); /* Hover effect */
+  transform: translateY(-3px); /* Slight lift on hover */
+}
+
+/* User Table */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.user-table th, .user-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: var(--light-gray);
+}
+
+/* Edit & Delete Buttons */
+.edit, .delete {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: transform 0.3s ease;
+}
+
+.edit {
+  background-color: var(--button-green);
+  color: var(--white);
+}
+
+.edit:hover {
+  background-color: var(--button-hover-green);
+  transform: translateY(-3px); /* Slight lift effect */
+}
+
+.delete {
+  background-color: var(--button-red);
+  color: var(--white);
+}
+
+.delete:hover {
+  background-color: var(--button-hover-red);
+  transform: translateY(-3px); /* Slight lift effect */
+}
+
+/* Users Section */
+.users {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  background: var(--white);
+  box-shadow: 0px 4px 8px var(--shadow);
+  border-radius: 8px;
+}
+
+/* User Form */
+.user-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.user-form input, .user-form select {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Add and Save Buttons */
+.add-user, .save-user {
+  background-color: var(--button-blue);
+  color: var(--white);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-user:hover, .save-user:hover {
+  background-color: var(--button-hover-blue);
+  transform: translateY(-3px); /* Slight lift on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .users {
+    width: 90%;
+  }
+
+  .user-form {
+    flex-direction: column;
+  }
+
+  .user-form input, .user-form select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .user-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .add-user {
+    width: 100%;
+  }
+}

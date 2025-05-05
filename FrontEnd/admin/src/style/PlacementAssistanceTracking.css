@@ -1,0 +1,153 @@
+/* Main Container */
+.PA-main { 
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #FFFFFF; /* White background for readability */
+}
+
+/* Title */
+.PA-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 5px;
+  color: #D32F2F; /* Primary Red for titles */
+}
+
+/* Description */
+.PA-description {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #333; /* Dark Gray for text */
+}
+
+/* Form Styling */
+.PA-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.PA-form input,
+.PA-form select {
+  flex: 1 1 30%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.PA-form input:focus,
+.PA-form select:focus {
+  border-color: #D32F2F; /* Red border on focus */
+  box-shadow: 0 0 0 0.2rem rgba(211, 47, 47, 0.25); /* Red shadow on focus */
+  outline: none;
+}
+
+/* Submit Button */
+.PA-form button {
+  padding: 10px 20px;
+  background-color: #D32F2F; /* Primary Red */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  flex: 1 1 100%;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.PA-form button:hover {
+  background-color: #B71C1C; /* Darker red on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* List Section */
+.PA-list h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #D32F2F; /* Primary Red for headings */
+}
+
+/* Empty Section */
+.PA-empty {
+  text-align: center;
+  font-size: 16px;
+  color: #777; /* Light gray for empty states */
+}
+
+/* Table Styles */
+.PA-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.PA-table th,
+.PA-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 14px;
+}
+
+.PA-table th {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.PA-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.PA-table button {
+  padding: 6px 10px;
+  margin: 2px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.PA-table button:first-child {
+  background-color: #27ae60; /* Green for success actions */
+  color: white;
+}
+
+.PA-table button:first-child:hover {
+  background-color: #219150; /* Darker green on hover */
+}
+
+.PA-table button:last-child {
+  background-color: #c0392b; /* Red for delete actions */
+  color: white;
+}
+
+.PA-table button:last-child:hover {
+  background-color: #a83224; /* Darker red on hover */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .PA-form input,
+  .PA-form select {
+    flex: 1 1 100%;
+  }
+
+  .PA-table th,
+  .PA-table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  /* Adjust button size for mobile */
+  .PA-form button {
+    font-size: 14px;
+    padding: 12px 30px;
+  }
+}

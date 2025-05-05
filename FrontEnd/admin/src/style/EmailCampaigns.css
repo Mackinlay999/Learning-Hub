@@ -1,0 +1,169 @@
+/* Color Palette & Branding */
+:root {
+  --primary-red: #D32F2F; /* Call-to-action buttons, headings, icons */
+  --dark-gray: #333333; /* Text & contrast sections */
+  --white: #FFFFFF; /* Background for readability */
+  --gold-accent: #FFC107; /* Highlighting important sections */
+  --blue: #007bff; /* Blue for highlights */
+  --light-gray: #f8f9fa; /* Light background for sections */
+  --gray-text: #555; /* Gray text for subtitles */
+  --lighter-gray: #666; /* Lighter gray for descriptions */
+  --highlight-background: #007bff; /* Highlight background */
+  --highlight-color: #fff; /* Highlight text color */
+  --danger-red: #dc3545; /* Danger red for delete buttons */
+  --success-green: #28a745; /* Success green for save buttons */
+}
+
+/* Global Styles */
+.email-campaigns {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: var(--light-gray); /* Light background */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.email-campaigns:hover {
+  transform: translateY(-5px); /* Hover effect for a subtle lift */
+}
+
+/* Title Styling */
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: var(--dark-gray); /* Dark text */
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.title:hover {
+  color: var(--primary-red); /* Red on hover */
+}
+
+/* Form Styling */
+.campaign-form, .email-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.campaign-form input, .email-form input, .email-form textarea, .campaign-form select {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.campaign-form input:focus, .email-form input:focus, .email-form textarea:focus, .campaign-form select:focus {
+  border-color: var(--primary-red); /* Red border on focus */
+}
+
+.campaign-form button, .email-form button {
+  padding: 10px 15px;
+  border: none;
+  background: var(--blue);
+  color: var(--white);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.campaign-form button:hover, .email-form button:hover {
+  background: #0056b3; /* Darker blue on hover */
+  transform: translateY(-3px); /* Slight lift effect on hover */
+}
+
+/* Table Styling */
+.campaign-table, .email-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.campaign-table th, .campaign-table td,
+.email-table th, .email-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.campaign-table th, .email-table th {
+  background: var(--blue); /* Blue header */
+  color: var(--white);
+}
+
+.campaign-table tr:nth-child(even),
+.email-table tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+button.edit {
+  background: var(--gold-accent); /* Gold button for edit */
+}
+
+button.delete {
+  background: var(--danger-red); /* Red button for delete */
+}
+
+button.manage-emails {
+  background: #17a2b8; /* Teal for manage emails */
+}
+
+button.save, button.close-emails {
+  background: var(--success-green); /* Green for save */
+}
+
+button.edit:hover {
+  background: #e0a800; /* Darker gold on hover */
+}
+
+button.delete:hover {
+  background: #c82333; /* Darker red on hover */
+}
+
+button.manage-emails:hover {
+  background: #138496; /* Darker teal on hover */
+}
+
+button.save:hover, button.close-emails:hover {
+  background: #218838; /* Darker green on hover */
+}
+
+/* Email Management Section */
+.email-management {
+  margin-top: 30px;
+  padding: 20px;
+  background: var(--white); /* White background */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.email-management h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--dark-gray);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .campaign-form, .email-form {
+    flex-direction: column;
+  }
+
+  .campaign-form input, .email-form input, .email-form textarea, .campaign-form select {
+    width: 100%;
+  }
+
+  .campaign-table, .email-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,225 @@
+/* General styles */
+.finance-program-container {
+  padding: 2rem;
+  background-color: #ffffff; /* changed to white for better readability */
+  color: #333333; /* dark gray text */
+  line-height: 1.6;
+}
+
+/* Header section */
+.finance-program-header-section {
+  background: #ffffff;
+  color: #D32F2F; /* primary red heading */
+  padding: 3rem 2rem;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.finance-program-header-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #D32F2F;
+}
+
+.finance-program-cta-buttons {
+  margin-top: 1.5rem;
+}
+
+.finance-program-cta-buttons .finance-program-btn1 {
+  margin: 0 0.5rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.finance-program-cta-buttons .finance-program-btn1:hover {
+  opacity: 0.9;
+}
+
+/* Section styles */
+section {
+  margin-bottom: 2.5rem;
+}
+
+.finance-program-overview,
+.finance-program-benefits,
+.finance-program-placement-assistance,
+.finance-program-curriculum,
+.finance-program-cta-section {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Module styling */
+.finance-program-module {
+  margin-bottom: 2rem;
+}
+
+.finance-program-module h3 {
+  color: #D32F2F; /* primary red */
+  font-size: 1.5rem;
+}
+
+.finance-program-module h4 {
+  color: #FFC107; /* gold accent */
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.finance-program-module ul {
+  padding-left: 1.5rem;
+}
+
+.finance-program-module ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Benefit list */
+.finance-program-benefits ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.finance-program-benefits li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 1rem;
+  color: #333333;
+}
+
+.finance-program-benefits li::before {
+  color: #28a745;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+/* CTA section */
+.finance-program-cta-section {
+  text-align: center;
+  background-color: #fff3e0; /* soft gold tone */
+  border-left: 5px solid #FFC107; /* gold accent */
+}
+
+/* Modal overlays */
+.finance-program-module-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+/* Modal forms */
+.finance-program-module-enroll-modal,
+.finance-program-module-payment-modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from {
+      transform: translateY(40px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.finance-program-module-enroll-modal form input {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.finance-program-module-enroll-modal form input:focus {
+  border-color: #D32F2F;
+  outline: none;
+}
+
+.finance-program-module-enroll-modal form button,
+.finance-program-module-payment-modal a,
+.finance-program-module-payment-modal button {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Buttons */
+.finance-program-btn2 {
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  font-weight: 600;
+}
+
+.finance-btn2:hover {
+  transform: translateY(-2px);
+}
+
+.btn-info {
+  background-color: #D32F2F; /* primary red */
+  color: white;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .finance-program-header-section h1 {
+      font-size: 2rem;
+  }
+
+  .finance-program-module-enroll-modal,
+  .finance-program-payment-modal {
+      width: 95%;
+      padding: 1.5rem;
+  }
+
+  .finance-program-overview,
+  .finance-program-benefits,
+  .finance-program-placement-assistance,
+  .finance-program-curriculum,
+  .finance-program-cta-section {
+      padding: 1.2rem;
+  }
+}

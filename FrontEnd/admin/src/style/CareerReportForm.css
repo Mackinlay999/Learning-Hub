@@ -1,0 +1,120 @@
+/* Modal Background */
+.modal-overlay {
+  position: absolute;
+  top: 160px;
+  z-index: +1;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.5); */
+  display: flex;
+  margin-top: 700px !important;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4); /* optional backdrop */
+  backdrop-filter: blur(3px);
+}
+
+/* Modal Container */
+.modal-container {
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid #D32F2F;
+}
+
+/* Close Button */
+.career-close-btn {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 36px;
+  cursor: pointer;
+  color: #D32F2F;
+  transition: transform 0.2s ease;
+}
+
+.career-close-btn:hover {
+  transform: scale(1.2);
+  color: #FFC107;
+}
+
+/* Form Fields */
+.career-form input,
+.career-form select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #333333;
+}
+
+.career-form input:focus,
+.career-form select:focus {
+  outline: none;
+  border-color: #D32F2F;
+  box-shadow: 0 0 6px rgba(211, 47, 47, 0.5);
+}
+
+/* Phone Input */
+.phone-input {
+  display: flex;
+  gap: 10px;
+}
+
+.phone-input select {
+  width: 30%;
+}
+
+.phone-input input {
+  flex: 1;
+}
+
+/* Consent Text */
+.consent-text {
+  font-size: 10px;
+  color: #666;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+.consent-text a {
+  color: #D32F2F;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.consent-text a:hover {
+  color: #FFC107;
+}
+
+/* Download Button */
+.download-btn {
+  width: 100%;
+  background-color: #D32F2F;
+  color: white;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 2px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(211, 47, 47, 0.2);
+}
+
+.download-btn:hover {
+  background-color: #B71C1C;
+  transform: scale(1.02);
+  color: #FFC107;
+}

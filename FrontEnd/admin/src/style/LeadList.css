@@ -1,0 +1,227 @@
+/* LeadList.css */
+
+/* Color Palette */
+:root {
+  --primary-red: #D32F2F;
+  --dark-gray: #333333;
+  --white: #FFFFFF;
+  --gold-accent: #FFC107;
+  --background-light: #fafafa;
+  --button-hover: #216494;
+}
+
+/* Container */
+.LL-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  background-color: var(--background-light);
+  font-family: Arial, sans-serif;
+  color: var(--dark-gray);
+}
+
+/* Heading */
+.LL-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--primary-red);
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* Dropdown filter */
+.LL-container select {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  margin: 20px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.LL-container select:focus {
+  border-color: var(--primary-red);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background-color: var(--primary-red);
+  color: var(--white);
+}
+
+.LL-tr th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 16px;
+}
+
+tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+/* Buttons */
+.ld-bnt {
+  margin-right: 8px;
+  padding: 6px 12px;
+  background-color: #2980b9;
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.ld-bnt:hover {
+  background-color: var(--button-hover);
+}
+
+/* Modal */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: var(--white);
+  padding: 24px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Headings & Text */
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 20px;
+  color: var(--dark-gray);
+}
+
+.modal-content p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Close Button */
+.modal-content button {
+  margin-top: 20px;
+  padding: 8px 16px;
+  background-color: var(--primary-red);
+  color: var(--white);
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+  background-color: #b71c1c;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  .LL-container select {
+    width: 100%;
+  }
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    background-color: var(--white);
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    flex-basis: 40%;
+    color: #555;
+  }
+
+  td:last-child {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ld-bnt {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+/* Model */
+.L-section {
+  width: 100% !important;
+  border-radius: 8px;
+}
+.L-input{
+  width: 100%;
+  padding: 6px;
+  border-radius: 8px;
+  
+}
+.L-input {
+  margin-top: 20px;
+}

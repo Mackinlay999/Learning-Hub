@@ -1,0 +1,141 @@
+/* Color Palette & Branding */
+:root {
+  --primary-color: #D32F2F; /* Red for call-to-action buttons, headings, icons */
+  --dark-gray: #333333; /* Dark Gray for text */
+  --white: #FFFFFF; /* White for background */
+  --gold-accent: #FFC107; /* Gold Accent for highlighting */
+}
+
+.admin-list { 
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-list:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.admin-list h3 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--dark-gray);
+  transition: color 0.3s ease;
+}
+
+.admin-list h3:hover {
+  color: var(--primary-color);
+}
+
+.admin-list table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.admin-list th,
+.admin-list td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s ease;
+}
+
+.admin-list th {
+  background-color: #f7f7f7;
+  color: var(--dark-gray);
+  font-weight: 600;
+}
+
+.admin-list tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.admin-list th:hover,
+.admin-list td:hover {
+  background-color: var(--gold-accent);
+  color: var(--white);
+}
+
+.admin-list button {
+  padding: 8px 12px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.admin-list button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.admin-list button:first-child {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.admin-list button:first-child:hover {
+  background-color: #c62828;
+}
+
+.admin-list button:last-child {
+  background-color: #f44336;
+  color: var(--white);
+}
+
+.admin-list button:last-child:hover {
+  background-color: #d32f2f;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .admin-list table,
+  .admin-list thead,
+  .admin-list tbody,
+  .admin-list th,
+  .admin-list td,
+  .admin-list tr {
+    display: block;
+  }
+
+  .admin-list thead {
+    display: none;
+  }
+
+  .admin-list tr {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--white);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .admin-list td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  .admin-list td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    font-weight: bold;
+    text-align: left;
+    color: var(--dark-gray);
+  }
+}

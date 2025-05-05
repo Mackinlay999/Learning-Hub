@@ -1,0 +1,70 @@
+/* General styles for Assign Lead */
+.A-assign-lead {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Heading */
+.A-assign-lead-title {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: var(--dark-gray);
+  font-weight: 600;
+}
+
+/* Dropdown */
+.A-assign-lead-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--dark-gray-border);
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+}
+
+.A-assign-lead-select:focus {
+  border-color: var(--primary-red);
+  outline: none;
+}
+
+/* Button */
+.A-assign-lead-button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primary-red);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.A-assign-lead-button:hover {
+  background-color: #c62828; /* Darker red on hover */
+}
+
+/* 📌 Responsive Design */
+@media (max-width: 480px) {
+  .A-assign-lead {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .A-assign-lead-title {
+    font-size: 18px;
+  }
+
+  .A-assign-lead-select,
+  .A-assign-lead-button {
+    font-size: 14px;
+    padding: 8px;
+  }
+}

@@ -1,0 +1,140 @@
+/* Container Styling */
+.story-page {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.story-page h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+/* Story List Grid */
+.story-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Individual Story Card */
+.story-item {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.story-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Student Image */
+.story-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+/* Name + LinkedIn Row */
+.story-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.story-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #222;
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+
+/* LinkedIn Icon */
+.linkedin-link {
+  display: inline-block;
+}
+
+.linkedin-icon {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.2s ease;
+}
+
+.linkedin-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Arrow */
+.story-arrow {
+  font-size: 1.5rem;
+  margin: 0.3rem 0;
+}
+
+/* Company Text */
+.story-author {
+  font-size: 1.5rem;
+  color: #666;
+  text-transform: capitalize;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 600px) {
+  .story-page {
+    padding: 1rem;
+  }
+
+  .story-title {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    margin-top: 20px;
+  }
+
+  .story-author {
+   
+    font-size: 1.5rem;
+  }
+
+  .linkedin-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.story-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover; /* Makes the image fill the container without distortion */
+  border-radius: 50%; /* Makes the image perfectly round */
+  border: 3px solid #0077b5; /* Optional: LinkedIn blue border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Soft shadow */
+  margin-bottom: 10px;
+  object-position: top;
+}
+.story-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.story-item:hover {
+  transform: translateY(-4px);
+}
+

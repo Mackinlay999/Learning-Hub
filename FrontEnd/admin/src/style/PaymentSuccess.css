@@ -1,0 +1,104 @@
+/* Payment Success Container */
+.payment-success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #4caf50, #2e7d32);
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  /* Success Card */
+  .success-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+    animation: slideDown 0.6s ease-in-out;
+  }
+  
+  /* Success Icon */
+  .success-icon {
+    font-size: 3rem;
+    color: #4caf50;
+    animation: bounce 1s ease-in-out infinite alternate;
+  }
+  
+  /* Title */
+  .success-card h2 {
+    color: #2e7d32;
+    font-size: 1.8rem;
+    margin: 10px 0;
+  }
+  
+  /* Description */
+  .success-card p {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Continue Button */
+  .continue-btn {
+    background: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .continue-btn:hover {
+    background: #2e7d32;
+    transform: scale(1.05);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 480px) {
+    .success-card {
+      padding: 1.5rem;
+    }
+    .success-card h2 {
+      font-size: 1.5rem;
+    }
+    .continue-btn {
+      font-size: 0.9rem;
+      padding: 8px 15px;
+    }
+  }
+  
