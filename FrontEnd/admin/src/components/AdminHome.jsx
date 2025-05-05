@@ -11,7 +11,7 @@ import {
 } from "recharts";
 import { FaSearch, FaBell } from "react-icons/fa";
 import { motion } from "framer-motion";
-import SchedulerCalendar from "../components/SchedulerCalendar";
+import AdminSchedulerCalendar from "../components/AdminSchedulerCalendar";
 import "../style/Home.css"; // Using your existing dashboard style
 
 const activityData = [
@@ -37,7 +37,7 @@ const fadeInUp = {
   }),
 };
 
-const Home = () => {
+const AdminHome = () => {
   const [totalLeads, setTotalLeads] = useState();
   const [todayLeads, setTodayLeads] = useState();
   const [dailyLeads, setDailyLeads] = useState([]);
@@ -385,7 +385,7 @@ const Home = () => {
         viewport={{ once: true }}
         variants={fadeInUp}
       >
-        <SchedulerCalendar />
+        <AdminSchedulerCalendar />
       </motion.div>
 
       {/* Modal for Daily Leads Overview */}
@@ -419,4 +419,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default AdminHome;

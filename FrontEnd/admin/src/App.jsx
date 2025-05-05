@@ -51,7 +51,6 @@ import LeadsByDate from "./components/LeadByDate";
 import LeadDetails from "./components/LeadDetails";
 import Courses from "./components/Courses";
 
-
 function App() {
   const { auth } = useAuth();
 
@@ -88,7 +87,6 @@ function App() {
                   path="/"
                   element={auth.token ? <Navigate to="/home" /> : <Login />}
                 />
-
                 {/* Protected routes */}
                 <Route
                   path="/home"
@@ -98,12 +96,7 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
-
-
-
-               
-
-<Route
+                <Route
                   path="/courses"
                   element={
                     <ProtectedRoute
@@ -113,13 +106,6 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
-
-
-
-
-
-
-
                 <Route
                   path="/Userdetails"
                   element={
@@ -354,7 +340,6 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
-
                 {/* Fallback 404 */}
                 <Route path="*" element={<NotFound />} />
                 <Route path="/recruiters" element={<RecruiterDashboard />} />
