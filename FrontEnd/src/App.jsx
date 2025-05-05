@@ -10,7 +10,7 @@ import Contact from "./components/Contact";
 import NotFound from "./components/NotFound"; // For handling 404 pages
 import "./style/App.css"; // Import custom styles
 import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap styles
-import { ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify"; // For toast notifications
 import "react-toastify/dist/ReactToastify.css";
 import BlogTraining from './components/BlogTraining'
 import Enterprise from './components/Enterprise'
