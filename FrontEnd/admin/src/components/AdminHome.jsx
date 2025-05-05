@@ -11,8 +11,13 @@ import {
 } from "recharts";
 import { FaSearch, FaBell } from "react-icons/fa";
 import { motion } from "framer-motion";
+<<<<<<< HEAD
 import AdminSchedulerCalendar from "../components/AdminSchedulerCalendar";
 import "../style/Home.css"; // Using your existing dashboard style
+=======
+import SchedulerCalendar from "../components/SchedulerCalendar";
+import "../style/AdminHome.css"; // Using your existing dashboard style
+>>>>>>> 21fd879cbfca9f4a942b768c6d02a4555c5bb3c8
 
 const activityData = [
   { day: "S", hours: 4 },
