@@ -9,7 +9,7 @@ import {
   Table,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import "../style/ScheduleInterview.css";
+import "../style/AdminScheduleInterview.css";
 
 const AdminScheduleInterview = () => {
   const [formData, setFormData] = useState({

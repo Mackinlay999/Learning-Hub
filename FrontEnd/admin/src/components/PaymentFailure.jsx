@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import "../style/PaymentFailure.css"; // Import the CSS file
+import "../style/AdminPaymentFailure.css"; // Import the CSS file
 
 const PaymentFailure = () => {
   const navigate = useNavigate();

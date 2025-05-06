@@ -15,10 +15,6 @@ import { motion } from "framer-motion";
 import AdminSchedulerCalendar from "../components/AdminSchedulerCalendar";
 import "../style/AdminHome.css"; // Using your existing dashboard style
 
-import SchedulerCalendar from "../components/SchedulerCalendar";
-import "../style/AdminHome.css"; // Using your existing dashboard style
-
-
 const activityData = [
   { day: "S", hours: 4 },
   { day: "M", hours: 5 },

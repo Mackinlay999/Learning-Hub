@@ -163,31 +163,31 @@ import {
   Briefcase
 } from 'lucide-react';
 
-import DashboardAdmin from "../components/AdminDashboardAdmin";
-import LeadAndStudentManagement from './AdminLeadAndStudentManagement';
-import Trainingprogram from './AdminTraningprogram';
-import EMailMarketing from './AdminEMailMarketing';
-import FinanceAndPayment from './AdminFinanceAndPayment';
-import CorporateTrainingEnterprice from './AdminCorporateTrainingEnterprice';
-import AnalyticsAndReports from './AdminAnalyticsAndReports';
-import SupportAndFeedback from './AdminSupportAndFeedback';
-import RecruiterAndPlacementManagement from './AdminRecruiterAndPlacementManagement';
+import DashboardAdmin from "../components/DashboardAdmin";
+import AdminLeadAndStudentManagement from './AdminLeadAndStudentManagement';
+import AdminTrainingprogram from './AdminTraningprogram';
+import AdminEMailMarketing from './AdminEMailMarketing';
+import AdminFinanceAndPayment from './AdminFinanceAndPayment';
+import AdminCorporateTrainingEnterprice from './AdminCorporateTrainingEnterprice';
+import AdminAnalyticsAndReports from './AdminAnalyticsAndReports';
+import AdminSupportAndFeedback from './AdminSupportAndFeedback';
+import AdminRecruiterAndPlacementManagement from './AdminRecruiterAndPlacementManagement';
 import "../style/AdminDashboard.css";
-import SuperAdminPanel from './AdminSuperAdminPanel';
+import SuperAdminPanel from './SuperAdminPanel';
 
 
 
 
 const sections = [
   { name: "Super Admin Panel", icon: <ShieldCheck size={18} />, component: <SuperAdminPanel /> },
-  { name: "Lead & Student Management", icon: <Users size={18} />, component: <LeadAndStudentManagement /> },
-  { name: "Training Program", icon: <BookOpenCheck size={18} />, component: <Trainingprogram /> },
-  { name: "Email Marketing", icon: <Mail size={18} />, component: <EMailMarketing /> },
-  { name: "Finance & Payment", icon: <CreditCard size={18} />, component: <FinanceAndPayment /> },
-  { name: "Corporate Training", icon: <Building2 size={18} />, component: <CorporateTrainingEnterprice /> },
-  { name: "Analytics & Reports", icon: <BarChart2 size={18} />, component: <AnalyticsAndReports /> },
-  { name: "Support & Feedback", icon: <MessageCircle size={18} />, component: <SupportAndFeedback /> },
-  { name: "Recruiter & Placement", icon: <Briefcase size={18} />, component: <RecruiterAndPlacementManagement /> },
+  { name: "Lead & Student Management", icon: <Users size={18} />, component: <AdminLeadAndStudentManagement /> },
+  { name: "Training Program", icon: <BookOpenCheck size={18} />, component: <AdminTrainingprogram /> },
+  { name: "Email Marketing", icon: <Mail size={18} />, component: <AdminEMailMarketing /> },
+  { name: "Finance & Payment", icon: <CreditCard size={18} />, component: <AdminFinanceAndPayment /> },
+  { name: "Corporate Training", icon: <Building2 size={18} />, component: <AdminCorporateTrainingEnterprice /> },
+  { name: "Analytics & Reports", icon: <BarChart2 size={18} />, component: <AdminAnalyticsAndReports /> },
+  { name: "Support & Feedback", icon: <MessageCircle size={18} />, component: <AdminSupportAndFeedback /> },
+  { name: "Recruiter & Placement", icon: <Briefcase size={18} />, component: <AdminRecruiterAndPlacementManagement /> },
 ];
 
 

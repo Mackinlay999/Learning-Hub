@@ -1,5 +1,5 @@
 import { FaUsers, FaBook, FaDollarSign, FaChartBar } from "react-icons/fa";
-import "../style/DashboardAdmin.css"
+import "../style/AdminDashboardAdmin.css"
 
 const DashboardAdmin = () => {
   return (

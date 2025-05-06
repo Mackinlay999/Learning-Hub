@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Briefcase, FileText, Users, CalendarCheck } from 'lucide-react';
 import axios from '../api/axios'; // Import Axios instance
-import '../style/RecruiterDashboard.css';
+import '../style/AdminRecruiterDashboard.css';
 
 const features = [
   {
