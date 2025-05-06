@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
-import "../style/PaymentButton.css"; 
+import "../style/AdminPaymentButton.css"; 
 
 const PaymentButton = ({ amount, user = {} }) => {
   const [loading, setLoading] = useState(false);

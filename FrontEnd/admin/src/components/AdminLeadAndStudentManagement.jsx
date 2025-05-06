@@ -38,4 +38,4 @@ const AdminLeadAndStudentManagement = () => {
   )
 }
 
-export default LeadAndStudentManagement
+export default AdminLeadAndStudentManagement

@@ -1,8 +1,13 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
+
 import Sidebar from "./components/AdminSidebar";
 import Login from "./components/AdminLogin"; // Assuming Login acts as LoginPortal
+
+import AdminSidebar from "./components/AdminSidebar";
+import AdminLogin from "./components/AdminLogin"; // Assuming Login acts as LoginPortal
+
 import NotAuthorized from "./components/NotAuthorized";
 import { Navigate } from "react-router-dom";
 
@@ -13,16 +18,23 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 import { Students, StudentDetail } from "./components/AdminStudentManagement";
 import AddStudent from "./components/AdminAddStudent";
 import EditStudent from "./components/AdminEditStudent";
 import Register from "./components/Register";
+
+import { AdminStudents, AdminStudentDetail } from "./components/AdminStudentManagement";
+import AdminAddStudent from "./components/AdminAddStudent";
+import AdminEditStudent from "./components/AdminEditStudent";
+import AdminRegister from "./components/AdminRegister";
+
 import PasswordReset from "./components/PasswordReset";
-import Userdetails from "./components/Userdetails";
-import Dashboard from "./components/Dashboard";
-import PaymentSuccess from "./components/PaymentSuccess";
-import PaymentFailure from "./components/PaymentFailure";
+import AdminUserdetails from "./components/AdminUserdetails";
+import AdminDashboard from "./components/AdminDashboard";
+
 import SuperAdminPanel from "./components/SuperAdminPanel";
+
 import LeadAndStudentManagement from "./components/LeadAndStudentManagement";
 import Trainingprogram from "./components/Traningprogram";
 import EMailMarketing from "./components/AdminEMailMarketing";
@@ -42,14 +54,34 @@ import Applicants from "./components/Applicants";
 import ScheduleInterview from "./components/ScheduleInterview";
 import EmailCampaign from "./components/EmailCampaign";
 import ResumeViewer from "./components/ResumeViewer";
+import AdminLeadAndStudentManagement from "./components/AdminLeadAndStudentManagement";
+import AdminTrainingprogram from "./components/AdminTraningprogram";
+import AdminEMailMarketing from "./components/AdminEMailMarketing";
+import AdminFinanceAndPayment from "./components/AdminFinanceAndPayment";
+import AdminCorporateTrainingEnterprice from "./components/AdminCorporateTrainingEnterprice";
+import AdminAnalyticsAndReports from "./components/AdminAnalyticsAndReports";
+import AdminSupportAndFeedback from "./components/AdminSupportAndFeedback";
+import AdminRecruiterAndPlacementManagement from "./components/AdminRecruiterAndPlacementManagement";
+import AdminMentors from "./components/AdminMentors";
+import AdminMentorDetail from "./components/AdminMentorDetail";
+import AdminSuceess from "./components/AdminSuceess";
+import AdminBlogWebinar from "./components/AdminBlogWebinar";
+import AdminRecruiterDashboard from "./components/AdminRecruiterDashboard";
+import AdminPartners from "./components/AdminPartners";
+import AdminPostJob from "./components/AdminPostJob";
+import AdminApplicants from "./components/AdminApplicants";
+import AdminScheduleInterview from "./components/AdminScheduleInterview";
+import AdminEmailCampaign from "./components/AdminEmailCampaign";
+import AdminResumeViewer from "./components/AdminResumeViewer";
+
 
 import AuthProvider from "./context/AuthContext"; // Adjust path as necessary
 
 import { useAuth } from "./context/AuthContext";
 
-import LeadsByDate from "./components/LeadByDate";
-import LeadDetails from "./components/LeadDetails";
-import Courses from "./components/Courses";
+import AdminLeadsByDate from "./components/AdminLeadByDate";
+import AdminLeadDetails from "./components/AdminLeadDetails";
+import AdminCourses from "./components/AdminCourses";
 
 function App() {
   const { auth } = useAuth();
@@ -79,13 +111,13 @@ function App() {
             <div className="p-3">
               <Routes>
                 {/* Public routes */}
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<AdminLogin />} />
+                <Route path="/register" element={<AdminRegister />} />
                 <Route path="/PasswordReset" element={<PasswordReset />} />
                 <Route path="/not-authorized" element={<NotAuthorized />} />
                 <Route
                   path="/"
-                  element={auth.token ? <Navigate to="/home" /> : <Login />}
+                  element={auth.token ? <Navigate to="/home" /> : <AdminLogin />}
                 />
                 {/* Protected routes */}
                 <Route
@@ -102,7 +134,7 @@ function App() {
                     <ProtectedRoute
                       allowedRoles={["Admin", "Super Admin", "Recruiter"]}
                     >
-                      <Courses />
+                      <AdminCourses />
                     </ProtectedRoute>
                   }
                 />
@@ -112,23 +144,7 @@ function App() {
                     <ProtectedRoute
                       allowedRoles={["Admin", "Super Admin", "Recruiter"]}
                     >
-                      <Userdetails />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/payment-success"
-                  element={
-                    <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <PaymentSuccess />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/payment-failure"
-                  element={
-                    <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <PaymentFailure />
+                      <AdminUserdetails />
                     </ProtectedRoute>
                   }
                 />
@@ -144,7 +160,7 @@ function App() {
                   path="/lead-student"
                   element={
                     <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <LeadAndStudentManagement />
+                      <AdminLeadAndStudentManagement />
                     </ProtectedRoute>
                   }
                 />
@@ -152,7 +168,7 @@ function App() {
                   path="/training-program"
                   element={
                     <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <Trainingprogram />
+                      <AdminTrainingprogram />
                     </ProtectedRoute>
                   }
                 />
@@ -160,7 +176,7 @@ function App() {
                   path="/email-marketing"
                   element={
                     <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <EMailMarketing />
+                      <AdminEMailMarketing />
                     </ProtectedRoute>
                   }
                 />
@@ -168,7 +184,7 @@ function App() {
                   path="/finance-payment"
                   element={
                     <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <FinanceAndPayment />
+                      <AdminFinanceAndPayment />
                     </ProtectedRoute>
                   }
                 />
@@ -176,7 +192,7 @@ function App() {
                   path="/corporate-training"
                   element={
                     <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <CorporateTrainingEnterprice />
+                      <AdminCorporateTrainingEnterprice />
                     </ProtectedRoute>
                   }
                 />
@@ -184,7 +200,7 @@ function App() {
                   path="/analytics-reports"
                   element={
                     <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <AnalyticsAndReports />
+                      <AdminAnalyticsAndReports />
                     </ProtectedRoute>
                   }
                 />
@@ -192,7 +208,7 @@ function App() {
                   path="/support-feedback"
                   element={
                     <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <SupportAndFeedback />
+                      <AdminSupportAndFeedback />
                     </ProtectedRoute>
                   }
                 />
@@ -202,7 +218,7 @@ function App() {
                     <ProtectedRoute
                       allowedRoles={["Admin", "Recruiter", "Super Admin"]}
                     >
-                      <RecruiterAndPlacementManagement />
+                      <AdminRecruiterAndPlacementManagement />
                     </ProtectedRoute>
                   }
                 />
@@ -210,7 +226,7 @@ function App() {
                   path="/students"
                   element={
                     <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <Students />
+                      <AdminStudents />
                     </ProtectedRoute>
                   }
                 />
@@ -218,7 +234,7 @@ function App() {
                   path="/students/:id"
                   element={
                     <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <StudentDetail />
+                      <AdminStudentDetail />
                     </ProtectedRoute>
                   }
                 />
@@ -226,7 +242,7 @@ function App() {
                   path="/add-student"
                   element={
                     <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <AddStudent />
+                      <AdminAddStudent />
                     </ProtectedRoute>
                   }
                 />
@@ -234,7 +250,7 @@ function App() {
                   path="/edit-student/:id"
                   element={
                     <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <EditStudent />
+                      <AdminEditStudent />
                     </ProtectedRoute>
                   }
                 />
@@ -244,7 +260,7 @@ function App() {
                     <ProtectedRoute
                       allowedRoles={["Admin", "Mentor", "Super Admin"]}
                     >
-                      <Mentors />
+                      <AdminMentors />
                     </ProtectedRoute>
                   }
                 />
@@ -254,7 +270,7 @@ function App() {
                     <ProtectedRoute
                       allowedRoles={["Admin", "Mentor", "Super Admin"]}
                     >
-                      <MentorDetail />
+                      <AdminMentorDetail />
                     </ProtectedRoute>
                   }
                 />
@@ -262,7 +278,7 @@ function App() {
                   path="/Suceess"
                   element={
                     <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <Suceess />
+                      <AdminSuceess />
                     </ProtectedRoute>
                   }
                 />
@@ -270,7 +286,7 @@ function App() {
                   path="/blog-webinar"
                   element={
                     <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <BlogWebinar />
+                      <AdminBlogWebinar />
                     </ProtectedRoute>
                   }
                 />
@@ -278,7 +294,7 @@ function App() {
                   path="/recruiters/dashboard"
                   element={
                     <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
-                      <RecruiterDashboard />
+                      <AdminRecruiterDashboard />
                     </ProtectedRoute>
                   }
                 /> */}
@@ -286,7 +302,7 @@ function App() {
                   path="/recruiters/partners"
                   element={
                     <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
-                      <Partners />
+                      <AdminPartners />
                     </ProtectedRoute>
                   }
                 />
@@ -294,7 +310,7 @@ function App() {
                   path="/recruiters/post"
                   element={
                     <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
-                      <PostJob />
+                      <AdminPostJob />
                     </ProtectedRoute>
                   }
                 />
@@ -302,7 +318,7 @@ function App() {
                   path="/recruiters/applicants"
                   element={
                     <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
-                      <Applicants />
+                      <AdminApplicants />
                     </ProtectedRoute>
                   }
                 />
@@ -310,7 +326,7 @@ function App() {
                   path="/recruiters/schedule"
                   element={
                     <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
-                      <ScheduleInterview />
+                      <AdminScheduleInterview />
                     </ProtectedRoute>
                   }
                 />
@@ -318,7 +334,7 @@ function App() {
                   path="/recruiters/dashboard"
                   element={
                     <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
-                      <RecruiterDashboard />
+                      <AdminRecruiterDashboard />
                     </ProtectedRoute>
                   }
                 />
@@ -326,7 +342,7 @@ function App() {
                   path="/EmailCampaign"
                   element={
                     <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                      <EmailCampaign />
+                      <AdminEmailCampaign />
                     </ProtectedRoute>
                   }
                 />
@@ -336,17 +352,17 @@ function App() {
                     <ProtectedRoute
                       allowedRoles={["Admin", "Recruiter", "Super Admin"]}
                     >
-                      <ResumeViewer />
+                      <AdminResumeViewer />
                     </ProtectedRoute>
                   }
                 />
                 {/* Fallback 404 */}
                 <Route path="*" element={<NotFound />} />
-                <Route path="/recruiters" element={<RecruiterDashboard />} />
-                <Route path="/EmailCampaign" element={<EmailCampaign />} />
-                <Route path="/resume" element={<ResumeViewer />} />
-                <Route path="/LeadsByDate" element={<LeadsByDate />} />
-                <Route path="/LeadDetails" element={<LeadDetails />} />
+                <Route path="/recruiters" element={<AdminRecruiterDashboard />} />
+                <Route path="/EmailCampaign" element={<AdminEmailCampaign />} />
+                <Route path="/resume" element={<AdminResumeViewer />} />
+                <Route path="/LeadsByDate" element={<AdminLeadsByDate />} />
+                <Route path="/LeadDetails" element={<AdminLeadDetails />} />
                 {/* Catch-all route for 404 pages */}
                 <Route path="*" element={<NotFound />} />{" "}
                 {/* Catch-all route for 404 pages */}
