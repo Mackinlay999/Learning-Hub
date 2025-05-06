@@ -1,21 +1,21 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Sidebar from "./components/Sidebar";
-import Login from "./components/Login"; // Assuming Login acts as LoginPortal
+import Sidebar from "./components/AdminSidebar";
+import Login from "./components/AdminLogin"; // Assuming Login acts as LoginPortal
 import NotAuthorized from "./components/NotAuthorized";
 import { Navigate } from "react-router-dom";
 
 import AdminHome from "./components/AdminHome";
 import NotFound from "./components/NotFound";
-import "./style/App.css";
+import "./style/AdminApp.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { Students, StudentDetail } from "./components/studentManagement";
-import AddStudent from "./components/AddStudent";
-import EditStudent from "./components/EditStudent";
+import { Students, StudentDetail } from "./components/AdminStudentManagement";
+import AddStudent from "./components/AdminAddStudent";
+import EditStudent from "./components/AdminEditStudent";
 import Register from "./components/Register";
 import PasswordReset from "./components/PasswordReset";
 import Userdetails from "./components/Userdetails";
@@ -25,7 +25,7 @@ import PaymentFailure from "./components/PaymentFailure";
 import SuperAdminPanel from "./components/SuperAdminPanel";
 import LeadAndStudentManagement from "./components/LeadAndStudentManagement";
 import Trainingprogram from "./components/Traningprogram";
-import EMailMarketing from "./components/EMailMarketing";
+import EMailMarketing from "./components/AdminEMailMarketing";
 import FinanceAndPayment from "./components/FinanceAndPayment";
 import CorporateTrainingEnterprice from "./components/CorporateTrainingEnterprice";
 import AnalyticsAndReports from "./components/AnalyticsAndReports";
