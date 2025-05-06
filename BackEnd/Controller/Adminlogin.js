@@ -88,20 +88,20 @@ const Admincontroller = {
       const { email, password } = req.body;
 
 
-      user = await Adminlogin.findOne({ email });
-      if (!user || !(await bcrypt.compare(password, user.password))) {
-        return res.status(400).json({ message: "Invalid credentials" });
-      }
-      if (user.status !== "approved") {
-        return res.status(403).json({ message: "Your account is not approved yet." });
-      }
+      // user = await Adminlogin.findOne({ email });
+      // if (!user || !(await bcrypt.compare(password, user.password))) {
+      //   return res.status(400).json({ message: "Invalid credentials" });
+      // }
+      // if (user.status !== "approved") {
+      //   return res.status(403).json({ message: "Your account is not approved yet." });
+      // }
 
-      // Validate input
-      if (!email || !password) {
-        return res
-          .status(400)
-          .json({ message: "Email and password are required" });
-      }
+      // // Validate input
+      // if (!email || !password) {
+      //   return res
+      //     .status(400)
+      //     .json({ message: "Email and password are required" });
+      // }
 
       // Find user by email
       const verifyUser = await Adminlogin.findOne({ email });

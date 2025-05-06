@@ -19,10 +19,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
-import { Students, StudentDetail } from "./components/AdminStudentManagement";
-import AddStudent from "./components/AdminAddStudent";
-import EditStudent from "./components/AdminEditStudent";
-import Register from "./components/Register";
+
+
 
 import { AdminStudents, AdminStudentDetail } from "./components/AdminStudentManagement";
 import AdminAddStudent from "./components/AdminAddStudent";
@@ -35,25 +33,7 @@ import AdminDashboard from "./components/AdminDashboard";
 
 import SuperAdminPanel from "./components/SuperAdminPanel";
 
-import LeadAndStudentManagement from "./components/LeadAndStudentManagement";
-import Trainingprogram from "./components/Traningprogram";
-import EMailMarketing from "./components/AdminEMailMarketing";
-import FinanceAndPayment from "./components/FinanceAndPayment";
-import CorporateTrainingEnterprice from "./components/CorporateTrainingEnterprice";
-import AnalyticsAndReports from "./components/AnalyticsAndReports";
-import SupportAndFeedback from "./components/SupportAndFeedback";
-import RecruiterAndPlacementManagement from "./components/RecruiterAndPlacementManagement";
-import Mentors from "./components/Mentors";
-import MentorDetail from "./components/MentorDetail";
-import Suceess from "./components/Suceess";
-import BlogWebinar from "./components/BlogWebinar";
-import RecruiterDashboard from "./components/RecruiterDashboard";
-import Partners from "./components/Partners";
-import PostJob from "./components/PostJob";
-import Applicants from "./components/Applicants";
-import ScheduleInterview from "./components/ScheduleInterview";
-import EmailCampaign from "./components/EmailCampaign";
-import ResumeViewer from "./components/ResumeViewer";
+// 
 import AdminLeadAndStudentManagement from "./components/AdminLeadAndStudentManagement";
 import AdminTrainingprogram from "./components/AdminTraningprogram";
 import AdminEMailMarketing from "./components/AdminEMailMarketing";
