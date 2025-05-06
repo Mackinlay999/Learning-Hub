@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
-const AdminAddStudent = () => {
-  const [studentData, setStudentData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    course: "",
-    status: "Active",
-    progress: 0,
-    photo: "",
-  });
+const AdminEditStudent = () => {
+  const { id } = useParams();
+  const [studentData, setStudentData] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios.get(`http://localhost:3000/api/students/${id}`).then((res) => {
+      setStudentData(res.data);
+    });
+  }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,20 +21,22 @@ const AdminAddStudent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/api/students", studentData);
-      navigate("/students");
-    } catch (error) {
-      console.error("Error adding student", error);
+      await axios.put(`http://localhost:3000/api/students/${id}`, studentData);
+      navigate(`/students/${id}`);
+    } catch (err) {
+      console.error("Error updating student", err);
     }
   };
 
+  if (!studentData) return <div>Loading...</div>;
+
   return (
     <div className="container mt-4">
-      <h3>Add New Student</h3>
+      <h3>Edit Student</h3>
       <form onSubmit={handleSubmit}>
         {["name", "email", "phone", "photo"].map((field) => (
           <div key={field} className="mb-3">
-            <label className="form-label">{field.charAt(0).toUpperCase() + field.slice(1)}</label>
+            <label className="form-label">{field}</label>
             <input
               type="text"
               className="form-control"
@@ -48,8 +49,7 @@ const AdminAddStudent = () => {
         ))}
         <div className="mb-3">
           <label className="form-label">Course</label>
-          <select className="form-select" name="course" onChange={handleChange} required>
-            <option value="">Select Course</option>
+          <select name="course" className="form-select" value={studentData.course} onChange={handleChange}>
             <option value="Human-resource">Human-resource</option>
             <option value="Marketing">Marketing</option>
             <option value="Business-Analytics">Business Analytics</option>
@@ -57,10 +57,10 @@ const AdminAddStudent = () => {
             <option value="Sales">Sales</option>
           </select>
         </div>
-        <button className="btn btn-primary">Add Student</button>
+        <button className="btn btn-success">Update Student</button>
       </form>
     </div>
   );
 };
 
-export default AdminAddStudent;
+export default AdminEditStudent;

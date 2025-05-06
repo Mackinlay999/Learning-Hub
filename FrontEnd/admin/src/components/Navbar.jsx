@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import "../style/Navbar.css";
+import "../style/AdminNavbar.css";
 import logo from "../images/logo.png";
 
-const NavBar = () => {
+const AdminNavBar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
@@ -64,4 +64,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default AdminNavBar;
