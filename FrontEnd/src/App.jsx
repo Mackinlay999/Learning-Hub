@@ -34,7 +34,7 @@ import MarketingProgram from "./components/MarketingProgram";
 import SalesProgram from "./components/SalesProgram";
 import FinanceProgram from "./components/FinanceProgram";
 
-
+// main
 function App() {
   return (
     <Router>
