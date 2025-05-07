@@ -10,6 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fullcalendar/daygrid": "^6.1.17",
+    "@fullcalendar/interaction": "^6.1.17",
+    "@fullcalendar/react": "^6.1.17",
+    "@fullcalendar/timegrid": "^6.1.17",
     "axios": "^1.8.4",
     "bootstrap": "^5.3.3",
     "dom": "^0.0.3",
@@ -24,6 +28,7 @@
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.4.0",
     "react-toastify": "^11.0.5",
+    "recharts": "^2.15.3",
     "router": "^2.2.0",
     "swiper": "^11.2.6"
   },
@@ -36,6 +41,6 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
-    "vite": "^6.3.4"
+    "vite": "^6.3.5"
   }
 }

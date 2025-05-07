@@ -1,0 +1,153 @@
+/* AdminHome.css */
+
+.admin-home-container {
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* Header */
+.admin-home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.admin-home-header h4 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.admin-home-header p {
+  margin: 0.2rem 0 0;
+  color: #666;
+}
+
+.admin-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-search-bar {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.admin-search-bar input {
+  border: none;
+  outline: none;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.notification-icon {
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.admin-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.double-lead-card {
+  grid-column: span 2;
+}
+
+.card-body h6 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #444;
+}
+
+.card-body h3 {
+  font-size: 2rem;
+  margin: 0.2rem 0;
+  color: #D32F2F;
+}
+
+.lead-counts {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.lead-counts .label {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.lead-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.view-link {
+  text-decoration: none;
+  color:#f5f7fa;
+ 
+  padding:8px;
+  background-color: #D32F2F;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 0.9rem;
+ 
+  }
+
+
+.view-link:hover {
+  background-color: #dc3545;
+}
+
+/* Charts Section */
+.admin-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.admin-card-body h5 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.admin-card-body p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Loader */
+.loader {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 3rem;
+  color: #555;
+}

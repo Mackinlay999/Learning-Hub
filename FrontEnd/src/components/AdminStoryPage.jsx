@@ -14,7 +14,7 @@ const AdminStoryPage = () => {
       .catch(error => {
         console.log('Error fetching stories:', error);
       });
-  }, []); // Empty dependency array ensures it runs on mount only
+  }, [stories]); // Empty dependency array ensures it runs on mount only
 
   return (
     <div className="story-page">

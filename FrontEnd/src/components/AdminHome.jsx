@@ -195,21 +195,21 @@ const AdminHome = () => {
   }
 
   return (
-    <div className="home-container">
+    <div className="admin-home-container">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className="home-header">
+        <div className="admin-home-header">
           <div>
             <h4>Hello Admin 👋</h4>
             <p>Welcome to your Dashboard</p>
           </div>
-          <div className="header-right">
-            <div className="search-bar">
-              <FaSearch className="icon" />
+          <div className="admin-header-right">
+            <div className="admin-search-bar">
+              <FaSearch className="admin-icon" />
               <input type="text" placeholder="Search..." />
             </div>
             <div className="notification-icon">
@@ -223,7 +223,7 @@ const AdminHome = () => {
       <div className="stats-grid">
         {/* Combined Leads Card */}
         <motion.div
-          className="card double-lead-card"
+          className="admin-card double-lead-card"
           custom={0}
           initial="hidden"
           animate="visible"
@@ -256,7 +256,7 @@ const AdminHome = () => {
         {/* Active Students */}
 
         <motion.div
-          className="card"
+          className="admin-card"
           custom={2}
           initial="hidden"
           animate="visible"
@@ -273,7 +273,7 @@ const AdminHome = () => {
 
         {/* Course Count */}
         <motion.div
-          className="card"
+          className="admin-card"
           custom={3}
           initial="hidden"
           animate="visible"
@@ -289,15 +289,15 @@ const AdminHome = () => {
         </motion.div>
       </div>
 
-      <div className="charts-grid">
+      <div className="admin-charts-grid">
         <motion.div
-          className="card"
+          className="admin-card"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <div className="card-body">
+          <div className="admin-card-body">
             <h5>Revenue</h5>
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={activityData}>
@@ -316,13 +316,13 @@ const AdminHome = () => {
         </motion.div>
 
         <motion.div
-          className="card"
+          className="admin-card"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <div className="card-body">
+          <div className="admin-card-body">
             <h5>Payment Status</h5>
             <div className="payment-status">
               <div>
@@ -344,13 +344,13 @@ const AdminHome = () => {
 
       {/* Attendance Snapshot */}
       <motion.div
-        className="card attendance-card"
+        className="admin-card attendance-card"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={fadeInUp}
       >
-        <div className="card-body">
+        <div className="admin-card-body">
           <h5>Attendance Snapshot</h5>
           <p>Total Attendance: 85%</p>
           <div className="progress-bar-wrapper">
@@ -363,13 +363,13 @@ const AdminHome = () => {
 
       {/* Today's Events */}
       <motion.div
-        className="card"
+        className="admin-card"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={fadeInUp}
       >
-        <div className="card-body">
+        <div className="admin-card-body">
           <h5>Today's Events</h5>
           <ul>
             <li>Live Class: React Basics - 10:00 AM</li>

@@ -36,23 +36,23 @@ const Admincontroller = {
 
       await newuser.save();
 
-      const approveURL = `http://localhost:5173/approve/${newuser._id}`;
-      const rejectURL = `http://localhost:5173/reject/${newuser._id}`;
+      // const approveURL = `http://localhost:5173/approve/${newuser._id}`;
+      // const rejectURL = `http://localhost:5173/reject/${newuser._id}`;
 
 
-      const mailOptions = {
-        from: "your-email@gmail.com",
-        to: process.env.SUPER_ADMIN_EMAIL,
-        subject: "New User Registration Pending Approval",
-        html: `
-          <h3>New Registration Request</h3>
-          <p><strong>Username:</strong> ${username}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <a href="${approveURL}">✅ Approve</a> | <a href="${rejectURL}">❌ Reject</a>
-        `
-      };
+      // const mailOptions = {
+      //   from: "your-email@gmail.com",
+      //   to: process.env.SUPER_ADMIN_EMAIL,
+      //   subject: "New User Registration Pending Approval",
+      //   html: `
+      //     <h3>New Registration Request</h3>
+      //     <p><strong>Username:</strong> ${username}</p>
+      //     <p><strong>Email:</strong> ${email}</p>
+      //     <a href="${approveURL}">✅ Approve</a> | <a href="${rejectURL}">❌ Reject</a>
+      //   `
+      // };
   
-      await transporter.sendMail(mailOptions);
+      // await transporter.sendMail(mailOptions);
   
 
 
@@ -63,7 +63,8 @@ const Admincontroller = {
 
 
 
-      res.status(200).json({ message: "Registration request submitted. Awaiting approval." });
+      // res.status(200).json({ message: "Registration request submitted. Awaiting approval." });
+      res.status(200).json({message : "responsive successfully"})
     } catch (err) {
       res.status(400).json({ message: err.message });
     }
@@ -88,20 +89,20 @@ const Admincontroller = {
       const { email, password } = req.body;
 
 
-      user = await Adminlogin.findOne({ email });
-      if (!user || !(await bcrypt.compare(password, user.password))) {
-        return res.status(400).json({ message: "Invalid credentials" });
-      }
-      if (user.status !== "approved") {
-        return res.status(403).json({ message: "Your account is not approved yet." });
-      }
+      // user = await Adminlogin.findOne({ email });
+      // if (!user || !(await bcrypt.compare(password, user.password))) {
+      //   return res.status(400).json({ message: "Invalid credentials" });
+      // }
+      // if (user.status !== "approved") {
+      //   return res.status(403).json({ message: "Your account is not approved yet." });
+      // }
 
-      // Validate input
-      if (!email || !password) {
-        return res
-          .status(400)
-          .json({ message: "Email and password are required" });
-      }
+      // // Validate input
+      // if (!email || !password) {
+      //   return res
+      //     .status(400)
+      //     .json({ message: "Email and password are required" });
+      // }
 
       // Find user by email
       const verifyUser = await Adminlogin.findOne({ email });

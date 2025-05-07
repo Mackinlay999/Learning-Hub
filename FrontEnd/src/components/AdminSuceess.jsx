@@ -15,4 +15,4 @@ const AdminSuceess = () => {
   )
 }
 
-export default AdminSuceess
+export default AdminSuceess;
