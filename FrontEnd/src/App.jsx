@@ -106,7 +106,7 @@ import AdminLeadDetails from "./components/AdminLeadDetails";
 import AdminCourses from "./components/AdminCourses";
 
 
-
+// main
 function App() {
   const { auth } = useAuth();
   if (auth.loading) {

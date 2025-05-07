@@ -106,14 +106,14 @@ const AdminStudentDetail = () => {
     return <div className="text-center mt-5">No student data available</div>;
 
   return (
-    <div className="container mt-4">
+    <div className="admin-student-detail-container mt-4">
       <motion.div
-        className="card shadow-lg studentDetailCard"
+        className="card shadow-lg admin-student-detail-card"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="card-header d-flex justify-content-between align-items-center studentDetailCardHeader">
+        <div className="card-header d-flex justify-content-between align-items-center admin-student-detail-card-header">
           <button className="btn btn-secondary" onClick={() => navigate(-1)}>
             Back
           </button>
@@ -133,24 +133,28 @@ const AdminStudentDetail = () => {
           </span>
         </div>
 
-        <div className="card-body row studentDetailCardBody">
-          <motion.div className="col-md-3 text-center studentDetailProfile">
+        <div className="card-body row admin-student-detail-card-body">
+          <motion.div className="col-md-3 text-center admin-student-detail-profile">
             <img
               src={student.photo}
               alt="student"
               className="img-fluid rounded-circle mb-2"
               style={{ width: "120px", height: "120px", objectFit: "cover" }}
             />
-            <p className="text-muted studentDetailText">{student.email}</p>
-            <p className="text-muted studentDetailText">
+            <p className="text-muted admin-student-detail-text">
+              {student.email}
+            </p>
+            <p className="text-muted admin-student-detail-text">
               {student.mobile || "mobile not provided"}
             </p>
           </motion.div>
 
-          <motion.div className="col-md-9 studentDetailInfo">
-            <motion.h5 className="mt-2 studentDetailHeader">Progress</motion.h5>
+          <motion.div className="col-md-9 admin-student-detail-info">
+            <motion.h5 className="mt-2 admin-student-detail-header">
+              Progress
+            </motion.h5>
             <div
-              className="progress mb-3 studentDetailProgress"
+              className="progress mb-3 admin-student-detail-progress"
               style={{ height: "20px" }}
             >
               <div
@@ -162,13 +166,13 @@ const AdminStudentDetail = () => {
             </div>
 
             {/* Payment Info */}
-            <h5 className="studentDetailHeader">Payment Info</h5>
+            <h5 className="admin-student-detail-header">Payment Info</h5>
             {student.payments.length > 0 ? (
-              <ul className="list-group mb-3 studentDetailPaymentList">
+              <ul className="list-group mb-3 admin-student-detail-payment-list">
                 {student.payments.map((p, i) => (
                   <li
                     key={i}
-                    className="list-group-item d-flex justify-content-between align-items-center studentDetailPaymentItem"
+                    className="list-group-item d-flex justify-content-between align-items-center admin-student-detail-payment-item"
                   >
                     ₹{p.amount}
                     <span
@@ -182,13 +186,13 @@ const AdminStudentDetail = () => {
                 ))}
               </ul>
             ) : (
-              <p className="text-muted studentDetailText">
+              <p className="text-muted admin-student-detail-text">
                 No payment records found.
               </p>
             )}
 
             {/* Add Certificate Form */}
-            <h5 className="studentDetailHeader">Add Certificate</h5>
+            <h5 className="admin-student-detail-header">Add Certificate</h5>
             <form onSubmit={handleSubmitCertificate}>
               <div>
                 <label>Certificate Name:</label>
@@ -216,16 +220,16 @@ const AdminStudentDetail = () => {
             </form>
 
             {/* Display Certificates */}
-            <h5 className="studentDetailHeader">Certificates</h5>
+            <h5 className="admin-student-detail-header">Certificates</h5>
             {certificates.length > 0 ? (
-              <ul className="studentDetailCertificateList">
+              <ul className="admin-student-detail-certificate-list">
                 {certificates.map((cert, i) => (
                   <li key={i}>
                     <a
                       href={cert.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="studentDetailCertificateLink"
+                      className="admin-student-detail-certificate-link"
                     >
                       {cert.name}
                     </a>
@@ -233,19 +237,19 @@ const AdminStudentDetail = () => {
                 ))}
               </ul>
             ) : (
-              <p className="text-muted studentDetailText">
+              <p className="text-muted admin-student-detail-text">
                 No certificates uploaded.
               </p>
             )}
 
             {/* Attendance Log */}
-            <h5 className="studentDetailHeader">Attendance Log</h5>
+            <h5 className="admin-student-detail-header">Attendance Log</h5>
             {attendance.length > 0 ? (
-              <ul className="list-group mb-3 studentDetailAttendanceList">
+              <ul className="list-group mb-3 admin-student-detail-attendance-list">
                 {attendance.map((log, i) => (
                   <li
                     key={i}
-                    className="list-group-item d-flex justify-content-between studentDetailAttendanceItem"
+                    className="list-group-item d-flex justify-content-between admin-student-detail-attendance-item"
                   >
                     {log.date}
                     <span
@@ -259,18 +263,20 @@ const AdminStudentDetail = () => {
                 ))}
               </ul>
             ) : (
-              <p className="text-muted studentDetailText">
+              <p className="text-muted admin-student-detail-text">
                 No attendance records available.
               </p>
             )}
 
             {/* Recruiter Notes */}
-            <h5 className="studentDetailHeader">Recruiter Notes</h5>
-            <div className="border rounded p-2 bg-light studentDetailNote">
+            <h5 className="admin-student-detail-header">Recruiter Notes</h5>
+            <div className="border rounded p-2 bg-light admin-student-detail-note">
               {student.recruiterNote ? (
-                <p className="studentDetailText">{student.recruiterNote}</p>
+                <p className="admin-student-detail-text">
+                  {student.recruiterNote}
+                </p>
               ) : (
-                <p className="text-muted studentDetailText">
+                <p className="text-muted admin-student-detail-text">
                   No notes added yet.
                 </p>
               )}
@@ -390,14 +396,14 @@ const AdminStudents = () => {
   }, [students, search, courseFilter, statusFilter]);
 
   return (
-    <div className="students-container mt-4">
-      <h3 className="students-title mb-4">Student Management</h3>
+    <div className="admin-students-container mt-4">
+      <h3 className="admin-students-title mb-4">Student Management</h3>
 
       {/* Filters */}
-      <div className="students-row mb-3 g-2">
+      <div className="admin-students-row mb-3 g-2">
         <div className="col-md-4">
           <input
-            className="students-form-control"
+            className="admin-students-form-control"
             placeholder="Search by name"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -405,7 +411,7 @@ const AdminStudents = () => {
         </div>
         <div className="col-md-3">
           <select
-            className="students-form-select"
+            className="admin-students-form-select"
             value={courseFilter}
             onChange={(e) => setCourseFilter(e.target.value)}
           >
@@ -419,7 +425,7 @@ const AdminStudents = () => {
         </div>
         <div className="col-md-3">
           <select
-            className="students-form-select"
+            className="admin-students-form-select"
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
           >
@@ -432,7 +438,7 @@ const AdminStudents = () => {
       </div>
 
       {/* Add Student */}
-      <div className="card mb-4 p-3">
+      <div className="admin-students-card mb-4 p-3">
         <h5>Add New Student</h5>
         <div className="row g-2">
           <input
@@ -494,8 +500,8 @@ const AdminStudents = () => {
       </div>
 
       {/* Table View */}
-      <table className="table table-striped table-hover table-bordered shadow-sm">
-        <thead className="table-dark">
+      <table className="admin-students-table table table-striped table-hover table-bordered shadow-sm">
+        <thead className="admin-students-table-dark">
           <tr>
             <th>Photo</th>
             <th>Name</th>
@@ -642,5 +648,6 @@ const AdminStudents = () => {
     </div>
   );
 };
+
 
 export { AdminStudents, AdminStudentDetail };

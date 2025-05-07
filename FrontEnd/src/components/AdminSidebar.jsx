@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; 
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext"; // Adjust path based on where useAuth is
 import {
@@ -32,12 +32,6 @@ const allSections = [
     path: "/admin-lead-student",
     roles: ["Admin", "Super Admin"],
   },
-  // {
-  //   name: "Login",
-  //   icon: <ShieldCheck size={18} />,
-  //   path: "/login",
-  //   roles: ["Super Admin", "Admin", "Recruiter", "Mentor", "Super Admin"],
-  // },
   {
     name: "Student-Management",
     icon: <ShieldCheck size={18} />,
@@ -119,38 +113,38 @@ const AdminSidebar = () => {
 
   return (
     <>
-      <button className="toggle-btn" onClick={toggleSidebar}>
+      <button className="admin-sidebar-toggle-btn" onClick={toggleSidebar}>
         {sidebarOpen ? "Close" : "Menu"}
       </button>
 
-      <div className={`sidebar-wrapper ${sidebarOpen ? "open" : ""}`}>
-        <div className="custom-sidebar">
-          <div className="sidebar-header">
-            <h5 className="brand-text">Mackinlay Learning Hub</h5>
+      <div className={`admin-sidebar-wrapper ${sidebarOpen ? "open" : ""}`}>
+        <div className="admin-sidebar-custom-sidebar">
+          <div className="admin-sidebar-header">
+            <h5 className="admin-sidebar-brand-text">Mackinlay Learning Hub</h5>
           </div>
 
-          <div className="S-sidebar">
-            <ul className="sidebar-nav">
+          <div className="admin-sidebar-S-sidebar">
+            <ul className="admin-sidebar-nav">
               {loading ? (
-                <div className="sidebar-loading">Loading...</div>
+                <div className="admin-sidebar-loading">Loading...</div>
               ) : (
                 availableSections.map((item, index) => (
                   <li key={index}>
                     <NavLink
                       to={item.path}
                       className={({ isActive }) =>
-                        `sidebar-nav-link ${isActive ? "active" : ""}`
+                        `admin-sidebar-nav-link ${isActive ? "active" : ""}`
                       }
                     >
-                      <span className="S-icon">{item.icon}</span>
-                      <p className="S-content">{item.name}</p>
+                      <span className="admin-sidebar-S-icon">{item.icon}</span>
+                      <p className="admin-sidebar-S-content text-white">{item.name}</p>
                     </NavLink>
                   </li>
                 ))
               )}
 
               <li>
-                <button onClick={logout} className="sidebar-logout-btn">
+                <button onClick={logout} className="admin-sidebar-logout-btn">
                   Logout
                 </button>
               </li>
@@ -161,7 +155,7 @@ const AdminSidebar = () => {
 
       {sidebarOpen && (
         <div
-          className="sidebar-overlay"
+          className="admin-sidebar-overlay"
           onClick={() => setSidebarOpen(false)}
         />
       )}

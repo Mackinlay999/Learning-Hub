@@ -1,6 +1,6 @@
-/* StudentDetail.css */ 
+/* admin-student-detail.css */
 
-.container {
+.admin-student-detail-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 15px;
@@ -8,29 +8,30 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
-.card {
+.admin-student-detail-card {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
 }
-.card:hover {
+
+.admin-student-detail-card:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-.card-header {
+.admin-student-detail-card-header {
   background-color: #D32F2F;
   padding: 15px;
   border-bottom: 1px solid #FFC107;
 }
 
-.card-header h4 {
+.admin-student-detail-card-header h4 {
   font-size: 1.5rem;
   font-weight: 600;
   color: #FFFFFF;
 }
 
-.card-header .badge {
+.admin-student-detail-card-header .badge {
   font-size: 0.9rem;
   padding: 8px 12px;
   border-radius: 20px;
@@ -38,22 +39,22 @@
   color: #333333;
 }
 
-.card-body {
+.admin-student-detail-card-body {
   padding: 20px;
   background-color: #fff;
 }
 
-.studentDetailCardBody {
+.admin-student-detail-card-body-content {
   display: flex;
   flex-wrap: wrap;
 }
 
-.studentDetailProfile {
+.admin-student-detail-profile {
   margin-bottom: 20px;
   text-align: center;
 }
 
-.studentDetailProfile img {
+.admin-student-detail-profile img {
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -61,28 +62,29 @@
   border: 3px solid #D32F2F;
   transition: transform 0.3s ease;
 }
-.studentDetailProfile img:hover {
+
+.admin-student-detail-profile img:hover {
   transform: scale(1.05);
 }
 
-.studentDetailProfile .studentDetailText {
+.admin-student-detail-profile .admin-student-detail-text {
   color: #555;
   font-size: 0.9rem;
   margin-top: 8px;
 }
 
-.studentDetailInfo {
+.admin-student-detail-info {
   padding-left: 20px;
 }
 
-.studentDetailHeader {
+.admin-student-detail-header {
   font-size: 1.2rem;
   font-weight: 500;
   color: #D32F2F;
   margin-top: 20px;
 }
 
-.studentDetailProgress {
+.admin-student-detail-progress {
   background-color: #f3f3f3;
   border-radius: 10px;
   overflow: hidden;
@@ -90,14 +92,14 @@
   margin-top: 10px;
 }
 
-.studentDetailPaymentList,
-.studentDetailAttendanceList,
-.studentDetailCertificateList {
+.admin-student-detail-payment-list,
+.admin-student-detail-attendance-list,
+.admin-student-detail-certificate-list {
   margin-top: 10px;
 }
 
-.studentDetailPaymentItem,
-.studentDetailAttendanceItem {
+.admin-student-detail-payment-item,
+.admin-student-detail-attendance-item {
   font-size: 1rem;
   padding: 10px;
   background-color: #fff;
@@ -106,13 +108,14 @@
   margin-bottom: 5px;
   transition: background-color 0.3s ease;
 }
-.studentDetailPaymentItem:hover,
-.studentDetailAttendanceItem:hover {
+
+.admin-student-detail-payment-item:hover,
+.admin-student-detail-attendance-item:hover {
   background-color: #fff8e1;
 }
 
-.studentDetailPaymentItem .badge,
-.studentDetailAttendanceItem .badge {
+.admin-student-detail-payment-item .badge,
+.admin-student-detail-attendance-item .badge {
   font-size: 0.9rem;
   padding: 5px 10px;
   border-radius: 20px;
@@ -120,29 +123,31 @@
   color: #333333;
 }
 
-.studentDetailCertificateLink {
+.admin-student-detail-certificate-link {
   color: #D32F2F;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
 }
-.studentDetailCertificateLink:hover {
+
+.admin-student-detail-certificate-link:hover {
   text-decoration: underline;
   color: #b71c1c;
 }
 
-.studentDetailNote {
+.admin-student-detail-note {
   background-color: #fff8e1;
   border: 1px solid #FFC107;
   border-radius: 5px;
   padding: 15px;
   transition: background-color 0.3s ease;
 }
-.studentDetailNote:hover {
+
+.admin-student-detail-note:hover {
   background-color: #fff3cd;
 }
 
-.studentDetailText {
+.admin-student-detail-text {
   font-size: 1rem;
   color: #333333;
 }
@@ -152,78 +157,78 @@
 }
 
 @media (max-width: 767px) {
-  .studentDetailCardBody {
+  .admin-student-detail-card-body-content {
     flex-direction: column;
     align-items: center;
   }
 
-  .studentDetailProfile {
+  .admin-student-detail-profile {
     margin-bottom: 20px;
   }
 
-  .studentDetailInfo {
+  .admin-student-detail-info {
     padding-left: 0;
     margin-top: 20px;
   }
 
-  .studentDetailProgress {
+  .admin-student-detail-progress {
     margin-top: 10px;
   }
 
-  .studentDetailPaymentList,
-  .studentDetailAttendanceList,
-  .studentDetailCertificateList {
+  .admin-student-detail-payment-list,
+  .admin-student-detail-attendance-list,
+  .admin-student-detail-certificate-list {
     padding-left: 0;
   }
 
-  .studentDetailPaymentItem,
-  .studentDetailAttendanceItem {
+  .admin-student-detail-payment-item,
+  .admin-student-detail-attendance-item {
     font-size: 0.9rem;
     padding: 8px;
   }
 
-  .studentDetailHeader {
+  .admin-student-detail-header {
     font-size: 1rem;
   }
 
-  .studentDetailCertificateLink {
+  .admin-student-detail-certificate-link {
     font-size: 0.9rem;
   }
 }
 
 @media (max-width: 575px) {
-  .studentDetailCardBody {
+  .admin-student-detail-card-body-content {
     padding: 15px;
   }
 
-  .card-header h4 {
+  .admin-student-detail-card-header h4 {
     font-size: 1.2rem;
   }
 
-  .studentDetailProfile img {
+  .admin-student-detail-profile img {
     width: 100px;
     height: 100px;
   }
 
-  .studentDetailHeader {
+  .admin-student-detail-header {
     font-size: 1.1rem;
   }
 
-  .studentDetailText {
+  .admin-student-detail-text {
     font-size: 0.9rem;
   }
 
-  .studentDetailPaymentItem,
-  .studentDetailAttendanceItem {
+  .admin-student-detail-payment-item,
+  .admin-student-detail-attendance-item {
     font-size: 0.8rem;
   }
 
-  .studentDetailPaymentItem .badge,
-  .studentDetailAttendanceItem .badge {
+  .admin-student-detail-payment-item .badge,
+  .admin-student-detail-attendance-item .badge {
     font-size: 0.8rem;
   }
 
-  .studentDetailNote {
+  .admin-student-detail-note {
     padding: 10px;
   }
 }
