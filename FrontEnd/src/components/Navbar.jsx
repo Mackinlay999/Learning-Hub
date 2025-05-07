@@ -77,7 +77,7 @@ const NavBar = () => {
                   </NavDropdown>
 
 
-                  <Nav.Link as={Link} to="/">
+                  <Nav.Link as={Link} to="/admin">
                     Dashboard
                   </Nav.Link>
                 </Nav>

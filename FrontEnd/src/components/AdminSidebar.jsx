@@ -17,7 +17,7 @@ const allSections = [
   {
     name: "Dashboard",
     icon: <ShieldCheck size={18} />,
-    path: "/Home",
+    path: "/admin-home",
     roles: ["Super Admin", "Admin", "Recruiter", "Mentor"],
   },
   {
@@ -29,7 +29,7 @@ const allSections = [
   {
     name: "Lead & Student Management",
     icon: <Users size={18} />,
-    path: "/lead-student",
+    path: "/admin-lead-student",
     roles: ["Admin", "Super Admin"],
   },
   // {
@@ -41,61 +41,61 @@ const allSections = [
   {
     name: "Student-Management",
     icon: <ShieldCheck size={18} />,
-    path: "/students",
+    path: "/admin-students",
     roles: ["Admin", "Super Admin"],
   },
   {
     name: "Mentor",
     icon: <ShieldCheck size={18} />,
-    path: "/mentors",
+    path: "/admin-mentors",
     roles: ["Mentor", "Admin", "Super Admin"],
   },
   {
     name: "Email Marketing",
     icon: <Mail size={18} />,
-    path: "/email-marketing",
+    path: "/admin-email-marketing",
     roles: ["Admin", "Super Admin"],
   },
   {
     name: "Recruiter Dashboard",
     icon: <ShieldCheck size={18} />,
-    path: "/recruiters/dashboard",
+    path: "/admin-recruiters/dashboard",
     roles: ["Recruiter", "Super Admin"],
   },
   {
     name: "Finance & Payment",
     icon: <CreditCard size={18} />,
-    path: "/finance-payment",
+    path: "/admin-finance-payment",
     roles: ["Admin", "Super Admin"],
   },
   {
     name: "Corporate Training",
     icon: <Building2 size={18} />,
-    path: "/corporate-training",
+    path: "/admin-corporate-training",
     roles: ["Admin", "Super Admin"],
   },
   {
     name: "Analytics & Reports",
     icon: <BarChart2 size={18} />,
-    path: "/analytics-reports",
+    path: "/admin-analytics-reports",
     roles: ["Admin", "Super Admin"],
   },
   {
     name: "Support & Feedback",
     icon: <MessageCircle size={18} />,
-    path: "/support-feedback",
+    path: "/admin-support-feedback",
     roles: ["Admin", "Mentor", "Recruiter", "Super Admin"],
   },
   {
     name: "Sucess Story",
     icon: <Briefcase size={18} />,
-    path: "/Suceess",
+    path: "/admin-Suceess",
     roles: ["Admin", "Mentor", "Super Admin"],
   },
   {
     name: "Blog & Webinar",
     icon: <ShieldCheck size={18} />,
-    path: "/blog-webinar",
+    path: "/admin-blog-webinar",
     roles: ["Admin", "Super Admin"],
   },
 ];

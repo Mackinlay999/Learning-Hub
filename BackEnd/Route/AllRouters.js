@@ -131,8 +131,8 @@ router.delete("/deleteRecord/:id", AttendanceController.deleteRecord);
 
 router.post("/admin/register",  Admincontroller.register)
 router.get("/admin/alluser",  Admincontroller.getallrole)
-router.post("/admin/login",  Admincontroller.login)
-router.post("/admin/logout",  Admincontroller.logout)
+router.post("/admin-login",  Admincontroller.login)
+router.post("/admin-logout",  Admincontroller.logout)
 router.post("/admin/forgetpassword",  Admincontroller.forgetpassword)
 router.post("/admin/setNewPassword",  Admincontroller.setNewPassword)
 router.get("/approve/:id",  Admincontroller.approveUser)
