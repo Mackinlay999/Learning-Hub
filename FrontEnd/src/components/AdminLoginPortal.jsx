@@ -13,10 +13,10 @@ const AdminLoginPortal = () => {
   // Map roles to their landing routes (using useMemo to memoize)
   const roleToRoute = useMemo(
     () => ({
-      "Super Admin": "/home",
-      Admin: "/home",
-      Recruiter: "/recruiters/dashboard",
-      Mentor: "/mentors",
+      "Super Admin": "/admin-home",
+      Admin: "/admin-home",
+      Recruiter: "/admin-recruiters/dashboard",
+      Mentor: "/admin-mentors",
       // Add more roles here if needed
     }),
     []
@@ -69,7 +69,7 @@ const AdminLoginPortal = () => {
 
     try {
       const response = await axios.post(
-        "/admin/login",
+        "/admin-login",
         { email: credentials.email, password: credentials.password },
         { withCredentials: true }
       );
@@ -90,7 +90,7 @@ const AdminLoginPortal = () => {
       alert("Login Successful");
 
       // Redirect after successful login
-      const redirectPath = roleToRoute[role] || "/";
+      const redirectPath = roleToRoute[role] || "/admin-login";
       navigate(redirectPath, { replace: true });
     } catch (error) {
       console.error(error); // Debugging purpose
@@ -111,7 +111,7 @@ const AdminLoginPortal = () => {
   return (
     <div style={styles.container}>
       <div style={styles.box}>
-        <h1>Login to your account</h1>
+        <h1>Login to your Account</h1>
         <form onSubmit={handleSubmit} style={styles.form}>
           <div style={styles.formGroup}>
             <label htmlFor="email">Your Email</label>
@@ -158,7 +158,7 @@ const AdminLoginPortal = () => {
             <button
               type="button"
               style={styles.forgotButton}
-              onClick={() => navigate("/PasswordReset")}
+              onClick={() => navigate("/admin-PasswordReset")}
             >
               Forgot Password
             </button>
@@ -167,7 +167,7 @@ const AdminLoginPortal = () => {
           <p style={styles.registerLink}>
             Don’t have an account yet?{" "}
             <span
-              onClick={() => navigate("/register")}
+              onClick={() => navigate("/admin-register")}
               style={styles.registerSpan}
             >
               Create a new Account
