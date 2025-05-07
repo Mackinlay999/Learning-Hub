@@ -119,7 +119,7 @@ function App() {
         
         <div
           className="d-flex flex-column flex-md-row"
-          style={{ minHeight: "100vh" }}
+          
         >
           {/* Sidebar */}
           {auth.token && (
