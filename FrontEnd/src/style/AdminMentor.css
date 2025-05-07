@@ -1,5 +1,4 @@
-Mentors Container
-.mentors-container {
+.admin-mentors-container { 
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -7,7 +6,7 @@ Mentors Container
   color: #333333;
 }
 
-.mentors-title {
+.admin-mentors-title {
   font-weight: 700;
   text-align: center;
   margin-bottom: 20px;
@@ -16,15 +15,15 @@ Mentors Container
   text-shadow: 1px 1px 1px #ffc107;
 }
 
-.mentors-row {
+.admin-mentors-row {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
 /* Form Controls */
-.mentors-form-control,
-.mentors-form-select {
+.admin-mentors-form-control,
+.admin-mentors-form-select {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
@@ -36,15 +35,15 @@ Mentors Container
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-.mentors-form-control:focus,
-.mentors-form-select:focus {
+.admin-mentors-form-control:focus,
+.admin-mentors-form-select:focus {
   border-color: #D32F2F;
   outline: none;
   box-shadow: 0 0 5px rgba(211, 47, 47, 0.4);
 }
 
 /* Buttons */
-.mentors-btn {
+.admin-mentors-btn {
   padding: 10px 20px;
   border-radius: 5px;
   border: none;
@@ -54,48 +53,48 @@ Mentors Container
   font-weight: 600;
 }
 
-.mentors-btn:hover {
+.admin-mentors-btn:hover {
   opacity: 0.95;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-.mentors-btn:focus {
+.admin-mentors-btn:focus {
   outline: none;
 }
 
 /* Button specific styles */
-.mentors-btn.btn-primary {
+.admin-mentors-btn.btn-primary {
   background-color: #D32F2F;
   color: white;
 }
 
-.mentors-btn.btn-info {
+.admin-mentors-btn.btn-info {
   background-color: #17a2b8;
   color: white;
 }
 
-.mentors-btn.btn-warning {
+.admin-mentors-btn.btn-warning {
   background-color: #FFC107;
   color: black;
 }
 
-.mentors-btn.btn-danger {
+.admin-mentors-btn.btn-danger {
   background-color: #c62828;
   color: white;
 }
 
-.mentors-btn.btn-dark {
+.admin-mentors-btn.btn-dark {
   background-color: #333333;
   color: white;
 }
 
-.mentors-btn:active {
+.admin-mentors-btn:active {
   transform: scale(0.97);
   background-color: #b71c1c;
 }
 
 /* Table Styles */
-.mentors-table {
+.admin-mentors-table {
   width: 100%;
   margin-top: 20px;
   border-collapse: collapse;
@@ -105,116 +104,116 @@ Mentors Container
   overflow: hidden;
 }
 
-.mentors-table th, .mentors-table td {
+.admin-mentors-table th, .admin-mentors-table td {
   padding: 12px;
   text-align: left;
   font-size: 1rem;
   color: #333333;
 }
 
-.mentors-table th {
+.admin-mentors-table th {
   background-color: #D32F2F;
   color: white;
   font-weight: 600;
 }
 
-.mentors-table tbody tr:nth-child(even) {
+.admin-mentors-table tbody tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-.mentors-table-row {
+.admin-mentors-table-row {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.mentors-table-row:hover {
+.admin-mentors-table-row:hover {
   background-color: #FFF3E0;
   transform: scale(1.01);
 }
 
 /* Badges */
-.mentors-table .badge {
+.admin-mentors-table .badge {
   padding: 5px 10px;
   font-size: 0.9rem;
   border-radius: 12px;
   color: white;
 }
 
-.mentors-table .badge.bg-success {
+.admin-mentors-table .badge.bg-success {
   background-color: #28a745;
 }
 
-.mentors-table .badge.bg-secondary {
+.admin-mentors-table .badge.bg-secondary {
   background-color: #6c757d;
 }
 
-.mentors-table .badge.bg-warning {
+.admin-mentors-table .badge.bg-warning {
   background-color: #FFC107;
   color: #333;
 }
 
 /* Circle Images */
-.mentors-rounded-circle {
+.admin-mentors-rounded-circle {
   border-radius: 50%;
   border: 2px solid #D32F2F;
 }
 
 /* Light Table Background */
-.mentors-table-light {
+.admin-mentors-table-light {
   background-color: #f8f9fa;
 }
 
 /* Hover Effects */
-.mentors-btn:focus,
-.mentors-btn:hover {
+.admin-mentors-btn:focus,
+.admin-mentors-btn:hover {
   background-color: #B71C1C;
   box-shadow: 0 0 10px rgba(211, 47, 47, 0.3);
 }
 
-.mentors-table-row:hover {
+.admin-mentors-table-row:hover {
   transform: scale(1.02);
 }
 
-.mentors-btn:active {
+.admin-mentors-btn:active {
   transform: scale(0.98);
   background-color: #a31818;
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .mentors-row {
+  .admin-mentors-row {
     flex-direction: column;
   }
 
-  .mentors-form-control,
-  .mentors-form-select {
+  .admin-mentors-form-control,
+  .admin-mentors-form-select {
     width: 100%;
   }
 
-  .mentors-btn {
+  .admin-mentors-btn {
     width: 100%;
     margin-top: 10px;
   }
 
-  .mentors-table td, .mentors-table th {
+  .admin-mentors-table td, .admin-mentors-table th {
     font-size: 0.9rem;
   }
 
-  .mentors-table .badge {
+  .admin-mentors-table .badge {
     font-size: 0.8rem;
   }
 
-  .mentors-btn.btn-sm {
+  .admin-mentors-btn.btn-sm {
     font-size: 0.8rem;
     padding: 8px 16px;
   }
 }
 
 @media (max-width: 480px) {
-  .mentors-title {
+  .admin-mentors-title {
     font-size: 1.2rem;
   }
 
-  .mentors-table td, .mentors-table th {
+  .admin-mentors-table td, .admin-mentors-table th {
     font-size: 0.8rem;
   }
 }

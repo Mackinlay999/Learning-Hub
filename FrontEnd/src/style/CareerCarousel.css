@@ -23,7 +23,7 @@
    
   }
   
-  .card {
+  /* .card {
     background: white;
     padding: 20px;
      width: 300px !important;
@@ -32,7 +32,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 220px;
     text-align: center;
-  }
+  } */
   
   .profile-img {
     width: 60px;
@@ -75,7 +75,7 @@
     cursor: not-allowed;
   }
   @media (max-width: 768px) {
-  card {
+  /* card {
     background: white;
     padding: 20px;
     background-color: red;
@@ -85,7 +85,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 220px;
     text-align: center;
-  }
+  } */
   
  } 
   

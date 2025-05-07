@@ -1,7 +1,7 @@
 /* RecruiterDashboard.css */
 
 /* Container Styling */
-.RecruiterDashboard-container {
+.admin-recruiter-dashboard-container {
   background: #ffffff; /* white background for readability */
   min-height: 100vh;
   padding-top: 3rem;
@@ -9,7 +9,7 @@
 }
 
 /* Heading */
-.RecruiterDashboard-heading {
+.admin-recruiter-dashboard-heading {
   font-size: 2.5rem;
   color: #D32F2F; /* primary red */
   text-transform: uppercase;
@@ -18,28 +18,29 @@
 }
 
 /* Card and Motion Wrapper */
-.RecruiterDashboard-motion {
+.admin-recruiter-dashboard-motion {
   transition: transform 0.3s ease-in-out;
 }
 
-.RecruiterDashboard-card {
+.admin-recruiter-dashboard-card {
   background: white;
   border-radius: 20px;
   border: 1px solid #e0e0e0;
   transition: box-shadow 0.3s ease;
+  width: 100%;
 }
 
-.RecruiterDashboard-card:hover {
+.admin-recruiter-dashboard-card:hover {
   box-shadow: 0 10px 25px rgba(211, 47, 47, 0.2); /* subtle red tint */
 }
 
 /* Card Body */
-.RecruiterDashboard-cardBody {
+.admin-recruiter-dashboard-cardBody {
   padding: 1.5rem;
 }
 
 /* Icon Circle */
-.RecruiterDashboard-iconCircle {
+.admin-recruiter-dashboard-iconCircle {
   width: 50px;
   height: 50px;
   font-size: 1.4rem;
@@ -52,33 +53,33 @@
   transition: background-color 0.3s ease;
 }
 
-.RecruiterDashboard-iconCircle:hover {
+.admin-recruiter-dashboard-iconCircle:hover {
   background-color: #a00000;
 }
 
 /* Icon and Title Container */
-.RecruiterDashboard-iconTitle {
+.admin-recruiter-dashboard-iconTitle {
   align-items: center;
 }
 
-.RecruiterDashboard-cardTitle {
+.admin-recruiter-dashboard-cardTitle {
   font-size: 1.2rem;
   color: #333333; /* dark gray */
   font-weight: 600;
 }
 
 /* Description Text */
-.RecruiterDashboard-cardText {
+.admin-recruiter-dashboard-cardText {
   font-size: 0.95rem;
   color: #6c757d;
 }
 
 /* Button Wrapper and Button */
-.RecruiterDashboard-buttonWrapper {
+.admin-recruiter-dashboard-buttonWrapper {
   text-align: right;
 }
 
-.RecruiterDashboard-button {
+.admin-recruiter-dashboard-button {
   font-size: 0.9rem;
   border-radius: 25px;
   padding: 0.4rem 1.2rem;
@@ -88,14 +89,14 @@
   transition: all 0.3s ease;
 }
 
-.RecruiterDashboard-button:hover {
+.admin-recruiter-dashboard-button:hover {
   background-color: #a00000;
   color: #fff;
   border-color: #a00000;
 }
 
 /* Highlighted Section (Optional for future use) */
-.RecruiterDashboard-highlight {
+.admin-recruiter-dashboard-highlight {
   background-color: #FFC107; /* gold accent */
   color: #333333;
   padding: 0.5rem 1rem;
@@ -105,34 +106,34 @@
 
 /* Responsive Tweaks */
 @media (max-width: 768px) {
-  .RecruiterDashboard-heading {
+  .admin-recruiter-dashboard-heading {
     font-size: 2rem;
   }
 
-  .RecruiterDashboard-buttonWrapper {
+  .admin-recruiter-dashboard-buttonWrapper {
     text-align: center;
   }
 
-  .RecruiterDashboard-cardBody {
+  .admin-recruiter-dashboard-cardBody {
     padding: 1rem;
   }
 }
 
 @media (max-width: 576px) {
-  .RecruiterDashboard-iconCircle {
+  .admin-recruiter-dashboard-iconCircle {
     width: 40px;
     height: 40px;
   }
 
-  .RecruiterDashboard-cardTitle {
+  .admin-recruiter-dashboard-cardTitle {
     font-size: 1rem;
   }
 
-  .RecruiterDashboard-cardText {
+  .admin-recruiter-dashboard-cardText {
     font-size: 0.9rem;
   }
 
-  .RecruiterDashboard-button {
+  .admin-recruiter-dashboard-button {
     font-size: 0.85rem;
   }
 }

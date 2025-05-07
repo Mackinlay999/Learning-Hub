@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
 import { motion } from "framer-motion";
+import "../style/AdminMentorDetail.css"; // Adjust the path as necessary
 
 const AdminMentorDetail = () => {
   const { id } = useParams();
@@ -55,12 +56,12 @@ const AdminMentorDetail = () => {
   return (
     <div className="container mt-4">
       <motion.div
-        className="card shadow-lg mentorDetailCard"
+        className="card shadow-lg admin-mentor-details-card"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="card-header d-flex justify-content-between align-items-center mentorDetailCardHeader">
+        <div className="card-header d-flex justify-content-between align-items-center admin-mentor-details-header">
           <button className="btn btn-secondary" onClick={() => navigate(-1)}>
             Back
           </button>
@@ -68,27 +69,27 @@ const AdminMentorDetail = () => {
           <span className="badge bg-info">{mentor.role || "Mentor"}</span>
         </div>
 
-        <div className="card-body row mentorDetailCardBody">
-          <div className="col-md-3 text-center mentorDetailProfile">
+        <div className="card-body row admin-mentor-details-body">
+          <div className="col-md-3 text-center admin-mentor-details-profile">
             <img
               src={mentor.photo}
               alt="mentor"
               className="img-fluid rounded-circle mb-2"
               style={{ width: "120px", height: "120px", objectFit: "cover" }}
             />
-            <p className="text-muted mentorDetailText">{mentor.email}</p>
-            <p className="text-muted mentorDetailText">{mentor.mobile || "mobile not provided"}</p>
+            <p className="text-muted admin-mentor-details-text">{mentor.email}</p>
+            <p className="text-muted admin-mentor-details-text">{mentor.mobile || "mobile not provided"}</p>
           </div>
 
-          <div className="col-md-9 mentorDetailInfo">
+          <div className="col-md-9 admin-mentor-details-info">
             {/* Sessions Conducted */}
-            <h5 className="mentorDetailHeader">Sessions Conducted</h5>
+            <h5 className="admin-mentor-details-header">Sessions Conducted</h5>
             {sessions.length > 0 ? (
-              <ul className="list-group mb-3 mentorDetailSessionList">
+              <ul className="list-group mb-3 admin-mentor-details-session-list">
                 {sessions.map((session, i) => (
                   <li
                     key={i}
-                    className="list-group-item d-flex justify-content-between align-items-center mentorDetailSessionItem"
+                    className="list-group-item d-flex justify-content-between align-items-center admin-mentor-details-session-item"
                   >
                     {session.title} - {session.date}
                     <span className="badge bg-primary">{session.topic}</span>
@@ -105,13 +106,13 @@ const AdminMentorDetail = () => {
                 ))}
               </ul>
             ) : (
-              <p className="text-muted mentorDetailText">No sessions conducted.</p>
+              <p className="text-muted admin-mentor-details-text">No sessions conducted.</p>
             )}
 
             {/* Assigned Students */}
-            <h5 className="mentorDetailHeader">Assigned Students</h5>
+            <h5 className="admin-mentor-details-header">Assigned Students</h5>
             {students.length > 0 ? (
-              <ul className="list-group mb-3 mentorDetailStudentList">
+              <ul className="list-group mb-3 admin-mentor-details-student-list">
                 {students.map((s, i) => (
                   <li key={i} className="list-group-item">
                     {s.name} ({s.course})
@@ -119,16 +120,16 @@ const AdminMentorDetail = () => {
                 ))}
               </ul>
             ) : (
-              <p className="text-muted mentorDetailText">No students assigned.</p>
+              <p className="text-muted admin-mentor-details-text">No students assigned.</p>
             )}
 
             {/* Notes */}
-            <h5 className="mentorDetailHeader">Mentor Notes</h5>
-            <div className="border rounded p-2 bg-light mentorDetailNote">
+            <h5 className="admin-mentor-details-header">Mentor Notes</h5>
+            <div className="border rounded p-2 bg-light admin-mentor-details-note">
               {mentor.notes ? (
-                <p className="mentorDetailText">{mentor.notes}</p>
+                <p className="admin-mentor-details-text">{mentor.notes}</p>
               ) : (
-                <p className="text-muted mentorDetailText">No notes added yet.</p>
+                <p className="text-muted admin-mentor-details-text">No notes added yet.</p>
               )}
             </div>
           </div>

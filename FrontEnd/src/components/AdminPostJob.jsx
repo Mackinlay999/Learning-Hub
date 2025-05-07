@@ -72,12 +72,13 @@ const AdminPostJob = () => {
   };
 
   return (
-    <Container className="postjob-container py-5">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h3 className="postjob-title fw-bold">Post Job/Internship</h3>
+    <Container className="admin-post-job-container py-5">
+      <div className="admin-post-job-header d-flex justify-content-between align-items-center mb-4">
+        <h3 className="admin-post-job-title fw-bold">Post Job/Internship</h3>
         <Button
           variant="secondary"
           onClick={() => navigate("/recruiters/dashboard")}
+          className="admin-post-job-back-btn"
         >
           Back to Dashboard
         </Button>
@@ -86,7 +87,7 @@ const AdminPostJob = () => {
       {status.message && (
         <Alert
           variant={status.type}
-          className="postjob-alert"
+          className="admin-post-job-alert"
           onClose={() => setStatus({ type: "", message: "" })}
           dismissible
         >
@@ -94,13 +95,12 @@ const AdminPostJob = () => {
         </Alert>
       )}
 
-      <Form onSubmit={handleSubmit} className="postjob-form">
-        {/* Existing Fields */}
-        <Form.Group controlId="title" className="postjob-group">
-          <Form.Label className="postjob-label">Title</Form.Label>
+      <Form onSubmit={handleSubmit} className="admin-post-job-form">
+        <Form.Group controlId="title" className="admin-post-job-group">
+          <Form.Label className="admin-post-job-label">Title</Form.Label>
           <Form.Control
             name="title"
-            className="postjob-input"
+            className="admin-post-job-input"
             placeholder="e.g. Frontend Developer"
             value={formData.title}
             onChange={handleChange}
@@ -108,13 +108,13 @@ const AdminPostJob = () => {
           />
         </Form.Group>
 
-        <Form.Group controlId="description" className="postjob-group mt-3">
-          <Form.Label className="postjob-label">Description</Form.Label>
+        <Form.Group controlId="description" className="admin-post-job-group mt-3">
+          <Form.Label className="admin-post-job-label">Description</Form.Label>
           <Form.Control
             as="textarea"
             rows={4}
             name="description"
-            className="postjob-textarea"
+            className="admin-post-job-textarea"
             placeholder="Job responsibilities, requirements, etc."
             value={formData.description}
             onChange={handleChange}
@@ -122,11 +122,11 @@ const AdminPostJob = () => {
           />
         </Form.Group>
 
-        <Form.Group controlId="type" className="postjob-group mt-3">
-          <Form.Label className="postjob-label">Type</Form.Label>
+        <Form.Group controlId="type" className="admin-post-job-group mt-3">
+          <Form.Label className="admin-post-job-label">Type</Form.Label>
           <Form.Select
             name="type"
-            className="postjob-select"
+            className="admin-post-job-select"
             value={formData.type}
             onChange={handleChange}
           >
@@ -138,70 +138,69 @@ const AdminPostJob = () => {
           </Form.Select>
         </Form.Group>
 
-        {/* Additional Fields */}
-        <Form.Group controlId="duration" className="postjob-group mt-3">
-          <Form.Label className="postjob-label">Duration</Form.Label>
+        <Form.Group controlId="duration" className="admin-post-job-group mt-3">
+          <Form.Label className="admin-post-job-label">Duration</Form.Label>
           <Form.Control
             name="duration"
-            className="postjob-input"
+            className="admin-post-job-input"
             placeholder="e.g. 6 months"
             value={formData.duration}
             onChange={handleChange}
           />
         </Form.Group>
 
-        <Form.Group controlId="startDate" className="postjob-group mt-3">
-          <Form.Label className="postjob-label">Start Date</Form.Label>
+        <Form.Group controlId="startDate" className="admin-post-job-group mt-3">
+          <Form.Label className="admin-post-job-label">Start Date</Form.Label>
           <Form.Control
             type="date"
             name="startDate"
-            className="postjob-input"
+            className="admin-post-job-input"
             value={formData.startDate}
             onChange={handleChange}
             required
           />
         </Form.Group>
 
-        <Form.Group controlId="endDate" className="postjob-group mt-3">
-          <Form.Label className="postjob-label">End Date</Form.Label>
+        <Form.Group controlId="endDate" className="admin-post-job-group mt-3">
+          <Form.Label className="admin-post-job-label">End Date</Form.Label>
           <Form.Control
             type="date"
             name="endDate"
-            className="postjob-input"
+            className="admin-post-job-input"
             value={formData.endDate}
             onChange={handleChange}
           />
         </Form.Group>
 
-        <Form.Group controlId="stipend" className="postjob-group mt-3">
-          <Form.Label className="postjob-label">Stipend / Salary</Form.Label>
+        <Form.Group controlId="stipend" className="admin-post-job-group mt-3">
+          <Form.Label className="admin-post-job-label">Stipend / Salary</Form.Label>
           <Form.Control
             name="stipend"
-            className="postjob-input"
+            className="admin-post-job-input"
             placeholder="e.g. ₹10,000/month or ₹6-8 LPA"
             value={formData.stipend}
             onChange={handleChange}
           />
         </Form.Group>
 
-        <Form.Group controlId="deadline" className="postjob-group mt-3">
-          <Form.Label className="postjob-label">Application Deadline</Form.Label>
+        <Form.Group controlId="deadline" className="admin-post-job-group mt-3">
+          <Form.Label className="admin-post-job-label">Application Deadline</Form.Label>
           <Form.Control
             type="date"
             name="deadline"
-            className="postjob-input"
+            className="admin-post-job-input"
             value={formData.deadline}
             onChange={handleChange}
             required
           />
         </Form.Group>
 
-        <Form.Group controlId="openings" className="postjob-group mt-3">
-          <Form.Label className="postjob-label">Number of Openings</Form.Label>
+        <Form.Group controlId="openings" className="admin-post-job-group mt-3">
+          <Form.Label className="admin-post-job-label">Number of Openings</Form.Label>
           <Form.Control
             type="number"
             name="openings"
-            className="postjob-input"
+            className="admin-post-job-input"
             placeholder="e.g. 3"
             value={formData.openings}
             onChange={handleChange}
@@ -209,11 +208,11 @@ const AdminPostJob = () => {
           />
         </Form.Group>
 
-        <Form.Group controlId="location" className="postjob-group mt-3">
-          <Form.Label className="postjob-label">Location</Form.Label>
+        <Form.Group controlId="location" className="admin-post-job-group mt-3">
+          <Form.Label className="admin-post-job-label">Location</Form.Label>
           <Form.Control
             name="location"
-            className="postjob-input"
+            className="admin-post-job-input"
             placeholder="e.g. Chennai / Remote"
             value={formData.location}
             onChange={handleChange}
@@ -221,22 +220,22 @@ const AdminPostJob = () => {
           />
         </Form.Group>
 
-        <Form.Group controlId="skills" className="postjob-group mt-3">
-          <Form.Label className="postjob-label">Required Skills</Form.Label>
+        <Form.Group controlId="skills" className="admin-post-job-group mt-3">
+          <Form.Label className="admin-post-job-label">Required Skills</Form.Label>
           <Form.Control
             name="skills"
-            className="postjob-input"
+            className="admin-post-job-input"
             placeholder="e.g. React, Node.js, MongoDB"
             value={formData.skills}
             onChange={handleChange}
           />
         </Form.Group>
 
-        <Form.Group controlId="experience" className="postjob-group mt-3">
-          <Form.Label className="postjob-label">Experience Level</Form.Label>
+        <Form.Group controlId="experience" className="admin-post-job-group mt-3">
+          <Form.Label className="admin-post-job-label">Experience Level</Form.Label>
           <Form.Select
             name="experience"
-            className="postjob-select"
+            className="admin-post-job-select"
             value={formData.experience}
             onChange={handleChange}
           >
@@ -248,11 +247,11 @@ const AdminPostJob = () => {
           </Form.Select>
         </Form.Group>
 
-        <Form.Group controlId="applyLink" className="postjob-group mt-3">
-          <Form.Label className="postjob-label">How to Apply</Form.Label>
+        <Form.Group controlId="applyLink" className="admin-post-job-group mt-3">
+          <Form.Label className="admin-post-job-label">How to Apply</Form.Label>
           <Form.Control
             name="applyLink"
-            className="postjob-input"
+            className="admin-post-job-input"
             placeholder="e.g. https://yourcompany.com/careers"
             value={formData.applyLink}
             onChange={handleChange}
@@ -262,12 +261,12 @@ const AdminPostJob = () => {
         <Button
           type="submit"
           variant="primary"
-          className="postjob-submit-btn mt-4"
+          className="admin-post-job-submit-btn mt-4"
           disabled={loading}
         >
           {loading ? (
             <>
-              <Spinner animation="border" size="sm" className="me-2" />
+              <Spinner animation="border" size="sm" className="admin-post-job-spinner me-2" />
               Posting...
             </>
           ) : (

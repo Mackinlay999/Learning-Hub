@@ -1,5 +1,5 @@
 /* Container styles */
-.postjob-container {
+.admin-post-job-container {
   max-width: 650px;
   margin: auto;
   background: linear-gradient(to bottom right, #f8fbff, #eef3f8); /* Light gradient for background */
@@ -10,7 +10,7 @@
 }
 
 /* Title */
-.postjob-title {
+.admin-post-job-title {
   color: #D32F2F; /* Primary Red for the title */
   text-align: center;
   font-size: 1.8rem;
@@ -20,36 +20,36 @@
 }
 
 /* Alert styling */
-.postjob-alert {
+.admin-post-job-alert {
   font-size: 0.95rem;
   color: #333; /* Dark gray for alerts */
   animation: fadeIn 0.5s ease-in;
 }
 
 /* Form styling */
-.postjob-form {
+.admin-post-job-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
 /* Group styling */
-.postjob-group {
+.admin-post-job-group {
   display: flex;
   flex-direction: column;
 }
 
 /* Label */
-.postjob-label {
+.admin-post-job-label {
   font-weight: 600;
   margin-bottom: 0.5rem;
   color: #333; /* Dark gray for labels */
 }
 
 /* Inputs */
-.postjob-input,
-.postjob-textarea,
-.postjob-select {
+.admin-post-job-input,
+.admin-post-job-textarea,
+.admin-post-job-select {
   padding: 0.75rem 1rem;
   border: 1px solid #ced4da;
   border-radius: 6px;
@@ -58,16 +58,16 @@
   background-color: #fff; /* White background for inputs */
 }
 
-.postjob-input:focus,
-.postjob-textarea:focus,
-.postjob-select:focus {
+.admin-post-job-input:focus,
+.admin-post-job-textarea:focus,
+.admin-post-job-select:focus {
   border-color: #D32F2F; /* Primary Red for focus state */
   box-shadow: 0 0 0 0.2rem rgba(211, 47, 47, 0.25); /* Red box-shadow on focus */
   outline: none;
 }
 
 /* Button */
-.postjob-submit-btn {
+.admin-post-job-submit-btn {
   align-self: flex-start;
   padding: 0.6rem 2rem;
   font-weight: 500;
@@ -80,12 +80,12 @@
   transition: all 0.3s ease-in-out;
 }
 
-.postjob-submit-btn:disabled {
+.admin-post-job-submit-btn:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
 
-.postjob-submit-btn:hover:not(:disabled) {
+.admin-post-job-submit-btn:hover:not(:disabled) {
   background-color: #B71C1C; /* Darker red on hover */
   transform: scale(1.02); /* Slight scale up effect */
 }
@@ -115,15 +115,15 @@
 
 /* Mobile responsiveness */
 @media (max-width: 576px) {
-  .postjob-container {
+  .admin-post-job-container {
     padding: 1.5rem; /* Reduced padding for smaller screens */
   }
 
-  .postjob-title {
+  .admin-post-job-title {
     font-size: 1.5rem; /* Slightly smaller title on mobile */
   }
 
-  .postjob-submit-btn {
+  .admin-post-job-submit-btn {
     width: 100%; /* Full width button on mobile */
     text-align: center;
   }

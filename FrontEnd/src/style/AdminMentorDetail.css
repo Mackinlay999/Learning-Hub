@@ -1,0 +1,184 @@
+/* AdminMentorDetail.css */
+
+/* Root color variables */
+:root {
+    --primary-color: #D32F2F; /* Red */
+    --dark-gray: #333333;
+    --white: #FFFFFF;
+    --gold-accent: #FFC107;
+    --light-gray: #f8f9fa;
+  }
+  
+
+  /* Main card container */
+  .admin-mentor-details-card {
+    background-color: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .admin-mentor-details-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Header styling */
+  .admin-mentor-details-header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 20px;
+  }
+  
+  .admin-mentor-details-header h4 {
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .admin-mentor-details-header .btn-secondary {
+    background-color: var(--white);
+    color: var(--primary-color);
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .admin-mentor-details-header .btn-secondary:hover {
+    background-color: var(--gold-accent);
+    color: var(--white);
+  }
+  
+  /* Profile section */
+  .admin-mentor-details-profile {
+    border-right: 1px solid var(--light-gray);
+    padding: 20px;
+  }
+  
+  .admin-mentor-details-profile img {
+    border: 3px solid var(--primary-color);
+    transition: transform 0.3s ease;
+  }
+  
+  .admin-mentor-details-profile img:hover {
+    transform: scale(1.05);
+  }
+  
+  .admin-mentor-details-text {
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+  
+  /* Body section */
+  .admin-mentor-details-body {
+    padding: 20px;
+  }
+  
+  .admin-mentor-details-info {
+    padding: 10px 20px;
+  }
+  
+  .admin-mentor-details-header {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+  }
+  
+  .admin-mentor-details-session-item,
+  .admin-mentor-details-student-list li {
+    background-color: var(--white);
+    border-left: 5px solid var(--primary-color);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .admin-mentor-details-session-item:hover,
+  .admin-mentor-details-student-list li:hover {
+    background-color: var(--light-gray);
+    transform: scale(1.02);
+  }
+  
+  .admin-mentor-details-session-item .badge.bg-primary {
+    background-color: var(--gold-accent);
+    color: var(--dark-gray);
+  }
+  
+  .admin-mentor-details-session-item .badge.bg-success {
+    background-color: #28a745;
+  }
+  
+  .admin-mentor-details-note {
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .admin-mentor-details-note:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .admin-mentor-details-body {
+      flex-direction: column;
+    }
+  
+    .admin-mentor-details-profile {
+      border-right: none;
+      border-bottom: 1px solid var(--light-gray);
+    }
+  
+    .admin-mentor-details-info {
+      padding: 20px 0;
+    }
+  
+    .admin-mentor-details-header .btn-secondary {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Custom badge enhancements */
+  .badge.bg-info {
+    background-color: var(--primary-color) !important;
+    color: var(--white);
+  }
+  
+  .badge.bg-primary {
+    background-color: var(--gold-accent) !important;
+    color: var(--dark-gray) !important;
+  }
+  
+  .text-muted {
+    color: var(--dark-gray) !important;
+  }
+  
+  /* Smooth transitions for lists */
+  .admin-mentor-details-session-list,
+  .admin-mentor-details-student-list {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+  
+  .admin-mentor-details-session-list li,
+  .admin-mentor-details-student-list li {
+    margin-bottom: 8px;
+    padding: 12px;
+    border-radius: 8px;
+  }
+  
+  .admin-mentor-details-session-list li div {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    animation: fadeIn 0.5s ease;
+  }
+  
+  /* Fade-in animation for smooth feedback appearance */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

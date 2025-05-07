@@ -1,7 +1,8 @@
 /* ScheduleInterview.css */
 
 /* Main container styling */
-.ScheduleInterview-container {
+.ScheduleInterview-container,
+.admin-schedule-interview-container {
   max-width: 600px;
   background-color: #ffffff; /* White background for readability */
   border-radius: 12px;
@@ -13,7 +14,8 @@
 }
 
 /* Title */
-.ScheduleInterview-title {
+.ScheduleInterview-title,
+.admin-schedule-interview-title {
   font-size: 2rem;
   font-weight: 600;
   color: #003366; /* Dark Blue for a clean contrast */
@@ -22,12 +24,14 @@
 }
 
 /* Form styling */
-.ScheduleInterview-form {
+.ScheduleInterview-form,
+.admin-schedule-interview-form {
   width: 100%;
 }
 
 /* Labels */
-.ScheduleInterview-label {
+.ScheduleInterview-label,
+.admin-schedule-interview-label {
   font-weight: 500;
   color: #333333; /* Dark Gray for text */
   margin-bottom: 6px;
@@ -35,7 +39,8 @@
 }
 
 /* Inputs */
-.ScheduleInterview-input {
+.ScheduleInterview-input,
+.admin-schedule-interview-input {
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 0.6rem 1rem;
@@ -44,14 +49,16 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.ScheduleInterview-input:focus {
+.ScheduleInterview-input:focus,
+.admin-schedule-interview-input:focus {
   border-color: #0056b3; /* Focus with a blue border */
   box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
   outline: none;
 }
 
 /* Alert messages */
-.ScheduleInterview-alert {
+.ScheduleInterview-alert,
+.admin-schedule-interview-alert {
   animation: fadeIn 0.5s ease;
   font-size: 0.95rem;
   font-weight: 500;
@@ -59,7 +66,8 @@
 }
 
 /* Button */
-.ScheduleInterview-button {
+.ScheduleInterview-button,
+.admin-schedule-interview-button {
   background-color: #D32F2F; /* Red button for call-to-action */
   padding: 0.6rem 1.5rem;
   font-size: 1rem;
@@ -70,64 +78,71 @@
   color: #ffffff; /* White text */
 }
 
-.ScheduleInterview-button:hover {
+.ScheduleInterview-button:hover,
+.admin-schedule-interview-button:hover {
   background-color: #b71c1c; /* Darker red on hover */
   transform: translateY(-2px);
 }
 
-.ScheduleInterview-button:disabled {
+.ScheduleInterview-button:disabled,
+.admin-schedule-interview-button:disabled {
   background-color: #999;
   cursor: not-allowed;
 }
 
 /* Spinner spacing */
-.ScheduleInterview-button .spinner-border {
+.ScheduleInterview-button .spinner-border,
+.admin-schedule-interview-button .spinner-border {
   vertical-align: middle;
   margin-right: 0.5rem;
 }
 
 /* Responsive layout */
 @media (max-width: 768px) {
-  .ScheduleInterview-container {
-      padding: 1.5rem;
-      box-shadow: none;
-      border-radius: 0;
+  .ScheduleInterview-container,
+  .admin-schedule-interview-container {
+    padding: 1.5rem;
+    box-shadow: none;
+    border-radius: 0;
   }
 
-  .ScheduleInterview-title {
-      font-size: 1.6rem;
+  .ScheduleInterview-title,
+  .admin-schedule-interview-title {
+    font-size: 1.6rem;
   }
 
-  .ScheduleInterview-input {
-      font-size: 0.95rem;
-      padding: 0.5rem 0.9rem;
+  .ScheduleInterview-input,
+  .admin-schedule-interview-input {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.9rem;
   }
 
-  .ScheduleInterview-button {
-      font-size: 0.95rem;
-      padding: 0.5rem 1.2rem;
+  .ScheduleInterview-button,
+  .admin-schedule-interview-button {
+    font-size: 0.95rem;
+    padding: 0.5rem 1.2rem;
   }
 }
 
 /* Animations */
 @keyframes fadeIn {
   0% {
-      opacity: 0;
-      transform: translateY(10px);
+    opacity: 0;
+    transform: translateY(10px);
   }
   100% {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
 @keyframes slideDown {
   from {
-      transform: translateY(-20px);
-      opacity: 0;
+    transform: translateY(-20px);
+    opacity: 0;
   }
   to {
-      transform: translateY(0);
-      opacity: 1;
+    transform: translateY(0);
+    opacity: 1;
   }
 }

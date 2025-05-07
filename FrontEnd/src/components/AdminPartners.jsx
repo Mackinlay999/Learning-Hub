@@ -33,7 +33,6 @@ const AdminPartners = () => {
   const [message, setMessage] = useState({ type: "", text: "" });
   const navigate = useNavigate();
 
-  // Fetch partners from backend
   useEffect(() => {
     fetchPartners();
   }, []);
@@ -62,7 +61,16 @@ const AdminPartners = () => {
       });
     } else {
       setEditingPartner(null);
-      setFormData({ name: "", description: "", website: "" });
+      setFormData({
+        name: "",
+        description: "",
+        website: "",
+        about: "",
+        email: "",
+        phoneNumber: "",
+        logoUrl: "",
+        linkedin: "",
+      });
     }
     setShowModal(true);
   };
@@ -79,7 +87,6 @@ const AdminPartners = () => {
       logoUrl: "",
       linkedin: "",
     });
-
     setMessage({ type: "", text: "" });
   };
 
@@ -120,37 +127,50 @@ const AdminPartners = () => {
   };
 
   return (
-    <Container className="Partners-container py-5">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h3>Partner Companies</h3>
-        <div>
+    <Container className="admin-partner-container py-5">
+      <div className="admin-partner-header d-flex justify-content-between align-items-center mb-4">
+        <h3 className="admin-partner-title">Partner Companies</h3>
+        <div className="admin-partner-header-btns">
           <Button
             variant="secondary"
-            className="me-2"
+            className="admin-partner-back-btn me-2"
             onClick={() => navigate("/recruiters/dashboard")}
           >
             Back to Dashboard
           </Button>
-          <Button variant="success" onClick={() => handleShowModal()}>
+          <Button
+            variant="success"
+            className="admin-partner-add-btn"
+            onClick={() => handleShowModal()}
+          >
             Add Partner
           </Button>
         </div>
       </div>
-      {message.text && <Alert variant={message.type}>{message.text}</Alert>}
+      {message.text && (
+        <Alert variant={message.type} className="admin-partner-alert">
+          {message.text}
+        </Alert>
+      )}
 
-      <Row>
+      <Row className="admin-partner-row">
         {partners.map((company) => (
-          <Col key={company._id} md={4}>
-            <Card className="mb-4 shadow-sm Partners-card">
-              <Card.Body>
-                <Card.Title>{company.name}</Card.Title>
-                <Card.Text>{company.description}</Card.Text>
-                <div className="d-flex justify-content-between align-items-center mt-3">
+          <Col key={company._id} md={4} className="admin-partner-col">
+            <Card className="admin-partner-card mb-4 shadow-sm">
+              <Card.Body className="admin-partner-card-body">
+                <Card.Title className="admin-partner-card-title">
+                  {company.name}
+                </Card.Title>
+                <Card.Text className="admin-partner-card-description">
+                  {company.description}
+                </Card.Text>
+                <div className="admin-partner-card-actions d-flex justify-content-between align-items-center mt-3">
                   <Button
                     href={company.website}
                     target="_blank"
                     variant="primary"
                     size="sm"
+                    className="admin-partner-visit-btn"
                   >
                     Visit
                   </Button>
@@ -158,7 +178,7 @@ const AdminPartners = () => {
                     <Button
                       variant="warning"
                       size="sm"
-                      className="me-2"
+                      className="admin-partner-edit-btn me-2"
                       onClick={() => handleShowModal(company)}
                     >
                       Edit
@@ -166,6 +186,7 @@ const AdminPartners = () => {
                     <Button
                       variant="danger"
                       size="sm"
+                      className="admin-partner-delete-btn"
                       onClick={() => handleDelete(company._id)}
                     >
                       Delete
@@ -178,15 +199,19 @@ const AdminPartners = () => {
         ))}
       </Row>
 
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>
+      <Modal
+        show={showModal}
+        onHide={handleCloseModal}
+        className="admin-partner-modal"
+      >
+        <Modal.Header closeButton className="admin-partner-modal-header">
+          <Modal.Title className="admin-partner-modal-title">
             {editingPartner ? "Edit Partner" : "Add Partner"}
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3">
+        <Modal.Body className="admin-partner-modal-body">
+          <Form onSubmit={handleSubmit} className="admin-partner-form">
+            <Form.Group className="mb-3 admin-partner-form-group">
               <Form.Label>Name</Form.Label>
               <Form.Control
                 name="name"
@@ -194,9 +219,11 @@ const AdminPartners = () => {
                 onChange={handleChange}
                 required
                 placeholder="Enter partner name"
+                className="admin-partner-form-control"
               />
             </Form.Group>
-            <Form.Group className="mb-3">
+
+            <Form.Group className="mb-3 admin-partner-form-group">
               <Form.Label>About</Form.Label>
               <Form.Control
                 as="textarea"
@@ -205,10 +232,11 @@ const AdminPartners = () => {
                 value={formData.about}
                 onChange={handleChange}
                 placeholder="Enter more about the company"
+                className="admin-partner-form-control"
               />
             </Form.Group>
 
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 admin-partner-form-group">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
@@ -216,19 +244,22 @@ const AdminPartners = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter contact email"
+                className="admin-partner-form-control"
               />
             </Form.Group>
 
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 admin-partner-form-group">
               <Form.Label>Phone Number</Form.Label>
               <Form.Control
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleChange}
                 placeholder="Enter phone number"
+                className="admin-partner-form-control"
               />
             </Form.Group>
-            <Form.Group className="mb-3">
+
+            <Form.Group className="mb-3 admin-partner-form-group">
               <Form.Label>Description</Form.Label>
               <Form.Control
                 as="textarea"
@@ -238,29 +269,33 @@ const AdminPartners = () => {
                 onChange={handleChange}
                 required
                 placeholder="Enter partner description"
+                className="admin-partner-form-control"
               />
             </Form.Group>
 
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 admin-partner-form-group">
               <Form.Label>Logo URL</Form.Label>
               <Form.Control
                 name="logoUrl"
                 value={formData.logoUrl}
                 onChange={handleChange}
                 placeholder="Enter logo image URL"
+                className="admin-partner-form-control"
               />
             </Form.Group>
 
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-3 admin-partner-form-group">
               <Form.Label>LinkedIn</Form.Label>
               <Form.Control
                 name="linkedin"
                 value={formData.linkedin}
                 onChange={handleChange}
                 placeholder="Enter LinkedIn URL"
+                className="admin-partner-form-control"
               />
             </Form.Group>
-            <Form.Group className="mb-3">
+
+            <Form.Group className="mb-3 admin-partner-form-group">
               <Form.Label>Website</Form.Label>
               <Form.Control
                 name="website"
@@ -268,12 +303,14 @@ const AdminPartners = () => {
                 onChange={handleChange}
                 required
                 placeholder="Enter partner website URL"
+                className="admin-partner-form-control"
               />
             </Form.Group>
+
             <Button
               type="submit"
               variant="primary"
-              className="Partners-submit-btn"
+              className="admin-partner-submit-btn"
             >
               {editingPartner ? "Update" : "Create"}
             </Button>

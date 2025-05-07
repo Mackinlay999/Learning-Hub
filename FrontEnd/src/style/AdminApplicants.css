@@ -12,7 +12,7 @@
 }
 
 /* Applicants Container */
-.Applicant-container {
+.admin-applicant-container {
   background-color: var(--light-blue);
   border-radius: 16px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
@@ -22,7 +22,7 @@
 }
 
 /* Title */
-.Applicant-title {
+.admin-applicant-title {
   color: var(--blue);
   font-weight: 700;
   text-align: center;
@@ -32,14 +32,14 @@
 }
 
 /* Alert Message */
-.Applicant-alert {
+.admin-applicant-alert {
   font-size: 0.95rem;
   animation: fadeIn 0.3s ease-in-out;
   border-radius: 8px;
   color: var(--dark-gray);
 }
 
-.Applicant-table {
+.admin-applicant-table {
   background-color: var(--white);
   border-radius: 10px;
   overflow: hidden;
@@ -47,31 +47,31 @@
   animation: fadeIn 0.4s ease-in-out;
 }
 
-.Applicant-table thead {
+.admin-applicant-table thead {
   background-color: var(--blue);
   color: var(--white);
   font-weight: 600;
 }
 
-.Applicant-table th,
-.Applicant-table td {
+.admin-applicant-table th,
+.admin-applicant-table td {
   padding: 1rem;
   text-align: center;
   vertical-align: middle;
 }
 
-.Applicant-table tbody tr:hover {
+.admin-applicant-table tbody tr:hover {
   background-color: var(--light-gray);
   transition: background-color 0.2s ease-in-out;
 }
 
-.Applicant-row-shortlisted {
+.admin-applicant-row-shortlisted {
   background-color: #e6f4ea !important;
   transition: all 0.3s ease-in-out;
 }
 
 /* Buttons */
-.Applicant-shortlist-btn {
+.admin-applicant-shortlist-btn {
   font-weight: 500;
   padding: 6px 12px;
   border-radius: 8px;
@@ -82,14 +82,14 @@
   transition: all 0.2s ease;
 }
 
-.Applicant-shortlist-btn:hover {
+.admin-applicant-shortlist-btn:hover {
   transform: translateY(-2px) scale(1.03);
   background-color: var(--dark-blue);
   color: var(--white);
 }
 
 /* Loader Spinner */
-.Applicant-loader {
+.admin-applicant-loader {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,14 +98,14 @@
 }
 
 /* Resume Link */
-.Applicant-table a {
+.admin-applicant-table a {
   text-decoration: none;
   color: #0056b3;
   font-weight: 500;
   transition: color 0.2s ease-in-out;
 }
 
-.Applicant-table a:hover {
+.admin-applicant-table a:hover {
   color: var(--blue);
   text-decoration: underline;
 }
@@ -135,13 +135,13 @@
 
 /* Responsive Styling */
 @media (max-width: 768px) {
-  .Applicant-table th,
-  .Applicant-table td {
+  .admin-applicant-table th,
+  .admin-applicant-table td {
     font-size: 0.9rem;
     padding: 0.8rem;
   }
 
-  .Applicant-shortlist-btn {
+  .admin-applicant-shortlist-btn {
     font-size: 0.85rem;
     width: 100%;
     margin-top: 0.4rem;
@@ -149,13 +149,13 @@
 }
 
 @media (max-width: 480px) {
-  .Applicant-table th,
-  .Applicant-table td {
+  .admin-applicant-table th,
+  .admin-applicant-table td {
     font-size: 0.85rem;
     padding: 0.6rem;
   }
 
-  .Applicant-shortlist-btn {
+  .admin-applicant-shortlist-btn {
     font-size: 0.8rem;
   }
 }

@@ -1,8 +1,7 @@
-
-
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "./axios";
 import { useNavigate } from "react-router-dom";
+import "../style/AdminMentor.css"; // Adjust the path as necessary
 
 const AdminMentors = () => {
   const [mentors, setMentors] = useState([]);
@@ -129,14 +128,14 @@ const AdminMentors = () => {
   }, [mentors, search, expertiseFilter, statusFilter]);
 
   return (
-    <div className="container mt-4">
-      <h3 className="mb-4">Mentor Management</h3>
+    <div className="admin-mentors-container mt-4">
+      <h3 className="admin-mentors-title mb-4">Mentor Management</h3>
 
       {/* Filters */}
-      <div className="row mb-3 g-2">
+      <div className="admin-mentors-filters row mb-3 g-2">
         <div className="col-md-4">
           <input
-            className="form-control"
+            className="admin-mentors-search form-control"
             placeholder="Search by name"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -144,7 +143,7 @@ const AdminMentors = () => {
         </div>
         <div className="col-md-3">
           <select
-            className="form-select"
+            className="admin-mentors-expertise-filter form-select"
             value={expertiseFilter}
             onChange={(e) => setExpertiseFilter(e.target.value)}
           >
@@ -158,7 +157,7 @@ const AdminMentors = () => {
         </div>
         <div className="col-md-3">
           <select
-            className="form-select"
+            className="admin-mentors-status-filter form-select"
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
           >
@@ -171,11 +170,11 @@ const AdminMentors = () => {
       </div>
 
       {/* Add Mentor */}
-      <div className="card mb-4 p-3">
-        <h5>Add New Mentor</h5>
-        <div className="row g-2">
+      <div className="admin-mentors-card mb-4 p-3">
+        <h5 className="admin-mentors-card-title">Add New Mentor</h5>
+        <div className="admin-mentors-form row g-2">
           <input
-            className="form-control col"
+            className="admin-mentors-input form-control col"
             placeholder="Name"
             value={newMentor.name}
             onChange={(e) =>
@@ -183,7 +182,7 @@ const AdminMentors = () => {
             }
           />
           <input
-            className="form-control col"
+            className="admin-mentors-input form-control col"
             placeholder="Expertise"
             value={newMentor.expertise}
             onChange={(e) =>
@@ -199,7 +198,7 @@ const AdminMentors = () => {
             }
           />
           <input
-            className="form-control col"
+            className="admin-mentors-input form-control col"
             placeholder="Email"
             value={newMentor.email}
             onChange={(e) =>
@@ -207,7 +206,7 @@ const AdminMentors = () => {
             }
           />
           <input
-            className="form-control col"
+            className="admin-mentors-input form-control col"
             placeholder="Mobile"
             value={newMentor.mobile}
             onChange={(e) =>
@@ -215,7 +214,7 @@ const AdminMentors = () => {
             }
           />
           <select
-            className="form-control col"
+            className="admin-mentors-input form-control col"
             value={newMentor.status}
             onChange={(e) =>
               setNewMentor({ ...newMentor, status: e.target.value })
@@ -226,7 +225,7 @@ const AdminMentors = () => {
             <option value="Retired">Retired</option>
           </select>
           <button
-            className="btn btn-primary col"
+            className="admin-mentors-add-btn btn btn-primary col"
             onClick={handleAddMentor}
             disabled={loading}
           >
@@ -236,8 +235,8 @@ const AdminMentors = () => {
       </div>
 
       {/* Table View */}
-      <table className="table table-striped table-hover table-bordered shadow-sm">
-        <thead className="table-dark">
+      <table className="admin-mentors-table table table-striped table-hover table-bordered shadow-sm">
+        <thead className="admin-mentors-table-head table-dark">
           <tr>
             <th>Photo</th>
             <th>Name</th>
@@ -260,7 +259,7 @@ const AdminMentors = () => {
                     height: "40px",
                     borderRadius: "50%",
                     objectFit: "cover",
-                    objectPosition:"top"
+                    objectPosition: "top",
                   }}
                 />
               </td>
@@ -357,21 +356,21 @@ const AdminMentors = () => {
               <td>
                 {editId === mentor._id ? (
                   <button
-                    className="btn btn-sm btn-success me-2"
+                    className="admin-mentors-save-btn btn btn-sm btn-success me-2"
                     onClick={handleSaveEdit}
                   >
                     Save
                   </button>
                 ) : (
                   <button
-                    className="btn btn-sm btn-warning me-2"
+                    className="admin-mentors-edit-btn btn btn-sm btn-warning me-2"
                     onClick={() => handleEdit(mentor)}
                   >
                     Edit
                   </button>
                 )}
                 <button
-                  className="btn btn-sm btn-danger"
+                  className="admin-mentors-delete-btn btn btn-sm btn-danger"
                   onClick={() => handleDelete(mentor._id)}
                 >
                   Delete
@@ -386,4 +385,3 @@ const AdminMentors = () => {
 };
 
 export default AdminMentors;
-
