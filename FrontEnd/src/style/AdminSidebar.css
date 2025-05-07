@@ -1,4 +1,5 @@
-.sidebar-wrapper {
+/* General Sidebar Styles */
+.admin-sidebar-wrapper {
   display: flex;
   flex-direction: column;
   width: 250px;
@@ -8,13 +9,13 @@
   border-right: 2px solid #FFC107; /* Gold Accent */
 }
 
-.custom-sidebar {
+.admin-sidebar-custom {
   display: flex;
   flex-direction: column;
   padding: 1rem;
 }
 
-.sidebar-header {
+.admin-sidebar-header {
   color: #D32F2F; /* Primary Red */
   font-weight: bold;
   font-size: 1.4rem;
@@ -24,7 +25,7 @@
   padding-bottom: 10px;
 }
 
-.toggle-btn {
+.admin-sidebar-toggle-btn {
   background-color: #D32F2F; /* Primary Red */
   color: #fff;
   border: none;
@@ -36,21 +37,22 @@
   transition: background-color 0.2s ease;
 }
 
-.toggle-btn:hover {
+.admin-sidebar-toggle-btn:hover {
   background-color: #b71c1c; /* Darker Red */
 }
 
-.sidebar-nav {
+/* Sidebar Navigation */
+.admin-sidebar-nav {
   list-style: none;
   padding: 0;
 }
 
-.sidebar-nav li {
+.admin-sidebar-nav li {
   margin-bottom: 0.75rem;
   border-bottom: 1px solid #2f3e52;
 }
 
-.sidebar-nav-link {
+.admin-sidebar-nav-link {
   display: flex;
   align-items: center;
   color: #cbd5e1;
@@ -60,36 +62,33 @@
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.sidebar-nav-link:hover {
+.admin-sidebar-nav-link:hover {
   background-color: #D32F2F;
   color: #fff;
 }
 
-.sidebar-nav-link:hover .S-icon {
+.admin-sidebar-nav-link:hover .admin-S-icon {
   color: #FFC107; /* Gold Icon Hover */
 }
 
-.sidebar-nav-link.active {
+.admin-sidebar-nav-link.active {
   background-color: #D32F2F; /* Primary Red */
   color: white;
   font-weight: bold;
 }
 
-.S-content {
+.admin-sidebar-S-content {
   margin-left: 15px;
 }
 
-.S-icon {
+.admin-sidebar-S-icon {
   color: #cbd5e1;
   transition: color 0.3s ease;
 }
 
-.toggle-btn {
-  display: none;
-}
-
+/* Mobile Styles */
 @media (max-width: 768px) {
-  .sidebar-wrapper {
+  .admin-sidebar-wrapper {
     width: 16%;
     position: absolute;
     z-index: 100;
@@ -97,27 +96,23 @@
     padding-top: 2rem;
   }
 
-  .sidebar-nav-link {
+  .admin-sidebar-nav-link {
     font-size: 14px;
     width: auto;
     padding: 10px 20px;
     justify-content: flex-start;
   }
 
-  .S-content {
+  .admin-sidebar-S-content {
     display: none;
   }
 
-  .brand-text {
-    display: none;
-  }
-
-  .S-icon {
+  .admin-sidebar-S-icon {
     margin-right: 10px;
   }
 
-  /* menu pattern */
-  .sidebar-wrapper {
+  /* Sidebar menu pattern */
+  .admin-sidebar-wrapper {
     position: fixed;
     top: 20px;
     left: -250px;
@@ -129,38 +124,32 @@
     border-right: 2px solid #FFC107;
   }
 
-  .sidebar-wrapper.open {
+  .admin-sidebar-wrapper.open {
     left: 0;
   }
 
-  .custom-sidebar {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  .sidebar-header {
+  .admin-sidebar-header {
     padding: 20px;
     background-color: #1e293b;
     color: #D32F2F;
     text-align: center;
   }
 
-  .S-sidebar {
+  .admin-sidebar-S-sidebar {
     flex-grow: 1;
     overflow-y: auto;
   }
 
-  .sidebar-nav {
+  .admin-sidebar-nav {
     list-style-type: none;
     padding: 0;
   }
 
-  .sidebar-nav li {
+  .admin-sidebar-nav li {
     border-bottom: 1px solid #444;
   }
 
-  .sidebar-nav-link {
+  .admin-sidebar-nav-link {
     display: flex;
     align-items: center;
     padding: 10px 20px;
@@ -168,26 +157,26 @@
     text-decoration: none;
   }
 
-  .sidebar-nav-link.active {
+  .admin-sidebar-nav-link.active {
     background-color: #D32F2F;
     color: white;
   }
 
-  .S-icon {
+  .admin-sidebar-S-icon {
     margin-right: 10px;
     color: #cbd5e1;
   }
 
-  .S-content {
+  .admin-sidebar-S-content {
     display: inline-block;
     font-size: 16px;
   }
 
-  .S-sidebar ul li:hover {
+  .admin-sidebar-S-sidebar ul li:hover {
     background-color: #D32F2F;
   }
 
-  .toggle-btn {
+  .admin-sidebar-toggle-btn {
     display: block;
     position: fixed;
     top: 15px;
@@ -202,11 +191,11 @@
     border-radius: 4px;
   }
 
-  .toggle-btn:hover {
+  .admin-sidebar-toggle-btn:hover {
     background-color: #b71c1c;
   }
 
-  .sidebar-overlay {
+  .admin-sidebar-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -216,8 +205,9 @@
     z-index: 99;
   }
 }
+
 /* --- Animations --- */
-@keyframes slideIn {
+@keyframes admin-slideIn {
   from {
     transform: translateX(-15px);
     opacity: 0;
@@ -228,7 +218,7 @@
   }
 }
 
-@keyframes bounceIcon {
+@keyframes admin-bounceIcon {
   0%, 100% {
     transform: translateY(0);
   }
@@ -237,8 +227,8 @@
   }
 }
 
-/* --- Apply animations to nav links and icons --- */
-.sidebar-nav-link {
+/* Apply animations to nav links and icons */
+.admin-sidebar-nav-link {
   display: flex;
   align-items: center;
   color: #cbd5e1;
@@ -246,23 +236,23 @@
   padding: 0.5rem;
   border-radius: 8px;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  animation: slideIn 0.4s ease forwards;
+  animation: admin-slideIn 0.4s ease forwards;
 }
 
-.sidebar-nav-link:hover {
+.admin-sidebar-nav-link:hover {
   background-color: #D32F2F;
   color: #fff;
   transform: translateX(3px); /* subtle move on hover */
   box-shadow: 0 0 8px rgba(211, 47, 47, 0.4); /* subtle red glow */
 }
 
-.sidebar-nav-link:hover .S-icon {
-  animation: bounceIcon 0.6s ease;
+.admin-sidebar-nav-link:hover .admin-S-icon {
+  animation: admin-bounceIcon 0.6s ease;
   color: #FFC107; /* gold on hover */
 }
 
 /* Optional: make active link stand out more */
-.sidebar-nav-link.active {
+.admin-sidebar-nav-link.active {
   background-color: #D32F2F;
   color: white;
   font-weight: bold;
@@ -270,10 +260,11 @@
 }
 
 /* Optional: Add smooth icon appearance */
-.S-icon {
+.admin-sidebar-S-icon {
   transition: color 0.3s ease, transform 0.3s ease;
 }
-.sidebar-logout-btn {
+
+.admin-sidebar-logout-btn {
   background: red;
   color: #fff;
   border: none;
