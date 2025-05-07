@@ -13,9 +13,13 @@ getAllStories : async (req, res) => {
 // Add a story
 createStory : async (req, res) => {
   try {
-    const uploadedPhoto = req.file ? `/uploads/${req.file.filename}` : null; // use public path
+
     const { name, company,LinkedinUrl } = req.body;
 
+    if (!name || !company || !LinkedinUrl) {
+      return res.status(400).json({ error: "All fields are required." });
+    }
+    const uploadedPhoto = req.file ? `/uploads/${req.file.filename}` : null;
     const story = new SuccessStory({
       name,
       company,

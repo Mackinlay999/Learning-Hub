@@ -75,6 +75,11 @@ const NavBar = () => {
                       </NavDropdown.Item>
                     </motion.div>
                   </NavDropdown>
+
+
+                  <Nav.Link as={Link} to="/">
+                    Dashboard
+                  </Nav.Link>
                 </Nav>
 
                 {/* Right: Login Button (Inside Navbar) */}
@@ -88,6 +93,10 @@ const NavBar = () => {
                     LOGIN
                   </motion.button>
                 </Link>
+
+
+
+              
                 </div>
                 
               </div>

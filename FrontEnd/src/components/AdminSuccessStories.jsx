@@ -99,7 +99,7 @@ const AdminSuccessStories = () => {
   };
 
   return (
-    <div className="success-story-container">
+    <div className="success-story-con">
       <h2 className="success-story-title">Add / Edit Student Success Story</h2>
       <form onSubmit={handleSubmit} className="success-story-form">
         <input
@@ -138,7 +138,7 @@ const AdminSuccessStories = () => {
         </button>
       </form>
 
-      <h2 className="success-story-subtitle">All Success Stories</h2>
+      <h2 className="success-subtitle">All Success Stories</h2>
       <div className="success-story-list">
         
         {stories.map((story) => (
