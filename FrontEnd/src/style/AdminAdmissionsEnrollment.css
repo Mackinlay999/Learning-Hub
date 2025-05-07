@@ -1,54 +1,50 @@
-/* Color Palette & Branding */
 :root {
-  --primary-red: #D32F2F;    /* Call-to-action buttons, headings, icons */
-  --dark-gray: #333333;      /* Text & contrast sections */
-  --white: #FFFFFF;          /* Background for readability */
-  --gold-accent: #FFC107;    /* Highlighting important sections */
-  --blue: #0073e6;           /* Highlight color for specific elements */
-  --gray-light: #f4f4f4;     /* Light gray for subtle backgrounds */
-  --gray-dark: #666666;      /* Darker gray for subtitles */
-  --text-dark: #2c3e50;      /* Dark text for headings */
-  --text-muted: #999999;     /* Muted text color */
+  --primary-red: #D32F2F;
+  --dark-gray: #333333;
+  --white: #FFFFFF;
+  --gold-accent: #FFC107;
+  --blue: #0073e6;
+  --gray-light: #f4f4f4;
+  --gray-dark: #666666;
+  --text-dark: #2c3e50;
+  --text-muted: #999999;
 }
 
-/* Admissions Section */
-.admissions-section {
+.admin-admission-section {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 50px 0;
-  background-color: var(--white); /* Ensure background is white */
+  background-color: var(--white);
 }
 
-.container {
+.admin-admission-container {
   width: 80%;
 }
 
-/* Admissions Content Layout */
-.admissions-content {
+.admin-admission-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  background-color: var(--gray-light); /* Light background for content section */
+  background-color: var(--gray-light);
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease; /* Add transition for hover effect */
+  transition: transform 0.3s ease;
 }
 
-.admissions-content:hover {
-  transform: translateY(-5px); /* Subtle hover effect */
+.admin-admission-content:hover {
+  transform: translateY(-5px);
 }
 
-/* Default: Image on Right, Text on Left */
-.admissions-text {
+.admin-admission-text {
   flex: 1;
   text-align: left;
   color: var(--dark-gray);
 }
 
-.admissions-image {
+.admin-admission-image {
   flex: 1;
   display: flex;
   justify-content: start;
@@ -56,68 +52,62 @@
   height: 300px;
 }
 
-.admissions-image img {
+.admin-admission-image img {
   width: 100%;
   max-width: 400px;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Shadow around image */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive: Stack Image on Top for Mobile */
 @media (max-width: 768px) {
-  .admissions-content {
-    flex-direction: column; /* Stack elements */
-    text-align: center; /* Center text */
-    gap: 20px; /* Reduce gap on smaller screens */
+  .admin-admission-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
   }
 
-  .admissions-image {
+  .admin-admission-image {
     justify-content: center;
   }
 
-  .admissions-text {
+  .admin-admission-text {
     text-align: center;
   }
 }
 
-/* Title Styling */
-.admission-title {
+.admin-admission-title {
   font-size: 28px;
   font-weight: bold;
   text-align: left;
-  color: var(--primary-red); /* Red color for the main title */
+  color: var(--primary-red);
   transition: color 0.3s ease;
 }
 
-.admission-title:hover {
-  color: var(--blue); /* Change title color on hover */
+.admin-admission-title:hover {
+  color: var(--blue);
 }
 
-/* Subtitle Styling */
-.subtitle {
+.admin-admission-subtitle {
   font-size: 20px;
   color: var(--gray-dark);
   margin-top: 10px;
 }
 
-/* Description Styling */
-.description {
+.admin-admission-description {
   font-size: 16px;
   line-height: 1.5;
-  color: var(--dark-gray); /* Dark gray text for better readability */
+  color: var(--dark-gray);
   margin-top: 20px;
 }
 
-/* Highlight Styling */
-.highlight {
+.admin-admission-highlight {
   font-size: 18px;
   font-weight: bold;
-  color: var(--blue); /* Blue accent color for highlighted text */
+  color: var(--blue);
 }
 
-/* Accent Effects */
-.highlight:hover {
-  color: var(--primary-red); /* Change highlight color to red on hover */
-  text-decoration: underline; /* Add underline effect */
+.admin-admission-highlight:hover {
+  color: var(--primary-red);
+  text-decoration: underline;
 }
