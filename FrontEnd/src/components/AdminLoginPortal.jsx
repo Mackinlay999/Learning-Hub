@@ -13,26 +13,52 @@ const AdminLoginPortal = () => {
   // Map roles to their landing routes (using useMemo to memoize)
   const roleToRoute = useMemo(
     () => ({
-      "Super Admin": "/admin-home",
-      Admin: "/admin-home",
-      Recruiter: "/admin-recruiters/dashboard",
-      Mentor: "/admin-mentors",
-      // Add more roles here if needed
+      "Super Admin": "/admin/admin-home",
+      Admin: "/admin/admin-home",
+      Recruiter: "/admin/admin-recruiters/dashboard",
+      Mentor: "/admin/admin-mentors",
     }),
     []
   );
 
   // Check if user is already logged in on component mount
   useEffect(() => {
+    // const checkLoggedIn = async () => {
+    //   try {
+    //     const res = await axios.get("/admin/me", { withCredentials: true });
+    //     const { role } = res.data;
+    //     const token = localStorage.getItem("token"); // grab token from localStorage
+
+    //     if (role && token) {
+    //       login(token, role); // 🛠 UPDATE auth context here!!
+    //       const redirectPath = roleToRoute[role] || "/";
+    //       navigate(redirectPath, { replace: true });
+    //     }
+    //   } catch (error) {
+    //     if (error.response?.status === 401) {
+    //       console.log("No valid token found. Stay on Login.");
+    //     } else {
+    //       console.error("Error checking token:", error);
+    //     }
+    //   }
+    // };
     const checkLoggedIn = async () => {
       try {
-        const res = await axios.get("/admin/me", { withCredentials: true });
-        const { role } = res.data;
-        const token = localStorage.getItem("token"); // grab token from localStorage
+        const token = localStorage.getItem("token");
+        if (!token) return;
 
-        if (role && token) {
-          login(token, role); // 🛠 UPDATE auth context here!!
+        const res = await axios.get("/admin/me", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const { role } = res.data;
+
+        if (role) {
+          login(token, role);
           const redirectPath = roleToRoute[role] || "/";
+
           navigate(redirectPath, { replace: true });
         }
       } catch (error) {
@@ -70,8 +96,8 @@ const AdminLoginPortal = () => {
     try {
       const response = await axios.post(
         "/admin-login",
-        { email: credentials.email, password: credentials.password },
-        { withCredentials: true }
+        { email: credentials.email, password: credentials.password }
+        // { withCredentials: true }
       );
       const { token, role } = response.data;
 
@@ -90,7 +116,7 @@ const AdminLoginPortal = () => {
       alert("Login Successful");
 
       // Redirect after successful login
-      const redirectPath = roleToRoute[role] || "/admin-login";
+      const redirectPath = roleToRoute[role] || "/";
       navigate(redirectPath, { replace: true });
     } catch (error) {
       console.error(error); // Debugging purpose
@@ -161,6 +187,13 @@ const AdminLoginPortal = () => {
               onClick={() => navigate("/admin-PasswordReset")}
             >
               Forgot Password
+            </button>
+            <button
+              type="button"
+              style={styles.backButton}
+              onClick={() => navigate("/")}
+            >
+              Back
             </button>
           </div>
 
@@ -239,6 +272,15 @@ const styles = {
     cursor: "pointer",
   },
   forgotButton: {
+    padding: "10px",
+    backgroundColor: "transparent",
+    border: "none",
+    color: "#007bff",
+    fontSize: "14px",
+    cursor: "pointer",
+    textDecoration: "underline",
+  },
+  backButton: {
     padding: "10px",
     backgroundColor: "transparent",
     border: "none",

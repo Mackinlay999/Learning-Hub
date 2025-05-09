@@ -20,7 +20,7 @@ const ProtectedRoute = ({ allowedRoles, children }) => {
 
   // If not logged in, redirect to login page
   if (!token) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/admin-login" replace />;
   }
 
   // If user does not have required role, redirect to NotAuthorized page
