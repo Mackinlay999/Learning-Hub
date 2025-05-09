@@ -138,6 +138,13 @@ const AdminLoginPortal = () => {
     <div style={styles.container}>
       <div style={styles.box}>
         <h1>Login to your Account</h1>
+        <button
+          type="button"
+          style={styles.backButton}
+          onClick={() => navigate("/")}
+        >
+          Back
+        </button>
         <form onSubmit={handleSubmit} style={styles.form}>
           <div style={styles.formGroup}>
             <label htmlFor="email">Your Email</label>
@@ -187,13 +194,6 @@ const AdminLoginPortal = () => {
               onClick={() => navigate("/admin-PasswordReset")}
             >
               Forgot Password
-            </button>
-            <button
-              type="button"
-              style={styles.backButton}
-              onClick={() => navigate("/")}
-            >
-              Back
             </button>
           </div>
 
