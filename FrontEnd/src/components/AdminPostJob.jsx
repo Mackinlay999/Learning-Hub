@@ -77,7 +77,7 @@ const AdminPostJob = () => {
         <h3 className="admin-post-job-title fw-bold">Post Job/Internship</h3>
         <Button
           variant="secondary"
-          onClick={() => navigate("/recruiters/dashboard")}
+          onClick={() => navigate("/admin/recruiters/dashboard")}
           className="admin-post-job-back-btn"
         >
           Back to Dashboard

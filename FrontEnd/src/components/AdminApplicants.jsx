@@ -143,7 +143,7 @@ const AdminApplicants = () => {
         <h3 className="admin-applicant-title">Applicants</h3>
         <Button
           variant="secondary"
-          onClick={() => navigate("/recruiters/dashboard")}
+          onClick={() => navigate("/admin/recruiters/dashboard")}
         >
           Back to Dashboard
         </Button>

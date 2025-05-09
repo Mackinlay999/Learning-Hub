@@ -191,7 +191,7 @@ function App() {
             >
               {/* Protected Admin Routes - With Sidebar/Layout */}
               <Route
-                path="admin-home"
+                path="home"
                 element={
                   <ProtectedRoute allowedRoles={["Super Admin", "Admin"]}>
                     <AdminHome />
@@ -199,7 +199,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-courses"
+                path="courses"
                 element={
                   <ProtectedRoute
                     allowedRoles={["Admin", "Super Admin", "Recruiter"]}
@@ -209,7 +209,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-Userdetails"
+                path="Userdetails"
                 element={
                   <ProtectedRoute
                     allowedRoles={["Admin", "Super Admin", "Recruiter"]}
@@ -227,7 +227,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-lead-student"
+                path="lead-student"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminLeadAndStudentManagement />
@@ -235,7 +235,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-training-program"
+                path="training-program"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminTrainingprogram />
@@ -243,7 +243,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-email-marketing"
+                path="email-marketing"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminEMailMarketing />
@@ -251,7 +251,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-finance-payment"
+                path="finance-payment"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminFinanceAndPayment />
@@ -259,7 +259,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-corporate-training"
+                path="corporate-training"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminCorporateTrainingEnterprice />
@@ -267,7 +267,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-analytics-reports"
+                path="analytics-reports"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminAnalyticsAndReports />
@@ -275,7 +275,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-support-feedback"
+                path="support-feedback"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminSupportAndFeedback />
@@ -283,7 +283,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-recruitment"
+                path="recruitment"
                 element={
                   <ProtectedRoute
                     allowedRoles={["Admin", "Recruiter", "Super Admin"]}
@@ -293,7 +293,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-students"
+                path="students"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminStudents />
@@ -301,7 +301,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-students/:id"
+                path="students/:id"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminStudentDetail />
@@ -309,7 +309,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-add-student"
+                path="add-student"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminAddStudent />
@@ -317,7 +317,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-edit-student/:id"
+                path="edit-student/:id"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminEditStudent />
@@ -326,7 +326,7 @@ function App() {
               />
 
               <Route
-                path="admin-mentors"
+                path="mentors"
                 element={
                   <ProtectedRoute
                     allowedRoles={["Admin", "Mentor", "Super Admin"]}
@@ -336,7 +336,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-mentors/:id"
+                path="mentors/:id"
                 element={
                   <ProtectedRoute
                     allowedRoles={["Admin", "Mentor", "Super Admin"]}
@@ -346,7 +346,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-Suceess"
+                path="Suceess"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminSuceess />
@@ -354,7 +354,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-blog-webinar"
+                path="blog-webinar"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminBlogWebinar />
@@ -363,7 +363,7 @@ function App() {
               />
 
               <Route
-                path="admin-recruiters/partners"
+                path="recruiters/partners"
                 element={
                   <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
                     <AdminPartners />
@@ -371,7 +371,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-recruiters/post"
+                path="recruiters/post"
                 element={
                   <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
                     <AdminPostJob />
@@ -379,7 +379,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-recruiters/applicants"
+                path="recruiters/applicants"
                 element={
                   <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
                     <AdminApplicants />
@@ -387,7 +387,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-recruiters/schedule"
+                path="recruiters/schedule"
                 element={
                   <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
                     <AdminScheduleInterview />
@@ -395,7 +395,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-recruiters/dashboard"
+                path="recruiters/dashboard"
                 element={
                   <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
                     <AdminRecruiterDashboard />
@@ -403,7 +403,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-EmailCampaign"
+                path="EmailCampaign"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminEmailCampaign />
@@ -411,7 +411,7 @@ function App() {
                 }
               />
               <Route
-                path="admin-resume"
+                path="resume"
                 element={
                   <ProtectedRoute
                     allowedRoles={["Admin", "Recruiter", "Super Admin"]}
