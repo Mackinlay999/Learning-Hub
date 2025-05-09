@@ -4,7 +4,7 @@ const app =express()
 const cookieParser = require("cookie-parser");
 const AllRouters =require("./Route/AllRouters") 
 const cors = require("cors")
-const paymentRoutes = require("./Route/PaymentRoutes")
+// const paymentRoutes = require("./Route/PaymentRoutes")
 const helmet = require("helmet");
 const path = require("path");
 
@@ -88,7 +88,7 @@ app.get('/', (req, res) => {
 });
 
 app.use("/api", AllRouters);
-app.use("/api", paymentRoutes);
+// app.use("/api", paymentRoutes);
 app.use("/api", ticketRoutes);
 app.use("/api", feedbackRoutes);
 app.use("/api", communityRoutes);
