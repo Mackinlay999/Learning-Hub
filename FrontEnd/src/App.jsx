@@ -426,8 +426,6 @@ function App() {
           </Route>
           <Route path="*" element={<NotFound />} />
 
-<<<<<<< HEAD
-=======
           <Route path="/program/:id" element={<ProgramDetail />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/payment-failure" element={<PaymentFailure />} />
@@ -443,7 +441,7 @@ function App() {
           
           {/* <Route path="*" element={<NotFound />} />{" "} */}
           {/* Catch-all route for 404 pages */}
->>>>>>> 98037e39a3d37bf9284d02d0b7493811e8d96f5b
+          
         </Routes>
       </div>
     </Router>

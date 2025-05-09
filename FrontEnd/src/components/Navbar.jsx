@@ -75,14 +75,8 @@ const NavBar = () => {
                       </NavDropdown.Item>
                     </motion.div>
                   </NavDropdown>
-<<<<<<< HEAD
-=======
 
-
-                  <Nav.Link as={Link} >
-                    Dashboard
-                  </Nav.Link>
->>>>>>> 98037e39a3d37bf9284d02d0b7493811e8d96f5b
+                  <Nav.Link as={Link}>Dashboard</Nav.Link>
                 </Nav>
                 <div className="login">
                   <Link to="/admin-login">
@@ -99,7 +93,6 @@ const NavBar = () => {
                 </div>
                 {/* Right: Login Button (Inside Navbar) */}
                 <div className="login">
-<<<<<<< HEAD
                   <Link to="/login">
                     <motion.button
                       className="navbar-login-btn-1"
@@ -111,27 +104,20 @@ const NavBar = () => {
                       LOGIN
                     </motion.button>
                   </Link>
-=======
-                <Link
-                
-                  // to="/login"
-                to ="/AdminEmployerLogin"
-                
-        
-                >
-                  <motion.button 
-                    className="navbar-login-btn-1"
-                    whileHover={{ backgroundColor: "#D32F2F" , color: "#ffffff" }}
+                  <Link
+                    // to="/login"
+                    to="/AdminEmployerLogin"
                   >
-
-                    LOGIN
-                  </motion.button>
-                </Link>
-
-
-
-              
->>>>>>> 98037e39a3d37bf9284d02d0b7493811e8d96f5b
+                    <motion.button
+                      className="navbar-login-btn-1"
+                      whileHover={{
+                        backgroundColor: "#D32F2F",
+                        color: "#ffffff",
+                      }}
+                    >
+                      LOGIN
+                    </motion.button>
+                  </Link>
                 </div>
               </div>
             </Navbar.Collapse>
