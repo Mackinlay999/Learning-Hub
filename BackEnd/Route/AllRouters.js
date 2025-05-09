@@ -129,14 +129,17 @@ router.delete("/deleteRecord/:id", AttendanceController.deleteRecord);
 
 // Adminroute
 
+router.get("/approveEmail/:id", Admincontroller.approve);
+router.get("/rejectEmail/:id", Admincontroller.reject);
+
 router.post("/admin/register",  Admincontroller.register)
 router.get("/admin/alluser",  Admincontroller.getallrole)
 router.post("/admin-login",  Admincontroller.login)
 router.post("/admin-logout",  Admincontroller.logout)
 router.post("/admin/forgetpassword",  Admincontroller.forgetpassword)
 router.post("/admin/setNewPassword",  Admincontroller.setNewPassword)
-router.get("/approve/:id",  Admincontroller.approveUser)
-router.get("/reject/:id",  Admincontroller.rejectUser)
+router.put("/approve/:id",  Admincontroller.approveUser)
+router.put("/reject/:id",  Admincontroller.rejectUser)
 router.put("/admin/update-role", Verifyrole.verifyToken, Admincontroller.updateRole); // Role-based check here
 router.get("/admin/me", Verifyrole.verifyToken, Admincontroller.me);
 router.delete("/admin/deleteUser", Verifyrole.verifyToken, Admincontroller.deleteUser); // Role-based check here

@@ -77,14 +77,20 @@ const NavBar = () => {
                   </NavDropdown>
 
 
-                  <Nav.Link as={Link} to="/admin">
+                  <Nav.Link as={Link} >
                     Dashboard
                   </Nav.Link>
                 </Nav>
 
                 {/* Right: Login Button (Inside Navbar) */}
                 <div className="login">
-                <Link to="/login">
+                <Link
+                
+                  // to="/login"
+                to ="/AdminEmployerLogin"
+                
+        
+                >
                   <motion.button 
                     className="navbar-login-btn-1"
                     whileHover={{ backgroundColor: "#D32F2F" , color: "#ffffff" }}

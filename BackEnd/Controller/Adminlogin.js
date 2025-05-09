@@ -36,23 +36,34 @@ const Admincontroller = {
 
       await newuser.save();
 
-      // const approveURL = `http://localhost:5173/approve/${newuser._id}`;
-      // const rejectURL = `http://localhost:5173/reject/${newuser._id}`;
+
+//       const approveURL = `http://localhost:3000/approve/${newuser._id}`;
+// const rejectURL = `http://localhost:3000/reject/${newuser._id}`;
 
 
-      // const mailOptions = {
-      //   from: "your-email@gmail.com",
-      //   to: process.env.SUPER_ADMIN_EMAIL,
-      //   subject: "New User Registration Pending Approval",
-      //   html: `
-      //     <h3>New Registration Request</h3>
-      //     <p><strong>Username:</strong> ${username}</p>
-      //     <p><strong>Email:</strong> ${email}</p>
-      //     <a href="${approveURL}">✅ Approve</a> | <a href="${rejectURL}">❌ Reject</a>
-      //   `
-      // };
+const approveURL = `http://localhost:3000/api/approveEmail/${newuser._id}`;
+const rejectURL = `http://localhost:3000/api/rejectEmail/${newuser._id}`;
+
+
+
+      const mailOptions = {
+        from:  process.env.EMAIL,
+        to: process.env.SUPER_ADMIN_EMAIL,
+        subject: "New User Registration Pending Approval",
+        html: `
+          <h3>New Registration Request</h3>
+          <p><strong>Username:</strong> ${username}</p>
+          <p><strong>Email:</strong> ${email}</p>
+        
+        
+
+        <a href="${approveURL}" style="padding: 8px 12px; background-color: green; color: white;">✅ Approve</a>
+<a href="${rejectURL}" style="padding: 8px 12px; background-color: red; color: white;">❌ Reject</a>
+         
+        `
+      };
   
-      // await transporter.sendMail(mailOptions);
+      await transporter.sendMail(mailOptions);
   
 
 
@@ -63,8 +74,8 @@ const Admincontroller = {
 
 
 
-      // res.status(200).json({ message: "Registration request submitted. Awaiting approval." });
-      res.status(200).json({message : "responsive successfully"})
+      res.status(200).json({ message: "Registration request submitted. Awaiting approval." });
+      // res.status(200).json({message : "responsive successfully"})
     } catch (err) {
       res.status(400).json({ message: err.message });
     }
@@ -89,20 +100,20 @@ const Admincontroller = {
       const { email, password } = req.body;
 
 
-      // user = await Adminlogin.findOne({ email });
-      // if (!user || !(await bcrypt.compare(password, user.password))) {
-      //   return res.status(400).json({ message: "Invalid credentials" });
-      // }
-      // if (user.status !== "approved") {
-      //   return res.status(403).json({ message: "Your account is not approved yet." });
-      // }
+     const user = await Adminlogin.findOne({ email });
+      if (!user || !(await bcrypt.compare(password, user.password))) {
+        return res.status(400).json({ message: "Invalid credentials" });
+      }
+      if (user.status !== "approved") {
+        return res.status(403).json({ message: "Your account is not approved yet." });
+      }
 
-      // // Validate input
-      // if (!email || !password) {
-      //   return res
-      //     .status(400)
-      //     .json({ message: "Email and password are required" });
-      // }
+      // Validate input
+      if (!email || !password) {
+        return res
+          .status(400)
+          .json({ message: "Email and password are required" });
+      }
 
       // Find user by email
       const verifyUser = await Adminlogin.findOne({ email });
@@ -187,7 +198,7 @@ const Admincontroller = {
       return res.status(200).json({
         userId: user._id,
         role: user.role, // Assuming 'role' is stored in your user schema
-        name: user.name, // Adjust based on your schema
+        name: user.username, // Adjust based on your schema
         email: user.email, // Adjust based on your schema
       });
     } catch (err) {
@@ -313,9 +324,7 @@ const Admincontroller = {
 
       await userToUpdate.save();
 
-      res
-        .status(200)
-        .json({
+      res.status(200).json({
           message: "User updated successfully",
           updatedUser: userToUpdate,
         });
@@ -369,39 +378,71 @@ const Admincontroller = {
   },
 
 
-
-
-   approveUser :async (req, res) => {
+  approveUser: async (req, res) => {
     try {
-
-      const user = await Adminlogin.findOne({ email });
+      const { id } = req.params;
+      console.log("Approving user with ID:", id);
+  
+      const user = await Adminlogin.findById(id);
       if (!user) return res.status(404).json({ message: "User not found" });
   
-      if (user.status !== "approved") {
-        return res.status(403).json({ message: "Your account is not approved yet." });
+      if (user.status === "approved") {
+        return res.status(400).json({ message: "User already approved" });
       }
+  
+      user.status = "approved";
+      await user.save();
   
       res.send("✅ User approved successfully!");
     } catch (err) {
+      console.error("❌ Error:", err);
       res.status(500).send("Error approving user");
     }
   },
+  
+
+ 
    rejectUser : async (req, res) => {
     try {
-      const user = await Adminlogin.findOne({ email });
-      if (!user) return res.status(404).json({ message: "User not found" });
+      const { id } = req.params;
+      console.log("Approving user with ID:", id);
+      const user = await Adminlogin.findById(id);
   
+      if (!user) return res.status(404).json({ message: "User not found" });
       if (user.status === "rejected") {
-        return res.status(403).json({ message: "❌ Your registration request was rejected." });
+        return res.status(400).json({ message: "User already rejected" });
       }
+  
+      user.status = "rejected";
+      await user.save();
   
       res.send("❌ User rejected successfully.");
     } catch (err) {
       res.status(500).send("Error rejecting user");
     }
-  }
 
 
-};
+  },
+  approve: async (req, res) => {
+    try {
+      const id = req.params.id;
+      await Adminlogin.findByIdAndUpdate(id, { status: "approved" });
+      res.send("<h2>User approved successfully ✅</h2>");
+    } catch (err) {
+      res.status(500).send("Error approving user: " + err.message);
+    }
+  },
+  
+  reject: async (req, res) => {
+    try {
+      const id = req.params.id;
+      await Adminlogin.findByIdAndUpdate(id, { status: "rejected" });
+      res.send("<h2>User rejected ❌</h2>");
+    } catch (err) {
+      res.status(500).send("Error rejecting user: " + err.message);
+    }
+  },
+  
+}
 
 module.exports = Admincontroller;
