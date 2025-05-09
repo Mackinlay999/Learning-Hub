@@ -37,7 +37,7 @@ import HrProgram from "./components/HrProgram";
 import MarketingProgram from "./components/MarketingProgram";
 import SalesProgram from "./components/SalesProgram";
 import FinanceProgram from "./components/FinanceProgram";
-import AdminEmployerLogin from "./components/AdminEmployerLogin"
+import AdminEmployerLogin from "./components/AdminEmployerLogin";
 // import DashboardAdmin from "../admin/src/components/DashboardAdmin";
 
 // DashboardAdmin
@@ -140,311 +140,301 @@ const AdminLayout = () => {
 function App() {
   return (
     <AuthProvider>
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route element={<PublicLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/career-support" element={<Career />} />
-            <Route path="/success-story" element={<SuccessStory />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/blog-training" element={<BlogTraining />} />
-            <Route path="/enterprise" element={<Enterprise />} />
-            <Route path="/webinars" element={<Webinars />} />
-            <Route path="/for-recruiters" element={<Recruiters />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/PasswordReset" element={<PasswordReset />} />
-            <Route path="/program" element={<Program />} />
-            <Route path="/program/:title" element={<ProgramDetail />} />
-            <Route path="/Userdetails" element={<Userdetails />} />
-            <Route path="/payment-success" element={<PaymentSuccess />} />
-            <Route path="/payment-failure" element={<PaymentFailure />} />
-            <Route path="/program/business" element={<BusinessAnalytics />} />
-            <Route path="/program/hr" element={<HrProgram />} />
-            <Route path="/program/marketing" element={<MarketingProgram />} />
-            <Route path="/program/sales" element={<SalesProgram />} />
-            <Route path="/program/finance" element={<FinanceProgram />} />
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route element={<PublicLayout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/career-support" element={<Career />} />
+              <Route path="/success-story" element={<SuccessStory />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/blog-training" element={<BlogTraining />} />
+              <Route path="/enterprise" element={<Enterprise />} />
+              <Route path="/webinars" element={<Webinars />} />
+              <Route path="/for-recruiters" element={<Recruiters />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/PasswordReset" element={<PasswordReset />} />
+              <Route path="/program" element={<Program />} />
+              <Route path="/program/:title" element={<ProgramDetail />} />
+              <Route path="/Userdetails" element={<Userdetails />} />
+              <Route path="/payment-success" element={<PaymentSuccess />} />
+              <Route path="/payment-failure" element={<PaymentFailure />} />
+              <Route path="/program/business" element={<BusinessAnalytics />} />
+              <Route path="/program/hr" element={<HrProgram />} />
+              <Route path="/program/marketing" element={<MarketingProgram />} />
+              <Route path="/program/sales" element={<SalesProgram />} />
+              <Route path="/program/finance" element={<FinanceProgram />} />
+              <Route
+                path="/AdminEmployerLogin"
+                element={<AdminEmployerLogin />}
+              />
+              {/* <Route path="*" element={<NotFound />} />{" "} */}
+              {/* Catch-all route for 404 pages */}
+            </Route>
+
+            {/* Public routes */}
+            <Route path="/admin-login" element={<AdminLoginPortal />} />
+            <Route path="/admin-register" element={<AdminRegister />} />
+            <Route path="/admin-PasswordReset" element={<PasswordReset />} />
+            <Route path="/admin-not-authorized" element={<NotAuthorized />} />
+            <Route
+              path="admin/*"
+              element={
+                <ProtectedRoute
+                  allowedRoles={["Admin", "Super Admin", "Recruiter", "Mentor"]}
+                >
+                  <AdminLayout />
+                </ProtectedRoute>
+              }
+            >
+              {/* Protected Admin Routes - With Sidebar/Layout */}
+              <Route
+                path="admin-home"
+                element={
+                  <ProtectedRoute allowedRoles={["Super Admin", "Admin"]}>
+                    <AdminHome />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-courses"
+                element={
+                  <ProtectedRoute
+                    allowedRoles={["Admin", "Super Admin", "Recruiter"]}
+                  >
+                    <AdminCourses />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-Userdetails"
+                element={
+                  <ProtectedRoute
+                    allowedRoles={["Admin", "Super Admin", "Recruiter"]}
+                  >
+                    <AdminUserdetails />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="super-admin"
+                element={
+                  <ProtectedRoute allowedRoles={["Super Admin"]}>
+                    <SuperAdminPanel />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-lead-student"
+                element={
+                  <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
+                    <AdminLeadAndStudentManagement />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-training-program"
+                element={
+                  <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
+                    <AdminTrainingprogram />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-email-marketing"
+                element={
+                  <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
+                    <AdminEMailMarketing />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-finance-payment"
+                element={
+                  <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
+                    <AdminFinanceAndPayment />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-corporate-training"
+                element={
+                  <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
+                    <AdminCorporateTrainingEnterprice />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-analytics-reports"
+                element={
+                  <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
+                    <AdminAnalyticsAndReports />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-support-feedback"
+                element={
+                  <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
+                    <AdminSupportAndFeedback />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-recruitment"
+                element={
+                  <ProtectedRoute
+                    allowedRoles={["Admin", "Recruiter", "Super Admin"]}
+                  >
+                    <AdminRecruiterAndPlacementManagement />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-students"
+                element={
+                  <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
+                    <AdminStudents />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-students/:id"
+                element={
+                  <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
+                    <AdminStudentDetail />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-add-student"
+                element={
+                  <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
+                    <AdminAddStudent />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-edit-student/:id"
+                element={
+                  <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
+                    <AdminEditStudent />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="admin-mentors"
+                element={
+                  <ProtectedRoute
+                    allowedRoles={["Admin", "Mentor", "Super Admin"]}
+                  >
+                    <AdminMentors />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-mentors/:id"
+                element={
+                  <ProtectedRoute
+                    allowedRoles={["Admin", "Mentor", "Super Admin"]}
+                  >
+                    <AdminMentorDetail />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-Suceess"
+                element={
+                  <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
+                    <AdminSuceess />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-blog-webinar"
+                element={
+                  <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
+                    <AdminBlogWebinar />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="admin-recruiters/partners"
+                element={
+                  <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
+                    <AdminPartners />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-recruiters/post"
+                element={
+                  <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
+                    <AdminPostJob />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-recruiters/applicants"
+                element={
+                  <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
+                    <AdminApplicants />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-recruiters/schedule"
+                element={
+                  <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
+                    <AdminScheduleInterview />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-recruiters/dashboard"
+                element={
+                  <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
+                    <AdminRecruiterDashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-EmailCampaign"
+                element={
+                  <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
+                    <AdminEmailCampaign />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="admin-resume"
+                element={
+                  <ProtectedRoute
+                    allowedRoles={["Admin", "Recruiter", "Super Admin"]}
+                  >
+                    <AdminResumeViewer />
+                  </ProtectedRoute>
+                }
+              />
+              {/* Fallback 404 */}
+
+              <Route path="recruiters" element={<AdminRecruiterDashboard />} />
+              <Route path="EmailCampaign" element={<AdminEmailCampaign />} />
+              <Route path="resume" element={<AdminResumeViewer />} />
+              <Route path="LeadsByDate" element={<AdminLeadsByDate />} />
+              <Route path="LeadDetails" element={<AdminLeadDetails />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+
             {/* <Route path="*" element={<NotFound />} />{" "} */}
             {/* Catch-all route for 404 pages */}
-          </Route>
-
-          {/* Public routes */}
-          <Route path="/admin-login" element={<AdminLoginPortal />} />
-          <Route path="/admin-register" element={<AdminRegister />} />
-          <Route path="/admin-PasswordReset" element={<PasswordReset />} />
-          <Route path="/admin-not-authorized" element={<NotAuthorized />} />
-          <Route
-            path="admin/*"
-            element={
-              <ProtectedRoute
-                allowedRoles={["Admin", "Super Admin", "Recruiter", "Mentor"]}
-              >
-                <AdminLayout />
-              </ProtectedRoute>
-            }
-          >
-            {/* Protected Admin Routes - With Sidebar/Layout */}
-            <Route
-              path="admin-home"
-              element={
-                <ProtectedRoute allowedRoles={["Super Admin", "Admin"]}>
-                  <AdminHome />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-courses"
-              element={
-                <ProtectedRoute
-                  allowedRoles={["Admin", "Super Admin", "Recruiter"]}
-                >
-                  <AdminCourses />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-Userdetails"
-              element={
-                <ProtectedRoute
-                  allowedRoles={["Admin", "Super Admin", "Recruiter"]}
-                >
-                  <AdminUserdetails />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="super-admin"
-              element={
-                <ProtectedRoute allowedRoles={["Super Admin"]}>
-                  <SuperAdminPanel />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-lead-student"
-              element={
-                <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                  <AdminLeadAndStudentManagement />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-training-program"
-              element={
-                <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                  <AdminTrainingprogram />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-email-marketing"
-              element={
-                <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                  <AdminEMailMarketing />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-finance-payment"
-              element={
-                <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                  <AdminFinanceAndPayment />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-corporate-training"
-              element={
-                <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                  <AdminCorporateTrainingEnterprice />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-analytics-reports"
-              element={
-                <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                  <AdminAnalyticsAndReports />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-support-feedback"
-              element={
-                <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                  <AdminSupportAndFeedback />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-recruitment"
-              element={
-                <ProtectedRoute
-                  allowedRoles={["Admin", "Recruiter", "Super Admin"]}
-                >
-                  <AdminRecruiterAndPlacementManagement />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-students"
-              element={
-                <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                  <AdminStudents />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-students/:id"
-              element={
-                <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                  <AdminStudentDetail />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-add-student"
-              element={
-                <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                  <AdminAddStudent />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-edit-student/:id"
-              element={
-                <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                  <AdminEditStudent />
-                </ProtectedRoute>
-              }
-            />
-
-            <Route
-              path="admin-mentors"
-              element={
-                <ProtectedRoute
-                  allowedRoles={["Admin", "Mentor", "Super Admin"]}
-                >
-                  <AdminMentors />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-mentors/:id"
-              element={
-                <ProtectedRoute
-                  allowedRoles={["Admin", "Mentor", "Super Admin"]}
-                >
-                  <AdminMentorDetail />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-Suceess"
-              element={
-                <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                  <AdminSuceess />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-blog-webinar"
-              element={
-                <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                  <AdminBlogWebinar />
-                </ProtectedRoute>
-              }
-            />
-
-            <Route
-              path="admin-recruiters/partners"
-              element={
-                <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
-                  <AdminPartners />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-recruiters/post"
-              element={
-                <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
-                  <AdminPostJob />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-recruiters/applicants"
-              element={
-                <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
-                  <AdminApplicants />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-recruiters/schedule"
-              element={
-                <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
-                  <AdminScheduleInterview />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-recruiters/dashboard"
-              element={
-                <ProtectedRoute allowedRoles={["Recruiter", "Super Admin"]}>
-                  <AdminRecruiterDashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-EmailCampaign"
-              element={
-                <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                  <AdminEmailCampaign />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="admin-resume"
-              element={
-                <ProtectedRoute
-                  allowedRoles={["Admin", "Recruiter", "Super Admin"]}
-                >
-                  <AdminResumeViewer />
-                </ProtectedRoute>
-              }
-            />
-            {/* Fallback 404 */}
-
-            <Route path="recruiters" element={<AdminRecruiterDashboard />} />
-            <Route path="EmailCampaign" element={<AdminEmailCampaign />} />
-            <Route path="resume" element={<AdminResumeViewer />} />
-            <Route path="LeadsByDate" element={<AdminLeadsByDate />} />
-            <Route path="LeadDetails" element={<AdminLeadDetails />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-
-          <Route path="/program/:id" element={<ProgramDetail />} />
-          <Route path="/payment-success" element={<PaymentSuccess />} />
-          <Route path="/payment-failure" element={<PaymentFailure />} />
-          <Route path="/program" element={<Program />} />
-          <Route path="/program/:id" element={<ProgramDetail />} />
-          <Route path="/program/business" element={<BusinessAnalytics />} />
-          <Route path="/program/hr" element={<HrProgram />} />
-          <Route path="/program/marketing" element={<MarketingProgram />} />
-          <Route path="/program/sales" element={<SalesProgram />} />
-          <Route path="/program/finance" element={<FinanceProgram />} />
-          <Route path="/AdminEmployerLogin" element={<AdminEmployerLogin />} />
-         
-          
-          {/* <Route path="*" element={<NotFound />} />{" "} */}
-          {/* Catch-all route for 404 pages */}
-          
-        </Routes>
-      </div>
-    </Router>
+          </Routes>
+        </div>
+      </Router>
     </AuthProvider>
   );
 }
