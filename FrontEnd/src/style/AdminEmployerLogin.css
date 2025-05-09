@@ -1,4 +1,4 @@
-/* Color Variables */
+/* 
 :root {
     --primary-red: #D32F2F;
     --dark-gray: #333333;
@@ -6,7 +6,7 @@
     --gold-accent: #FFC107;
   }
   
-  /* Base styles */
+
   .admin-employer-login-container {
     font-family: "Segoe UI", sans-serif;
     background-color: var(--dark-gray);
@@ -22,7 +22,7 @@
     }
   }
   
-  /* Left section */
+
   .admin-employer-login-left {
     background-color: var(--dark-gray);
     padding: 3rem 2rem;
@@ -49,7 +49,6 @@
     margin: 0.3rem 0;
   }
   
-  /* CTA Button */
   .admin-employer-login-cta {
     margin-top: 2rem;
     padding: 0.75rem 1.5rem;
@@ -66,7 +65,7 @@
     transform: scale(1.03);
   }
   
-  /* Right section */
+ 
   .admin-employer-login-right {
     background-color: var(--white);
     color: var(--dark-gray);
@@ -82,8 +81,7 @@
       padding: 3rem;
     }
   }
-  
-  /* Tabs */
+
   .admin-employer-login-tabs {
     display: flex;
     justify-content: space-around;
@@ -107,7 +105,7 @@
     border-bottom-color: var(--primary-red);
   }
   
-  /* Form Inputs */
+
   .admin-employer-login-form input {
     width: 100%;
     border: 1px solid #ccc;
@@ -121,7 +119,7 @@
     outline: none;
   }
   
-  /* Hiring For Buttons */
+
   .admin-employer-login-hiring-options button {
     flex: 1;
     padding: 0.75rem;
@@ -135,7 +133,7 @@
     background-color: #e3f2fd;
   }
   
-  /* Form Buttons */
+ 
   .admin-employer-login-submit {
     width: 100%;
     background-color: var(--primary-red);
@@ -151,7 +149,7 @@
     background-color: #b71c1c;
   }
   
-  /* Register Link */
+ 
   .admin-employer-login-register {
     text-align: center;
     margin-top: 1rem;
@@ -169,8 +167,57 @@
     text-decoration: underline;
   }
   
-  /* Transitions */
+
   .admin-employer-login-transition {
     transition: all 0.3s ease;
+  }
+   */
+
+   .AdminEmployer-container {
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     /* black */
+  }
+  
+  .AdminEmployer-buttonWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .AdminEmployer-userLoginBtn,
+  .AdminEmployer-adminLoginBtn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Specific styles for each button */
+  .AdminEmployer-userLoginBtn {
+    background-color:#D32F2F;
+    color: white;
+  }
+  
+  .AdminEmployer-userLoginBtn:hover {
+    background-color:#D32F2F;
+  }
+  
+  .AdminEmployer-adminLoginBtn {
+    background-color:#D32F2F;
+    color: white;
+  }
+  
+  .AdminEmployer-adminLoginBtn:hover {
+    background-color:#D32F2F;
   }
   

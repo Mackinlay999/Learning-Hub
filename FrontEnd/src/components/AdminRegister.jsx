@@ -29,7 +29,7 @@ const AdminRegister = () => {
         })
         .then(() => {
             alert("User Created Successfully. Now You can login with those credentials");
-            navigate('/Login');
+            navigate('/admin');
         })
         .catch((error) => {
             if (error.response && error.response.status === 400) {
@@ -115,7 +115,7 @@ const AdminRegister = () => {
                     <button type="submit" className="r-submit-btn">Create an account</button>
                 </form>
 
-                <p>Already have an account? <span className="r-login-link" onClick={() => navigate('/Login')}>Login here</span></p>
+                <p>Already have an account? <span className="r-login-link" onClick={() => navigate('/admin')}>Login here</span></p>
             </div>
         </div>
     );

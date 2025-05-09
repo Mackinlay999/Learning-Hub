@@ -17,7 +17,7 @@
     "axios": "^1.8.4",
     "bootstrap": "^5.3.3",
     "dom": "^0.0.3",
-    "framer-motion": "^12.5.0",
+    "framer-motion": "^12.10.1",
     "lucide-react": "^0.487.0",
     "mackinlay-edu": "file:",
     "razorpay": "^2.9.6",

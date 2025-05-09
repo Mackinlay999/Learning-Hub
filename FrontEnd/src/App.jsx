@@ -37,6 +37,7 @@ import HrProgram from "./components/HrProgram";
 import MarketingProgram from "./components/MarketingProgram";
 import SalesProgram from "./components/SalesProgram";
 import FinanceProgram from "./components/FinanceProgram";
+import AdminEmployerLogin from "./components/AdminEmployerLogin"
 // import DashboardAdmin from "../admin/src/components/DashboardAdmin";
 
 // DashboardAdmin
@@ -425,6 +426,24 @@ function App() {
           </Route>
           <Route path="*" element={<NotFound />} />
 
+<<<<<<< HEAD
+=======
+          <Route path="/program/:id" element={<ProgramDetail />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/payment-failure" element={<PaymentFailure />} />
+          <Route path="/program" element={<Program />} />
+          <Route path="/program/:id" element={<ProgramDetail />} />
+          <Route path="/program/business" element={<BusinessAnalytics />} />
+          <Route path="/program/hr" element={<HrProgram />} />
+          <Route path="/program/marketing" element={<MarketingProgram />} />
+          <Route path="/program/sales" element={<SalesProgram />} />
+          <Route path="/program/finance" element={<FinanceProgram />} />
+          <Route path="/AdminEmployerLogin" element={<AdminEmployerLogin />} />
+         
+          
+          {/* <Route path="*" element={<NotFound />} />{" "} */}
+          {/* Catch-all route for 404 pages */}
+>>>>>>> 98037e39a3d37bf9284d02d0b7493811e8d96f5b
         </Routes>
       </div>
     </Router>
