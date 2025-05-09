@@ -78,32 +78,9 @@ const NavBar = () => {
 
                   <Nav.Link as={Link}>Dashboard</Nav.Link>
                 </Nav>
-                <div className="login">
-                  <Link to="/admin-login">
-                    <motion.button
-                      className="navbar-login-btn-1"
-                      whileHover={{
-                        backgroundColor: "#D32F2F",
-                        color: "#ffffff",
-                      }}
-                    >
-                      Dashboard
-                    </motion.button>
-                  </Link>
-                </div>
+
                 {/* Right: Login Button (Inside Navbar) */}
                 <div className="login">
-                  <Link to="/login">
-                    <motion.button
-                      className="navbar-login-btn-1"
-                      whileHover={{
-                        backgroundColor: "#D32F2F",
-                        color: "#ffffff",
-                      }}
-                    >
-                      LOGIN
-                    </motion.button>
-                  </Link>
                   <Link
                     // to="/login"
                     to="/AdminEmployerLogin"

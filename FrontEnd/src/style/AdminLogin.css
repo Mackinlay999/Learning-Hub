@@ -1,0 +1,96 @@
+/* AdminLoginPortal.css */
+.Admin-Login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.Admin-Login-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.Admin-Login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.Admin-Login-formGroup {
+  margin-bottom: 20px;
+}
+
+.Admin-Login-input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.Admin-Login-passwordContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.Admin-Login-togglePassword {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.Admin-Login-buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.Admin-Login-loginButton {
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.Admin-Login-forgotButton,
+.Admin-Login-backButton {
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.Admin-Login-registerLink {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.Admin-Login-registerSpan {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.Admin-Login-error {
+  color: red;
+  margin-bottom: 10px;
+  font-size: 14px;
+  text-align: center;
+}
