@@ -76,14 +76,13 @@ const NavBar = () => {
                     </motion.div>
                   </NavDropdown>
 
-<<<<<<< HEAD
 
                   {/* <Nav.Link as={Link} >
                     Dashboard
                   </Nav.Link> */}
-=======
-                  <Nav.Link as={Link}>Dashboard</Nav.Link>
->>>>>>> 3edd4b139b939cc99aa3961f8bffac6b8f3374d5
+
+                  {/* <Nav.Link as={Link}>Dashboard</Nav.Link> */}
+
                 </Nav>
 
                 {/* Right: Login Button (Inside Navbar) */}
