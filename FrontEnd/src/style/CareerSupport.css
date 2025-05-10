@@ -1,3 +1,4 @@
+
 .career-section {
     display: flex;
     justify-content: space-around;
@@ -8,8 +9,8 @@
   }
   .career-section
   
-  .container {
-    max-width: 1200px;
+  .career-container {
+    max-width: 1000px;
     width: 100%;
   }
   
@@ -17,7 +18,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
   
   .career-image img {
@@ -29,9 +30,10 @@
   
   .career-text {
     flex: 1;
-      width: 700px;
+      width: 100%;
    
-    padding: 20px;
+   padding-top: 50px;
+   
   }
   
   .title {
@@ -141,4 +143,6 @@
     font-weight: bold;
     color: #0073e6;
   }
+
+  
   

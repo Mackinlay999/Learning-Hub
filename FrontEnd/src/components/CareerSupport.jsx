@@ -4,7 +4,7 @@ import "../style/CareerSupport.css";
 const CareerSupport = () => {
   return (
     <section className="career-section">
-      <div className="container">
+      <div className="career-container">
         <div className="career-content">
           <div className="career-image">
             <img
