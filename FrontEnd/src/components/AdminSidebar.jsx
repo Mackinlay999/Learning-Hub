@@ -144,7 +144,16 @@ const AdminSidebar = () => {
               )}
 
               <li>
-                <button onClick={logout} className="admin-sidebar-logout-btn">
+                <button 
+                
+                
+                onClick={() => {
+                  logout();
+                  navigate("/")
+                }
+                }
+                
+                className="admin-sidebar-logout-btn">
                   Logout
                 </button>
               </li>

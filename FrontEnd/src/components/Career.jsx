@@ -1,8 +1,8 @@
 import React from 'react'
 import JobBoards from './JobBoread'
 import CareerReportForm from "./CareerReportForm"
-import CareerCarousel from "./CareerCarosel"
-import CareerPrep from "./career.Prep"
+// import CareerCarousel from "./CareerCarosel"
+import CareerPrep from "./careerPrep"
 import NetworkingSession from './NetworkSession'
 import Testimonial from "./Testimonial"
 import CareerFooter from "./CareerFooter"

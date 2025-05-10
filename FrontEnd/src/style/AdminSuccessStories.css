@@ -1,6 +1,6 @@
 /* Color Palette */ 
 :root {
-  --primary-red: #D32F2F; /* Call-to-action buttons, headings, icons */
+  --primary-red: #D32F2F; /* Call-to-action buttonadmin, headings, icons */
   --dark-gray: #333333;   /* Text & contrast sections */
   --white: #FFFFFF;       /* Background for readability */
   --gold-accent: #FFC107; /* Highlighting important sections */
@@ -8,7 +8,7 @@
 }
 
 /* Container styling */
-.success-story-container {
+.adminsuccess-story-container {
   max-width: 800px;
   margin: auto;
   padding: 20px;
@@ -19,25 +19,25 @@
 }
 
 /* Title & Subtitle */
-.success-story-title, .success-story-subtitle {
+.adminsuccess-story-title, .success-story-subtitle {
   margin-bottom: 15px;
   text-align: center;
   color: var(--dark-gray);
  
 }
 
-.success-story-title {
+.adminsuccess-story-title {
   font-size: 2rem;
   color: var(--primary-red);
 }
 
-.success-story-subtitle {
+.adminsuccess-story-subtitle {
   font-size: 1.2rem;
   color: var(--dark-gray);
 }
 
 /* Form Styling */
-.success-story-form {
+.adminsuccess-story-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -50,25 +50,25 @@
  
 }
 
-.success-story-form:hover {
+.adminsuccess-story-form:hover {
   box-shadow: 0 4px 10px #0000001a;
 }
 
-.success-story-form input[type="text"],
-.success-story-form input[type="file"] {
+.adminsuccess-story-form input[type="text"],
+.adminsuccess-story-form input[type="file"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
   transition: border-color 0.3s ease;
 }
 
-.success-story-form input[type="text"]:focus,
-.success-story-form input[type="file"]:focus {
+.adminsuccess-story-form input[type="text"]:focus,
+.adminsuccess-story-form input[type="file"]:focus {
   border-color: var(--primary-red);
 }
 
 /* Button Styling */
-.success-story-btn {
+.adminsuccess-story-btn {
   padding: 10px 20px;
   background-color: var(--primary-red);
   color: var(--white);
@@ -78,20 +78,20 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.success-story-btn:hover {
+.adminsuccess-story-btn:hover {
   background-color: var(--btn-hover);
   transform: translateY(-2px);
 }
 
 /* Story List */
-.success-story-list {
+.adminsuccess-story-list {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
 /* Story Card */
-.success-story-card {
+.adminsuccess-story-card {
   display: flex;
   justify-content: space-between;
   border: 1px solid #ddd;
@@ -101,12 +101,12 @@
   transition: box-shadow 0.3s ease;
 }
 
-.success-story-card:hover {
+.adminsuccess-story-card:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Story Name */
-.success-story-name {
+.adminsuccess-story-name {
   font-weight: bold;
   font-size: 18px;
   color: var(--dark-gray);
@@ -115,14 +115,14 @@
 }
 
 /* Action Buttons inside Story Cards */
-.success-story-actions {
+.adminsuccess-story-actions {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.success-story-edit-btn,
-.success-story-delete-btn {
+.adminsuccess-story-edit-btn,
+.adminsuccess-story-delete-btn {
   background: none;
   border: none;
   cursor: pointer;
@@ -130,28 +130,28 @@
   transition: color 0.3s ease;
 }
 
-.success-story-edit-btn {
+.adminsuccess-story-edit-btn {
   color: var(--primary-red);
 }
 
-.success-story-delete-btn {
+.adminsuccess-story-delete-btn {
   color: #dc3545;
 }
 
-.success-story-edit-btn:hover {
+.adminsuccess-story-edit-btn:hover {
   color: var(--gold-accent);
 }
 
-.success-story-delete-btn:hover {
+.adminsuccess-story-delete-btn:hover {
   color: #ff5733;
 }
 
 /* Button hover effects */
-.success-story-btn:hover {
+.adminsuccess-story-btn:hover {
   background-color: var(--btn-hover);
   transform: translateY(-2px);
 }
-.success-span{
+.adminsuccess-span{
   color: #333333;
 }
 /* Animations */
@@ -166,37 +166,37 @@
   }
 }
 
-.success-story-title, .success-story-subtitle, .success-story-form, .success-story-card {
+.adminsuccess-story-title, .adminsuccess-story-subtitle, .adminsuccess-story-form, .adminsuccess-story-card {
   animation: fadeIn 0.5s ease-out;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .success-story-container {
+  .adminsuccess-story-container {
     padding: 15px;
   }
 
-  .success-story-form {
+  .adminsuccess-story-form {
     padding: 15px;
   }
 
-  .success-story-btn {
+  .adminsuccess-story-btn {
     padding: 12px 20px;
   }
 
-  .success-story-list {
+  .adminsuccess-story-list {
     gap: 10px;
   }
 
-  .success-story-card {
+  .adminsuccess-story-card {
     flex-direction: column;
   }
 
-  .success-story-actions {
+  .adminsuccess-story-actions {
     justify-content: space-around;
   }
 }
-.success-story-photo {
+.adminsuccess-story-photo {
   width: 120px;
   height: 120px;
   object-fit: cover;
@@ -226,7 +226,7 @@
 }
 
 /* Container for Story List */
-.success-story-list {
+.adminsuccess-story-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
@@ -235,7 +235,7 @@
 }
 
 /* Story Card */
-.success-story-card {
+.adminsuccess-story-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -248,7 +248,7 @@
   background-color: var(--light-gray);
 }
 
-.success-story-card:hover {
+.adminsuccess-story-card:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   transform: translateY(-4px);
 }
@@ -256,7 +256,7 @@
 
 
 /* Image Styling */
-.success-story-photo {
+.adminsuccess-story-photo {
   width: 150px;
   height: 150px;
   object-fit: cover;
@@ -270,14 +270,14 @@
 }
 
 /* Story Name, Company, and URL */
-.success-story-name {
+.adminsuccess-story-name {
   font-weight: bold;
   font-size: 16px;
   color: var(--dark-gray);
   margin-bottom: 8px;
 }
 
-.success-span {
+.adminsuccess-span {
   color: var(--primary-red);
   font-weight: normal;
 }
@@ -295,15 +295,15 @@
 }
 
 /* Action Buttons (Edit and Delete) */
-.success-story-actions {
+.adminsuccess-story-actions {
   display: flex;
   justify-content: space-between;
   gap: 15px;
   margin-top: 10px;
 }
 
-.success-story-edit-btn,
-.success-story-delete-btn {
+.adminsuccess-story-edit-btn,
+.adminsuccess-story-delete-btn {
   background: none;
   border: none;
   cursor: pointer;
@@ -313,61 +313,61 @@
   border-radius: 5px;
 }
 
-.success-story-edit-btn {
+.adminsuccess-story-edit-btn {
   background-color: var(--primary-red);
   color: #fff;
 }
 
-.success-story-delete-btn {
+.adminsuccess-story-delete-btn {
   background-color: #dc3545;
   color: #fff;
 }
 
-.success-story-edit-btn:hover {
+.adminsuccess-story-edit-btn:hover {
   background-color: var(--gold-accent);
   transform: translateY(-2px);
 }
 
-.success-story-delete-btn:hover {
+.adminsuccess-story-delete-btn:hover {
   background-color: #ff5733;
   transform: translateY(-2px);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .success-story-card {
+  .adminsuccess-story-card {
     padding: 15px;
   }
 
-  .success-story-name {
+  .adminsuccess-story-name {
     font-size: 14px;
   }
 
-  .success-story-actions {
+  .adminsuccess-story-actions {
     display: flex;
     justify-content: space-between;
     gap: 15px;
     margin-top: 10px;
   }
-  .success-story-photo {
+  .adminsuccess-story-photo {
     height: 180px;
   }
 }
 
 @media (max-width: 480px) {
-  .success-story-card {
+  .adminsuccess-story-card {
     padding: 12px;
   }
-
-  .success-story-name {
+admin
+  .adminsuccess-story-name {
     font-size: 12px;
   }
 
-  .success-story-photo {
+  .adminsuccess-story-photo {
     height: 150px;
   }
 
-  .success-story-actions {
+  .adminsuccess-story-actions {
     flex-direction: column;
     align-items: center;
   }

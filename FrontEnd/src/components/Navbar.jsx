@@ -77,9 +77,9 @@ const NavBar = () => {
                   </NavDropdown>
 
 
-                  <Nav.Link as={Link} >
+                  {/* <Nav.Link as={Link} >
                     Dashboard
-                  </Nav.Link>
+                  </Nav.Link> */}
                 </Nav>
 
                 {/* Right: Login Button (Inside Navbar) */}

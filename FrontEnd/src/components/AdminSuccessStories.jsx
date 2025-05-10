@@ -99,9 +99,9 @@ const AdminSuccessStories = () => {
   };
 
   return (
-    <div className="success-story-con">
-      <h2 className="success-story-title">Add / Edit Student Success Story</h2>
-      <form onSubmit={handleSubmit} className="success-story-form">
+    <div className="adminsuccess-story-con">
+      <h2 className="adminsuccess-story-title">Add / Edit Student Success Story</h2>
+      <form onSubmit={handleSubmit} className="adminsuccess-story-form">
         <input
           type="text"
           name="name"
@@ -133,28 +133,28 @@ const AdminSuccessStories = () => {
           onChange={handleChange}
         />
         
-        <button type="submit" className="success-story-btn">
+        <button type="submit" className="adminsuccess-story-btn">
           {editId ? "Update" : "Add"}
         </button>
       </form>
 
-      <h2 className="success-subtitle">All Success Stories</h2>
-      <div className="success-story-list">
+      <h2 className="adminsuccess-subtitle">All Success Stories</h2>
+      <div className="adminsuccess-story-list">
         
         {stories.map((story) => (
-          <div key={story._id} className="success-story-card">
+          <div key={story._id} className="adminsuccess-story-card">
             <div>
             <img
                   // src={story.photo}
                   src={`http://localhost:3000${story.photo}`}
                   alt={story.name}
                    
-                  className="success-story-photo"
+                  className="adminsuccess-story-photo"
                 />
-              <p className="success-story-name"><span className="success-span">Name:</span>    {story.name}</p>
-              <p className="success-story-name"> <span className="success-span">Company:</span> {story.company}</p>
-              <p className="success-story-name">
-  <span className="success-span">LinkedinUrl:</span> 
+              <p className="adminsuccess-story-name"><span className="adminsuccess-span">Name:</span>    {story.name}</p>
+              <p className="adminsuccess-story-name"> <span className="adminsuccess-span">Company:</span> {story.company}</p>
+              <p className="adminsuccess-story-name">
+  <span className="adminsuccess-span">LinkedinUrl:</span> 
   <a 
     href={story.LinkedinUrl} 
     target="_blank" 
@@ -165,13 +165,13 @@ const AdminSuccessStories = () => {
   </a>
 </p>
   </div>
-            <div className="success-story-actions">
-              <button onClick={() => handleEdit(story)} className="success-story-edit-btn">
+            <div className="adminsuccess-story-actions">
+              <button onClick={() => handleEdit(story)} className="adminsuccess-story-edit-btn">
                 Edit
               </button>
               <button
                 onClick={() => handleDelete(story._id)}
-                className="success-story-delete-btn"
+                className="adminsuccess-story-delete-btn"
               >
                 Delete
               </button>
