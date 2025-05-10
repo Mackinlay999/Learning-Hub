@@ -134,7 +134,7 @@ const AdminPartners = () => {
           <Button
             variant="secondary"
             className="admin-partner-back-btn me-2"
-            onClick={() => navigate("/recruiters/dashboard")}
+            onClick={() => navigate("/admin/recruiters/dashboard")}
           >
             Back to Dashboard
           </Button>

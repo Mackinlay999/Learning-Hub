@@ -10,7 +10,7 @@ const features = [
   {
     title: 'Partner Companies',
     description: 'Explore companies partnered with our platform.',
-    link: '/recruiters/partners',
+    link: '/admin/recruiters/partners',
     icon: <Briefcase size={28} />,
     apiCall: async () => {
       try {
@@ -25,19 +25,19 @@ const features = [
   {
     title: 'Post Job/Internship',
     description: 'Add new job or internship openings.',
-    link: '/recruiters/post',
+    link: '/admin/recruiters/post',
     icon: <FileText size={28} />
   },
   {
     title: 'View Applicants',
     description: 'Access a list of applicants for your postings.',
-    link: '/recruiters/applicants',
+    link: '/admin/recruiters/applicants',
     icon: <Users size={28} />
   },
   {
     title: 'Shortlist & Schedule Interviews',
     description: 'Manage shortlists and schedule interviews easily.',
-    link: '/recruiters/schedule',
+    link: '/admin/recruiters/schedule',
     icon: <CalendarCheck size={28} />
   }
 ];

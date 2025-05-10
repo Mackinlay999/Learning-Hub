@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { FaCheckCircle } from "react-icons/fa";
@@ -87,19 +88,19 @@ const Home = () => {
     },
   ];
 
-
-
-  const [selectedProgram, setSelectedProgram] = useState("Our training programs");
+  const [selectedProgram, setSelectedProgram] = useState(
+    "Our training programs"
+  );
   const [students, setStudents] = useState(1);
   const [companies, setCompanies] = useState(1);
   const navigate = useNavigate();
   useEffect(() => {
     const studentInterval = setInterval(() => {
-      setStudents(prev => (prev >= 100 ? 1 : prev + 1));
+      setStudents((prev) => (prev >= 100 ? 1 : prev + 1));
     }, 50);
 
     const companyInterval = setInterval(() => {
-      setCompanies(prev => (prev >= 1000 ? 1 : prev + 1));
+      setCompanies((prev) => (prev >= 1000 ? 1 : prev + 1));
     }, 10);
 
     return () => {
@@ -108,29 +109,21 @@ const Home = () => {
     };
   }, []);
 
-
-    
   const [allprograms, setallPrograms] = useState([]); // State to hold program data
-  const [selectednewProgram, setnewSelectedProgram] = useState(''); // State for selected program
-
-
+  const [selectednewProgram, setnewSelectedProgram] = useState(""); // State for selected program
 
   useEffect(() => {
     const fetchPrograms = async () => {
       try {
-        const response = await axios.get('/getAllPrograms'); // Replace with your API endpoint
+        const response = await axios.get("/getAllPrograms"); // Replace with your API endpoint
         setallPrograms(response.data); // Assuming the response is an array of programs
       } catch (error) {
-        console.error('Error fetching programs:', error);
+        console.error("Error fetching programs:", error);
       }
     };
 
     fetchPrograms();
   }, []);
-
-
-
-  
 
   return (
     <>
@@ -259,7 +252,6 @@ const Home = () => {
           </div>
         </motion.div>
       </motion.div>
-
       {/* Heading */}
       {/* Carousel Section - Moved to Top */}
       {/* <motion.div
@@ -306,12 +298,7 @@ const Home = () => {
           </SwiperSlide>
         </Swiper>
       </motion.div> */}
-
       {/* Program Section */}
-
-
-
-      
       <motion.div
         className="home-container"
         initial={{ opacity: 0, x: -50 }}
@@ -330,7 +317,9 @@ const Home = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <Button className="home-sidebar-button">Our training programs</Button>
+              <Button className="home-sidebar-button">
+                Our training programs
+              </Button>
               <ul className="home-menu-list">
                 {programs.map((program) => (
                   <li
@@ -358,45 +347,48 @@ const Home = () => {
                     whileTap={{ scale: 0.95 }}
                     className="home-program-course-card"
                   >
-                    <Card className="home-program-course-card-body1">
-                      <Card.Img
-                        variant="top"
+                    <div className="home-program-course-card-body1">
+                      <img
                         src={program.image}
                         className="home-program-course-img"
                         alt={`${program.title} Program`}
                       />
-                      <Card.Body>
-                        <Card.Title className="home-program-course-title">
+                      <div className="home-program-course-text">
+                        <h3 className="home-program-course-title">
                           {program.title} Program
-                        </Card.Title>
-                        <Card.Text className="home-program-course-duration">
+                        </h3>
+                        <p className="home-program-course-duration">
                           3 Months · Online
-                        </Card.Text>
-                        <Button
-                        variant="link"
-                        className="home-program-view-program"
-                        onClick={() => {
-                          const lowerTitle = program.title.toLowerCase();
-                        
-                          if (lowerTitle.includes("business analytics")) {
-                            navigate("/program/business", { state: program });
-                          } else if (lowerTitle.includes("hr")) {
-                            navigate("/program/hr", { state: program });
-                          } else if (lowerTitle.includes("marketing")) {
-                            navigate("/program/marketing", { state: program });
-                          } else if (lowerTitle.includes("sales")) {
-                            navigate("/program/sales", { state: program });
-                          } else if (lowerTitle.includes("finance")) {
-                            navigate("/program/finance", { state: program });
-                          } else {
-                            navigate(`/program/${program.title.split(" ")[0]}`, { state: program });
-                          }
-                        }}
-                      >
-                        View Program
-                      </Button>
-                      </Card.Body>
-                    </Card>
+                        </p>
+                        <button
+                          className="home-program-view-program"
+                          onClick={() => {
+                            const lowerTitle = program.title.toLowerCase();
+
+                            if (lowerTitle.includes("business analytics")) {
+                              navigate("/program/business", { state: program });
+                            } else if (lowerTitle.includes("hr")) {
+                              navigate("/program/hr", { state: program });
+                            } else if (lowerTitle.includes("marketing")) {
+                              navigate("/program/marketing", {
+                                state: program,
+                              });
+                            } else if (lowerTitle.includes("sales")) {
+                              navigate("/program/sales", { state: program });
+                            } else if (lowerTitle.includes("finance")) {
+                              navigate("/program/finance", { state: program });
+                            } else {
+                              navigate(
+                                `/program/${program.title.split(" ")[0]}`,
+                                { state: program }
+                              );
+                            }
+                          }}
+                        >
+                          View Program
+                        </button>
+                      </div>
+                    </div>
                   </motion.div>
                 </Col>
               ))}
@@ -404,8 +396,6 @@ const Home = () => {
           </Col>
         </Row>
       </motion.div>
-
-      z
       {/* Goal Section */}
       <div className="home-heading-container">
         <motion.p
@@ -470,56 +460,56 @@ const Home = () => {
       </div>
       {/* Testimonial Section */}
       <div className="home-testimonial-slider2-wrapper">
-      <div className="home-testimonial-slider2">
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          navigation={true}
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          loop={true}
-          className="home-swiper-container2"
-        >
-          {testimonials.map((item, index) => (
-            <SwiperSlide key={index}>
-              <motion.div
-                className="home-testimonial-card2"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-              >
+        <div className="home-testimonial-slider2">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            navigation={true}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            loop={true}
+            className="home-swiper-container2"
+          >
+            {testimonials.map((item, index) => (
+              <SwiperSlide key={index}>
                 <motion.div
-                  className="home-testimonial-content2"
-                  initial={{ x: -50, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="home-testimonial-card2"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                  <h2 className="home-testimonial-heading2">{item.quote}</h2>
-                  <p className="home-testimonial-desc2">{item.description}</p>
-                  <div className="home-testimonial-author2">
-                    <strong>{item.name}</strong>
-                    <span>{item.title}</span>
-                  </div>
-                </motion.div>
+                  <motion.div
+                    className="home-testimonial-content2"
+                    initial={{ x: -50, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    <h2 className="home-testimonial-heading2">{item.quote}</h2>
+                    <p className="home-testimonial-desc2">{item.description}</p>
+                    <div className="home-testimonial-author2">
+                      <strong>{item.name}</strong>
+                      <span>{item.title}</span>
+                    </div>
+                  </motion.div>
 
-                <motion.div
-                  className="home-testimonial-image2"
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
-                  <img src={item.image} alt={item.name} />
-                  {/* <motion.button
+                  <motion.div
+                    className="home-testimonial-image2"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                  >
+                    <img src={item.image} alt={item.name} />
+                    {/* <motion.button
                     className="home-watch-story2"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     ▶ Watch Story
                   </motion.button> */}
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
       {/* Feature Section */}
@@ -557,7 +547,9 @@ const Home = () => {
                 />
                 <h6 className="home-feature-subtitle">{feature.subtitle}</h6>
                 <h3 className="home-feature-title">{feature.title}</h3>
-                <p className="home-feature-description">{feature.description}</p>
+                <p className="home-feature-description">
+                  {feature.description}
+                </p>
               </motion.div>
             </Col>
           ))}
@@ -647,7 +639,9 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
                 className="home-program-content"
               >
-                <h6 className="home-program-subtitle">MACKINLAY LEARNING HUB</h6>
+                <h6 className="home-program-subtitle">
+                  MACKINLAY LEARNING HUB
+                </h6>
                 <h2 className="home-program-title">
                   Free short programs to gain industry-relevant skills.
                 </h2>

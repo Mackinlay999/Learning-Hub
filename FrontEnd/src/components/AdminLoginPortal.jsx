@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext"; // Adjust path to where your AuthContext's useAuth is exported
-import axios from "./axios"; // Assuming you still have your custom axios setup
+import { useAuth } from "../context/AuthContext";
+import axios from "./axios";
+import "../style/AdminLoginPortal.css";
 
 const AdminLoginPortal = () => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -10,28 +11,32 @@ const AdminLoginPortal = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  // Map roles to their landing routes (using useMemo to memoize)
   const roleToRoute = useMemo(
     () => ({
-      "Super Admin": "/admin-home",
-      Admin: "/admin-home",
-      Recruiter: "/admin-recruiters/dashboard",
-      Mentor: "/admin-mentors",
-      // Add more roles here if needed
+      "Super Admin": "/admin/home",
+      Admin: "/admin/home",
+      Recruiter: "/admin/recruiters/dashboard",
+      Mentor: "/admin/mentors",
     }),
     []
   );
 
-  // Check if user is already logged in on component mount
   useEffect(() => {
     const checkLoggedIn = async () => {
       try {
-        const res = await axios.get("/admin/me", { withCredentials: true });
-        const { role } = res.data;
-        const token = localStorage.getItem("token"); // grab token from localStorage
+        const token = localStorage.getItem("token");
+        if (!token) return;
 
-        if (role && token) {
-          login(token, role); // 🛠 UPDATE auth context here!!
+        const res = await axios.get("/admin/me", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const { role } = res.data;
+
+        if (role) {
+          login(token, role);
           const redirectPath = roleToRoute[role] || "/";
           navigate(redirectPath, { replace: true });
         }
@@ -44,11 +49,8 @@ const AdminLoginPortal = () => {
       }
     };
 
-    // Ensure checkLoggedIn is called only when the dependencies change.
     checkLoggedIn();
-  }, [navigate, login, roleToRoute]); // ensure these dependencies are correctly specified
-
-  // Added roleToRoute to the dependency array
+  }, [navigate, login, roleToRoute]);
 
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -68,40 +70,26 @@ const AdminLoginPortal = () => {
     }
 
     try {
-      const response = await axios.post(
-        "/admin-login",
-        { email: credentials.email, password: credentials.password },
-        { withCredentials: true }
-      );
+      const response = await axios.post("/admin-login", credentials);
       const { token, role } = response.data;
-
-      console.log("Login response:", { token, role }); // Debug log
 
       if (!token || !role) {
         setError("Login failed: token or role missing from server response.");
         return;
       }
 
-      // Save token and role properly
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
-      login(token, role); // update AuthContext
-
+      login(token, role);
       alert("Login Successful");
 
-      // Redirect after successful login
-      const redirectPath = roleToRoute[role] || "/admin-login";
+      const redirectPath = roleToRoute[role] || "/";
       navigate(redirectPath, { replace: true });
     } catch (error) {
-      console.error(error); // Debugging purpose
       if (error.response) {
-        setError(
-          error.response.data?.message || "Login failed. Please try again."
-        );
+        setError(error.response.data?.message || "Login failed. Please try again.");
       } else if (error.request) {
-        setError(
-          "No response received from server. Please check your network."
-        );
+        setError("No response received from server. Please check your network.");
       } else {
         setError("An unexpected error occurred. Please try again.");
       }
@@ -109,11 +97,18 @@ const AdminLoginPortal = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.box}>
+    <div className="Admin-Login-container">
+      <div className="Admin-Login-box">
         <h1>Login to your Account</h1>
-        <form onSubmit={handleSubmit} style={styles.form}>
-          <div style={styles.formGroup}>
+        <button
+          type="button"
+          className="Admin-Login-backButton"
+          onClick={() => navigate("/")}
+        >
+          Back
+        </button>
+        <form onSubmit={handleSubmit} className="Admin-Login-form">
+          <div className="Admin-Login-formGroup">
             <label htmlFor="email">Your Email</label>
             <input
               type="email"
@@ -123,13 +118,13 @@ const AdminLoginPortal = () => {
               value={credentials.email}
               onChange={handleChange}
               required
-              style={styles.input}
+              className="Admin-Login-input"
             />
           </div>
 
-          <div style={styles.formGroup}>
+          <div className="Admin-Login-formGroup">
             <label htmlFor="password">Password</label>
-            <div style={styles.passwordContainer}>
+            <div className="Admin-Login-passwordContainer">
               <input
                 type={isPasswordVisible ? "text" : "password"}
                 id="password"
@@ -138,10 +133,10 @@ const AdminLoginPortal = () => {
                 value={credentials.password}
                 onChange={handleChange}
                 required
-                style={styles.input}
+                className="Admin-Login-input"
               />
               <span
-                style={styles.togglePassword}
+                className="Admin-Login-togglePassword"
                 onClick={() => setIsPasswordVisible(!isPasswordVisible)}
               >
                 {isPasswordVisible ? "🙈" : "👁️"}
@@ -149,26 +144,26 @@ const AdminLoginPortal = () => {
             </div>
           </div>
 
-          {error && <p style={styles.error}>{error}</p>}
+          {error && <p className="Admin-Login-error">{error}</p>}
 
-          <div style={styles.buttonGroup}>
-            <button type="submit" style={styles.loginButton}>
+          <div className="Admin-Login-buttonGroup">
+            <button type="submit" className="Admin-Login-loginButton">
               Login
             </button>
             <button
               type="button"
-              style={styles.forgotButton}
+              className="Admin-Login-forgotButton"
               onClick={() => navigate("/admin-PasswordReset")}
             >
               Forgot Password
             </button>
           </div>
 
-          <p style={styles.registerLink}>
+          <p className="Admin-Login-registerLink">
             Don’t have an account yet?{" "}
             <span
               onClick={() => navigate("/admin-register")}
-              style={styles.registerSpan}
+              className="Admin-Login-registerSpan"
             >
               Create a new Account
             </span>
@@ -177,92 +172,6 @@ const AdminLoginPortal = () => {
       </div>
     </div>
   );
-};
-
-// Inline styles (you can replace with external CSS if preferred)
-const styles = {
-  container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    minHeight: "100vh",
-    backgroundColor: "#f5f5f5",
-    padding: "20px",
-  },
-  box: {
-    width: "100%",
-    maxWidth: "400px",
-    padding: "30px",
-    backgroundColor: "#fff",
-    borderRadius: "8px",
-    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  formGroup: {
-    marginBottom: "20px",
-  },
-  input: {
-    width: "100%",
-    padding: "10px",
-    marginTop: "5px",
-    borderRadius: "4px",
-    border: "1px solid #ccc",
-    fontSize: "16px",
-  },
-  passwordContainer: {
-    position: "relative",
-    display: "flex",
-    alignItems: "center",
-  },
-  togglePassword: {
-    position: "absolute",
-    right: "10px",
-    cursor: "pointer",
-    fontSize: "20px",
-  },
-  buttonGroup: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px",
-    marginTop: "10px",
-  },
-  loginButton: {
-    padding: "10px",
-    backgroundColor: "#007bff",
-    border: "none",
-    color: "#fff",
-    fontSize: "16px",
-    borderRadius: "4px",
-    cursor: "pointer",
-  },
-  forgotButton: {
-    padding: "10px",
-    backgroundColor: "transparent",
-    border: "none",
-    color: "#007bff",
-    fontSize: "14px",
-    cursor: "pointer",
-    textDecoration: "underline",
-  },
-  registerLink: {
-    marginTop: "20px",
-    fontSize: "14px",
-    textAlign: "center",
-  },
-  registerSpan: {
-    color: "#007bff",
-    cursor: "pointer",
-    textDecoration: "underline",
-  },
-  error: {
-    color: "red",
-    marginBottom: "10px",
-    fontSize: "14px",
-    textAlign: "center",
-  },
 };
 
 export default AdminLoginPortal;

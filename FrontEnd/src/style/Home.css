@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 70px;
+  padding: 90px;
   background-color:white;
 }
 
@@ -593,9 +593,10 @@
 
 .home-testimonial-slider2 {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: auto;
   padding: 40px 20px;
+  background-color: white;
 }
 
 .home-swiper-container2 {

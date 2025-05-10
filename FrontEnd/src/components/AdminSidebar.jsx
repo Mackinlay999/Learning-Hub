@@ -17,79 +17,79 @@ const allSections = [
   {
     name: "Dashboard",
     icon: <ShieldCheck size={18} />,
-    path: "/admin-home",
+    path: "/admin/home",
     roles: ["Super Admin", "Admin", "Recruiter", "Mentor"],
   },
   {
     name: "Super Admin Panel",
     icon: <ShieldCheck size={18} />,
-    path: "/super-admin",
+    path: "/admin/super-admin",
     roles: ["Super Admin"],
   },
   {
     name: "Lead & Student Management",
     icon: <Users size={18} />,
-    path: "/admin-lead-student",
+    path: "/admin/lead-student",
     roles: ["Admin", "Super Admin"],
   },
   {
     name: "Student-Management",
     icon: <ShieldCheck size={18} />,
-    path: "/admin-students",
+    path: "/admin/students",
     roles: ["Admin", "Super Admin"],
   },
   {
     name: "Mentor",
     icon: <ShieldCheck size={18} />,
-    path: "/admin-mentors",
+    path: "/admin/mentors",
     roles: ["Mentor", "Admin", "Super Admin"],
   },
   {
     name: "Email Marketing",
     icon: <Mail size={18} />,
-    path: "/admin-email-marketing",
+    path: "/admin/email-marketing",
     roles: ["Admin", "Super Admin"],
   },
   {
     name: "Recruiter Dashboard",
     icon: <ShieldCheck size={18} />,
-    path: "/admin-recruiters/dashboard",
+    path: "/admin/recruiters/dashboard",
     roles: ["Recruiter", "Super Admin"],
   },
   {
     name: "Finance & Payment",
     icon: <CreditCard size={18} />,
-    path: "/admin-finance-payment",
+    path: "/admin/finance-payment",
     roles: ["Admin", "Super Admin"],
   },
   {
     name: "Corporate Training",
     icon: <Building2 size={18} />,
-    path: "/admin-corporate-training",
+    path: "/admin/corporate-training",
     roles: ["Admin", "Super Admin"],
   },
   {
     name: "Analytics & Reports",
     icon: <BarChart2 size={18} />,
-    path: "/admin-analytics-reports",
+    path: "/admin/analytics-reports",
     roles: ["Admin", "Super Admin"],
   },
   {
     name: "Support & Feedback",
     icon: <MessageCircle size={18} />,
-    path: "/admin-support-feedback",
+    path: "/admin/support-feedback",
     roles: ["Admin", "Mentor", "Recruiter", "Super Admin"],
   },
   {
     name: "Sucess Story",
     icon: <Briefcase size={18} />,
-    path: "/admin-Suceess",
+    path: "/admin/Suceess",
     roles: ["Admin", "Mentor", "Super Admin"],
   },
   {
     name: "Blog & Webinar",
     icon: <ShieldCheck size={18} />,
-    path: "/admin-blog-webinar",
+    path: "/admin/blog-webinar",
     roles: ["Admin", "Super Admin"],
   },
 ];
@@ -113,9 +113,9 @@ const AdminSidebar = () => {
 
   return (
     <>
-      <button className="admin-sidebar-toggle-btn" onClick={toggleSidebar}>
+      {/* <button className="admin-sidebar-toggle-btn" onClick={toggleSidebar}>
         {sidebarOpen ? "Close" : "Menu"}
-      </button>
+      </button> */}
 
       <div className={`admin-sidebar-wrapper ${sidebarOpen ? "open" : ""}`}>
         <div className="admin-sidebar-custom-sidebar">
