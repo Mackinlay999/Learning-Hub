@@ -14,7 +14,8 @@ const AdminAdmissionsEnrollment = () => {
   const [editingId, setEditingId] = useState(null);
 
   // Update with your own backend base URL
-  const BASE_URL = "http://localhost:3000/api/decision-insights";
+  const BASE_URL =
+    "https://learning-hub-p2yq.onrender.com/api/decision-insights";
 
   useEffect(() => {
     fetchInsights();
@@ -79,7 +80,8 @@ const AdminAdmissionsEnrollment = () => {
     <div className="AI-main">
       <h1 className="AI-title">AI-Based Decision Making</h1>
       <p className="AI-subtitle">
-        Predict churn rate & recommend retention strategies.<br />
+        Predict churn rate & recommend retention strategies.
+        <br />
         Automated lead prioritization for sales teams.
       </p>
 
@@ -117,7 +119,9 @@ const AdminAdmissionsEnrollment = () => {
           <option>Medium</option>
           <option>High</option>
         </select>
-        <button type="submit">{isEditing ? "Update Insight" : "Add Insight"}</button>
+        <button type="submit">
+          {isEditing ? "Update Insight" : "Add Insight"}
+        </button>
       </form>
 
       <div className="AI-list">
@@ -144,7 +148,9 @@ const AdminAdmissionsEnrollment = () => {
                   <td>{item.leadPriority}</td>
                   <td>
                     <button onClick={() => editInsight(item)}>Edit</button>
-                    <button onClick={() => deleteInsight(item._id)}>Delete</button>
+                    <button onClick={() => deleteInsight(item._id)}>
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}

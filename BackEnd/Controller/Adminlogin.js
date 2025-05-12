@@ -6,8 +6,6 @@ require("dotenv").config();
 const transporter = require("../Utils/Approvel"); // nodemailer instance
 const nodemailer = require("nodemailer");
 
-
-
 const path = require("path");
 
 const Admincontroller = {
@@ -31,23 +29,19 @@ const Admincontroller = {
         email,
         password: hashpassword,
         role,
-          status: "pending"
+        status: "pending",
       });
 
       await newuser.save();
 
+      //       const approveURL = `http://localhost:3000/approve/${newuser._id}`;
+      // const rejectURL = `http://localhost:3000/reject/${newuser._id}`;
 
-//       const approveURL = `http://localhost:3000/approve/${newuser._id}`;
-// const rejectURL = `http://localhost:3000/reject/${newuser._id}`;
-
-
-const approveURL = `http://localhost:3000/api/approveEmail/${newuser._id}`;
-const rejectURL = `http://localhost:3000/api/rejectEmail/${newuser._id}`;
-
-
+      const approveURL = `https://learning-hub-p2yq.onrender.com/api/approveEmail/${newuser._id}`;
+      const rejectURL = `https://learning-hub-p2yq.onrender.com/api/rejectEmail/${newuser._id}`;
 
       const mailOptions = {
-        from:  process.env.EMAIL,
+        from: process.env.EMAIL,
         to: process.env.SUPER_ADMIN_EMAIL,
         subject: "New User Registration Pending Approval",
         html: `
@@ -60,21 +54,14 @@ const rejectURL = `http://localhost:3000/api/rejectEmail/${newuser._id}`;
         <a href="${approveURL}" style="padding: 8px 12px; background-color: green; color: white;">✅ Approve</a>
 <a href="${rejectURL}" style="padding: 8px 12px; background-color: red; color: white;">❌ Reject</a>
          
-        `
+        `,
       };
-  
+
       await transporter.sendMail(mailOptions);
-  
 
-
-
-
-
-
-
-
-
-      res.status(200).json({ message: "Registration request submitted. Awaiting approval." });
+      res.status(200).json({
+        message: "Registration request submitted. Awaiting approval.",
+      });
       // res.status(200).json({message : "responsive successfully"})
     } catch (err) {
       res.status(400).json({ message: err.message });
@@ -92,20 +79,18 @@ const rejectURL = `http://localhost:3000/api/rejectEmail/${newuser._id}`;
 
   login: async (req, res) => {
     try {
-
-
-   
       console.log("Login request received");
 
       const { email, password } = req.body;
 
-
-     const user = await Adminlogin.findOne({ email });
+      const user = await Adminlogin.findOne({ email });
       if (!user || !(await bcrypt.compare(password, user.password))) {
         return res.status(400).json({ message: "Invalid credentials" });
       }
       if (user.status !== "approved") {
-        return res.status(403).json({ message: "Your account is not approved yet." });
+        return res
+          .status(403)
+          .json({ message: "Your account is not approved yet." });
       }
 
       // Validate input
@@ -203,12 +188,10 @@ const rejectURL = `http://localhost:3000/api/rejectEmail/${newuser._id}`;
       });
     } catch (err) {
       console.error("Error fetching user:", err);
-      return res
-        .status(400)
-        .json({
-          message:
-            err.message || "An error occurred while fetching the user data",
-        });
+      return res.status(400).json({
+        message:
+          err.message || "An error occurred while fetching the user data",
+      });
     }
   },
 
@@ -305,11 +288,9 @@ const rejectURL = `http://localhost:3000/api/rejectEmail/${newuser._id}`;
 
       // Ensure only "Super Admin" can update roles
       if (loggedInUser.role !== "Super Admin") {
-        return res
-          .status(403)
-          .json({
-            message: "Access denied: Only Super Admin can update roles",
-          });
+        return res.status(403).json({
+          message: "Access denied: Only Super Admin can update roles",
+        });
       }
 
       const userToUpdate = await Adminlogin.findById(id);
@@ -325,9 +306,9 @@ const rejectURL = `http://localhost:3000/api/rejectEmail/${newuser._id}`;
       await userToUpdate.save();
 
       res.status(200).json({
-          message: "User updated successfully",
-          updatedUser: userToUpdate,
-        });
+        message: "User updated successfully",
+        updatedUser: userToUpdate,
+      });
     } catch (error) {
       console.error("Error updating role:", error);
       res
@@ -355,11 +336,9 @@ const rejectURL = `http://localhost:3000/api/rejectEmail/${newuser._id}`;
 
       // Ensure only "Super Admin" can delete users
       if (loggedInAdmin.role !== "Super Admin") {
-        return res
-          .status(403)
-          .json({
-            message: "Access denied: Only Super Admin can delete users",
-          });
+        return res.status(403).json({
+          message: "Access denied: Only Super Admin can delete users",
+        });
       }
 
       const userToDelete = await Adminlogin.findById(userIdToDelete);
@@ -377,51 +356,46 @@ const rejectURL = `http://localhost:3000/api/rejectEmail/${newuser._id}`;
     }
   },
 
-
   approveUser: async (req, res) => {
     try {
       const { id } = req.params;
       console.log("Approving user with ID:", id);
-  
+
       const user = await Adminlogin.findById(id);
       if (!user) return res.status(404).json({ message: "User not found" });
-  
+
       if (user.status === "approved") {
         return res.status(400).json({ message: "User already approved" });
       }
-  
+
       user.status = "approved";
       await user.save();
-  
+
       res.send("✅ User approved successfully!");
     } catch (err) {
       console.error("❌ Error:", err);
       res.status(500).send("Error approving user");
     }
   },
-  
 
- 
-   rejectUser : async (req, res) => {
+  rejectUser: async (req, res) => {
     try {
       const { id } = req.params;
       console.log("Approving user with ID:", id);
       const user = await Adminlogin.findById(id);
-  
+
       if (!user) return res.status(404).json({ message: "User not found" });
       if (user.status === "rejected") {
         return res.status(400).json({ message: "User already rejected" });
       }
-  
+
       user.status = "rejected";
       await user.save();
-  
+
       res.send("❌ User rejected successfully.");
     } catch (err) {
       res.status(500).send("Error rejecting user");
     }
-
-
   },
   approve: async (req, res) => {
     try {
@@ -432,7 +406,7 @@ const rejectURL = `http://localhost:3000/api/rejectEmail/${newuser._id}`;
       res.status(500).send("Error approving user: " + err.message);
     }
   },
-  
+
   reject: async (req, res) => {
     try {
       const id = req.params.id;
@@ -442,7 +416,6 @@ const rejectURL = `http://localhost:3000/api/rejectEmail/${newuser._id}`;
       res.status(500).send("Error rejecting user: " + err.message);
     }
   },
-  
-}
+};
 
 module.exports = Admincontroller;

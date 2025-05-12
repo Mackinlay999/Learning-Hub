@@ -18,7 +18,9 @@ const AdminMentorDetail = () => {
   useEffect(() => {
     const fetchMentorDetails = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/mentors/${id}`);
+        const res = await axios.get(
+          `https://learning-hub-p2yq.onrender.com/api/mentors/${id}`
+        );
         setMentor(res.data);
         setSessions(res.data.sessions || []);
         setStudents(res.data.students || []);
@@ -65,7 +67,9 @@ const AdminMentorDetail = () => {
           <button className="btn btn-secondary" onClick={() => navigate(-1)}>
             Back
           </button>
-          <h4>{mentor.name} - {mentor.expertise}</h4>
+          <h4>
+            {mentor.name} - {mentor.expertise}
+          </h4>
           <span className="badge bg-info">{mentor.role || "Mentor"}</span>
         </div>
 
@@ -77,8 +81,12 @@ const AdminMentorDetail = () => {
               className="img-fluid rounded-circle mb-2"
               style={{ width: "120px", height: "120px", objectFit: "cover" }}
             />
-            <p className="text-muted admin-mentor-details-text">{mentor.email}</p>
-            <p className="text-muted admin-mentor-details-text">{mentor.mobile || "mobile not provided"}</p>
+            <p className="text-muted admin-mentor-details-text">
+              {mentor.email}
+            </p>
+            <p className="text-muted admin-mentor-details-text">
+              {mentor.mobile || "mobile not provided"}
+            </p>
           </div>
 
           <div className="col-md-9 admin-mentor-details-info">
@@ -95,18 +103,24 @@ const AdminMentorDetail = () => {
                     <span className="badge bg-primary">{session.topic}</span>
                     {/* Feedback for this session */}
                     {feedbacks
-                      .filter(feedback => feedback.sessionId === session._id)
+                      .filter((feedback) => feedback.sessionId === session._id)
                       .map((feedback, idx) => (
                         <div key={idx} className="mt-2">
-                          <p className="text-muted">{feedback.studentName}: {feedback.comment}</p>
-                          <span className="badge bg-success">Rating: {feedback.rating}</span>
+                          <p className="text-muted">
+                            {feedback.studentName}: {feedback.comment}
+                          </p>
+                          <span className="badge bg-success">
+                            Rating: {feedback.rating}
+                          </span>
                         </div>
                       ))}
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className="text-muted admin-mentor-details-text">No sessions conducted.</p>
+              <p className="text-muted admin-mentor-details-text">
+                No sessions conducted.
+              </p>
             )}
 
             {/* Assigned Students */}
@@ -120,7 +134,9 @@ const AdminMentorDetail = () => {
                 ))}
               </ul>
             ) : (
-              <p className="text-muted admin-mentor-details-text">No students assigned.</p>
+              <p className="text-muted admin-mentor-details-text">
+                No students assigned.
+              </p>
             )}
 
             {/* Notes */}
@@ -129,7 +145,9 @@ const AdminMentorDetail = () => {
               {mentor.notes ? (
                 <p className="admin-mentor-details-text">{mentor.notes}</p>
               ) : (
-                <p className="text-muted admin-mentor-details-text">No notes added yet.</p>
+                <p className="text-muted admin-mentor-details-text">
+                  No notes added yet.
+                </p>
               )}
             </div>
           </div>

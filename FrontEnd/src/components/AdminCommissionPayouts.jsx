@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "../style/AdminCommissionPayouts.css";
 
-const API_BASE = "http://localhost:3000/api/commission-payouts"; // or your deployed backend URL
+const API_BASE =
+  "https://learning-hub-p2yq.onrender.com/api/commission-payouts"; // or your deployed backend URL
 
 const AdminCommissionPayouts = () => {
   const [transactions, setTransactions] = useState([]);
@@ -111,12 +112,27 @@ const AdminCommissionPayouts = () => {
         ) : (
           transactions.map((t) => (
             <div className="commission-card" key={t._id}>
-              <p><strong>Name:</strong> {t.name}</p>
-              <p><strong>Amount:</strong> ₹{t.amount}</p>
-              <p><strong>Type:</strong> {t.type}</p>
-              <p><strong>Status:</strong> {t.status}</p>
-              <button className="edit-btn" onClick={() => editTransaction(t)}>Edit</button>
-              <button className="delete-btn" onClick={() => deleteTransaction(t._id)}>Delete</button>
+              <p>
+                <strong>Name:</strong> {t.name}
+              </p>
+              <p>
+                <strong>Amount:</strong> ₹{t.amount}
+              </p>
+              <p>
+                <strong>Type:</strong> {t.type}
+              </p>
+              <p>
+                <strong>Status:</strong> {t.status}
+              </p>
+              <button className="edit-btn" onClick={() => editTransaction(t)}>
+                Edit
+              </button>
+              <button
+                className="delete-btn"
+                onClick={() => deleteTransaction(t._id)}
+              >
+                Delete
+              </button>
             </div>
           ))
         )}

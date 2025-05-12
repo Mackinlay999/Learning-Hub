@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../style/AdminCommunityEngagement.css";
 
-const BASE_URL = "http://localhost:3000/api/community"; // Replace with Render URL if deployed
+const BASE_URL = "https://learning-hub-p2yq.onrender.com/api/community"; // Replace with Render URL if deployed
 
 const AdminCommunityEngagement = () => {
   const [forums, setForums] = useState([]);
@@ -164,7 +164,9 @@ const AdminCommunityEngagement = () => {
           forums.map((f) => (
             <div key={f._id} className="CE-card">
               <h4>{f.title}</h4>
-              <p><strong>By:</strong> {f.author}</p>
+              <p>
+                <strong>By:</strong> {f.author}
+              </p>
               <p>{f.content}</p>
               <button onClick={() => editForum(f)}>Edit</button>
               <button onClick={() => deleteForum(f._id)}>Delete</button>

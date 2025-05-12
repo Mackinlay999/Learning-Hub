@@ -14,7 +14,9 @@ const AdminStudents = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const { data } = await axios.get("http://localhost:3000/api/students");
+        const { data } = await axios.get(
+          "https://learning-hub-p2yq.onrender.com/api/students"
+        );
         setStudents(data);
       } catch (error) {
         console.error("Error fetching students:", error);
@@ -26,8 +28,12 @@ const AdminStudents = () => {
 
   const handleDelete = useCallback(async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/students/${id}`);
-      setStudents((prevStudents) => prevStudents.filter((student) => student._id !== id));
+      await axios.delete(
+        `https://learning-hub-p2yq.onrender.com/api/students/${id}`
+      );
+      setStudents((prevStudents) =>
+        prevStudents.filter((student) => student._id !== id)
+      );
     } catch (error) {
       console.error("Error deleting student:", error);
     }
@@ -156,16 +162,16 @@ const AdminStudents = () => {
                 <td>{s.email}</td>
                 <td>{s.course}</td>
                 <td>
-                  <span
-                    className={`badge bg-${getStatusBadgeClass(s.status)}`}
-                  >
+                  <span className={`badge bg-${getStatusBadgeClass(s.status)}`}>
                     {s.status}
                   </span>
                 </td>
                 <td>
                   <motion.button
                     className="students-btn btn-sm btn-info me-2"
-                    onClick={() => navigate(`http://localhost:3000/students/${s._id}`)}
+                    onClick={() =>
+                      navigate(`http://localhost:3000/students/${s._id}`)
+                    }
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -173,7 +179,9 @@ const AdminStudents = () => {
                   </motion.button>
                   <motion.button
                     className="students-btn btn-sm btn-warning me-2"
-                    onClick={() => navigate(`http://localhost:3000/students/edit/${s._id}`)}
+                    onClick={() =>
+                      navigate(`http://localhost:3000/students/edit/${s._id}`)
+                    }
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -189,7 +197,9 @@ const AdminStudents = () => {
                   </motion.button>
                   <motion.button
                     className="students-btn btn-sm btn-dark ms-2"
-                    onClick={() => navigate(`http://localhost:3000/attendance/${s._id}`)}
+                    onClick={() =>
+                      navigate(`http://localhost:3000/attendance/${s._id}`)
+                    }
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -200,7 +210,10 @@ const AdminStudents = () => {
             ))
           ) : (
             <tr>
-              <td colSpan="6" className="students-text-center students-text-muted py-4">
+              <td
+                colSpan="6"
+                className="students-text-center students-text-muted py-4"
+              >
                 No students found.
               </td>
             </tr>

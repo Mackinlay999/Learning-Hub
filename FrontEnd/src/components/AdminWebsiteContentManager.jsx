@@ -11,8 +11,8 @@ const AdminWebsiteContentManager = () => {
     seo: {
       title: "",
       description: "",
-      keywords: ""
-    }
+      keywords: "",
+    },
   });
 
   const [loading, setLoading] = useState(true);
@@ -22,7 +22,9 @@ const AdminWebsiteContentManager = () => {
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/website-content");
+        const res = await axios.get(
+          "https://learning-hub-p2yq.onrender.com/api/website-content"
+        );
         if (res.data) {
           setContent(res.data);
         }
@@ -40,7 +42,7 @@ const AdminWebsiteContentManager = () => {
   const handleChange = (field, value) => {
     setContent((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
@@ -49,15 +51,18 @@ const AdminWebsiteContentManager = () => {
       ...prev,
       seo: {
         ...prev.seo,
-        [field]: value
-      }
+        [field]: value,
+      },
     }));
   };
 
   // ✅ Submit content to backend
   const handleSubmit = async () => {
     try {
-      await axios.post("http://localhost:3000/api/website-content", content);
+      await axios.post(
+        "https://learning-hub-p2yq.onrender.com/api/website-content",
+        content
+      );
       alert("Content saved successfully!");
     } catch (err) {
       console.error("Error saving content:", err);
@@ -70,7 +75,9 @@ const AdminWebsiteContentManager = () => {
 
   return (
     <div className="website-content-manager">
-      <h2 className="website-content-manager-title">Website & Content Management</h2>
+      <h2 className="website-content-manager-title">
+        Website & Content Management
+      </h2>
 
       <div className="website-content-manager-section">
         <label>Homepage Content</label>
@@ -126,7 +133,10 @@ const AdminWebsiteContentManager = () => {
         />
       </div>
 
-      <button className="website-content-manager-save-button" onClick={handleSubmit}>
+      <button
+        className="website-content-manager-save-button"
+        onClick={handleSubmit}
+      >
         Save Changes
       </button>
     </div>

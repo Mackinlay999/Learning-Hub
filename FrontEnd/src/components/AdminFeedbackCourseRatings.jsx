@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../style/AdminFeedbackCourseRatings.css";
 
-const API_BASE_URL = "http://localhost:3000/api/feedback"; // Replace with your backend URL
+const API_BASE_URL = "https://learning-hub-p2yq.onrender.com/api/feedback"; // Replace with your backend URL
 
 const AdminFeedbackCourseRatings = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -116,7 +116,11 @@ const AdminFeedbackCourseRatings = () => {
           onChange={handleChange}
           required
         />
-        <select name="sentiment" value={feedback.sentiment} onChange={handleChange}>
+        <select
+          name="sentiment"
+          value={feedback.sentiment}
+          onChange={handleChange}
+        >
           <option>Positive</option>
           <option>Neutral</option>
           <option>Negative</option>
@@ -152,7 +156,9 @@ const AdminFeedbackCourseRatings = () => {
                   <td>{f.sentiment}</td>
                   <td>
                     <button onClick={() => editFeedback(f)}>Edit</button>
-                    <button onClick={() => deleteFeedback(f._id)}>Delete</button>
+                    <button onClick={() => deleteFeedback(f._id)}>
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}

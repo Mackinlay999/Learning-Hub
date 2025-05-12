@@ -16,7 +16,8 @@ const AdminSalesFunnelConversion = () => {
 
   // 🔁 Fetch all entries
   useEffect(() => {
-    axios.get("http://localhost:3000/api/funnel-entries")
+    axios
+      .get("https://learning-hub-p2yq.onrender.com/api/funnel-entries")
       .then((res) => {
         const entries = res.data;
         const grouped = {
@@ -38,29 +39,34 @@ const AdminSalesFunnelConversion = () => {
   // 🆕 Add new entry
   const addEntry = () => {
     if (newEntry.trim()) {
-      axios.post("http://localhost:3000/api/funnel-entries", {
-        name: newEntry,
-        stage: "Lead"
-      }).then((res) => {
-        const entry = res.data;
-        setFunnel((prev) => ({
-          ...prev,
-          Lead: [...prev.Lead, { id: entry._id, name: entry.name }]
-        }));
-        setNewEntry("");
-      }).catch((err) => console.error("Add failed:", err));
+      axios
+        .post("https://learning-hub-p2yq.onrender.com/api/funnel-entries", {
+          name: newEntry,
+          stage: "Lead",
+        })
+        .then((res) => {
+          const entry = res.data;
+          setFunnel((prev) => ({
+            ...prev,
+            Lead: [...prev.Lead, { id: entry._id, name: entry.name }],
+          }));
+          setNewEntry("");
+        })
+        .catch((err) => console.error("Add failed:", err));
     }
   };
 
   // 🗑️ Delete entry
   const deleteEntry = (stage, id) => {
-    axios.delete(`http://localhost:3000/api/funnel-entries/${id}`)
+    axios
+      .delete(`https://learning-hub-p2yq.onrender.com/api/funnel-entries/${id}`)
       .then(() => {
         setFunnel((prev) => ({
           ...prev,
-          [stage]: prev[stage].filter((entry) => entry.id !== id)
+          [stage]: prev[stage].filter((entry) => entry.id !== id),
         }));
-      }).catch((err) => console.error("Delete failed:", err));
+      })
+      .catch((err) => console.error("Delete failed:", err));
   };
 
   // 🟦 Drag Handling
@@ -75,16 +81,27 @@ const AdminSalesFunnelConversion = () => {
     const oldStage = e.dataTransfer.getData("stage");
 
     if (oldStage !== newStage) {
-      axios.put(`http://localhost:3000/api/funnel-entries/${entry.id}`, {
-        stage: newStage
-      }).then(() => {
-        setFunnel((prev) => {
-          const updated = { ...prev };
-          updated[oldStage] = updated[oldStage].filter((e) => e.id !== entry.id);
-          updated[newStage] = [...updated[newStage], { id: entry.id, name: entry.name }];
-          return updated;
-        });
-      }).catch((err) => console.error("Update failed:", err));
+      axios
+        .put(
+          `https://learning-hub-p2yq.onrender.com/api/funnel-entries/${entry.id}`,
+          {
+            stage: newStage,
+          }
+        )
+        .then(() => {
+          setFunnel((prev) => {
+            const updated = { ...prev };
+            updated[oldStage] = updated[oldStage].filter(
+              (e) => e.id !== entry.id
+            );
+            updated[newStage] = [
+              ...updated[newStage],
+              { id: entry.id, name: entry.name },
+            ];
+            return updated;
+          });
+        })
+        .catch((err) => console.error("Update failed:", err));
     }
   };
 
@@ -112,7 +129,9 @@ const AdminSalesFunnelConversion = () => {
             onDragOver={(e) => e.preventDefault()}
             onDrop={(e) => handleDrop(e, stage)}
           >
-            <h3>{stage} ({funnel[stage].length})</h3>
+            <h3>
+              {stage} ({funnel[stage].length})
+            </h3>
             <ul>
               {funnel[stage].map((entry) => (
                 <li

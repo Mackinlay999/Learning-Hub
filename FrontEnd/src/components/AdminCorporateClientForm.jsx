@@ -16,7 +16,7 @@ const AdminCorporateClientForm = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
-  const API_URL = "http://localhost:3000/api/clients"; // update with your backend URL if hosted
+  const API_URL = "https://learning-hub-p2yq.onrender.com/api/clients"; // update with your backend URL if hosted
 
   // Fetch clients from backend
   const fetchClients = async () => {
@@ -169,7 +169,8 @@ const AdminCorporateClientForm = () => {
                   <td>{c.email}</td>
                   <td>{c.phone}</td>
                   <td>
-                    {c.contractStartDate?.slice(0, 10)} to {c.contractEndDate?.slice(0, 10)}
+                    {c.contractStartDate?.slice(0, 10)} to{" "}
+                    {c.contractEndDate?.slice(0, 10)}
                   </td>
                   <td>{c.status}</td>
                   <td>

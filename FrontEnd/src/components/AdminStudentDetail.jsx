@@ -9,7 +9,8 @@ const AdminStudentDetail = () => {
   const [student, setStudent] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/students/${id}`)
+    axios
+      .get(`https://learning-hub-p2yq.onrender.com/api/students/${id}`)
       .then((res) => setStudent(res.data))
       .catch((err) => console.error("Error fetching student details", err));
   }, [id]);
@@ -25,9 +26,17 @@ const AdminStudentDetail = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="card-header d-flex justify-content-between align-items-center studentDetailCardHeader">
-          <h4>{student.name} - {student.course}</h4>
+          <h4>
+            {student.name} - {student.course}
+          </h4>
           <span
-            className={`badge bg-${student.status === "Active" ? "success" : student.status === "Inactive" ? "secondary" : "warning"}`}
+            className={`badge bg-${
+              student.status === "Active"
+                ? "success"
+                : student.status === "Inactive"
+                ? "secondary"
+                : "warning"
+            }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -51,7 +60,9 @@ const AdminStudentDetail = () => {
               style={{ width: "120px", height: "120px", objectFit: "cover" }}
             />
             <p className="text-muted studentDetailText">{student.email}</p>
-            <p className="text-muted studentDetailText">{student.phone || "Phone not provided"}</p>
+            <p className="text-muted studentDetailText">
+              {student.phone || "Phone not provided"}
+            </p>
           </motion.div>
 
           {/* Right Panel - Detailed Info */}
@@ -99,16 +110,28 @@ const AdminStudentDetail = () => {
                 transition={{ duration: 0.5 }}
               >
                 {student.payments.map((p, i) => (
-                  <li key={i} className="list-group-item d-flex justify-content-between align-items-center studentDetailPaymentItem">
+                  <li
+                    key={i}
+                    className="list-group-item d-flex justify-content-between align-items-center studentDetailPaymentItem"
+                  >
                     ₹{p.amount}
-                    <span className={`badge bg-${p.status === "Paid" ? "success" : "danger"}`}>
+                    <span
+                      className={`badge bg-${
+                        p.status === "Paid" ? "success" : "danger"
+                      }`}
+                    >
                       {p.status}
                     </span>
                   </li>
                 ))}
               </motion.ul>
             ) : (
-              <motion.p className="text-muted studentDetailText" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+              <motion.p
+                className="text-muted studentDetailText"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              >
                 No payment records found.
               </motion.p>
             )}
@@ -131,14 +154,24 @@ const AdminStudentDetail = () => {
               >
                 {student.certificates.map((cert, i) => (
                   <li key={i}>
-                    <a href={cert.link} target="_blank" rel="noreferrer" className="studentDetailCertificateLink">
+                    <a
+                      href={cert.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="studentDetailCertificateLink"
+                    >
                       {cert.name}
                     </a>
                   </li>
                 ))}
               </motion.ul>
             ) : (
-              <motion.p className="text-muted studentDetailText" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+              <motion.p
+                className="text-muted studentDetailText"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              >
                 No certificates uploaded.
               </motion.p>
             )}
@@ -160,16 +193,28 @@ const AdminStudentDetail = () => {
                 transition={{ duration: 0.5 }}
               >
                 {student.attendance.map((log, i) => (
-                  <li key={i} className="list-group-item d-flex justify-content-between studentDetailAttendanceItem">
+                  <li
+                    key={i}
+                    className="list-group-item d-flex justify-content-between studentDetailAttendanceItem"
+                  >
                     {log.date}
-                    <span className={`badge bg-${log.status === "Present" ? "success" : "danger"}`}>
+                    <span
+                      className={`badge bg-${
+                        log.status === "Present" ? "success" : "danger"
+                      }`}
+                    >
                       {log.status}
                     </span>
                   </li>
                 ))}
               </motion.ul>
             ) : (
-              <motion.p className="text-muted studentDetailText" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+              <motion.p
+                className="text-muted studentDetailText"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              >
                 No attendance records available.
               </motion.p>
             )}
@@ -185,11 +230,21 @@ const AdminStudentDetail = () => {
             </motion.h5>
             <div className="border rounded p-2 bg-light studentDetailNote">
               {student.recruiterNote ? (
-                <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="studentDetailText">
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="studentDetailText"
+                >
                   {student.recruiterNote}
                 </motion.p>
               ) : (
-                <motion.p className="text-muted studentDetailText" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                <motion.p
+                  className="text-muted studentDetailText"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                >
                   No notes added yet.
                 </motion.p>
               )}

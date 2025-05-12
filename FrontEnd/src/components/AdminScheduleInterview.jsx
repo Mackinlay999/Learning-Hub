@@ -161,16 +161,11 @@ const AdminScheduleInterview = () => {
   };
 
   return (
-    <Container className="admin-schedule-interview-container py-5">
-      <Button
-        variant="secondary"
-        onClick={() => navigate(-1)}
-        className="admin-schedule-interview-back-btn mb-3"
-      >
+    <Container className="ScheduleInterview-container py-5">
+      <Button variant="secondary" onClick={() => navigate(-1)} className="mb-3">
         Back
       </Button>
-
-      <h3 className="admin-schedule-interview-title mb-4 text-center">
+      <h3 className="ScheduleInterview-title mb-4 text-center">
         Schedule Interview
       </h3>
 
@@ -179,18 +174,15 @@ const AdminScheduleInterview = () => {
           variant={message.type}
           dismissible
           onClose={() => setMessage({ type: "", text: "" })}
-          className="admin-schedule-interview-alert"
+          className="ScheduleInterview-alert"
         >
           {message.text}
         </Alert>
       )}
 
-      <Form
-        onSubmit={handleSubmit}
-        className="admin-schedule-interview-form"
-      >
+      <Form onSubmit={handleSubmit} className="ScheduleInterview-form">
         <Form.Group className="mb-3">
-          <Form.Label className="admin-schedule-interview-label">
+          <Form.Label className="ScheduleInterview-label">
             Select Applicant
           </Form.Label>
           <Form.Select
@@ -198,7 +190,7 @@ const AdminScheduleInterview = () => {
             value={formData.applicantId}
             onChange={handleChange}
             required
-            className="admin-schedule-interview-input"
+            className="ScheduleInterview-input"
             isInvalid={validationErrors.applicantId}
           >
             <option value="">-- Select an Applicant --</option>
@@ -214,16 +206,14 @@ const AdminScheduleInterview = () => {
         </Form.Group>
 
         <Form.Group className="mb-3">
-          <Form.Label className="admin-schedule-interview-label">
-            Date
-          </Form.Label>
+          <Form.Label className="ScheduleInterview-label">Date</Form.Label>
           <Form.Control
             type="date"
             name="date"
             value={formData.date}
             onChange={handleChange}
             required
-            className="admin-schedule-interview-input"
+            className="ScheduleInterview-input"
             isInvalid={validationErrors.date}
           />
           <Form.Control.Feedback type="invalid">
@@ -232,16 +222,14 @@ const AdminScheduleInterview = () => {
         </Form.Group>
 
         <Form.Group className="mb-4">
-          <Form.Label className="admin-schedule-interview-label">
-            Time
-          </Form.Label>
+          <Form.Label className="ScheduleInterview-label">Time</Form.Label>
           <Form.Control
             type="time"
             name="time"
             value={formData.time}
             onChange={handleChange}
             required
-            className="admin-schedule-interview-input"
+            className="ScheduleInterview-input"
             isInvalid={validationErrors.time}
           />
           <Form.Control.Feedback type="invalid">
@@ -253,16 +241,12 @@ const AdminScheduleInterview = () => {
           <Button
             type="submit"
             variant="primary"
-            className="admin-schedule-interview-button"
+            className="ScheduleInterview-button"
             disabled={loading}
           >
             {loading ? (
               <>
-                <Spinner
-                  animation="border"
-                  size="sm"
-                  className="admin-schedule-interview-spinner me-2"
-                />
+                <Spinner animation="border" size="sm" className="me-2" />
                 Scheduling...
               </>
             ) : (
@@ -272,15 +256,8 @@ const AdminScheduleInterview = () => {
         </div>
       </Form>
 
-      <h4 className="admin-schedule-interview-table-title mt-5">
-        Scheduled Interviews
-      </h4>
-      <Table
-        striped
-        bordered
-        hover
-        className="admin-schedule-interview-table mt-3"
-      >
+      <h4 className="mt-5">Scheduled Interviews</h4>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>Applicant</th>
@@ -300,7 +277,6 @@ const AdminScheduleInterview = () => {
                     name="date"
                     value={editFormData.date}
                     onChange={handleEditChange}
-                    className="admin-schedule-interview-edit-date"
                   />
                 ) : (
                   new Date(interview.interviewDate).toLocaleDateString()
@@ -313,7 +289,6 @@ const AdminScheduleInterview = () => {
                     name="time"
                     value={editFormData.time}
                     onChange={handleEditChange}
-                    className="admin-schedule-interview-edit-time"
                   />
                 ) : (
                   new Date(interview.interviewDate).toLocaleTimeString([], {
@@ -328,13 +303,12 @@ const AdminScheduleInterview = () => {
                     <Button
                       variant="success"
                       onClick={() => handleUpdate(interview._id)}
-                      className="admin-schedule-interview-save-btn"
                     >
                       Save
                     </Button>
                     <Button
                       variant="secondary"
-                      className="ms-2 admin-schedule-interview-cancel-btn"
+                      className="ms-2"
                       onClick={cancelEditing}
                     >
                       Cancel
@@ -345,13 +319,12 @@ const AdminScheduleInterview = () => {
                     <Button
                       variant="warning"
                       onClick={() => startEditing(interview)}
-                      className="admin-schedule-interview-edit-btn"
                     >
                       Edit
                     </Button>
                     <Button
                       variant="danger"
-                      className="ms-2 admin-schedule-interview-delete-btn"
+                      className="ms-2"
                       onClick={() => handleDelete(interview._id)}
                     >
                       Delete

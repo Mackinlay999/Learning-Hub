@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
-import "../style/PaymentButton.css"; 
+import "../style/PaymentButton.css";
 
 const PaymentButton = ({ amount, user = {} }) => {
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,10 @@ const PaymentButton = ({ amount, user = {} }) => {
     }
     try {
       // Step 1: Create Order
-      const { data: order  } = await axios.post("http://localhost:3000/api/create-order", { amount });
+      const { data: order } = await axios.post(
+        "https://learning-hub-p2yq.onrender.com/api/create-order",
+        { amount }
+      );
 
       const options = {
         key: "YOUR_RAZORPAY_KEY_ID",
@@ -41,10 +44,15 @@ const PaymentButton = ({ amount, user = {} }) => {
         handler: async function (response) {
           try {
             // Step 2: Verify Payment
-            const verifyRes = await axios.post("http://localhost:3000/api/verify-payment", response);
+            const verifyRes = await axios.post(
+              "https://learning-hub-p2yq.onrender.com/api/verify-payment",
+              response
+            );
 
             if (verifyRes.data.success) {
-              toast.success("✅ Payment successful! Redirecting...", { autoClose: 2000 });
+              toast.success("✅ Payment successful! Redirecting...", {
+                autoClose: 2000,
+              });
               setTimeout(() => navigate("/payment-success"), 2500);
             } else {
               toast.error("❌ Payment verification failed.");
@@ -52,7 +60,9 @@ const PaymentButton = ({ amount, user = {} }) => {
             }
           } catch (error) {
             console.error("Payment verification failed:", error);
-            toast.error("❌ Payment verification failed. Please contact support.");
+            toast.error(
+              "❌ Payment verification failed. Please contact support."
+            );
             setTimeout(() => navigate("/payment-failure"), 2500);
           }
         },
@@ -93,4 +103,3 @@ const PaymentButton = ({ amount, user = {} }) => {
 };
 
 export default PaymentButton;
-

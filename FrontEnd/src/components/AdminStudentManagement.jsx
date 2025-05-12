@@ -22,7 +22,9 @@ const AdminStudentDetail = () => {
   useEffect(() => {
     const fetchStudentDetails = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/students/${id}`);
+        const res = await axios.get(
+          `https://learning-hub-p2yq.onrender.com/api/students/${id}`
+        );
         const studentData = res.data;
         setStudent(studentData);
         setAttendance(studentData.attendance || []);
@@ -35,7 +37,9 @@ const AdminStudentDetail = () => {
 
     const fetchAttendance = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/students/${id}`);
+        const res = await axios.get(
+          `https://learning-hub-p2yq.onrender.com/api/students/${id}`
+        );
         const attendanceData = res.data.attendance; // Assuming attendance is nested in the student document
         setAttendance(attendanceData);
       } catch (err) {
@@ -46,7 +50,7 @@ const AdminStudentDetail = () => {
     const fetchCertificates = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:3000/api/students/${id}/certificates`
+          `https://learning-hub-p2yq.onrender.com/api/students/${id}/certificates`
         );
 
         setCertificates(res.data);
@@ -74,7 +78,7 @@ const AdminStudentDetail = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `http://localhost:3000/api/students/${id}/certificates`,
+        `https://learning-hub-p2yq.onrender.com/api/students/${id}/certificates`,
         newCertificate
       );
       setCertificates(res.data.certificates);
@@ -316,7 +320,9 @@ const AdminStudents = () => {
 
   const fetchStudents = async () => {
     try {
-      const { data } = await axios.get("http://localhost:3000/api/students");
+      const { data } = await axios.get(
+        "https://learning-hub-p2yq.onrender.com/api/students"
+      );
       setStudents(data);
     } catch (error) {
       console.error("Error fetching students:", error);
@@ -325,7 +331,9 @@ const AdminStudents = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/students/${id}`);
+      await axios.delete(
+        `https://learning-hub-p2yq.onrender.com/api/students/${id}`
+      );
       setStudents((prev) => prev.filter((s) => s._id !== id));
     } catch (error) {
       console.error("Error deleting student:", error);
@@ -335,7 +343,7 @@ const AdminStudents = () => {
   const handleAddStudent = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/api/students",
+        "https://learning-hub-p2yq.onrender.com/api/students",
         newStudent
       );
       setStudents([...students, data]);
@@ -360,7 +368,7 @@ const AdminStudents = () => {
   const handleSaveEdit = async () => {
     try {
       const { data } = await axios.put(
-        `http://localhost:3000/api/students/${editId}`,
+        `https://learning-hub-p2yq.onrender.com/api/students/${editId}`,
         editedStudent
       );
       setStudents((prev) =>
@@ -648,6 +656,5 @@ const AdminStudents = () => {
     </div>
   );
 };
-
 
 export { AdminStudents, AdminStudentDetail };

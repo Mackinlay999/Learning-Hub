@@ -8,9 +8,11 @@ const AdminEditStudent = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/students/${id}`).then((res) => {
-      setStudentData(res.data);
-    });
+    axios
+      .get(`https://learning-hub-p2yq.onrender.com/api/students/${id}`)
+      .then((res) => {
+        setStudentData(res.data);
+      });
   }, [id]);
 
   const handleChange = (e) => {
@@ -21,7 +23,10 @@ const AdminEditStudent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/api/students/${id}`, studentData);
+      await axios.put(
+        `https://learning-hub-p2yq.onrender.com/api/students/${id}`,
+        studentData
+      );
       navigate(`/students/${id}`);
     } catch (err) {
       console.error("Error updating student", err);
@@ -49,7 +54,12 @@ const AdminEditStudent = () => {
         ))}
         <div className="mb-3">
           <label className="form-label">Course</label>
-          <select name="course" className="form-select" value={studentData.course} onChange={handleChange}>
+          <select
+            name="course"
+            className="form-select"
+            value={studentData.course}
+            onChange={handleChange}
+          >
             <option value="Human-resource">Human-resource</option>
             <option value="Marketing">Marketing</option>
             <option value="Business-Analytics">Business Analytics</option>
