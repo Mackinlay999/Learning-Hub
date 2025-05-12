@@ -55,7 +55,7 @@ const AdminUserdetails = () => {
     formData.append('resume', resume);
 
     axios
-      .post('http://localhost:3000/api/admin/profileResume', formData, {
+      .post('/admin/profileResume', formData, {
         withCredentials: true,
         headers: { 'Content-Type': 'multipart/form-data' },
       })

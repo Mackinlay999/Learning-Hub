@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "./axios";
 import { useNavigate } from "react-router-dom";
 
 const AdminAddStudent = () => {
@@ -22,7 +22,7 @@ const AdminAddStudent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/api/students", studentData);
+      await axios.post("/students", studentData);
       navigate("/students");
     } catch (error) {
       console.error("Error adding student", error);

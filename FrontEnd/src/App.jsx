@@ -208,7 +208,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route
+              {/* <Route
                 path="Userdetails"
                 element={
                   <ProtectedRoute
@@ -217,7 +217,7 @@ function App() {
                     <AdminUserdetails />
                   </ProtectedRoute>
                 }
-              />
+              /> */}
               <Route
                 path="super-admin"
                 element={
