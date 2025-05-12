@@ -1,6 +1,3 @@
-
-
-
 import React, { useState } from "react";
 import axios from "axios";
 import "../style/AdminCareerContact.css";
@@ -20,13 +17,21 @@ const AdminCareerContact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.phone || !formData.learningDomain) {
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.phone ||
+      !formData.learningDomain
+    ) {
       alert("Please fill all fields.");
       return;
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/api/contact", formData);
+      const response = await axios.post(
+        "https://learning-hub-p2yq.onrender.com/api/contact",
+        formData
+      );
       alert(response.data.message);
     } catch (error) {
       console.error("Error:", error.response?.data || error.message);
@@ -48,22 +53,50 @@ const AdminCareerContact = () => {
           <h2>Contact Us</h2>
           <form className="google-form" onSubmit={handleSubmit}>
             <label>Name:</label>
-            <input type="text" name="name" className="g-from" placeholder="Enter your name" onChange={handleChange} required />
+            <input
+              type="text"
+              name="name"
+              className="g-from"
+              placeholder="Enter your name"
+              onChange={handleChange}
+              required
+            />
 
             <label>Email:</label>
-            <input type="email" name="email" className="g-from" placeholder="Enter your email" onChange={handleChange} required />
+            <input
+              type="email"
+              name="email"
+              className="g-from"
+              placeholder="Enter your email"
+              onChange={handleChange}
+              required
+            />
 
             <label>Phone Number:</label>
-            <input type="tel" name="phone" className="g-from" placeholder="Enter your number" onChange={handleChange} required />
+            <input
+              type="tel"
+              name="phone"
+              className="g-from"
+              placeholder="Enter your number"
+              onChange={handleChange}
+              required
+            />
 
-            <label className="form-label">What Training Program Do You Need?</label>
-            <select name="learningDomain" className="g-select" onChange={handleChange} required>
+            <label className="form-label">
+              What Training Program Do You Need?
+            </label>
+            <select
+              name="learningDomain"
+              className="g-select"
+              onChange={handleChange}
+              required
+            >
               <option value="">Select Learning Domain</option>
               <option value="data-scientist">Data Scientist</option>
-  <option value="full-stack-developer">Full Stack Developer</option>
-  <option value="qa-testing">QA Testing</option>
-  <option value="graphic-designer">Graphic Designer</option>
-  <option value="ui-ux-designer">UI/UX Designer</option>
+              <option value="full-stack-developer">Full Stack Developer</option>
+              <option value="qa-testing">QA Testing</option>
+              <option value="graphic-designer">Graphic Designer</option>
+              <option value="ui-ux-designer">UI/UX Designer</option>
               <option value="HR">HR</option>
               <option value="Marketing">Marketing</option>
               <option value="Sales">Sales</option>
@@ -71,15 +104,14 @@ const AdminCareerContact = () => {
               <option value="Finance">Finance</option>
             </select>
 
-            <button className="career-button" type="submit">Submit</button>
+            <button className="career-button" type="submit">
+              Submit
+            </button>
           </form>
         </div>
       </div>
-
-      
     </div>
   );
 };
 
 export default AdminCareerContact;
-

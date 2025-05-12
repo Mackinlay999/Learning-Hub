@@ -10,7 +10,7 @@ const AdminRefundsDisputes = () => {
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingId, setEditingId] = useState(null); // For backend update
 
-  const API_URL = "http://localhost:3000/api/refunds"; // 🔁 Replace with actual backend URL
+  const API_URL = "https://learning-hub-p2yq.onrender.com/api/refunds"; // 🔁 Replace with actual backend URL
 
   // Fetch all refunds on load
   useEffect(() => {
@@ -109,11 +109,24 @@ const AdminRefundsDisputes = () => {
         ) : (
           refunds.map((r, index) => (
             <div className="refund-card" key={r._id}>
-              <p><strong>Amount:</strong> ₹{r.amount}</p>
-              <p><strong>Reason:</strong> {r.reason}</p>
-              <p><strong>Status:</strong> {r.status}</p>
-              <button className="edit-btn" onClick={() => editRefund(index)}>Edit</button>
-              <button className="delete-btn" onClick={() => deleteRefund(r._id)}>Delete</button>
+              <p>
+                <strong>Amount:</strong> ₹{r.amount}
+              </p>
+              <p>
+                <strong>Reason:</strong> {r.reason}
+              </p>
+              <p>
+                <strong>Status:</strong> {r.status}
+              </p>
+              <button className="edit-btn" onClick={() => editRefund(index)}>
+                Edit
+              </button>
+              <button
+                className="delete-btn"
+                onClick={() => deleteRefund(r._id)}
+              >
+                Delete
+              </button>
             </div>
           ))
         )}

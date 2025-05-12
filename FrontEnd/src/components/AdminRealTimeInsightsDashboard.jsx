@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../style/AdminRealTimeInsightsDashboard.css";
 
-const BASE_URL = "http://localhost:3000/api/insights"; // replace if hosted elsewhere
+const BASE_URL = "https://learning-hub-p2yq.onrender.com/api/insights"; // replace if hosted elsewhere
 
 const AdminRealTimeInsightsDashboard = () => {
   const [records, setRecords] = useState([]);
@@ -67,7 +67,8 @@ const AdminRealTimeInsightsDashboard = () => {
     <div className="RD-main">
       <h1 className="RD-title">📊 Real-Time Insights Dashboard</h1>
       <p className="RD-subtitle">
-        Monitor student enrollment trends, lead conversion, revenue, and engagement.
+        Monitor student enrollment trends, lead conversion, revenue, and
+        engagement.
       </p>
 
       <form className="RD-form" onSubmit={handleSubmit}>
@@ -85,11 +86,7 @@ const AdminRealTimeInsightsDashboard = () => {
           onChange={handleChange}
           required
         />
-        <select
-          name="category"
-          value={record.category}
-          onChange={handleChange}
-        >
+        <select name="category" value={record.category} onChange={handleChange}>
           <option>Enrollment Trends</option>
           <option>Lead Conversion</option>
           <option>Revenue Projections</option>
@@ -119,7 +116,9 @@ const AdminRealTimeInsightsDashboard = () => {
                   <td>{rec.category}</td>
                   <td>
                     <button onClick={() => editRecord(rec)}>Edit</button>
-                    <button onClick={() => deleteRecord(rec._id)}>Delete</button>
+                    <button onClick={() => deleteRecord(rec._id)}>
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}

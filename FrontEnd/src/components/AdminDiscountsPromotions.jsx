@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "../style/AdminDiscountsPromotions.css";
 
-const API_URL = "http://localhost:3000/api/discounts"; // Change this if you're hosting it elsewhere
+const API_URL = "https://learning-hub-p2yq.onrender.com/api/discounts"; // Change this if you're hosting it elsewhere
 
 const AdminDiscountsPromotions = () => {
   const [discounts, setDiscounts] = useState([]);
@@ -26,7 +26,10 @@ const AdminDiscountsPromotions = () => {
   };
 
   const generateCode = () => {
-    const newCode = `DISC-${Math.random().toString(36).substr(2, 6).toUpperCase()}`;
+    const newCode = `DISC-${Math.random()
+      .toString(36)
+      .substr(2, 6)
+      .toUpperCase()}`;
     setCode(newCode);
   };
 
@@ -95,12 +98,29 @@ const AdminDiscountsPromotions = () => {
       <h2>Discounts, Coupons & Promotions</h2>
 
       <div className="discount-form">
-        <button className="d-btn" onClick={generateCode}>Generate Code</button>
+        <button className="d-btn" onClick={generateCode}>
+          Generate Code
+        </button>
         <input type="text" placeholder="Discount Code" value={code} readOnly />
-        <input type="number" placeholder="Discount %" value={percentage} onChange={(e) => setPercentage(e.target.value)} />
-        <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-        <input type="date" value={expiryDate} onChange={(e) => setExpiryDate(e.target.value)} />
-        <button className="d-btn" onClick={addOrUpdateDiscount}>{editingId ? "Update" : "Add"} Discount</button>
+        <input
+          type="number"
+          placeholder="Discount %"
+          value={percentage}
+          onChange={(e) => setPercentage(e.target.value)}
+        />
+        <input
+          type="date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
+        <input
+          type="date"
+          value={expiryDate}
+          onChange={(e) => setExpiryDate(e.target.value)}
+        />
+        <button className="d-btn" onClick={addOrUpdateDiscount}>
+          {editingId ? "Update" : "Add"} Discount
+        </button>
       </div>
 
       <div className="discount-list">
@@ -109,13 +129,37 @@ const AdminDiscountsPromotions = () => {
         ) : (
           discounts.map((discount) => (
             <div className="discount-card" key={discount._id}>
-              <p><strong>Code:</strong> {discount.code}</p>
-              <p><strong>Discount:</strong> {discount.percentage}%</p>
-              <p><strong>Valid:</strong> {discount.startDate.split("T")[0]} - {discount.expiryDate.split("T")[0]}</p>
-              <p><strong>Usage:</strong> {discount.usage} times</p>
-              <button className="apply-btn" onClick={() => applyDiscount(discount._id)}>Apply</button>
-              <button className="d-edit-btn" onClick={() => editDiscount(discount)}>Edit</button>
-              <button className="remove-btn" onClick={() => removeDiscount(discount._id)}>Remove</button>
+              <p>
+                <strong>Code:</strong> {discount.code}
+              </p>
+              <p>
+                <strong>Discount:</strong> {discount.percentage}%
+              </p>
+              <p>
+                <strong>Valid:</strong> {discount.startDate.split("T")[0]} -{" "}
+                {discount.expiryDate.split("T")[0]}
+              </p>
+              <p>
+                <strong>Usage:</strong> {discount.usage} times
+              </p>
+              <button
+                className="apply-btn"
+                onClick={() => applyDiscount(discount._id)}
+              >
+                Apply
+              </button>
+              <button
+                className="d-edit-btn"
+                onClick={() => editDiscount(discount)}
+              >
+                Edit
+              </button>
+              <button
+                className="remove-btn"
+                onClick={() => removeDiscount(discount._id)}
+              >
+                Remove
+              </button>
             </div>
           ))
         )}

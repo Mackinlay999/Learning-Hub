@@ -11,7 +11,9 @@ const LoginPortal = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/me", { withCredentials: true }) // Removed unnecessary empty object
+      .get("https://learning-hub-p2yq.onrender.com/api/me", {
+        withCredentials: true,
+      }) // Removed unnecessary empty object
       .then(() => {
         navigate("/userdetails");
       })
@@ -31,7 +33,7 @@ const LoginPortal = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/login",
+        "https://learning-hub-p2yq.onrender.com/api/login",
         { email, password },
         { withCredentials: true }
       );
@@ -50,8 +52,6 @@ const LoginPortal = () => {
       }
     }
   };
-     
-  
 
   return (
     <div className="login-container">
@@ -104,7 +104,9 @@ const LoginPortal = () => {
           </div>
           <p className="register-link">
             Don’t have an account yet?{" "}
-            <span onClick={() => navigate("/register")}>Create a new Account</span>
+            <span onClick={() => navigate("/register")}>
+              Create a new Account
+            </span>
           </p>
         </form>
       </div>

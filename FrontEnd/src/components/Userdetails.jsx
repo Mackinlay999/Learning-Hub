@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import '../style/UserDetails.css';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "../style/UserDetails.css";
 
 const Userdetails = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [number, setNumber] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
   const [resume, setResume] = useState(null);
-  const [resumeURL, setResumeURL] = useState('');
+  const [resumeURL, setResumeURL] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/api/me', { withCredentials: true })
+      .get("https://learning-hub-p2yq.onrender.com/api/me", {
+        withCredentials: true,
+      })
       .then((response) => {
         setName(response.data.username);
         setEmail(response.data.email);
@@ -22,23 +24,27 @@ const Userdetails = () => {
       })
       .catch((error) => {
         if (error.response && error.response.status === 401) {
-          alert('Unauthorized: Please log in first.');
-          navigate('/login');
+          alert("Unauthorized: Please log in first.");
+          navigate("/login");
         } else {
-          console.error('Error fetching user info:', error);
+          console.error("Error fetching user info:", error);
         }
       });
   }, [navigate]);
 
   const handleSignOut = () => {
     axios
-      .post('http://localhost:3000/api/logout', {}, { withCredentials: true })
+      .post(
+        "https://learning-hub-p2yq.onrender.com/api/logout",
+        {},
+        { withCredentials: true }
+      )
       .then((response) => {
         alert(response.data.message);
-        navigate('/login');
+        navigate("/login");
       })
       .catch((error) => {
-        console.error('Error during logout:', error);
+        console.error("Error during logout:", error);
       });
   };
 
@@ -49,24 +55,28 @@ const Userdetails = () => {
 
   const handleUpload = () => {
     if (!resume) {
-      alert('Please select a resume to upload.');
+      alert("Please select a resume to upload.");
       return;
     }
 
     const formData = new FormData();
-    formData.append('resume', resume);
+    formData.append("resume", resume);
 
     axios
-      .post('http://localhost:3000/api/profileResume', formData, {
-        withCredentials: true,
-        headers: { 'Content-Type': 'multipart/form-data' },
-      })
+      .post(
+        "https://learning-hub-p2yq.onrender.com/api/profileResume",
+        formData,
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      )
       .then((response) => {
-        alert('Resume uploaded successfully!');
+        alert("Resume uploaded successfully!");
         setResumeURL(response.data.resumeUrl); // Update resume link
       })
       .catch((error) => {
-        console.error('Error uploading resume:', error);
+        console.error("Error uploading resume:", error);
       });
   };
 
@@ -75,16 +85,36 @@ const Userdetails = () => {
       <div className="user-card">
         <h1 className="user-h1">User Profile</h1>
         <div className="info">
-          <p><strong>Name:</strong> {name}</p>
-          <p><strong>Email:</strong> {email}</p>
-          <p><strong>number:</strong> {number}</p>
+          <p>
+            <strong>Name:</strong> {name}
+          </p>
+          <p>
+            <strong>Email:</strong> {email}
+          </p>
+          <p>
+            <strong>number:</strong> {number}
+          </p>
           {resumeURL && (
-            <p><strong>Resume:</strong> <a href={resumeURL} target="_blank" rel="noopener noreferrer">View Resume</a></p>
+            <p>
+              <strong>Resume:</strong>{" "}
+              <a href={resumeURL} target="_blank" rel="noopener noreferrer">
+                View Resume
+              </a>
+            </p>
           )}
         </div>
-        <input className='user-file' type="file" accept=".pdf,.doc,.docx" onChange={handleResumeUpload} />
-        <button onClick={handleUpload} className="upload-btn">Upload Resume</button>
-        <button onClick={handleSignOut} className="signout-btn">Sign Out</button>
+        <input
+          className="user-file"
+          type="file"
+          accept=".pdf,.doc,.docx"
+          onChange={handleResumeUpload}
+        />
+        <button onClick={handleUpload} className="upload-btn">
+          Upload Resume
+        </button>
+        <button onClick={handleSignOut} className="signout-btn">
+          Sign Out
+        </button>
       </div>
     </div>
   );

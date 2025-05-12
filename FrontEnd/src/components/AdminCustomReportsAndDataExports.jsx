@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../style/AdminCustomReportsAndDataExports.css";
 
-const API_URL = "http://localhost:3000/api/reports"; // Replace with your backend URL
+const API_URL = "https://learning-hub-p2yq.onrender.com/api/reports"; // Replace with your backend URL
 
 const AdminCustomReportsAndDataExports = () => {
   const [reports, setReports] = useState([]);
@@ -92,7 +92,8 @@ const AdminCustomReportsAndDataExports = () => {
     <div className="CR-main">
       <h1 className="CR-title">Custom Reports & Data Exports</h1>
       <p className="CR-subtitle">
-        Downloadable reports (Excel, CSV, PDF).<br />
+        Downloadable reports (Excel, CSV, PDF).
+        <br />
         AI-based trend predictions & recommendations.
       </p>
 
@@ -116,7 +117,9 @@ const AdminCustomReportsAndDataExports = () => {
           onChange={handleChange}
           required
         ></textarea>
-        <button type="submit">{isEditing ? "Update Report" : "Add Report"}</button>
+        <button type="submit">
+          {isEditing ? "Update Report" : "Add Report"}
+        </button>
       </form>
 
       <div className="CR-list">
@@ -142,7 +145,11 @@ const AdminCustomReportsAndDataExports = () => {
                   <td>
                     <button onClick={() => editReport(r)}>Edit</button>
                     <button onClick={() => deleteReport(r._id)}>Delete</button>
-                    <button onClick={() => downloadReport(r._id, r.type, r.title)}>Download</button>
+                    <button
+                      onClick={() => downloadReport(r._id, r.type, r.title)}
+                    >
+                      Download
+                    </button>
                   </td>
                 </tr>
               ))}

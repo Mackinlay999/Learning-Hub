@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../style/AdminStudentHelpdeskAndTicketing.css";
 
-const API_URL = "http://localhost:3000/api/tickets"; // change if deployed
+const API_URL = "https://learning-hub-p2yq.onrender.com/api/tickets"; // change if deployed
 
 const AdminStudentHelpdeskAndTicketing = () => {
   const [tickets, setTickets] = useState([]);
