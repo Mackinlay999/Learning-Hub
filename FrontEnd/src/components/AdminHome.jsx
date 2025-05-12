@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "../api/axios";
+import axios from "./axios";
+import { Link } from "react-router-dom";
 import {
   BarChart,
   Bar,
@@ -243,12 +244,13 @@ const AdminHome = () => {
             </div>
             <div className="lead-links">
               
-              <a className="view-link" href="/LeadsByDate">
-                Daily
-              </a>
-              <a className="view-link" href="/lead-student">
+              
+              <Link className="view-link" to="/admin/LeadsByDate">Daily</Link>
+              <Link className="view-link" to="/admin/lead-student">All</Link>
+
+              {/* <a className="view-link" href="/lead-student">
                 All
-              </a>
+              </a> */}
             </div>  
           </div>
         </motion.div>
@@ -265,9 +267,9 @@ const AdminHome = () => {
           <div className="card-body">
             <h6>Active Students</h6>
             <h3>{activeStudents}</h3> {/* This shows the count */}
-            <a href="/students" className="view-link">
-              View
-            </a>
+            
+             <Link className="view-link" to="/admin/students">All</Link>
+            
           </div>
         </motion.div>
 
@@ -282,9 +284,8 @@ const AdminHome = () => {
           <div className="card-body">
             <h6>Course Count</h6>
             <h3>{courseCount}</h3> {/* Display the course count */}
-            <a href="/courses" className="view-link">
-              View
-            </a>
+           
+               <Link className="view-link" to="/admin/courses">All</Link>
           </div>
         </motion.div>
       </div>

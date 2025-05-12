@@ -208,7 +208,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              {/* <Route
+              <Route
                 path="Userdetails"
                 element={
                   <ProtectedRoute
@@ -217,7 +217,7 @@ function App() {
                     <AdminUserdetails />
                   </ProtectedRoute>
                 }
-              /> */}
+              />
               <Route
                 path="super-admin"
                 element={
@@ -421,6 +421,19 @@ function App() {
                 }
               />
               {/* Fallback 404 */}
+
+              {/* <Route
+                path="/LeadsByDate"
+                element={
+                  <ProtectedRoute allowedRoles={["Super Admin"]}>
+                    <AdminLeadsByDate />
+                        </ProtectedRoute>
+                    
+                }
+              /> */}
+
+
+
 
               <Route path="recruiters" element={<AdminRecruiterDashboard />} />
               <Route path="EmailCampaign" element={<AdminEmailCampaign />} />

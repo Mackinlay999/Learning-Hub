@@ -169,7 +169,7 @@ const AdminEmployerLogin = () => {
         </button>
         <button
           className="AdminEmployer-adminLoginBtn"
-          onClick={() => navigate("/admin")}
+          onClick={() => navigate("/admin-login")}
         >
           Admin Login
         </button>
