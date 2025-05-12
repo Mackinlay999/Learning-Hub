@@ -205,5 +205,42 @@
    
   }
 }
+.cam-form-group .cam-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.cam-form-group {
+  margin-bottom: 20px;
+}
+
+.cam-form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* 👇 Scrollable recipient section */
+.cam-form-group:nth-of-type(3) {
+  max-height: 250px; /* Adjust based on layout */
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #fafafa;
+}
+
+/* Optional scrollbar styling */
+.cam-form-group:nth-of-type(3)::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cam-form-group:nth-of-type(3)::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
 
 
