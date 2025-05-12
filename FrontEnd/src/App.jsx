@@ -422,15 +422,7 @@ function App() {
               />
               {/* Fallback 404 */}
 
-              {/* <Route
-                path="/LeadsByDate"
-                element={
-                  <ProtectedRoute allowedRoles={["Super Admin"]}>
-                    <AdminLeadsByDate />
-                        </ProtectedRoute>
-                    
-                }
-              /> */}
+           
 
 
 

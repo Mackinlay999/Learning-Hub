@@ -29,7 +29,7 @@ const AdminRegister = () => {
         })
         .then(() => {
             alert("User Created Successfully. Now You can login with those credentials");
-            navigate('/admin');
+            navigate('/admin-login');
         })
         .catch((error) => {
             if (error.response && error.response.status === 400) {
