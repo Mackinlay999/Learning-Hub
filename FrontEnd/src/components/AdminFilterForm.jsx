@@ -26,7 +26,7 @@ const AdminFilterForm = () => {
     formData.append("file", file);
 
     try {
-      const response = await axios.post("http://localhost:3000/api/upload", formData, {
+      const response = await axios.post("https://learning-hub-p2yq.onrender.com/api/upload", formData, {
         headers: { 
           "Content-Type": "multipart/form-data" ,
           "Accept": "application/json",
@@ -104,7 +104,7 @@ export default AdminFilterForm;
 //     formData.append("file", file);
 
 //     try {
-//       const response = await axios.post("http://localhost:3000/api/upload", formData, {
+//       const response = await axios.post("https://learning-hub-p2yq.onrender.com/api/upload", formData, {
 //         headers: { 
 //           "Content-Type": "multipart/form-data", 
 //           "Accept": "application/json", 

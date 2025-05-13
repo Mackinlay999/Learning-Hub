@@ -63,7 +63,7 @@ import AdminAddStudent from "./components/AdminAddStudent";
 import AdminEditStudent from "./components/AdminEditStudent";
 import AdminRegister from "./components/AdminRegister";
 
-import AdminUserdetails from "./components/AdminUserdetails";
+// import AdminUserdetails from "./components/AdminUserdetails";
 import AdminDashboard from "./components/AdminDashboard";
 
 import SuperAdminPanel from "./components/SuperAdminPanel";

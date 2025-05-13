@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from './axios';
-import "../style/AdminLeadByDate.css";
+import "../style/AdminLeadbydate.css";
 
 const AdminLeadsByDate = () => {
   const [dailyLeads, setDailyLeads] = useState([]);
