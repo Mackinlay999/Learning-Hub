@@ -83,7 +83,7 @@ const login = {
     // Schedule emails based on the drip steps
     for (const step of dripSteps) {
       const emailDetails = {
-        to: newUser.email,
+        to: newuser.email,
         fromEmail: step.fromEmail || process.env.EMAIL,
         subject: `Step ${step.step}: Drip Campaign`,
         content: step.content,
