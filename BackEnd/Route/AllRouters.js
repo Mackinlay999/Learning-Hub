@@ -187,11 +187,13 @@ router.put('/updateLeademail/:id', leademail.updateLeademail);
 
 // DripCompains 
 
-router.post("/sendDripCampaignEmails" , dripCampaignController.sendDripCampaignEmails)
+
 router.post("/createdrip" , dripCampaignController.createdrip)
 router.get("/getAllDripSteps" , dripCampaignController.getAllDripSteps)
 router.put("/updateDripStep/:id" , dripCampaignController.updateDripStep)
 router.delete("/deleteDripStep/:id" , dripCampaignController.deleteDripStep)
+router.get("/getRecentUsers" , dripCampaignController.getRecentUsers )
+
 
 
 
