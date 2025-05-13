@@ -12,6 +12,7 @@ const DripCompains = require("../Model/dripCampaign");
 const path = require("path");
 const { sendEmail } = require("../Utils/emailService");
 const EmailSchedule = require("../Model/dripCampaign");
+const scheduleEmail = require('../Utils/SendEmail.js'); 
 
 
 
@@ -77,20 +78,19 @@ const login = {
         //     }
         //   }, delayInMs);
         // });
-       const dripSteps = await DripCompains.find().sort({ delayDays: 1 });
+          const dripSteps = await DripCompains.find().sort({ delayDays: 1 });
 
+    // Schedule emails based on the drip steps
     for (const step of dripSteps) {
-      const scheduledAt = new Date(Date.now() + step.delayDays * 24 * 60 * 60 * 1000);
-
-      await EmailSchedule.create({
-        userId: newuser._id,
-        to: newuser.email,
-        step: step.step,
-        content: step.content,
+      const emailDetails = {
+        to: newUser.email,
         fromEmail: step.fromEmail || process.env.EMAIL,
-        scheduledAt,
-        sent: false, // make sure this field exists in the schema
-      });
+        subject: `Step ${step.step}: Drip Campaign`,
+        content: step.content,
+      };
+
+      // Schedule the email with delay
+      await scheduleEmail(emailDetails, step.delayDays);
     }
 
 

@@ -49,41 +49,6 @@ const AdminDripCampaignView = () => {
     setNewStep({ ...newStep, [field]: value });
   };
 
-  // const handleAddOrUpdate = async () => {
-  //   if (!newStep.step || !newStep.delayDays || !newStep.content || !newStep.fromEmail) return;
-
-  //   const payload = {
-  //     ...newStep,
-  //     delayDays: Number(newStep.delayDays),
-  //   };
-
-  //   if (editIndex !== null) {
-  //     const id = dripSteps[editIndex]._id;
-  //     try {
-  //       const res = await axios.put(`/updateDripStep/${id}`, payload);
-  //       const updated = [...dripSteps];
-  //       updated[editIndex] = res.data.updatedStep;
-
-  //       setDripSteps(updated);
-  //       alert("✅ Step updated successfully!");
-  //       setEditIndex(null);
-  //     } catch (err) {
-  //       alert("❌ Failed to update step");
-  //     }
-  //   } else {
-  //     try {
-  //       const res = await axios.post("/createdrip", payload);
-  //       setDripSteps([...dripSteps, res.data]);
-  //       alert("✅ Step added successfully!");
-  //     } catch (err) {
-  //       alert("❌ Failed to add step");
-  //     }
-  //   }
-
-  //   setNewStep({ step: "", delayDays: "", content: "", fromEmail: "" });
-  //   setSentSteps([]);
-  //   setCurrentIndex(0);
-  // };
 
   const handleAddOrUpdate = async () => {
     if (!newStep.step || newStep.delayDays === "" || !newStep.content || !newStep.fromEmail) return;

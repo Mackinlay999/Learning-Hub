@@ -1,55 +1,29 @@
-// const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
-// // Create a reusable transporter object using SMTP
-// const transporter = nodemailer.createTransport({
-//   service: 'gmail',
-//   auth: {
-//     user: process.env.EMAIL,
-//     pass: process.env.EMAIL_PASSWORD,
-//   },
-// });
+// Create a transporter object using the default SMTP transport.
+const transporter = nodemailer.createTransport({
+  service: 'gmail', // Use your email provider's service, e.g., 'gmail', 'smtp.mailtrap.io', etc.
+  auth: {
+    user: process.env.EMAIL, // Your email
+    pass: process.env.EMAIL_PASSWORD, // Your email password or app password
+  },
+});
 
-// // Function to send email
-// const sendEmail = async (to, subject, text ,from = process.env.EMAIL) => {
-//   try {
-//     const info = await transporter.sendMail({
-//       from,
-//       to,
-//       subject,
-//       text,
-//     });
+// Email sending function
+const sendEmail = async (to, subject, text, fromEmail) => {
+  const mailOptions = {
+    from: fromEmail, // Sender address
+    to, // List of recipients
+    subject, // Subject line
+    text, // Plain text body
+  };
 
-//     console.log('Email sent: ' + info.response);
-//   } catch (error) {
-//     console.error('Error sending email:', error);
-//   }
-// };
-
-// // Export it properly for CommonJS
-// module.exports = { sendEmail };
-
-// utils/sendEmail.js
-
-const nodemailer = require("nodemailer");
-
-const sendEmail = async (to, subject, content, from) => {
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL,
-      pass: process.env.EMAIL_PASSWORD,
-    },
-  });
-
-  await transporter.sendMail({
-    from,
-    to,
-    subject,
-    text: content,
-  });
+  try {
+    const info = await transporter.sendMail(mailOptions);
+    console.log(`Email sent: ${info.response}`);
+  } catch (error) {
+    console.error(`Error sending email: ${error}`);
+  }
 };
 
 module.exports = sendEmail;
-
-
-

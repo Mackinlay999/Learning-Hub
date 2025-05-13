@@ -19,23 +19,35 @@ getRecentUsers : async (req, res) => {
 
 
 
-createdrip  : async (req,res) =>{
-  console.log(
-"create dripcampaigns"
-  )
-  try {
-    const { step, delayDays, content,fromEmail  } = req.body;
+// createdrip  : async (req,res) =>{
+//   console.log(
+// "create dripcampaigns"
+//   )
+//   try {
+//     const { step, delayDays, content,fromEmail  } = req.body;
 
-    // Save new drip step
-    const newStep = new DripCompains({ step, delayDays, content,fromEmail  });
-    await newStep.save();
+//     // Save new drip step
+//     const newStep = new DripCompains({ step, delayDays, content,fromEmail  });
+//     await newStep.save();
 
-    return res.status(200).json ({message : "dripcampains created successfully"})
+//     return res.status(200).json ({message : "dripcampains created successfully"})
     
+//   } catch (error) {
+//     return res.status(401).json({message:"not add this dripcompains"})
+//   }
+// },
+
+
+createdrip : async (req, res) => {
+  try {
+    const drip = new DripCompains(req.body);
+    const saved = await drip.save();
+    res.status(201).json(saved);
   } catch (error) {
-    return res.status(401).json({message:"not add this dripcompains"})
+    res.status(400).json({ message: error.message });
   }
 },
+
 
   getAllDripSteps : async (req, res) => {
     try {
