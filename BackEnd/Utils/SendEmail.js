@@ -1,19 +1,42 @@
-const sendEmail = require('../Utils/emailService'); // Import the email sending function
 
-const scheduleEmail = async (emailDetails, delayInDays) => {
-  // Calculate the delay in milliseconds (delay in days converted to milliseconds)
-  const delayInMs = delayInDays * 24 * 60 * 60 * 1000;
+// const nodemailer = require('nodemailer');
 
-  // Set a timeout to send the email after the delay
-  setTimeout(async () => {
-    try {
-      // Send the email
-      await sendEmail(emailDetails.to, emailDetails.subject, emailDetails.content, emailDetails.fromEmail);
-      console.log(`Email sent to ${emailDetails.to} after ${delayInDays} day(s)`);
-    } catch (err) {
-      console.error(`Error sending delayed email: ${err}`);
-    }
-  }, delayInMs);
+// const transporter = nodemailer.createTransport({
+//   service: 'gmail',
+// auth: {
+//     user: process.env.EMAIL,
+//     pass: process.env.EMAIL_PASSWORD,
+//   },
+// });
+
+// module.exports = (to, subject, text) => {
+//   return transporter.sendMail({ from: '"Jerald School Platform" <rjerald6803@gmail.com>', to, subject, text });
+// };
+
+
+const nodemailer = require('nodemailer');
+
+// Create a transporter using Gmail
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL, // Ensure this is set in .env
+    pass: process.env.EMAIL_PASSWORD, // Ensure this is set in .env
+  },
+});
+
+// Function to send email
+module.exports = (to, subject, text) => {
+  const mailOptions = {
+    from: '"Mackinlay" <rjerald6803@gmail.com>', // sender address
+    to, // recipient address
+    subject, // subject line
+    text, // plain text body
+    // html: "<b>Hello world?</b>"  // Uncomment to send HTML emails
+  };
+
+  // Sending email using the transporter
+  return transporter.sendMail(mailOptions);
 };
 
-module.exports = scheduleEmail;
+

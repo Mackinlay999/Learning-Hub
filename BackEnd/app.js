@@ -37,6 +37,8 @@ const webinarRoutes = require("./Route/webinarRoutes");
 const recruiterRoutes = require("./Route/recruiterRoutes");
 const deloyEmail = require("./Utils/DeloyEmail.js")
 deloyEmail();
+const emailCronJob = require("./Utils/schedulerService.js")
+emailCronJob.start();
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 

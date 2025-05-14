@@ -1,4 +1,3 @@
-
 // jobs/emailJob.js
 // cronJob.js
 const cron = require('node-cron');
@@ -42,3 +41,4 @@ const emailCronJob = cron.schedule('* * * * *', async () => {  // Runs every min
 
 // Exporting the cron job
 module.exports = emailCronJob;
+

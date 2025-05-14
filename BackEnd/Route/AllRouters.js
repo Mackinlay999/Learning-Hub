@@ -21,6 +21,8 @@ const SuccessStroy = require("../Controller/successStoryController")
 const campaignController = require("../Controller/campaignController")
 const  leademail = require("../Controller/leademail")
 const dripCampaignController = require("../Controller/dripCampaignsController")
+const EmailTemplate = require("../Controller/EmailTemplateController")
+const EmailSchedule = require("../Controller/EmailScheduleController")
 
 const upload = require("../Utils/Multer");
 const { join } = require("path");
@@ -193,6 +195,19 @@ router.get("/getAllDripSteps" , dripCampaignController.getAllDripSteps)
 router.put("/updateDripStep/:id" , dripCampaignController.updateDripStep)
 router.delete("/deleteDripStep/:id" , dripCampaignController.deleteDripStep)
 router.get("/getRecentUsers" , dripCampaignController.getRecentUsers )
+
+// EmailTemplate
+router.post('/createEmail', EmailTemplate.createEmail);
+router.get('/getEmails', EmailTemplate.getEmails);
+router.put('/updateEmail/:id', EmailTemplate.updateEmail);
+router.delete('/deleteEmail/:id', EmailTemplate.deleteEmail);
+
+//EmailSchedule 
+
+router.post('/UserRegister',  EmailSchedule.registerUser);
+
+
+
 
 
 

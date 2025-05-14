@@ -1,189 +1,134 @@
-import React, { useState, useEffect } from "react";
+
+
+
+
+import React, { useEffect, useState } from "react";
 import axios from "./axios";
 import "../style/AdminDripCampaignView.css";
 
-const AdminDripCampaignView = () => {
-  const [dripSteps, setDripSteps] = useState([]);
-  const [sentSteps, setSentSteps] = useState([]);
-  const [editIndex, setEditIndex] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const [newStep, setNewStep] = useState({
-    step: "",
-    delayDays: "",
+const AdminEmailTemplateManager = () => {
+  const [templates, setTemplates] = useState([]);
+  const [formData, setFormData] = useState({
+    subject: "",
     content: "",
-    fromEmail: "",
+    delayInMinutes: ""
   });
+  const [editId, setEditId] = useState(null);
 
-  // Fetch all steps
   useEffect(() => {
-    const fetchSteps = async () => {
-      try {
-        const res = await axios.get("/getAllDripSteps");
-        setDripSteps(res.data);
-      } catch (err) {
-        alert("❌ Failed to fetch steps");
-        console.error(err);
-      }
-    };
-    fetchSteps();
+    fetchTemplates();
   }, []);
 
-  // Simulate email sending (1s = 1 day)
-  useEffect(() => {
-    let timers = [];
-
-    dripSteps.forEach((step, idx) => {
-      const delay = step.delayDays * 1000;
-      const timer = setTimeout(() => {
-        setSentSteps((prev) => [...prev, step]);
-        setCurrentIndex((prev) => prev + 1);
-      }, delay);
-      timers.push(timer);
-    });
-
-    return () => timers.forEach(clearTimeout);
-  }, [dripSteps]);
-
-  const handleInputChange = (field, value) => {
-    setNewStep({ ...newStep, [field]: value });
-  };
-
-
-  const handleAddOrUpdate = async () => {
-    if (!newStep.step || newStep.delayDays === "" || !newStep.content || !newStep.fromEmail) return;
-  
-    const payload = {
-      ...newStep,
-      delayDays: Number(newStep.delayDays),
-    };
-  
-    if (editIndex !== null) {
-      const id = dripSteps[editIndex]._id;
-      try {
-        const res = await axios.put(`/updateDripStep/${id}`, payload);
-        const updated = [...dripSteps];
-        updated[editIndex] = res.data.updatedStep;
-        setDripSteps(updated);
-        alert("✅ Step updated successfully!");
-        setEditIndex(null);
-      } catch (err) {
-        alert("❌ Failed to update step");
-      }
-    } else {
-      try {
-        const res = await axios.post("/createdrip", payload);
-        setDripSteps([...dripSteps, res.data]);
-        alert("✅ Step added successfully!");
-      } catch (err) {
-        alert("❌ Failed to add step");
-      }
-    }
-  
-    setNewStep({ step: "", delayDays: "", content: "", fromEmail: "" });
-    setSentSteps([]);
-    setCurrentIndex(0);
-  };
-  
-
-  const handleEdit = (index) => {
-    const stepToEdit = dripSteps[index];
-    setNewStep({
-      step: stepToEdit.step,
-      delayDays: stepToEdit.delayDays,
-      content: stepToEdit.content,
-      fromEmail: stepToEdit.fromEmail,
-    });
-    setEditIndex(index);
-  };
-
-  const handleDelete = async (index) => {
-    const id = dripSteps[index]._id;
+  const fetchTemplates = async () => {
     try {
-      await axios.delete(`/deleteDripStep/${id}`);
-      const updated = dripSteps.filter((_, i) => i !== index);
-      setDripSteps(updated);
-      setSentSteps([]);
-      setCurrentIndex(0);
-      alert("🗑️ Step deleted successfully!");
+      const res = await axios.get("/getEmails");
+      setTemplates(res.data);
     } catch (err) {
-      alert("❌ Failed to delete step");
-      console.error(err);
+      alert("❌ Failed to fetch email templates");
     }
   };
 
- 
+  const handleChange = (field, value) => {
+    setFormData({ ...formData, [field]: value });
+  };
+
+  const handleSubmit = async () => {
+    const payload = {
+      ...formData,
+      delayInMinutes: parseInt(formData.delayInMinutes)
+    };
+
+    try {
+      if (editId) {
+        const res = await axios.put(`/updateEmail/${editId}`, payload);
+        const updatedList = templates.map((t) =>
+          t._id === editId ? res.data : t
+        );
+        setTemplates(updatedList);
+        alert("✅ Email updated successfully");
+      } else {
+        const res = await axios.post("/createEmail", payload);
+        setTemplates([...templates, res.data]);
+        alert("✅ Email created successfully");
+      }
+      setFormData({ subject: "", content: "", delayInMinutes: "" });
+      setEditId(null);
+    } catch (err) {
+      alert("❌ Failed to save email");
+    }
+  };
+
+  const handleEdit = (template) => {
+    setFormData({
+      subject: template.subject,
+      content: template.content,
+      delayInMinutes: template.delayInMinutes
+    });
+    setEditId(template._id);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/deleteEmail/${id}`);
+      setTemplates(templates.filter((t) => t._id !== id));
+      alert("🗑️ Email template deleted");
+    } catch (err) {
+      alert("❌ Failed to delete email");
+    }
+  };
 
   return (
-    <div className="drip-container">
-      <h2 className="drip-heading">📧 Drip Campaign Manager</h2>
-
-      <div className="drip-form">
+    <div className="email-template-container">
+      <h2>Email Template Manager 📬</h2>
+      <div className="email-form">
         <input
-          className="drip-input"
+          className="email-input"
           type="text"
-          placeholder="Step Name"
-          value={newStep.step}
-          onChange={(e) => handleInputChange("step", e.target.value)}
+          placeholder="Subject"
+          value={formData.subject}
+          onChange={(e) => handleChange("subject", e.target.value)}
         />
-        <input
-          className="drip-input"
-          type="number"
-          placeholder="Delay in Days"
-          value={newStep.delayDays}
-          onChange={(e) => handleInputChange("delayDays", e.target.value)}
-        />
-        <input
-          className="drip-input"
-          type="text"
+        <textarea
+          className="email-textarea"
           placeholder="Email Content"
-          value={newStep.content}
-          onChange={(e) => handleInputChange("content", e.target.value)}
+          value={formData.content}
+          onChange={(e) => handleChange("content", e.target.value)}
         />
         <input
-          className="drip-input"
-          type="email"
-          placeholder="From Email"
-          value={newStep.fromEmail}
-          onChange={(e) => handleInputChange("fromEmail", e.target.value)}
+          className="email-input"
+          type="number"
+          placeholder="Delay in Minutes (e.g. 10, 1440)"
+          value={formData.delayInMinutes}
+          onChange={(e) => handleChange("delayInMinutes", e.target.value)}
         />
-        <button className="drip-button" onClick={handleAddOrUpdate}>
-          {editIndex !== null ? "Update Step" : "Add Step"}
+        <button className="email-button" onClick={handleSubmit}>
+          {editId ? "Update Email" : "Create Email"}
         </button>
       </div>
 
-      <ol className="drip-list">
-        {dripSteps.map((step, index) => (
-          <li className="drip-list-item" key={index}>
-            <div className="drip-step">
-              <strong className="drip-step-title">{step.step}</strong> 
-              <em className="drip-delay">(Day {step.delayDays})</em>
-              <p className="drip-content">{step.content}</p>
-              <p className="drip-from"><strong>From:</strong> {step.fromEmail}</p>
-            </div>
-            <div className="drip-controls">
-              <button className="drip-edit-btn" onClick={() => handleEdit(index)}>✏️ Edit</button>
-              <button className="drip-delete-btn" onClick={() => handleDelete(index)}>🗑️ Delete</button>
+      <hr />
+
+      <h3>Saved Templates 📑</h3>
+      <ul className="email-list">
+        {templates.map((template) => (
+          <li key={template._id} className="email-item">
+            <strong>📌 {template.subject}</strong> — {template.content}
+            <br />
+            ⏱️ Delay: {template.delayInMinutes} minutes
+            <div className="email-actions">
+              <button onClick={() => handleEdit(template)}>✏️ Edit</button>
+              <button onClick={() => handleDelete(template._id)}>🗑️ Delete</button>
             </div>
           </li>
         ))}
-      </ol>
-
-      <hr className="drip-divider" />
-
-      <h3 className="drip-heading">⏱️ Sent Steps</h3>
-      <ol className="drip-sent-list">
-        {sentSteps.map((step, index) => (
-          <li className="drip-sent-item" key={index}>
-            ✅ {step.step} (Day {step.delayDays})
-          </li>
-        ))}
-      </ol>
+      </ul>
     </div>
   );
 };
 
-export default AdminDripCampaignView;
+export default AdminEmailTemplateManager;
+
 
 
 
