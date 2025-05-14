@@ -74,8 +74,8 @@ const About = () => {
             for Everyone
           </h1>
           <p className="text-black">
-            With more than <strong>12.4 Million learners</strong> in 170+ countries,
-            Great Learning is a leading global edtech company for professional and
+            With more than <strong>1000 learners</strong>,
+             Mackinlay Learning Hub is a leading global edtech company for professional and
             higher education, offering industry-relevant programs.
           </p>
           <button className="about-cta-button">Explore More</button>
