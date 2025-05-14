@@ -11,6 +11,8 @@ const DripCompains = require("../Model/dripCampaign");
 
 const path = require("path");
 const { sendEmail } = require("../Utils/emailService");
+const EmailSchedule = require("../Model/dripCampaign");
+const scheduleEmail = require('../Utils/SendEmail.js'); 
 
 
 
@@ -47,38 +49,62 @@ const login = {
     
         await newuser.save();
     
-        const dripSteps = await DripCompains.find().sort({ delayDays: 1 });
-        const sentSteps = newuser.dripStepsSent?.map((s) => s.step) || [];
+        // const dripSteps = await DripCompains.find().sort({ delayDays: 1 });
+        // const sentSteps = newuser.dripStepsSent?.map((s) => s.step) || [];
     
-        const pendingSteps = dripSteps.filter(
-          (step) => !sentSteps.includes(step.step)
-        );
+        // const pendingSteps = dripSteps.filter(
+        //   (step) => !sentSteps.includes(step.step)
+        // );
     
-        pendingSteps.forEach((step) => {
-          const delayInMs = step.delayDays * 24 * 60 * 60 * 1000;
+        // pendingSteps.forEach((step) => {
+        //   const delayInMs = step.delayDays * 24 * 60 * 60 * 1000;
     
-          setTimeout(async () => {
-            try {
-              await sendEmail(newuser.email, step.step, step.content, step.fromEmail || process.env.EMAIL);
+        //   setTimeout(async () => {
+        //     try {
+        //       await sendEmail(newuser.email, step.step, step.content, step.fromEmail || process.env.EMAIL);
 
-              console.log(`📨 Email sent to ${newuser.email} - Step: ${step.step}`);
+        //       console.log(`📨 Email sent to ${newuser.email} - Step: ${step.step}`);
     
-              await user.findByIdAndUpdate(newuser._id, {
-                $push: {
-                  dripStepsSent: {
-                    step: step.step,
-                    sentAt: new Date(),
-                  },
-                },
-              });
-            } catch (err) {
-              console.error(`❌ Email failed to ${newuser.email}`, err);
-            }
-          }, delayInMs);
-        });
+        //       await user.findByIdAndUpdate(newuser._id, {
+        //         $push: {
+        //           dripStepsSent: {
+        //             step: step.step,
+        //             sentAt: new Date(),
+        //           },
+        //         },
+        //       });
+        //     } catch (err) {
+        //       console.error(`❌ Email failed to ${newuser.email}`, err);
+        //     }
+        //   }, delayInMs);
+        // });
+          const dripSteps = await DripCompains.find().sort({ delayDays: 1 });
+
+    // Schedule emails based on the drip steps
+    for (const step of dripSteps) {
+      const emailDetails = {
+        to: newuser.email,
+        fromEmail: step.fromEmail || process.env.EMAIL,
+        subject: `Step ${step.step}: Drip Campaign`,
+        content: step.content,
+      };
+
+      // Schedule the email with delay
+      await scheduleEmail(emailDetails, step.delayDays);
+    }
+
+
+
+
+
+
+
+
+
+
     
         // ✅ Send response after scheduling
-        return res.status(200).json({ message: "User created successfully" });
+        return res.status(200).json({ message: "User created successfully  drip emails scheduled" });
     
       } catch (err) {
         res.status(400).json({ error: err.message });

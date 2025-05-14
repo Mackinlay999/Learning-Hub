@@ -3,85 +3,51 @@ const { sendEmail } = require('../Utils/emailService.js');
 const DripCompains = require("../Model/dripCampaign.js")
 
 const DripCompainscontroller = {
-  getRecentUsers: async () => {
-    const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000); // 24 hours ago
-    return await user.find({ createAt: { $gte: twentyFourHoursAgo } });
-    
-  },
-
-
-
-sendDripCampaignEmails: async (req, res) => {
-  console.log("🚀 Sending Drip Campaigns");
-
+getRecentUsers : async (req, res) => {
   try {
-    const recentUsers = await DripCompainscontroller.getRecentUsers(); // New users (last 24 hrs)
-    const dripSteps = await DripCompains.find().sort({ delayDays: 1 });
+    const twentyFourHoursAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    const users = await user.find({ createdAt: { $gte: twentyFourHoursAgo } });
 
-    if (!dripSteps.length) {
-      return res.status(400).json({ message: 'No drip steps found in DB.' });
-    }
-
-    if (!recentUsers.length) {
-      return res.status(200).json({ message: 'Drip steps available, but no new users to send emails to.' });
-    }
-
-    for (const user of recentUsers) {
-      for (const step of dripSteps) {
-        const alreadySent = user.dripStepsSent?.some((s) => s.step === step.step);
-
-        if (!alreadySent) {
-          const delayInMs = step.delayDays * 24 * 60 * 60 * 1000;
-
-          setTimeout(async () => {
-            try {
-              await sendEmail(user.email, step.step, step.content);
-              console.log(`✅ Email sent to ${user.email} for Step: ${step.step}`);
-
-              // Update user record to mark this step as sent
-              await userModel.findByIdAndUpdate(user._id, {
-                $push: {
-                  dripStepsSent: {
-                    step: step.step,
-                    sentAt: new Date(),
-                  },
-                },
-              });
-            } catch (error) {
-              console.error(`❌ Failed to send email to ${user.email} for Step: ${step.step}`, error);
-            }
-          }, delayInMs);
-        } else {
-          console.log(`⏭️ Step "${step.step}" already sent to ${user.email}. Skipping.`);
-        }
-      }
-    }
-
-    res.status(200).json({ message: 'Drip campaign scheduling initiated.' });
-  } catch (error) {
-    console.error("Drip Campaign Error:", error);
-    res.status(500).json({ message: "Something went wrong in drip campaign.", error });
+    res.status(200).json({ success: true, users });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: "Server Error" });
   }
 },
 
 
-createdrip  : async (req,res) =>{
-  console.log(
-"create dripcampaigns"
-  )
-  try {
-    const { step, delayDays, content,fromEmail  } = req.body;
 
-    // Save new drip step
-    const newStep = new DripCompains({ step, delayDays, content,fromEmail  });
-    await newStep.save();
 
-    return res.status(200).json ({message : "dripcampains created successfully"})
+
+// createdrip  : async (req,res) =>{
+//   console.log(
+// "create dripcampaigns"
+//   )
+//   try {
+//     const { step, delayDays, content,fromEmail  } = req.body;
+
+//     // Save new drip step
+//     const newStep = new DripCompains({ step, delayDays, content,fromEmail  });
+//     await newStep.save();
+
+//     return res.status(200).json ({message : "dripcampains created successfully"})
     
+//   } catch (error) {
+//     return res.status(401).json({message:"not add this dripcompains"})
+//   }
+// },
+
+
+createdrip : async (req, res) => {
+  try {
+    const drip = new DripCompains(req.body);
+    const saved = await drip.save();
+    res.status(201).json(saved);
   } catch (error) {
-    return res.status(401).json({message:"not add this dripcompains"})
+    res.status(400).json({ message: error.message });
   }
 },
+
 
   getAllDripSteps : async (req, res) => {
     try {

@@ -35,6 +35,8 @@ const studentRoutes = require("./Route/studentRoutes.js");
 const blogRoutes = require("./Route/blogRoutes");
 const webinarRoutes = require("./Route/webinarRoutes");
 const recruiterRoutes = require("./Route/recruiterRoutes");
+const deloyEmail = require("./Utils/DeloyEmail.js")
+deloyEmail();
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
