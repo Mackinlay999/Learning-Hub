@@ -94,15 +94,15 @@ const Userdetails = () => {
       <div className="user-card">
         <h1 className="user-h1">User Profile</h1>
         <div className="info">
-          <p>
+          {/* <p>
             <strong>Name:</strong> {username}
-          </p>
-          <p>
+          </p> */}
+          {/* <p>
             <strong>Email:</strong> {email}
-          </p>
-          <p>
+          </p> */}
+          {/* <p>
             <strong>number:</strong> {number}
-          </p>
+          </p> */}
           {resumeURL && (
             <p>
               <strong>Resume:</strong>{" "}
