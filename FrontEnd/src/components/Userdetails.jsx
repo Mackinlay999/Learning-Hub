@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "./axios";
 import "../style/UserDetails.css";
 
 const Userdetails = () => {
-  const [name, setName] = useState("");
+  const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
   const [resume, setResume] = useState(null);
@@ -12,11 +12,20 @@ const Userdetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+
+
+
+
+
     axios
-      .get("https://learning-hub-p2yq.onrender.com/api/me", {
+      .get("/me", {
+       
         withCredentials: true,
       })
       .then((response) => {
+        console.log( " response" 
+          , response.data);
+        
         setName(response.data.username);
         setEmail(response.data.email);
         setNumber(response.data.number);
@@ -35,7 +44,7 @@ const Userdetails = () => {
   const handleSignOut = () => {
     axios
       .post(
-        "https://learning-hub-p2yq.onrender.com/api/logout",
+        "/logout",
         {},
         { withCredentials: true }
       )
@@ -64,7 +73,7 @@ const Userdetails = () => {
 
     axios
       .post(
-        "https://learning-hub-p2yq.onrender.com/api/profileResume",
+        "/profileResume",
         formData,
         {
           withCredentials: true,
@@ -86,7 +95,7 @@ const Userdetails = () => {
         <h1 className="user-h1">User Profile</h1>
         <div className="info">
           <p>
-            <strong>Name:</strong> {name}
+            <strong>Name:</strong> {username}
           </p>
           <p>
             <strong>Email:</strong> {email}

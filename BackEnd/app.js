@@ -46,6 +46,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 const allowedOrigins = [
   "http://localhost:5173", // Frontend 1
   "http://localhost:5174"  // Frontend 2
+
 ];
 
 
@@ -60,7 +61,8 @@ const corsOptions = {
   },
   methods: ["GET,POST,PUT,DELETE"],
   allowedHeaders: ["Content-Type","Authorization"],
-  credentials: true, // Required to send cookies
+  // credentials: true, // Required to send cookies
+   credentials: true
 };
 
 
