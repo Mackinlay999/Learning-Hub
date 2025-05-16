@@ -112,6 +112,7 @@ router.get("/getLeadById/:id", leadController.getLeadById);
 router.put("/updateLead/:id", leadController.updateLead);
 router.delete("/deleteLead/:id", leadController.deleteLead);
 router.get("/getLeadsByDate", leadController.getLeadsByDate);
+router.get('/today', leadController.getTodayLeads);
 
 // StudentEnrollAndPaymentScheme
 
