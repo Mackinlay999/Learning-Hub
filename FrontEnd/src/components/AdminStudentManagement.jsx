@@ -482,7 +482,6 @@ const AdminStudents = () => {
               setNewStudent({ ...newStudent, course: e.target.value })
             }
           />
-
           <input
             type="file"
             name="photo"

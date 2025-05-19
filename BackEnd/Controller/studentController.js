@@ -23,17 +23,27 @@ const Student = require("../Model/student.js");
 };
 
 // Create student
-
- const createStudent = async (req, res) => {
-
+const createStudent = async (req, res) => {
   try {
-    const student = new Student(req.body);
-    const savedStudent = await student.save();
+    const { name, email, mobile, course, status } = req.body;
+    const photoPath = req.file ? `/uploads/${req.file.filename}` : "";
+
+    const newStudent = new Student({
+      name,
+      email,
+      mobile,
+      course,
+      status,
+      photo: photoPath, // Save file path to DB
+    });
+
+    const savedStudent = await newStudent.save();
     res.status(201).json(savedStudent);
   } catch (error) {
     res.status(400).json({ message: "Error creating student", error });
   }
 };
+
 
 // Update student details
 const updateStudent = async (req, res) => {
