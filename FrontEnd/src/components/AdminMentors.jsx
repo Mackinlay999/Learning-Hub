@@ -57,10 +57,7 @@ const AdminMentors = () => {
 
     try {
       setLoading(true);
-      const { data } = await axios.post(
-        "/mentors",
-        formData
-      );
+      const { data } = await axios.post("/mentors", formData);
       setMentors([...mentors, data]);
       setNewMentor({
         name: "",
@@ -87,10 +84,7 @@ const AdminMentors = () => {
   const handleSaveEdit = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.put(
-        `/mentors/${editId}`,
-        editedMentor
-      );
+      const { data } = await axios.put(`/mentors/${editId}`, editedMentor);
       setMentors((prev) =>
         prev.map((mentor) => (mentor._id === editId ? data : mentor))
       );
@@ -252,7 +246,11 @@ const AdminMentors = () => {
             <tr key={mentor._id}>
               <td>
                 <img
-                  src={`https://learning-hub-p2yq.onrender.com${mentor.photo}`}
+                  src={
+                    mentor.photo
+                      ? `https://learning-hub-p2yq.onrender.com${mentor.photo}`
+                      : "https://via.placeholder.com/40" // Or your custom default image
+                  }
                   alt="mentor"
                   style={{
                     width: "40px",
@@ -315,9 +313,7 @@ const AdminMentors = () => {
                   </select>
                 ) : (
                   <span
-                    className={`badge bg-${getStatusBadgeClass(
-                      mentor.status
-                    )}`}
+                    className={`badge bg-${getStatusBadgeClass(mentor.status)}`}
                   >
                     {mentor.status}
                   </span>
