@@ -25,4 +25,6 @@ module.exports = (to, subject, text) => {
   return transporter.sendMail(mailOptions);
 };
 
+module.exports =transporter;
+
 
