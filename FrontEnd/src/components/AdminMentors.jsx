@@ -186,11 +186,12 @@ const AdminMentors = () => {
           <input
             type="file"
             name="photo"
-            // accept="image/*"
+            accept="image/*"
             onChange={(e) =>
               setNewMentor({ ...newMentor, photo: e.target.files[0] })
             }
           />
+
           <input
             className="admin-mentors-input form-control col"
             placeholder="Email"
