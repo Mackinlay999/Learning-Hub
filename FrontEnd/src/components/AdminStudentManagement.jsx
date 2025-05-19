@@ -465,14 +465,17 @@ const AdminStudents = () => {
               setNewStudent({ ...newStudent, course: e.target.value })
             }
           />
+
           <input
-            className="form-control col"
-            placeholder="Photo URL"
-            value={newStudent.photo}
+            // className="form-control col"
+            type="file"
+            name="photo"
+            accept="image/*"
             onChange={(e) =>
-              setNewStudent({ ...newStudent, photo: e.target.value })
+              setNewStudent({ ...newStudent, photo: e.target.files[0] })
             }
           />
+
           <input
             className="form-control col"
             placeholder="Email"
@@ -525,13 +528,18 @@ const AdminStudents = () => {
             <tr key={student._id}>
               <td>
                 <img
-                  src={student.photo}
+                  src={
+                    student.photo
+                      ? `https://learning-hub-p2yq.onrender.com${student.photo}`
+                      : "https://via.placeholder.com/40" // Or your custom default image
+                  }
                   alt="student"
                   style={{
                     width: "40px",
                     height: "40px",
                     borderRadius: "50%",
                     objectFit: "cover",
+                    objectPosition: "top",
                   }}
                 />
               </td>
