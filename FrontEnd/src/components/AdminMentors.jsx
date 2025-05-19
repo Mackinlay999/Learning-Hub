@@ -252,7 +252,7 @@ const AdminMentors = () => {
             <tr key={mentor._id}>
               <td>
                 <img
-                  src={`http://localhost:3000${mentor.photo}`}
+                  src={`https://learning-hub-p2yq.onrender.com/uploads/${mentor.photo}`}
                   alt="mentor"
                   style={{
                     width: "40px",
