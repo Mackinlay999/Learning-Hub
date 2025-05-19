@@ -35,7 +35,7 @@ const FileUplode = {
 
       const mailOptions = {
         from: process.env.EMAIL,
-        to: "rjerald6803@gmail.com",
+        to: "harikrishg44@gmail.com",
         subject: "File Uploaded Successfully",
         text: `A new file has been uploaded:\n\nProgram: ${req.body.learningDomain}\nExperience: ${req.body.workExperience}\nFilename: ${req.file.filename}`,
         attachments: [
