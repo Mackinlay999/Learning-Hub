@@ -45,16 +45,37 @@ const createStudent = async (req, res) => {
 };
 
 
-// Update student details
 const updateStudent = async (req, res) => {
   try {
-    const student = await Student.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!student) return res.status(404).json({ message: "Student not found" });
-    res.json(student);
+    const { name, email, mobile, course, status } = req.body;
+    const photoPath = req.file ? `/uploads/${req.file.filename}` : null;
+
+    const updateData = {
+      name,
+      email,
+      mobile,
+      course,
+      status,
+    };
+
+    if (photoPath) {
+      updateData.photo = photoPath;
+    }
+
+    const updatedStudent = await Student.findByIdAndUpdate(
+      req.params.id,
+      updateData,
+      { new: true }
+    );
+
+    if (!updatedStudent) return res.status(404).json({ message: "Student not found" });
+
+    res.json(updatedStudent);
   } catch (error) {
     res.status(400).json({ message: "Error updating student", error });
   }
 };
+
 
 // Add attendance record
 const addAttendance = async (req, res) => {
