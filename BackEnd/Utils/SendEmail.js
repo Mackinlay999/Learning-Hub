@@ -1,18 +1,4 @@
-
-// const nodemailer = require('nodemailer');
-
-// const transporter = nodemailer.createTransport({
-//   service: 'gmail',
-// auth: {
-//     user: process.env.EMAIL,
-//     pass: process.env.EMAIL_PASSWORD,
-//   },
-// });
-
-// module.exports = (to, subject, text) => {
-//   return transporter.sendMail({ from: '"Jerald School Platform" <rjerald6803@gmail.com>', to, subject, text });
-// };
-
+require("dotenv").config();
 
 const nodemailer = require('nodemailer');
 
@@ -28,7 +14,7 @@ const transporter = nodemailer.createTransport({
 // Function to send email
 module.exports = (to, subject, text) => {
   const mailOptions = {
-    from: '"Mackinlay" <rjerald6803@gmail.com>', // sender address
+    from: '"Mackinlay" <harikrishg44@gmail.com>', // sender address
     to, // recipient address
     subject, // subject line
     text, // plain text body
@@ -38,5 +24,7 @@ module.exports = (to, subject, text) => {
   // Sending email using the transporter
   return transporter.sendMail(mailOptions);
 };
+
+module.exports =transporter;
 
 

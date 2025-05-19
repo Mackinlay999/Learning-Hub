@@ -21,7 +21,7 @@ const transporter = require("../Utils/Nodemailerconfig");
     // Send Email
     const mailOptions = {
       from: process.env.EMAIL,
-      to: "rjerald6803@gmail.com", // Replace with recipient email
+      to: "harikrishg44@gmail.com", // Replace with recipient email
       subject: "New Contact Form Submission",
       text: `You received a new contact submission:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nLearning Domain: ${learningDomain}`,
     };

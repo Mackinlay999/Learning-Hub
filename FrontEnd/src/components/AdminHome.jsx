@@ -186,6 +186,22 @@ const AdminHome = () => {
         setLoading(false);
       })
       .catch((err) => console.error("Error fetching leads by date:", err));
+
+// const fetchTodayLeads = async () => {
+//       try {
+//         const res = await axios.get('/today');
+//         setTodayLeads(res.data.todayLeadsCount);
+//       } catch (error) {
+//         console.error(error);
+//         setTodayLeads(0); // fallback if error
+//       }
+//     };
+
+//     fetchTodayLeads();
+
+
+
+
   }, []);
 
   const openModal = () => setShowModal(true);

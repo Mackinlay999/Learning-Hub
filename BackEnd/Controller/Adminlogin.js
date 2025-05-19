@@ -1,12 +1,14 @@
+require("dotenv").config();
 const Adminlogin = require("../Model/AdminlogScheme");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const app = require("../app");
-require("dotenv").config();
+
 const transporter = require("../Utils/Approvel"); // nodemailer instance
 const nodemailer = require("nodemailer");
 
 const path = require("path");
+
 
 const Admincontroller = {
   register: async (req, res) => {
@@ -34,8 +36,7 @@ const Admincontroller = {
 
       await newuser.save();
 
-      //       const approveURL = `http://localhost:3000/approve/${newuser._id}`;
-      // const rejectURL = `http://localhost:3000/reject/${newuser._id}`;
+
 
       const approveURL = `https://learning-hub-p2yq.onrender.com/api/approveEmail/${newuser._id}`;
       const rejectURL = `https://learning-hub-p2yq.onrender.com/api/rejectEmail/${newuser._id}`;

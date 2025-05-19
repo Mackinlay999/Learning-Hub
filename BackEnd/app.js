@@ -44,8 +44,11 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
 const allowedOrigins = [
+    "https://mackinlay-learninghub.netlify.app",
+    "https://mackinlay-learninghub.netlify.app/",
   "http://localhost:5173", // Frontend 1
   "http://localhost:5174"  // Frontend 2
+
 
 ];
 
