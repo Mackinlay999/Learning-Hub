@@ -467,7 +467,6 @@ const AdminStudents = () => {
           />
 
           <input
-            // className="form-control col"
             type="file"
             name="photo"
             accept="image/*"
