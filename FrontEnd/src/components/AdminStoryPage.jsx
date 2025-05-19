@@ -22,7 +22,7 @@ const AdminStoryPage = () => {
       <div className="story-list">
         {stories.map((story, index) => (
           <div key={index} className="story-item">
-            <img   src={`http://localhost:3000${story.photo}`} alt={story.name} className="story-image" />
+            <img   src={`https://learning-hub-p2yq.onrender.com/uploads/${story.photo}`} alt={story.name} className="story-image" />
             <div className="story-header">
               <h2 className="story-title">{story.name}</h2>
               {story.LinkedinUrl  && (
