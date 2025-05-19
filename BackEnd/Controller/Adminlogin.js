@@ -1,8 +1,9 @@
+require("dotenv").config();
 const Adminlogin = require("../Model/AdminlogScheme");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const app = require("../app");
-require("dotenv").config();
+
 const transporter = require("../Utils/Approvel"); // nodemailer instance
 const nodemailer = require("nodemailer");
 
