@@ -22,7 +22,7 @@ const AdminBlogWebinar = () => {
     webinarDateTime: "",
     webinarDescription: "",
     webinarLink: "", // new
-    typeofprogram: "", // new
+    typeofProgram: "", // new
   });
   const [registrants, setRegistrants] = useState([]);
   const [showRegistrants, setShowRegistrants] = useState(false);
@@ -109,7 +109,7 @@ const AdminBlogWebinar = () => {
           dateTime: formData.webinarDateTime,
           description: formData.webinarDescription,
           link: formData.webinarLink,
-          typeofprogram: formData.typeofprogram,
+          typeofProgram: formData.typeofProgram,
         }
       );
       console.log("Webinar scheduled:", response.data);
