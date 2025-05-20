@@ -93,7 +93,7 @@ function AdminManagement() {
     if (window.confirm("Are you sure you want to delete this admin?")) {
       try {
         console.log("Deleting admin with ID:", id);  // Debugging log
-        await axios.delete(`/admin/deleteUser${id}`, {
+        await axios.delete(`/admin/deleteUser/${id}`, {
           data: { userIdToDelete: id },
           withCredentials: true,
         });
