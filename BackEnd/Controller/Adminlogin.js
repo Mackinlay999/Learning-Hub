@@ -323,7 +323,7 @@ const Admincontroller = {
       console.log("Delete user request");
 
       const adminId = req.userid; // from auth middleware
-      const { userIdToDelete } = req.body;
+      const { userIdToDelete } = req.params;
 
       console.log("Logged in Admin ID:", adminId);
       console.log("User to delete ID:", userIdToDelete);
