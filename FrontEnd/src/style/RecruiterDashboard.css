@@ -1,0 +1,122 @@
+.recruiter-dashboard { 
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.recruiter-dashboard-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+.recruiter-stats-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.recruiter-stat-card {
+  background-color: #f9f9f9;
+  border-left: 4px solid #0073b1;
+  padding: 1.2rem 1rem;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 220px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.recruiter-stat-card h3 {
+  font-size: 1.5rem;
+  color: #0073b1;
+  margin-bottom: 0.5rem;
+}
+
+.recruiter-stat-card p {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.recruiter-section {
+  margin-top: 2rem;
+}
+
+.recruiter-section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.recruiter-applications-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recruiter-application-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  transition: box-shadow 0.3s;
+}
+
+.recruiter-application-item:hover {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recruiter-applicant-info {
+  color: #333;
+}
+
+.recruiter-application-time {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.recruiter-performance-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.recruiter-performance-card {
+  flex: 1;
+  min-width: 200px;
+  background-color: #eef3f8;
+  padding: 1rem;
+  border-radius: 10px;
+  border-left: 4px solid #0073b1;
+}
+
+.recruiter-performance-card h4 {
+  font-size: 1rem;
+  color: #0073b1;
+  margin-bottom: 0.5rem;
+}
+
+.recruiter-performance-card p {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .recruiter-stats-section,
+  .recruiter-performance-cards {
+    flex-direction: column;
+  }
+
+  .recruiter-stat-card,
+  .recruiter-performance-card {
+    min-width: 100%;
+  }
+}
