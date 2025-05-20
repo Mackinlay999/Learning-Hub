@@ -18,7 +18,7 @@ function AdminManagement() {
 
   useEffect(() => {
     fetchAdmins();
-    handleDelete
+  
   }, []);
 
   const fetchAdmins = async () => {
@@ -103,21 +103,28 @@ function AdminManagement() {
   //     }
   //   }
   // };
-
-
-  const handleDelete = async (id) => {
+const handleDelete = async (id) => {
   if (window.confirm("Are you sure you want to delete this admin?")) {
     try {
-      console.log("Deleting admin with ID:", id);  // Debugging log
+      const token = localStorage.getItem("token");  // get token from localStorage
+      console.log("Deleting admin with ID:", id);
+
       await axios.delete(`/admin/deleteUser/${id}`, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,  // add bearer token header
+        },
+        withCredentials: true,  // if your backend uses cookies as well
       });
+
       fetchAdmins();  // Refresh the list
     } catch (error) {
       console.error("Error deleting admin:", error);
     }
   }
 };
+
+
+
 
 
   const resetForm = () => {
