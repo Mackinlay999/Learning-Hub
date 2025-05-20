@@ -1,11 +1,10 @@
 const Blog = require("../Model/blogModel");
 
-// create a blog
+// Create a blog
 const createBlog = async (req, res) => {
   try {
     const { title, content, publish } = req.body;
 
-    // Construct full image URL if an image is uploaded
     const imageUrl = req.file
       ? `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`
       : null;
@@ -13,7 +12,7 @@ const createBlog = async (req, res) => {
     const newBlog = new Blog({
       title,
       content,
-      image: imageUrl,
+      blogImage: imageUrl,
       publish,
     });
 
@@ -21,7 +20,15 @@ const createBlog = async (req, res) => {
 
     res.status(201).json({
       message: "Blog created successfully",
-      blog: newBlog,
+      blog: {
+        blogTitle: newBlog.title,
+        blogContent: newBlog.content,
+        blogImage: newBlog.blogImage,
+        publish: newBlog.publish,
+        _id: newBlog._id,
+        createdAt: newBlog.createdAt,
+        updatedAt: newBlog.updatedAt,
+      },
     });
   } catch (error) {
     res.status(400).json({
@@ -29,17 +36,28 @@ const createBlog = async (req, res) => {
       error: error.message,
     });
   }
-}
-
+};
 
 // Get all blogs
 const getAllBlogs = async (req, res) => {
   try {
-    const blogs = await Blog.find();
-    res.status(200).json(blogs);
+    const blogs = await Blog.find().sort({ createdAt: -1 });
+
+    const formattedBlogs = blogs.map((blog) => ({
+      blogTitle: blog.title,
+      blogContent: blog.content,
+      blogImage: blog.blogImage,
+      publish: blog.publish,
+      _id: blog._id,
+      createdAt: blog.createdAt,
+      updatedAt: blog.updatedAt,
+    }));
+
+    res.status(200).json({ blogs: formattedBlogs });
   } catch (error) {
-    res.status(400).json({ message: "Error fetching blogs", error: error.message });
+    res.status(500).json({ message: "Error fetching blogs", error: error.message });
   }
 };
+
 
 module.exports = { createBlog, getAllBlogs };

@@ -75,23 +75,24 @@ const AdminBlogWebinar = () => {
   };
   const handleBlogSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const data = new FormData();
-      data.append("title", formData.blogTitle);
-      data.append("content", formData.blogContent);
-      data.append("publish", publish);
-      if (formData.blogImage) {
-        data.append("image", formData.blogImage);
-      }
 
+    if (!formData.blogTitle || !formData.blogContent || !formData.blogImage) {
+      alert("Please fill all fields and upload an image.");
+      return;
+    }
+
+    const data = new FormData();
+    data.append("title", formData.blogTitle);
+    data.append("content", formData.blogContent);
+    data.append("image", formData.blogImage);
+    data.append("publish", publish);
+
+    try {
       const response = await axios.post(
         "https://learning-hub-p2yq.onrender.com/api/blog",
         data,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
+        { headers: { "Content-Type": "multipart/form-data" } }
       );
-
       console.log("Blog created:", response.data);
     } catch (error) {
       console.error("Error creating blog:", error);
@@ -224,7 +225,6 @@ const AdminBlogWebinar = () => {
           </Form>
         </motion.div>
       )}
-      
 
       {/* Webinar Section */}
       {tab === "webinar" && (
