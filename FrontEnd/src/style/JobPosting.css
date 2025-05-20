@@ -1,0 +1,77 @@
+.job-posting-container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.job-posting-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #333;
+}
+
+.job-posting-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #0073b1;
+  outline: none;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.submit-btn {
+  padding: 12px 24px;
+  background-color: #0073b1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #005a8d;
+}

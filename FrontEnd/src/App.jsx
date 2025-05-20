@@ -29,6 +29,7 @@ import ProgramDetail from "./components/ProgramDetail";
 import Program from "./components/Program";
 
 import Userdetails from "./components/Userdetails";
+import JobPosting from "./components/JobPosting";
 
 import PaymentSuccess from "./components/PaymentSuccess";
 import PaymentFailure from "./components/PaymentFailure";
@@ -170,9 +171,40 @@ function App() {
                 path="/AdminEmployerLogin"
                 element={<AdminEmployerLogin />}
               />
+              <Route path="/jobPost" element={<JobPosting />} />
               {/* <Route path="*" element={<NotFound />} />{" "} */}
               {/* Catch-all route for 404 pages */}
             </Route>
+            {/* ========== User Dashboard Routes ========== */}
+            {/* <Route
+              path="/user"
+              element={
+                <ProtectedRoute allowedRoles={["User"]}>
+                  <UserLayout /> 
+                </ProtectedRoute>
+              }
+            >
+              <Route path="dashboard" element={<UserDashboard />} />
+              <Route path="profile" element={<UserProfile />} />
+            </Route> */}
+            {/* ========== Recruiter Dashboard Routes ========== */}
+            {/* <Route
+              path="/recruiter"
+              element={
+                <ProtectedRoute allowedRoles={["Recruiter"]}>
+                  <RecruiterLayout /> 
+                </ProtectedRoute>
+              }
+            >
+              <Route path="dashboard" element={<RecruiterDashboard />} />
+              <Route path="post-job" element={<AdminPostJob />} />
+              <Route path="applicants" element={<AdminApplicants />} />
+              <Route
+                path="schedule-interview"
+                element={<AdminScheduleInterview />}
+              />
+              <Route path="resume-viewer" element={<AdminResumeViewer />} />
+            </Route> */}
 
             {/* Public routes */}
             <Route path="/admin-login" element={<AdminLoginPortal />} />
@@ -421,11 +453,6 @@ function App() {
                 }
               />
               {/* Fallback 404 */}
-
-           
-
-
-
 
               <Route path="recruiters" element={<AdminRecruiterDashboard />} />
               <Route path="EmailCampaign" element={<AdminEmailCampaign />} />
