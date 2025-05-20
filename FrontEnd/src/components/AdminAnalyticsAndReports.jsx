@@ -6,7 +6,7 @@ import AdminAIBasedDecision from './AdminAIBasedDecision'
 const AdminAnalyticsAndReports = () => {
   return (
     <div>
-      <h3>Analytics & Reports</h3>
+      {/* <h3>Analytics & Reports</h3> */}
       <AdminRealTimeInsightsDashboard />
       <AdminCustomReportsAndDataExports />
       <AdminAIBasedDecision />
