@@ -74,31 +74,30 @@ const AdminBlogWebinar = () => {
     });
   };
   const handleBlogSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!formData.blogTitle || !formData.blogContent || !formData.blogImage) {
-      alert("Please fill all fields and upload an image.");
-      return;
-    }
-
+  e.preventDefault();
+  try {
     const data = new FormData();
-    data.append("title", formData.blogTitle);
-    data.append("content", formData.blogContent);
-    data.append("image", formData.blogImage);
-    data.append("publish", publish.toString());
-
-
-    try {
-      const response = await axios.post(
-        "https://learning-hub-p2yq.onrender.com/api/blog",
-        data,
-        { headers: { "Content-Type": "multipart/form-data" } }
-      );
-      console.log("Blog created:", response.data);
-    } catch (error) {
-      console.error("Error creating blog:", error);
+    data.append("title", formData.blogTitle);       // backend expects 'title'
+    data.append("content", formData.blogContent);   // backend expects 'content'
+    data.append("publish", publish);                 // boolean or string "true"/"false"
+    if (formData.blogImage) {
+      data.append("image", formData.blogImage);     // multer expects field name 'image'
     }
-  };
+
+    const response = await axios.post(
+      "https://learning-hub-p2yq.onrender.com/api/blog",
+      data,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
+
+    console.log("Blog created:", response.data);
+  } catch (error) {
+    console.error("Error creating blog:", error);
+  }
+};
+
 
   const handleWebinarSubmit = async (e) => {
     e.preventDefault();
