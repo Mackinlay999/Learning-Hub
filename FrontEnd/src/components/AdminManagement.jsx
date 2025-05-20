@@ -89,20 +89,36 @@ function AdminManagement() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // const handleDelete = async (id) => {
+  //   if (window.confirm("Are you sure you want to delete this admin?")) {
+  //     try {
+  //       console.log("Deleting admin with ID:", id);  // Debugging log
+  //       await axios.delete(`/admin/deleteUser/${id}`, {
+  //         data: { userIdToDelete: id },
+  //         withCredentials: true,
+  //       });
+  //       fetchAdmins();  // Refresh the list
+  //     } catch (error) {
+  //       console.error("Error deleting admin:", error);
+  //     }
+  //   }
+  // };
+
+
   const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete this admin?")) {
-      try {
-        console.log("Deleting admin with ID:", id);  // Debugging log
-        await axios.delete(`/admin/deleteUser/${id}`, {
-          data: { userIdToDelete: id },
-          withCredentials: true,
-        });
-        fetchAdmins();  // Refresh the list
-      } catch (error) {
-        console.error("Error deleting admin:", error);
-      }
+  if (window.confirm("Are you sure you want to delete this admin?")) {
+    try {
+      console.log("Deleting admin with ID:", id);  // Debugging log
+      await axios.delete(`/admin/deleteUser/${id}`, {
+        withCredentials: true,
+      });
+      fetchAdmins();  // Refresh the list
+    } catch (error) {
+      console.error("Error deleting admin:", error);
     }
-  };
+  }
+};
+
 
   const resetForm = () => {
     setFormData({

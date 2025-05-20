@@ -323,10 +323,10 @@ const Admincontroller = {
       console.log("Delete user request");
 
       const adminId = req.userid; // from auth middleware
-      const { userIdToDelete } = req.params;
+      const {id } = req.params;
 
       console.log("Logged in Admin ID:", adminId);
-      console.log("User to delete ID:", userIdToDelete);
+      console.log("User to delete ID:", id);
 
       const loggedInAdmin = await Adminlogin.findById(adminId);
       if (!loggedInAdmin) {
@@ -342,12 +342,12 @@ const Admincontroller = {
         });
       }
 
-      const userToDelete = await Adminlogin.findById(userIdToDelete);
+      const userToDelete = await Adminlogin.findById(id);
       if (!userToDelete) {
         return res.status(404).json({ message: "User not found" });
       }
 
-      await Adminlogin.findByIdAndDelete(userIdToDelete);
+      await Adminlogin.findByIdAndDelete(id);
       return res.status(200).json({ message: "User deleted successfully" });
     } catch (error) {
       console.error("Error deleting user:", error);
