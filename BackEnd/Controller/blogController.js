@@ -9,11 +9,13 @@ const createBlog = async (req, res) => {
       ? `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`
       : null;
 
+    const publishBool = publish === "true" || publish === true;
+
     const newBlog = new Blog({
       title,
       content,
       blogImage: imageUrl,
-      publish,
+      publish: publishBool,
     });
 
     await newBlog.save();

@@ -85,7 +85,8 @@ const AdminBlogWebinar = () => {
     data.append("title", formData.blogTitle);
     data.append("content", formData.blogContent);
     data.append("image", formData.blogImage);
-    data.append("publish", publish);
+    data.append("publish", publish.toString());
+
 
     try {
       const response = await axios.post(
