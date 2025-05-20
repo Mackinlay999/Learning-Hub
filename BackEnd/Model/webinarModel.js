@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const webinarSchema = new mongoose.Schema(
   {
-    // name: { type: String, required: true },
-    // email: { type: String, required: true, unique: true },
-    // phone: { type: String },
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    phone: { type: String },
     title: { type: String, required: true },
     dateTime: { type: Date, required: true },
     description: { type: String, required: true },
