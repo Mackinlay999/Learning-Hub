@@ -9,6 +9,12 @@
     --light-gray: #f8f9fa;
   }
   
+  /* Admin Container Root */
+.admin-mentor-detail-container {
+  padding: 20px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
 
   /* Main card container */
   .admin-mentor-details-card {

@@ -112,7 +112,7 @@ const AdminStudentDetail = () => {
   return (
     <div className="admin-student-detail-container mt-4">
       <motion.div
-        className="card shadow-lg admin-student-detail-card"
+        className="shadow-lg admin-student-detail-card"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -140,7 +140,11 @@ const AdminStudentDetail = () => {
         <div className="card-body row admin-student-detail-card-body">
           <motion.div className="col-md-3 text-center admin-student-detail-profile">
             <img
-              src={student.photo}
+              src={
+                    student.photo
+                      ? `https://learning-hub-p2yq.onrender.com${student.photo}`
+                      : "https://via.placeholder.com/40" // Or your custom default image
+                  }
               alt="student"
               className="img-fluid rounded-circle mb-2"
               style={{ width: "120px", height: "120px", objectFit: "cover" }}
@@ -571,7 +575,7 @@ const AdminStudents = () => {
                   />
                 ) : (
                   <span
-                    onClick={() => navigate(`/students/${student._id}`)}
+                    onClick={() => navigate(`/admin/students/${student._id}`)}
                     style={{ cursor: "pointer" }}
                   >
                     {student.name}

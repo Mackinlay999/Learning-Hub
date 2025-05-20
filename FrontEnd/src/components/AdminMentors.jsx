@@ -275,7 +275,7 @@ const AdminMentors = () => {
                   />
                 ) : (
                   <span
-                    onClick={() => navigate(`/mentors/${mentor._id}`)}
+                    onClick={() => navigate(`/admin/mentors/${mentor._id}`)}
                     style={{ cursor: "pointer" }}
                   >
                     {mentor.name}

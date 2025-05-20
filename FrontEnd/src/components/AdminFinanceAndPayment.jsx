@@ -8,7 +8,7 @@ import AdminCommissionPayouts from './AdminCommissionPayouts'
 const AdminFinanceAndPayment = () => {
   return (
     <div>
-        <h3>Finance & Payment Management </h3>
+        {/* <h3>Finance & Payment Management </h3> */}
         <AdminTransaction />
        
         <AdminCommissionPayouts />

@@ -56,9 +56,9 @@ const AdminMentorDetail = () => {
   }
 
   return (
-    <div className="container mt-4">
+    <div className="admin-mentor-detail-container mt-4">
       <motion.div
-        className="card shadow-lg admin-mentor-details-card"
+        className="shadow-lg admin-mentor-details-card"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -76,7 +76,11 @@ const AdminMentorDetail = () => {
         <div className="card-body row admin-mentor-details-body">
           <div className="col-md-3 text-center admin-mentor-details-profile">
             <img
-              src={mentor.photo}
+              src={
+                mentor.photo
+                  ? `https://learning-hub-p2yq.onrender.com${mentor.photo}`
+                  : "https://via.placeholder.com/40" // Or your custom default image
+              }
               alt="mentor"
               className="img-fluid rounded-circle mb-2"
               style={{ width: "120px", height: "120px", objectFit: "cover" }}
