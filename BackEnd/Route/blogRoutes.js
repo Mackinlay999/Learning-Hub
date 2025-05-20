@@ -1,6 +1,6 @@
 const express = require("express");
 const { createBlog, getAllBlogs } = require("../Controller/blogController");
-const upload = require("../middleware/multer");
+const upload = require("../Utils/Multer");
 const router = express.Router();
 
 // Route for creating a new blog
