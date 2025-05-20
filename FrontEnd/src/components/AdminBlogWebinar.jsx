@@ -79,7 +79,8 @@ const AdminBlogWebinar = () => {
     const data = new FormData();
     data.append("title", formData.blogTitle);       // backend expects 'title'
     data.append("content", formData.blogContent);   // backend expects 'content'
-    data.append("publish", publish);                 // boolean or 
+    data.append("publish", publish.toString()); // ensures it's "true"/"false"
+            // boolean or 
     data.append("image", formData.blogImage);
     const response = await axios.post(
       "https://learning-hub-p2yq.onrender.com/api/blog",
