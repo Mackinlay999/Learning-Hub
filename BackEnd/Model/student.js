@@ -39,6 +39,7 @@ const studentSchema = new mongoose.Schema(
       type: Boolean,
       default: true   // By default, new students are active
     },
+      photo: { type: String },
   },
  
   { timestamps: true }
