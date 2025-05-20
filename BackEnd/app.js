@@ -44,29 +44,26 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
 const allowedOrigins = [
-    "https://mackinlay-learninghub.netlify.app",
-    "https://mackinlay-learninghub.netlify.app/",
-  "http://localhost:5173", // Frontend 1
-  "http://localhost:5174"  // Frontend 2
-
-
+  "https://mackinlay-learninghub.netlify.app",
+  "https://mackinlay-learninghub.netlify.app/",
+  "http://localhost:5173",
+  "http://localhost:5174"
 ];
-
 
 const corsOptions = {
   origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin) || !origin) {
-      // Allow the specified origins and also allow no origin (i.e., for Postman requests)
+    if (!origin || allowedOrigins.includes(origin)) {
+      // allow requests with no origin (like Postman) or from allowed origins
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  methods: ["GET,POST,PUT,DELETE"],
-  allowedHeaders: ["Content-Type","Authorization"],
-  // credentials: true, // Required to send cookies
-   credentials: true
+  methods: ["GET", "POST", "PUT", "DELETE"],  // Fixed array of methods
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
 };
+app.use(cors(corsOptions));
 
 
 
@@ -79,7 +76,6 @@ const corsOptions = {
 //   };
 app.use(express.json())
 
-app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(helmet());
 app.use(
