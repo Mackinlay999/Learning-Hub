@@ -158,9 +158,19 @@ const AdminAttendanceProgressTracking = () => {
     fetchRecords();
   }, []);
 
+  // const handleChange = (e) => {
+    
+
+  //   setRecord({ ...record, [e.target.name]: e.target.value });
+  // };
   const handleChange = (e) => {
-    setRecord({ ...record, [e.target.name]: e.target.value });
-  };
+  const { name, value } = e.target;
+  setRecord((prev) => ({
+    ...prev,
+    [name]: name === "progress" ? Number(value) : value,
+  }));
+};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -210,12 +220,22 @@ const AdminAttendanceProgressTracking = () => {
           <option value="Manual">Manual</option>
         </select>
         <input name="progress" type="number" placeholder="Progress (%)" min="0" max="100" value={record.progress} onChange={handleChange} required />
-        <select name="certificationIssued" value={record.certificationIssued} onChange={handleChange}>
-        <option value="">Certificate</option>
+
+
+        {/* <select name="certificationIssued" value={record.certificationIssued} onChange={handleChange}>
+       
           <option value="No">No</option>
 
           <option value="Yes">Yes</option>
-        </select>
+        </select> */}
+
+
+        <select name="certificationIssued" value={record.certificationIssued} onChange={handleChange} required>
+          <option value="" disabled>Select Certificate Status</option>
+  <option value="No">No</option>
+  <option value="Yes">Yes</option>
+</select>
+
         <button type="submit">{isEditing ? "Update" : "Add Record"}</button>
       </form>
 
