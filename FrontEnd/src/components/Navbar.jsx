@@ -67,6 +67,9 @@ const NavBar = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3 }}
                     >
+                      <NavDropdown.Item as={Link} to="/jobs">
+                        Careers
+                      </NavDropdown.Item>
                       <NavDropdown.Item as={Link} to="/webinars">
                         Free Counselling Webinars
                       </NavDropdown.Item>
