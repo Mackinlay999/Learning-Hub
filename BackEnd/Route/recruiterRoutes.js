@@ -16,6 +16,8 @@ router.delete("/recruiters/partners/:id", recruiterController.deletePartnerCompa
 // Post job/internship
 router.post("/recruiters/post", recruiterController.postJob);
 router.get("/recruiters/jobs", recruiterController.getJob);
+router.put("/recruiters/jobs/:id", recruiterController.updateJob);  // UPDATE job
+router.delete("/recruiters/jobs/:id", recruiterController.deleteJob); 
 
 // View applicants
 router.get("/recruiters/applicants", recruiterController.getApplicants);
