@@ -8,6 +8,7 @@ import {
   Row,
   Col,
 } from "react-bootstrap";
+import { toast } from "react-toastify";
 import axios from "axios";
 import "../style/AdminBlogWebinar.css";
 
@@ -91,9 +92,10 @@ const AdminBlogWebinar = () => {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
-
+      toast.success("✅ Blog created successfully!");
       console.log("Blog created:", response.data);
     } catch (error) {
+      toast.error("❌ Error creating blog. Please try again.");
       console.error("Error creating blog:", error);
     }
   };
@@ -111,8 +113,10 @@ const AdminBlogWebinar = () => {
           typeofProgram: formData.typeofProgram,
         }
       );
+      toast.success("✅ Webinar scheduled successfully!");
       console.log("Webinar scheduled:", response.data);
     } catch (error) {
+      toast.error("❌ Error scheduling webinar. Please try again.");
       console.error("Error scheduling webinar:", error);
     }
   };

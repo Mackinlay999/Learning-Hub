@@ -168,7 +168,6 @@ function App() {
               {/* <Route path="*" element={<NotFound />} />{" "} */}
               {/* Catch-all route for 404 pages */}
             </Route>
-
             {/* Public routes */}
             <Route path="/admin-login" element={<AdminLoginPortal />} />
             <Route path="/admin-register" element={<AdminRegister />} />
@@ -416,11 +415,6 @@ function App() {
                 }
               />
               {/* Fallback 404 */}
-
-           
-
-
-
 
               <Route path="recruiters" element={<AdminRecruiterDashboard />} />
               <Route path="EmailCampaign" element={<AdminEmailCampaign />} />
