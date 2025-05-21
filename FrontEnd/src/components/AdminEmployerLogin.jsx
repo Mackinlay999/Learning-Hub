@@ -165,7 +165,7 @@ const AdminEmployerLogin = () => {
         <button className="AdminEmployer-userLoginBtn"
           onClick={() => navigate("/login")}
         >
-          Recruiter Login
+          User Login
         </button>
         <button
           className="AdminEmployer-adminLoginBtn"

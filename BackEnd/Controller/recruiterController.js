@@ -58,12 +58,13 @@ const postJob = async (req, res) => {
 };
 const getJob = async (req, res) => {
   try {
-    const jobs = await Job.find().sort({ createdAt: -1 }); // Replace `Job` with your Mongoose/Sequelize model
+    const jobs = await Jobs.find().sort({ createdAt: -1 });
     res.json(jobs);
   } catch (error) {
     res.status(500).json({ message: "Failed to fetch jobs" });
   }
-}
+};
+
 
 const getApplicants = async (req, res) => {
   const applicants = await Applicant.find().populate("user job");
@@ -298,6 +299,7 @@ const shortlistApplicant = async (req, res) => {
 module.exports = {
   getPartnerCompanies,
   postJob,
+  getJob,
   getApplicants,
   updateInterview,
   addPartnerCompany,
