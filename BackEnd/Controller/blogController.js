@@ -1,11 +1,17 @@
 const Blog = require("../Model/blogModel");
-
-// Create a new blog
 const createBlog = async (req, res) => {
   try {
-    const { title, content, image, publish } = req.body;
-    const newBlog = new Blog({ title, content, image, publish });
+    const { title, content, publish } = req.body;
+
+    // Save relative path for image
+    const imagePath = req.file ? `/uploads/${req.file.filename}` : "";
+
+    // Convert publish to Boolean
+    const publishBool = publish === "true" || publish === true;
+
+    const newBlog = new Blog({ title, content, image: imagePath, publish: publishBool });
     await newBlog.save();
+
     res.status(201).json({ message: "Blog created successfully", blog: newBlog });
   } catch (error) {
     res.status(400).json({ message: "Error creating blog", error: error.message });

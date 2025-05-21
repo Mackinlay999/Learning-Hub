@@ -1,0 +1,141 @@
+.job-details-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1.5rem 4rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.job-details-header {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.job-details-company-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 115, 177, 0.3);
+  background-color: #f3f6fb;
+}
+
+.job-details-title-info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.job-details-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 0.2rem;
+  color: #0073b1;
+}
+
+.job-details-company-name {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0073b1;
+  text-decoration: none;
+  margin-bottom: 0.3rem;
+  transition: color 0.3s ease;
+}
+
+.job-details-company-name:hover {
+  color: #004a7c;
+  text-decoration: underline;
+}
+
+.job-details-location {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.2rem;
+}
+
+.job-details-type-posted {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.job-details-type {
+  font-weight: 600;
+}
+
+.job-details-apply-btn {
+  background-color: #0073b1;
+  color: white;
+  border: none;
+  padding: 0.8rem 2.2rem;
+  border-radius: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0,115,177,0.4);
+}
+
+.job-details-apply-btn:hover {
+  background-color: #005b91;
+  box-shadow: 0 6px 14px rgba(0,91,145,0.6);
+}
+
+.job-details-main {
+  line-height: 1.6;
+}
+
+.job-details-section {
+  margin-bottom: 2.5rem;
+}
+
+.job-details-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #0073b1;
+  padding-bottom: 0.25rem;
+  color: #0073b1;
+}
+
+.job-details-description {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1.25rem;
+}
+
+.job-details-list {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  color: #444;
+}
+
+.job-details-list-item {
+  margin-bottom: 0.7rem;
+  font-size: 1.05rem;
+}
+
+.job-details-company-overview p {
+  font-size: 1.05rem;
+  color: #555;
+  max-width: 600px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .job-details-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.3rem;
+  }
+
+  .job-details-apply-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

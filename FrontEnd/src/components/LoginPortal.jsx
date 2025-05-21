@@ -91,7 +91,7 @@ const LoginPortal = () => {
             </div>
           </div>
           <div className="button-group">
-            <button type="submit" className="login-button">
+            <button type="submit" className="login-button" onClick={() => navigate("/user-dashboard")}>
               Login
             </button>
             <button

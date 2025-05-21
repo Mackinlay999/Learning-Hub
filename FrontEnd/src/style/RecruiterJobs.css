@@ -1,0 +1,97 @@
+.recruiter-jobs-container {
+  padding: 2rem;
+  max-width: 1100px;
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.recruiter-jobs-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #222;
+  margin-bottom: 2rem;
+}
+
+.recruiter-jobs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.recruiter-jobs-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  border-left: 4px solid #0073b1;
+  padding: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+}
+
+.recruiter-jobs-info {
+  flex: 1;
+}
+
+.recruiter-jobs-job-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0073b1;
+  margin-bottom: 0.4rem;
+}
+
+.recruiter-jobs-meta {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.recruiter-jobs-applications {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.recruiter-jobs-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.recruiter-jobs-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.recruiter-jobs-btn.edit {
+  background-color: #0073b1;
+  color: white;
+}
+
+.recruiter-jobs-btn.edit:hover {
+  background-color: #005b91;
+}
+
+.recruiter-jobs-btn.delete {
+  background-color: #f44336;
+  color: white;
+}
+
+.recruiter-jobs-btn.delete:hover {
+  background-color: #d32f2f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .recruiter-jobs-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .recruiter-jobs-actions {
+    margin-top: 1rem;
+  }
+}

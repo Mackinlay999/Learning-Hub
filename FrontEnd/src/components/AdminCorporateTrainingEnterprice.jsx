@@ -7,7 +7,7 @@ import AdminCustomLearningPaths from './AdminCustomLearningPaths'
 const AdminCorporateTrainingEnterprice = () => {
   return (
     <div>
-      <h3>Corporate Training & Enterprise Solutions</h3>
+      {/* <h3>Corporate Training & Enterprise Solutions</h3> */}
       <AdminCorporateClientForm />
       <AdminHRAndEmployeeTraining />
       <AdminCustomLearningPaths />

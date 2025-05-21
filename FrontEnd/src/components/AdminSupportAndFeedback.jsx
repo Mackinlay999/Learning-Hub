@@ -6,7 +6,7 @@ import AdminCommunityEngagement from './AdminCommunityEngagement'
 const AdminSupportAndFeedback = () => {
   return (
     <div>
-      <h3>Support & Feedback</h3>
+      {/* <h3>Support & Feedback</h3> */}
       <AdminStudentHelpdeskAndTicketing />
       <AdminFeedbackCourseRatings />
       <AdminCommunityEngagement />
