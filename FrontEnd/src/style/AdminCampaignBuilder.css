@@ -127,8 +127,9 @@
 
 /* Buttons */
 .cam-btn {
-  width: 100%;
-  max-width: 220px;
+  
+  max-width: 100px;
+  
   margin: 15px auto;
   background-color:#c82333;
 }
@@ -241,6 +242,136 @@
   background-color: #ccc;
   border-radius: 10px;
 }
+
+/* new design */
+
+/* Font size and spacing consistency */
+body, .cam-card {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.cam-title {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Input and textarea */
+.cam-input, .cam-textarea {
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+/* Primary buttons */
+.cam-button,
+.cam-btn,
+.cam-btn-edit,
+.cam-btn-delete {
+  font-size: 0.95rem;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* Specific edit/delete */
+.cam-btn-edit {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.cam-btn-delete {
+  background-color: #dc3545;
+  color: white;
+  margin-left: 12px;
+}
+
+/* Campaign button wrapper for alignment */
+.cam-action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+@media (max-width: 768px) {
+  .cam-title {
+    font-size: 1.5rem;
+  }
+
+  .cam-input,
+  .cam-textarea {
+    font-size: 0.95rem;
+  }
+
+  .cam-button,
+  .cam-btn,
+  .cam-btn-edit,
+  .cam-btn-delete {
+    font-size: 0.9rem;
+    padding: 10px 14px;
+    width: 100%;
+  }
+
+  .cam-action-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .cam-btn-delete {
+    margin-left: 0 !important;
+  }
+ 
+  /* .cam-btn,
+  .cam-btn-edit,
+  {
+    font-size: 0.85rem;
+    width: 50px !important;
+    height: 50px;
+    font-size: 10px;
+    
+    
+
+  } */
+ 
+}
+
+@media (max-width: 480px) {
+  .cam-title {
+    font-size: 1.3rem;
+  }
+
+  .cam-input,
+  .cam-textarea {
+    font-size: 0.875rem;
+  }
+
+  .cam-button,
+  .cam-btn,
+  .cam-btn-edit,
+  .cam-btn-delete {
+    font-size: 0.85rem;
+    
+
+  }
+}
+.cam-button-cam{
+  width: 100%;
+  background-color:#dc3545;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+}
+.cam-button-cam:hover{
+  background-color: #c82333;
+}
+
+
+
+
 
 
 

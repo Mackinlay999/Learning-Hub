@@ -16,8 +16,9 @@
 
 /* Discounts Container */
 .discounts-container {
-  max-width: 600px;
+  max-width: 900px;
   margin: auto;
+  margin-top: 40px;
   padding: 20px;
   text-align: center;
   background-color: var(--white);
