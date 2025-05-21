@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "../api/axios";
 import { Container, Form, Button, Alert, Spinner } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
 import "../style/AdminPostJob.css";
 
 const JOB_TYPES = ["Full-time", "Internship"];
@@ -25,9 +24,24 @@ const AdminPostJob = () => {
     applyLink: ""
   });
 
+  const [jobs, setJobs] = useState([]);
+  const [showForm, setShowForm] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const fetchJobs = async () => {
+    try {
+      const response = await axios.get("/recruiters/jobs");
+      setJobs(response.data.reverse());
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchJobs();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,6 +74,8 @@ const AdminPostJob = () => {
         type: "success",
         message: "Job/Internship posted successfully!",
       });
+      setShowForm(false);
+      fetchJobs();
     } catch (error) {
       console.error("Error posting job:", error);
       setStatus({
@@ -71,16 +87,25 @@ const AdminPostJob = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/recruiters/jobs/${id}`);
+      fetchJobs();
+    } catch (error) {
+      console.error("Error deleting job:", error);
+    }
+  };
+
   return (
     <Container className="admin-post-job-container py-5">
       <div className="admin-post-job-header d-flex justify-content-between align-items-center mb-4">
-        <h3 className="admin-post-job-title fw-bold">Post Job/Internship</h3>
+        <h3 className="admin-post-job-title fw-bold">Job Listings</h3>
         <Button
-          variant="secondary"
-          onClick={() => navigate("/admin/recruiters/dashboard")}
-          className="admin-post-job-back-btn"
+          variant="primary"
+          onClick={() => setShowForm((prev) => !prev)}
+          className="admin-post-job-create-btn"
         >
-          Back to Dashboard
+          {showForm ? "Close Form" : "Create Job"}
         </Button>
       </div>
 
@@ -95,7 +120,60 @@ const AdminPostJob = () => {
         </Alert>
       )}
 
-      <Form onSubmit={handleSubmit} className="admin-post-job-form">
+      {!showForm && (
+        <div className="admin-post-job-table-wrapper">
+          <table className="admin-post-job-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Type</th>
+                <th>Location</th>
+                <th>Deadline</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {jobs.map((job) => (
+                <tr key={job._id}>
+                  <td>{job.title}</td>
+                  <td>{job.type}</td>
+                  <td>{job.location}</td>
+                  <td>{job.deadline}</td>
+                  <td>
+                    <Button
+                      variant="warning"
+                      size="sm"
+                      className="admin-post-job-action-btn me-2"
+                      onClick={() => alert("Edit functionality to be implemented")}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      variant="danger"
+                      size="sm"
+                      className="admin-post-job-action-btn"
+                      onClick={() => handleDelete(job._id)}
+                    >
+                      Delete
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+              {jobs.length === 0 && (
+                <tr>
+                  <td colSpan="5" className="admin-post-job-empty">
+                    No jobs found.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+
+      {showForm && (
+        <Form onSubmit={handleSubmit} className="admin-post-job-form">
         <Form.Group controlId="title" className="admin-post-job-group">
           <Form.Label className="admin-post-job-label">Title</Form.Label>
           <Form.Control
@@ -274,6 +352,7 @@ const AdminPostJob = () => {
           )}
         </Button>
       </Form>
+      )}
     </Container>
   );
 };

@@ -22,7 +22,7 @@ const AdminBlogWebinar = () => {
     webinarDateTime: "",
     webinarDescription: "",
     webinarLink: "", // new
-    typeofprogram: "", // new
+    typeofProgram: "", // new
   });
   const [registrants, setRegistrants] = useState([]);
   const [showRegistrants, setShowRegistrants] = useState(false);
@@ -77,11 +77,11 @@ const AdminBlogWebinar = () => {
     e.preventDefault();
     try {
       const data = new FormData();
-      data.append("title", formData.blogTitle);
-      data.append("content", formData.blogContent);
-      data.append("publish", publish);
+      data.append("title", formData.blogTitle); // backend expects 'title'
+      data.append("content", formData.blogContent); // backend expects 'content'
+      data.append("publish", publish.toString()); // boolean or string "true"/"false"
       if (formData.blogImage) {
-        data.append("image", formData.blogImage);
+        data.append("image", formData.blogImage); // multer expects field name 'image'
       }
 
       const response = await axios.post(
@@ -108,7 +108,7 @@ const AdminBlogWebinar = () => {
           dateTime: formData.webinarDateTime,
           description: formData.webinarDescription,
           link: formData.webinarLink,
-          typeofprogram: formData.typeofprogram,
+          typeofProgram: formData.typeofProgram,
         }
       );
       console.log("Webinar scheduled:", response.data);

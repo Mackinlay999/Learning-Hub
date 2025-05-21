@@ -1,0 +1,180 @@
+.apply-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.apply-modal-container {
+  background: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  padding: 2rem 2.5rem;
+  box-sizing: border-box;
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+.apply-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.8rem;
+}
+
+.apply-modal-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0073b1;
+  margin: 0;
+}
+
+.apply-modal-job-title {
+  font-weight: 900;
+}
+
+.apply-modal-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.3s ease;
+  padding: 0 0.25rem;
+}
+
+.apply-modal-close-btn:hover {
+  color: #0073b1;
+}
+
+.apply-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.apply-modal-label {
+  font-weight: 600;
+  color: #333;
+}
+
+.apply-modal-required {
+  color: #e03e2f;
+  margin-left: 0.2rem;
+}
+
+.apply-modal-input,
+.apply-modal-input-file,
+.apply-modal-textarea {
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1.5px solid #ccc;
+  outline-offset: 2px;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.apply-modal-input:focus,
+.apply-modal-input-file:focus,
+.apply-modal-textarea:focus {
+  border-color: #0073b1;
+  outline: none;
+}
+
+.apply-modal-error-input {
+  border-color: #e03e2f !important;
+}
+
+.apply-modal-error-msg {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #e03e2f;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.apply-modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.apply-modal-submit-btn,
+.apply-modal-cancel-btn {
+  border: none;
+  border-radius: 30px;
+  padding: 0.75rem 1.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.apply-modal-submit-btn {
+  background-color: #0073b1;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 115, 177, 0.5);
+}
+
+.apply-modal-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.apply-modal-cancel-btn {
+  background-color: #eee;
+  color: #555;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.apply-modal-submit-btn:hover:not(:disabled) {
+  background-color: #005b91;
+  box-shadow: 0 6px 16px rgba(0, 91, 145, 0.6);
+}
+
+.apply-modal-cancel-btn:hover {
+  background-color: #ccc;
+}
+
+.apply-modal-success-msg {
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #2b8a3e;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .apply-modal-container {
+    padding: 1.5rem 1.8rem;
+  }
+
+  .apply-modal-buttons {
+    flex-direction: column;
+  }
+
+  .apply-modal-submit-btn,
+  .apply-modal-cancel-btn {
+    width: 100%;
+    padding: 0.75rem 0;
+  }
+}

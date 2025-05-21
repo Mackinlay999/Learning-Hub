@@ -112,7 +112,7 @@ const AdminStudentDetail = () => {
   return (
     <div className="admin-student-detail-container mt-4">
       <motion.div
-        className="card shadow-lg admin-student-detail-card"
+        className="shadow-lg admin-student-detail-card"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -140,7 +140,11 @@ const AdminStudentDetail = () => {
         <div className="card-body row admin-student-detail-card-body">
           <motion.div className="col-md-3 text-center admin-student-detail-profile">
             <img
-              src={student.photo}
+              src={
+                    student.photo
+                      ? `https://learning-hub-p2yq.onrender.com${student.photo}`
+                      : "https://via.placeholder.com/40" // Or your custom default image
+                  }
               alt="student"
               className="img-fluid rounded-circle mb-2"
               style={{ width: "120px", height: "120px", objectFit: "cover" }}
@@ -341,24 +345,41 @@ const AdminStudents = () => {
   };
 
   const handleAddStudent = async () => {
-    try {
-      const { data } = await axios.post(
-        "https://learning-hub-p2yq.onrender.com/api/students",
-        newStudent
-      );
-      setStudents([...students, data]);
-      setNewStudent({
-        name: "",
-        course: "",
-        status: "Active",
-        photo: "",
-        email: "",
-        mobile: "",
-      });
-    } catch (error) {
-      console.error("Error adding student:", error);
+  try {
+    const formData = new FormData();
+    formData.append("name", newStudent.name);
+    formData.append("course", newStudent.course);
+    formData.append("status", newStudent.status);
+    formData.append("email", newStudent.email);
+    formData.append("mobile", newStudent.mobile);
+    if (newStudent.photo) {
+      formData.append("photo", newStudent.photo);
     }
-  };
+
+    const { data } = await axios.post(
+      "https://learning-hub-p2yq.onrender.com/api/students",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    setStudents([...students, data]);
+    setNewStudent({
+      name: "",
+      course: "",
+      status: "Active",
+      photo: "",
+      email: "",
+      mobile: "",
+    });
+  } catch (error) {
+    console.error("Error adding student:", error);
+  }
+};
+
 
   const handleEdit = (student) => {
     setEditId(student._id);
@@ -466,13 +487,14 @@ const AdminStudents = () => {
             }
           />
           <input
-            className="form-control col"
-            placeholder="Photo URL"
-            value={newStudent.photo}
+            type="file"
+            name="photo"
+            accept="image/*"
             onChange={(e) =>
-              setNewStudent({ ...newStudent, photo: e.target.value })
+              setNewStudent({ ...newStudent, photo: e.target.files[0] })
             }
           />
+
           <input
             className="form-control col"
             placeholder="Email"
@@ -525,13 +547,18 @@ const AdminStudents = () => {
             <tr key={student._id}>
               <td>
                 <img
-                  src={student.photo}
+                  src={
+                    student.photo
+                      ? `https://learning-hub-p2yq.onrender.com${student.photo}`
+                      : "https://via.placeholder.com/40" // Or your custom default image
+                  }
                   alt="student"
                   style={{
                     width: "40px",
                     height: "40px",
                     borderRadius: "50%",
                     objectFit: "cover",
+                    objectPosition: "top",
                   }}
                 />
               </td>
@@ -548,7 +575,7 @@ const AdminStudents = () => {
                   />
                 ) : (
                   <span
-                    onClick={() => navigate(`/students/${student._id}`)}
+                    onClick={() => navigate(`/admin/students/${student._id}`)}
                     style={{ cursor: "pointer" }}
                   >
                     {student.name}

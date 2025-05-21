@@ -1,12 +1,14 @@
+require("dotenv").config();
 const Adminlogin = require("../Model/AdminlogScheme");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const app = require("../app");
-require("dotenv").config();
+
 const transporter = require("../Utils/Approvel"); // nodemailer instance
 const nodemailer = require("nodemailer");
 
 const path = require("path");
+
 
 const Admincontroller = {
   register: async (req, res) => {
@@ -34,8 +36,7 @@ const Admincontroller = {
 
       await newuser.save();
 
-      //       const approveURL = `http://localhost:3000/approve/${newuser._id}`;
-      // const rejectURL = `http://localhost:3000/reject/${newuser._id}`;
+
 
       const approveURL = `https://learning-hub-p2yq.onrender.com/api/approveEmail/${newuser._id}`;
       const rejectURL = `https://learning-hub-p2yq.onrender.com/api/rejectEmail/${newuser._id}`;
@@ -322,10 +323,10 @@ const Admincontroller = {
       console.log("Delete user request");
 
       const adminId = req.userid; // from auth middleware
-      const { userIdToDelete } = req.body;
+      const {id } = req.params;
 
       console.log("Logged in Admin ID:", adminId);
-      console.log("User to delete ID:", userIdToDelete);
+      console.log("User to delete ID:", id);
 
       const loggedInAdmin = await Adminlogin.findById(adminId);
       if (!loggedInAdmin) {
@@ -341,12 +342,12 @@ const Admincontroller = {
         });
       }
 
-      const userToDelete = await Adminlogin.findById(userIdToDelete);
+      const userToDelete = await Adminlogin.findById(id);
       if (!userToDelete) {
         return res.status(404).json({ message: "User not found" });
       }
 
-      await Adminlogin.findByIdAndDelete(userIdToDelete);
+      await Adminlogin.findByIdAndDelete(id);
       return res.status(200).json({ message: "User deleted successfully" });
     } catch (error) {
       console.error("Error deleting user:", error);

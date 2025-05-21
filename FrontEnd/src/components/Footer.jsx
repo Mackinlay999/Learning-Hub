@@ -75,7 +75,7 @@ const Footer = () => {
                 {[
                   { path: "/about", label: "About Us" },
                   { path: "/contact", label: "Contact" },
-                  { path: "/careers", label: "Careers" },
+                  { path: "/jobs", label: "Careers" },
                   { path: "/blog", label: "Blog" },
                 ].map(({ path, label }, index) => (
                   <motion.div

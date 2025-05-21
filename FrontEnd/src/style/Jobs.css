@@ -1,0 +1,112 @@
+:root {
+  --primary-color: #D32F2F;
+  --dark-gray: #333333;
+  --white: #FFFFFF;
+  --gold-accent: #FFC107;
+}
+
+.user-jobs-container {
+  padding: 3rem 2rem;
+  background-color: var(--white);
+  color: var(--dark-gray);
+}
+
+.user-jobs-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.user-jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.user-jobs-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-jobs-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.user-jobs-job-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.user-jobs-type {
+  color: var(--gold-accent);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.user-jobs-details p {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+.user-jobs-button {
+  display: block;
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  text-align: center;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.user-jobs-button:hover {
+  background-color: #b71c1c;
+}
+
+.user-jobs-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+}
+
+.user-jobs-spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 4px solid #ccc;
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .user-jobs-card {
+    padding: 1rem;
+  }
+
+  .user-jobs-job-title {
+    font-size: 1.2rem;
+  }
+
+  .user-jobs-title {
+    font-size: 1.6rem;
+  }
+}

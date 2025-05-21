@@ -14,6 +14,7 @@ import SuccessStory from "./components/SuccessStory";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import NotFound from "./components/NotFound"; // For handling 404 pages
+import Jobs from "./components/Jobs";
 import "./style/App.css"; // Import custom styles
 import "bootstrap/dist/css/bootstrap.min.css"; // Bootstrap styles
 import { ToastContainer } from "react-toastify"; // For toast notifications
@@ -105,16 +106,9 @@ const PublicLayout = () => (
     <Footer />
   </>
 );
-// // Layout for admin pages (Sidebar only)
-// const AdminLayout = () => (
-//   <>
-//     <Sidebar />
-//     <Outlet /> {/* Admin pages render here */}
-//   </>
-// );
+
 const AdminLayout = () => {
   const { auth } = useAuth();
-
   return (
     <div className="d-flex flex-column flex-md-row">
       {/* Sidebar for medium and up */}
@@ -170,6 +164,7 @@ function App() {
                 path="/AdminEmployerLogin"
                 element={<AdminEmployerLogin />}
               />
+              <Route path="/jobs" element={<Jobs />} />
               {/* <Route path="*" element={<NotFound />} />{" "} */}
               {/* Catch-all route for 404 pages */}
             </Route>
