@@ -4,7 +4,8 @@ const {
   getAllRecruiterJobs,
   getRecruiterJobById,
   updateRecruiterJob,
-  deleteRecruiterJob
+  deleteRecruiterJob,
+  applyToJob,
 } = require ('../Controller/recruiterJobController.js');
 
 const router = express.Router();
@@ -14,5 +15,6 @@ router.get('/recruiter/jobs', getAllRecruiterJobs);        // GET /api/recruiter
 router.get('/recruiter/jobs/:id', getRecruiterJobById);     // GET /api/recruiters/jobs/:id
 router.put('/recruiter/jobs/:id', updateRecruiterJob);      // PUT /api/recruiters/jobs/:id
 router.delete('/recruiter/jobs/:id', deleteRecruiterJob);   // DELETE /api/recruiters/jobs/:id
+router.get('/apply/:id', applyToJob);
 
 module.exports = router;

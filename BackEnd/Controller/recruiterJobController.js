@@ -52,11 +52,31 @@ const deleteRecruiterJob = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+// In your controller, add this:
+
+const applyToJob = async (req, res) => {
+  try {
+    const jobId = req.params.id;
+    const job = await RecruiterJob.findById(jobId);
+    if (!job) return res.status(404).json({ message: 'Job not found' });
+
+    if (!job.applicationLink) {
+      return res.status(400).json({ message: 'No application link available for this job.' });
+    }
+
+    // Redirect the user to the application link
+    return res.redirect(job.applicationLink);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 
 module.exports = {
   createRecruiterJob,
   getAllRecruiterJobs,
   getRecruiterJobById,
   updateRecruiterJob,
-  deleteRecruiterJob
+  deleteRecruiterJob,
+  applyToJob
 };
