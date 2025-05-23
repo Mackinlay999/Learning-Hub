@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from './axios';
 import '../style/Register.css'; // Importing external CSS file
 
-const AdminRegister = () => {
+const RecruiterRegister = () => {
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -103,5 +103,5 @@ const AdminRegister = () => {
     );
 }
 
-export default AdminRegister;
+export default RecruiterRegister;
 

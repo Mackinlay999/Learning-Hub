@@ -23,9 +23,7 @@ import BlogTraining from "./components/BlogTraining";
 import Enterprise from "./components/Enterprise";
 import Webinars from "./components/Webinars";
 import Recruiters from "./components/Recruiters";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import PasswordReset from "./components/PasswordReset";
+
 import ProgramDetail from "./components/ProgramDetail";
 import Program from "./components/Program";
 
@@ -41,7 +39,7 @@ import FinanceProgram from "./components/FinanceProgram";
 import AdminEmployerLogin from "./components/AdminEmployerLogin";
 // import DashboardAdmin from "../admin/src/components/DashboardAdmin";
 
-// DashboardAdmin
+// ADMIN PAGES
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -63,7 +61,7 @@ import {
 import AdminAddStudent from "./components/AdminAddStudent";
 import AdminEditStudent from "./components/AdminEditStudent";
 import AdminRegister from "./components/AdminRegister";
-import AdminRecruiterRegister from "./components/AdminRecruiterRegister"
+
 
 // import AdminUserdetails from "./components/AdminUserdetails";
 import AdminDashboard from "./components/AdminDashboard";
@@ -98,8 +96,25 @@ import { useAuth } from "./context/AuthContext";
 import AdminLeadsByDate from "./components/AdminLeadByDate";
 import AdminLeadDetails from "./components/AdminLeadDetails";
 import AdminCourses from "./components/AdminCourses";
-import AdminRecruiterLogin from "./components/AdminRecruiterLogin";
-import AdminRecruiterPasswordReset from "./components/AdminRecruiterPasswordReset"
+
+// Recruiter pages
+import RecruiterLayout from "./components/RecruiterLayout";
+import RecruiterLogin from "./components/RecruiterLogin";
+import RecruiterRegister from "./components/RecruiterRegister";
+import RecruiterPasswordReset from "./components/RecruiterPasswordReset";
+import RecruiterDashboard from "./components/RecruiterDashboard";
+import JobPosting from "./components/JobPosting";
+import RecruiterJobs from "./components/RecruiterJobs";
+
+// Student pages
+import StudentLayout from "./components/StudentLayout";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import PasswordReset from "./components/PasswordReset";
+import StudentDashboard from "./components/StudentDashboard";
+import JobList from "./components/JobList";
+import JobDetails from "./components/JobDetails";
+
 
 // Layout for public-facing pages (Navbar + Footer)
 const PublicLayout = () => (
@@ -150,9 +165,7 @@ function App() {
               <Route path="/enterprise" element={<Enterprise />} />
               <Route path="/webinars" element={<Webinars />} />
               <Route path="/for-recruiters" element={<Recruiters />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/PasswordReset" element={<PasswordReset />} />
+
               <Route path="/program" element={<Program />} />
               <Route path="/program/:title" element={<ProgramDetail />} />
               <Route path="/Userdetails" element={<Userdetails />} />
@@ -164,13 +177,23 @@ function App() {
               <Route path="/program/sales" element={<SalesProgram />} />
               <Route path="/program/finance" element={<FinanceProgram />} />
 
-                         {/* recuiter login */}
+              {/* user or student login */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/PasswordReset" element={<PasswordReset />} />
 
-               <Route path="/Recruiter-login" element={<AdminRecruiterLogin />} />
-               <Route path="/Recruiter-register" element={<AdminRecruiterRegister/>} />
-               <Route path="/Recruiter-PasswordReset" element={<AdminRecruiterPasswordReset/>} />
+              {/* recuiter login */}
 
-               
+              <Route path="/Recruiter-login" element={<RecruiterLogin />} />
+              <Route
+                path="/Recruiter-register"
+                element={<RecruiterRegister />}
+              />
+              <Route
+                path="/Recruiter-PasswordReset"
+                element={<RecruiterPasswordReset />}
+              />
+
               <Route
                 path="/AdminEmployerLogin"
                 element={<AdminEmployerLogin />}
@@ -179,7 +202,9 @@ function App() {
               {/* <Route path="*" element={<NotFound />} />{" "} */}
               {/* Catch-all route for 404 pages */}
             </Route>
-            {/* Public routes */}
+
+            {/* PUBLIC ROUTES ENDS HERE */}
+            {/* ADMIN ROUTES STARTS HERE */}
             <Route path="/admin-login" element={<AdminLoginPortal />} />
             <Route path="/admin-register" element={<AdminRegister />} />
             <Route path="/admin-PasswordReset" element={<PasswordReset />} />
@@ -428,24 +453,51 @@ function App() {
               />
               {/* Fallback 404 */}
 
-
-
-
-   
-         
-
-           
-
-
-
-
-
               <Route path="recruiters" element={<AdminRecruiterDashboard />} />
               <Route path="EmailCampaign" element={<AdminEmailCampaign />} />
               <Route path="resume" element={<AdminResumeViewer />} />
               <Route path="LeadsByDate" element={<AdminLeadsByDate />} />
               <Route path="LeadDetails" element={<AdminLeadDetails />} />
             </Route>
+
+            {/* RECRUITER ROUTES STARTS HERE */}
+            <Route path="recruiter/*" element={
+            <ProtectedRoute allowedRoles={['Recruiter', 'Super Admin']}>
+              <RecruiterLayout />
+            </ProtectedRoute>
+          }>
+            <Route index element={<Navigate to="dashboard" />} />
+            <Route path="dashboard" element={<RecruiterDashboard />} />
+            <Route path="job-posting" element={<JobPosting />} />
+            <Route path="my-jobs" element={<RecruiterJobs />} />
+            <Route path="not-authorized" element={<NotAuthorized />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+
+            {/* RECRUITER ROUTES ENDS HERE */}
+
+
+
+            {/* STUDENT ROUTES STARTS HERE */}
+            <Route path="student/*" element={
+            <ProtectedRoute allowedRoles={['Student']}>
+              <StudentLayout />
+            </ProtectedRoute>
+          }>
+            <Route index element={<Navigate to="dashboard" />} />
+            <Route path="dashboard" element={<StudentDashboard />} />
+            <Route path="jobs" element={<JobList />} />
+            <Route path="jobs/:id" element={<JobDetails />} />
+            <Route path="not-authorized" element={<NotAuthorized />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+
+
+            {/* STUDENT ROUTES ENDS HERE */}
+
+
+
+            
             <Route path="*" element={<NotFound />} />
 
             {/* <Route path="*" element={<NotFound />} />{" "} */}
