@@ -63,6 +63,7 @@ import {
 import AdminAddStudent from "./components/AdminAddStudent";
 import AdminEditStudent from "./components/AdminEditStudent";
 import AdminRegister from "./components/AdminRegister";
+import AdminRecruiterRegister from "./components/AdminRecruiterRegister"
 
 // import AdminUserdetails from "./components/AdminUserdetails";
 import AdminDashboard from "./components/AdminDashboard";
@@ -97,6 +98,8 @@ import { useAuth } from "./context/AuthContext";
 import AdminLeadsByDate from "./components/AdminLeadByDate";
 import AdminLeadDetails from "./components/AdminLeadDetails";
 import AdminCourses from "./components/AdminCourses";
+import AdminRecruiterLogin from "./components/AdminRecruiterLogin";
+import AdminRecruiterPasswordReset from "./components/AdminRecruiterPasswordReset"
 
 // Layout for public-facing pages (Navbar + Footer)
 const PublicLayout = () => (
@@ -160,6 +163,14 @@ function App() {
               <Route path="/program/marketing" element={<MarketingProgram />} />
               <Route path="/program/sales" element={<SalesProgram />} />
               <Route path="/program/finance" element={<FinanceProgram />} />
+
+                         {/* recuiter login */}
+
+               <Route path="/Recruiter-login" element={<AdminRecruiterLogin />} />
+               <Route path="/Recruiter-register" element={<AdminRecruiterRegister/>} />
+               <Route path="/Recruiter-PasswordReset" element={<AdminRecruiterPasswordReset/>} />
+
+               
               <Route
                 path="/AdminEmployerLogin"
                 element={<AdminEmployerLogin />}
@@ -174,6 +185,7 @@ function App() {
             <Route path="/admin-register" element={<AdminRegister />} />
             <Route path="/admin-PasswordReset" element={<PasswordReset />} />
             <Route path="/admin-not-authorized" element={<NotAuthorized />} />
+
             <Route
               path="admin/*"
               element={
@@ -416,6 +428,11 @@ function App() {
                 }
               />
               {/* Fallback 404 */}
+
+
+
+   
+         
 
            
 

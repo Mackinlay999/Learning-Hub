@@ -132,12 +132,7 @@ const login = {
               expiresIn: "1h",
           });
   
-          // Set HTTP-only cookie
-          // res.cookie("token", token, {
-          //     httpOnly: true,
-          //     secure: process.env.NODE_ENV === "production",
-          //     sameSite: "none",
-          // });
+         
           res.cookie("token", token, {
             httpOnly: true,
             secure: false, // ✅ Set to false for local development

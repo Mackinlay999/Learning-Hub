@@ -23,9 +23,11 @@ const  leademail = require("../Controller/leademail")
 const dripCampaignController = require("../Controller/dripCampaignsController")
 const EmailTemplate = require("../Controller/EmailTemplateController")
 const EmailSchedule = require("../Controller/EmailScheduleController")
+const RecruiterController = require("../Controller/RecruiterLogin")
 
 const upload = require("../Utils/Multer");
 const { join } = require("path");
+
 
 const router = express.Router();
 
@@ -206,6 +208,15 @@ router.delete('/deleteEmail/:id', EmailTemplate.deleteEmail);
 //EmailSchedule 
 
 router.post('/UserRegister',  EmailSchedule.registerUser);
+
+// Recruiterslogin
+router.post("/RecruiterRegister" , RecruiterController.RecruiterRegister )  
+router.post("/RecruiterLogin" , RecruiterController.RecruiterLogin)    
+router.post("/RecruiterforgotPassword" , RecruiterController.RecruiterforgotPassword )  
+router.post("/RecruiterResetPassword" , RecruiterController.ResetPassword )  
+router.post("/RecruiterLogout" , RecruiterController.logout )  
+
+
 
 
 
