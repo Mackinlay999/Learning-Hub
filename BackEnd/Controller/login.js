@@ -226,7 +226,7 @@ const login = {
       }   
         
       await transpoter.sendMail(composeemail)
-     return  res.status(200).json({ message: "Password reset email sent successfully!" });
+     return  res.status(200).json({ message: "token sent in your emails" });
       } catch (err) {
 
          res.status(400).json({message : err.meaasge})

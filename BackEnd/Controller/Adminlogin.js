@@ -237,7 +237,7 @@ const Admincontroller = {
       await transpoter.sendMail(composeemail);
       return res
         .status(200)
-        .json({ message: "Password reset email sent successfully!" });
+        .json({ message: "token send in your email" });
     } catch (err) {
       res.status(400).json({ message: err.meaasge });
     }
