@@ -45,12 +45,14 @@ const LoginPortal = () => {
         return;
       }
 
-      if (role !== "Student") {
+      if (role !== "user") {
         alert("You're not authorized as a Student.");
         return;
       }
 
       // Set token and role in AuthContext
+      localStorage.setItem("token", token);
+      localStorage.setItem("role", role);
       login(token, role);
       alert("Login Successful");
 
