@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';  // for dynamic route param
 import axios from 'axios';
-import '../style/JobDetails.css';
+import "../style/JobDetail.css";
 
 function JobDetails() {
   const { id } = useParams();  // get job ID from URL
