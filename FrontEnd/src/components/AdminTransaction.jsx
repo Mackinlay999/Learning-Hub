@@ -79,6 +79,7 @@ const AdminTransaction = () => {
       amount: Number(amount),
       paymentMode,
       status,
+      date: new Date().toISOString(), // Always update the date
     };
 
     try {
