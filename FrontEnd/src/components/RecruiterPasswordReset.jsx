@@ -3,7 +3,7 @@ import axios from "./axios";
 import { useNavigate } from "react-router-dom";
 import "../style/PasswordReset.css"; // Import the CSS file
 
-const PasswordReset = () => {
+const RecruiterPasswordReset = () => {
   const [email, setEmail] = useState("");
   const [token, setToken] = useState("");
   const [Newpassword, setNewPassword] = useState("");
@@ -141,4 +141,4 @@ const PasswordReset = () => {
   );
 };
 
-export default PasswordReset;
+export default RecruiterPasswordReset;

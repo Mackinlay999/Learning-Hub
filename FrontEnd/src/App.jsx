@@ -63,7 +63,7 @@ import {
 import AdminAddStudent from "./components/AdminAddStudent";
 import AdminEditStudent from "./components/AdminEditStudent";
 import AdminRegister from "./components/AdminRegister";
-import AdminRecruiterRegister from "./components/AdminRecruiterRegister"
+import RecruiterRegister from "./components/RecruiterRegister"
 
 // import AdminUserdetails from "./components/AdminUserdetails";
 import AdminDashboard from "./components/AdminDashboard";
@@ -98,8 +98,8 @@ import { useAuth } from "./context/AuthContext";
 import AdminLeadsByDate from "./components/AdminLeadByDate";
 import AdminLeadDetails from "./components/AdminLeadDetails";
 import AdminCourses from "./components/AdminCourses";
-import AdminRecruiterLogin from "./components/AdminRecruiterLogin";
-import AdminRecruiterPasswordReset from "./components/AdminRecruiterPasswordReset"
+import RecruiterLogin from "./components/RecruiterLogin";
+import RecruiterPasswordReset from "./components/RecruiterPasswordReset"
 
 // Layout for public-facing pages (Navbar + Footer)
 const PublicLayout = () => (
@@ -150,9 +150,7 @@ function App() {
               <Route path="/enterprise" element={<Enterprise />} />
               <Route path="/webinars" element={<Webinars />} />
               <Route path="/for-recruiters" element={<Recruiters />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/PasswordReset" element={<PasswordReset />} />
+              
               <Route path="/program" element={<Program />} />
               <Route path="/program/:title" element={<ProgramDetail />} />
               <Route path="/Userdetails" element={<Userdetails />} />
@@ -164,11 +162,16 @@ function App() {
               <Route path="/program/sales" element={<SalesProgram />} />
               <Route path="/program/finance" element={<FinanceProgram />} />
 
-                         {/* recuiter login */}
+              {/* user or student login */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/PasswordReset" element={<PasswordReset />} />
 
-               <Route path="/Recruiter-login" element={<AdminRecruiterLogin />} />
-               <Route path="/Recruiter-register" element={<AdminRecruiterRegister/>} />
-               <Route path="/Recruiter-PasswordReset" element={<AdminRecruiterPasswordReset/>} />
+                {/* recuiter login */}
+
+               <Route path="/Recruiter-login" element={<RecruiterLogin />} />
+               <Route path="/Recruiter-register" element={<RecruiterRegister/>} />
+               <Route path="/Recruiter-PasswordReset" element={<RecruiterPasswordReset/>} />
 
                
               <Route

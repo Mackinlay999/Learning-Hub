@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "./axios";
 import "../style/LoginPortal.css";
 
-const AdminRecruiterLogin = () => {
+const RecruiterLogin = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -101,4 +101,4 @@ const AdminRecruiterLogin = () => {
   );
 };
 
-export default AdminRecruiterLogin;
+export default RecruiterLogin;
