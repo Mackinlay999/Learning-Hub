@@ -1,182 +1,171 @@
-const Recruiter = require("../Model/Recruiter")
-const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
-const nodemailer = require("nodemailer")
+const Recruiter = require("../Model/Recruiter");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
 
+const RecruiterController = {
+  RecruiterRegister: async (req, res) => {
+    try {
+      console.log("Recruiter login");
 
+      const { username, email, password, role  } = req.body;
 
-const RecruiterController ={
-    RecruiterRegister : async (req, res)=>{
+      const verify = await Recruiter.findOne({ email });
 
-        try{
+      if (verify) {
+        return res.status(400).json({ message: "user already there!" });
+      }
+      const hashpassword = await bcrypt.hash(password, 10);
 
-             console.log("Recruiter login");
+      const NewRegister = new Recruiter({
+        username,
+        email,
+        password: hashpassword,
+        role: "Recruiter",
+      });
 
-        const{username,email,password} = req.body
-        
-        const verify =await Recruiter.findOne({email})
+      await NewRegister.save();
+      res.status(201).json({ message: "Recruiter created successfully" });
+    } catch (err) {
+      res.status(401).json({ err: err.message });
+    }
+  },
+  RecruiterLogin: async (req, res) => {
+    console.log("🚀 RecruiterLogin controller hit");
 
-        if(verify){
-            return res.status(400).json({message : "user already there!"})
-        }
-        const hashpassword =await bcrypt.hash(password, 10)
-        
-        const NewRegister =  new Recruiter({
-            username,
-            email,
-            password:hashpassword
+  try {
 
-        })
+    console.log("Recruiter login request received");
 
-        await NewRegister.save();
-         res.status(201).json({message :"Recruiter created successfully"})
+    const { email, password } = req.body;
+    console.log("Request body:", req.body);
+    // Validate input early
+    if (!email || !password) {
+      return res.status(400).json({ message: "Email and password are required" });
+    }
 
-        }
-        catch(err){
-             res.status(401).json({err : err.message})
+    const verifyEmail = await Recruiter.findOne({ email });
 
+    if (!verifyEmail) {
+      return res.status(401).json({ message: "Recruiter not found" });
+    }
 
-        }
-       },
-       RecruiterLogin : async (req,res)=>{
+    // Optionally check status if you have one like Admin
+    // if (verifyEmail.status !== "approved") {
+    //   return res.status(403).json({ message: "Your account is not approved yet." });
+    // }
 
-         try{
-            console.log("Recruiter login");
+    // Check password
+    const verifypassword = await bcrypt.compare(password, verifyEmail.password);
+    if (!verifypassword) {
+      return res.status(401).json({ message: "Wrong password" });
+    }
 
-        const {email , password} = req.body;
-                 
-   
-         const verifyEmail =await  Recruiter.findOne({email})
-         console.log(verifyEmail)
+    // Generate JWT token including role
+    const token = jwt.sign(
+      { id: verifyEmail._id, role: verifyEmail.role }, // include role here
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+    console.log("Generated token:", token);
+    console.log("Role to send:", verifyEmail.role);
+    // Set token in HTTP-only cookie
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: false, // true in production with HTTPS
+      sameSite: "lax", // recommended for dev
+    });
 
-         
-          if(!verifyEmail){
-               return  res.status(401).json({message : "Recruiter not fount"})
-          }
+   const responsePayload = {
+      message: "Login successful",
+      token,
+      role: verifyEmail.role,
+    };
+    console.log("Sending response:", responsePayload);
 
-          const verifypassword =await bcrypt.compare(password ,verifyEmail.password )
+    res.status(200).json(responsePayload);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+},
+  RecruiterforgotPassword: async (req, res) => {
+    try {
+      console.log("forget password in recruiter");
+      const { email } = req.body;
 
-          if(!verifypassword){
-            return  res.status(401).json({message : "wrong password"})
-          }
+      const verifyEmail = await Recruiter.findOne({ email });
 
-          const token = jwt.sign({id : verifyEmail._id} , process.env.JWT_SECRET , 
-            {
-                expiresIn :"1h"
-            }
-          )
+      if (!verifyEmail) {
+        return res.status(401).json({ message: "pleace enter valid email" });
+      }
 
-          res.cookie("token" , token,{
-            httpOnly : true,
-            secure : false,
-            sameSite: "lax",
-       
-            sameSite: "lax", // ✅ 'lax' is recommended for local development
-          }
-            )
-            res.status(200).json({message : "login sucessfully"})
-         }
-         catch(err){
-            res.status(401).json({err : err.message})
-         }
+      const token = Math.random().toString(26).slice(-8);
 
-          },
+      //        resetpassword : String ,
+      // resetpasswordExpried : Date
+      verifyEmail.resetpassword = token;
+      verifyEmail.resetpasswordExpried = Date.now() + 120000000;
+      console.log(token);
 
-        RecruiterforgotPassword : async(req,res)=>{
+      await verifyEmail.save();
 
-         try{
-           console.log("forget password in recruiter");
-          const {email} = req.body
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: process.env.EMAIL,
+          pass: process.env.EMAIL_PASSWORD,
+        },
+      });
 
-          const verifyEmail = await Recruiter.findOne({email})
+      const composeemail = {
+        from: process.env.EMAIL,
+        to: verifyEmail.email,
+        subjecr: "Password Reset",
+        text: `${token}`,
+      };
 
-          if(!verifyEmail){
-            return res.status(401).json({message :"pleace enter valid email"})
-          }
+      await transporter.sendMail(composeemail);
+      res.status(200).json({ message: "Token created successfully" });
+    } catch (err) {
+      res.status(401).json({ message: err.message });
+    }
+  },
 
-         
-          const token = Math.random().toString(26).slice(-8);
+  ResetPassword: async (req, res) => {
+    try {
+      console.log("reset password");
+      const { token, Newpassword } = req.body;
 
+      const vaild = await Recruiter.findOne({
+        resetpassword: token,
+        resetpasswordExpried: { $gt: Date.now() },
+      });
 
+      if (!vaild) {
+        return res.status(401).json({ message: "token faild or expried" });
+      }
 
-    //        resetpassword : String ,
-    // resetpasswordExpried : Date
-          verifyEmail.resetpassword =token;
-          verifyEmail.resetpasswordExpried  = Date.now() +120000000;
-          console.log(token);
+      const hashedPassword = await bcrypt.hash(Newpassword, 10);
 
-          await  verifyEmail.save();
+      vaild.password = hashedPassword;
+      vaild.resetpassword = undefined;
+      vaild.resetpasswordExpried = undefined;
 
-          const transporter =nodemailer.createTransport({
-            service :"gmail",
-            auth:{
-             user :process.env.EMAIL,
-            pass :process.env.EMAIL_PASSWORD
-            }
-          })
+      await vaild.save();
 
-          const composeemail = {
-            from :process.env.EMAIL,
-            to:verifyEmail.email,
-            subjecr :"Password Reset",
-            text :`${token}`    
-                }
-
-          await transporter.sendMail(composeemail)
-          res.status(200).json({message:"Token created successfully"})
-         }
-
-        catch(err){
-          res.status(401).json({message: err.message})
-        }
-          },
-
-          ResetPassword :async (req ,res)=>{
-            try{
-             console.log("reset password")
-             const {token , Newpassword} = req.body
-
-             const vaild =await  Recruiter.findOne({
-                    resetpassword :token ,
-    resetpasswordExpried : { $gt :Date.now()}
-     
-             })
-
-             if(!vaild){
-              return res.status(401).json({message : "token faild or expried"})
-             }
-
-             const hashedPassword = await bcrypt.hash(Newpassword , 10)
-
-            
-             vaild.password = hashedPassword;
-             vaild.resetpassword = undefined;
-             vaild.resetpasswordExpried = undefined;
-
-             await vaild.save()
-
-             res.status(200).json({message:"password update sucessfully"})
-
-
-            }
-            catch(err){
-              res.status(401).json({err : err.message})
-
-            }
-          },
-          logout : async(req,res)=>{
-          try{
-              console.log("logout")
-            res.clearCookie("token" , 
-             { httpOnly: true}
-            )
-            res.status(200).json({message:"logout successfully "})
-          }
-          catch(err){
-            res.status(401).json({message : err.message})
-          }
-          }
-        
-
-       }
+      res.status(200).json({ message: "password update sucessfully" });
+    } catch (err) {
+      res.status(401).json({ err: err.message });
+    }
+  },
+  logout: async (req, res) => {
+    try {
+      console.log("logout");
+      res.clearCookie("token", { httpOnly: true });
+      res.status(200).json({ message: "logout successfully " });
+    } catch (err) {
+      res.status(401).json({ message: err.message });
+    }
+  },
+};
 module.exports = RecruiterController;

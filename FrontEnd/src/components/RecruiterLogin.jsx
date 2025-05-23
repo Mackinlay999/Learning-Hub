@@ -1,22 +1,30 @@
-
-
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "./axios";
 import "../style/LoginPortal.css";
+import { useAuth } from "../context/AuthContext"; // Adjust path if needed
 
 const RecruiterLogin = () => {
   const navigate = useNavigate();
+  const { login } = useAuth(); // Get login method from context
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
-  useEffect(() => {}, [navigate]);
+  const [error, setError] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (!email) return alert("Please Enter Valid Email");
-    if (!password) return alert("Please Fill Password");
+    setError("");
+
+    if (!email) {
+      setError("Please enter a valid email.");
+      return;
+    }
+    if (!password) {
+      setError("Please enter your password.");
+      return;
+    }
 
     try {
       const response = await axios.post(
@@ -24,18 +32,36 @@ const RecruiterLogin = () => {
         { email, password },
         { withCredentials: true }
       );
+      
+console.log("Full response object:", response);
+console.log("Response data:", response.data);
+      const { token, role } = response.data;
+      console.log("Login response data:", response.data);
+      console.log("Role from response:", role);
 
-      if (response.status === 200) {
-        alert("Login Successful");
-       
+      if (!token || !role) {
+        setError("Login failed: token or role missing from server response.");
+        return;
       }
+
+      if (role !== "Recruiter") {
+        setError("You're not authorized to log in as a recruiter.");
+        return;
+      }
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("role", role);
+      login(token, role);
+
+      alert("Login Successful");
+      navigate("/recruiter/dashboard");
     } catch (error) {
       if (error.response) {
-        console.error("Login failed:", error.response.data);
-        alert(error.response.data.message || "Login failed. Please try again.");
+        setError(error.response.data?.message || "Login failed. Please try again.");
+      } else if (error.request) {
+        setError("No response received from server. Please check your network.");
       } else {
-        console.error("Login error:", error);
-        alert("An error occurred. Please check your connection.");
+        setError("An unexpected error occurred. Please try again.");
       }
     }
   };
