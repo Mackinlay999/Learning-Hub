@@ -32,10 +32,10 @@ getRevenue : async (req, res) => {
 // Update a Revenue
  updateRevenue : async (req, res) => {
   const { id } = req.params;
-  const { amount, paymentMode, status } = req.body;
+  const {date, username, amount, paymentMode, status } = req.body;
   const updated = await Revenue.findByIdAndUpdate(
     id,
-    { amount, paymentMode, status },
+    { amount, paymentMode, status ,date, username,},
     { new: true }
   );
   res.json(updated);
