@@ -480,7 +480,7 @@ function App() {
 
             {/* STUDENT ROUTES STARTS HERE */}
             <Route path="student/*" element={
-            <ProtectedRoute allowedRoles={['Student']}>
+            <ProtectedRoute allowedRoles={['user']}>
               <StudentLayout />
             </ProtectedRoute>
           }>

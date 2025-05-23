@@ -11,7 +11,7 @@ const DripCompains = require("../Model/dripCampaign");
 
 const path = require("path");
 
-// const scheduleEmail = require('../Utils/SendEmail.js');
+// const { scheduleEmail } = require('../Utils/SendEmail.js');
 const EmailTemplate = require("../Model/EmailTemplate");
 const EmailSchedule = require("../Model/EmailSchedule");
 
