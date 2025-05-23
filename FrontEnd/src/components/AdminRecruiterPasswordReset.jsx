@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "./axios";
 import { useNavigate } from "react-router-dom";
 import "../style/PasswordReset.css"; // Import the CSS file
 
@@ -19,7 +19,7 @@ const PasswordReset = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/RecruiterforgotPassword",
+        "/RecruiterforgotPassword",
         { email }
       );
       alert(response.data.message);
@@ -37,7 +37,7 @@ const PasswordReset = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/RecruiterResetPassword",
+        "/RecruiterResetPassword",
         { token, Newpassword }
       );
 

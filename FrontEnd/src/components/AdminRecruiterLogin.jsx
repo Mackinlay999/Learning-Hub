@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "./axios";
 import "../style/LoginPortal.css";
 
 const AdminRecruiterLogin = () => {
@@ -20,7 +20,7 @@ const AdminRecruiterLogin = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/RecruiterLogin",
+        "/RecruiterLogin",
         { email, password },
         { withCredentials: true }
       );

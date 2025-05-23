@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from './axios';
 import '../style/Register.css'; // Importing external CSS file
 
 const AdminRegister = () => {
@@ -21,7 +21,7 @@ const AdminRegister = () => {
         if (email === '' || !validateEmail) return alert("Please Enter Valid Email ID");
         if (password === '' || password !== reEnteredPassword) return alert("Please Enter the same password in both fields");
 
-        axios.post("http://localhost:3000/api/RecruiterRegister", {username: name, email, password,  })
+        axios.post("/RecruiterRegister", {username: name, email, password,  })
             .then(() => {
                 alert("User Created Successfully. Now You can login with those credentials");
                 

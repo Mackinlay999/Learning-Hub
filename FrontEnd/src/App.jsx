@@ -428,7 +428,7 @@ function App() {
               />
               {/* Fallback 404 */}
 
-<<<<<<< HEAD
+
 
 
    
@@ -439,8 +439,7 @@ function App() {
 
 
 
-=======
->>>>>>> 6246152a2cd73e1d5720b9c89b2e7e533836b920
+
               <Route path="recruiters" element={<AdminRecruiterDashboard />} />
               <Route path="EmailCampaign" element={<AdminEmailCampaign />} />
               <Route path="resume" element={<AdminResumeViewer />} />
