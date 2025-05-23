@@ -83,7 +83,7 @@ const AdminTransaction = () => {
 
     try {
       if (editingId) {
-        await axios.put(`/updateRevenue/${id}`, transactionData);
+        await axios.put(`/updateRevenue/${editingId}`, transactionData);
       } else {
         await axios.post("/addRevenue", {
           ...transactionData,
@@ -207,7 +207,7 @@ const AdminTransaction = () => {
 
   return (
     <div className="transactions-container">
-      <h2>Transaction & Revenue Dashboard</h2>
+      <h2>Transactions & Revenue Dashboard</h2>
 
       {/* 🔍 Filter */}
       <div className="filter-options">
