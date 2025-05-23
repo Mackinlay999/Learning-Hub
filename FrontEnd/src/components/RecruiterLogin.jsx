@@ -32,9 +32,9 @@ const RecruiterLogin = () => {
         { email, password },
         { withCredentials: true }
       );
-      
-console.log("Full response object:", response);
-console.log("Response data:", response.data);
+
+      console.log("Full response object:", response);
+      console.log("Response data:", response.data);
       const { token, role } = response.data;
       console.log("Login response data:", response.data);
       console.log("Role from response:", role);
@@ -57,9 +57,13 @@ console.log("Response data:", response.data);
       navigate("/recruiter/dashboard");
     } catch (error) {
       if (error.response) {
-        setError(error.response.data?.message || "Login failed. Please try again.");
+        setError(
+          error.response.data?.message || "Login failed. Please try again."
+        );
       } else if (error.request) {
-        setError("No response received from server. Please check your network.");
+        setError(
+          "No response received from server. Please check your network."
+        );
       } else {
         setError("An unexpected error occurred. Please try again.");
       }
@@ -81,6 +85,7 @@ console.log("Response data:", response.data);
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              autoComplete="username"
             />
           </div>
           <div className="form-group">
@@ -94,6 +99,7 @@ console.log("Response data:", response.data);
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                autoComplete="current-password"
               />
               <span
                 className="toggle-password"
