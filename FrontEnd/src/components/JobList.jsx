@@ -1,70 +1,43 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import axios from 'axios';
 import { motion } from 'framer-motion';
 import '../style/JobList.css';
 
-const allJobs = [
-  {
-    id: 1,
-    title: 'Frontend Developer',
-    company: 'Tech Solutions Inc.',
-    location: 'Remote',
-    type: 'Full-time',
-    posted: '3 days ago',
-  },
-  {
-    id: 2,
-    title: 'Backend Developer',
-    company: 'Innovatech',
-    location: 'New York, NY',
-    type: 'Part-time',
-    posted: '1 week ago',
-  },
-  {
-    id: 3,
-    title: 'Data Scientist',
-    company: 'DataWorks',
-    location: 'San Francisco, CA',
-    type: 'Contract',
-    posted: '2 weeks ago',
-  },
-  {
-    id: 4,
-    title: 'UX Designer',
-    company: 'Creative Minds',
-    location: 'Remote',
-    type: 'Internship',
-    posted: '4 days ago',
-  },
-  {
-    id: 5,
-    title: 'Product Manager',
-    company: 'Global Corp',
-    location: 'Chicago, IL',
-    type: 'Full-time',
-    posted: '5 days ago',
-  },
-];
-
-const jobTypes = ['Full-time', 'Part-time', 'Contract', 'Internship'];
-
 function JobList() {
+  const [jobs, setJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTypes, setSelectedTypes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Filter jobs based on search term and selected job types
+  useEffect(() => {
+    async function fetchJobs() {
+      try {
+        setLoading(true);
+        const response = await axios.get('https://learning-hub-p2yq.onrender.com/api/recruiter/jobs');
+        setJobs(response.data);
+      } catch (err) {
+        setError('Failed to fetch jobs');
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchJobs();
+  }, []);
+
   const filteredJobs = useMemo(() => {
-    return allJobs.filter((job) => {
+    return jobs.filter((job) => {
       const matchesSearch =
-        job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        job.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.jobTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         job.location.toLowerCase().includes(searchTerm.toLowerCase());
 
       const matchesType =
-        selectedTypes.length === 0 || selectedTypes.includes(job.type);
+        selectedTypes.length === 0 || selectedTypes.includes(job.employmentType);
 
       return matchesSearch && matchesType;
     });
-  }, [searchTerm, selectedTypes]);
+  }, [jobs, searchTerm, selectedTypes]);
 
   const toggleType = (type) => {
     setSelectedTypes((prev) =>
@@ -72,13 +45,11 @@ function JobList() {
     );
   };
 
+  if (loading) return <p>Loading jobs...</p>;
+  if (error) return <p>{error}</p>;
+
   return (
-    <motion.div
-      className="job-list-container"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-    >
+    <motion.div className="job-list-container" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
       <h2 className="job-list-title">Available Jobs</h2>
 
       <div className="job-list-filters">
@@ -89,14 +60,11 @@ function JobList() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="job-list-search-input"
         />
-
         <div className="job-list-type-filters">
-          {jobTypes.map((type) => (
+          {['Full-time', 'Part-time', 'Contract', 'Internship'].map((type) => (
             <button
               key={type}
-              className={`job-list-type-btn ${
-                selectedTypes.includes(type) ? 'selected' : ''
-              }`}
+              className={`job-list-type-btn ${selectedTypes.includes(type) ? 'selected' : ''}`}
               onClick={() => toggleType(type)}
             >
               {type}
@@ -111,20 +79,28 @@ function JobList() {
         )}
         {filteredJobs.map((job) => (
           <motion.li
-            key={job.id}
+            key={job._id}
             className="job-list-job-card"
             whileHover={{ scale: 1.02, boxShadow: '0 8px 20px rgba(0,0,0,0.1)' }}
             transition={{ type: 'spring', stiffness: 150 }}
           >
             <div className="job-list-job-info">
-              <h3 className="job-list-job-title">{job.title}</h3>
-              <p className="job-list-company">{job.company}</p>
+              <h3 className="job-list-job-title">{job.jobTitle}</h3>
+              <p className="job-list-company">{job.companyName}</p>
               <p className="job-list-location">{job.location}</p>
-              <p className="job-list-type">{job.type}</p>
+              <p className="job-list-type">{job.employmentType}</p>
             </div>
             <div className="job-list-job-meta">
-              <p className="job-list-posted">Posted {job.posted}</p>
-              <button className="job-list-apply-btn">Apply</button>
+              <p className="job-list-posted">
+                Posted {new Date(job.postedAt).toLocaleDateString()}
+              </p>
+              {/* ✅ Replaced Apply Button with Link */}
+              <a
+                className="job-list-apply-btn"
+                href={`https://learning-hub-p2yq.onrender.com/api/apply/${job._id}`} // Or your preferred URL
+              >
+                Apply
+              </a>
             </div>
           </motion.li>
         ))}

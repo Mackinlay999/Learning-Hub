@@ -75,3 +75,41 @@
 .submit-btn:hover {
   background-color: #005a8d;
 }
+.job-table-section {
+  margin-top: 40px;
+}
+
+.job-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.job-table th, .job-table td {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.job-table th {
+  background-color: #f2f2f2;
+}
+
+.edit-btn, .delete-btn {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.edit-btn {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #d9534f;
+  color: white;
+}

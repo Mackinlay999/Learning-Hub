@@ -1,52 +1,146 @@
 /* Container styles */
 .admin-post-job-container {
-  max-width: 650px;
-  margin: auto;
-  background: linear-gradient(to bottom right, #f8fbff, #eef3f8); /* Light gradient for background */
-  padding: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: linear-gradient(to bottom right, #f8fbff, #eef3f8);
+  padding: 2rem 2.5rem;
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  animation: fadeIn 0.6s ease-in-out; /* Smooth fade-in effect */
+  animation: fadeIn 0.6s ease-in-out;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Title */
 .admin-post-job-title {
-  color: #D32F2F; /* Primary Red for the title */
+  color: #D32F2F;
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 2rem;
   letter-spacing: 0.5px;
-  font-weight: bold;
-  animation: slideDown 0.5s ease-in-out; /* Slide down effect */
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  animation: slideDown 0.5s ease-in-out;
 }
 
-/* Alert styling */
-.admin-post-job-alert {
+/* Table Wrapper for horizontal scroll on small devices */
+.admin-post-job-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  animation: fadeIn 0.5s ease;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(211, 47, 47, 0.08);
+  background-color: #fff;
+}
+
+/* Table styling */
+.admin-post-job-table {
+  width: 100%;
+  border-collapse: separate; /* Allow border-radius */
+  border-spacing: 0 8px; /* Space between rows for card-like effect */
+  min-width: 600px;
+}
+
+/* Table header */
+.admin-post-job-table th {
+  background-color: #D32F2F;
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 18px;
+  text-align: left;
+  position: sticky;
+  top: 0; /* Sticky header on scroll */
+  z-index: 2;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+/* Table body cells */
+.admin-post-job-table td {
+  background-color: #fff;
+  padding: 14px 18px;
   font-size: 0.95rem;
-  color: #333; /* Dark gray for alerts */
-  animation: fadeIn 0.5s ease-in;
+  color: #444;
+  vertical-align: middle;
+  border-bottom: none;
+  box-shadow: 0 1px 3px rgba(211, 47, 47, 0.05);
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
 }
 
-/* Form styling */
+/* Hover row effect */
+.admin-post-job-table tbody tr:hover td {
+  background-color: #fff0f0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Action buttons in table */
+.admin-post-job-action-btn {
+  background: transparent;
+  border: 1.5px solid #D32F2F;
+  color: #D32F2F;
+  font-size: 0.85rem;
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.admin-post-job-action-btn:hover {
+  background-color: #D32F2F;
+  color: #fff;
+  transform: scale(1.07);
+  box-shadow: 0 3px 8px rgba(211, 47, 47, 0.3);
+}
+
+/* Create button */
+.admin-post-job-create-btn {
+  display: inline-block;
+  background-color: #D32F2F;
+  color: white;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  user-select: none;
+  margin-bottom: 1rem;
+}
+
+.admin-post-job-create-btn:hover {
+  background-color: #b71c1c;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(183, 28, 28, 0.5);
+}
+
+/* Empty state */
+.admin-post-job-empty {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: #888;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+/* Form styling (unchanged) */
 .admin-post-job-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-/* Group styling */
 .admin-post-job-group {
   display: flex;
   flex-direction: column;
 }
 
-/* Label */
 .admin-post-job-label {
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #333; /* Dark gray for labels */
+  color: #333;
 }
 
-/* Inputs */
 .admin-post-job-input,
 .admin-post-job-textarea,
 .admin-post-job-select {
@@ -55,25 +149,24 @@
   border-radius: 6px;
   font-size: 1rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  background-color: #fff; /* White background for inputs */
+  background-color: #fff;
 }
 
 .admin-post-job-input:focus,
 .admin-post-job-textarea:focus,
 .admin-post-job-select:focus {
-  border-color: #D32F2F; /* Primary Red for focus state */
-  box-shadow: 0 0 0 0.2rem rgba(211, 47, 47, 0.25); /* Red box-shadow on focus */
+  border-color: #D32F2F;
+  box-shadow: 0 0 0 0.2rem rgba(211, 47, 47, 0.25);
   outline: none;
 }
 
-/* Button */
 .admin-post-job-submit-btn {
   align-self: flex-start;
   padding: 0.6rem 2rem;
   font-weight: 500;
   font-size: 1rem;
   border-radius: 6px;
-  background-color: #D32F2F; /* Primary Red for button */
+  background-color: #D32F2F;
   color: white;
   border: none;
   cursor: pointer;
@@ -86,8 +179,8 @@
 }
 
 .admin-post-job-submit-btn:hover:not(:disabled) {
-  background-color: #B71C1C; /* Darker red on hover */
-  transform: scale(1.02); /* Slight scale up effect */
+  background-color: #B71C1C;
+  transform: scale(1.02);
 }
 
 /* Animations */
@@ -114,89 +207,36 @@
 }
 
 /* Mobile responsiveness */
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   .admin-post-job-container {
-    padding: 1.5rem; /* Reduced padding for smaller screens */
+    padding: 1.5rem 1.75rem;
   }
-
   .admin-post-job-title {
-    font-size: 1.5rem; /* Slightly smaller title on mobile */
+    font-size: 1.6rem;
   }
-
   .admin-post-job-submit-btn {
-    width: 100%; /* Full width button on mobile */
+    width: 100%;
     text-align: center;
   }
-}
-.admin-post-job-table-wrapper {
-  overflow-x: auto;
-  margin-bottom: 2rem;
-  animation: fadeIn 0.5s ease;
+  .admin-post-job-table {
+    min-width: 100%; /* Full width on smaller screens */
+  }
 }
 
-.admin-post-job-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(211, 47, 47, 0.1);
-}
+@media (max-width: 480px) {
+  .admin-post-job-table th,
+  .admin-post-job-table td {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
 
-.admin-post-job-table th,
-.admin-post-job-table td {
-  padding: 12px 16px;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-  font-size: 0.95rem;
-  color: #333333;
-}
+  .admin-post-job-action-btn {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
 
-.admin-post-job-table th {
-  background-color: #D32F2F;
-  color: white;
-  font-weight: 600;
-}
-
-.admin-post-job-table tbody tr:hover {
-  background-color: #fff6f6;
-  transition: background 0.3s ease;
-}
-
-.admin-post-job-action-btn {
-  border: none;
-  font-size: 0.85rem;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.admin-post-job-action-btn:hover {
-  transform: scale(1.05);
-}
-
-.admin-post-job-create-btn {
-  background-color: #D32F2F;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  font-weight: bold;
-  border-radius: 8px;
-  transition: background 0.3s ease;
-}
-
-.admin-post-job-create-btn:hover {
-  background-color: #b71c1c;
-}
-
-.admin-post-job-empty {
-  text-align: center;
-  padding: 1rem;
-  color: #888;
-  font-style: italic;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  .admin-post-job-create-btn {
+    padding: 8px 16px;
+    font-size: 0.95rem;
+  }
 }

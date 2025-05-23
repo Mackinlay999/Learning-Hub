@@ -15,6 +15,9 @@ const jobsSchema = new mongoose.Schema({
   skills: [String],
   experience: String,
   applyLink: String,
+  views: { type: Number, default: 0 }, // ✅ Add this
+  createdAt: { type: Date, default: Date.now }, // ✅ Add this for expiry tracking
+  recruiter: { type: mongoose.Schema.Types.ObjectId, ref: "User" }, // ✅ Track job poster
   company: {
     name: String,
     logoUrl: String,
@@ -22,5 +25,6 @@ const jobsSchema = new mongoose.Schema({
     email: String
   }
 });
+
 
 module.exports = mongoose.model("Jobs", jobsSchema);

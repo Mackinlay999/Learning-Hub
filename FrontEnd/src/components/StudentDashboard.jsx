@@ -1,58 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import axios from 'axios';
 import '../style/StudentDashboard.css';
 
-const overviewStats = [
-  { label: 'Applied Jobs', count: 17 },
-  { label: 'Saved Jobs', count: 8 },
-  { label: 'Profile Views', count: 134 },
-];
-
-const appliedJobs = [
-  {
-    id: 1,
-    title: 'Frontend Developer',
-    company: 'Tech Solutions Inc.',
-    location: 'Remote',
-    status: 'Under Review',
-    appliedDate: '3 days ago',
-  },
-  {
-    id: 2,
-    title: 'Data Analyst',
-    company: 'DataWorks',
-    location: 'New York, NY',
-    status: 'Interview Scheduled',
-    appliedDate: '1 week ago',
-  },
-  {
-    id: 3,
-    title: 'UX Designer',
-    company: 'Creative Minds',
-    location: 'San Francisco, CA',
-    status: 'Rejected',
-    appliedDate: '2 weeks ago',
-  },
-];
-
-const savedJobs = [
-  {
-    id: 101,
-    title: 'Backend Developer',
-    company: 'Innovatech',
-    location: 'Chicago, IL',
-    type: 'Full-Time',
-  },
-  {
-    id: 102,
-    title: 'Product Manager',
-    company: 'Global Corp',
-    location: 'Remote',
-    type: 'Contract',
-  },
-];
-
 function StudentDashboard() {
+  const [overviewStats, setOverviewStats] = useState([]);
+  const [appliedJobs, setAppliedJobs] = useState([]);
+  const [savedJobs, setSavedJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      try {
+        const response = await axios.get('https://learning-hub-p2yq.onrender.com/api/student/dashboard', {
+          withCredentials: true, // 💡 This sends the JWT cookie
+        });
+
+        const { overviewStats, appliedJobs, savedJobs } = response.data;
+        setOverviewStats([
+          { label: 'Applied Jobs', count: overviewStats.appliedJobs },
+          { label: 'Saved Jobs', count: overviewStats.savedJobs },
+          { label: 'Profile Views', count: overviewStats.profileViews },
+        ]);
+        setAppliedJobs(appliedJobs);
+        setSavedJobs(savedJobs);
+      } catch (error) {
+        console.error('Error fetching dashboard data:', error.response?.data || error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDashboardData();
+  }, []);
+
+  if (loading) return <div>Loading dashboard...</div>;
+
   return (
     <motion.div
       className="student-dashboard-container"
@@ -81,7 +64,7 @@ function StudentDashboard() {
         <ul className="student-dashboard-applied-list">
           {appliedJobs.map((job) => (
             <motion.li
-              key={job.id}
+              key={job._id || job.id}
               className="student-dashboard-applied-item"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
@@ -99,7 +82,9 @@ function StudentDashboard() {
                 >
                   {job.status}
                 </span>
-                <span className="student-dashboard-applied-date">{job.appliedDate}</span>
+                <span className="student-dashboard-applied-date">
+                  {new Date(job.appliedDate).toLocaleDateString()}
+                </span>
               </div>
             </motion.li>
           ))}
@@ -111,7 +96,7 @@ function StudentDashboard() {
         <ul className="student-dashboard-saved-list">
           {savedJobs.map((job) => (
             <motion.li
-              key={job.id}
+              key={job._id || job.id}
               className="student-dashboard-saved-item"
               whileHover={{ boxShadow: '0 8px 20px rgba(0,0,0,0.1)' }}
               transition={{ duration: 0.3 }}

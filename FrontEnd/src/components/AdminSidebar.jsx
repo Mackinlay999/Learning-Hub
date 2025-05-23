@@ -1,5 +1,6 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext"; // Adjust path based on where useAuth is
 import {
   ShieldCheck,
@@ -98,18 +99,21 @@ const AdminSidebar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { auth = {}, logout } = useAuth();
   const { role, loading } = auth;
+  const navigate = useNavigate();
 
-  console.log('Role in Sidebar:', auth.role);
-  console.log('Auth state:', auth); // Add this to check the full auth state
-  
+  console.log("Role in Sidebar:", auth.role);
+  console.log("Auth state:", auth); // Add this to check the full auth state
+
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
   // Filter sections based on user's role
   // Filter sections only after auth is loaded
-  const availableSections = !loading && role ? allSections.filter(section => section.roles.includes(role)) : [];
-
+  const availableSections =
+    !loading && role
+      ? allSections.filter((section) => section.roles.includes(role))
+      : [];
 
   return (
     <>
@@ -137,23 +141,22 @@ const AdminSidebar = () => {
                       }
                     >
                       <span className="admin-sidebar-S-icon">{item.icon}</span>
-                      <p className="admin-sidebar-S-content text-white">{item.name}</p>
+                      <p className="admin-sidebar-S-content text-white">
+                        {item.name}
+                      </p>
                     </NavLink>
                   </li>
                 ))
               )}
 
               <li>
-                <button 
-                
-                
-                onClick={() => {
-                  logout();
-                  navigate("/")
-                }
-                }
-                
-                className="admin-sidebar-logout-btn">
+                <button
+                  onClick={() => {
+                    logout();
+                    navigate("/");
+                  }}
+                  className="admin-sidebar-logout-btn"
+                >
                   Logout
                 </button>
               </li>

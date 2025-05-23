@@ -36,6 +36,9 @@ const blogRoutes = require("./Route/blogRoutes");
 const webinarRoutes = require("./Route/webinarRoutes");
 const recruiterRoutes = require("./Route/recruiterRoutes");
 const deloyEmail = require("./Utils/DeloyEmail.js")
+const recruiterDashboardRoutes = require("./Route/recruiterDashboardRoutes");
+const recruiterJobRoutes = require("./Route/recruiterJobRoutes");
+const studentDashboardRoutes = require("./Route/studentDashboardRoutes");
 deloyEmail();
 const emailCronJob = require("./Utils/schedulerService.js")
 emailCronJob.start();
@@ -121,6 +124,9 @@ app.use("/api", blogRoutes);
 app.use("/api", webinarRoutes);
 app.use("/api", recruiterRoutes);
 
+app.use("/api", recruiterDashboardRoutes);
 
+app.use('/api', recruiterJobRoutes);
+app.use('/api', studentDashboardRoutes);
 
 module.exports = app;
