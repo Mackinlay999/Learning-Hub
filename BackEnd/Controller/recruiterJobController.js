@@ -48,11 +48,10 @@ const createRecruiterJob = async (req, res) => {
   }
 };
 
-
 // Get All Jobs
 const getAllRecruiterJobs = async (req, res) => {
   try {
-    const jobs = await RecruiterJob.find().sort({ postedAt: -1 });
+    const jobs = await RecruiterJob.find().sort({ createdAt: -1 });
     res.status(200).json(jobs);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -89,8 +88,8 @@ const deleteRecruiterJob = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-// In your controller, add this:
 
+// Get Application Link (apply to job)
 const applyToJob = async (req, res) => {
   try {
     const jobId = req.params.id;
@@ -107,8 +106,6 @@ const applyToJob = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-
-
 
 module.exports = {
   createRecruiterJob,
