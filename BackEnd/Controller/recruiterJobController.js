@@ -4,8 +4,8 @@ const RecruiterJob = require('../Model/RecruiterJob');
 const createRecruiterJob = async (req, res) => {
   try {
     console.log("Request body:", req.body);
-    const { recruiterId, jobTitle, companyName, location } = req.body;
-    if (!recruiterId || !jobTitle || !companyName || !location) {
+    const {jobTitle, companyName, location } = req.body;
+    if (!jobTitle || !companyName || !location) {
       return res.status(400).json({ message: "Missing required fields" });
     }
 

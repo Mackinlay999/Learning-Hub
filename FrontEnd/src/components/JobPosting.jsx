@@ -6,7 +6,6 @@ const API_BASE = "https://learning-hub-p2yq.onrender.com/api/recruiter/jobs";
 
 const JobPosting = () => {
   const [formData, setFormData] = useState({
-    recruiterId: "",
     jobTitle: "",
     companyName: "",
     location: "",
@@ -23,17 +22,20 @@ const JobPosting = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [editJobId, setEditJobId] = useState(null);
 
+  // Fetch token and userId from localStorage
+  const token = localStorage.getItem("token");
+  // const userId = localStorage.getItem("userId"); // Or recruiterId, depending on your login response key
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const { auth } = useAuth(); // assuming you use your AuthContext to get recruiterId/token
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const dataToSend = { ...formData, recruiterId: auth.userId || auth.id }; // or however your backend expects it
+      const dataToSend = { ...formData };
+      console.log("Sending Data:", dataToSend);
 
       const url = isEditing ? `${API_BASE}/${editJobId}` : API_BASE;
       const method = isEditing ? "PUT" : "POST";
@@ -42,7 +44,7 @@ const JobPosting = () => {
         method,
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${auth.token}`, // if backend requires auth
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(dataToSend),
       });
@@ -55,6 +57,7 @@ const JobPosting = () => {
       alert(
         isEditing ? "Job Updated Successfully!" : "Job Posted Successfully!"
       );
+
       setFormData({
         jobTitle: "",
         companyName: "",
