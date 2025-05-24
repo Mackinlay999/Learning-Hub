@@ -101,12 +101,13 @@ const applyToJob = async (req, res) => {
       return res.status(400).json({ message: 'No application link available for this job.' });
     }
 
-    // Redirect the user to the application link
-    return res.redirect(job.applicationLink);
+    // Send application link URL to frontend
+    res.status(200).json({ applicationLink: job.applicationLink });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
 
 
 module.exports = {

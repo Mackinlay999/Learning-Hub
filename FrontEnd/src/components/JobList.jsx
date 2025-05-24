@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import "../style/JobList.css";
 
-
 function JobList() {
   const [jobs, setJobs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -112,17 +111,34 @@ function JobList() {
                 Posted {new Date(job.postedAt).toLocaleDateString()}
               </p>
               {/* ✅ Replaced Apply Button with Link */}
-              <Link className="job-list-apply-btn" to={`/jobs/${job._id}`}>
+              <Link className="job-list-apply-btn" to={`${job._id}`}>
                 View Details
               </Link>
-              <a
+              <button
                 className="job-list-apply-btn"
-                href={`https://learning-hub-p2yq.onrender.com/api/apply/${job._id}`}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={async () => {
+                  try {
+                    const res = await fetch(
+                      `https://learning-hub-p2yq.onrender.com/api/apply/${job._id}`
+                    );
+                    const data = await res.json();
+                    if (data.applicationLink) {
+                      window.open(
+                        data.applicationLink,
+                        "_blank",
+                        "noopener,noreferrer"
+                      );
+                    } else {
+                      alert("Application link not found");
+                    }
+                  } catch (err) {
+                    console.error(err);
+                    alert("Failed to get application link");
+                  }
+                }}
               >
                 Apply
-              </a>
+              </button>
             </div>
           </motion.li>
         ))}

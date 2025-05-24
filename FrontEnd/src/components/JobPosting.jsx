@@ -17,7 +17,7 @@ const JobPosting = () => {
     jobDescription: "",
     skillsRequired: "",
     applicationDeadline: "",
-    applyLink: "",
+    applicationLink: "",
     contactEmail: "",
     jobBenefits: "",
     vacancies: 1,
@@ -35,8 +35,7 @@ const JobPosting = () => {
   };
 
   // Simple email validation
-  const isValidEmail = (email) =>
-    /^\S+@\S+\.\S+$/.test(email);
+  const isValidEmail = (email) => /^\S+@\S+\.\S+$/.test(email);
 
   // Simple URL validation
   const isValidURL = (url) => {
@@ -57,7 +56,7 @@ const JobPosting = () => {
       alert("Please enter a valid contact email.");
       return;
     }
-    if (!isValidURL(formData.applyLink)) {
+    if (!isValidURL(formData.applicationLink)) {
       alert("Please enter a valid URL for the Apply Link.");
       return;
     }
@@ -89,7 +88,9 @@ const JobPosting = () => {
           isEditing ? "Failed to update job" : "Failed to post job"
         );
 
-      alert(isEditing ? "Job Updated Successfully!" : "Job Posted Successfully!");
+      alert(
+        isEditing ? "Job Updated Successfully!" : "Job Posted Successfully!"
+      );
 
       setFormData({
         jobTitle: "",
@@ -103,7 +104,7 @@ const JobPosting = () => {
         jobDescription: "",
         skillsRequired: "",
         applicationDeadline: "",
-        applyLink: "",
+        applicationLink: "",
         contactEmail: "",
         jobBenefits: "",
         vacancies: 1,
@@ -123,7 +124,9 @@ const JobPosting = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <h2 className="job-posting-title">{isEditing ? "Edit Job" : "Post a Job"}</h2>
+      <h2 className="job-posting-title">
+        {isEditing ? "Edit Job" : "Post a Job"}
+      </h2>
 
       <form className="job-posting-form" onSubmit={handleSubmit}>
         {/* Job Title */}
@@ -315,8 +318,8 @@ const JobPosting = () => {
           <label>Apply Link URL *</label>
           <input
             type="url"
-            name="applyLink"
-            value={formData.applyLink}
+            name="applicationLink" // Change this from applyLink to applicationLink
+            value={formData.applicationLink}
             onChange={handleChange}
             placeholder="https://example.com/apply"
             required
