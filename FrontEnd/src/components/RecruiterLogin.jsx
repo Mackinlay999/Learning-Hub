@@ -35,7 +35,7 @@ const RecruiterLogin = () => {
 
       console.log("Full response object:", response);
       console.log("Response data:", response.data);
-      const { token, role } = response.data;
+      const { token, role, recruiterId } = response.data;
       console.log("Login response data:", response.data);
       console.log("Role from response:", role);
 
@@ -51,10 +51,12 @@ const RecruiterLogin = () => {
 
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
+      localStorage.setItem("recruiterId", recruiterId); // 👈 This line was missing
+      console.log("Parsed recruiterId:", recruiterId);
       login(token, role);
 
       alert("Login Successful");
-      navigate("/recruiter/dashboard");
+      navigate("/recruiter/job-posting");
     } catch (error) {
       if (error.response) {
         setError(

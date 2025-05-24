@@ -80,6 +80,7 @@ const RecruiterController = {
       message: "Login successful",
       token,
       role: verifyEmail.role,
+      recruiterId: verifyEmail._id.toString(), 
     };
     console.log("Sending response:", responsePayload);
 

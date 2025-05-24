@@ -34,8 +34,15 @@ const JobPosting = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const dataToSend = { ...formData };
-      console.log("Sending Data:", dataToSend);
+      const recruiterId = localStorage.getItem("recruiterId");
+
+      if (!recruiterId)
+        throw new Error("Recruiter ID not found in localStorage.");
+
+      const dataToSend = {
+        ...formData,
+        recruiterId,
+      };
 
       const url = isEditing ? `${API_BASE}/${editJobId}` : API_BASE;
       const method = isEditing ? "PUT" : "POST";
@@ -58,6 +65,7 @@ const JobPosting = () => {
         isEditing ? "Job Updated Successfully!" : "Job Posted Successfully!"
       );
 
+      // Reset form
       setFormData({
         jobTitle: "",
         companyName: "",
