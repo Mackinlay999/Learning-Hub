@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "../style/JobPosting.css";
-import { useAuth } from "../context/AuthContext";
+
 const API_BASE = "https://learning-hub-p2yq.onrender.com/api/recruiter/jobs";
 
 const JobPosting = () => {
@@ -17,25 +17,53 @@ const JobPosting = () => {
     jobDescription: "",
     skillsRequired: "",
     applicationDeadline: "",
+    applyLink: "",
+    contactEmail: "",
+    jobBenefits: "",
+    vacancies: 1,
+    educationRequirements: "",
   });
 
   const [isEditing, setIsEditing] = useState(false);
   const [editJobId, setEditJobId] = useState(null);
 
-  // Fetch token and userId from localStorage
   const token = localStorage.getItem("token");
-  // const userId = localStorage.getItem("userId"); // Or recruiterId, depending on your login response key
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Simple email validation
+  const isValidEmail = (email) =>
+    /^\S+@\S+\.\S+$/.test(email);
+
+  // Simple URL validation
+  const isValidURL = (url) => {
+    if (!url) return true; // allow empty
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate email and URL before submitting
+    if (formData.contactEmail && !isValidEmail(formData.contactEmail)) {
+      alert("Please enter a valid contact email.");
+      return;
+    }
+    if (!isValidURL(formData.applyLink)) {
+      alert("Please enter a valid URL for the Apply Link.");
+      return;
+    }
+
     try {
       const recruiterId = localStorage.getItem("recruiterId");
-
       if (!recruiterId)
         throw new Error("Recruiter ID not found in localStorage.");
 
@@ -61,11 +89,8 @@ const JobPosting = () => {
           isEditing ? "Failed to update job" : "Failed to post job"
         );
 
-      alert(
-        isEditing ? "Job Updated Successfully!" : "Job Posted Successfully!"
-      );
+      alert(isEditing ? "Job Updated Successfully!" : "Job Posted Successfully!");
 
-      // Reset form
       setFormData({
         jobTitle: "",
         companyName: "",
@@ -78,6 +103,11 @@ const JobPosting = () => {
         jobDescription: "",
         skillsRequired: "",
         applicationDeadline: "",
+        applyLink: "",
+        contactEmail: "",
+        jobBenefits: "",
+        vacancies: 1,
+        educationRequirements: "",
       });
       setIsEditing(false);
       setEditJobId(null);
@@ -93,13 +123,12 @@ const JobPosting = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <h2 className="job-posting-title">
-        {isEditing ? "Edit Job" : "Post a Job"}
-      </h2>
+      <h2 className="job-posting-title">{isEditing ? "Edit Job" : "Post a Job"}</h2>
 
       <form className="job-posting-form" onSubmit={handleSubmit}>
+        {/* Job Title */}
         <div className="form-group">
-          <label>Job Title</label>
+          <label>Job Title *</label>
           <input
             type="text"
             name="jobTitle"
@@ -109,8 +138,9 @@ const JobPosting = () => {
           />
         </div>
 
+        {/* Company Name */}
         <div className="form-group">
-          <label>Company Name</label>
+          <label>Company Name *</label>
           <input
             type="text"
             name="companyName"
@@ -120,8 +150,9 @@ const JobPosting = () => {
           />
         </div>
 
+        {/* Location */}
         <div className="form-group">
-          <label>Location</label>
+          <label>Location *</label>
           <input
             type="text"
             name="location"
@@ -131,9 +162,10 @@ const JobPosting = () => {
           />
         </div>
 
+        {/* Employment Type & Workplace Type */}
         <div className="form-row">
           <div className="form-group">
-            <label>Employment Type</label>
+            <label>Employment Type *</label>
             <select
               name="employmentType"
               value={formData.employmentType}
@@ -150,7 +182,7 @@ const JobPosting = () => {
           </div>
 
           <div className="form-group">
-            <label>Workplace Type</label>
+            <label>Workplace Type *</label>
             <select
               name="workplaceType"
               value={formData.workplaceType}
@@ -165,6 +197,7 @@ const JobPosting = () => {
           </div>
         </div>
 
+        {/* Industry */}
         <div className="form-group">
           <label>Industry</label>
           <input
@@ -175,6 +208,7 @@ const JobPosting = () => {
           />
         </div>
 
+        {/* Experience Level & Salary Range */}
         <div className="form-row">
           <div className="form-group">
             <label>Experience Level</label>
@@ -204,8 +238,34 @@ const JobPosting = () => {
           </div>
         </div>
 
+        {/* Vacancies */}
         <div className="form-group">
-          <label>Job Description</label>
+          <label>Number of Vacancies *</label>
+          <input
+            type="number"
+            min="1"
+            name="vacancies"
+            value={formData.vacancies}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        {/* Education Requirements */}
+        <div className="form-group">
+          <label>Education Requirements</label>
+          <input
+            type="text"
+            name="educationRequirements"
+            value={formData.educationRequirements}
+            onChange={handleChange}
+            placeholder="e.g. Bachelor's Degree in Computer Science"
+          />
+        </div>
+
+        {/* Job Description */}
+        <div className="form-group">
+          <label>Job Description *</label>
           <textarea
             name="jobDescription"
             value={formData.jobDescription}
@@ -215,6 +275,7 @@ const JobPosting = () => {
           />
         </div>
 
+        {/* Skills Required */}
         <div className="form-group">
           <label>Skills Required</label>
           <input
@@ -226,6 +287,19 @@ const JobPosting = () => {
           />
         </div>
 
+        {/* Job Benefits */}
+        <div className="form-group">
+          <label>Job Benefits</label>
+          <textarea
+            name="jobBenefits"
+            value={formData.jobBenefits}
+            onChange={handleChange}
+            rows="3"
+            placeholder="e.g. Health insurance, Paid time off"
+          />
+        </div>
+
+        {/* Application Deadline */}
         <div className="form-group">
           <label>Application Deadline</label>
           <input
@@ -233,6 +307,32 @@ const JobPosting = () => {
             name="applicationDeadline"
             value={formData.applicationDeadline}
             onChange={handleChange}
+          />
+        </div>
+
+        {/* Apply Link */}
+        <div className="form-group">
+          <label>Apply Link URL *</label>
+          <input
+            type="url"
+            name="applyLink"
+            value={formData.applyLink}
+            onChange={handleChange}
+            placeholder="https://example.com/apply"
+            required
+          />
+        </div>
+
+        {/* Contact Email */}
+        <div className="form-group">
+          <label>Contact Email *</label>
+          <input
+            type="email"
+            name="contactEmail"
+            value={formData.contactEmail}
+            onChange={handleChange}
+            placeholder="contact@company.com"
+            required
           />
         </div>
 

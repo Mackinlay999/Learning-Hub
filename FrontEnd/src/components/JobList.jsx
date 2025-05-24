@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import "../style/JobList.css";
+
 
 function JobList() {
   const [jobs, setJobs] = useState([]);

@@ -17,7 +17,7 @@ const RecruiterJobSchema = new mongoose.Schema({
   jobDescription: { type: String, required: true },
   skillsRequired: { type: String },
   applicationDeadline: { type: Date },
-  applicationLink: { type: String },
+  applicationLink: { type: String }, // new field for apply link
   postedAt: { type: Date, default: Date.now }
 });
 

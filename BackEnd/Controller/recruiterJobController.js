@@ -3,17 +3,45 @@ const RecruiterJob = require('../Model/RecruiterJob');
 // Create Recruiter Job
 const createRecruiterJob = async (req, res) => {
   try {
-    console.log("Request body:", req.body);
-    const { jobTitle, companyName, location, recruiterId } = req.body;
+    const {
+      jobTitle,
+      companyName,
+      location,
+      employmentType,
+      workplaceType,
+      industry,
+      experienceLevel,
+      salaryRange,
+      jobDescription,
+      skillsRequired,
+      applicationDeadline,
+      applicationLink,
+      recruiterId
+    } = req.body;
 
-    if (!jobTitle || !companyName || !location || !recruiterId) {
+    // Validate required fields
+    if (!jobTitle || !companyName || !location || !employmentType || !workplaceType || !jobDescription || !recruiterId) {
       return res.status(400).json({ message: "Missing required fields" });
     }
 
-    const job = new RecruiterJob({ ...req.body });
-    await job.save();
+    const newJob = new RecruiterJob({
+      jobTitle,
+      companyName,
+      location,
+      employmentType,
+      workplaceType,
+      industry,
+      experienceLevel,
+      salaryRange,
+      jobDescription,
+      skillsRequired,
+      applicationDeadline,
+      applicationLink,
+      recruiterId
+    });
 
-    res.status(201).json({ message: 'Job posted successfully', job });
+    await newJob.save();
+    res.status(201).json({ message: 'Job posted successfully', job: newJob });
   } catch (error) {
     console.error("Error creating job:", error);
     res.status(500).json({ error: error.message });
