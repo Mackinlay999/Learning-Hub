@@ -3,7 +3,7 @@ const Applicant = require('../Model/Applicant');
 
 const getDashboardStats = async (req, res) => {
   try {
-    const recruiterId = req.user.id;
+    const recruiterId = req.userid;
 
     const totalJobs = await Job.countDocuments({ recruiter: recruiterId });
     const activeJobs = await Job.countDocuments({ recruiter: recruiterId, deadline: { $gte: new Date() } });
@@ -21,7 +21,14 @@ const getDashboardStats = async (req, res) => {
 
 const getRecentApplications = async (req, res) => {
   try {
-    const applications = await Applicant.find()
+    const recruiterId = req.userid; // or req.userid depending on your fix
+
+    // Find jobs posted by this recruiter
+    const jobs = await Job.find({ recruiter: recruiterId }).select('_id');
+
+    const jobIds = jobs.map(job => job._id);
+
+    const applications = await Applicant.find({ job: { $in: jobIds } })
       .sort({ createdAt: -1 })
       .limit(5)
       .select('name job createdAt')
@@ -39,9 +46,10 @@ const getRecentApplications = async (req, res) => {
   }
 };
 
+
 const getJobPerformance = async (req, res) => {
   try {
-    const recruiterId = req.user.id;
+    const recruiterId = req.userid;
     const jobs = await Job.find({ recruiter: recruiterId });
 
     let views = 0;

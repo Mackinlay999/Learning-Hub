@@ -8,7 +8,7 @@ const Auth = {
       console.log(token, "token");
 
       if (!token) {
-        return res.status(400).json({ message: "unauthorized" });
+        return res.status(401).json({ message: "unauthorized" });
       }
 
       const decode = jwt.verify(token, process.env.JWT_SECRET);
@@ -18,7 +18,7 @@ const Auth = {
 
       next();
     } catch (err) {
-      return res.status(400).json({ message: err.message });
+      return res.status(401).json({ message: err.message });
     }
   },
 };

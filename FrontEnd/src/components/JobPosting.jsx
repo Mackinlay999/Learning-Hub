@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import '../style/JobPosting.css';
 
-const API_BASE = 'https://learning-hub-p2yq.onrender.com/api/jobs'; // Change to your backend URL
+const API_BASE = 'https://learning-hub-p2yq.onrender.com/api/recruiter/jobs';
 
 const JobPosting = () => {
   const [formData, setFormData] = useState({
@@ -19,24 +19,8 @@ const JobPosting = () => {
     applicationDeadline: '',
   });
 
-  const [jobs, setJobs] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editJobId, setEditJobId] = useState(null);
-
-  // Fetch jobs on component mount
-  useEffect(() => {
-    fetchJobs();
-  }, []);
-
-  const fetchJobs = async () => {
-    try {
-      const res = await fetch(API_BASE);
-      const data = await res.json();
-      setJobs(data);
-    } catch (err) {
-      console.error('Failed to fetch jobs:', err);
-    }
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,31 +29,19 @@ const JobPosting = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      if (isEditing) {
-        // Update existing job
-        const res = await fetch(`${API_BASE}/${editJobId}`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        });
-        if (!res.ok) throw new Error('Failed to update job');
+      const url = isEditing ? `${API_BASE}/${editJobId}` : API_BASE;
+      const method = isEditing ? 'PUT' : 'POST';
 
-        alert('Job Updated Successfully!');
-        setIsEditing(false);
-        setEditJobId(null);
-      } else {
-        // Create new job
-        const res = await fetch(API_BASE, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        });
-        if (!res.ok) throw new Error('Failed to post job');
+      const res = await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-        alert('Job Posted Successfully!');
-      }
+      if (!res.ok) throw new Error(isEditing ? 'Failed to update job' : 'Failed to post job');
+
+      alert(isEditing ? 'Job Updated Successfully!' : 'Job Posted Successfully!');
       setFormData({
         jobTitle: '',
         companyName: '',
@@ -83,40 +55,10 @@ const JobPosting = () => {
         skillsRequired: '',
         applicationDeadline: '',
       });
-      fetchJobs();
+      setIsEditing(false);
+      setEditJobId(null);
     } catch (err) {
       alert(err.message);
-    }
-  };
-
-  const handleEdit = (job) => {
-    setFormData({
-      jobTitle: job.jobTitle,
-      companyName: job.companyName,
-      location: job.location,
-      employmentType: job.employmentType,
-      workplaceType: job.workplaceType,
-      industry: job.industry || '',
-      experienceLevel: job.experienceLevel || '',
-      salaryRange: job.salaryRange || '',
-      jobDescription: job.jobDescription,
-      skillsRequired: job.skillsRequired || '',
-      applicationDeadline: job.applicationDeadline ? job.applicationDeadline.split('T')[0] : '',
-    });
-    setIsEditing(true);
-    setEditJobId(job._id);
-  };
-
-  const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this job?')) {
-      try {
-        const res = await fetch(`${API_BASE}/${id}`, { method: 'DELETE' });
-        if (!res.ok) throw new Error('Failed to delete job');
-        alert('Job Deleted Successfully!');
-        fetchJobs();
-      } catch (err) {
-        alert(err.message);
-      }
     }
   };
 
@@ -130,7 +72,6 @@ const JobPosting = () => {
       <h2 className="job-posting-title">{isEditing ? 'Edit Job' : 'Post a Job'}</h2>
 
       <form className="job-posting-form" onSubmit={handleSubmit}>
-        {/* Form fields as before */}
         <div className="form-group">
           <label>Job Title</label>
           <input type="text" name="jobTitle" value={formData.jobTitle} onChange={handleChange} required />
@@ -230,40 +171,6 @@ const JobPosting = () => {
           {isEditing ? 'Update Job' : 'Post Job'}
         </motion.button>
       </form>
-
-      {/* Job Listing Table */}
-      {jobs.length > 0 && (
-        <div className="job-table-section">
-          <h3>Posted Jobs</h3>
-          <table className="job-table">
-            <thead>
-              <tr>
-                <th>Job Title</th>
-                <th>Company</th>
-                <th>Location</th>
-                <th>Employment Type</th>
-                <th>Workplace Type</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {jobs.map((job) => (
-                <tr key={job._id}>
-                  <td>{job.jobTitle}</td>
-                  <td>{job.companyName}</td>
-                  <td>{job.location}</td>
-                  <td>{job.employmentType}</td>
-                  <td>{job.workplaceType}</td>
-                  <td>
-                    <button className="edit-btn" onClick={() => handleEdit(job)}>Edit</button>
-                    <button className="delete-btn" onClick={() => handleDelete(job._id)}>Delete</button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
     </motion.div>
   );
 };

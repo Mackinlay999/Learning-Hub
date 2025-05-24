@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import axios from 'axios';
-import { motion } from 'framer-motion';
-import '../style/JobList.css';
+import React, { useState, useEffect, useMemo } from "react";
+import axios from "axios";
+import { motion } from "framer-motion";
+import "../style/JobList.css";
 
 function JobList() {
   const [jobs, setJobs] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,10 +14,12 @@ function JobList() {
     async function fetchJobs() {
       try {
         setLoading(true);
-        const response = await axios.get('https://learning-hub-p2yq.onrender.com/api/recruiter/jobs');
+        const response = await axios.get(
+          "https://learning-hub-p2yq.onrender.com/api/recruiter/jobs"
+        );
         setJobs(response.data);
       } catch (err) {
-        setError('Failed to fetch jobs');
+        setError("Failed to fetch jobs");
       } finally {
         setLoading(false);
       }
@@ -33,7 +35,8 @@ function JobList() {
         job.location.toLowerCase().includes(searchTerm.toLowerCase());
 
       const matchesType =
-        selectedTypes.length === 0 || selectedTypes.includes(job.employmentType);
+        selectedTypes.length === 0 ||
+        selectedTypes.includes(job.employmentType);
 
       return matchesSearch && matchesType;
     });
@@ -49,7 +52,12 @@ function JobList() {
   if (error) return <p>{error}</p>;
 
   return (
-    <motion.div className="job-list-container" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+    <motion.div
+      className="job-list-container"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+    >
       <h2 className="job-list-title">Available Jobs</h2>
 
       <div className="job-list-filters">
@@ -61,10 +69,12 @@ function JobList() {
           className="job-list-search-input"
         />
         <div className="job-list-type-filters">
-          {['Full-time', 'Part-time', 'Contract', 'Internship'].map((type) => (
+          {["Full-time", "Part-time", "Contract", "Internship"].map((type) => (
             <button
               key={type}
-              className={`job-list-type-btn ${selectedTypes.includes(type) ? 'selected' : ''}`}
+              className={`job-list-type-btn ${
+                selectedTypes.includes(type) ? "selected" : ""
+              }`}
               onClick={() => toggleType(type)}
             >
               {type}
@@ -75,14 +85,19 @@ function JobList() {
 
       <ul className="job-list-jobs">
         {filteredJobs.length === 0 && (
-          <p className="job-list-no-results">No jobs found matching your criteria.</p>
+          <p className="job-list-no-results">
+            No jobs found matching your criteria.
+          </p>
         )}
         {filteredJobs.map((job) => (
           <motion.li
             key={job._id}
             className="job-list-job-card"
-            whileHover={{ scale: 1.02, boxShadow: '0 8px 20px rgba(0,0,0,0.1)' }}
-            transition={{ type: 'spring', stiffness: 150 }}
+            whileHover={{
+              scale: 1.02,
+              boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
+            }}
+            transition={{ type: "spring", stiffness: 150 }}
           >
             <div className="job-list-job-info">
               <h3 className="job-list-job-title">{job.jobTitle}</h3>
@@ -95,9 +110,14 @@ function JobList() {
                 Posted {new Date(job.postedAt).toLocaleDateString()}
               </p>
               {/* ✅ Replaced Apply Button with Link */}
+              <Link className="job-list-apply-btn" to={`/jobs/${job._id}`}>
+                View Details
+              </Link>
               <a
                 className="job-list-apply-btn"
-                href={`https://learning-hub-p2yq.onrender.com/api/apply/${job._id}`} // Or your preferred URL
+                href={`https://learning-hub-p2yq.onrender.com/api/apply/${job._id}`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Apply
               </a>
