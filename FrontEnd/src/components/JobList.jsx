@@ -70,7 +70,7 @@ function JobList() {
           className="job-list-search-input"
         />
         <div className="job-list-type-filters">
-          {["Full-time", "Part-time", "Contract", "Internship"].map((type) => (
+          {["Full-time", "Part-time", "Contract", "Internship","Freelance"].map((type) => (
             <button
               key={type}
               className={`job-list-type-btn ${

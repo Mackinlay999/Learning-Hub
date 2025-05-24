@@ -1,14 +1,16 @@
+/* ====== Container ====== */
 .job-details-container {
   max-width: 900px;
   margin: 2rem auto;
   padding: 0 1.5rem 4rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #222;
-  background: #fff;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  color: #333333; /* Dark Gray text */
+  background: #FFFFFF; /* White background */
   border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
+/* ====== Header ====== */
 .job-details-header {
   display: flex;
   align-items: center;
@@ -22,8 +24,12 @@
   height: 80px;
   object-fit: contain;
   border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0, 115, 177, 0.3);
-  background-color: #f3f6fb;
+  box-shadow: 0 3px 10px rgba(211, 47, 47, 0.4); /* Primary Red shadow */
+  background-color: #fef3e0; /* subtle warm background */
+  transition: transform 0.3s ease;
+}
+.job-details-company-logo:hover {
+  transform: scale(1.05);
 }
 
 .job-details-title-info {
@@ -35,59 +41,66 @@
   font-size: 1.8rem;
   font-weight: 700;
   margin: 0 0 0.2rem;
-  color: #0073b1;
+  color: #D32F2F; /* Primary Red */
+  letter-spacing: 0.02em;
+  text-shadow: 1px 1px 3px #FFC107aa; /* Gold Accent subtle glow */
 }
 
 .job-details-company-name {
   display: inline-block;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #0073b1;
+  color: #333333; /* Dark Gray */
   text-decoration: none;
   margin-bottom: 0.3rem;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
-
 .job-details-company-name:hover {
-  color: #004a7c;
+  color: #D32F2F; /* Primary Red on hover */
   text-decoration: underline;
+  text-shadow: 0 0 6px #FFC107; /* Gold Accent glow */
 }
 
 .job-details-location {
   font-size: 1rem;
-  color: #555;
+  color: #555555;
   margin-bottom: 0.2rem;
+  font-style: italic;
 }
 
 .job-details-type-posted {
   font-size: 0.9rem;
-  color: #666;
+  color: #666666;
 }
 
 .job-details-type {
   font-weight: 600;
 }
 
+/* ====== Apply Button ====== */
 .job-details-apply-btn {
-  background-color: #0073b1;
+  background-color: #D32F2F; /* Primary Red */
   color: white;
   border: none;
   padding: 0.8rem 2.2rem;
   border-radius: 30px;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
   white-space: nowrap;
-  box-shadow: 0 4px 10px rgba(0,115,177,0.4);
+  box-shadow: 0 4px 10px rgba(211, 47, 47, 0.6);
+  user-select: none;
 }
 
 .job-details-apply-btn:hover {
-  background-color: #005b91;
-  box-shadow: 0 6px 14px rgba(0,91,145,0.6);
+  background-color: #9a2121; /* Darker Red */
+  box-shadow: 0 6px 18px rgba(211, 47, 47, 0.9);
 }
 
+/* ====== Main Body ====== */
 .job-details-main {
   line-height: 1.6;
+  color: #333333;
 }
 
 .job-details-section {
@@ -98,35 +111,81 @@
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  border-bottom: 2px solid #0073b1;
+  border-bottom: 3px solid #FFC107; /* Gold Accent underline */
   padding-bottom: 0.25rem;
-  color: #0073b1;
+  color: #D32F2F; /* Primary Red */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  user-select: none;
+  transition: color 0.4s ease;
+}
+
+.job-details-section-title:hover {
+  color: #FFC107; /* Gold Accent on hover */
 }
 
 .job-details-description {
   font-size: 1.1rem;
-  color: #333;
+  color: #333333;
   margin-bottom: 1.25rem;
+  white-space: pre-wrap;
 }
 
 .job-details-list {
   list-style-type: disc;
   margin-left: 1.5rem;
-  color: #444;
+  color: #444444;
 }
 
 .job-details-list-item {
   margin-bottom: 0.7rem;
   font-size: 1.05rem;
+  transition: color 0.3s ease;
+}
+.job-details-list-item:hover {
+  color: #D32F2F;
+  font-weight: 600;
 }
 
 .job-details-company-overview p {
   font-size: 1.05rem;
-  color: #555;
+  color: #555555;
   max-width: 600px;
 }
 
-/* Responsive */
+/* ====== InfoRow styling ====== */
+.job-details-main p strong {
+  color: #D32F2F;
+}
+
+/* ====== Back Button ====== */
+.job-details-back-btn {
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px solid #333333; /* Dark Gray border */
+  background: #FFFFFF; /* White background */
+  color: #333333; /* Dark Gray text */
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(51, 51, 51, 0.15);
+  transition: background-color 0.3s ease, color 0.3s ease,
+    box-shadow 0.3s ease, transform 0.2s ease;
+  user-select: none;
+}
+.job-details-back-btn:hover {
+  background-color: #D32F2F; /* Primary Red bg on hover */
+  color: #FFFFFF; /* White text on hover */
+  box-shadow: 0 4px 15px rgba(211, 47, 47, 0.8);
+  transform: translateY(-2px);
+}
+.job-details-back-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(211, 47, 47, 0.6);
+}
+
+/* ====== Responsive ====== */
 @media (max-width: 700px) {
   .job-details-header {
     flex-direction: column;

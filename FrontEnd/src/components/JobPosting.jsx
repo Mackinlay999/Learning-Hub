@@ -161,9 +161,10 @@ const JobPosting = () => {
 
       <form className="job-posting-form" onSubmit={handleSubmit} noValidate>
         {/* Job Title */}
-        <div className="form-group">
-          <label>Job Title *</label>
+        <div className="job-posting-form-group">
+          <label className="job-posting-label">Job Title *</label>
           <input
+          className="job-posting-input"
             type="text"
             name="jobTitle"
             value={formData.jobTitle}
@@ -174,9 +175,10 @@ const JobPosting = () => {
         </div>
 
         {/* Company Name */}
-        <div className="form-group">
+        <div className="job-posting-form-group">
           <label>Company Name *</label>
           <input
+            className="job-posting-input"
             type="text"
             name="companyName"
             value={formData.companyName}
@@ -187,9 +189,10 @@ const JobPosting = () => {
         </div>
 
         {/* Location */}
-        <div className="form-group">
-          <label>Location *</label>
+        <div className="job-posting-form-group">
+          <label className="job-posting-label">Location *</label>
           <input
+            className="job-posting-input"
             type="text"
             name="location"
             value={formData.location}
@@ -200,10 +203,11 @@ const JobPosting = () => {
         </div>
 
         {/* Employment Type & Workplace Type */}
-        <div className="form-row">
-          <div className="form-group">
-            <label>Employment Type *</label>
+        <div className="job-posting-form-row">
+          <div className="job-posting-form-group">
+            <label className="job-posting-label">Employment Type *</label>
             <select
+              className="job-posting-select"
               name="employmentType"
               value={formData.employmentType}
               onChange={handleChange}
@@ -218,9 +222,10 @@ const JobPosting = () => {
             </select>
           </div>
 
-          <div className="form-group">
-            <label>Workplace Type *</label>
+          <div className="job-posting-form-group">
+            <label className="job-posting-label">Workplace Type *</label>
             <select
+            className="job-posting-select"
               name="workplaceType"
               value={formData.workplaceType}
               onChange={handleChange}
@@ -235,9 +240,10 @@ const JobPosting = () => {
         </div>
 
         {/* Industry */}
-        <div className="form-group">
-          <label>Industry</label>
+        <div className="job-posting-form-group">
+          <label className="job-posting-label">Industry</label>
           <input
+            className="job-posting-input"
             type="text"
             name="industry"
             value={formData.industry}
@@ -247,10 +253,11 @@ const JobPosting = () => {
         </div>
 
         {/* Experience Level & Salary Range */}
-        <div className="form-row">
-          <div className="form-group">
-            <label>Experience Level</label>
+        <div className="job-posting-form-row">
+          <div className="job-posting-form-group">
+            <label className="job-posting-label">Experience Level</label>
             <select
+              className="job-posting-select"
               name="experienceLevel"
               value={formData.experienceLevel}
               onChange={handleChange}
@@ -264,9 +271,10 @@ const JobPosting = () => {
             </select>
           </div>
 
-          <div className="form-group">
-            <label>Salary Range (optional)</label>
+          <div className="job-posting-form-group">
+            <label className="job-posting-label">Salary Range (optional)</label>
             <input
+              className="job-posting-input"
               type="text"
               name="salaryRange"
               value={formData.salaryRange}
@@ -278,9 +286,10 @@ const JobPosting = () => {
         </div>
 
         {/* Vacancies */}
-        <div className="form-group">
-          <label>Number of Vacancies *</label>
+        <div className="job-posting-form-group">
+          <label className="job-posting-label">Number of Vacancies *</label>
           <input
+          className="job-posting-input"
             type="number"
             min="1"
             name="vacancies"
@@ -291,9 +300,10 @@ const JobPosting = () => {
         </div>
 
         {/* Education Requirements */}
-        <div className="form-group">
-          <label>Education Requirements</label>
+        <div className="job-posting-form-group">
+          <label className="job-posting-label">Education Requirements</label>
           <input
+            className="job-posting-input"
             type="text"
             name="educationRequirements"
             value={formData.educationRequirements}
@@ -304,9 +314,10 @@ const JobPosting = () => {
         </div>
 
         {/* Company Logo URL */}
-        <div className="form-group">
-          <label>Company Logo URL</label>
+        <div className="job-posting-form-group">
+          <label className="job-posting-label">Company Logo URL</label>
           <input
+            className="job-posting-input"
             type="url"
             name="companyLogo"
             value={formData.companyLogo}
@@ -317,9 +328,10 @@ const JobPosting = () => {
         </div>
 
         {/* Company Website URL */}
-        <div className="form-group">
-          <label>Company Website URL</label>
+        <div className="job-posting-form-group">
+          <label className="job-posting-label">Company Website URL</label>
           <input
+            className="job-posting-input"
             type="url"
             name="companyWebsite"
             value={formData.companyWebsite}
@@ -330,9 +342,10 @@ const JobPosting = () => {
         </div>
 
         {/* Job Description */}
-        <div className="form-group">
-          <label>Job Description *</label>
+        <div className="job-posting-form-group">
+          <label className="job-posting-label">Job Description *</label>
           <textarea
+            className="job-posting-textarea"
             name="jobDescription"
             value={formData.jobDescription}
             onChange={handleChange}
@@ -342,9 +355,10 @@ const JobPosting = () => {
         </div>
 
         {/* Skills Required */}
-        <div className="form-group">
-          <label>Skills Required</label>
+        <div className="job-posting-form-group">
+          <label className="job-posting-label">Skills Required</label>
           <input
+            className="job-posting-input"
             type="text"
             name="skillsRequired"
             value={formData.skillsRequired}
@@ -355,9 +369,10 @@ const JobPosting = () => {
         </div>
 
         {/* Job Benefits */}
-        <div className="form-group">
-          <label>Job Benefits</label>
+        <div className="job-posting-form-group">
+          <label className="job-posting-label">Job Benefits</label>
           <textarea
+          className="job-posting-textarea"
             name="jobBenefits"
             value={formData.jobBenefits}
             onChange={handleChange}
@@ -367,9 +382,10 @@ const JobPosting = () => {
         </div>
 
         {/* Application Deadline */}
-        <div className="form-group">
-          <label>Application Deadline</label>
+        <div className="job-posting-form-group">
+          <label className="job-posting-label">Application Deadline</label>
           <input
+          className="job-posting-input"
             type="date"
             name="applicationDeadline"
             value={formData.applicationDeadline}
@@ -378,9 +394,10 @@ const JobPosting = () => {
         </div>
 
         {/* Apply Link */}
-        <div className="form-group">
-          <label>Apply Link URL *</label>
+        <div className="job-posting-form-group">
+          <label className="job-posting-label">Apply Link URL *</label>
           <input
+          className="job-posting-input"
             type="url"
             name="applicationLink"
             value={formData.applicationLink}
@@ -391,9 +408,10 @@ const JobPosting = () => {
         </div>
 
         {/* Contact Email */}
-        <div className="form-group">
-          <label>Contact Email *</label>
+        <div className="job-posting-form-group">
+          <label className="job-posting-label">Contact Email *</label>
           <input
+          className="job-posting-input"
             type="email"
             name="contactEmail"
             value={formData.contactEmail}
@@ -403,10 +421,10 @@ const JobPosting = () => {
           />
         </div>
 
-        <div className="form-buttons">
+        <div className="job-posting-form-buttons">
           <motion.button
             type="submit"
-            className="submit-btn"
+            className="job-posting-submit-btn"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             disabled={loading}
@@ -417,7 +435,7 @@ const JobPosting = () => {
           {isEditing && (
             <motion.button
               type="button"
-              className="cancel-btn"
+              className="job-posting-cancel-btn"
               onClick={clearForm}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

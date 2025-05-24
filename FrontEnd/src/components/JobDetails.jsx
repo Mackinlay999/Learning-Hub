@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";  // <-- Import useNavigate
 import axios from "axios";
 import "../style/JobDetail.css";
 
 const InfoRow = ({ label, value, isEmail }) => (
   <p>
     <strong>{label}:</strong>{" "}
-    {value ? (
-      isEmail ? <a href={`mailto:${value}`}>{value}</a> : value
-    ) : (
-      "N/A"
-    )}
+    {value ? (isEmail ? <a href={`mailto:${value}`}>{value}</a> : value) : "N/A"}
   </p>
 );
 
 function JobDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();  // <-- Initialize navigate
   const [jobData, setJobData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -25,7 +22,9 @@ function JobDetails() {
     const fetchJob = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`/api/recruiter/jobs/${id}`);
+        const { data } = await axios.get(
+          `https://learning-hub-p2yq.onrender.com/api/recruiter/jobs/${id}`
+        );
         setJobData(data);
         setError(null);
       } catch (err) {
@@ -43,7 +42,8 @@ function JobDetails() {
     return isNaN(date.getTime()) ? "N/A" : date.toLocaleDateString();
   };
 
-  if (loading) return <p className="job-details-loading">Loading job details...</p>;
+  if (loading)
+    return <p className="job-details-loading">Loading job details...</p>;
   if (error) return <p className="job-details-error">{error}</p>;
   if (!jobData) return <p className="job-details-error">Job not found</p>;
 
@@ -55,7 +55,6 @@ function JobDetails() {
     location,
     employmentType,
     postedAt,
-    applicationLink,
     jobDescription,
     skillsRequired,
     jobBenefits,
@@ -66,7 +65,7 @@ function JobDetails() {
     educationRequirements,
     workplaceType,
     applicationDeadline,
-    contactEmail
+    contactEmail,
   } = jobData;
 
   return (
@@ -76,10 +75,30 @@ function JobDetails() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
+      {/* Back Button */}
+      <button
+        className="job-details-back-btn"
+        onClick={() => navigate(-1)}  // <-- Go back one page in history
+        style={{
+          marginBottom: "1rem",
+          padding: "0.5rem 1rem",
+          cursor: "pointer",
+          borderRadius: "5px",
+          border: "1px solid #333",
+          background: "white",
+          color: "#333",
+        }}
+      >
+        ← Back
+      </button>
+
       {/* Header */}
       <header className="job-details-header">
         <motion.img
-          src={companyLogo || "https://via.placeholder.com/80"}
+          src={
+            companyLogo ||
+            "https://dummyimage.com/80x80/cccccc/000000&text=Logo"
+          }
           alt={`${companyName || "Company"} logo`}
           className="job-details-company-logo"
           initial={{ scale: 0 }}
@@ -100,19 +119,36 @@ function JobDetails() {
           <p className="job-details-type-posted">
             <span className="job-details-type">{employmentType || "N/A"}</span>
             &nbsp;&middot;&nbsp;
-            <span className="job-details-posted">Posted on {formatDate(postedAt)}</span>
+            <span className="job-details-posted">
+              Posted on {formatDate(postedAt)}
+            </span>
           </p>
         </div>
-        <motion.a
-          href={applicationLink || `/api/apply/${id}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="job-details-apply-btn"
-          whileHover={{ scale: 1.05, backgroundColor: "#c70039" }}
-          transition={{ type: "spring", stiffness: 300 }}
+        <button
+          className="job-list-apply-btn"
+          onClick={async () => {
+            try {
+              const res = await fetch(
+                `https://learning-hub-p2yq.onrender.com/api/apply/${jobData._id}`
+              );
+              const data = await res.json();
+              if (data.applicationLink) {
+                window.open(
+                  data.applicationLink,
+                  "_blank",
+                  "noopener,noreferrer"
+                );
+              } else {
+                alert("Application link not found");
+              }
+            } catch (err) {
+              console.error(err);
+              alert("Failed to get application link");
+            }
+          }}
         >
-          Apply Now
-        </motion.a>
+          Apply
+        </button>
       </header>
 
       {/* Main Body */}
@@ -147,10 +183,19 @@ function JobDetails() {
           <InfoRow label="Industry" value={industry} />
           <InfoRow label="Experience Level" value={experienceLevel} />
           <InfoRow label="Salary Range" value={salaryRange} />
-          <InfoRow label="Vacancies" value={vacancies !== undefined ? vacancies : "N/A"} />
-          <InfoRow label="Education Requirements" value={educationRequirements} />
+          <InfoRow
+            label="Vacancies"
+            value={vacancies !== undefined ? vacancies : "N/A"}
+          />
+          <InfoRow
+            label="Education Requirements"
+            value={educationRequirements}
+          />
           <InfoRow label="Workplace Type" value={workplaceType} />
-          <InfoRow label="Application Deadline" value={formatDate(applicationDeadline)} />
+          <InfoRow
+            label="Application Deadline"
+            value={formatDate(applicationDeadline)}
+          />
           <InfoRow label="Contact Email" value={contactEmail} isEmail />
         </section>
       </main>
