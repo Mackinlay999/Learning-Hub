@@ -55,7 +55,7 @@ const LoginPortal = () => {
       localStorage.setItem("role", role);
       login(token, role);
       alert("Login Successful");
-      navigate("/student/dashboard");
+      navigate("/student/jobs");
     } catch (error) {
       if (error.response) {
         alert(error.response.data.message || "Login failed. Please try again.");

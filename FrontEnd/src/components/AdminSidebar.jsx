@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext"; // Adjust path based on where useAuth is
+import { useAuth } from "../context/AuthContext"; // Adjust path as needed
 import {
   ShieldCheck,
   Users,
@@ -12,7 +12,7 @@ import {
   MessageCircle,
   Briefcase,
 } from "lucide-react";
-import "../style/AdminSidebar.css"; // Your existing CSS remains
+import "../style/AdminSidebar.css";
 
 const allSections = [
   {
@@ -82,9 +82,9 @@ const allSections = [
     roles: ["Admin", "Mentor", "Recruiter", "Super Admin"],
   },
   {
-    name: "Sucess Story",
+    name: "Success Story",
     icon: <Briefcase size={18} />,
-    path: "/admin/Suceess",
+    path: "/admin/Success",
     roles: ["Admin", "Mentor", "Super Admin"],
   },
   {
@@ -101,15 +101,8 @@ const AdminSidebar = () => {
   const { role, loading } = auth;
   const navigate = useNavigate();
 
-  console.log("Role in Sidebar:", auth.role);
-  console.log("Auth state:", auth); // Add this to check the full auth state
+  const toggleSidebar = () => setSidebarOpen((prev) => !prev);
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
-
-  // Filter sections based on user's role
-  // Filter sections only after auth is loaded
   const availableSections =
     !loading && role
       ? allSections.filter((section) => section.roles.includes(role))
@@ -117,9 +110,14 @@ const AdminSidebar = () => {
 
   return (
     <>
-      {/* <button className="admin-sidebar-toggle-btn" onClick={toggleSidebar}>
-        {sidebarOpen ? "Close" : "Menu"}
-      </button> */}
+      {/* Mobile toggle button */}
+      <button
+        aria-label="Toggle sidebar"
+        className="admin-sidebar-toggle-btn"
+        onClick={toggleSidebar}
+      >
+        {sidebarOpen ? "✕" : "☰"}
+      </button>
 
       <div className={`admin-sidebar-wrapper ${sidebarOpen ? "open" : ""}`}>
         <div className="admin-sidebar-custom-sidebar">
@@ -127,10 +125,10 @@ const AdminSidebar = () => {
             <h5 className="admin-sidebar-brand-text">Mackinlay Learning Hub</h5>
           </div>
 
-          <div className="admin-sidebar-S-sidebar">
+          <nav className="admin-sidebar-S-sidebar" aria-label="Admin Navigation">
             <ul className="admin-sidebar-nav">
               {loading ? (
-                <div className="admin-sidebar-loading">Loading...</div>
+                <li className="admin-sidebar-loading">Loading...</li>
               ) : (
                 availableSections.map((item, index) => (
                   <li key={index}>
@@ -139,11 +137,10 @@ const AdminSidebar = () => {
                       className={({ isActive }) =>
                         `admin-sidebar-nav-link ${isActive ? "active" : ""}`
                       }
+                      onClick={() => setSidebarOpen(false)} // close sidebar on mobile after click
                     >
                       <span className="admin-sidebar-S-icon">{item.icon}</span>
-                      <p className="admin-sidebar-S-content text-white">
-                        {item.name}
-                      </p>
+                      <p className="admin-sidebar-S-content text-white">{item.name}</p>
                     </NavLink>
                   </li>
                 ))
@@ -154,6 +151,7 @@ const AdminSidebar = () => {
                   onClick={() => {
                     logout();
                     navigate("/");
+                    setSidebarOpen(false);
                   }}
                   className="admin-sidebar-logout-btn"
                 >
@@ -161,14 +159,16 @@ const AdminSidebar = () => {
                 </button>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
       </div>
 
+      {/* Overlay when sidebar open */}
       {sidebarOpen && (
         <div
           className="admin-sidebar-overlay"
           onClick={() => setSidebarOpen(false)}
+          aria-hidden="true"
         />
       )}
     </>

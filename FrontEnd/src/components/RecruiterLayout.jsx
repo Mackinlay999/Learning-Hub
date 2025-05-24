@@ -18,7 +18,7 @@ const RecruiterLayout = () => {
         <div className="recruiter-layout-logo">Recruiter</div>
         <nav className="recruiter-layout-nav">
           <ul>
-            <li><NavLink to="/recruiter/dashboard" activeclassname="active">Dashboard</NavLink></li>
+            {/* <li><NavLink to="/recruiter/dashboard" activeclassname="active">Dashboard</NavLink></li> */}
             <li><NavLink to="/recruiter/job-posting" activeclassname="active">Post Job</NavLink></li>
             <li><NavLink to="/recruiter/my-jobs" activeclassname="active">My Jobs</NavLink></li>
             <li>
