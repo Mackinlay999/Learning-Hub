@@ -24,6 +24,7 @@ const createRecruiterJob = async (req, res) => {
       educationRequirements, // ✅
       vacancies
     } = req.body;
+    console.log("Job data received:", req.body);
 
     // Validate required fields
     if (
