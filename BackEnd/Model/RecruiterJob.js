@@ -22,6 +22,12 @@ const RecruiterJobSchema = new mongoose.Schema({
   jobBenefits: { type: String },
   vacancies: { type: Number, default: 1 },
   educationRequirements: { type: String },
+  companyLogo: String,              // ✅
+  companyWebsite: String,           // ✅
+  jobBenefits: String,              // ✅
+  contactEmail: String,             // ✅
+  educationRequirements: String,   // ✅
+  vacancies: String  ,
   postedAt: { type: Date, default: Date.now }
 });
 
