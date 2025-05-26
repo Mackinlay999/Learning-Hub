@@ -171,33 +171,43 @@ const AdminHome = () => {
       });
 
     // Fetch Leads by Date
-    axios
-      .get("/getLeadsByDate")
-      .then((res) => {
-        setTotalLeads(res.data.totalLeadsOverall);
+    // axios
+    //   .get("/getLeadsByDate")
+    //   .then((res) => {
+    //     setTotalLeads(res.data.totalLeadsOverall);
 
-        const todayData = res.data.totalLeadsByDate[0]; // safely get the first item
-        if (todayData) {
-          setTodayLeads(todayData.totalLeads);
-        } else {
-          setTodayLeads(0);
-          console.log("No leads found for today.");
-        }
-        setLoading(false);
-      })
-      .catch((err) => console.error("Error fetching leads by date:", err));
+    //     const todayData = res.data.totalLeadsByDate[0]; // safely get the first item
+    //     if (todayData) {
+    //       setTodayLeads(todayData.totalLeads);
+    //     } else {
+    //       setTodayLeads(0);
+    //       console.log("No leads found for today.");
+    //     }
+    //     setLoading(false);
+    //   })
+    //   .catch((err) => console.error("Error fetching leads by date:", err));
 
-// const fetchTodayLeads = async () => {
-//       try {
-//         const res = await axios.get('/today');
-//         setTodayLeads(res.data.todayLeadsCount);
-//       } catch (error) {
-//         console.error(error);
-//         setTodayLeads(0); // fallback if error
-//       }
-//     };
+    axios.get('/getLeadsByDate')
+  .then(res => {
+    const allLeads = res.data.totalLeadsByDate;
 
-//     fetchTodayLeads();
+    const today = new Date().toISOString().split('T')[0];
+    const todayData = allLeads.find(day =>
+      new Date(day._id).toISOString().split('T')[0] === today
+    );
+
+    if (todayData) {
+      setTodayLeads([todayData]);
+    } else {
+      // No leads for today, set to empty array or count 0
+      setTodayLeads([]);
+      setTodayLeadsCount(0);  // if you want a separate count state
+    }
+  })
+  .catch(err => console.error(err));
+
+
+
 
 
 
