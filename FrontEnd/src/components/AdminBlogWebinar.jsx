@@ -122,14 +122,27 @@ const AdminBlogWebinar = () => {
       return;
     }
 
+    // Validate URL
+    if (!/^https?:\/\//.test(webinarLink)) {
+      toast.error('Please include http/https in the webinar link');
+      return;
+    }
+
     try {
-      const formattedDateTime = new Date(webinarDateTime).toISOString(); // ✅ Convert it
+      const formattedDateTime = new Date(webinarDateTime).toISOString();
+      console.log('Sending webinar data:', {
+        webinarTitle,
+        webinarDateTime: formattedDateTime,
+        webinarDescription,
+        webinarLink,
+        typeofProgram,
+      });
 
       const response = await axios.post(
         'https://learning-hub-p2yq.onrender.com/api/webinars',
         {
           webinarTitle,
-          webinarDateTime: formattedDateTime, // ✅ Send ISO string
+          webinarDateTime: formattedDateTime,
           webinarDescription,
           webinarLink,
           typeofProgram,
@@ -140,11 +153,12 @@ const AdminBlogWebinar = () => {
           },
         },
       );
-      toast.success('Webinar submitted successfully');
+
+      toast.success('✅ Webinar submitted successfully!');
     } catch (error) {
-      console.error('Error scheduling webinar:', error);
+      console.error('Error scheduling webinar:', error.response || error);
       toast.error(
-        error.response?.data?.message || 'Failed to schedule webinar',
+        error.response?.data?.message || '❌ Failed to schedule webinar',
       );
     }
   };
@@ -320,7 +334,7 @@ const AdminBlogWebinar = () => {
               </Form.Label>
               <Form.Control
                 className="blog-webinar-form-control"
-                type="url"
+                type="text"
                 placeholder="Enter webinar link (e.g., Zoom, Google Meet)"
                 name="webinarLink"
                 value={formData.webinarLink}

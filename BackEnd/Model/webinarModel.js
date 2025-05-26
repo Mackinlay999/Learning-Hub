@@ -8,8 +8,8 @@ const webinarSchema = new mongoose.Schema(
     webinarTitle: { type: String, required: true },
     webinarDateTime: { type: Date, required: true },
     webinarDescription: { type: String, required: true },
-    webinarLink: { type: String }, // New field for webinar link
-    typeofProgram: { type: String }, 
+    webinarLink: { type: String,required: true  }, // New field for webinar link
+    typeofProgram: { type: String,required: true  }, 
     // registrants: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     createdAt: { type: Date, default: Date.now },
   },
