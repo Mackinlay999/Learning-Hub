@@ -8,7 +8,7 @@ router.post("/webinars", createWebinar);
 
 // Route for getting all webinars
 router.get("/webinars", getAllWebinars);
-router.get("/webinars/registrants", getRegistrants);
-router.get("/webinars/export", exportAttendance);
+// router.get("/webinars/registrants", getRegistrants);
+// router.get("/webinars/export", exportAttendance);
 
 module.exports = router;
