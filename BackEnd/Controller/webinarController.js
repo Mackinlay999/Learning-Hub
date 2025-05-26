@@ -8,31 +8,24 @@ const createWebinar = async (req, res) => {
   try {
     const { webinarTitle, webinarDateTime, webinarDescription, webinarLink, typeOfProgram } = req.body;
 
-    // Check for missing fields
-    if (![webinarTitle, webinarDateTime, webinarDescription, webinarLink, typeOfProgram].every(Boolean)) {
-      return res.status(400).json({ message: "All fields are required." });
+    // Validate required fields on backend too
+    if (!webinarTitle || !webinarDateTime || !webinarDescription || !webinarLink || !typeOfProgram) {
+      return res.status(400).json({ message: 'All fields are required' });
     }
 
-    // Validate date
-    const parsedDate = new Date(webinarDateTime);
-    if (isNaN(parsedDate)) {
-      return res.status(400).json({ message: "Invalid date format." });
-    }
-
-    const newWebinar = new Webinar({
-      webinarTitle: webinarTitle.trim(),
-      webinarDateTime: parsedDate,
-      webinarDescription: webinarDescription.trim(),
-      webinarLink: webinarLink.trim(),
-      typeOfProgram: typeOfProgram.trim(),
+    const webinar = new Webinar({
+      webinarTitle,
+      webinarDateTime,
+      webinarDescription,
+      webinarLink,
+      typeOfProgram
     });
 
-    await newWebinar.save();
-
-    return res.status(201).json({ message: "Webinar created successfully", webinar: newWebinar });
-  } catch (error) {
-    console.error("Webinar creation error:", error.message);
-    return res.status(500).json({ message: "Internal server error" });
+    await webinar.save();
+    res.status(201).json({ message: 'Webinar created successfully', webinar });
+  } catch (err) {
+    console.error('Backend Error:', err);
+    res.status(500).json({ message: 'Server Error while saving webinar' });
   }
 };
 
