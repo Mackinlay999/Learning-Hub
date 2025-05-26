@@ -82,7 +82,7 @@
 }
 
 .APT-form button:hover {
-  background-color: var(--primary-button-hover-bg);
+  background-color:#c0392b;
 }
 
 /* ====== Table Styles ====== */
@@ -179,4 +179,8 @@
   .APT-subtitle {
     font-size: 0.95rem;
   }
+}
+
+.APT-form button {
+  background-color:#D32F2F;
 }

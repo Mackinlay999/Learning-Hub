@@ -3,7 +3,7 @@ import AdminSuccessStories from './AdminSuccessStories'
 import AdminStoryPage from './AdminStoryPage'
 
 
-const AdminSuceess = () => {
+const AdminSuccess = () => {
   return (
     <div>
         <AdminSuccessStories />
@@ -15,4 +15,4 @@ const AdminSuceess = () => {
   )
 }
 
-export default AdminSuceess;
+export default AdminSuccess;

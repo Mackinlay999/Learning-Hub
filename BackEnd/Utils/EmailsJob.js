@@ -2,7 +2,7 @@
 // cronJob.js
 const cron = require('node-cron');
 const EmailSchedule = require('../Model/EmailSchedule');
-const sendEmail = require('../Utils/SendEmail');
+const {sendEmail} = require('../Utils/SendEmail');
 
 const emailCronJob = cron.schedule('* * * * *', async () => {  // Runs every minute
   try {

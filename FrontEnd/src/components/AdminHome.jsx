@@ -171,33 +171,54 @@ const AdminHome = () => {
       });
 
     // Fetch Leads by Date
+    // axios
+    //   .get("/getLeadsByDate")
+    //   .then((res) => {
+    //     setTotalLeads(res.data.totalLeadsOverall);
+
+    //     const todayData = res.data.totalLeadsByDate[0]; // safely get the first item
+    //     if (todayData) {
+    //       setTodayLeads(todayData.totalLeads);
+    //     } else {
+    //       setTodayLeads(0);
+    //       console.log("No leads found for today.");
+    //     }
+    //     setLoading(false);
+    //   })
+    //   .catch((err) => console.error("Error fetching leads by date:", err));
+
     axios
-      .get("/getLeadsByDate")
-      .then((res) => {
-        setTotalLeads(res.data.totalLeadsOverall);
+  .get("/getLeadsByDate")
+  .then((res) => {
+    // Assuming totalLeadsOverall is total leads count (maybe overall, for display)
+    setTotalLeads(res.data.totalLeadsOverall);
 
-        const todayData = res.data.totalLeadsByDate[0]; // safely get the first item
-        if (todayData) {
-          setTodayLeads(todayData.totalLeads);
-        } else {
-          setTodayLeads(0);
-          console.log("No leads found for today.");
-        }
-        setLoading(false);
-      })
-      .catch((err) => console.error("Error fetching leads by date:", err));
+    // Find today's date in YYYY-MM-DD format
+    const today = new Date().toISOString().split('T')[0];
 
-// const fetchTodayLeads = async () => {
-//       try {
-//         const res = await axios.get('/today');
-//         setTodayLeads(res.data.todayLeadsCount);
-//       } catch (error) {
-//         console.error(error);
-//         setTodayLeads(0); // fallback if error
-//       }
-//     };
+    // Find today's data by matching date _id string in data array
+    const todayData = res.data.totalLeadsByDate.find(day =>
+      new Date(day._id).toISOString().split('T')[0] === today
+    );
 
-//     fetchTodayLeads();
+    if (todayData) {
+      // Set today's lead count from the found object
+      setTodayLeads(todayData.totalLeads);
+    } else {
+      // No leads found for today, set to 0
+      setTodayLeads(0);
+      console.log("No leads found for today.");
+    }
+
+    setLoading(false);
+  })
+  .catch((err) => {
+    console.error("Error fetching leads by date:", err);
+    setLoading(false);
+  });
+
+
+
 
 
 
