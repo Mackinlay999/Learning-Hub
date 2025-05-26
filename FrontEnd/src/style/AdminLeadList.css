@@ -76,7 +76,7 @@ tbody td {
 .ld-bnt {
   margin-right: 8px;
   padding: 6px 12px;
-  background-color: #2980b9;
+  background-color:#b71c1c;
   color: var(--white);
   border: none;
   border-radius: 5px;
@@ -86,7 +86,7 @@ tbody td {
 }
 
 .ld-bnt:hover {
-  background-color: var(--button-hover);
+  background-color:#b71c1c;
 }
 
 /* Modal */

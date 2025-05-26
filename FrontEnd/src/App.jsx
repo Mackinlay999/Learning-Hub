@@ -78,7 +78,7 @@ import AdminSupportAndFeedback from "./components/AdminSupportAndFeedback";
 import AdminRecruiterAndPlacementManagement from "./components/AdminRecruiterAndPlacementManagement";
 import AdminMentors from "./components/AdminMentors";
 import AdminMentorDetail from "./components/AdminMentorDetail";
-import AdminSuceess from "./components/AdminSuceess";
+import AdminSuccess from "./components/AdminSuccess";
 import AdminBlogWebinar from "./components/AdminBlogWebinar";
 import AdminRecruiterDashboard from "./components/AdminRecruiterDashboard";
 import AdminPartners from "./components/AdminPartners";
@@ -377,10 +377,10 @@ function App() {
                 }
               />
               <Route
-                path="Suceess"
+                path="Success"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                    <AdminSuceess />
+                    <AdminSuccess />
                   </ProtectedRoute>
                 }
               />
