@@ -100,39 +100,54 @@ const AdminBlogWebinar = () => {
     }
   };
 
-const handleWebinarSubmit = async (e) => {
-  e.preventDefault();
+  const handleWebinarSubmit = async (e) => {
+    e.preventDefault();
 
-  const { webinarTitle, webinarDateTime, webinarDescription, webinarLink, typeofProgram } = formData;
+    const {
+      webinarTitle,
+      webinarDateTime,
+      webinarDescription,
+      webinarLink,
+      typeofProgram,
+    } = formData;
 
-  if (!webinarTitle || !webinarDateTime || !webinarDescription || !webinarLink || !typeofProgram) {
-    toast.error("Please fill out all webinar fields.");
-    return;
-  }
+    if (
+      !webinarTitle ||
+      !webinarDateTime ||
+      !webinarDescription ||
+      !webinarLink ||
+      !typeofProgram
+    ) {
+      toast.error('Please fill out all webinar fields.');
+      return;
+    }
 
-  try {
-    const response = await axios.post(
-      'https://learning-hub-p2yq.onrender.com/api/webinars',
-      {
-        webinarTitle,
-        webinarDateTime,
-        webinarDescription,
-        webinarLink,
-        typeofProgram
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-    );
-    toast.success('Webinar submitted successfully');
-  } catch (error) {
-    console.error("Error scheduling webinar:", error);
-    toast.error(error.response?.data?.message || 'Failed to schedule webinar');
-  }
-};
+    try {
+      const formattedDateTime = new Date(webinarDateTime).toISOString(); // ✅ Convert it
 
+      const response = await axios.post(
+        'https://learning-hub-p2yq.onrender.com/api/webinars',
+        {
+          webinarTitle,
+          webinarDateTime: formattedDateTime, // ✅ Send ISO string
+          webinarDescription,
+          webinarLink,
+          typeofProgram,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      toast.success('Webinar submitted successfully');
+    } catch (error) {
+      console.error('Error scheduling webinar:', error);
+      toast.error(
+        error.response?.data?.message || 'Failed to schedule webinar',
+      );
+    }
+  };
 
   return (
     <Container className="blog-webinar-container py-5">
