@@ -3,7 +3,15 @@ import { motion } from "framer-motion";
 import image3 from "../images/2.png";
 import "../style/Webinars.css";
 import video from "../images/s1.png";
-
+import demoimg1 from '../images/demoimg1.png';
+import demoimg2 from '../images/demoimg2.png';
+import demoimg3 from '../images/demoimg3.png';
+import demoimg4 from '../images/demoimg4.png';
+import demoimg5 from '../images/demoimg5.png';
+import img1 from '../images/f1.png';
+import img2 from '../images/f2.png';
+import img3 from '../images/f3.png';
+import img4 from '../images/f4.png';
 const Webinars = () => {
   
     const webinars = [
@@ -15,7 +23,7 @@ const Webinars = () => {
           speaker: "Ms. Aisha Verma",
           role: "Senior HR Strategist at Global Talent Solutions",
           registerLink: "#",
-          image: video,
+          image: img1,
         },
         {
           id: 2,
@@ -25,7 +33,7 @@ const Webinars = () => {
           speaker: "Mr. Rahul Kapoor",
           role: "Head of Digital Marketing Officer at BrandBoost",
           registerLink: "#",
-          image: video,
+          image: img2,
         },
         {
           id: 3,
@@ -35,7 +43,7 @@ const Webinars = () => {
           speaker: "Dr. Neha Sharma",
           role: "Chief Investment Officer at WealthWise Advisors",
           registerLink: "#",
-          image: video,
+          image: img3,
         },
       ];
       

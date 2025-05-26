@@ -1,78 +1,100 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Button, Card } from "react-bootstrap";
-import { motion } from "framer-motion";
-import { FaRegShareSquare, FaArrowLeft, FaArrowRight } from "react-icons/fa"; // ✅ Import this
-import "../style/SuccessStory.css";
-import video from "../images/s1.png";
-import video1 from "../images/s2.png";
-import success from "../images/2.png";
-
-
+import React, { useState } from 'react';
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
+import { motion } from 'framer-motion';
+import { FaRegShareSquare, FaArrowLeft, FaArrowRight } from 'react-icons/fa'; // ✅ Import this
+import '../style/SuccessStory.css';
+import video from '../images/s1.png';
+import video1 from '../images/s2.png';
+import success from '../images/2.png';
+import demoimg1 from '../images/demoimg1.png';
+import demoimg2 from '../images/demoimg2.png';
+import demoimg3 from '../images/demoimg3.png';
+import demoimg4 from '../images/demoimg4.png';
+import demoimg5 from '../images/demoimg5.png';
+import demoimg6 from '../images/demoimg6.png';
+import demoimg7 from '../images/demoimg7.png';
+import demoimg8 from '../images/demoimg8.png';
+import demoimg9 from '../images/demoimg9.png';
+import demoimg10 from '../images/demoimg10.png';
+import demoimg11 from '../images/demoimg11.png';
+import demoimg12 from '../images/demoimg12.png';
+import demoimg13 from '../images/demoimg13.png';
+import demoimg14 from '../images/demoimg14.png';
+import img1 from '../images/f1.png';
+import img2 from '../images/f2.png';
+import img3 from '../images/f3.png';
+import img4 from '../images/f4.png';
+// import img5 from '../images/demoimg1';
+import img6 from '../images/p2.png';
+const imageList = [img1, img2, img3, img4, demoimg4, demoimg10];
+{
+  /* Right Images */
+}
 const successStories = [
   {
-    name: "Surajith Nath",
-    title: "Human Resource (HR) Training Program",
-    image: video,
+    name: 'Surajith Nath',
+    title: 'Human Resource (HR) Training Program',
+    image: demoimg6,
   },
   {
-    name: "Swati Kumari",
-    title: "Marketing Training Program",
-    image: video1,
+    name: 'Swati Kumari',
+    title: 'Marketing Training Program',
+    image: demoimg7,
   },
   {
-    name: "Smitha Seethapathi",
-    title: "Finance Training Program",
-    image: video,
+    name: 'Smitha Seethapathi',
+    title: 'Finance Training Program',
+    image: demoimg8,
   },
   {
-    name: "Zulfiqaar Ahmed",
-    title: "Business Analytics Training Program",
-    image: video,
+    name: 'Zulfiqaar Ahmed',
+    title: 'Business Analytics Training Program',
+    image: demoimg9,
   },
 ];
 
 const stories = [
   {
-    name: "Ajay Kini",
+    name: 'Ajay Kini',
     image: video,
-    program: "Human Resource (HR) Training Program",
+    program: 'Human Resource (HR) Training Program',
     feedback:
-      "This program helped me develop essential HR skills and gave me the confidence to handle real workplace scenarios effectively.",
+      'This program helped me develop essential HR skills and gave me the confidence to handle real workplace scenarios effectively.',
   },
   {
-    name: "Jeffrey Jones M",
-    image: video,
-    program: "Marketing Training Program",
+    name: 'Jeffrey Jones M',
+    image: demoimg1,
+    program: 'Marketing Training Program',
     feedback:
-      "The marketing program was insightful, hands-on, and industry-relevant. I gained a solid understanding of digital strategies.",
+      'The marketing program was insightful, hands-on, and industry-relevant. I gained a solid understanding of digital strategies.',
   },
   {
-    name: "Ravi Kumar Tangellapalli",
-    image: video,
-    program: "Professional Sales Specialist Certification Program",
+    name: 'Ravi Kumar Tangellapalli',
+    image: demoimg2,
+    program: 'Professional Sales Specialist Certification Program',
     feedback:
-      "I loved the practical sessions and the live case studies. This certification helped me land a new role in sales!",
+      'I loved the practical sessions and the live case studies. This certification helped me land a new role in sales!',
   },
   {
-    name: "Sarah Lee",
-    image: video,
-    program: "Business Analytics Training Program",
+    name: 'Sarah Lee',
+    image: demoimg3,
+    program: 'Business Analytics Training Program',
     feedback:
-      "A well-structured and practical program! I now feel confident analyzing data to support business decisions.",
+      'A well-structured and practical program! I now feel confident analyzing data to support business decisions.',
   },
   {
-    name: "Michael Brown",
-    image: video,
-    program: "Finance Training Program",
+    name: 'Michael Brown',
+    image: demoimg4,
+    program: 'Finance Training Program',
     feedback:
-      "This training provided a clear picture of financial planning and analysis. Great for beginners and professionals alike!",
+      'This training provided a clear picture of financial planning and analysis. Great for beginners and professionals alike!',
   },
   {
-    name: "Emma Watson",
-    image: video,
-    program: "Marketing Training Program",
+    name: 'Emma Watson',
+    image: demoimg5,
+    program: 'Marketing Training Program',
     feedback:
-      "The instructors were top-notch and the case studies were very relevant. I would recommend this program to anyone in marketing.",
+      'The instructors were top-notch and the case studies were very relevant. I would recommend this program to anyone in marketing.',
   },
 ];
 
@@ -88,13 +110,13 @@ const SuccessStory = () => {
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === successStories.length - 1 ? 0 : prevIndex + 1
+      prevIndex === successStories.length - 1 ? 0 : prevIndex + 1,
     );
   };
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? successStories.length - 1 : prevIndex - 1
+      prevIndex === 0 ? successStories.length - 1 : prevIndex - 1,
     );
   };
   return (
@@ -107,7 +129,7 @@ const SuccessStory = () => {
           transition={{ duration: 1 }}
         >
           <h1 className="success-story-title1">
-            Transforming Lives,{" "}
+            Transforming Lives,{' '}
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -179,14 +201,7 @@ const SuccessStory = () => {
 
           {/* Right Images */}
           <Col lg={6} className="success-story-image-grid">
-            {[
-              "img1.jpg",
-              "img2.jpg",
-              "img3.jpg",
-              "img4.jpg",
-              "img5.jpg",
-              "img6.jpg",
-            ].map((img, index) => (
+            {imageList.map((img, index) => (
               <motion.div
                 key={index}
                 className="success-story-image-card"
@@ -194,7 +209,7 @@ const SuccessStory = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
               >
-                <img src={video} alt="Success Story" />
+                <img src={img} alt={`Success Story ${index + 1}`} />
               </motion.div>
             ))}
           </Col>
@@ -214,7 +229,7 @@ const SuccessStory = () => {
                   transition={{ duration: 1 }}
                 >
                   <img
-                    src={video}
+                    src={video1}
                     alt="Success Story"
                     className="success-story-profile-photo"
                   />
@@ -405,7 +420,7 @@ const SuccessStory = () => {
         <div className="success-story-viewmore-1">
           <motion.div whileHover={{ scale: 1.1 }}>
             <Button variant="primary" onClick={() => setShowAll(!showAll)}>
-              {showAll ? "Show Less" : "View More"}
+              {showAll ? 'Show Less' : 'View More'}
             </Button>
           </motion.div>
         </div>
