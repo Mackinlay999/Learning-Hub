@@ -187,24 +187,35 @@ const AdminHome = () => {
     //   })
     //   .catch((err) => console.error("Error fetching leads by date:", err));
 
-    axios.get('/getLeadsByDate')
-  .then(res => {
-    const allLeads = res.data.totalLeadsByDate;
+    axios
+  .get("/getLeadsByDate")
+  .then((res) => {
+    // Assuming totalLeadsOverall is total leads count (maybe overall, for display)
+    setTotalLeads(res.data.totalLeadsOverall);
 
+    // Find today's date in YYYY-MM-DD format
     const today = new Date().toISOString().split('T')[0];
-    const todayData = allLeads.find(day =>
+
+    // Find today's data by matching date _id string in data array
+    const todayData = res.data.totalLeadsByDate.find(day =>
       new Date(day._id).toISOString().split('T')[0] === today
     );
 
     if (todayData) {
-      setTodayLeads([todayData]);
+      // Set today's lead count from the found object
+      setTodayLeads(todayData.totalLeads);
     } else {
-      // No leads for today, set to empty array or count 0
-      setTodayLeads([]);
-      setTodayLeadsCount(0);  // if you want a separate count state
+      // No leads found for today, set to 0
+      setTodayLeads(0);
+      console.log("No leads found for today.");
     }
+
+    setLoading(false);
   })
-  .catch(err => console.error(err));
+  .catch((err) => {
+    console.error("Error fetching leads by date:", err);
+    setLoading(false);
+  });
 
 
 
