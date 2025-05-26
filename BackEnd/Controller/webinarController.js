@@ -14,12 +14,16 @@ const createWebinar = async (req, res) => {
       return res.status(400).json({ message: "All fields are required." });
     }
 
+    if (isNaN(Date.parse(webinarDateTime))) {
+      return res.status(400).json({ message: "Invalid date format for webinarDateTime." });
+    }
+
     const newWebinar = new Webinar({
-      webinarTitle,
-      webinarDateTime,
-      webinarDescription,
-      webinarLink,
-      typeofProgram,
+      webinarTitle: webinarTitle.trim(),
+      webinarDateTime: new Date(webinarDateTime),
+      webinarDescription: webinarDescription.trim(),
+      webinarLink: webinarLink.trim(),
+      typeofProgram: typeofProgram.trim(),
     });
 
     await newWebinar.save();
@@ -27,9 +31,10 @@ const createWebinar = async (req, res) => {
     res.status(201).json({ message: "Webinar created successfully", webinar: newWebinar });
   } catch (error) {
     console.error("Webinar creation error:", error);
-    res.status(400).json({ message: "Error creating webinar", error: error.message });
+    res.status(500).json({ message: "Error creating webinar", error: error.message });
   }
 };
+
 
 
 // Get all webinars
