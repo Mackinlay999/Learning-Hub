@@ -5,7 +5,7 @@ const webinarSchema = new mongoose.Schema({
   webinarDateTime: { type: Date, required: true },
   webinarDescription: { type: String, required: true },
   webinarLink: { type: String, required: true },
-  typeofProgram: { type: String, required: true },
+  typeOfProgram: { type: String, required: true },
 }, { timestamps: true });
 
 module.exports = mongoose.model("Webinar", webinarSchema);

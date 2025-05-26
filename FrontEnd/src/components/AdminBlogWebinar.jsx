@@ -23,7 +23,7 @@ const AdminBlogWebinar = () => {
     webinarDateTime: '',
     webinarDescription: '',
     webinarLink: '', // new
-    typeofProgram: '', // new
+    typeOfProgram: '', // new
   });
   // const [registrants, setRegistrants] = useState([]);
   // const [showRegistrants, setShowRegistrants] = useState(false);
@@ -108,7 +108,7 @@ const AdminBlogWebinar = () => {
       webinarDateTime,
       webinarDescription,
       webinarLink,
-      typeofProgram,
+      typeOfProgram,
     } = formData;
 
     // Simple field validation
@@ -118,7 +118,7 @@ const AdminBlogWebinar = () => {
         webinarDateTime,
         webinarDescription,
         webinarLink,
-        typeofProgram,
+        typeOfProgram,
       ].every(Boolean)
     ) {
       toast.error('Please fill out all webinar fields.');
@@ -137,7 +137,7 @@ const AdminBlogWebinar = () => {
         webinarDateTime: new Date(webinarDateTime).toISOString(),
         webinarDescription: webinarDescription.trim(),
         webinarLink: webinarLink.trim(),
-        typeofProgram: typeofProgram.trim(),
+        typeOfProgram: typeOfProgram.trim(),
       };
 
       console.log('Sending webinar data:', trimmedData);
@@ -156,7 +156,7 @@ const AdminBlogWebinar = () => {
         webinarDateTime: '',
         webinarDescription: '',
         webinarLink: '',
-        typeofProgram: '',
+        typeOfProgram: '',
       });
     } catch (error) {
       console.error('Error scheduling webinar:', error);
@@ -353,8 +353,8 @@ const AdminBlogWebinar = () => {
                 className="blog-webinar-form-control"
                 type="text"
                 placeholder="e.g., Workshop, Seminar, Live Q&A"
-                name="typeofProgram"
-                value={formData.typeofProgram}
+                name="typeOfProgram"
+                value={formData.typeOfProgram}
                 onChange={handleInputChange}
               />
             </Form.Group>

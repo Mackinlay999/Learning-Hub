@@ -6,10 +6,10 @@ const ExcelJS = require("exceljs"); // You'll need to install this: npm i excelj
 // Create a new webinar
 const createWebinar = async (req, res) => {
   try {
-    const { webinarTitle, webinarDateTime, webinarDescription, webinarLink, typeofProgram } = req.body;
+    const { webinarTitle, webinarDateTime, webinarDescription, webinarLink, typeOfProgram } = req.body;
 
     // Check for missing fields
-    if (![webinarTitle, webinarDateTime, webinarDescription, webinarLink, typeofProgram].every(Boolean)) {
+    if (![webinarTitle, webinarDateTime, webinarDescription, webinarLink, typeOfProgram].every(Boolean)) {
       return res.status(400).json({ message: "All fields are required." });
     }
 
@@ -24,7 +24,7 @@ const createWebinar = async (req, res) => {
       webinarDateTime: parsedDate,
       webinarDescription: webinarDescription.trim(),
       webinarLink: webinarLink.trim(),
-      typeofProgram: typeofProgram.trim(),
+      typeOfProgram: typeOfProgram.trim(),
     });
 
     await newWebinar.save();
