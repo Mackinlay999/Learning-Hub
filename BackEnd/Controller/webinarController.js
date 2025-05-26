@@ -6,21 +6,22 @@ const ExcelJS = require("exceljs"); // You'll need to install this: npm i excelj
 // Create a new webinar
 const createWebinar = async (req, res) => {
   try {
-    console.log("Received webinar data:", req.body);
-
     const { webinarTitle, webinarDateTime, webinarDescription, webinarLink, typeofProgram } = req.body;
 
-    if (!webinarTitle || !webinarDateTime || !webinarDescription || !webinarLink || !typeofProgram) {
+    // Check for missing fields
+    if (![webinarTitle, webinarDateTime, webinarDescription, webinarLink, typeofProgram].every(Boolean)) {
       return res.status(400).json({ message: "All fields are required." });
     }
 
-    if (isNaN(Date.parse(webinarDateTime))) {
-      return res.status(400).json({ message: "Invalid date format for webinarDateTime." });
+    // Validate date
+    const parsedDate = new Date(webinarDateTime);
+    if (isNaN(parsedDate)) {
+      return res.status(400).json({ message: "Invalid date format." });
     }
 
     const newWebinar = new Webinar({
       webinarTitle: webinarTitle.trim(),
-      webinarDateTime: new Date(webinarDateTime),
+      webinarDateTime: parsedDate,
       webinarDescription: webinarDescription.trim(),
       webinarLink: webinarLink.trim(),
       typeofProgram: typeofProgram.trim(),
@@ -28,12 +29,13 @@ const createWebinar = async (req, res) => {
 
     await newWebinar.save();
 
-    res.status(201).json({ message: "Webinar created successfully", webinar: newWebinar });
+    return res.status(201).json({ message: "Webinar created successfully", webinar: newWebinar });
   } catch (error) {
-    console.error("Webinar creation error:", error);
-    res.status(500).json({ message: "Error creating webinar", error: error.message });
+    console.error("Webinar creation error:", error.message);
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
+
 
 
 

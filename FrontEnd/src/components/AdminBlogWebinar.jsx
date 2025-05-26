@@ -111,52 +111,55 @@ const AdminBlogWebinar = () => {
       typeofProgram,
     } = formData;
 
+    // Simple field validation
     if (
-      !webinarTitle ||
-      !webinarDateTime ||
-      !webinarDescription ||
-      !webinarLink ||
-      !typeofProgram
+      ![
+        webinarTitle,
+        webinarDateTime,
+        webinarDescription,
+        webinarLink,
+        typeofProgram,
+      ].every(Boolean)
     ) {
       toast.error('Please fill out all webinar fields.');
       return;
     }
 
-    // Validate URL
-    if (!/^https?:\/\//.test(webinarLink)) {
-      toast.error('Please include http/https in the webinar link');
+    // Validate URL format
+    if (!/^https?:\/\//i.test(webinarLink)) {
+      toast.error('Please include http:// or https:// in the webinar link.');
       return;
     }
 
     try {
-      const formattedDateTime = new Date(webinarDateTime).toISOString();
-      console.log('Sending webinar data:', {
-        webinarTitle,
-        webinarDateTime: formattedDateTime,
-        webinarDescription,
-        webinarLink,
-        typeofProgram,
-      });
+      const trimmedData = {
+        webinarTitle: webinarTitle.trim(),
+        webinarDateTime: new Date(webinarDateTime).toISOString(),
+        webinarDescription: webinarDescription.trim(),
+        webinarLink: webinarLink.trim(),
+        typeofProgram: typeofProgram.trim(),
+      };
+
+      console.log('Sending webinar data:', trimmedData);
 
       const response = await axios.post(
         'https://learning-hub-p2yq.onrender.com/api/webinars',
-        {
-          webinarTitle,
-          webinarDateTime: formattedDateTime,
-          webinarDescription,
-          webinarLink,
-          typeofProgram,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
+        trimmedData,
+        { headers: { 'Content-Type': 'application/json' } },
       );
 
       toast.success('✅ Webinar submitted successfully!');
+
+      // Reset form after successful submission
+      setFormData({
+        webinarTitle: '',
+        webinarDateTime: '',
+        webinarDescription: '',
+        webinarLink: '',
+        typeofProgram: '',
+      });
     } catch (error) {
-      console.error('Error scheduling webinar:', error.response || error);
+      console.error('Error scheduling webinar:', error);
       toast.error(
         error.response?.data?.message || '❌ Failed to schedule webinar',
       );
