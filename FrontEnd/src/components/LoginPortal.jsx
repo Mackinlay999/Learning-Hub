@@ -2,27 +2,27 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../style/LoginPortal.css";
+import { useAuth } from "../context/AuthContext"; // import auth context
 
 const LoginPortal = () => {
   const navigate = useNavigate();
+  const { login } = useAuth(); // get login function from context
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   useEffect(() => {
-    axios
-      .get("https://learning-hub-p2yq.onrender.com/api/me", {
-        withCredentials: true,
-      }) // Removed unnecessary empty object
-      .then(() => {
-        navigate("/userdetails");
+    // Check for active session (optional)
+    axios.get("https://learning-hub-p2yq.onrender.com/api/me", { withCredentials: true })
+      .then((res) => {
+        // Optional auto-redirect if already logged in
+        if (res.data?.role === "Student") {
+          navigate("/student/dashboard");
+        }
       })
       .catch((error) => {
-        if (error.response?.status === 401) {
-          console.log("No valid token found. Stay on Login.");
-        } else {
-          console.log("Error checking token:", error);
-        }
+        console.log("Token check:", error.response?.status === 401 ? "No valid session" : error);
       });
   }, [navigate]);
 
@@ -38,16 +38,28 @@ const LoginPortal = () => {
         { withCredentials: true }
       );
 
-      if (response.status === 200) {
-        alert("Login Successful");
-        navigate("/userdetails");
+      const { token, role } = response.data;
+
+      if (!token || !role) {
+        alert("Invalid response from server");
+        return;
       }
+
+      if (role !== "user") {
+        alert("You're not authorized as a Student.");
+        return;
+      }
+
+      // Set token and role in AuthContext
+      localStorage.setItem("token", token);
+      localStorage.setItem("role", role);
+      login(token, role);
+      alert("Login Successful");
+      navigate("/student/jobs");
     } catch (error) {
       if (error.response) {
-        console.error("Login failed:", error.response.data);
         alert(error.response.data.message || "Login failed. Please try again.");
       } else {
-        console.error("Login error:", error);
         alert("An error occurred. Please check your connection.");
       }
     }
@@ -91,7 +103,7 @@ const LoginPortal = () => {
             </div>
           </div>
           <div className="button-group">
-            <button type="submit" className="login-button" onClick={() => navigate("/user-dashboard")}>
+            <button type="submit" className="login-button">
               Login
             </button>
             <button

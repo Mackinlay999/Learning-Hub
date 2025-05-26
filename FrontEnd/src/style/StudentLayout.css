@@ -1,0 +1,121 @@
+/* Root colors remain unchanged */
+
+/* Layout Container */
+.student-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--white);
+}
+
+/* Sidebar */
+.student-sidebar {
+  width: 220px;
+  background-color: var(--dark);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Logo */
+.student-sidebar-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Sidebar Navigation */
+.student-sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1; /* Take up available vertical space */
+}
+
+.student-sidebar-nav li {
+  margin-bottom: 20px;
+}
+
+.student-sidebar-nav li a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 15px;
+  display: block;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.student-sidebar-nav li a:hover,
+.student-sidebar-nav li a.active {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+/* Logout Button */
+.logout-btn {
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: auto; /* Stick to bottom */
+}
+
+.logout-btn:hover {
+  background-color: var(--gold);
+  color: var(--dark);
+}
+
+/* Main Content */
+.student-layout-content {
+  flex: 1;
+  padding: 30px;
+  background-color: var(--white);
+  overflow-y: auto;
+}
+
+/* Responsive: stack sidebar on top for small screens */
+@media (max-width: 768px) {
+  .student-layout {
+    flex-direction: column;
+  }
+
+  .student-sidebar {
+    width: 100%;
+    flex-direction: row;
+    padding: 10px 20px;
+    align-items: center;
+  }
+
+  .student-sidebar-logo {
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+
+  .student-sidebar-nav ul {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  .student-sidebar-nav li {
+    margin-bottom: 0;
+    margin-right: 15px;
+  }
+
+  .logout-btn {
+    width: auto;
+    margin-left: auto;
+  }
+
+  .student-layout-content {
+    padding: 15px;
+  }
+}

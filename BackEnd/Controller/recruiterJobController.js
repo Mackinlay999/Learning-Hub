@@ -1,13 +1,70 @@
-const RecruiterJob = require('../Model/RecruiterJob');
+const RecruiterJob = require("../Model/RecruiterJob");
 
 // Create Recruiter Job
 const createRecruiterJob = async (req, res) => {
   try {
-    const { recruiterId } = req.body;
-    const job = new RecruiterJob({ ...req.body, recruiterId });
-    await job.save();
-    res.status(201).json({ message: 'Job posted successfully', job });
+    const {
+      jobTitle,
+      companyName,
+      location,
+      employmentType,
+      workplaceType,
+      industry,
+      experienceLevel,
+      salaryRange,
+      jobDescription,
+      skillsRequired,
+      applicationDeadline,
+      applicationLink,
+      recruiterId,
+      companyLogo, // ✅
+      companyWebsite, // ✅
+      jobBenefits, // ✅
+      contactEmail, // ✅
+      educationRequirements, // ✅
+      vacancies
+    } = req.body;
+    console.log("Job data received:", req.body);
+
+    // Validate required fields
+    if (
+      !jobTitle ||
+      !companyName ||
+      !location ||
+      !employmentType ||
+      !workplaceType ||
+      !jobDescription ||
+      !recruiterId
+    ) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    const newJob = new RecruiterJob({
+      jobTitle,
+      companyName,
+      location,
+      employmentType,
+      workplaceType,
+      industry,
+      experienceLevel,
+      salaryRange,
+      jobDescription,
+      skillsRequired,
+      applicationDeadline,
+      applicationLink,
+      recruiterId,
+      companyLogo, // ✅
+      companyWebsite, // ✅
+      jobBenefits, // ✅
+      contactEmail, // ✅
+      educationRequirements, // ✅
+      vacancies
+    });
+
+    await newJob.save();
+    res.status(201).json({ message: "Job posted successfully", job: newJob });
   } catch (error) {
+    console.error("Error creating job:", error);
     res.status(500).json({ error: error.message });
   }
 };
@@ -15,7 +72,7 @@ const createRecruiterJob = async (req, res) => {
 // Get All Jobs
 const getAllRecruiterJobs = async (req, res) => {
   try {
-    const jobs = await RecruiterJob.find().sort({ postedAt: -1 });
+    const jobs = await RecruiterJob.find().sort({ createdAt: -1 });
     res.status(200).json(jobs);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -26,7 +83,7 @@ const getAllRecruiterJobs = async (req, res) => {
 const getRecruiterJobById = async (req, res) => {
   try {
     const job = await RecruiterJob.findById(req.params.id);
-    if (!job) return res.status(404).json({ message: 'Job not found' });
+    if (!job) return res.status(404).json({ message: "Job not found" });
     res.status(200).json(job);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -36,8 +93,10 @@ const getRecruiterJobById = async (req, res) => {
 // Update Job
 const updateRecruiterJob = async (req, res) => {
   try {
-    const job = await RecruiterJob.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    res.status(200).json({ message: 'Job updated successfully', job });
+    const job = await RecruiterJob.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(200).json({ message: "Job updated successfully", job });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -47,30 +106,31 @@ const updateRecruiterJob = async (req, res) => {
 const deleteRecruiterJob = async (req, res) => {
   try {
     await RecruiterJob.findByIdAndDelete(req.params.id);
-    res.status(200).json({ message: 'Job deleted successfully' });
+    res.status(200).json({ message: "Job deleted successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
-// In your controller, add this:
 
+// Get Application Link (apply to job)
 const applyToJob = async (req, res) => {
   try {
     const jobId = req.params.id;
     const job = await RecruiterJob.findById(jobId);
-    if (!job) return res.status(404).json({ message: 'Job not found' });
+    if (!job) return res.status(404).json({ message: "Job not found" });
 
     if (!job.applicationLink) {
-      return res.status(400).json({ message: 'No application link available for this job.' });
+      return res
+        .status(400)
+        .json({ message: "No application link available for this job." });
     }
 
-    // Redirect the user to the application link
-    return res.redirect(job.applicationLink);
+    // Send application link URL to frontend
+    res.status(200).json({ applicationLink: job.applicationLink });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
-
 
 module.exports = {
   createRecruiterJob,
@@ -78,5 +138,5 @@ module.exports = {
   getRecruiterJobById,
   updateRecruiterJob,
   deleteRecruiterJob,
-  applyToJob
+  applyToJob,
 };

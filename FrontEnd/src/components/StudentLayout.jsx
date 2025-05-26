@@ -1,19 +1,35 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import '../style/StudentLayout.css';
 
 const StudentLayout = () => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
   return (
     <div className="student-layout">
-      <header className="student-header">
-        <nav>
+      <aside className="student-sidebar">
+        <div className="student-sidebar-logo">Student</div>
+        <nav className="student-sidebar-nav">
           <ul>
-            <li><NavLink to="/student/dashboard">Dashboard</NavLink></li>
-            <li><NavLink to="/student/jobs">Jobs</NavLink></li>
+            <li>
+              <NavLink to="/student/jobs" activeclassname="active">Jobs</NavLink>
+            </li>
+            {/* Add other links here if needed */}
           </ul>
         </nav>
-      </header>
-      <main className="content">
-        <Outlet /> {/* Renders nested student page components */}
+        <button onClick={handleLogout} className="logout-btn">
+          Logout
+        </button>
+      </aside>
+      <main className="student-layout-content">
+        <Outlet />
       </main>
     </div>
   );

@@ -1,0 +1,130 @@
+/* Color Palette */
+:root {
+  --primary: #D32F2F;
+  --dark: #333333;
+  --white: #FFFFFF;
+  --gold: #FFC107;
+}
+
+/* Base Layout */
+.recruiter-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--white);
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+}
+
+/* Sidebar */
+.recruiter-layout-sidebar {
+  background-color: var(--dark);
+  color: var(--white);
+  width: 240px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100%;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.recruiter-layout-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  text-align: center;
+}
+
+/* Navigation */
+.recruiter-layout-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recruiter-layout-nav li {
+  margin-bottom: 1rem;
+}
+
+.recruiter-layout-nav a {
+  color: var(--white);
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.recruiter-layout-nav a:hover,
+.recruiter-layout-nav a.active {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+/* Main Content */
+.recruiter-layout-content {
+  margin-left: 240px;
+  padding: 20px;
+  flex: 1;
+  background-color: var(--white);
+  transition: all 0.3s ease;
+}
+
+/* Responsive: Mobile View */
+@media (max-width: 768px) {
+  .recruiter-layout {
+    flex-direction: column;
+  }
+
+  .recruiter-layout-sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .recruiter-layout-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+
+  .recruiter-layout-nav a {
+    text-align: center;
+  }
+}
+
+/* Button Style Example (if needed elsewhere) */
+.recruiter-layout .recruiter-btn {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.recruiter-layout .recruiter-btn:hover {
+  background-color: var(--gold);
+  color: var(--dark);
+}
+/* Logout Button */
+.recruiter-layout .logout-btn {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 10px 15px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.recruiter-layout .logout-btn:hover {
+  background-color: var(--gold);
+  color: var(--dark);
+}

@@ -24,7 +24,7 @@ const dripCampaignController = require("../Controller/dripCampaignsController")
 const EmailTemplate = require("../Controller/EmailTemplateController")
 const EmailSchedule = require("../Controller/EmailScheduleController")
 const RecruiterController = require("../Controller/RecruiterLogin")
-
+const { authverify } = require("../Utils/Auth");
 const upload = require("../Utils/Multer");
 const { join } = require("path");
 
@@ -51,7 +51,7 @@ router.post("/forgetpassword", login.forgetpassword)
 router.post("/setNewPassword", login.setNewPassword)
 router.get("/getAlluser", login.getAlluser)
 router.post("/profileResume", upload.single("resume"), login.profileResume)
-router.get("/me" ,  auth.authverify, login.me)
+router.get("/me" ,  authverify, login.me)
 
 
 
