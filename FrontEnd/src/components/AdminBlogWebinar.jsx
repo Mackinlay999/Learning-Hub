@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   Container,
   Button,
@@ -7,59 +7,59 @@ import {
   Form,
   Row,
   Col,
-} from "react-bootstrap";
-import { toast } from "react-toastify";
-import axios from "axios";
-import "../style/AdminBlogWebinar.css";
+} from 'react-bootstrap';
+import { toast } from 'react-toastify';
+import axios from 'axios';
+import '../style/AdminBlogWebinar.css';
 
 const AdminBlogWebinar = () => {
   const [publish, setPublish] = useState(false);
-  const [tab, setTab] = useState("blog");
+  const [tab, setTab] = useState('blog');
   const [formData, setFormData] = useState({
-    blogTitle: "",
-    blogContent: "",
+    blogTitle: '',
+    blogContent: '',
     blogImage: null, // new
-    webinarTitle: "",
-    webinarDateTime: "",
-    webinarDescription: "",
-    webinarLink: "", // new
-    typeofProgram: "", // new
+    webinarTitle: '',
+    webinarDateTime: '',
+    webinarDescription: '',
+    webinarLink: '', // new
+    typeofProgram: '', // new
   });
-  const [registrants, setRegistrants] = useState([]);
-  const [showRegistrants, setShowRegistrants] = useState(false);
+  // const [registrants, setRegistrants] = useState([]);
+  // const [showRegistrants, setShowRegistrants] = useState(false);
 
-  const handleViewRegistrants = async () => {
-    try {
-      const response = await axios.get(
-        "https://learning-hub-p2yq.onrender.com/api/webinars/registrants"
-      );
-      setRegistrants(response.data); // Assuming backend returns an array
-      setShowRegistrants(true);
-    } catch (error) {
-      console.error("Error fetching registrants:", error);
-    }
-  };
-  const handleExportAttendance = async () => {
-    try {
-      const response = await axios.get(
-        "https://learning-hub-p2yq.onrender.com/api/webinars/export",
-        {
-          responseType: "blob", // Important for downloading files
-        }
-      );
+  // const handleViewRegistrants = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       'https://learning-hub-p2yq.onrender.com/api/webinars/registrants',
+  //     );
+  //     setRegistrants(response.data); // Assuming backend returns an array
+  //     setShowRegistrants(true);
+  //   } catch (error) {
+  //     console.error('Error fetching registrants:', error);
+  //   }
+  // };
+  // const handleExportAttendance = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       'https://learning-hub-p2yq.onrender.com/api/webinars/export',
+  //       {
+  //         responseType: 'blob', // Important for downloading files
+  //       },
+  //     );
 
-      // Create a blob URL and trigger download
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "attendance.xlsx"); // Adjust filename/extension
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-    } catch (error) {
-      console.error("Error exporting attendance:", error);
-    }
-  };
+  //     // Create a blob URL and trigger download
+  //     const url = window.URL.createObjectURL(new Blob([response.data]));
+  //     const link = document.createElement('a');
+  //     link.href = url;
+  //     link.setAttribute('download', 'attendance.xlsx'); // Adjust filename/extension
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     link.remove();
+  //   } catch (error) {
+  //     console.error('Error exporting attendance:', error);
+  //   }
+  // };
 
   const handleImageChange = (e) => {
     setFormData({
@@ -78,48 +78,61 @@ const AdminBlogWebinar = () => {
     e.preventDefault();
     try {
       const data = new FormData();
-      data.append("title", formData.blogTitle); // backend expects 'title'
-      data.append("content", formData.blogContent); // backend expects 'content'
-      data.append("publish", publish.toString()); // boolean or string "true"/"false"
+      data.append('title', formData.blogTitle); // backend expects 'title'
+      data.append('content', formData.blogContent); // backend expects 'content'
+      data.append('publish', publish.toString()); // boolean or string "true"/"false"
       if (formData.blogImage) {
-        data.append("image", formData.blogImage); // multer expects field name 'image'
+        data.append('image', formData.blogImage); // multer expects field name 'image'
       }
 
       const response = await axios.post(
-        "https://learning-hub-p2yq.onrender.com/api/blog",
+        'https://learning-hub-p2yq.onrender.com/api/blog',
         data,
         {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
+          headers: { 'Content-Type': 'multipart/form-data' },
+        },
       );
-      toast.success("✅ Blog created successfully!");
-      console.log("Blog created:", response.data);
+      toast.success('✅ Blog created successfully!');
+      console.log('Blog created:', response.data);
     } catch (error) {
-      toast.error("❌ Error creating blog. Please try again.");
-      console.error("Error creating blog:", error);
+      toast.error('❌ Error creating blog. Please try again.');
+      console.error('Error creating blog:', error);
     }
   };
 
-  const handleWebinarSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://learning-hub-p2yq.onrender.com/api/webinars",
-        {
-          title: formData.webinarTitle,
-          dateTime: formData.webinarDateTime,
-          description: formData.webinarDescription,
-          link: formData.webinarLink,
-          typeofProgram: formData.typeofProgram,
+const handleWebinarSubmit = async (e) => {
+  e.preventDefault();
+
+  const { webinarTitle, webinarDateTime, webinarDescription, webinarLink, typeofProgram } = formData;
+
+  if (!webinarTitle || !webinarDateTime || !webinarDescription || !webinarLink || !typeofProgram) {
+    toast.error("Please fill out all webinar fields.");
+    return;
+  }
+
+  try {
+    const response = await axios.post(
+      'https://learning-hub-p2yq.onrender.com/api/webinars',
+      {
+        webinarTitle,
+        webinarDateTime,
+        webinarDescription,
+        webinarLink,
+        typeofProgram
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json'
         }
-      );
-      toast.success("✅ Webinar scheduled successfully!");
-      console.log("Webinar scheduled:", response.data);
-    } catch (error) {
-      toast.error("❌ Error scheduling webinar. Please try again.");
-      console.error("Error scheduling webinar:", error);
-    }
-  };
+      }
+    );
+    toast.success('Webinar submitted successfully');
+  } catch (error) {
+    console.error("Error scheduling webinar:", error);
+    toast.error(error.response?.data?.message || 'Failed to schedule webinar');
+  }
+};
+
 
   return (
     <Container className="blog-webinar-container py-5">
@@ -131,21 +144,21 @@ const AdminBlogWebinar = () => {
           <ButtonGroup className="blog-webinar-button-group">
             <Button
               className={`blog-webinar-button ${
-                tab === "blog"
-                  ? "blog-webinar-button-primary"
-                  : "blog-webinar-button-secondary"
+                tab === 'blog'
+                  ? 'blog-webinar-button-primary'
+                  : 'blog-webinar-button-secondary'
               }`}
-              onClick={() => setTab("blog")}
+              onClick={() => setTab('blog')}
             >
               Blog
             </Button>
             <Button
               className={`blog-webinar-button ${
-                tab === "webinar"
-                  ? "blog-webinar-button-primary"
-                  : "blog-webinar-button-secondary"
+                tab === 'webinar'
+                  ? 'blog-webinar-button-primary'
+                  : 'blog-webinar-button-secondary'
               }`}
-              onClick={() => setTab("webinar")}
+              onClick={() => setTab('webinar')}
             >
               Webinars
             </Button>
@@ -154,7 +167,7 @@ const AdminBlogWebinar = () => {
       </Row>
 
       {/* Blog Section */}
-      {tab === "blog" && (
+      {tab === 'blog' && (
         <motion.div
           key="blog"
           initial={{ opacity: 0, x: -30 }}
@@ -214,7 +227,7 @@ const AdminBlogWebinar = () => {
                 id="publish-switch"
                 checked={publish}
                 onChange={() => setPublish(!publish)}
-                label={publish ? "Yes" : "No"}
+                label={publish ? 'Yes' : 'No'}
               />
             </Form.Group>
 
@@ -230,7 +243,8 @@ const AdminBlogWebinar = () => {
       )}
 
       {/* Webinar Section */}
-      {tab === "webinar" && (
+      {/* Webinar Section */}
+      {tab === 'webinar' && (
         <motion.div
           key="webinar"
           initial={{ opacity: 0, x: 30 }}
@@ -284,6 +298,7 @@ const AdminBlogWebinar = () => {
                 onChange={handleInputChange}
               />
             </Form.Group>
+
             <Form.Group className="blog-webinar-form-group mb-3">
               <Form.Label className="blog-webinar-form-label">
                 Webinar Link
@@ -306,46 +321,19 @@ const AdminBlogWebinar = () => {
                 className="blog-webinar-form-control"
                 type="text"
                 placeholder="e.g., Workshop, Seminar, Live Q&A"
-                name="typeofprogram"
-                value={formData.typeofprogram}
+                name="typeofProgram"
+                value={formData.typeofProgram}
                 onChange={handleInputChange}
               />
             </Form.Group>
 
-            <div className="d-flex flex-wrap gap-3">
-              <Button
-                type="button"
-                className="blog-webinar-button-view"
-                variant="primary"
-                onClick={handleViewRegistrants}
-              >
-                View Registrants
-              </Button>
-
-              <Button
-                className="blog-webinar-button-export"
-                variant="info"
-                onClick={handleExportAttendance}
-              >
-                Export Attendance Post-Session
-              </Button>
-            </div>
-            {showRegistrants && (
-              <div className="mt-4">
-                <h4>Registrants</h4>
-                <ul>
-                  {registrants.length === 0 ? (
-                    <li>No registrants found.</li>
-                  ) : (
-                    registrants.map((r, idx) => (
-                      <li key={idx}>
-                        {r.name} ({r.email})
-                      </li>
-                    ))
-                  )}
-                </ul>
-              </div>
-            )}
+            <Button
+              type="submit"
+              className="blog-webinar-button-submit"
+              variant="success"
+            >
+              Post Webinar
+            </Button>
           </Form>
         </motion.div>
       )}

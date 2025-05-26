@@ -6,8 +6,8 @@ const ExcelJS = require("exceljs"); // You'll need to install this: npm i excelj
 // Create a new webinar
 const createWebinar = async (req, res) => {
   try {
-    const { title, dateTime, description, link, typeofProgram } = req.body;
-    const newWebinar = new Webinar({ title, dateTime, description, link, typeofProgram });
+    const { webinarTitle, webinarDateTime, webinarDescription, webinarLink, typeofProgram } = req.body;
+    const newWebinar = new Webinar({ webinarTitle, webinarDateTime, webinarDescription, webinarLink, typeofProgram });
     await newWebinar.save();
     res.status(201).json({ message: "Webinar created successfully", webinar: newWebinar });
   } catch (error) {
