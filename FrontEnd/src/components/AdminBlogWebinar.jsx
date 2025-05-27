@@ -25,41 +25,7 @@ const AdminBlogWebinar = () => {
     webinarLink: '', // new
     typeOfProgram: '', // new
   });
-  // const [registrants, setRegistrants] = useState([]);
-  // const [showRegistrants, setShowRegistrants] = useState(false);
-
-  // const handleViewRegistrants = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       'https://learning-hub-p2yq.onrender.com/api/webinars/registrants',
-  //     );
-  //     setRegistrants(response.data); // Assuming backend returns an array
-  //     setShowRegistrants(true);
-  //   } catch (error) {
-  //     console.error('Error fetching registrants:', error);
-  //   }
-  // };
-  // const handleExportAttendance = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       'https://learning-hub-p2yq.onrender.com/api/webinars/export',
-  //       {
-  //         responseType: 'blob', // Important for downloading files
-  //       },
-  //     );
-
-  //     // Create a blob URL and trigger download
-  //     const url = window.URL.createObjectURL(new Blob([response.data]));
-  //     const link = document.createElement('a');
-  //     link.href = url;
-  //     link.setAttribute('download', 'attendance.xlsx'); // Adjust filename/extension
-  //     document.body.appendChild(link);
-  //     link.click();
-  //     link.remove();
-  //   } catch (error) {
-  //     console.error('Error exporting attendance:', error);
-  //   }
-  // };
+ 
 
   const handleImageChange = (e) => {
     setFormData({
@@ -143,7 +109,7 @@ const AdminBlogWebinar = () => {
       console.log('Sending webinar data:', trimmedData);
 
       const response = await axios.post(
-        'https://learning-hub-p2yq.onrender.com/api/webinars',
+        'https://learning-hub-p2yq.onrender.com/api/createWebinar',
         trimmedData,
         { headers: { 'Content-Type': 'application/json' } },
       );
@@ -158,6 +124,7 @@ const AdminBlogWebinar = () => {
         webinarLink: '',
         typeOfProgram: '',
       });
+      console.log()
     } catch (error) {
       console.error('Error scheduling webinar:', error);
       toast.error(

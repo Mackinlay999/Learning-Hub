@@ -88,6 +88,7 @@ import AdminScheduleInterview from "./components/AdminScheduleInterview";
 import AdminEmailCampaign from "./components/AdminEmailCampaign";
 import AdminResumeViewer from "./components/AdminResumeViewer";
 import AdminLoginPortal from "./components/AdminLoginPortal";
+import AdminWebinar from "./components/AdminWebinar"
 
 import AuthProvider from "./context/AuthContext";
 
@@ -389,6 +390,7 @@ function App() {
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
                     <AdminBlogWebinar />
+                    <AdminWebinar />
                   </ProtectedRoute>
                 }
               />

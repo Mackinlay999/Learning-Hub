@@ -27,6 +27,7 @@ const RecruiterController = require("../Controller/RecruiterLogin")
 const { authverify } = require("../Utils/Auth");
 const upload = require("../Utils/Multer");
 const { join } = require("path");
+const webinarController = require("../Controller/webinarController")
 
 
 const router = express.Router();
@@ -215,6 +216,16 @@ router.post("/RecruiterLogin" , RecruiterController.RecruiterLogin)
 router.post("/RecruiterforgotPassword" , RecruiterController.RecruiterforgotPassword )  
 router.post("/RecruiterResetPassword" , RecruiterController.ResetPassword )  
 router.post("/RecruiterLogout" , RecruiterController.logout )  
+
+
+// webinar
+
+
+router.post('/createWebinar', webinarController.createWebinar);
+router.get('/getAllWebinars', webinarController.getAllWebinars);
+router.get('/getWebinarById/:id', webinarController.getWebinarById);
+router.put('/updateWebinar/:id', webinarController.updateWebinar);
+router.delete('/deleteWebinar/:id', webinarController.deleteWebinar);
 
 
 
