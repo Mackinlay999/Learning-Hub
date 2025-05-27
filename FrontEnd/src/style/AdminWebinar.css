@@ -1,0 +1,128 @@
+/* WebinarManager.css */
+
+.Adminwebinar-container {
+  max-width: 800px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+  padding: 10px 20px;
+}
+
+.Adminwebinar-heading {
+  text-align: center;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.Adminwebinar-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.Adminwebinar-input {
+  flex: 1 1 100%;
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.Adminwebinar-button {
+  padding: 10px 25px;
+  font-size: 1rem;
+  background-color:#dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  flex: 1 1 100%;
+  max-width: 200px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.Adminwebinar-button:hover {
+  background-color:#b02a37;
+}
+
+.Adminwebinar-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 30px 0;
+}
+
+.Adminwebinar-no-webinars {
+  text-align: center;
+  color: #777;
+}
+
+.Adminwebinar-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.Adminwebinar-list-item {
+  padding: 15px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+.Adminwebinar-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.Adminwebinar-link:hover {
+  text-decoration: underline;
+}
+
+.Adminwebinar-edit-button,
+.Adminwebinar-delete-button {
+  padding: 6px 12px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.Adminwebinar-edit-button {
+  background-color:#b02a37;
+  color: white;
+  margin-right: 10px;
+}
+
+.Adminwebinar-edit-button:hover {
+  background-color:#b02a37;
+}
+
+.Adminwebinar-delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.Adminwebinar-delete-button:hover {
+  background-color: #b02a37;
+}
+
+/* Responsive */
+@media (min-width: 600px) {
+  .Adminwebinar-input {
+    flex: 1 1 45%;
+  }
+
+  .Adminwebinar-button {
+    flex: 1 1 auto;
+    max-width: none;
+  }
+
+  .Adminwebinar-list-item {
+    display: flex;
+    flex-direction: column;
+  }
+}

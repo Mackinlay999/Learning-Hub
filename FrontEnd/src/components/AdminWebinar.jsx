@@ -1,6 +1,7 @@
 // src/components/WebinarManager.jsx
 import React, { useEffect, useState } from 'react';
 import axios from "./axios";
+import "../style/Adminwebinar.css"
 
 const WebinarManager = () => {
   const [webinars, setWebinars] = useState([]);
@@ -76,78 +77,88 @@ const WebinarManager = () => {
     }
   };
 
-  return (
-    <div style={{ padding: '20px', fontFamily: 'Arial' }}>
-      <h2>{editingId ? 'Edit Webinar' : 'Create Webinar'}</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          name="webinarTitle"
-          placeholder="Webinar Title"
-          value={form.webinarTitle}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="datetime-local"
-          name="webinarDateTime"
-          value={form.webinarDateTime?.slice(0, 16)}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="webinarDescription"
-          placeholder="Webinar Description"
-          value={form.webinarDescription}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="webinarLink"
-          placeholder="Webinar Link"
-          value={form.webinarLink}
-          onChange={handleChange}
-          required
-        />
-        <input
-          name="typeOfProgram"
-          placeholder="Type of Program"
-          value={form.typeOfProgram}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit" style={{ marginTop: '10px' }}>
-          {editingId ? 'Update' : 'Create'}
-        </button>
-      </form>
+// ...rest of your imports and code
 
-      <hr />
+return (
+  <div className="Adminwebinar-container">
+    <h2 className="Adminwebinar-heading">{editingId ? 'Edit Webinar' : 'Create Webinar'}</h2>
+    <form className="Adminwebinar-form" onSubmit={handleSubmit}>
+      <input
+        className="Adminwebinar-input"
+        name="webinarTitle"
+        placeholder="Webinar Title"
+        value={form.webinarTitle}
+        onChange={handleChange}
+        required
+      />
+      <input
+        className="Adminwebinar-input"
+        type="datetime-local"
+        name="webinarDateTime"
+        value={form.webinarDateTime?.slice(0, 16)}
+        onChange={handleChange}
+        required
+      />
+      <input
+        className="Adminwebinar-input"
+        name="webinarDescription"
+        placeholder="Webinar Description"
+        value={form.webinarDescription}
+        onChange={handleChange}
+        required
+      />
+      <input
+        className="Adminwebinar-input"
+        name="webinarLink"
+        placeholder="Webinar Link"
+        value={form.webinarLink}
+        onChange={handleChange}
+        required
+      />
+      <input
+        className="Adminwebinar-input"
+        name="typeOfProgram"
+        placeholder="Type of Program"
+        value={form.typeOfProgram}
+        onChange={handleChange}
+        required
+      />
+      <button className="Adminwebinar-button" type="submit">
+        {editingId ? 'Update' : 'Create'}
+      </button>
+    </form>
 
-      <h2>All Webinars</h2>
-      {webinars.length === 0 ? (
-        <p>No webinars found.</p>
-      ) : (
-        <ul>
-          {webinars.map((w) => (
-            <li key={w._id} style={{ marginBottom: '15px' }}>
-              <strong>{w.webinarTitle}</strong> —{' '}
-              {new Date(w.webinarDateTime).toLocaleString()}
-              <div>{w.webinarDescription}</div>
-              <div>
-                <a href={w.webinarLink} target="_blank" rel="noreferrer">
-                  Join Link
-                </a>
-              </div>
-              <div>Type: {w.typeOfProgram}</div>
-              <button onClick={() => handleEdit(w)}>Edit</button>
-              <button onClick={() => handleDelete(w._id)} style={{ marginLeft: '10px' }}>
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+    <hr className="Adminwebinar-divider" />
+
+    <h2 className="Adminwebinar-heading">All Webinars</h2>
+    {webinars.length === 0 ? (
+      <p className="Adminwebinar-no-webinars">No webinars found.</p>
+    ) : (
+      <ul className="Adminwebinar-list">
+        {webinars.map((w) => (
+          <li key={w._id} className="Adminwebinar-list-item">
+            <strong>{w.webinarTitle}</strong> — {new Date(w.webinarDateTime).toLocaleString()}
+            <div>{w.webinarDescription}</div>
+            <div>
+              <a href={w.webinarLink} target="_blank" rel="noreferrer" className="Adminwebinar-link">
+                Join Link
+              </a>
+            </div>
+            <div>Type: {w.typeOfProgram}</div>
+            <button className="Adminwebinar-edit-button" onClick={() => handleEdit(w)}>Edit</button>
+            <button
+              className="Adminwebinar-delete-button"
+              onClick={() => handleDelete(w._id)}
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+);
+
 };
 
 export default WebinarManager;

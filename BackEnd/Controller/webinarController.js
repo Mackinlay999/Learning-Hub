@@ -4,6 +4,7 @@ const Webinar = require('../Model/webinarModel');
 
 const WebinarController = {
 createWebinar: async (req, res) => {
+console.log("webinar created")
   try {
     // Optional: Explicit validation (you can enhance this as needed)
     const { webinarTitle, webinarDateTime, webinarDescription, webinarLink, typeOfProgram } = req.body;
@@ -28,12 +29,7 @@ createWebinar: async (req, res) => {
     res.status(201).json(savedWebinar);
 
   } catch (error) {
-    // Handle duplicate key error (code 11000)
-    if (error.code === 11000) {
-      return res.status(409).json({ message: "Duplicate key error: A webinar with this data already exists." });
-    }
-
-    // Other errors
+    
     res.status(400).json({ message: error.message });
   }
 },
@@ -41,6 +37,7 @@ createWebinar: async (req, res) => {
 
   // Get all webinars
   getAllWebinars: async (req, res) => {
+    console.log(" all webinar")
     try {
       const webinars = await Webinar.find().sort({ webinarDateTime: -1 });
       res.json(webinars);
