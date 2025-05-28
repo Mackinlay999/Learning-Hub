@@ -10,7 +10,7 @@ const AdminEMailMarketing = () => {
 
       <AdminEmailCampaign />
      
-      <AdminDiscountsPromotions />
+      {/* <AdminDiscountsPromotions /> */}
     </div>
   )
 }
