@@ -79,7 +79,7 @@ import AdminRecruiterAndPlacementManagement from "./components/AdminRecruiterAnd
 import AdminMentors from "./components/AdminMentors";
 import AdminMentorDetail from "./components/AdminMentorDetail";
 import AdminSuccess from "./components/AdminSuccess";
-import AdminBlogWebinar from "./components/AdminBlogWebinar";
+import AdminBlog from "./components/AdminBlog";
 import AdminRecruiterDashboard from "./components/AdminRecruiterDashboard";
 import AdminPartners from "./components/AdminPartners";
 import AdminPostJob from "./components/AdminPostJob";
@@ -389,7 +389,7 @@ function App() {
                 path="blog-webinar"
                 element={
                   <ProtectedRoute allowedRoles={["Admin", "Super Admin"]}>
-                    <AdminBlogWebinar />
+                    <AdminBlog />
                     <AdminWebinar />
                   </ProtectedRoute>
                 }
