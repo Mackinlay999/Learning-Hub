@@ -4,7 +4,7 @@ const Webinar = require('../Model/webinarModel');
 
 const WebinarController = {
 createWebinar: async (req, res) => {
-console.log("webinar created")
+// console.log("webinar created")
   try {
     // Optional: Explicit validation (you can enhance this as needed)
     const { webinarTitle, webinarDateTime, webinarDescription, webinarLink, typeOfProgram } = req.body;
@@ -37,7 +37,7 @@ console.log("webinar created")
 
   // Get all webinars
   getAllWebinars: async (req, res) => {
-    console.log(" all webinar")
+    // console.log(" all webinar")
     try {
       const webinars = await Webinar.find().sort({ webinarDateTime: -1 });
       res.json(webinars);

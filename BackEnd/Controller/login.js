@@ -18,13 +18,13 @@ const EmailSchedule = require("../Model/EmailSchedule");
 const login = {
   register: async (req, res) => {
     try {
-      console.log("register ");
+      // console.log("register ");
       console.log(req.body);
 
       const { username, email, password, number, role } = req.body;
 
       const verifyemail = await user.findOne({ email });
-      console.log(verifyemail);
+      // console.log(verifyemail);
 
       if (verifyemail) {
         return res.status(400).json({ message: "user already there" });
@@ -45,10 +45,10 @@ const login = {
       //  schedule email
 
       await newuser.save();
-      console.log("New user saved:", newuser);
+      // console.log("New user saved:", newuser);
 
       const templates = await EmailTemplate.find();
-      console.log("Templates found:", templates.length);
+      // console.log("Templates found:", templates.length);
       const now = new Date();
 
       const schedules = templates.map((t) => ({
@@ -59,7 +59,7 @@ const login = {
         sendAt: new Date(now.getTime() + t.delayInMinutes * 60 * 1000),
       }));
 
-      console.log("Schedules prepared:", schedules.length);
+      // console.log("Schedules prepared:", schedules.length);
 
       await EmailSchedule.insertMany(schedules);
 
@@ -83,7 +83,7 @@ const login = {
 
   login: async (req, res) => {
     try {
-      console.log("🚀 User login request received");
+      // console.log("🚀 User login request received");
 
       const { email, password } = req.body;
 
@@ -132,7 +132,7 @@ const login = {
         role: verifyUser.role,
       };
 
-      console.log("✅ User login success:", responsePayload);
+      // console.log("✅ User login success:", responsePayload);
 
       return res.status(200).json(responsePayload);
     } catch (err) {
@@ -143,7 +143,7 @@ const login = {
 
   logout: async (req, res) => {
     try {
-      console.log("logout");
+      // console.log("logout");
 
       res.clearCookie("token", {
         httpOnly: true,
@@ -157,13 +157,13 @@ const login = {
   },
   me: async (req, res) => {
     try {
-      console.log("me is login");
+      // console.log("me is login");
       const userid = req.userid;
 
       const User = await user.findOne({ _id: userid });
 
       //  const user =await user.findbyID(userid).select("-password -__v -createdAT -updateAt -.id")
-      console.log("user is " + User);
+      // console.log("user is " + User);
 
       return res.status(200).json(User);
     } catch (err) {
@@ -172,12 +172,12 @@ const login = {
   },
   forgetpassword: async (req, res) => {
     try {
-      console.log("forget");
-      console.log(req.body);
+      // console.log("forget");
+      // console.log(req.body);
 
       const { email } = req.body;
       const checkemail = await user.findOne({ email: email });
-      console.log("User found:", checkemail);
+      // console.log("User found:", checkemail);
 
       if (!checkemail) {
         return res.status(400).json({ mesage: "user not found" });
@@ -185,11 +185,11 @@ const login = {
 
       const token = Math.random().toString(26).slice(-8);
 
-      console.log(token);
+      // console.log(token);
 
       checkemail.resetPasswordToken = token;
       checkemail.resetPasswordExpires = Date.now() + 120000000;
-      console.log(checkemail.resetPasswordToken);
+      // console.log(checkemail.resetPasswordToken);
 
       await checkemail.save();
 
@@ -216,7 +216,7 @@ const login = {
   },
   setNewPassword: async (req, res) => {
     try {
-      console.log("setNewPassword");
+      // console.log("setNewPassword");
 
       const { token, newPassword } = req.body;
 
@@ -246,7 +246,7 @@ const login = {
     }
   },
   profileResume: async (req, res) => {
-    console.log("plese  fill the form");
+    // console.log("plese  fill the form");
 
     if (!req.file) {
       return res.status(400).json({ message: "No file uploaded." });

@@ -4,7 +4,7 @@ const sendEmail = require('../Utils/Mailer');
 // CREATE Campaign and send mail
 const compainsController ={
     createCampaign: async (req, res) => {
-      console.log("create companis")
+      // console.log("create companis")
         try {
           let { subject, body, recipients } = req.body;
       

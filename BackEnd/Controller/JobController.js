@@ -5,7 +5,7 @@ const Joblist ={
     createJob : async (req, res) => {
         try {
 
-            console.log("created job");
+            // console.log("created job");
             const {title,company,role,location,skills} = req.body
             if(!title || !company ||!role ||!location || !skills){
                 return res.status(400).json({err :"fill the all data"})
@@ -20,7 +20,7 @@ const Joblist ={
       },
       getAllJobs : async (req, res) => {
         try {
-            console.log("all job");
+            // console.log("all job");
           const jobs = await Job.find();
           res.status(200).json(jobs);
         } catch (err) {
@@ -28,8 +28,8 @@ const Joblist ={
         }
       },
       updateJob: async (req, res) => {
-        console.log("Updating job with ID:", req.params.id);
-        console.log("New job data:", req.body);
+        // console.log("Updating job with ID:", req.params.id);
+        // console.log("New job data:", req.body);
       
         try {
           const updatedJob = await Job.findByIdAndUpdate(
@@ -50,7 +50,7 @@ const Joblist ={
       },
       
       deleteJob : async (req, res) => {
-        console.log("delete job");
+        // console.log("delete job");
         try {
           await Job.findByIdAndDelete(req.params.id);
           res.status(200).json({ message: "Job deleted successfully" });

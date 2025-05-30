@@ -30,7 +30,7 @@ getLeademail : async (req, res) => {
   }
 },
 updateLeademail: async (req, res) => {
-  console.log("update lead email")
+  // console.log("update lead email")
   const { id } = req.params;
   const { name, email } = req.body;
 
@@ -57,7 +57,7 @@ deleteLeademail: async (req, res) => {
   const { leadId } = req.params;
 
   // Log the leadId to verify it's being passed correctly
-  console.log('Received leadId:', leadId);
+  // console.log('Received leadId:', leadId);
 
   // Validate the leadId before querying
   if (!mongoose.Types.ObjectId.isValid(leadId)) {

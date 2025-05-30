@@ -3,7 +3,7 @@ const Attendance = require("../Model/AttendanceScheme");
 const attendanceController = {
   // Create
   createRecord: async (req, res) => {
-    console.log("create attentence");
+    // console.log("create attentence");
     
     try {
       
@@ -31,7 +31,7 @@ const attendanceController = {
 
   // Read all
   getRecords: async (req, res) => {
-    console.log("get attentence");
+    // console.log("get attentence");
     try {
       const records = await Attendance.find();
       res.status(200).json(records);
@@ -42,7 +42,7 @@ const attendanceController = {
 
   // Update
   updateRecord: async (req, res) => {
-    console.log("update attentence");
+    // console.log("update attentence");
     try {
       const updated = await Attendance.findByIdAndUpdate(
         req.params.id,
@@ -57,7 +57,7 @@ const attendanceController = {
 
   // Delete
   deleteRecord: async (req, res) => {
-    console.log("delete attentence");
+    // console.log("delete attentence");
     try {
       await Attendance.findByIdAndDelete(req.params.id);
       res.json({ message: "Record deleted successfully" });

@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 const RecruiterController = {
   RecruiterRegister: async (req, res) => {
     try {
-      console.log("Recruiter login");
+      // console.log("Recruiter login");
 
       const { username, email, password, role  } = req.body;
 
@@ -31,14 +31,14 @@ const RecruiterController = {
     }
   },
   RecruiterLogin: async (req, res) => {
-    console.log("🚀 RecruiterLogin controller hit");
+    // console.log("🚀 RecruiterLogin controller hit");
 
   try {
 
-    console.log("Recruiter login request received");
+    // console.log("Recruiter login request received");
 
     const { email, password } = req.body;
-    console.log("Request body:", req.body);
+    // console.log("Request body:", req.body);
     // Validate input early
     if (!email || !password) {
       return res.status(400).json({ message: "Email and password are required" });
@@ -67,8 +67,8 @@ const RecruiterController = {
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
     );
-    console.log("Generated token:", token);
-    console.log("Role to send:", verifyEmail.role);
+    // console.log("Generated token:", token);
+    // console.log("Role to send:", verifyEmail.role);
     // Set token in HTTP-only cookie
     res.cookie("token", token, {
       httpOnly: true,
@@ -82,7 +82,7 @@ const RecruiterController = {
       role: verifyEmail.role,
       recruiterId: verifyEmail._id.toString(), 
     };
-    console.log("Sending response:", responsePayload);
+    // console.log("Sending response:", responsePayload);
 
     res.status(200).json(responsePayload);
   } catch (err) {
@@ -91,7 +91,7 @@ const RecruiterController = {
 },
   RecruiterforgotPassword: async (req, res) => {
     try {
-      console.log("forget password in recruiter");
+      // console.log("forget password in recruiter");
       const { email } = req.body;
 
       const verifyEmail = await Recruiter.findOne({ email });
@@ -106,7 +106,7 @@ const RecruiterController = {
       // resetpasswordExpried : Date
       verifyEmail.resetpassword = token;
       verifyEmail.resetpasswordExpried = Date.now() + 120000000;
-      console.log(token);
+      // console.log(token);
 
       await verifyEmail.save();
 
@@ -134,7 +134,7 @@ const RecruiterController = {
 
   ResetPassword: async (req, res) => {
     try {
-      console.log("reset password");
+      // console.log("reset password");
       const { token, Newpassword } = req.body;
 
       const vaild = await Recruiter.findOne({
@@ -161,7 +161,7 @@ const RecruiterController = {
   },
   logout: async (req, res) => {
     try {
-      console.log("logout");
+      // console.log("logout");
       res.clearCookie("token", { httpOnly: true });
       res.status(200).json({ message: "logout successfully " });
     } catch (err) {

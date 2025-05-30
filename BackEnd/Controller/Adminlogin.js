@@ -13,13 +13,13 @@ const path = require("path");
 const Admincontroller = {
   register: async (req, res) => {
     try {
-      console.log("register login");
-      console.log(req.body);
+      // console.log("register login");
+      // console.log(req.body);
 
       const { username, email, password, role } = req.body;
 
       const verifyemail = await Adminlogin.findOne({ email: email });
-      console.log(verifyemail);
+      // console.log(verifyemail);
 
       if (verifyemail) {
         return res.status(400).json({ message: "user already there" });
@@ -80,7 +80,7 @@ const Admincontroller = {
 
   login: async (req, res) => {
     try {
-      console.log("Login request received");
+      // console.log("Login request received");
 
       const { email, password } = req.body;
 
@@ -151,7 +151,7 @@ const Admincontroller = {
 
   logout: async (req, res) => {
     try {
-      console.log("logout");
+      // console.log("logout");
 
       res.clearCookie("token", {
         httpOnly: true,
@@ -165,7 +165,7 @@ const Admincontroller = {
   },
   me: async (req, res) => {
     try {
-      console.log("me is login");
+      // console.log("me is login");
       const userid = req.userid; // Extract the user id from the JWT payload
 
       // Find the user by their ID and exclude sensitive fields like password
@@ -178,7 +178,7 @@ const Admincontroller = {
         return res.status(404).json({ message: "User not found" });
       }
 
-      console.log("User found:", user);
+      // console.log("User found:", user);
 
       // Return the user data, including their role
       return res.status(200).json({
@@ -198,12 +198,12 @@ const Admincontroller = {
 
   forgetpassword: async (req, res) => {
     try {
-      console.log("forget");
-      console.log(req.body);
+      // console.log("forget");
+      // console.log(req.body);
 
       const { email } = req.body;
       const checkemail = await Adminlogin.findOne({ email: email });
-      console.log("User found:", checkemail);
+      // console.log("User found:", checkemail);
 
       if (!checkemail) {
         return res.status(400).json({ mesage: "user not found" });
@@ -211,11 +211,11 @@ const Admincontroller = {
 
       const token = Math.random().toString(26).slice(-8);
 
-      console.log(token);
+      // console.log(token);
 
       checkemail.resetPasswordToken = token;
       checkemail.resetPasswordExpires = Date.now() + 120000000;
-      console.log(checkemail.resetPasswordToken);
+      // console.log(checkemail.resetPasswordToken);
 
       await checkemail.save();
 
@@ -244,7 +244,7 @@ const Admincontroller = {
   },
   setNewPassword: async (req, res) => {
     try {
-      console.log("setNewPassword");
+      // console.log("setNewPassword");
 
       const { token, newPassword } = req.body;
 
@@ -275,7 +275,7 @@ const Admincontroller = {
   },
   updateRole: async (req, res) => {
     try {
-      console.log("Update role request");
+      // console.log("Update role request");
 
       const AdminloginId = req.userid; // Logged-in user's ID from token
       const { id, username, email, role } = req.body;
@@ -320,13 +320,13 @@ const Admincontroller = {
 
   deleteUser: async (req, res) => {
     try {
-      console.log("Delete user request");
+      // console.log("Delete user request");
 
       const adminId = req.userid; // from auth middleware
       const {id } = req.params;
 
-      console.log("Logged in Admin ID:", adminId);
-      console.log("User to delete ID:", id);
+      // console.log("Logged in Admin ID:", adminId);
+      // console.log("User to delete ID:", id);
 
       const loggedInAdmin = await Adminlogin.findById(adminId);
       if (!loggedInAdmin) {
@@ -360,7 +360,7 @@ const Admincontroller = {
   approveUser: async (req, res) => {
     try {
       const { id } = req.params;
-      console.log("Approving user with ID:", id);
+      // console.log("Approving user with ID:", id);
 
       const user = await Adminlogin.findById(id);
       if (!user) return res.status(404).json({ message: "User not found" });
@@ -382,7 +382,7 @@ const Admincontroller = {
   rejectUser: async (req, res) => {
     try {
       const { id } = req.params;
-      console.log("Approving user with ID:", id);
+      // console.log("Approving user with ID:", id);
       const user = await Adminlogin.findById(id);
 
       if (!user) return res.status(404).json({ message: "User not found" });

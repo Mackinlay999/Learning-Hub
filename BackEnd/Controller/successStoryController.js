@@ -26,7 +26,7 @@ createStory : async (req, res) => {
       photo: uploadedPhoto,
       LinkedinUrl: req.body.LinkedinUrl, 
     });
-    console.log("Uploaded file path:", req.file.path);
+    // console.log("Uploaded file path:", req.file.path);
 
 
     await story.save();

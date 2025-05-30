@@ -5,7 +5,7 @@ const LiveSessionandWebinars ={
 
     createSession : async (req, res) => {
         try {
-        console.log("create session");
+        // console.log("create session");
 
         const {title,platform,date,time,attendees} =req.body
         if(!title || !platform || !date || !time || !attendees){

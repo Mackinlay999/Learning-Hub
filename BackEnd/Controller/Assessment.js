@@ -4,7 +4,7 @@ const Assessment = require("../Model/AssessmentScheme");
 const AssessmentController ={
     createAssessment : async (req, res) => {
         try {
-          console.log("create Assessment");
+          // console.log("create Assessment");
           const {title,type,status}=req.body
 
           if(!title || !type || !status ){
@@ -19,7 +19,7 @@ const AssessmentController ={
         }
       },
       getAssessments : async (req, res) => {
-        console.log("get all Assessment");
+        // console.log("get all Assessment");
         
         try {
           const assessments = await Assessment.find();
@@ -29,7 +29,7 @@ const AssessmentController ={
         }
       },
       updateAssessment : async (req, res) => {
-        console.log("update Assessment");
+        // console.log("update Assessment");
         
         try {
           const updated = await Assessment.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -40,7 +40,7 @@ const AssessmentController ={
         }
       },
       deleteAssessment : async (req, res) => {
-        console.log("delete Assessment");
+        // console.log("delete Assessment");
         
         try {
           await Assessment.findByIdAndDelete(req.params.id);
@@ -50,7 +50,7 @@ const AssessmentController ={
         }
       },
       issueCertificate: async (req, res) => {
-        console.log("issue Assessment");
+        // console.log("issue Assessment");
         try {
           const assessment = await Assessment.findByIdAndUpdate(
             req.params.id,

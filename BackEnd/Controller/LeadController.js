@@ -4,7 +4,7 @@ const LeadController = {
 
     createLead : async (req, res) => {
         try {
-           console.log("create lead");
+          //  console.log("create lead");
            
             const {name,email,status,program,Joiningtime,number } = req.body
             if(!name ||!email ||!status || !program ||!number || !Joiningtime ){
@@ -19,7 +19,7 @@ const LeadController = {
       },
 
 getLeads : async (req, res) => {
-    console.log("get lead");
+    // console.log("get lead");
   try {
     const filter = req.query.status;
     const leads = filter ? await Lead.find({ status: filter }) : await Lead.find();
@@ -31,7 +31,7 @@ getLeads : async (req, res) => {
 
 // Get single lead
 getLeadById : async (req, res) => {
-    console.log("getbyid lead");
+    // console.log("getbyid lead");
   try {
     const lead = await Lead.findById(req.params.id);
     if (!lead) return res.status(404).json({ message: "Lead not found" });
@@ -46,7 +46,7 @@ getLeadById : async (req, res) => {
 
 // Update lead
 updateLead : async (req, res) => {
-    console.log("update lead");
+    // console.log("update lead");
   try {
     const updated = await Lead.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(updated);
@@ -57,7 +57,7 @@ updateLead : async (req, res) => {
 
 // Delete lead
 deleteLead : async (req, res) => {
-    console.log("delete lead");
+    // console.log("delete lead");
   try {
     await Lead.findByIdAndDelete(req.params.id);
     res.json({ message: "Lead deleted" });
