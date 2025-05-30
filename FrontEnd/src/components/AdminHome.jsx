@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import axios from "./axios";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import axios from './axios';
+import { Link } from 'react-router-dom';
 import {
   BarChart,
   Bar,
@@ -9,23 +9,13 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-} from "recharts";
-import { FaSearch, FaBell } from "react-icons/fa";
-import { motion } from "framer-motion";
+} from 'recharts';
+import { FaSearch, FaBell } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import AdminSchedulerCalendar from '../components/AdminSchedulerCalendar';
+import '../style/AdminHome.css';
 
-import AdminSchedulerCalendar from "../components/AdminSchedulerCalendar";
-import "../style/AdminHome.css"; // Using your existing dashboard style
-
-const activityData = [
-  { day: "S", hours: 4 },
-  { day: "M", hours: 5 },
-  { day: "T", hours: 3 },
-  { day: "W", hours: 4 },
-  { day: "T", hours: 3 },
-  { day: "F", hours: 4 },
-  { day: "S", hours: 4 },
-];
-
+// Framer Motion Animation Variant
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i = 1) => ({
@@ -33,7 +23,7 @@ const fadeInUp = {
     y: 0,
     transition: {
       delay: i * 0.1,
-      type: "spring",
+      type: 'spring',
       stiffness: 70,
     },
   }),
@@ -45,11 +35,9 @@ const AdminHome = () => {
   const [dailyLeads, setDailyLeads] = useState([]);
   const [activeStudents, setActiveStudents] = useState(0);
   const [courseCount, setCourseCount] = useState(0);
-
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
 
-  // /revenue
   const [transactions, setTransactions] = useState([]);
   const [revenue, setRevenue] = useState(0);
   const [paymentStatus, setPaymentStatus] = useState({
@@ -62,24 +50,22 @@ const AdminHome = () => {
 
   const fetchTransactions = async () => {
     try {
-      const response = await axios.get("/getRevenue");
+      const response = await axios.get('/getRevenue');
       const data = response.data;
       setTransactions(data);
 
-      // 1. Calculate total revenue
       const totalRevenue = data
-        .filter((item) => item.status === "Paid")
+        .filter((item) => item.status === 'Paid')
         .reduce((sum, item) => sum + item.amount, 0);
       setRevenue(totalRevenue);
 
-      // 2. Calculate payment status percentages
       const totalCount = data.length;
-      const paidCount = data.filter((item) => item.status === "Paid").length;
+      const paidCount = data.filter((item) => item.status === 'Paid').length;
       const pendingCount = data.filter(
-        (item) => item.status === "Pending"
+        (item) => item.status === 'Pending',
       ).length;
       const overdueCount = data.filter(
-        (item) => item.status === "Overdue"
+        (item) => item.status === 'Overdue',
       ).length;
 
       setPaymentStatus({
@@ -92,50 +78,47 @@ const AdminHome = () => {
           : 0,
       });
 
-      // 4. Calculate today's revenue
-      const today = new Date().toDateString(); // 'Sat Apr 26 2025'
+      const today = new Date().toDateString();
       const todayTransactions = data.filter((item) => {
         const itemDate = new Date(item.date).toDateString();
-        return itemDate === today && item.status === "Paid";
+        return itemDate === today && item.status === 'Paid';
       });
       const todayRevenueSum = todayTransactions.reduce(
         (sum, item) => sum + item.amount,
-        0
+        0,
       );
-
       setTodayRevenue(todayRevenueSum);
 
-      // 3. Prepare BarChart data based on transaction dates (optional simple sample)
       const dailyRevenue = {};
       data.forEach((item) => {
-        const date = new Date(item.date).toLocaleDateString("en-US", {
-          weekday: "short",
-        }); // like 'Mon', 'Tue'
+        const date = new Date(item.date).toLocaleDateString('en-US', {
+          weekday: 'short',
+        });
         if (!dailyRevenue[date]) {
           dailyRevenue[date] = 0;
         }
-        if (item.status === "Paid") {
+        if (item.status === 'Paid') {
           dailyRevenue[date] += item.amount;
         }
       });
 
       const formattedActivityData = Object.keys(dailyRevenue).map((day) => ({
         day,
-        hours: dailyRevenue[day] / 1000, // Dividing just to make the graph smaller; you can change
+        hours: dailyRevenue[day] / 1000,
       }));
 
       setActivityData(formattedActivityData);
     } catch (error) {
-      console.error("Error fetching transactions:", error);
+      console.error('Error fetching transactions:', error);
     }
   };
 
   const fetchActiveStudents = async () => {
     try {
-      const res = await axios.get("/getActiveStudents"); // Adjust your backend URL if needed
-      setActiveStudents(res.data.length); // We set the count
+      const res = await axios.get('/getActiveStudents');
+      setActiveStudents(res.data.length);
     } catch (error) {
-      console.error("Error fetching active students", error);
+      console.error('Error fetching active students', error);
     }
   };
 
@@ -143,94 +126,64 @@ const AdminHome = () => {
     fetchActiveStudents();
     fetchTransactions();
 
-    // Fetch all courses and get the count
     axios
-      .get("/getAllPrograms")
+      .get('/getAllPrograms')
       .then((response) => {
-        setCourseCount(response.data.length); // Set course count based on the length of the array
+        setCourseCount(response.data.length);
       })
       .catch((error) => {
-        console.error("Error fetching course count:", error);
+        console.error('Error fetching course count:', error);
       });
 
-    // Fetch Dashboard main data
     axios
-      .get("/dashboard")
+      .get('/dashboard')
       .then((response) => {
-        const { leads, students, courses, revenue, payments } = response.data;
-        setTotalLeads(leads);
-        setActiveStudents(students);
-        setCourseCount(courses);
-        setRevenue(revenue.totalRevenue);
-        setPaymentStatus(payments);
+        const {
+          totalLeads,
+          activeStudents,
+          courseCount,
+          revenueData,
+          paymentStatus,
+        } = response.data;
+
+        setTotalLeads(totalLeads);
+        setActiveStudents(activeStudents);
+        setCourseCount(courseCount);
+        setRevenue(revenueData.totalRevenue);
+        setPaymentStatus(paymentStatus);
         setLoading(false);
       })
       .catch((error) => {
-        console.error("There was an error fetching dashboard data:", error);
+        console.error('There was an error fetching dashboard data:', error);
         setLoading(false);
       });
 
-    // Fetch Leads by Date
-    // axios
-    //   .get("/getLeadsByDate")
-    //   .then((res) => {
-    //     setTotalLeads(res.data.totalLeadsOverall);
-
-    //     const todayData = res.data.totalLeadsByDate[0]; // safely get the first item
-    //     if (todayData) {
-    //       setTodayLeads(todayData.totalLeads);
-    //     } else {
-    //       setTodayLeads(0);
-    //       console.log("No leads found for today.");
-    //     }
-    //     setLoading(false);
-    //   })
-    //   .catch((err) => console.error("Error fetching leads by date:", err));
-
     axios
-  .get("/getLeadsByDate")
-  .then((res) => {
-    // Assuming totalLeadsOverall is total leads count (maybe overall, for display)
-    setTotalLeads(res.data.totalLeadsOverall);
-
-    // Find today's date in YYYY-MM-DD format
-    const today = new Date().toISOString().split('T')[0];
-
-    // Find today's data by matching date _id string in data array
-    const todayData = res.data.totalLeadsByDate.find(day =>
-      new Date(day._id).toISOString().split('T')[0] === today
-    );
-
-    if (todayData) {
-      // Set today's lead count from the found object
-      setTodayLeads(todayData.totalLeads);
-    } else {
-      // No leads found for today, set to 0
-      setTodayLeads(0);
-      console.log("No leads found for today.");
-    }
-
-    setLoading(false);
-  })
-  .catch((err) => {
-    console.error("Error fetching leads by date:", err);
-    setLoading(false);
-  });
-
-
-
-
-
-
-
+      .get('/getLeadsByDate')
+      .then((res) => {
+        setTotalLeads(res.data.totalLeadsOverall);
+        const today = new Date().toISOString().split('T')[0];
+        const todayData = res.data.totalLeadsByDate.find(
+          (day) => new Date(day._id).toISOString().split('T')[0] === today,
+        );
+        if (todayData) {
+          setTodayLeads(todayData.totalLeads);
+        } else {
+          setTodayLeads(0);
+          console.log('No leads found for today.');
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Error fetching leads by date:', err);
+        setLoading(false);
+      });
   }, []);
 
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
 
-  if (loading) {
-    return <div className="loader">Loading...</div>;
-  }
+  if (loading) return <div className="loader">Loading...</div>;
 
   return (
     <div className="admin-home-container">
@@ -280,15 +233,17 @@ const AdminHome = () => {
               </div>
             </div>
             <div className="lead-links">
-              
-              
-              <Link className="view-link" to="/admin/LeadsByDate">Daily</Link>
-              <Link className="view-link" to="/admin/lead-student">All</Link>
+              <Link className="view-link" to="/admin/LeadsByDate">
+                Daily
+              </Link>
+              <Link className="view-link" to="/admin/lead-student">
+                All
+              </Link>
 
               {/* <a className="view-link" href="/lead-student">
                 All
               </a> */}
-            </div>  
+            </div>
           </div>
         </motion.div>
 
@@ -304,9 +259,9 @@ const AdminHome = () => {
           <div className="card-body">
             <h6>Active Students</h6>
             <h3>{activeStudents}</h3> {/* This shows the count */}
-            
-             <Link className="view-link" to="/admin/students">All</Link>
-            
+            <Link className="view-link" to="/admin/students">
+              All
+            </Link>
           </div>
         </motion.div>
 
@@ -321,8 +276,9 @@ const AdminHome = () => {
           <div className="card-body">
             <h6>Course Count</h6>
             <h3>{courseCount}</h3> {/* Display the course count */}
-           
-               <Link className="view-link" to="/admin/courses">All</Link>
+            <Link className="view-link" to="/admin/courses">
+              All
+            </Link>
           </div>
         </motion.div>
       </div>
@@ -347,7 +303,7 @@ const AdminHome = () => {
               </BarChart>
             </ResponsiveContainer>
             <p>Total Revenue: ${revenue}</p>
-            <p>Revenue This Month: ${revenue.toFixed(2)}</p>{" "}
+            <p>Revenue This Month: ${revenue.toFixed(2)}</p>{' '}
             {/* Example logic */}
             <p>Today Revenue: ${todayRevenue}</p>
           </div>
@@ -392,7 +348,7 @@ const AdminHome = () => {
           <h5>Attendance Snapshot</h5>
           <p>Total Attendance: 85%</p>
           <div className="progress-bar-wrapper">
-            <div className="progress-bar" style={{ width: "85%" }}>
+            <div className="progress-bar" style={{ width: '85%' }}>
               85%
             </div>
           </div>

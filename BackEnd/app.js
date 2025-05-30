@@ -28,7 +28,7 @@ const websiteContentRoutes = require("./Route/websiteContentRoutes");
 const emailCampaignRoutes = require("./Route/emailCampaignRoutes"); // ⬅️ Import
 const funnelEntryRoutes = require("./Route/funnelEntryRoutes.js");
 const discountRoutes = require("./Route/discountRoutes");
-const dashboardRoutes = require('./Route/dashboardRoutes');
+const dashboardRoutes = require('./Route/dashboardRoutes.js');
 
 const mentorRoutes = require("./Route/mentorRoutes");
 const studentRoutes = require("./Route/studentRoutes.js");
